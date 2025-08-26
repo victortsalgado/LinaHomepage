@@ -57,7 +57,7 @@ export default function Header() {
             {!isMobile && (
               <a 
                 href="#contato"
-                className="text-lina-cyan hover:text-lina-cyan/80 font-medium transition-colors"
+                className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999]"
                 data-testid="link-contact"
               >
                 Entre em Contato
@@ -83,7 +83,6 @@ export default function Header() {
           </nav>
         </div>
       </header>
-
       {/* Mobile Menu */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
