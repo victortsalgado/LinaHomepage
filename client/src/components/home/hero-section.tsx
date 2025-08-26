@@ -1,249 +1,277 @@
-import { useState, useEffect } from "react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
 import { AnimatedGroup } from "@/components/ui/animated-group";
-import heroIllustrationPath from "../../assets/Home_Ilustra_Banner_01_1756234068551.png";
-import heroBgPath from "../../assets/Home_BG_Banner_01_1756234068550.jpg";
 
 export default function HeroSection() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(true);
-
-  const slides = [
-    {
-      title: "Pix Automático",
-      description: "Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, trazendo benefícios diretos para empresas e consumidores.",
-      buttonText: "Saiba mais",
-      image: heroIllustrationPath,
-      gradient: "linear-gradient(135deg, #2A7B7F 0%, #1B5E62 15%, #0D4142 35%, #000000 65%)"
-    },
-    {
-      title: "Data Link",
-      description: "Integração completa de dados empresariais com segurança e eficiência. Conecte seus sistemas de forma inteligente e automatizada.",
-      buttonText: "Conhecer Data Link",
-      image: heroIllustrationPath,
-      gradient: "linear-gradient(135deg, #1E3A8A 0%, #1E40AF 15%, #1D4ED8 35%, #000000 65%)"
-    },
-    {
-      title: "Lina Pay",
-      description: "Sistema de pagamentos digitais completo. Processos seguros, rápidos e eficientes para sua empresa crescer sem limites.",
-      buttonText: "Ver Lina Pay",
-      image: heroIllustrationPath,
-      gradient: "linear-gradient(135deg, #7C3AED 0%, #8B5CF6 15%, #A78BFA 35%, #000000 65%)"
-    },
-    {
-      title: "JSR Platform",
-      description: "Plataforma de gestão e relatórios avançados. Monitore, analise e tome decisões baseadas em dados em tempo real.",
-      buttonText: "Explorar JSR",
-      image: heroIllustrationPath,
-      gradient: "linear-gradient(135deg, #059669 0%, #10B981 15%, #34D399 35%, #000000 65%)"
-    }
-  ];
-
-  // Create duplicate slides for infinite loop
-  const extendedSlides = [...slides, ...slides];
-  const totalSlides = slides.length;
-
-  const nextSlide = () => {
-    setCurrentSlide(prev => prev + 1);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
-  // Auto-advance slides every 7 seconds with infinite loop
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 7000);
-
-    return () => clearInterval(interval);
-  }, [currentSlide]);
-
-  // Handle the infinite loop transition - reset to start when reaching the duplicate section
-  useEffect(() => {
-    if (currentSlide >= totalSlides) {
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-        setCurrentSlide(0);
-        // Re-enable transition after DOM update
-        requestAnimationFrame(() => {
-          setIsTransitioning(true);
-        });
-      }, 2000); // Wait for transition to complete
-      return () => clearTimeout(timer);
-    }
-  }, [currentSlide, totalSlides]);
-
   return (
-    <div className="container mx-auto px-8 mt-[100px] mb-[100px]">
-      <section 
-        className="relative overflow-hidden rounded-3xl"
-        style={{
-          background: slides[currentSlide % totalSlides].gradient,
-        }}
-        data-testid="section-hero"
+    <>
+      {/* Background Effects */}
+      <div 
+        aria-hidden
+        className="z-[2] absolute inset-0 pointer-events-none isolate opacity-50 contain-strict hidden lg:block"
       >
-        
-        {/* Carousel Container */}
-        <div className="relative w-full">
-          <div 
-            className={`flex ${isTransitioning ? 'carousel-smooth' : ''}`}
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {extendedSlides.map((slide, index) => (
-              <div 
-                key={index} 
-                className={`w-full flex-shrink-0 carousel-slide ${
-                  index === currentSlide ? 'carousel-slide-active' : 'carousel-slide-inactive'
-                }`}
-              >
-                <div className="relative z-10 px-16 py-0">
-                  <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[20px]">
-                    {/* Content - Takes up 7 columns */}
-                    <div className={`lg:col-span-7 text-white space-y-1 carousel-content-fade ${
-                      index === currentSlide ? 'carousel-content-active' : 'carousel-content-inactive'
-                    }`}>
-                      <AnimatedGroup
-                        key={`content-${index}-${currentSlide}`} // Force re-mount for animation
-                        variants={{
-                          container: {
-                            hidden: { opacity: 0 },
-                            visible: {
-                              opacity: 1,
-                              transition: {
-                                staggerChildren: 0.2,
-                                delayChildren: index === currentSlide ? 0.3 : 0,
-                              },
-                            },
-                          },
-                          item: {
-                            hidden: {
-                              opacity: 0,
-                              y: 30,
-                              filter: 'blur(8px)',
-                            },
-                            visible: {
-                              opacity: 1,
-                              y: 0,
-                              filter: 'blur(0px)',
-                              transition: {
-                                type: 'spring',
-                                bounce: 0.4,
-                                duration: 0.8,
-                              },
-                            },
-                          },
-                        }}
-                        initial={index === currentSlide ? "hidden" : "visible"}
-                        animate={index === currentSlide ? "visible" : "hidden"}
-                      >
-                        <h1 
-                          className="text-5xl lg:text-6xl text-[#00F0D8] font-medium leading-tight"
-                          data-testid={`heading-hero-title-${index}`}
-                        >
-                          {slide.title}
-                        </h1>
-                        
-                        <div className="space-y-2 text-left">
-                          <p 
-                            className="text-lg lg:text-xl text-white leading-relaxed max-w-2xl font-light"
-                            data-testid={`text-hero-description-${index}`}
-                          >
-                            {slide.description}
-                          </p>
-                        </div>
-                        
-                        <div className="flex gap-4 pt-3">
-                          <button 
-                            className="border border-[#00F0D8] px-8 py-3 rounded-full text-base hover:bg-[#00F0D8]/10 transition-all duration-300 flex items-center gap-3 text-white font-normal"
-                            data-testid={`button-learn-more-${index}`}
-                          >
-                            <span className="text-[#00F0D8]">→</span>
-                            {slide.buttonText}
-                          </button>
-                        </div>
-                      </AnimatedGroup>
-                    </div>
+        <div className="w-[35rem] h-[80rem] -translate-y-[350px] absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
+        <div className="h-[80rem] absolute left-0 top-0 w-56 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
+        <div className="h-[80rem] -translate-y-[350px] absolute left-0 top-0 w-56 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
+      </div>
 
-                    {/* 3D Illustration - Takes up 5 columns */}
-                    <div className={`lg:col-span-5 relative carousel-content-fade ${
-                      index === currentSlide ? 'carousel-content-active' : 'carousel-content-inactive'
-                    }`}>
-                      <div className="relative h-full">
-                        <div className="relative flex justify-center lg:justify-end h-full items-center ml-[-12px] mr-[-12px]">
-                          <AnimatedGroup
-                            key={`image-${index}-${currentSlide}`} // Force re-mount for animation
-                            variants={{
-                              container: {
-                                hidden: { opacity: 0 },
-                                visible: {
-                                  opacity: 1,
-                                  transition: {
-                                    delayChildren: index === currentSlide ? 0.6 : 0,
-                                  },
-                                },
-                              },
-                              item: {
-                                hidden: {
-                                  opacity: 0,
-                                  scale: 0.8,
-                                  y: 20,
-                                  filter: 'blur(8px)',
-                                },
-                                visible: {
-                                  opacity: 1,
-                                  scale: 1,
-                                  y: 0,
-                                  filter: 'blur(0px)',
-                                  transition: {
-                                    type: 'spring',
-                                    bounce: 0.2,
-                                    duration: 1.2,
-                                  },
-                                },
-                              },
-                            }}
-                            initial={index === currentSlide ? "hidden" : "visible"}
-                            animate={index === currentSlide ? "visible" : "hidden"}
-                          >
-                            <img 
-                              src={slide.image} 
-                              alt={`${slide.title} Illustration`} 
-                              className="w-full max-w-xs lg:max-w-sm ml-[27px] mr-[27px] mt-[20px] mb-[20px] pl-[10px] pr-[10px] animate-float pt-[10px] pb-[10px]"
-                              data-testid={`img-hero-illustration-${index}`}
-                            />
-                          </AnimatedGroup>
+      <main className="overflow-hidden bg-background dark:bg-background">
+        <section>
+          <div className="relative pt-24 md:pt-36">
+            {/* Background Image for Dark Mode */}
+            <AnimatedGroup
+              variants={{
+                container: {
+                  visible: {
+                    transition: {
+                      delayChildren: 1,
+                    },
+                  },
+                },
+                item: {
+                  hidden: {
+                    opacity: 0,
+                    y: 20,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      type: 'spring',
+                      bounce: 0.3,
+                      duration: 2,
+                    },
+                  },
+                },
+              }}
+              className="absolute inset-0 -z-20"
+            >
+              <div 
+                className="absolute inset-x-0 top-56 -z-20 hidden lg:top-32 dark:block w-full h-full opacity-20"
+                style={{
+                  backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(0, 240, 216, 0.1) 0%, transparent 50%)',
+                }}
+              />
+            </AnimatedGroup>
+            
+            {/* Radial gradient overlay */}
+            <div 
+              aria-hidden 
+              className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--background)_75%)]" 
+            />
+            
+            <div className="mx-auto max-w-7xl px-6">
+              <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
+                <AnimatedGroup 
+                  variants={{
+                    container: {
+                      hidden: { opacity: 0 },
+                      visible: {
+                        opacity: 1,
+                        transition: {
+                          staggerChildren: 0.2,
+                          delayChildren: 0.3,
+                        },
+                      },
+                    },
+                    item: {
+                      hidden: {
+                        opacity: 0,
+                        filter: 'blur(12px)',
+                        y: 12,
+                      },
+                      visible: {
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                        y: 0,
+                        transition: {
+                          type: 'spring',
+                          bounce: 0.3,
+                          duration: 1.5,
+                        },
+                      },
+                    },
+                  }}
+                >
+                  {/* Announcement Badge */}
+                  <a
+                    href="#link"
+                    className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
+                    data-testid="announcement-badge"
+                  >
+                    <span className="text-foreground text-sm">Introducing Support for AI Models</span>
+                    <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
+
+                    <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
+                      <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
+                        <span className="flex size-6">
+                          <ArrowRight className="m-auto size-3" />
+                        </span>
+                        <span className="flex size-6">
+                          <ArrowRight className="m-auto size-3" />
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                  
+                  {/* Main Heading */}
+                  <h1
+                    className="mt-8 max-w-4xl mx-auto text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] font-bold text-foreground"
+                    data-testid="heading-hero-title"
+                  >
+                    Modern Solutions for Customer Engagement
+                  </h1>
+                  
+                  {/* Description */}
+                  <p
+                    className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground"
+                    data-testid="text-hero-description"
+                  >
+                    Highly customizable components for building modern websites and applications that look and feel the way you mean it.
+                  </p>
+                </AnimatedGroup>
+
+                {/* Action Buttons */}
+                <AnimatedGroup
+                  variants={{
+                    container: {
+                      visible: {
+                        transition: {
+                          staggerChildren: 0.05,
+                          delayChildren: 0.75,
+                        },
+                      },
+                    },
+                    item: {
+                      hidden: {
+                        opacity: 0,
+                        filter: 'blur(12px)',
+                        y: 12,
+                      },
+                      visible: {
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                        y: 0,
+                        transition: {
+                          type: 'spring',
+                          bounce: 0.3,
+                          duration: 1.5,
+                        },
+                      },
+                    },
+                  }}
+                  className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
+                >
+                  <div className="bg-foreground/10 rounded-[14px] border p-0.5">
+                    <Button
+                      size="lg"
+                      className="rounded-xl px-5 text-base"
+                      data-testid="button-start-building"
+                    >
+                      <span className="text-nowrap">Start Building</span>
+                    </Button>
+                  </div>
+                  <Button
+                    size="lg"
+                    variant="ghost"
+                    className="h-10.5 rounded-xl px-5"
+                    data-testid="button-request-demo"
+                  >
+                    <span className="text-nowrap">Request a demo</span>
+                  </Button>
+                </AnimatedGroup>
+              </div>
+            </div>
+
+            {/* Hero Image/Dashboard Preview */}
+            <AnimatedGroup
+              variants={{
+                container: {
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.05,
+                      delayChildren: 0.75,
+                    },
+                  },
+                },
+                item: {
+                  hidden: {
+                    opacity: 0,
+                    filter: 'blur(12px)',
+                    y: 12,
+                  },
+                  visible: {
+                    opacity: 1,
+                    filter: 'blur(0px)',
+                    y: 0,
+                    transition: {
+                      type: 'spring',
+                      bounce: 0.3,
+                      duration: 1.5,
+                    },
+                  },
+                },
+              }}
+            >
+              <div className="relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-20">
+                <div
+                  aria-hidden
+                  className="bg-gradient-to-b to-background absolute inset-0 z-10 from-transparent from-35%"
+                />
+                <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
+                  {/* Dashboard Image - Dark Mode */}
+                  <div 
+                    className="bg-background aspect-[15/8] relative hidden rounded-2xl dark:block bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900"
+                    data-testid="dashboard-preview-dark"
+                  >
+                    <div className="absolute inset-4 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900 p-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="h-4 bg-gradient-to-r from-[#00F0D8] to-transparent rounded w-3/4"></div>
+                        <div className="h-3 bg-zinc-700 rounded w-1/2"></div>
+                        <div className="h-3 bg-zinc-700 rounded w-2/3"></div>
+                        <div className="mt-6 grid grid-cols-3 gap-4">
+                          <div className="h-16 bg-zinc-700 rounded"></div>
+                          <div className="h-16 bg-zinc-700 rounded"></div>
+                          <div className="h-16 bg-zinc-700 rounded"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Dashboard Image - Light Mode */}
+                  <div 
+                    className="z-2 border-border/25 aspect-[15/8] relative rounded-2xl border dark:hidden bg-gradient-to-br from-gray-50 via-white to-gray-100"
+                    data-testid="dashboard-preview-light"
+                  >
+                    <div className="absolute inset-4 rounded-xl bg-white shadow-inner p-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="h-4 bg-gradient-to-r from-[#00F0D8] to-transparent rounded w-3/4"></div>
+                        <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+                        <div className="h-3 bg-gray-200 rounded w-2/3"></div>
+                        <div className="mt-6 grid grid-cols-3 gap-4">
+                          <div className="h-16 bg-gray-100 rounded border"></div>
+                          <div className="h-16 bg-gray-100 rounded border"></div>
+                          <div className="h-16 bg-gray-100 rounded border"></div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </AnimatedGroup>
           </div>
-        </div>
-        
-        {/* Carousel Indicators */}
-        <div 
-          className="flex justify-center space-x-2 mt-[17px] mb-[17px] relative z-20"
-          data-testid="carousel-indicators"
-        >
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-500 cursor-pointer ${
-                (currentSlide % totalSlides) === index 
-                  ? 'bg-[#00F0D8]' 
-                  : 'bg-white/40 hover:bg-white/60'
-              }`}
-              data-testid={`indicator-${index}`}
-            />
-          ))}
-        </div>
-      </section>
-    </div>
+        </section>
+      </main>
+    </>
   );
 }
