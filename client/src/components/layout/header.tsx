@@ -51,14 +51,14 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation and Contact Link */}
             {!isMobile && (
-              <div className="flex items-center space-x-8 ml-[0px] mr-[0px] pl-[77px] pr-[77px] text-right" data-testid="nav-desktop">
+              <div className="flex items-center space-x-8" data-testid="nav-desktop">
                 {navigationItems.map((item) => {
                   if (item.label === "Produtos" && item.hasDropdown) {
                     return (
                       <DropdownMenu key={item.label}>
-                        <DropdownMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] pl-[0px] pr-[0px] ml-[14px] mr-[14px] text-right border-none bg-transparent">
+                        <DropdownMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] border-none bg-transparent">
                           {item.label}
                           <ChevronDown className="ml-1 h-3 w-3 text-lina-cyan" />
                         </DropdownMenuTrigger>
@@ -78,7 +78,7 @@ export default function Header() {
                     <a
                       key={item.label}
                       href={item.href}
-                      className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] pl-[0px] pr-[0px] ml-[14px] mr-[14px] text-right"
+                      className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px]"
                       data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >
                       {item.label}
@@ -86,18 +86,16 @@ export default function Header() {
                     </a>
                   );
                 })}
+                
+                {/* Entre em Contato Link */}
+                <a 
+                  href="#contato"
+                  className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] text-[13px]"
+                  data-testid="link-contact"
+                >
+                  Entre em Contato
+                </a>
               </div>
-            )}
-
-            {/* Entre em Contato Link */}
-            {!isMobile && (
-              <a 
-                href="#contato"
-                className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] text-[13px]"
-                data-testid="link-contact"
-              >
-                Entre em Contato
-              </a>
             )}
 
             {/* Mobile Menu Button */}
