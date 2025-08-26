@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -19,7 +19,17 @@ import { cn } from "@/lib/utils";
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useIsMobile();
+
+  // Detectar scroll para efeitos do header
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Função para detectar quando qualquer menu do NavigationMenu está aberto
   const handleMenuOpen = () => setIsMenuOpen(true);
@@ -71,11 +81,19 @@ export default function Header() {
         />
       )}
       <header 
-        className="fixed top-0 w-full z-50 pt-4"
+        className="fixed top-0 w-full z-50 transition-all duration-300"
         data-testid="header-main"
       >
-        <div className="container mx-auto px-8">
-          <nav className="bg-white rounded-full shadow-lg px-8 py-4">
+        <div className={cn(
+          "container mx-auto px-8 transition-all duration-300",
+          isScrolled ? "pt-2" : "pt-4"
+        )}>
+          <nav className={cn(
+            "px-8 py-4 rounded-full shadow-lg transition-all duration-300",
+            isScrolled 
+              ? "bg-white/80 backdrop-blur-lg shadow-xl border border-white/20" 
+              : "bg-white"
+          )}>
             <div className="flex items-center justify-between ml-[6px] mr-[6px] pl-[-2px] pr-[-2px]">
             {/* Logo */}
             <div className="flex items-center" data-testid="logo-container">
@@ -83,7 +101,10 @@ export default function Header() {
                 <img 
                   src={logoLina} 
                   alt="LINA" 
-                  className="h-6 w-auto cursor-pointer"
+                  className={cn(
+                    "w-auto cursor-pointer transition-all duration-300",
+                    isScrolled ? "h-5" : "h-6"
+                  )}
                   data-testid="img-logo"
                 />
               </Link>
