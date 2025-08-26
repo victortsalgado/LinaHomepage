@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileMenu from "@/components/ui/mobile-menu";
+import NavigationDropdown from "@/components/ui/navigation-dropdown";
 import logoLina from "../../assets/logo-lina.png";
 
 export default function Header() {
@@ -15,6 +16,27 @@ export default function Header() {
     { label: "Integrações", href: "#integracoes" },
     { label: "Demo", href: "#demo" },
     { label: "Quem Somos", href: "#quem-somos" },
+  ];
+
+  const productDropdownItems = [
+    { 
+      label: "Data Link", 
+      href: "/data-link", 
+      description: "APIs de dados bancários e de investimentos via Open Finance" 
+    }
+  ];
+
+  const resourceDropdownItems = [
+    { 
+      label: "Blog", 
+      href: "#blog", 
+      description: "Artigos e insights sobre Open Finance" 
+    },
+    { 
+      label: "Documentação", 
+      href: "#docs", 
+      description: "Guias técnicos e referências de API" 
+    }
   ];
 
   return (
@@ -39,17 +61,39 @@ export default function Header() {
             {/* Desktop Navigation */}
             {!isMobile && (
               <div className="flex items-center space-x-8 ml-[0px] mr-[0px] pl-[77px] pr-[77px] text-right" data-testid="nav-desktop">
-                {navigationItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] pl-[0px] pr-[0px] ml-[14px] mr-[14px] text-left"
-                    data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
-                  >
-                    {item.label}
-                    {item.hasDropdown && <ChevronDown className="ml-1 h-3 w-3 text-lina-cyan" />}
-                  </a>
-                ))}
+                {navigationItems.map((item) => {
+                  if (item.label === "Produtos" && item.hasDropdown) {
+                    return (
+                      <NavigationDropdown
+                        key={item.label}
+                        label={item.label}
+                        items={productDropdownItems}
+                        className="ml-[14px] mr-[14px]"
+                      />
+                    );
+                  }
+                  if (item.label === "Recursos" && item.hasDropdown) {
+                    return (
+                      <NavigationDropdown
+                        key={item.label}
+                        label={item.label}
+                        items={resourceDropdownItems}
+                        className="ml-[14px] mr-[14px]"
+                      />
+                    );
+                  }
+                  return (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] pl-[0px] pr-[0px] ml-[14px] mr-[14px] text-left"
+                      data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
+                    >
+                      {item.label}
+                      {item.hasDropdown && <ChevronDown className="ml-1 h-3 w-3 text-lina-cyan" />}
+                    </a>
+                  );
+                })}
               </div>
             )}
 
