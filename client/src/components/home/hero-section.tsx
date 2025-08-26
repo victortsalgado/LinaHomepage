@@ -9,7 +9,7 @@ export default function HeroSection() {
       <section 
         className="relative overflow-hidden rounded-3xl"
         style={{
-          background: 'linear-gradient(135deg, #2A7B7F 0%, #1B5E62 20%, #0D4142 45%, #000000 80%)',
+          background: 'linear-gradient(135deg, #2A7B7F 0%, #1B5E62 15%, #0D4142 35%, #000000 65%)',
         }}
         data-testid="section-hero"
       >
