@@ -18,7 +18,12 @@ import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+
+  // Função para detectar quando qualquer menu do NavigationMenu está aberto
+  const handleMenuOpen = () => setIsMenuOpen(true);
+  const handleMenuClose = () => setIsMenuOpen(false);
 
   const produtosDropdownItems = [
     { 
@@ -58,6 +63,13 @@ export default function Header() {
 
   return (
     <>
+      {/* Overlay para desfoque */}
+      {isMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 transition-all duration-300"
+          style={{ top: '80px' }}
+        />
+      )}
       <header 
         className="fixed top-0 w-full z-50 pt-4"
         data-testid="header-main"
@@ -79,14 +91,20 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             {!isMobile && (
-              <NavigationMenu data-testid="nav-desktop">
+              <NavigationMenu data-testid="nav-desktop" onValueChange={(value) => {
+                if (value) {
+                  handleMenuOpen();
+                } else {
+                  handleMenuClose();
+                }
+              }}>
                 <NavigationMenuList>
                   <NavigationMenuItem>
                     <NavigationMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9">
                       Produtos
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                      <div className="grid gap-3 p-6 md:w-[600px] lg:w-[800px] lg:grid-cols-[.75fr_1fr]">
                         <div className="row-span-3">
                           <NavigationMenuLink asChild>
                             <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/40 p-6 no-underline outline-none">
@@ -99,15 +117,17 @@ export default function Header() {
                             </div>
                           </NavigationMenuLink>
                         </div>
-                        {produtosDropdownItems.map((item) => (
-                          <ListItem
-                            key={item.title}
-                            title={item.title}
-                            href={item.href}
-                          >
-                            {item.description}
-                          </ListItem>
-                        ))}
+                        <div className="space-y-2">
+                          {produtosDropdownItems.map((item) => (
+                            <ListItem
+                              key={item.title}
+                              title={item.title}
+                              href={item.href}
+                            >
+                              {item.description}
+                            </ListItem>
+                          ))}
+                        </div>
                       </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
@@ -117,7 +137,7 @@ export default function Header() {
                       Recursos
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                      <div className="grid gap-3 p-6 md:w-[600px] lg:w-[800px] lg:grid-cols-[.75fr_1fr]">
                         <div className="row-span-3">
                           <NavigationMenuLink asChild>
                             <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-900/40 p-6 no-underline outline-none">
@@ -130,15 +150,17 @@ export default function Header() {
                             </div>
                           </NavigationMenuLink>
                         </div>
-                        {recursosDropdownItems.map((item) => (
-                          <ListItem
-                            key={item.title}
-                            title={item.title}
-                            href={item.href}
-                          >
-                            {item.description}
-                          </ListItem>
-                        ))}
+                        <div className="space-y-2">
+                          {recursosDropdownItems.map((item) => (
+                            <ListItem
+                              key={item.title}
+                              title={item.title}
+                              href={item.href}
+                            >
+                              {item.description}
+                            </ListItem>
+                          ))}
+                        </div>
                       </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
@@ -234,22 +256,20 @@ function ListItem({
   href: string; 
 }) {
   return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          to={href}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
+    <NavigationMenuLink asChild>
+      <Link
+        to={href}
+        className={cn(
+          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+          className
+        )}
+        {...props}
+      >
+        <div className="text-sm font-medium leading-none">{title}</div>
+        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          {children}
+        </p>
+      </Link>
+    </NavigationMenuLink>
   )
 }
