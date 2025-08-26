@@ -62,7 +62,7 @@ export default function HeroSection() {
           
           {/* Carousel Indicators */}
           <div 
-            className="flex justify-center mt-3 space-x-2"
+            className="flex justify-center space-x-2 mt-[17px] mb-[17px]"
             data-testid="carousel-indicators"
           >
             <div className="w-2 h-2 bg-[#00F0D8] rounded-full" data-testid="indicator-active"></div>
