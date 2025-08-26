@@ -54,7 +54,7 @@ export default function HeroSection() {
                   <img
                     src={heroIllustrationPath}
                     alt="PIX Automático Illustration"
-                    className="w-full max-w-xs lg:max-w-sm ml-[31px] mr-[31px] pl-[41px] pr-[41px] pt-[0px] pb-[0px] mt-[10px] mb-[10px]"
+                    className="w-full max-w-xs lg:max-w-sm pl-[50px] pr-[50px] pt-[4px] pb-[4px] mt-[10px] mb-[10px] ml-[9px] mr-[9px]"
                     data-testid="img-hero-illustration"
                   />
                 </div>
