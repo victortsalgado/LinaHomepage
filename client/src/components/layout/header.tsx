@@ -80,24 +80,19 @@ export default function Header() {
           style={{ top: '80px' }}
         />
       )}
+      
       <header 
         className="fixed top-0 w-full z-50 transition-all duration-300"
         data-testid="header-main"
       >
         <div className={cn(
-          "container mx-auto px-8 transition-all duration-300",
-          isScrolled ? "pt-2" : "pt-4"
+          "mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12",
+          isScrolled && "bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5"
         )}>
-          <nav className={cn(
-            "px-8 py-4 rounded-full shadow-lg transition-all duration-300",
-            isScrolled 
-              ? "bg-white/80 backdrop-blur-lg shadow-xl border border-white/20" 
-              : "bg-white"
-          )}>
-            <div className="flex items-center justify-between ml-[6px] mr-[6px] pl-[-2px] pr-[-2px]">
-            {/* Logo */}
-            <div className="flex items-center" data-testid="logo-container">
-              <Link href="/">
+          <nav className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4 transition-all duration-300">
+            <div className="flex w-full justify-between lg:w-auto">
+              {/* Logo */}
+              <Link href="/" aria-label="home" className="flex items-center space-x-2" data-testid="logo-container">
                 <img 
                   src={logoLina} 
                   alt="LINA" 
@@ -108,70 +103,75 @@ export default function Header() {
                   data-testid="img-logo"
                 />
               </Link>
+
+              {/* Mobile Menu Button */}
+              {isMobile && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
+                  data-testid="button-mobile-menu-toggle"
+                >
+                  {isMobileMenuOpen ? (
+                    <X className="h-6 w-6" />
+                  ) : (
+                    <Menu className="h-6 w-6" />
+                  )}
+                </Button>
+              )}
             </div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Centered */}
             {!isMobile && (
-              <NavigationMenu data-testid="nav-desktop" onValueChange={(value) => {
-                if (value) {
-                  handleMenuOpen();
-                } else {
-                  handleMenuClose();
-                }
-              }}>
-                <NavigationMenuList>
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9">
-                      Produtos
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="grid gap-3 p-6 md:w-[600px] lg:w-[800px] lg:grid-cols-[.75fr_1fr]">
-                        <div className="row-span-3">
-                          <NavigationMenuLink asChild>
-                            <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/40 p-6 no-underline outline-none">
-                              <div className="mb-2 mt-4 text-lg font-medium">
-                                Produtos LINA
+              <div className="absolute inset-0 m-auto hidden size-fit lg:block">
+                <NavigationMenu data-testid="nav-desktop" onValueChange={(value) => {
+                  if (value) {
+                    handleMenuOpen();
+                  } else {
+                    handleMenuClose();
+                  }
+                }}>
+                  <NavigationMenuList>
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9">
+                        Produtos
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div className="grid gap-3 p-6 md:w-[600px] lg:w-[800px] lg:grid-cols-[.75fr_1fr]">
+                          <div className="row-span-3">
+                            <NavigationMenuLink asChild>
+                              <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/40 p-6 no-underline outline-none">
+                                <div className="mb-2 mt-4 text-lg font-medium">
+                                  Produtos LINA
+                                </div>
+                                <p className="text-sm leading-tight text-muted-foreground">
+                                  Soluções completas para integração e gestão de dados empresariais
+                                </p>
                               </div>
-                              <p className="text-sm leading-tight text-muted-foreground">
-                                Soluções completas para integração e gestão de dados empresariais
-                              </p>
-                            </div>
-                          </NavigationMenuLink>
+                            </NavigationMenuLink>
+                          </div>
+                          <div className="grid grid-cols-1 gap-3">
+                            {produtosDropdownItems.map((item) => (
+                              <ListItem
+                                key={item.title}
+                                title={item.title}
+                                href={item.href}
+                              >
+                                {item.description}
+                              </ListItem>
+                            ))}
+                          </div>
                         </div>
-                        <div className="space-y-2">
-                          {produtosDropdownItems.map((item) => (
-                            <ListItem
-                              key={item.title}
-                              title={item.title}
-                              href={item.href}
-                            >
-                              {item.description}
-                            </ListItem>
-                          ))}
-                        </div>
-                      </div>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                  
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9">
-                      Recursos
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="grid gap-3 p-6 md:w-[600px] lg:w-[800px] lg:grid-cols-[.75fr_1fr]">
-                        <div className="row-span-3">
-                          <NavigationMenuLink asChild>
-                            <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-900/40 p-6 no-underline outline-none">
-                              <div className="mb-2 mt-4 text-lg font-medium">
-                                Recursos LINA
-                              </div>
-                              <p className="text-sm leading-tight text-muted-foreground">
-                                Materiais e suporte para maximizar o uso das nossas soluções
-                              </p>
-                            </div>
-                          </NavigationMenuLink>
-                        </div>
-                        <div className="space-y-2">
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9">
+                        Recursos
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                           {recursosDropdownItems.map((item) => (
                             <ListItem
                               key={item.title}
@@ -182,40 +182,47 @@ export default function Header() {
                             </ListItem>
                           ))}
                         </div>
-                      </div>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
 
-                  <NavigationMenuItem>
-                    <NavigationMenuLink 
-                      href="#integracoes" 
-                      className={cn(navigationMenuTriggerStyle(), "text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9")}
-                      data-testid="link-nav-integracoes"
-                    >
-                      Integrações
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
+                    <NavigationMenuItem>
+                      <NavigationMenuLink 
+                        href="#integracoes" 
+                        className={cn(navigationMenuTriggerStyle(), "hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9")}
+                        data-testid="link-integrations"
+                      >
+                        Integrações
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
 
-                  <NavigationMenuItem>
-                    <NavigationMenuLink 
-                      href="#demo" 
-                      className={cn(navigationMenuTriggerStyle(), "text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9")}
-                      data-testid="link-nav-demo"
-                    >
-                      Demo
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
+                    <NavigationMenuItem>
+                      <NavigationMenuLink 
+                        href="#demo" 
+                        className={cn(navigationMenuTriggerStyle(), "hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9")}
+                        data-testid="link-demo"
+                      >
+                        Demo
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
 
-                  <NavigationMenuItem>
-                    <NavigationMenuLink 
-                      href="#quem-somos" 
-                      className={cn(navigationMenuTriggerStyle(), "text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9")}
-                      data-testid="link-nav-quem-somos"
-                    >
-                      Quem Somos
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
+                    <NavigationMenuItem>
+                      <NavigationMenuLink 
+                        href="#quem-somos" 
+                        className={cn(navigationMenuTriggerStyle(), "hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9")}
+                        data-testid="link-about"
+                      >
+                        Quem Somos
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+              </div>
+            )}
 
+            {/* Contact Button - Right */}
+            {!isMobile && (
+              <NavigationMenu>
+                <NavigationMenuList>
                   <NavigationMenuItem>
                     <NavigationMenuLink 
                       href="#contato" 
@@ -228,26 +235,10 @@ export default function Header() {
                 </NavigationMenuList>
               </NavigationMenu>
             )}
-
-            {/* Mobile Menu Button */}
-            {isMobile && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                data-testid="button-mobile-menu-toggle"
-              >
-                {isMobileMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </Button>
-            )}
-          </div>
           </nav>
         </div>
       </header>
+
       {/* Mobile Menu */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
