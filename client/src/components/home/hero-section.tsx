@@ -14,7 +14,6 @@ export default function HeroSection() {
         <div className="h-[80rem] absolute left-0 top-0 w-56 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
         <div className="h-[80rem] -translate-y-[350px] absolute left-0 top-0 w-56 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
       </div>
-
       <main className="overflow-hidden bg-background dark:bg-background">
         <section>
           <div className="relative pt-24 md:pt-36">
@@ -99,7 +98,7 @@ export default function HeroSection() {
                     className="hover:bg-[#00F0D8]/20 dark:hover:bg-[#00F0D8]/10 bg-[#00F0D8]/10 border-[#00F0D8]/30 group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-[#00F0D8]/10 transition-all duration-300 backdrop-blur-sm"
                     data-testid="announcement-badge"
                   >
-                    <span className="text-[#00F0D8] font-medium text-sm">Novidade: PIX Automático Disponível</span>
+                    <span className="font-medium text-sm text-[#009999]">Novidade: PIX Automático Disponível</span>
                     <span className="block h-4 w-0.5 border-l border-[#00F0D8]/50 bg-[#00F0D8]/50"></span>
 
                     <div className="bg-[#00F0D8]/20 group-hover:bg-[#00F0D8]/30 size-6 overflow-hidden rounded-full duration-500">
