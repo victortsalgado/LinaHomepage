@@ -14,7 +14,7 @@ export default function HeroSection() {
         }}
         data-testid="section-hero"
       >
-        <div className="relative z-10 px-12 py-16 lg:py-20 pl-[50px] pr-[50px] ml-[-33px] mr-[-33px] mt-[-114px] mb-[-114px] pt-[86px] pb-[86px]">
+        <div className="relative z-10 px-12 py-16 lg:py-20 mt-[-114px] mb-[-114px] pl-[47px] pr-[47px] pt-[77px] pb-[77px] ml-[-26px] mr-[-26px]">
           <div className="grid lg:grid-cols-12 gap- items-center min-h-[400px] pl-[5px] pr-[5px] pt-[0px] pb-[0px] ml-[0px] mr-[0px] mt-[0px] mb-[0px]">
             {/* Content - Takes up 7 columns */}
             <div className="lg:col-span-7 text-white space-y-6">
