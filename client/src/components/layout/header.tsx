@@ -86,7 +86,19 @@ export default function Header() {
                       Produtos
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                        <div className="row-span-3">
+                          <NavigationMenuLink asChild>
+                            <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/40 p-6 no-underline outline-none">
+                              <div className="mb-2 mt-4 text-lg font-medium">
+                                Produtos LINA
+                              </div>
+                              <p className="text-sm leading-tight text-muted-foreground">
+                                Soluções completas para integração e gestão de dados empresariais
+                              </p>
+                            </div>
+                          </NavigationMenuLink>
+                        </div>
                         {produtosDropdownItems.map((item) => (
                           <ListItem
                             key={item.title}
@@ -96,7 +108,7 @@ export default function Header() {
                             {item.description}
                           </ListItem>
                         ))}
-                      </ul>
+                      </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                   
@@ -105,7 +117,19 @@ export default function Header() {
                       Recursos
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                        <div className="row-span-3">
+                          <NavigationMenuLink asChild>
+                            <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-900/40 p-6 no-underline outline-none">
+                              <div className="mb-2 mt-4 text-lg font-medium">
+                                Recursos LINA
+                              </div>
+                              <p className="text-sm leading-tight text-muted-foreground">
+                                Materiais e suporte para maximizar o uso das nossas soluções
+                              </p>
+                            </div>
+                          </NavigationMenuLink>
+                        </div>
                         {recursosDropdownItems.map((item) => (
                           <ListItem
                             key={item.title}
@@ -115,7 +139,7 @@ export default function Header() {
                             {item.description}
                           </ListItem>
                         ))}
-                      </ul>
+                      </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
 
