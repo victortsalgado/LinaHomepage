@@ -5,7 +5,7 @@ import heroBgPath from "../../assets/Home_BG_Banner_01_1756234068550.jpg";
 
 export default function HeroSection() {
   return (
-    <div className="container mx-auto px-8 lg:px-16 pt-[-4px] pb-[-4px] ml-[108px] mr-[108px] mt-[102px] mb-[102px] pl-[26px] pr-[26px]">
+    <div className="container mx-auto px-8 lg:px-16 pt-[-4px] pb-[-4px] mt-[102px] mb-[102px] pl-[29px] pr-[29px] ml-[99px] mr-[99px]">
       <section
         className="relative overflow-hidden rounded-3xl"
         style={{
