@@ -31,7 +31,7 @@ export default function Header() {
               <img 
                 src={logoLina} 
                 alt="LINA" 
-                className="h-12 w-auto"
+                className="h-10 w-auto"
                 data-testid="img-logo"
               />
             </div>
