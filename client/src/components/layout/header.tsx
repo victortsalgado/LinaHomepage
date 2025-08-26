@@ -58,7 +58,7 @@ export default function Header() {
                   if (item.label === "Produtos" && item.hasDropdown) {
                     return (
                       <DropdownMenu key={item.label}>
-                        <DropdownMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] pl-[0px] pr-[0px] ml-[14px] mr-[14px] text-left border-none bg-transparent">
+                        <DropdownMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] pl-[0px] pr-[0px] ml-[14px] mr-[14px] text-right border-none bg-transparent">
                           {item.label}
                           <ChevronDown className="ml-1 h-3 w-3 text-lina-cyan" />
                         </DropdownMenuTrigger>
@@ -78,7 +78,7 @@ export default function Header() {
                     <a
                       key={item.label}
                       href={item.href}
-                      className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] pl-[0px] pr-[0px] ml-[14px] mr-[14px] text-left"
+                      className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] pl-[0px] pr-[0px] ml-[14px] mr-[14px] text-right"
                       data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >
                       {item.label}
