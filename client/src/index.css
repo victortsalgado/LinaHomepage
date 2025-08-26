@@ -86,6 +86,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom smooth carousel transition */
+.carousel-smooth {
+  transition: transform 2000ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
 :root {
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(183, 82%, 9%);

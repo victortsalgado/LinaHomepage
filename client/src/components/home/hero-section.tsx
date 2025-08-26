@@ -46,11 +46,11 @@ export default function HeroSection() {
     setCurrentSlide(index);
   };
 
-  // Auto-advance slides every 6 seconds with smooth transition
+  // Auto-advance slides every 7 seconds with ultra smooth transition
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 7000);
 
     return () => clearInterval(interval);
   }, [slides.length]);
@@ -68,7 +68,7 @@ export default function HeroSection() {
         {/* Carousel Container */}
         <div className="relative w-full">
           <div 
-            className="flex transition-transform duration-1200 ease-in-out"
+            className="flex carousel-smooth"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {slides.map((slide, index) => (
@@ -133,7 +133,7 @@ export default function HeroSection() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
+              className={`w-2 h-2 rounded-full transition-all duration-500 cursor-pointer ${
                 currentSlide === index 
                   ? 'bg-[#00F0D8]' 
                   : 'bg-white/40 hover:bg-white/60'
