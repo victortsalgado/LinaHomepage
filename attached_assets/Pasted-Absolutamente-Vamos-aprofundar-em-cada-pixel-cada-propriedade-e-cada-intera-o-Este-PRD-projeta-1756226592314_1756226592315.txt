@@ -1,0 +1,341 @@
+Absolutamente. Vamos aprofundar em cada pixel, cada propriedade e cada interação. Este PRD é projetado para ser um "manual de montagem" definitivo para um desenvolvedor front-end, eliminando qualquer ambiguidade e garantindo uma réplica 1:1 do design.
+
+---
+
+### **PRD: Homepage da Lina - Especificação Técnica Detalhada**
+
+**1. Visão Geral e Objetivos do Projeto**
+
+*   **Projeto:** Reconstrução pixel-perfect da homepage da Lina.
+*   **Objetivo Primário:** Criar uma experiência de usuário idêntica à imagem de referência, com foco absoluto em fidelidade visual, responsividade e performance.
+*   **Stack Técnica:**
+    *   **Framework:** React 18+
+    *   **Build Tool:** Vite
+    *   **Linguagem:** JavaScript (ES6+) ou TypeScript (preferencialmente)
+    *   **Estilização:** CSS-in-JS (Styled Components) ou Utility-first (Tailwind CSS). A especificação abaixo usará uma sintaxe similar a CSS para clareza.
+    *   **Gerenciamento de Estado:** Context API ou Zustand para estados globais mínimos (ex: estado do menu mobile).
+
+**2. Configuração do Projeto e Estrutura de Pastas**
+
+```
+/src
+|-- /assets
+|   |-- /fonts
+|   |-- /icons
+|   |-- /images
+|   |-- /logos
+|-- /components
+|   |-- /layout
+|   |   |-- Header.jsx
+|   |   |-- Footer.jsx
+|   |-- /ui
+|   |   |-- Button.jsx
+|   |   |-- Section.jsx
+|   |   |-- Card.jsx
+|   |-- /home
+|   |   |-- HeroSection.jsx
+|   |   |-- DataIntegrationSection.jsx
+|   |   |-- PixSolutionsSection.jsx
+|   |   |-- RegulatedSolutionsSection.jsx
+|   |   |-- ClientsSection.jsx
+|   |   |-- BlogSection.jsx
+|   |   |-- NewsletterSection.jsx
+|-- /hooks
+|-- /styles
+|   |-- GlobalStyles.js
+|   |-- theme.js
+|-- App.jsx
+|-- main.jsx
+```
+
+**3. Sistema de Design Global (theme.js e GlobalStyles.js)**
+
+#### **3.1. Cores (Paleta Principal)**
+
+```javascript
+// theme.js
+export const colors = {
+  primary: {
+    teal: '#00F0D8',      // Ciano brilhante principal (títulos, ícones)
+    greenDark: '#012A2F', // Verde muito escuro (fundos de seção)
+    greenMedium: '#0A3A3A',// Verde médio (fundo do rodapé)
+  },
+  neutral: {
+    white: '#FFFFFF',
+    grayLight: '#F3F5F7', // Fundo de seções claras
+    grayMedium: '#EAEAEA', // Bordas sutis
+    grayDark: '#555555',  // Texto de parágrafo
+    black: '#000000',
+  },
+};
+```
+
+#### **3.2. Tipografia**
+
+*   **Fonte:** `Poppins` (importada do Google Fonts com pesos 400, 500, 600, 700).
+*   **Estilos Globais:**
+    *   `html { font-size: 62.5%; }` (para usar `rem` facilmente, 1rem = 10px).
+    *   `body { font-family: 'Poppins', sans-serif; color: colors.neutral.grayDark; font-size: 1.6rem; line-height: 1.6; }`
+    *   `h1, h2, h3 { font-weight: 700; }`
+
+#### **3.3. Spacing (Unidade Base)**
+
+*   **Base:** 8px. Usar múltiplos: `0.8rem`, `1.6rem`, `2.4rem`, `3.2rem`, etc.
+
+#### **3.4. Breakpoints para Responsividade**
+
+*   `sm`: 640px
+*   `md`: 768px
+*   `lg`: 1024px
+*   `xl`: 1280px
+
+**4. Especificação Detalhada dos Componentes**
+
+---
+
+#### **4.1. Componente: `<Header>` (`/layout/Header.jsx`)**
+
+*   **Estrutura JSX:**
+    ```jsx
+    <header>
+      <nav>
+        <Logo />
+        <ul>
+          <li><a href="#">Produtos <IconDropdown /></a></li>
+          {/* ...outros links */}
+        </ul>
+        <Button href="/contato" variant="outline">Entre em Contato</Button>
+        <MobileMenuButton />
+      </nav>
+    </header>
+    ```
+*   **Estilização:**
+    *   `position: fixed; top: 0; left: 0; width: 100%;`
+    *   `background-color: ${colors.neutral.white};`
+    *   `box-shadow: 0 2px 4px rgba(0,0,0,0.05);`
+    *   `padding: 2.4rem 8rem;` (ajustar padding para telas menores)
+    *   `display: flex; justify-content: space-between; align-items: center;`
+    *   `z-index: 1000;`
+    *   **Links da Nav (`ul > li > a`):**
+        *   `font-size: 1.6rem; font-weight: 500; color: ${colors.neutral.grayDark};`
+        *   `display: flex; align-items: center; gap: 0.8rem;`
+        *   `transition: color 0.2s ease;`
+        *   `&:hover { color: ${colors.primary.teal}; }`
+    *   **Botão CTA (`<Button variant="outline">`):**
+        *   `padding: 1rem 2rem; border: 1px solid ${colors.neutral.grayMedium}; border-radius: 20px;`
+        *   `background-color: transparent;`
+        *   `transition: all 0.2s ease;`
+        *   `&:hover { background-color: ${colors.primary.teal}; color: ${colors.neutral.white}; border-color: ${colors.primary.teal}; }`
+*   **Responsividade:**
+    *   Abaixo do breakpoint `lg` (1024px), o `<ul>` e o botão CTA são ocultados. O `<MobileMenuButton>` (ícone de hambúrguer) é exibido. O clique no ícone deve abrir um menu overlay.
+
+---
+
+#### **4.2. Componente: `<HeroSection>` (`/home/HeroSection.jsx`)**
+
+*   **Estrutura JSX:**
+    ```jsx
+    <section>
+      <div className="content">
+        <h1>Pix Automático</h1>
+        <p>Conheça a nova funcionalidade...</p>
+        <Button href="/saiba-mais" icon="arrow-right">Saiba mais</Button>
+      </div>
+      <div className="graphic">
+        {/* Imagem SVG ou componente de imagem aqui */}
+      </div>
+      <div className="carousel-dots">
+        <span className="active"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+    ```
+*   **Estilização:**
+    *   `padding: 15rem 8rem 10rem;`
+    *   `background: linear-gradient(120deg, ${colors.primary.greenDark} 0%, ${colors.primary.greenMedium} 100%);`
+    *   `display: flex; align-items: center;`
+    *   **H1:** `font-size: 6.4rem; font-weight: 700; color: ${colors.primary.teal}; margin-bottom: 1.6rem;`
+    *   **Parágrafo:** `font-size: 2rem; color: ${colors.neutral.white}; max-width: 50ch; margin-bottom: 3.2rem;`
+    *   **Botão CTA:**
+        *   `padding: 1.2rem 2.4rem; border: 1px solid ${colors.neutral.white}; border-radius: 30px;`
+        *   `background-color: transparent; color: ${colors.neutral.white};`
+        *   `transition: all 0.2s ease;`
+        *   `&:hover { background-color: ${colors.neutral.white}; color: ${colors.primary.greenDark}; }`
+    *   **Gráfico (Direita):** Imagem com formas geométricas 3D em tons de ciano, posicionada absolutamente.
+    *   **Pontos do Carrossel:**
+        *   `position: absolute; bottom: 4rem; left: 50%; transform: translateX(-50%);`
+        *   `display: flex; gap: 1.2rem;`
+        *   `span { width: 1rem; height: 1rem; border-radius: 50%; background-color: rgba(255, 255, 255, 0.4); }`
+        *   `span.active { background-color: ${colors.neutral.white}; }`
+
+---
+
+#### **4.3. Componente: `<DataIntegrationSection>` (`/home/DataIntegrationSection.jsx`)**
+
+*   **Estrutura JSX:**
+    ```jsx
+    <section>
+      <div className="text-content">
+        <h2>Integre dados financeiros...</h2>
+        <p>Conecte dados financeiros...</p>
+        <ul className="features-list">
+            {/* Itens da lista mapeados aqui */}
+        </ul>
+        <Button href="/data-link">Conheça o Data Link</Button>
+      </div>
+      <div className="image-content">
+        <img src="..." alt="..." />
+      </div>
+    </section>
+    ```
+*   **Estilização:**
+    *   `background-color: ${colors.neutral.white};`
+    *   `display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;`
+    *   **H2:** `font-size: 4.8rem; color: ${colors.primary.greenDark};`
+    *   **Lista de Features (`ul`):**
+        *   `position: relative;`
+        *   `&::before { content: ''; position: absolute; left: 1rem; top: 0; bottom: 0; width: 2px; background-color: ${colors.neutral.grayMedium}; }`
+    *   **Item da Lista (`li`):**
+        *   `display: flex; align-items: flex-start; gap: 2rem;`
+        *   `&::before { content: ''; display: block; width: 2.2rem; height: 2.2rem; border-radius: 50%; background-color: ${colors.primary.teal}; border: 3px solid ${colors.neutral.white}; z-index: 1; }`
+        *   **Título do Item:** `font-weight: 600; color: ${colors.primary.greenDark};`
+        *   **Descrição do Item:** `font-size: 1.4rem;`
+    *   **Imagem (Direita):** A imagem da mulher está contida dentro de uma div com `border-radius` e uma borda gráfica fina e decorativa em `teal`.
+
+---
+
+#### **4.4. Componente: `<ClientsSection>` (`/home/ClientsSection.jsx`)**
+
+*   **Estrutura JSX:**
+    ```jsx
+    <section>
+        <h3>Nossos clientes são a nossa melhor referência!</h3>
+        <div className="carousel-container">
+            <button className="prev-arrow">&lt;</button>
+            <div className="logos-track">
+                {/* Logos mapeados aqui */}
+            </div>
+            <button className="next-arrow">&gt;</button>
+        </div>
+    </section>
+    ```
+*   **Estilização:**
+    *   `background-color: ${colors.neutral.grayLight}; padding: 6rem 0;`
+    *   **H3:** `text-align: center; font-size: 3.2rem; color: ${colors.primary.greenDark}; margin-bottom: 4rem;`
+    *   **Logos (`img`):**
+        *   `filter: grayscale(100%) opacity(0.6);`
+        *   `height: 40px;` (ou altura fixa para consistência)
+        *   `transition: filter 0.3s ease;`
+        *   `&:hover { filter: grayscale(0%) opacity(1); }`
+    *   **Carrossel:** Recomenda-se usar uma biblioteca como `Swiper.js` ou `react-slick` para gerenciar a lógica do carrossel infinito. As setas de navegação devem ser estilizadas para serem sutis e aparecerem no hover do container.
+
+---
+
+#### **4.5. Componente: `<BlogSection>` (`/home/BlogSection.jsx`)**
+
+*   **Props do Card (`ArticleCard.jsx`):** `{ imageUrl, tag, title, date, slug }`
+*   **Estilização do Card:**
+    *   `background-color: ${colors.neutral.white}; border-radius: 16px; overflow: hidden;`
+    *   `box-shadow: 0 4px 10px rgba(0,0,0,0.08);`
+    *   `transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;`
+    *   `&:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }`
+    *   **Tag (`.tag`):** `position: absolute; top: 1.6rem; left: 1.6rem; background-color: rgba(0, 0, 0, 0.3); color: white; padding: 0.4rem 1.2rem; border-radius: 12px; font-size: 1.2rem;`
+    *   **Conteúdo do Card:** `padding: 2.4rem;`
+    *   **Título do Artigo:** `font-size: 2rem; font-weight: 600; color: ${colors.primary.greenDark};`
+    *   **Data:** `font-size: 1.4rem; color: ${colors.neutral.grayDark};`
+
+---
+
+#### **4.6. Componente: `<Footer>` (`/layout/Footer.jsx`)**
+
+*   **Estilização:**
+    *   `background-color: ${colors.primary.greenDark}; color: ${colors.neutral.white};`
+    *   `padding: 8rem;`
+    *   `display: grid; grid-template-columns: repeat(4, 1fr); gap: 4rem;` (ajustar para 1 ou 2 colunas em telas menores)
+    *   **Logo:** SVG com `fill: ${colors.neutral.white};`
+    *   **Informações de Contato:** Texto com `font-size: 1.4rem; opacity: 0.8;`
+    *   **Títulos das Colunas de Links:** `font-weight: 600; font-size: 1.6rem; margin-bottom: 2rem;`
+    *   **Links do Rodapé:** `opacity: 0.8; transition: opacity 0.2s ease; &:hover { opacity: 1; }`
+
+**5. Schema do Banco de Dados e Endpoints da API**
+
+Esta seção é para o backend que servirá o conteúdo.
+
+#### **5.1. Schema (PostgreSQL)**
+
+```sql
+-- Posts do Blog
+CREATE TABLE blog_posts (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    slug VARCHAR(255) NOT NULL UNIQUE,
+    title VARCHAR(255) NOT NULL,
+    publication_date DATE NOT NULL,
+    featured_image_url TEXT,
+    category_tag VARCHAR(100),
+    content_markdown TEXT,
+    created_at TIMESTAMPTZ DEFAULT now(),
+    updated_at TIMESTAMPTZ
+);
+
+-- Inscrições na Newsletter
+CREATE TABLE newsletter_subscriptions (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email VARCHAR(255) NOT NULL UNIQUE CHECK (email ~* '^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$'),
+    is_active BOOLEAN DEFAULT TRUE,
+    subscribed_at TIMESTAMPTZ DEFAULT now()
+);
+```
+
+#### **5.2. API Endpoints (REST)**
+
+*   **`GET /api/v1/blog/posts/latest?limit=3`**: Busca os 3 posts mais recentes para a homepage.
+    *   **Resposta (200 OK):**
+        ```json
+        [
+          {
+            "slug": "pix-automatico-como-funciona",
+            "title": "Pix Automático: como funciona e por que adotar na sua empresa",
+            "publication_date": "2024-11-25",
+            "featured_image_url": "https://cdn.lina.com/images/blog/pix-auto.webp",
+            "category_tag": "PIX 2.0"
+          },
+          ...
+        ]
+        ```
+
+*   **`POST /api/v1/newsletter/subscribe`**: Adiciona um novo e-mail à lista.
+    *   **Request Body:**
+        ```json
+        {
+          "email": "cliente@email.com"
+        }
+        ```
+    *   **Resposta (201 Created):** `{ "message": "Inscrição realizada com sucesso!" }`
+    *   **Resposta (409 Conflict):** `{ "error": "Este e-mail já está cadastrado." }`
+    *   **Resposta (400 Bad Request):** `{ "error": "Formato de e-mail inválido." }`
+
+**6. Inventário de Assets**
+
+*   **Logos:**
+    *   `lina-logo-white.svg`
+    *   `lina-logo-dark.svg`
+    *   `client-prudential.svg`
+    *   `client-semear.svg`
+    *   `client-pagueveloz.svg`
+    *   `client-hdi.svg`
+    *   `client-darwin.svg`
+*   **Ícones:**
+    *   `arrow-down.svg` (para dropdowns no header)
+    *   `arrow-right.svg` (para botões)
+    *   `social-linkedin.svg`, `social-instagram.svg`, etc.
+*   **Imagens:**
+    *   `hero-graphic.webp`
+    *   `woman-at-laptop.webp`
+    *   `open-finance-graphic.webp`
+    *   `blog-pix-automatico.webp`
+    *   `blog-open-finance.webp`
+    *   `blog-open-insurance.webp`
+
+**NOTA:** Todas as imagens devem ser otimizadas para a web (compressão e formato .webp) e implementadas com a técnica de "lazy loading" para melhorar a performance de carregamento inicial da página.
