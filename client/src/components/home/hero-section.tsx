@@ -99,7 +99,7 @@ export default function HeroSection() {
                     data-testid="announcement-badge"
                   >
                     <span className="font-medium text-sm text-[#009999]">Novidade: PIX Automático Disponível</span>
-                    <span className="block h-4 w-0.5 border-l border-[#00F0D8]/50 bg-[#00F0D8]/50"></span>
+                    <span className="block h-4 w-0.5 border-l border-[#00F0D8]/50 bg-[#00F0D8]/50 pl-[0px] pr-[0px] ml-[1px] mr-[1px]"></span>
 
                     <div className="bg-[#00F0D8]/20 group-hover:bg-[#00F0D8]/30 size-6 overflow-hidden rounded-full duration-500">
                       <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
