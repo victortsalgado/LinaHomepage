@@ -30,14 +30,7 @@ export default function HeroSection() {
                   className="text-base lg:text-lg text-white leading-relaxed max-w-lg"
                   data-testid="text-hero-description"
                 >
-                  Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis,
-                </p>
-                
-                <p 
-                  className="text-base lg:text-lg text-white font-semibold leading-relaxed max-w-lg"
-                  data-testid="text-hero-description-highlight"
-                >
-                  trazendo benefícios diretos para empresas e consumidores.
+                  Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, <span className="font-semibold">trazendo benefícios diretos para empresas e consumidores.</span>
                 </p>
               </div>
               
