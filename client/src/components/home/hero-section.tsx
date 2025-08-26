@@ -25,9 +25,9 @@ export default function HeroSection() {
                 Pix Automático
               </h1>
               
-              <div className="space-y-4 pl-[0px] pr-[0px] ml-[119px] mr-[119px] text-left">
+              <div className="space-y-4 text-left ml-[24px] mr-[24px]">
                 <p 
-                  className="text-base lg:text-lg text-white leading-relaxed max-w-lg font-extralight ml-[24px] mr-[24px] pl-[0px] pr-[0px]"
+                  className="text-base lg:text-lg text-white leading-relaxed max-w-lg font-extralight"
                   data-testid="text-hero-description"
                 >
                   Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, trazendo benefícios diretos para empresas e consumidores.
