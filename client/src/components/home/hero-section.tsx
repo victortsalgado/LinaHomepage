@@ -14,7 +14,7 @@ export default function HeroSection() {
         data-testid="section-hero"
       >
         
-        <div className="relative z-10 px-16 py-1">
+        <div className="relative z-10 px-16 py-0">
           <div className="grid lg:grid-cols-12 gap-12 items-center min-h-[40px]">
             {/* Content - Takes up 7 columns */}
             <div className="lg:col-span-7 text-white space-y-2">
@@ -52,7 +52,7 @@ export default function HeroSection() {
                   <img 
                     src={heroIllustrationPath} 
                     alt="PIX Automático Illustration" 
-                    className="w-full max-w-xs lg:max-w-sm ml-[54px] mr-[54px] mt-[50px] mb-[50px] pl-[21px] pr-[21px] animate-float pt-[28px] pb-[28px]"
+                    className="w-full max-w-xs lg:max-w-sm ml-[54px] mr-[54px] mt-[40px] mb-[40px] pl-[21px] pr-[21px] animate-float pt-[22px] pb-[22px]"
                     data-testid="img-hero-illustration"
                   />
                 </div>
@@ -62,7 +62,7 @@ export default function HeroSection() {
           
           {/* Carousel Indicators */}
           <div 
-            className="flex justify-center mt-8 space-x-2"
+            className="flex justify-center mt-6 space-x-2"
             data-testid="carousel-indicators"
           >
             <div className="w-2 h-2 bg-[#00F0D8] rounded-full" data-testid="indicator-active"></div>
