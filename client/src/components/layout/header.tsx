@@ -38,7 +38,7 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             {!isMobile && (
-              <div className="flex items-center space-x-8" data-testid="nav-desktop">
+              <div className="flex items-center space-x-8 ml-[0px] mr-[0px] pl-[77px] pr-[77px] text-right" data-testid="nav-desktop">
                 {navigationItems.map((item) => (
                   <a
                     key={item.label}
