@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
+import { AnimatedGroup } from "@/components/ui/animated-group";
 import heroIllustrationPath from "../../assets/Home_Ilustra_Banner_01_1756234068551.png";
 import heroBgPath from "../../assets/Home_BG_Banner_01_1756234068550.jpg";
 
@@ -104,31 +105,66 @@ export default function HeroSection() {
                     <div className={`lg:col-span-7 text-white space-y-1 carousel-content-fade ${
                       index === currentSlide ? 'carousel-content-active' : 'carousel-content-inactive'
                     }`}>
-                      <h1 
-                        className="text-5xl lg:text-6xl text-[#00F0D8] font-medium leading-tight"
-                        data-testid={`heading-hero-title-${index}`}
+                      <AnimatedGroup
+                        key={`content-${index}-${currentSlide}`} // Force re-mount for animation
+                        variants={{
+                          container: {
+                            hidden: { opacity: 0 },
+                            visible: {
+                              opacity: 1,
+                              transition: {
+                                staggerChildren: 0.2,
+                                delayChildren: index === currentSlide ? 0.3 : 0,
+                              },
+                            },
+                          },
+                          item: {
+                            hidden: {
+                              opacity: 0,
+                              y: 30,
+                              filter: 'blur(8px)',
+                            },
+                            visible: {
+                              opacity: 1,
+                              y: 0,
+                              filter: 'blur(0px)',
+                              transition: {
+                                type: 'spring',
+                                bounce: 0.4,
+                                duration: 0.8,
+                              },
+                            },
+                          },
+                        }}
+                        initial={index === currentSlide ? "hidden" : "visible"}
+                        animate={index === currentSlide ? "visible" : "hidden"}
                       >
-                        {slide.title}
-                      </h1>
-                      
-                      <div className="space-y-2 text-left">
-                        <p 
-                          className="text-lg lg:text-xl text-white leading-relaxed max-w-2xl font-light"
-                          data-testid={`text-hero-description-${index}`}
+                        <h1 
+                          className="text-5xl lg:text-6xl text-[#00F0D8] font-medium leading-tight"
+                          data-testid={`heading-hero-title-${index}`}
                         >
-                          {slide.description}
-                        </p>
-                      </div>
-                      
-                      <div className="flex gap-4 pt-3">
-                        <button 
-                          className="border border-[#00F0D8] px-8 py-3 rounded-full text-base hover:bg-[#00F0D8]/10 transition-all duration-300 flex items-center gap-3 text-white font-normal"
-                          data-testid={`button-learn-more-${index}`}
-                        >
-                          <span className="text-[#00F0D8]">→</span>
-                          {slide.buttonText}
-                        </button>
-                      </div>
+                          {slide.title}
+                        </h1>
+                        
+                        <div className="space-y-2 text-left">
+                          <p 
+                            className="text-lg lg:text-xl text-white leading-relaxed max-w-2xl font-light"
+                            data-testid={`text-hero-description-${index}`}
+                          >
+                            {slide.description}
+                          </p>
+                        </div>
+                        
+                        <div className="flex gap-4 pt-3">
+                          <button 
+                            className="border border-[#00F0D8] px-8 py-3 rounded-full text-base hover:bg-[#00F0D8]/10 transition-all duration-300 flex items-center gap-3 text-white font-normal"
+                            data-testid={`button-learn-more-${index}`}
+                          >
+                            <span className="text-[#00F0D8]">→</span>
+                            {slide.buttonText}
+                          </button>
+                        </div>
+                      </AnimatedGroup>
                     </div>
 
                     {/* 3D Illustration - Takes up 5 columns */}
@@ -137,12 +173,48 @@ export default function HeroSection() {
                     }`}>
                       <div className="relative h-full">
                         <div className="relative flex justify-center lg:justify-end h-full items-center ml-[-12px] mr-[-12px]">
-                          <img 
-                            src={slide.image} 
-                            alt={`${slide.title} Illustration`} 
-                            className="w-full max-w-xs lg:max-w-sm ml-[27px] mr-[27px] mt-[20px] mb-[20px] pl-[10px] pr-[10px] animate-float pt-[10px] pb-[10px]"
-                            data-testid={`img-hero-illustration-${index}`}
-                          />
+                          <AnimatedGroup
+                            key={`image-${index}-${currentSlide}`} // Force re-mount for animation
+                            variants={{
+                              container: {
+                                hidden: { opacity: 0 },
+                                visible: {
+                                  opacity: 1,
+                                  transition: {
+                                    delayChildren: index === currentSlide ? 0.6 : 0,
+                                  },
+                                },
+                              },
+                              item: {
+                                hidden: {
+                                  opacity: 0,
+                                  scale: 0.8,
+                                  y: 20,
+                                  filter: 'blur(8px)',
+                                },
+                                visible: {
+                                  opacity: 1,
+                                  scale: 1,
+                                  y: 0,
+                                  filter: 'blur(0px)',
+                                  transition: {
+                                    type: 'spring',
+                                    bounce: 0.2,
+                                    duration: 1.2,
+                                  },
+                                },
+                              },
+                            }}
+                            initial={index === currentSlide ? "hidden" : "visible"}
+                            animate={index === currentSlide ? "visible" : "hidden"}
+                          >
+                            <img 
+                              src={slide.image} 
+                              alt={`${slide.title} Illustration`} 
+                              className="w-full max-w-xs lg:max-w-sm ml-[27px] mr-[27px] mt-[20px] mb-[20px] pl-[10px] pr-[10px] animate-float pt-[10px] pb-[10px]"
+                              data-testid={`img-hero-illustration-${index}`}
+                            />
+                          </AnimatedGroup>
                         </div>
                       </div>
                     </div>
