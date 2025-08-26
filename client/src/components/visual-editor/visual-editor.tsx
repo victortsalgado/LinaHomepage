@@ -10,7 +10,18 @@ import { X, Edit, Move, Palette, Type, Image, Save } from "lucide-react";
 
 interface SelectedElement {
   element: HTMLElement;
-  originalStyles: CSSStyleDeclaration;
+  originalStyles: {
+    color: string;
+    backgroundColor: string;
+    fontSize: string;
+    fontFamily: string;
+    padding: string;
+    margin: string;
+    borderRadius: string;
+    width: string;
+    height: string;
+    textContent: string;
+  };
 }
 
 interface VisualEditorProps {
@@ -37,42 +48,17 @@ export default function VisualEditor({ isActive, onClose }: VisualEditorProps) {
 
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!isActive) {
-      removeHighlights();
-      setSelectedElement(null);
-      return;
-    }
-
-    const handleElementClick = (e: MouseEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      const target = e.target as HTMLElement;
-      if (target.closest('.visual-editor-panel')) return;
-      
-      selectElement(target);
-    };
-
-    const handleElementHover = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest('.visual-editor-panel')) return;
-      
-      removeHighlights();
-      addHighlight(target);
-    };
-
-    if (isActive) {
-      document.addEventListener('click', handleElementClick, true);
-      document.addEventListener('mouseover', handleElementHover, true);
-    }
-
-    return () => {
-      document.removeEventListener('click', handleElementClick, true);
-      document.removeEventListener('mouseover', handleElementHover, true);
-      removeHighlights();
-    };
-  }, [isActive]);
+  // Helper functions
+  const rgbToHex = (rgb: string): string => {
+    if (rgb.includes('#')) return rgb;
+    if (rgb === 'rgba(0, 0, 0, 0)' || rgb === 'transparent') return '#ffffff';
+    
+    const match = rgb.match(/\d+/g);
+    if (!match) return '#000000';
+    
+    const [r, g, b] = match.map(Number);
+    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+  };
 
   const addHighlight = (element: HTMLElement) => {
     element.style.outline = '2px solid #00F0D8';
@@ -90,54 +76,13 @@ export default function VisualEditor({ isActive, onClose }: VisualEditorProps) {
     });
   };
 
-  const selectElement = (element: HTMLElement) => {
-    removeHighlights();
-    
-    const computedStyles = window.getComputedStyle(element);
-    setSelectedElement({
-      element,
-      originalStyles: computedStyles
-    });
-
-    // Highlight selected element
-    element.style.outline = '3px solid #00F0D8';
-    element.style.outlineOffset = '2px';
-
-    // Extract current styles
-    setElementStyles({
-      color: rgbToHex(computedStyles.color),
-      backgroundColor: rgbToHex(computedStyles.backgroundColor),
-      fontSize: (parseInt(computedStyles.fontSize) || 16).toString(),
-      fontFamily: computedStyles.fontFamily.replace(/["']/g, '').split(',')[0],
-      padding: (parseInt(computedStyles.padding) || 0).toString(),
-      margin: (parseInt(computedStyles.margin) || 0).toString(),
-      borderRadius: (parseInt(computedStyles.borderRadius) || 0).toString(),
-      width: element.offsetWidth.toString(),
-      height: element.offsetHeight.toString()
-    });
-
-    // Extract text content
-    const textContent = element.innerText || element.textContent || "";
-    setEditableText(textContent);
-  };
-
-  const rgbToHex = (rgb: string): string => {
-    if (rgb.includes('#')) return rgb;
-    if (rgb === 'rgba(0, 0, 0, 0)' || rgb === 'transparent') return '#ffffff';
-    
-    const match = rgb.match(/\d+/g);
-    if (!match) return '#000000';
-    
-    const [r, g, b] = match.map(Number);
-    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
-  };
-
-  const applyStyles = () => {
+  // Apply preview changes in real-time
+  const applyPreviewStyles = () => {
     if (!selectedElement) return;
 
     const { element } = selectedElement;
     
-    // Apply styles
+    // Apply styles for preview
     element.style.color = elementStyles.color;
     element.style.backgroundColor = elementStyles.backgroundColor;
     element.style.fontSize = `${elementStyles.fontSize}px`;
@@ -153,10 +98,118 @@ export default function VisualEditor({ isActive, onClose }: VisualEditorProps) {
       element.style.height = `${elementStyles.height}px`;
     }
 
-    // Apply text changes
+    // Apply text changes for preview
     if (editableText !== element.innerText && element.children.length === 0) {
       element.innerText = editableText;
     }
+  };
+
+  // Save changes permanently
+  const saveChanges = () => {
+    if (!selectedElement) return;
+    
+    const { element } = selectedElement;
+    const computedStyles = window.getComputedStyle(element);
+    const textContent = element.innerText || element.textContent || "";
+    
+    setSelectedElement(prev => prev ? {
+      ...prev,
+      originalStyles: {
+        color: computedStyles.color,
+        backgroundColor: computedStyles.backgroundColor,
+        fontSize: computedStyles.fontSize,
+        fontFamily: computedStyles.fontFamily,
+        padding: computedStyles.padding,
+        margin: computedStyles.margin,
+        borderRadius: computedStyles.borderRadius,
+        width: element.style.width || 'auto',
+        height: element.style.height || 'auto',
+        textContent: textContent
+      }
+    } : null);
+  };
+
+  // Cancel changes and revert to original
+  const cancelChanges = () => {
+    if (!selectedElement) return;
+
+    const { element, originalStyles } = selectedElement;
+    
+    // Revert to original styles
+    element.style.color = originalStyles.color;
+    element.style.backgroundColor = originalStyles.backgroundColor;
+    element.style.fontSize = originalStyles.fontSize;
+    element.style.fontFamily = originalStyles.fontFamily;
+    element.style.padding = originalStyles.padding;
+    element.style.margin = originalStyles.margin;
+    element.style.borderRadius = originalStyles.borderRadius;
+    element.style.width = originalStyles.width;
+    element.style.height = originalStyles.height;
+
+    // Revert text content
+    if (element.children.length === 0) {
+      element.innerText = originalStyles.textContent;
+    }
+
+    // Update form to show original values
+    setElementStyles({
+      color: rgbToHex(originalStyles.color),
+      backgroundColor: rgbToHex(originalStyles.backgroundColor),
+      fontSize: (parseInt(originalStyles.fontSize) || 16).toString(),
+      fontFamily: originalStyles.fontFamily.replace(/["']/g, '').split(',')[0],
+      padding: (parseInt(originalStyles.padding) || 0).toString(),
+      margin: (parseInt(originalStyles.margin) || 0).toString(),
+      borderRadius: (parseInt(originalStyles.borderRadius) || 0).toString(),
+      width: element.offsetWidth.toString(),
+      height: element.offsetHeight.toString()
+    });
+
+    setEditableText(originalStyles.textContent);
+  };
+
+  const selectElement = (element: HTMLElement) => {
+    removeHighlights();
+    
+    const computedStyles = window.getComputedStyle(element);
+    const textContent = element.innerText || element.textContent || "";
+    
+    // Store original values for potential cancellation
+    const originalStyles = {
+      color: computedStyles.color,
+      backgroundColor: computedStyles.backgroundColor,
+      fontSize: computedStyles.fontSize,
+      fontFamily: computedStyles.fontFamily,
+      padding: computedStyles.padding,
+      margin: computedStyles.margin,
+      borderRadius: computedStyles.borderRadius,
+      width: element.style.width || 'auto',
+      height: element.style.height || 'auto',
+      textContent: textContent
+    };
+
+    setSelectedElement({
+      element,
+      originalStyles
+    });
+
+    // Highlight selected element
+    element.style.outline = '3px solid #00F0D8';
+    element.style.outlineOffset = '2px';
+
+    // Extract current styles for the form
+    setElementStyles({
+      color: rgbToHex(computedStyles.color),
+      backgroundColor: rgbToHex(computedStyles.backgroundColor),
+      fontSize: (parseInt(computedStyles.fontSize) || 16).toString(),
+      fontFamily: computedStyles.fontFamily.replace(/["']/g, '').split(',')[0],
+      padding: (parseInt(computedStyles.padding) || 0).toString(),
+      margin: (parseInt(computedStyles.margin) || 0).toString(),
+      borderRadius: (parseInt(computedStyles.borderRadius) || 0).toString(),
+      width: element.offsetWidth.toString(),
+      height: element.offsetHeight.toString()
+    });
+
+    setEditableText(textContent);
   };
 
   const enableDragMode = () => {
@@ -213,6 +266,50 @@ export default function VisualEditor({ isActive, onClose }: VisualEditorProps) {
     };
     reader.readAsDataURL(file);
   };
+
+  // Apply preview styles whenever form values change
+  useEffect(() => {
+    if (selectedElement) {
+      applyPreviewStyles();
+    }
+  }, [elementStyles, editableText]);
+
+  useEffect(() => {
+    if (!isActive) {
+      removeHighlights();
+      setSelectedElement(null);
+      return;
+    }
+
+    const handleElementClick = (e: MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const target = e.target as HTMLElement;
+      if (target.closest('.visual-editor-panel')) return;
+      
+      selectElement(target);
+    };
+
+    const handleElementHover = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('.visual-editor-panel')) return;
+      
+      removeHighlights();
+      addHighlight(target);
+    };
+
+    if (isActive) {
+      document.addEventListener('click', handleElementClick, true);
+      document.addEventListener('mouseover', handleElementHover, true);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleElementClick, true);
+      document.removeEventListener('mouseover', handleElementHover, true);
+      removeHighlights();
+    };
+  }, [isActive]);
 
   if (!isActive) return null;
 
@@ -411,14 +508,25 @@ export default function VisualEditor({ isActive, onClose }: VisualEditorProps) {
                   </p>
                 </TabsContent>
 
-                <Button
-                  onClick={applyStyles}
-                  className="w-full mt-4 bg-lina-cyan hover:bg-lina-cyan/90"
-                  data-testid="button-apply-changes"
-                >
-                  <Save className="w-4 h-4 mr-2" />
-                  Aplicar Mudanças
-                </Button>
+                <div className="flex gap-2 mt-4">
+                  <Button
+                    onClick={saveChanges}
+                    className="flex-1 bg-lina-cyan hover:bg-lina-cyan/90"
+                    data-testid="button-save-changes"
+                  >
+                    <Save className="w-4 h-4 mr-2" />
+                    Salvar
+                  </Button>
+                  <Button
+                    onClick={cancelChanges}
+                    variant="outline"
+                    className="flex-1"
+                    data-testid="button-cancel-changes"
+                  >
+                    <X className="w-4 h-4 mr-2" />
+                    Cancelar
+                  </Button>
+                </div>
               </Tabs>
             ) : (
               <div className="text-center py-8 text-gray-500">
