@@ -14,29 +14,29 @@ export default function HeroSection() {
         data-testid="section-hero"
       >
         
-        <div className="relative z-10 px-12 py-16 lg:py-20 pl-[50px] pr-[50px] ml-[-33px] mr-[-33px] mt-[-114px] mb-[-114px] pt-[86px] pb-[86px]">
-          <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[400px] pl-[5px] pr-[5px] pt-[0px] pb-[0px] ml-[0px] mr-[0px] mt-[0px] mb-[0px]">
+        <div className="relative z-10 px-16 py-20">
+          <div className="grid lg:grid-cols-12 gap-12 items-center min-h-[400px]">
             {/* Content - Takes up 7 columns */}
             <div className="lg:col-span-7 text-white space-y-6">
               <h1 
-                className="lg:text-5xl text-[#00F0D8] font-medium text-[39px] pt-[0px] pb-[0px] mt-[34px] mb-[34px] ml-[24px] mr-[24px] pl-[0px] pr-[0px]"
+                className="text-5xl lg:text-6xl text-[#00F0D8] font-medium leading-tight"
                 data-testid="heading-hero-title"
               >
                 Pix Automático
               </h1>
               
-              <div className="space-y-4 text-left ml-[24px] mr-[24px]">
+              <div className="space-y-4 text-left">
                 <p 
-                  className="text-base lg:text-lg text-white leading-relaxed max-w-lg font-extralight"
+                  className="text-lg lg:text-xl text-white leading-relaxed max-w-2xl font-light"
                   data-testid="text-hero-description"
                 >
-                  Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, trazendo benefícios diretos para empresas e consumidores.
+                  Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, <strong className="font-medium">trazendo benefícios diretos para empresas e consumidores.</strong>
                 </p>
               </div>
               
-              <div className="flex gap-4 pt-2">
+              <div className="flex gap-4 pt-6">
                 <button 
-                  className="border border-[#00F0D8] px-6 py-2 rounded-full text-sm hover:bg-[#00F0D8]/10 transition-all duration-300 flex items-center gap-2 text-white mt-[0px] mb-[0px] pt-[5px] pb-[5px] font-light pl-[21px] pr-[21px] ml-[42px] mr-[42px]"
+                  className="border border-[#00F0D8] px-8 py-3 rounded-full text-base hover:bg-[#00F0D8]/10 transition-all duration-300 flex items-center gap-3 text-white font-normal"
                   data-testid="button-learn-more"
                 >
                   <span className="text-[#00F0D8]">→</span>
