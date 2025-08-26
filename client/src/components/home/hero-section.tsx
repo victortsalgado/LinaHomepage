@@ -161,15 +161,14 @@ export default function HeroSection() {
                   }}
                   className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
                 >
-                  <div className="bg-foreground/10 rounded-[14px] border p-0.5">
-                    <Button
-                      size="lg"
-                      className="rounded-xl px-5 text-base"
-                      data-testid="button-start-building"
-                    >
-                      <span className="text-nowrap">Começar Agora</span>
-                    </Button>
-                  </div>
+                  <Button
+                    size="lg"
+                    className="bg-[#00F0D8] hover:bg-[#00D4C0] text-black rounded-full px-6 py-3 text-base font-medium transition-all duration-200 flex items-center gap-2"
+                    data-testid="button-start-building"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                    <span className="text-nowrap">Conheça o Data Link</span>
+                  </Button>
                   <Button
                     size="lg"
                     variant="ghost"
