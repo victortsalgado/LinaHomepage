@@ -50,7 +50,7 @@ export default function HeroSection() {
               <div className="relative h-full">
                 {/* Dark surface background to match 3D elements base */}
                 <div className="absolute bottom-0 right-0 w-4/5 h-3/5 bg-gradient-to-t from-[#000000] via-[#0A1F1F] to-transparent rounded-lg"></div>
-                <div className="relative flex justify-center lg:justify-end h-full items-center">
+                <div className="relative flex justify-center lg:justify-end h-full items-center ml-[-12px] mr-[-12px]">
                   <img 
                     src={heroIllustrationPath} 
                     alt="PIX Automático Illustration" 
