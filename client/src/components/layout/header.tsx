@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileMenu from "@/components/ui/mobile-menu";
 
@@ -9,12 +9,11 @@ export default function Header() {
   const isMobile = useIsMobile();
 
   const navigationItems = [
-    { label: "Produtos", href: "#produtos" },
-    { label: "Soluções", href: "#solucoes" },
-    { label: "Desenvolvedores", href: "#desenvolvedores" },
-    { label: "Docs", href: "#docs" },
-    { label: "Para Banks", href: "#para-banks" },
-    { label: "Sobre a empresa", href: "#sobre" },
+    { label: "Produtos", href: "#produtos", hasDropdown: true },
+    { label: "Recursos", href: "#recursos", hasDropdown: true },
+    { label: "Integrações", href: "#integracoes" },
+    { label: "Demo", href: "#demo" },
+    { label: "Quem Somos", href: "#quem-somos" },
   ];
 
   return (
@@ -24,7 +23,7 @@ export default function Header() {
         data-testid="header-main"
       >
         <nav className="container mx-auto px-8 lg:px-12 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center">
             {/* Logo */}
             <div className="flex items-center" data-testid="logo-container">
               <span className="text-2xl font-bold text-lina-cyan" data-testid="text-logo">
@@ -34,41 +33,43 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             {!isMobile && (
-              <div className="flex items-center space-x-8" data-testid="nav-desktop">
+              <div className="flex items-center space-x-8 ml-12" data-testid="nav-desktop">
                 {navigationItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="text-gray-600 hover:text-lina-cyan font-medium transition-colors text-sm"
+                    className="text-gray-700 hover:text-lina-cyan font-normal transition-colors text-sm flex items-center"
                     data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                   >
                     {item.label}
+                    {item.hasDropdown && <ChevronDown className="ml-1 h-3 w-3" />}
                   </a>
                 ))}
                 <Button 
-                  variant="outline"
-                  className="border border-gray-300 text-gray-600 px-4 py-2 rounded-md font-medium hover:border-lina-cyan hover:text-lina-cyan transition-colors"
-                  data-testid="button-login"
+                  className="bg-lina-cyan text-white px-4 py-2 rounded-md font-medium hover:bg-lina-cyan/90 transition-colors ml-4"
+                  data-testid="button-contact"
                 >
-                  Entrar
+                  Entre em Contato
                 </Button>
               </div>
             )}
 
             {/* Mobile Menu Button */}
             {isMobile && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                data-testid="button-mobile-menu-toggle"
-              >
-                {isMobileMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </Button>
+              <div className="ml-auto">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  data-testid="button-mobile-menu-toggle"
+                >
+                  {isMobileMenuOpen ? (
+                    <X className="h-6 w-6" />
+                  ) : (
+                    <Menu className="h-6 w-6" />
+                  )}
+                </Button>
+              </div>
             )}
           </div>
         </nav>
