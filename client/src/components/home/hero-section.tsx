@@ -19,7 +19,7 @@ export default function HeroSection() {
             {/* Content - Takes up 7 columns */}
             <div className="lg:col-span-7 text-white space-y-6">
               <h1 
-                className="text-4xl lg:text-5xl font-bold leading-tight text-[#00F0D8]"
+                className="lg:text-5xl text-[#00F0D8] font-medium text-[35px] ml-[21px] mr-[21px]"
                 data-testid="heading-hero-title"
               >
                 Pix Automático
