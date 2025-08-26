@@ -44,18 +44,7 @@ export default function HeroSection() {
   const totalSlides = slides.length;
 
   const nextSlide = () => {
-    if (currentSlide >= totalSlides - 1) {
-      // Instantly jump to the duplicate set without animation
-      setIsTransitioning(false);
-      setCurrentSlide(0);
-      // Re-enable transition after a brief moment
-      setTimeout(() => {
-        setIsTransitioning(true);
-        setCurrentSlide(1);
-      }, 50);
-    } else {
-      setCurrentSlide(currentSlide + 1);
-    }
+    setCurrentSlide(prev => prev + 1);
   };
 
   const goToSlide = (index: number) => {
@@ -71,19 +60,20 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, [currentSlide]);
 
-  // Handle the infinite loop transition
+  // Handle the infinite loop transition - reset to start when reaching the duplicate section
   useEffect(() => {
-    if (currentSlide >= totalSlides && isTransitioning) {
+    if (currentSlide >= totalSlides) {
       const timer = setTimeout(() => {
         setIsTransitioning(false);
         setCurrentSlide(0);
-        setTimeout(() => {
+        // Re-enable transition after DOM update
+        requestAnimationFrame(() => {
           setIsTransitioning(true);
-        }, 50);
-      }, 2000);
+        });
+      }, 2000); // Wait for transition to complete
       return () => clearTimeout(timer);
     }
-  }, [currentSlide, totalSlides, isTransitioning]);
+  }, [currentSlide, totalSlides]);
 
   return (
     <div className="container mx-auto px-8 mt-[100px] mb-[100px]">
