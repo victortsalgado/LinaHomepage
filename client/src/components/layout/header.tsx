@@ -25,7 +25,7 @@ export default function Header() {
       >
         <div className="container mx-auto px-8">
           <nav className="bg-white rounded-full shadow-lg px-8 py-4">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between ml-[6px] mr-[6px] pl-[-2px] pr-[-2px]">
             {/* Logo */}
             <div className="flex items-center" data-testid="logo-container">
               <img 
