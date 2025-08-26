@@ -15,9 +15,9 @@ export default function HeroSection() {
       >
         
         <div className="relative z-10 px-16 py-0">
-          <div className="grid lg:grid-cols-12 gap-12 items-center min-h-[40px]">
+          <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[20px]">
             {/* Content - Takes up 7 columns */}
-            <div className="lg:col-span-7 text-white space-y-2">
+            <div className="lg:col-span-7 text-white space-y-1">
               <h1 
                 className="text-5xl lg:text-6xl text-[#00F0D8] font-medium leading-tight"
                 data-testid="heading-hero-title"
@@ -25,7 +25,7 @@ export default function HeroSection() {
                 Pix Automático
               </h1>
               
-              <div className="space-y-4 text-left">
+              <div className="space-y-2 text-left">
                 <p 
                   className="text-lg lg:text-xl text-white leading-relaxed max-w-2xl font-light"
                   data-testid="text-hero-description"
@@ -34,7 +34,7 @@ export default function HeroSection() {
                 </p>
               </div>
               
-              <div className="flex gap-4 pt-6">
+              <div className="flex gap-4 pt-3">
                 <button 
                   className="border border-[#00F0D8] px-8 py-3 rounded-full text-base hover:bg-[#00F0D8]/10 transition-all duration-300 flex items-center gap-3 text-white font-normal"
                   data-testid="button-learn-more"
@@ -52,7 +52,7 @@ export default function HeroSection() {
                   <img 
                     src={heroIllustrationPath} 
                     alt="PIX Automático Illustration" 
-                    className="w-full max-w-xs lg:max-w-sm ml-[54px] mr-[54px] mt-[40px] mb-[40px] pl-[21px] pr-[21px] animate-float pt-[22px] pb-[22px]"
+                    className="w-full max-w-xs lg:max-w-sm ml-[27px] mr-[27px] mt-[20px] mb-[20px] pl-[10px] pr-[10px] animate-float pt-[10px] pb-[10px]"
                     data-testid="img-hero-illustration"
                   />
                 </div>
@@ -62,7 +62,7 @@ export default function HeroSection() {
           
           {/* Carousel Indicators */}
           <div 
-            className="flex justify-center mt-6 space-x-2"
+            className="flex justify-center mt-3 space-x-2"
             data-testid="carousel-indicators"
           >
             <div className="w-2 h-2 bg-[#00F0D8] rounded-full" data-testid="indicator-active"></div>
