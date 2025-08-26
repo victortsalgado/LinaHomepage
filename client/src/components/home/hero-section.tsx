@@ -14,10 +14,10 @@ export default function HeroSection() {
         data-testid="section-hero"
       >
         
-        <div className="relative z-10 px-16 py-6">
-          <div className="grid lg:grid-cols-12 gap-12 items-center min-h-[180px]">
+        <div className="relative z-10 px-16 py-4">
+          <div className="grid lg:grid-cols-12 gap-12 items-center min-h-[120px]">
             {/* Content - Takes up 7 columns */}
-            <div className="lg:col-span-7 text-white space-y-6">
+            <div className="lg:col-span-7 text-white space-y-4">
               <h1 
                 className="text-5xl lg:text-6xl text-[#00F0D8] font-medium leading-tight"
                 data-testid="heading-hero-title"
