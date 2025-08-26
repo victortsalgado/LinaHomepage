@@ -47,7 +47,7 @@ export default function Header() {
                     data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                   >
                     {item.label}
-                    {item.hasDropdown && <ChevronDown className="ml-1 h-3 w-3 text-gray-400" />}
+                    {item.hasDropdown && <ChevronDown className="ml-1 h-3 w-3 text-lina-cyan" />}
                   </a>
                 ))}
               </div>
