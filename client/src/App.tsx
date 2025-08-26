@@ -5,7 +5,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
-import EditorToggle from "@/components/visual-editor/editor-toggle";
 
 function Router() {
   return (
@@ -22,9 +21,6 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Router />
-        
-        {/* Visual Editor Toggle - Available on all pages */}
-        <EditorToggle />
       </TooltipProvider>
     </QueryClientProvider>
   );
