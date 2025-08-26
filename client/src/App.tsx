@@ -7,6 +7,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import DataLink from "@/pages/data-link";
 import LinaPay from "@/pages/lina-pay";
+import JSR from "@/pages/jsr";
 
 function Router() {
   return (
@@ -14,6 +15,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/data-link" component={DataLink} />
       <Route path="/lina-pay" component={LinaPay} />
+      <Route path="/jsr" component={JSR} />
       <Route component={NotFound} />
     </Switch>
   );

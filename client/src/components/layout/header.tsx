@@ -27,6 +27,7 @@ export default function Header() {
   const produtosDropdownItems = [
     { label: "Data Link", href: "/data-link" },
     { label: "Lina Pay", href: "/lina-pay" },
+    { label: "JSR", href: "/jsr" },
   ];
 
   return (
