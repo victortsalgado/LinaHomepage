@@ -6,6 +6,7 @@ import heroBgPath from "../../assets/Home_BG_Banner_01_1756234068550.jpg";
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
   const slides = [
     {
@@ -38,29 +39,58 @@ export default function HeroSection() {
     }
   ];
 
+  // Create duplicate slides for infinite loop
+  const extendedSlides = [...slides, ...slides];
+  const totalSlides = slides.length;
+
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    if (currentSlide >= totalSlides - 1) {
+      // Instantly jump to the duplicate set without animation
+      setIsTransitioning(false);
+      setCurrentSlide(0);
+      // Re-enable transition after a brief moment
+      setTimeout(() => {
+        setIsTransitioning(true);
+        setCurrentSlide(1);
+      }, 50);
+    } else {
+      setCurrentSlide(currentSlide + 1);
+    }
   };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
 
-  // Auto-advance slides every 7 seconds with ultra smooth transition
+  // Auto-advance slides every 7 seconds with infinite loop
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      nextSlide();
     }, 7000);
 
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, [currentSlide]);
+
+  // Handle the infinite loop transition
+  useEffect(() => {
+    if (currentSlide >= totalSlides && isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentSlide(0);
+        setTimeout(() => {
+          setIsTransitioning(true);
+        }, 50);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [currentSlide, totalSlides, isTransitioning]);
 
   return (
     <div className="container mx-auto px-8 mt-[100px] mb-[100px]">
       <section 
         className="relative overflow-hidden rounded-3xl"
         style={{
-          background: slides[currentSlide].gradient,
+          background: slides[currentSlide % totalSlides].gradient,
         }}
         data-testid="section-hero"
       >
@@ -68,10 +98,10 @@ export default function HeroSection() {
         {/* Carousel Container */}
         <div className="relative w-full">
           <div 
-            className="flex carousel-smooth"
+            className={`flex ${isTransitioning ? 'carousel-smooth' : ''}`}
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
-            {slides.map((slide, index) => (
+            {extendedSlides.map((slide, index) => (
               <div 
                 key={index} 
                 className={`w-full flex-shrink-0 carousel-slide ${
@@ -143,7 +173,7 @@ export default function HeroSection() {
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-2 h-2 rounded-full transition-all duration-500 cursor-pointer ${
-                currentSlide === index 
+                (currentSlide % totalSlides) === index 
                   ? 'bg-[#00F0D8]' 
                   : 'bg-white/40 hover:bg-white/60'
               }`}
