@@ -53,14 +53,15 @@ export default function Header() {
               </div>
             )}
 
-            {/* Entre em Contato Button */}
+            {/* Entre em Contato Link */}
             {!isMobile && (
-              <Button 
-                className="bg-lina-cyan text-white px-6 py-2 rounded-lg font-medium hover:bg-lina-cyan/90 transition-colors"
-                data-testid="button-contact"
+              <a 
+                href="#contato"
+                className="text-lina-cyan hover:text-lina-cyan/80 font-medium transition-colors"
+                data-testid="link-contact"
               >
                 Entre em Contato
-              </Button>
+              </a>
             )}
 
             {/* Mobile Menu Button */}
