@@ -134,7 +134,7 @@ export default function Header() {
                 }}>
                   <NavigationMenuList>
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9">
+                      <NavigationMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9 bg-transparent border-none shadow-none [&[data-state=open]>svg]:text-lina-cyan">
                         Produtos
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -167,7 +167,7 @@ export default function Header() {
                     </NavigationMenuItem>
 
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9">
+                      <NavigationMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9 bg-transparent border-none shadow-none [&[data-state=open]>svg]:text-lina-cyan">
                         Recursos
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -188,7 +188,7 @@ export default function Header() {
                     <NavigationMenuItem>
                       <NavigationMenuLink 
                         href="#integracoes" 
-                        className={cn(navigationMenuTriggerStyle(), "hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9")}
+                        className="hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9 bg-transparent border-none shadow-none px-4 py-2"
                         data-testid="link-integrations"
                       >
                         Integrações
@@ -198,7 +198,7 @@ export default function Header() {
                     <NavigationMenuItem>
                       <NavigationMenuLink 
                         href="#demo" 
-                        className={cn(navigationMenuTriggerStyle(), "hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9")}
+                        className="hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9 bg-transparent border-none shadow-none px-4 py-2"
                         data-testid="link-demo"
                       >
                         Demo
@@ -208,7 +208,7 @@ export default function Header() {
                     <NavigationMenuItem>
                       <NavigationMenuLink 
                         href="#quem-somos" 
-                        className={cn(navigationMenuTriggerStyle(), "hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9")}
+                        className="hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9 bg-transparent border-none shadow-none px-4 py-2"
                         data-testid="link-about"
                       >
                         Quem Somos
@@ -226,7 +226,7 @@ export default function Header() {
                   <NavigationMenuItem>
                     <NavigationMenuLink 
                       href="#contato" 
-                      className={cn(navigationMenuTriggerStyle(), "hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] text-[15px] h-9")}
+                      className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] text-[15px] h-9 bg-transparent border-none shadow-none px-4 py-2"
                       data-testid="link-contact"
                     >
                       Entre em Contato
