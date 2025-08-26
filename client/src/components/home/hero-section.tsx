@@ -72,11 +72,18 @@ export default function HeroSection() {
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {slides.map((slide, index) => (
-              <div key={index} className="w-full flex-shrink-0">
+              <div 
+                key={index} 
+                className={`w-full flex-shrink-0 carousel-slide ${
+                  index === currentSlide ? 'carousel-slide-active' : 'carousel-slide-inactive'
+                }`}
+              >
                 <div className="relative z-10 px-16 py-0">
                   <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[20px]">
                     {/* Content - Takes up 7 columns */}
-                    <div className="lg:col-span-7 text-white space-y-1">
+                    <div className={`lg:col-span-7 text-white space-y-1 carousel-content-fade ${
+                      index === currentSlide ? 'carousel-content-active' : 'carousel-content-inactive'
+                    }`}>
                       <h1 
                         className="text-5xl lg:text-6xl text-[#00F0D8] font-medium leading-tight"
                         data-testid={`heading-hero-title-${index}`}
@@ -105,7 +112,9 @@ export default function HeroSection() {
                     </div>
 
                     {/* 3D Illustration - Takes up 5 columns */}
-                    <div className="lg:col-span-5 relative">
+                    <div className={`lg:col-span-5 relative carousel-content-fade ${
+                      index === currentSlide ? 'carousel-content-active' : 'carousel-content-inactive'
+                    }`}>
                       <div className="relative h-full">
                         <div className="relative flex justify-center lg:justify-end h-full items-center ml-[-12px] mr-[-12px]">
                           <img 
