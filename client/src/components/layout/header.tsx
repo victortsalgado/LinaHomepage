@@ -41,12 +41,14 @@ export default function Header() {
             <div className="flex items-center justify-between ml-[6px] mr-[6px] pl-[-2px] pr-[-2px]">
             {/* Logo */}
             <div className="flex items-center" data-testid="logo-container">
-              <img 
-                src={logoLina} 
-                alt="LINA" 
-                className="h-6 w-auto"
-                data-testid="img-logo"
-              />
+              <Link href="/">
+                <img 
+                  src={logoLina} 
+                  alt="LINA" 
+                  className="h-6 w-auto cursor-pointer"
+                  data-testid="img-logo"
+                />
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
