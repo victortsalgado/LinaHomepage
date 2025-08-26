@@ -6,12 +6,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import DataLink from "@/pages/data-link";
+import LinaPay from "@/pages/lina-pay";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/data-link" component={DataLink} />
+      <Route path="/lina-pay" component={LinaPay} />
       <Route component={NotFound} />
     </Switch>
   );
