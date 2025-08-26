@@ -25,7 +25,7 @@ export default function HeroSection() {
                 Pix Automático
               </h1>
               
-              <div className="space-y-4 ml-[82px] mr-[82px] pl-[-14px] pr-[-14px]">
+              <div className="space-y-4 ml-[85px] mr-[85px] pl-[0px] pr-[0px]">
                 <p 
                   className="text-base lg:text-lg text-white leading-relaxed max-w-lg font-extralight ml-[24px] mr-[24px] pl-[0px] pr-[0px]"
                   data-testid="text-hero-description"
