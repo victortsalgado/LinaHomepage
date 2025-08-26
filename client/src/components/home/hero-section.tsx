@@ -51,16 +51,12 @@ export default function HeroSection() {
             <div className="lg:col-span-5 relative">
               <div className="relative h-full">
                 <div className="relative flex justify-center lg:justify-end h-full items-center ml-[-12px] mr-[-12px]">
-                  <div className="relative">
-                    <img
-                      src={heroIllustrationPath}
-                      alt="PIX Automático Illustration"
-                      className="w-full max-w-xs lg:max-w-sm ml-[31px] mr-[31px] pl-[41px] pr-[41px] pt-[0px] pb-[0px] mt-[10px] mb-[10px]"
-                      data-testid="img-hero-illustration"
-                    />
-                    {/* Gradiente de flutuação na parte inferior */}
-                    <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#1B5E62] via-[#1B5E62]/60 to-transparent"></div>
-                  </div>
+                  <img
+                    src={heroIllustrationPath}
+                    alt="PIX Automático Illustration"
+                    className="w-full max-w-xs lg:max-w-sm ml-[31px] mr-[31px] pl-[41px] pr-[41px] pt-[0px] pb-[0px] mt-[10px] mb-[10px]"
+                    data-testid="img-hero-illustration"
+                  />
                 </div>
               </div>
             </div>
