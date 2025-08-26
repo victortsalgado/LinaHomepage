@@ -9,50 +9,55 @@ export default function HeroSection() {
       <section 
         className="relative overflow-hidden rounded-3xl"
         style={{
-          backgroundImage: `url(${heroBgPath})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          background: 'linear-gradient(135deg, #1B5E62 0%, #0D4142 50%, #000000 100%)',
         }}
         data-testid="section-hero"
       >
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A3A3A]/95 to-[#012A2F]/80 rounded-3xl"></div>
         
         <div className="relative z-10 px-12 py-16 lg:py-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[500px]">
-            {/* Content */}
-            <div className="text-white space-y-8">
+          <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[400px]">
+            {/* Content - Takes up 7 columns */}
+            <div className="lg:col-span-7 text-white space-y-6">
               <h1 
-                className="text-5xl lg:text-6xl font-bold leading-tight"
+                className="text-4xl lg:text-5xl font-bold leading-tight text-[#00F0D8]"
                 data-testid="heading-hero-title"
               >
-                PIX <span className="text-[#00F0D8]">Automático</span>
+                Pix Automático
               </h1>
               
-              <p 
-                className="text-lg lg:text-xl text-gray-200 max-w-xl leading-relaxed"
-                data-testid="text-hero-description"
-              >
-                Conheça a nova funcionalidade que automatiza pagamentos recorrentes, incluindo valores variáveis, trazendo benefícios diretos para empresas e consumidores.
-              </p>
+              <div className="space-y-4">
+                <p 
+                  className="text-base lg:text-lg text-white leading-relaxed max-w-lg"
+                  data-testid="text-hero-description"
+                >
+                  Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis,
+                </p>
+                
+                <p 
+                  className="text-base lg:text-lg text-white font-semibold leading-relaxed max-w-lg"
+                  data-testid="text-hero-description-highlight"
+                >
+                  trazendo benefícios diretos para empresas e consumidores.
+                </p>
+              </div>
               
-              <div className="flex gap-4 pt-4">
-                <Button 
-                  className="bg-[#00F0D8] hover:bg-[#00D4C4] text-[#0A3A3A] px-8 py-3 rounded-full font-semibold text-base transition-all duration-300"
+              <div className="flex gap-4 pt-2">
+                <button 
+                  className="border border-[#00F0D8] text-[#00F0D8] px-6 py-2 rounded-md text-sm font-medium hover:bg-[#00F0D8]/10 transition-all duration-300 flex items-center gap-2"
                   data-testid="button-learn-more"
                 >
-                  Saiba mais
-                </Button>
+                  → Saiba mais
+                </button>
               </div>
             </div>
 
-            {/* 3D Illustration */}
-            <div className="relative lg:ml-8">
-              <div className="relative z-10 flex justify-center lg:justify-end">
+            {/* 3D Illustration - Takes up 5 columns */}
+            <div className="lg:col-span-5 relative">
+              <div className="flex justify-center lg:justify-end">
                 <img 
                   src={heroIllustrationPath} 
                   alt="PIX Automático Illustration" 
-                  className="w-full max-w-md lg:max-w-lg"
+                  className="w-full max-w-xs lg:max-w-sm"
                   data-testid="img-hero-illustration"
                 />
               </div>
@@ -64,9 +69,10 @@ export default function HeroSection() {
             className="flex justify-center mt-8 space-x-2"
             data-testid="carousel-indicators"
           >
-            <div className="w-3 h-3 bg-[#00F0D8] rounded-full" data-testid="indicator-active"></div>
-            <div className="w-3 h-3 bg-white/30 rounded-full" data-testid="indicator-inactive-1"></div>
-            <div className="w-3 h-3 bg-white/30 rounded-full" data-testid="indicator-inactive-2"></div>
+            <div className="w-2 h-2 bg-[#00F0D8] rounded-full" data-testid="indicator-active"></div>
+            <div className="w-2 h-2 bg-white/40 rounded-full" data-testid="indicator-inactive-1"></div>
+            <div className="w-2 h-2 bg-white/40 rounded-full" data-testid="indicator-inactive-2"></div>
+            <div className="w-2 h-2 bg-white/40 rounded-full" data-testid="indicator-inactive-3"></div>
           </div>
         </div>
       </section>
