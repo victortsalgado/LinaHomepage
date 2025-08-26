@@ -99,7 +99,7 @@ export default function HeroSection() {
                     className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
                     data-testid="announcement-badge"
                   >
-                    <span className="text-foreground text-sm">Introducing Support for AI Models</span>
+                    <span className="text-foreground text-sm">Novidade: PIX Automático Disponível</span>
                     <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
 
                     <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
@@ -119,7 +119,7 @@ export default function HeroSection() {
                     className="mt-8 max-w-4xl mx-auto text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] font-bold text-foreground"
                     data-testid="heading-hero-title"
                   >
-                    Modern Solutions for Customer Engagement
+                    Soluções Financeiras Inteligentes para o Seu Negócio
                   </h1>
                   
                   {/* Description */}
@@ -127,7 +127,7 @@ export default function HeroSection() {
                     className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground"
                     data-testid="text-hero-description"
                   >
-                    Highly customizable components for building modern websites and applications that look and feel the way you mean it.
+                    Plataforma completa de pagamentos PIX, Open Finance e gestão de dados empresariais. Conecte, automatize e acelere seus processos financeiros com tecnologia de ponta.
                   </p>
                 </AnimatedGroup>
 
@@ -168,7 +168,7 @@ export default function HeroSection() {
                       className="rounded-xl px-5 text-base"
                       data-testid="button-start-building"
                     >
-                      <span className="text-nowrap">Start Building</span>
+                      <span className="text-nowrap">Começar Agora</span>
                     </Button>
                   </div>
                   <Button
@@ -177,7 +177,7 @@ export default function HeroSection() {
                     className="h-10.5 rounded-xl px-5"
                     data-testid="button-request-demo"
                   >
-                    <span className="text-nowrap">Request a demo</span>
+                    <span className="text-nowrap">Falar com Especialista</span>
                   </Button>
                 </AnimatedGroup>
               </div>
