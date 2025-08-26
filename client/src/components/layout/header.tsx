@@ -57,7 +57,7 @@ export default function Header() {
             {!isMobile && (
               <a 
                 href="#contato"
-                className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999]"
+                className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] text-[13px]"
                 data-testid="link-contact"
               >
                 Entre em Contato
