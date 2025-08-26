@@ -53,13 +53,17 @@ export default function HeroSection() {
 
             {/* 3D Illustration - Takes up 5 columns */}
             <div className="lg:col-span-5 relative">
-              <div className="flex justify-center lg:justify-end">
-                <img 
-                  src={heroIllustrationPath} 
-                  alt="PIX Automático Illustration" 
-                  className="w-full max-w-xs lg:max-w-sm"
-                  data-testid="img-hero-illustration"
-                />
+              <div className="relative h-full">
+                {/* Dark surface background to match 3D elements base */}
+                <div className="absolute bottom-0 right-0 w-4/5 h-3/5 bg-gradient-to-t from-[#000000] via-[#0A1F1F] to-transparent rounded-lg"></div>
+                <div className="relative flex justify-center lg:justify-end h-full items-center">
+                  <img 
+                    src={heroIllustrationPath} 
+                    alt="PIX Automático Illustration" 
+                    className="w-full max-w-xs lg:max-w-sm"
+                    data-testid="img-hero-illustration"
+                  />
+                </div>
               </div>
             </div>
           </div>
