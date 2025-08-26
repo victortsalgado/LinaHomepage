@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
-import heroIllustrationPath from "../../assets/Home_BG_Banner_01_1756244088243.jpg";
+import heroIllustrationPath from "../../assets/Home_Ilustra_Banner_01_1756234068551.png";
 import heroBgPath from "../../assets/Home_BG_Banner_01_1756234068550.jpg";
 
 export default function HeroSection() {
