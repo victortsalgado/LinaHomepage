@@ -43,7 +43,7 @@ export default function Header() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-sm flex items-center"
+                    className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] ml-[16px] mr-[16px] pl-[0px] pr-[0px]"
                     data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                   >
                     {item.label}
