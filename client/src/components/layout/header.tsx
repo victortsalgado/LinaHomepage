@@ -4,6 +4,13 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileMenu from "@/components/ui/mobile-menu";
 import logoLina from "../../assets/logo-lina.png";
+import { Link } from "wouter";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,6 +22,10 @@ export default function Header() {
     { label: "Integrações", href: "#integracoes" },
     { label: "Demo", href: "#demo" },
     { label: "Quem Somos", href: "#quem-somos" },
+  ];
+
+  const produtosDropdownItems = [
+    { label: "Data Link", href: "/data-link" },
   ];
 
   return (
@@ -39,17 +50,38 @@ export default function Header() {
             {/* Desktop Navigation */}
             {!isMobile && (
               <div className="flex items-center space-x-8 ml-[0px] mr-[0px] pl-[77px] pr-[77px] text-right" data-testid="nav-desktop">
-                {navigationItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] pl-[0px] pr-[0px] ml-[14px] mr-[14px] text-left"
-                    data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
-                  >
-                    {item.label}
-                    {item.hasDropdown && <ChevronDown className="ml-1 h-3 w-3 text-lina-cyan" />}
-                  </a>
-                ))}
+                {navigationItems.map((item) => {
+                  if (item.label === "Produtos" && item.hasDropdown) {
+                    return (
+                      <DropdownMenu key={item.label}>
+                        <DropdownMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] pl-[0px] pr-[0px] ml-[14px] mr-[14px] text-left border-none bg-transparent">
+                          {item.label}
+                          <ChevronDown className="ml-1 h-3 w-3 text-lina-cyan" />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                          {produtosDropdownItems.map((dropdownItem) => (
+                            <DropdownMenuItem key={dropdownItem.label} asChild>
+                              <Link href={dropdownItem.href}>
+                                {dropdownItem.label}
+                              </Link>
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    );
+                  }
+                  return (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[13px] pl-[0px] pr-[0px] ml-[14px] mr-[14px] text-left"
+                      data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
+                    >
+                      {item.label}
+                      {item.hasDropdown && <ChevronDown className="ml-1 h-3 w-3 text-lina-cyan" />}
+                    </a>
+                  );
+                })}
               </div>
             )}
 
