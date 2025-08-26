@@ -1,85 +1,76 @@
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
-import heroIllustrationPath from "../../assets/Home_Ilustra_Banner_01_1756226671991.png";
+import heroIllustrationPath from "../../assets/Home_Ilustra_Banner_01_1756234068551.png";
+import heroBgPath from "../../assets/Home_BG_Banner_01_1756234068550.jpg";
 
 export default function HeroSection() {
   return (
-    <section 
-      className="pt-32 pb-20 relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #012A2F 0%, #0A3A3A 50%, #00F0D8 100%)'
-      }}
-      data-testid="section-hero"
-    >
-      {/* Background geometric elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-40 h-40 bg-lina-cyan/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 left-20 w-32 h-32 bg-lina-cyan/15 rounded-full blur-2xl animate-float-delayed"></div>
-        <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-lina-cyan/5 rounded-full blur-xl"></div>
-      </div>
-      
-      <div className="container mx-auto px-8 lg:px-16 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[700px]">
-          {/* Content */}
-          <div className="text-white space-y-10">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 space-x-3">
-              <div className="w-3 h-3 bg-lina-cyan rounded-full animate-pulse"></div>
-              <span className="text-base font-medium" data-testid="text-new-feature">
-                Nova Funcionalidade
-              </span>
-            </div>
-            
-            <h1 
-              className="text-6xl lg:text-7xl font-bold leading-tight"
-              data-testid="heading-hero-title"
-            >
-              PIX <span className="text-lina-cyan">Automático</span>
-            </h1>
-            
-            <p 
-              className="text-2xl text-gray-200 max-w-2xl leading-relaxed font-light"
-              data-testid="text-hero-description"
-            >
-              Conheça a nova funcionalidade que automatiza pagamentos recorrentes, incluindo valores variáveis, trazendo benefícios diretos para empresas e consumidores.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6">
-              <Button 
-                className="bg-lina-cyan text-lina-dark px-10 py-5 rounded-3xl font-semibold text-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-                data-testid="button-learn-more"
-              >
-                Saiba mais
-              </Button>
-            </div>
-          </div>
-
-          {/* 3D Illustration */}
-          <div className="relative lg:ml-16">
-            <div className="relative z-10">
-              <img 
-                src={heroIllustrationPath} 
-                alt="PIX Automático Illustration" 
-                className="w-full max-w-lg mx-auto animate-float drop-shadow-2xl"
-                data-testid="img-hero-illustration"
-              />
-            </div>
-            
-            {/* Enhanced Glowing Effect */}
-            <div className="absolute inset-0 bg-lina-cyan/30 rounded-full blur-3xl transform scale-90 opacity-60"></div>
-            <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-lina-cyan/20 rounded-full blur-2xl animate-pulse"></div>
-          </div>
-        </div>
+    <div className="container mx-auto px-8 lg:px-16 pt-[0px] pb-[0px] mt-[120px] mb-[120px] ml-[67px] mr-[67px] pl-[29px] pr-[29px]">
+      <section 
+        className="relative overflow-hidden rounded-3xl"
+        style={{
+          background: 'linear-gradient(135deg, #1B5E62 0%, #0D4142 50%, #000000 100%)',
+        }}
+        data-testid="section-hero"
+      >
         
-        {/* Carousel Indicators */}
-        <div 
-          className="flex justify-center mt-12 space-x-3"
-          data-testid="carousel-indicators"
-        >
-          <div className="w-3 h-3 bg-lina-cyan rounded-full" data-testid="indicator-active"></div>
-          <div className="w-3 h-3 bg-white/30 rounded-full" data-testid="indicator-inactive-1"></div>
-          <div className="w-3 h-3 bg-white/30 rounded-full" data-testid="indicator-inactive-2"></div>
+        <div className="relative z-10 px-12 py-16 lg:py-20 mt-[-104px] mb-[-104px]">
+          <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[400px]">
+            {/* Content - Takes up 7 columns */}
+            <div className="lg:col-span-7 text-white space-y-6">
+              <h1 
+                className="lg:text-5xl text-[#00F0D8] font-medium text-[35px] ml-[21px] mr-[21px]"
+                data-testid="heading-hero-title"
+              >
+                Pix Automático
+              </h1>
+              
+              <div className="space-y-4">
+                <p 
+                  className="text-base lg:text-lg text-white leading-relaxed max-w-lg ml-[25px] mr-[25px] font-extralight"
+                  data-testid="text-hero-description"
+                >
+                  Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, trazendo benefícios diretos para empresas e consumidores.
+                </p>
+              </div>
+              
+              <div className="flex gap-4 pt-2">
+                <button 
+                  className="border border-[#00F0D8] px-6 py-2 rounded-md text-sm hover:bg-[#00F0D8]/10 transition-all duration-300 flex items-center gap-2 text-[#fcfffe] mt-[0px] mb-[0px] pt-[5px] pb-[5px] font-light pl-[21px] pr-[21px] ml-[42px] mr-[42px]"
+                  data-testid="button-learn-more"
+                >      Saiba mais</button>
+              </div>
+            </div>
+
+            {/* 3D Illustration - Takes up 5 columns */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative h-full">
+                {/* Dark surface background to match 3D elements base */}
+                <div className="absolute bottom-0 right-0 w-4/5 h-3/5 bg-gradient-to-t from-[#000000] via-[#0A1F1F] to-transparent rounded-lg"></div>
+                <div className="relative flex justify-center lg:justify-end h-full items-center">
+                  <img 
+                    src={heroIllustrationPath} 
+                    alt="PIX Automático Illustration" 
+                    className="w-full max-w-xs lg:max-w-sm"
+                    data-testid="img-hero-illustration"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Carousel Indicators */}
+          <div 
+            className="flex justify-center mt-8 space-x-2"
+            data-testid="carousel-indicators"
+          >
+            <div className="w-2 h-2 bg-[#00F0D8] rounded-full" data-testid="indicator-active"></div>
+            <div className="w-2 h-2 bg-white/40 rounded-full" data-testid="indicator-inactive-1"></div>
+            <div className="w-2 h-2 bg-white/40 rounded-full" data-testid="indicator-inactive-2"></div>
+            <div className="w-2 h-2 bg-white/40 rounded-full" data-testid="indicator-inactive-3"></div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
