@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileMenu from "@/components/ui/mobile-menu";
-import logoLina from "../../assets/logo-lina.png";
+import logoLina from "../../assets/new-lina-logo.png";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,7 +31,7 @@ export default function Header() {
               <img 
                 src={logoLina} 
                 alt="LINA" 
-                className="h-6 w-auto"
+                className="h-12 w-auto"
                 data-testid="img-logo"
               />
             </div>
@@ -56,11 +56,10 @@ export default function Header() {
             {/* Entre em Contato Button */}
             {!isMobile && (
               <Button 
-                className="bg-[#1a5f5f] text-white px-6 py-3 rounded-full font-medium hover:bg-[#164d4d] transition-colors flex items-center gap-2 border border-[#2a7373]"
+                className="bg-lina-cyan text-white px-6 py-2 rounded-lg font-medium hover:bg-lina-cyan/90 transition-colors"
                 data-testid="button-contact"
               >
-                <span>→</span>
-                Saiba mais
+                Entre em Contato
               </Button>
             )}
 

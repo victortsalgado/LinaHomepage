@@ -9,23 +9,17 @@ import BlogSection from "@/components/home/blog-section";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white relative">
-      {/* Animated Blur Background */}
-      <div className="floating-blur"></div>
-      
-      {/* Content Layer */}
-      <div className="content-layer">
-        <Header />
-        <main>
-          <HeroSection />
-          <DataLinkSection />
-          <LinaPaySection />
-          <RegulatedEntitiesSection />
-          <ClientsSection />
-          <BlogSection />
-        </main>
-        <Footer />
-      </div>
+    <div className="min-h-screen bg-white">
+      <Header />
+      <main>
+        <HeroSection />
+        <DataLinkSection />
+        <LinaPaySection />
+        <RegulatedEntitiesSection />
+        <ClientsSection />
+        <BlogSection />
+      </main>
+      <Footer />
     </div>
   );
 }

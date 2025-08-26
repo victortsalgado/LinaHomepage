@@ -1,86 +1,4 @@
-@font-face {
-  font-family: 'Inter';
-  src: url('@assets/Inter-Regular_1756235163234.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('@assets/Inter-Medium_1756235163233.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('@assets/Inter-SemiBold_1756235163234.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('@assets/Inter-Bold_1756235163230.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('@assets/Inter-Light_1756235163232.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('@assets/Inter-ExtraLight_1756235163231.otf') format('opentype');
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Lexend';
-  src: url('@assets/Lexend-Regular_1756235221921.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Lexend';
-  src: url('@assets/Lexend-Medium_1756235221920.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Lexend';
-  src: url('@assets/Lexend-SemiBold_1756235221921.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Lexend';
-  src: url('@assets/Lexend-Bold_1756235221919.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Lexend';
-  src: url('@assets/Lexend-Light_1756235221920.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Lexend';
-  src: url('@assets/Lexend-ExtraLight_1756235221920.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -119,8 +37,7 @@
   --sidebar-accent-foreground: hsl(176, 100%, 47%);
   --sidebar-border: hsl(205.0000, 25.0000%, 90.5882%);
   --sidebar-ring: hsl(176, 100%, 47%);
-  --font-sans: 'Inter', sans-serif;
-  --font-lexend: 'Lexend', sans-serif;
+  --font-sans: 'Poppins', sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
   --radius: 1.3rem;
@@ -175,8 +92,7 @@
   --sidebar-accent-foreground: hsl(176, 100%, 47%);
   --sidebar-border: hsl(205.7143, 15.7895%, 26.0784%);
   --sidebar-ring: hsl(176, 100%, 47%);
-  --font-sans: 'Inter', sans-serif;
-  --font-lexend: 'Lexend', sans-serif;
+  --font-sans: 'Poppins', sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
   --radius: 1.3rem;
@@ -203,55 +119,7 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
-    position: relative;
-  }
-
-  html {
-    overflow-x: hidden;
-  }
-
-  /* Animated Background Blur */
-  @keyframes floatingBlur {
-    0% {
-      transform: translate(-50%, -50%) scale(1) rotate(0deg);
-      opacity: 0.6;
-    }
-    25% {
-      transform: translate(-30%, -70%) scale(1.2) rotate(90deg);
-      opacity: 0.4;
-    }
-    50% {
-      transform: translate(-70%, -30%) scale(0.8) rotate(180deg);
-      opacity: 0.7;
-    }
-    75% {
-      transform: translate(-30%, -50%) scale(1.1) rotate(270deg);
-      opacity: 0.5;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1) rotate(360deg);
-      opacity: 0.6;
-    }
-  }
-
-  .floating-blur {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, var(--lina-cyan) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(80px);
-    animation: floatingBlur 20s ease-in-out infinite;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .content-layer {
-    position: relative;
-    z-index: 1;
+    font-family: 'Poppins', sans-serif;
   }
 
   html {
@@ -270,10 +138,6 @@
   
   .hero-bg {
     background: linear-gradient(135deg, var(--lina-dark) 0%, var(--lina-medium) 50%, var(--lina-cyan) 100%);
-  }
-
-  .font-lexend {
-    font-family: var(--font-lexend);
   }
 
   .animate-float {
