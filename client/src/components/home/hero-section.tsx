@@ -27,7 +27,7 @@ export default function HeroSection() {
               
               <div className="space-y-4 ml-[82px] mr-[82px] pl-[-14px] pr-[-14px]">
                 <p 
-                  className="text-base lg:text-lg text-white leading-relaxed max-w-lg ml-[25px] mr-[25px] font-extralight"
+                  className="text-base lg:text-lg text-white leading-relaxed max-w-lg font-extralight ml-[24px] mr-[24px] pl-[0px] pr-[0px]"
                   data-testid="text-hero-description"
                 >
                   Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, trazendo benefícios diretos para empresas e consumidores.
