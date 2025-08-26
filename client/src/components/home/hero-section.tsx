@@ -96,19 +96,19 @@ export default function HeroSection() {
                   {/* Announcement Badge */}
                   <a
                     href="#link"
-                    className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
+                    className="hover:bg-[#00F0D8]/20 dark:hover:bg-[#00F0D8]/10 bg-[#00F0D8]/10 border-[#00F0D8]/30 group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-[#00F0D8]/10 transition-all duration-300 backdrop-blur-sm"
                     data-testid="announcement-badge"
                   >
-                    <span className="text-foreground text-sm">Novidade: PIX Automático Disponível</span>
-                    <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
+                    <span className="text-[#00F0D8] font-medium text-sm">Novidade: PIX Automático Disponível</span>
+                    <span className="block h-4 w-0.5 border-l border-[#00F0D8]/50 bg-[#00F0D8]/50"></span>
 
-                    <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
+                    <div className="bg-[#00F0D8]/20 group-hover:bg-[#00F0D8]/30 size-6 overflow-hidden rounded-full duration-500">
                       <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
                         <span className="flex size-6">
-                          <ArrowRight className="m-auto size-3" />
+                          <ArrowRight className="m-auto size-3 text-[#00F0D8]" />
                         </span>
                         <span className="flex size-6">
-                          <ArrowRight className="m-auto size-3" />
+                          <ArrowRight className="m-auto size-3 text-[#00F0D8]" />
                         </span>
                       </div>
                     </div>
