@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileMenu from "@/components/ui/mobile-menu";
+import logoLina from "../../assets/logo-lina.png";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,60 +20,67 @@ export default function Header() {
   return (
     <>
       <header 
-        className="fixed top-0 w-full bg-white shadow-sm z-50 border-b border-gray-100"
+        className="fixed top-0 w-full z-50 pt-4"
         data-testid="header-main"
       >
-        <nav className="container mx-auto px-8 lg:px-12 py-4">
-          <div className="flex items-center justify-center">
+        <div className="container mx-auto px-8">
+          <nav className="bg-white rounded-full shadow-lg px-8 py-4">
+            <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center" data-testid="logo-container">
-              <span className="text-2xl font-bold text-lina-cyan" data-testid="text-logo">
-                LINA
-              </span>
+              <img 
+                src={logoLina} 
+                alt="LINA" 
+                className="h-8 w-auto"
+                data-testid="img-logo"
+              />
             </div>
 
             {/* Desktop Navigation */}
             {!isMobile && (
-              <div className="flex items-center space-x-8 ml-12" data-testid="nav-desktop">
+              <div className="flex items-center space-x-8" data-testid="nav-desktop">
                 {navigationItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="text-gray-700 hover:text-lina-cyan font-normal transition-colors text-sm flex items-center"
+                    className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-sm flex items-center"
                     data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                   >
                     {item.label}
-                    {item.hasDropdown && <ChevronDown className="ml-1 h-3 w-3" />}
+                    {item.hasDropdown && <ChevronDown className="ml-1 h-3 w-3 text-gray-400" />}
                   </a>
                 ))}
-                <Button 
-                  className="bg-lina-cyan text-white px-4 py-2 rounded-md font-medium hover:bg-lina-cyan/90 transition-colors ml-4"
-                  data-testid="button-contact"
-                >
-                  Entre em Contato
-                </Button>
               </div>
+            )}
+
+            {/* Entre em Contato Button */}
+            {!isMobile && (
+              <Button 
+                className="bg-lina-cyan text-white px-6 py-2 rounded-lg font-medium hover:bg-lina-cyan/90 transition-colors"
+                data-testid="button-contact"
+              >
+                Entre em Contato
+              </Button>
             )}
 
             {/* Mobile Menu Button */}
             {isMobile && (
-              <div className="ml-auto">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  data-testid="button-mobile-menu-toggle"
-                >
-                  {isMobileMenuOpen ? (
-                    <X className="h-6 w-6" />
-                  ) : (
-                    <Menu className="h-6 w-6" />
-                  )}
-                </Button>
-              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                data-testid="button-mobile-menu-toggle"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </Button>
             )}
           </div>
-        </nav>
+          </nav>
+        </div>
       </header>
 
       {/* Mobile Menu */}
