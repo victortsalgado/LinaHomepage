@@ -36,7 +36,7 @@ export default function HeroSection() {
               
               <div className="flex gap-4 pt-2">
                 <button 
-                  className="border border-[#00F0D8] px-6 py-2 rounded-md text-sm hover:bg-[#00F0D8]/10 transition-all duration-300 flex items-center gap-2 text-[#fcfffe] font-normal mt-[0px] mb-[0px] pt-[5px] pb-[5px]"
+                  className="border border-[#00F0D8] px-6 py-2 rounded-md text-sm hover:bg-[#00F0D8]/10 transition-all duration-300 flex items-center gap-2 text-[#fcfffe] font-normal mt-[0px] mb-[0px] pt-[5px] pb-[5px] pl-[20px] pr-[20px] ml-[39px] mr-[39px]"
                   data-testid="button-learn-more"
                 >
                   → Saiba mais
