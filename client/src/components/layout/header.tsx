@@ -1,33 +1,59 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileMenu from "@/components/ui/mobile-menu";
 import logoLina from "../../assets/logo-lina.png";
 import { Link } from "wouter";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
 
-  const navigationItems = [
-    { label: "Produtos", href: "#produtos", hasDropdown: true },
-    { label: "Recursos", href: "#recursos", hasDropdown: true },
-    { label: "Integrações", href: "#integracoes" },
-    { label: "Demo", href: "#demo" },
-    { label: "Quem Somos", href: "#quem-somos" },
+  const produtosDropdownItems = [
+    { 
+      title: "Data Link", 
+      href: "/data-link",
+      description: "Solução completa para integração de dados empresariais"
+    },
+    { 
+      title: "Lina Pay", 
+      href: "/lina-pay",
+      description: "Sistema de pagamentos digitais integrado"
+    },
+    { 
+      title: "JSR", 
+      href: "/jsr",
+      description: "Plataforma de gestão e relatórios avançados"
+    },
   ];
 
-  const produtosDropdownItems = [
-    { label: "Data Link", href: "/data-link" },
-    { label: "Lina Pay", href: "/lina-pay" },
-    { label: "JSR", href: "/jsr" },
+  const recursosDropdownItems = [
+    {
+      title: "Blog",
+      href: "/blog",
+      description: "Artigos e insights sobre tecnologia e negócios"
+    },
+    {
+      title: "Documentação",
+      href: "/docs",
+      description: "Guias técnicos e manuais de integração"
+    },
+    {
+      title: "Suporte",
+      href: "/suporte",
+      description: "Central de ajuda e atendimento ao cliente"
+    },
   ];
 
   return (
@@ -51,51 +77,89 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Desktop Navigation and Contact Link */}
+            {/* Desktop Navigation */}
             {!isMobile && (
-              <div className="flex items-center space-x-8" data-testid="nav-desktop">
-                {navigationItems.map((item) => {
-                  if (item.label === "Produtos" && item.hasDropdown) {
-                    return (
-                      <DropdownMenu key={item.label}>
-                        <DropdownMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[15px] border-none bg-transparent">
-                          {item.label}
-                          <ChevronDown className="ml-1 h-3 w-3 text-lina-cyan" />
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                          {produtosDropdownItems.map((dropdownItem) => (
-                            <DropdownMenuItem key={dropdownItem.label} asChild>
-                              <Link href={dropdownItem.href}>
-                                {dropdownItem.label}
-                              </Link>
-                            </DropdownMenuItem>
-                          ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    );
-                  }
-                  return (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      className="text-gray-600 hover:text-lina-cyan font-normal transition-colors flex items-center text-[15px]"
-                      data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
+              <NavigationMenu data-testid="nav-desktop">
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9">
+                      Produtos
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                        {produtosDropdownItems.map((item) => (
+                          <ListItem
+                            key={item.title}
+                            title={item.title}
+                            href={item.href}
+                          >
+                            {item.description}
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                  
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9">
+                      Recursos
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                        {recursosDropdownItems.map((item) => (
+                          <ListItem
+                            key={item.title}
+                            title={item.title}
+                            href={item.href}
+                          >
+                            {item.description}
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+
+                  <NavigationMenuItem>
+                    <NavigationMenuLink 
+                      href="#integracoes" 
+                      className={cn(navigationMenuTriggerStyle(), "text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9")}
+                      data-testid="link-nav-integracoes"
                     >
-                      {item.label}
-                      {item.hasDropdown && <ChevronDown className="ml-1 h-3 w-3 text-lina-cyan" />}
-                    </a>
-                  );
-                })}
-                
-                {/* Entre em Contato Link */}
-                <a 
-                  href="#contato"
-                  className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] text-[15px]"
-                  data-testid="link-contact"
-                >
-                  Entre em Contato
-                </a>
-              </div>
+                      Integrações
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+
+                  <NavigationMenuItem>
+                    <NavigationMenuLink 
+                      href="#demo" 
+                      className={cn(navigationMenuTriggerStyle(), "text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9")}
+                      data-testid="link-nav-demo"
+                    >
+                      Demo
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+
+                  <NavigationMenuItem>
+                    <NavigationMenuLink 
+                      href="#quem-somos" 
+                      className={cn(navigationMenuTriggerStyle(), "text-gray-600 hover:text-lina-cyan font-normal transition-colors text-[15px] h-9")}
+                      data-testid="link-nav-quem-somos"
+                    >
+                      Quem Somos
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+
+                  <NavigationMenuItem>
+                    <NavigationMenuLink 
+                      href="#contato" 
+                      className={cn(navigationMenuTriggerStyle(), "hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] text-[15px] h-9")}
+                      data-testid="link-contact"
+                    >
+                      Entre em Contato
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
             )}
 
             {/* Mobile Menu Button */}
@@ -121,8 +185,47 @@ export default function Header() {
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
-        navigationItems={navigationItems}
+        navigationItems={[
+          { label: "Produtos", href: "#produtos" },
+          { label: "Recursos", href: "#recursos" },
+          { label: "Integrações", href: "#integracoes" },
+          { label: "Demo", href: "#demo" },
+          { label: "Quem Somos", href: "#quem-somos" },
+        ]}
       />
     </>
   );
+}
+
+function ListItem({ 
+  className, 
+  title, 
+  children, 
+  href, 
+  ...props 
+}: { 
+  className?: string; 
+  title: string; 
+  children: string; 
+  href: string; 
+}) {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <Link
+          to={href}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </Link>
+      </NavigationMenuLink>
+    </li>
+  )
 }
