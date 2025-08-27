@@ -175,33 +175,13 @@ export default function RadialOrbitalTimeline({
               style={{ animationDelay: "0.5s" }}
             ></div>
             
-            {/* Open Finance Official Symbol */}
+            {/* Open Finance Official Symbol - Using provided image */}
             <div className="relative w-8 h-8 flex items-center justify-center">
-              <div className="relative w-full h-full">
-                {/* Center circle */}
-                <div className="absolute inset-[30%] rounded-full bg-white"></div>
-                
-                {/* Outer ring segments */}
-                <div className="absolute inset-0 rounded-full" style={{
-                  background: `conic-gradient(
-                    white 0deg 45deg,
-                    transparent 45deg 60deg,
-                    white 60deg 105deg,
-                    transparent 105deg 120deg,
-                    white 120deg 165deg,
-                    transparent 165deg 180deg,
-                    white 180deg 225deg,
-                    transparent 225deg 240deg,
-                    white 240deg 285deg,
-                    transparent 285deg 300deg,
-                    white 300deg 345deg,
-                    transparent 345deg 360deg
-                  )`
-                }}></div>
-                
-                {/* Inner ring - creates the gap */}
-                <div className="absolute inset-[20%] rounded-full bg-gradient-to-br from-[#00F0D8] via-[#00F0D8] to-[#009999]"></div>
-              </div>
+              <img 
+                src="/attached_assets/12ca0e9d-5280-4d69-951d-95e48bc1714a_1756257325159.png" 
+                alt="Open Finance Symbol" 
+                className="w-full h-full object-contain filter invert"
+              />
             </div>
           </div>
 
