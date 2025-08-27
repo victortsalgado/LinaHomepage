@@ -178,7 +178,7 @@ export default function RadialOrbitalTimeline({
             {/* Open Finance Official Symbol - Using provided image */}
             <div className="relative w-8 h-8 flex items-center justify-center">
               <img 
-                src="/attached_assets/12ca0e9d-5280-4d69-951d-95e48bc1714a_1756257325159.png" 
+                src="/attached_assets/12ca0e9d-5280-4d69-951d-95e48bc1714a_1756258630061.png" 
                 alt="Open Finance Symbol" 
                 className="w-full h-full object-contain filter invert"
               />
