@@ -166,15 +166,21 @@ export default function RadialOrbitalTimeline({
           }}
         >
           {/* Open Finance Symbol in Center */}
-          <div className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-[#00F0D8] via-[#00F0D8] to-[#009999] animate-pulse flex items-center justify-center z-10 border-2 border-white/20 shadow-lg shadow-[#00F0D8]/50">
-            <div className="absolute w-24 h-24 rounded-full border-2 border-[#00F0D8]/40 animate-ping opacity-80"></div>
+          <div className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-[#00F0D8] via-[#00F0D8] to-[#009999] animate-pulse flex items-center justify-center z-20 border-2 border-white/30 shadow-xl shadow-[#00F0D8]/60">
+            {/* Enhanced Center Glow */}
+            <div className="absolute w-16 h-16 rounded-full bg-[#00F0D8]/30 blur-md animate-pulse"></div>
+            <div className="absolute w-24 h-24 rounded-full border-2 border-[#00F0D8]/50 animate-ping opacity-90"></div>
             <div
-              className="absolute w-28 h-28 rounded-full border-2 border-[#00F0D8]/30 animate-ping opacity-60"
-              style={{ animationDelay: "0.5s" }}
+              className="absolute w-28 h-28 rounded-full border-2 border-[#00F0D8]/40 animate-ping opacity-70"
+              style={{ animationDelay: "0.3s" }}
             ></div>
             <div
-              className="absolute w-32 h-32 rounded-full border border-[#00F0D8]/20 animate-ping opacity-40"
-              style={{ animationDelay: "1s" }}
+              className="absolute w-32 h-32 rounded-full border-2 border-[#00F0D8]/30 animate-ping opacity-50"
+              style={{ animationDelay: "0.6s" }}
+            ></div>
+            <div
+              className="absolute w-36 h-36 rounded-full border border-[#00F0D8]/20 animate-ping opacity-30"
+              style={{ animationDelay: "0.9s" }}
             ></div>
             
             {/* Open Finance Official Symbol - Using provided image */}
@@ -187,7 +193,7 @@ export default function RadialOrbitalTimeline({
             </div>
           </div>
 
-          <div className="absolute w-[440px] h-[440px] rounded-full border-2 border-[#00F0D8]/20"></div>
+          <div className="absolute w-[440px] h-[440px] rounded-full border-2 border-[#00F0D8]/30 shadow-lg shadow-[#00F0D8]/20"></div>
 
           {/* Connection Rays */}
           {timelineData.map((item, index) => {
@@ -195,20 +201,36 @@ export default function RadialOrbitalTimeline({
             const angle = ((index / timelineData.length) * 360 + rotationAngle) % 360;
             
             return (
-              <div
-                key={`ray-${item.id}`}
-                className="absolute w-px bg-gradient-to-r from-[#00F0D8]/30 via-[#00F0D8]/60 to-transparent"
-                style={{
-                  height: '220px',
-                  transformOrigin: 'bottom center',
-                  transform: `rotate(${angle}deg)`,
-                  left: '50%',
-                  top: '50%',
-                  marginLeft: '-0.5px',
-                  marginTop: '-110px',
-                  opacity: 0.6,
-                }}
-              />
+              <div key={`ray-container-${item.id}`} className="absolute inset-0">
+                {/* Main Ray */}
+                <div
+                  className="absolute w-0.5 bg-gradient-to-r from-[#00F0D8]/70 via-[#00F0D8]/40 to-transparent"
+                  style={{
+                    height: '200px',
+                    transformOrigin: 'bottom center',
+                    transform: `rotate(${angle}deg)`,
+                    left: '50%',
+                    top: '50%',
+                    marginLeft: '-1px',
+                    marginTop: '-100px',
+                    opacity: 0.8,
+                  }}
+                />
+                {/* Glow Effect */}
+                <div
+                  className="absolute w-1 bg-gradient-to-r from-[#00F0D8]/20 via-[#00F0D8]/10 to-transparent blur-sm"
+                  style={{
+                    height: '200px',
+                    transformOrigin: 'bottom center',
+                    transform: `rotate(${angle}deg)`,
+                    left: '50%',
+                    top: '50%',
+                    marginLeft: '-2px',
+                    marginTop: '-100px',
+                    opacity: 0.6,
+                  }}
+                />
+              </div>
             );
           })}
 
