@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, Link, Zap } from "lucide-react";
+import { ArrowRight, Link, Zap, Building2, GitBranch, Workflow } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -167,13 +167,25 @@ export default function RadialOrbitalTimeline({
             transform: `translate(${centerOffset.x}px, ${centerOffset.y}px)`,
           }}
         >
-          <div className="absolute w-16 h-16 rounded-full bg-gradient-to-br from-[#00F0D8] via-[#00F0D8] to-[#009999] animate-pulse flex items-center justify-center z-10">
+          {/* Open Finance Symbol in Center */}
+          <div className="absolute w-16 h-16 rounded-full bg-gradient-to-br from-[#00F0D8] via-[#00F0D8] to-[#009999] animate-pulse flex items-center justify-center z-10 border-2 border-white/20">
             <div className="absolute w-20 h-20 rounded-full border border-[#00F0D8]/20 animate-ping opacity-70"></div>
             <div
               className="absolute w-24 h-24 rounded-full border border-[#00F0D8]/10 animate-ping opacity-50"
               style={{ animationDelay: "0.5s" }}
             ></div>
-            <div className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-md"></div>
+            
+            {/* Open Finance Icon - Network/Connection Symbol */}
+            <div className="relative w-10 h-10 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Workflow size={24} className="text-white drop-shadow-lg" />
+              </div>
+              {/* Small accent dots around the icon to represent interconnectedness */}
+              <div className="absolute -top-1 -left-1 w-2 h-2 rounded-full bg-white/60 animate-pulse" style={{ animationDelay: "0s" }}></div>
+              <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-white/60 animate-pulse" style={{ animationDelay: "0.3s" }}></div>
+              <div className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full bg-white/60 animate-pulse" style={{ animationDelay: "0.6s" }}></div>
+              <div className="absolute -bottom-1 -right-1 w-2 h-2 rounded-full bg-white/60 animate-pulse" style={{ animationDelay: "0.9s" }}></div>
+            </div>
           </div>
 
           <div className="absolute w-96 h-96 rounded-full border border-[#00F0D8]/10"></div>
