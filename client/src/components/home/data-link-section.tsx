@@ -80,14 +80,15 @@ export default function DataLinkSection() {
                     {/* Vertical connecting line appears after this bullet point */}
                     {index < features.length - 1 && (
                       <div 
-                        className={`absolute left-2 top-4 w-0.5 bg-gradient-to-b from-teal-500 to-cyan-400 ${
+                        className={`absolute left-2 top-4 w-0.5 bg-gradient-to-b from-teal-500 to-cyan-400 opacity-0 ${
                           contentVisible 
                             ? `scroll-reveal-line-stagger-${index + 1}` 
-                            : 'opacity-0'
+                            : ''
                         }`}
                         style={{
                           transformOrigin: 'top',
-                          height: 'calc(100% + 1.5rem)'
+                          height: 'calc(100% + 1.5rem)',
+                          transform: 'scaleY(0)'
                         }}
                       ></div>
                     )}
@@ -96,9 +97,12 @@ export default function DataLinkSection() {
                     <div 
                       className={`flex items-start gap-4 ${
                         contentVisible 
-                          ? `scroll-reveal-scale-in ${index === 0 ? 'scroll-reveal-stagger-1' : `scroll-reveal-stagger-${index + 2}`}` 
+                          ? 'scroll-reveal-scale-in'
                           : 'scroll-reveal-hidden'
                       }`}
+                      style={{
+                        animationDelay: index === 0 ? '0.1s' : `${0.9 + (index * 0.8)}s`
+                      }}
                     >
                       <div className="relative z-10 w-4 h-4 bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
                       <div className="flex-1">
