@@ -222,14 +222,6 @@ export default function HeroSection() {
                 >
                   <Button
                     size="lg"
-                    className="bg-[#00F0D8] hover:bg-[#00D4C0] text-black rounded-full px-6 py-3 text-base font-medium transition-all duration-200 flex items-center gap-2"
-                    data-testid="button-start-building"
-                  >
-                    <ArrowRight className="w-4 h-4" />
-                    <span className="text-nowrap">Conheça o Data Link</span>
-                  </Button>
-                  <Button
-                    size="lg"
                     variant="ghost"
                     className="group h-10.5 rounded-xl px-5 border border-muted-foreground/20 hover:border-[#00F0D8]/50 hover:bg-[#00F0D8]/5 transition-all duration-300"
                     data-testid="button-request-demo"
