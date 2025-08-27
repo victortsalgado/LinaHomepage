@@ -1,47 +1,16 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedGroup } from "@/components/ui/animated-group";
-import { CpuArchitecture } from "@/components/ui/cpu-architecture";
 
 export default function HeroSection() {
   return (
     <>
-      {/* Enhanced Background Effects */}
+      {/* Simple Floating Ball Background */}
       <div 
         aria-hidden
         className="fixed inset-0 pointer-events-none isolate overflow-hidden"
       >
-        {/* Animated Gradient Orbs */}
-        <div className="absolute w-[40rem] h-[40rem] -top-20 -left-20 rounded-full bg-[radial-gradient(circle,rgba(0,240,216,0.15)_0%,rgba(0,240,216,0.05)_50%,transparent_100%)] animate-pulse-slow" />
-        <div className="absolute w-[30rem] h-[30rem] top-1/4 right-0 rounded-full bg-[radial-gradient(circle,rgba(0,240,216,0.1)_0%,rgba(0,240,216,0.03)_50%,transparent_100%)] animate-float-slow" />
-        <div className="absolute w-[25rem] h-[25rem] bottom-0 left-1/3 rounded-full bg-[radial-gradient(circle,rgba(0,240,216,0.08)_0%,rgba(0,240,216,0.02)_50%,transparent_100%)] animate-float-delayed" />
-        
-        {/* Moving Gradient Lines */}
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00F0D8]/20 to-transparent animate-slide-right" />
-        <div className="absolute bottom-1/3 right-0 w-px h-full bg-gradient-to-b from-transparent via-[#00F0D8]/15 to-transparent animate-slide-up" />
-        
-        {/* CPU Architecture Animation */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-10 dark:opacity-20 pointer-events-none">
-          <div className="w-[800px] h-[400px] max-w-full max-h-full">
-            <CpuArchitecture 
-              className="w-full h-full text-[#00F0D8]" 
-              text="TECH"
-              animateText={true}
-              animateLines={true}
-              animateMarkers={true}
-              showCpuConnections={true}
-            />
-          </div>
-        </div>
-
-        {/* Subtle Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]" style={{
-          backgroundImage: `
-            linear-gradient(rgba(0,240,216,1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,240,216,1) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px'
-        }} />
+        <div className="floating-ball" />
       </div>
       <main className="overflow-hidden bg-background dark:bg-background">
         <section>
