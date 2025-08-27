@@ -366,52 +366,25 @@ export default function HeroSection() {
                     </motion.div>
                   </AnimatePresence>
 
-                  {/* Carousel Controls */}
+                  {/* Carousel Indicators */}
                   <motion.div 
-                    className="flex justify-center lg:justify-start items-center gap-4 mt-8"
+                    className="flex justify-center items-center gap-2 mt-8"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.8, duration: 0.4 }}
                   >
-                    {/* Navigation Arrows */}
-                    <div className="flex items-center gap-2">
+                    {slides.map((_, index) => (
                       <button
-                        onClick={prevSlide}
-                        className="p-2 rounded-full border border-muted-foreground/20 hover:border-[#00F0D8]/50 hover:bg-[#00F0D8]/5 transition-all duration-300 group"
-                        data-testid="carousel-prev"
-                      >
-                        <ChevronLeft className="w-4 h-4 text-muted-foreground group-hover:text-[#00F0D8] transition-colors duration-300" />
-                      </button>
-                      
-                      <button
-                        onClick={nextSlide}
-                        className="p-2 rounded-full border border-muted-foreground/20 hover:border-[#00F0D8]/50 hover:bg-[#00F0D8]/5 transition-all duration-300 group"
-                        data-testid="carousel-next"
-                      >
-                        <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-[#00F0D8] transition-colors duration-300" />
-                      </button>
-                    </div>
-
-                    {/* Indicators */}
-                    <div className="flex items-center gap-2">
-                      {slides.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => setCurrentSlide(index)}
-                          className={`h-2 rounded-full transition-all duration-300 ${
-                            index === currentSlide 
-                              ? 'w-8 bg-[#00F0D8]' 
-                              : 'w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                          }`}
-                          data-testid={`carousel-indicator-${index}`}
-                        />
-                      ))}
-                    </div>
-
-                    {/* Slide Counter */}
-                    <div className="text-sm text-muted-foreground">
-                      {currentSlide + 1} / {slides.length}
-                    </div>
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`h-2 rounded-full transition-all duration-300 ${
+                          index === currentSlide 
+                            ? 'w-8 bg-[#00F0D8]' 
+                            : 'w-2 bg-[#00F0D8]/30 hover:bg-[#00F0D8]/50'
+                        }`}
+                        data-testid={`carousel-indicator-${index}`}
+                      />
+                    ))}
                   </motion.div>
                 </div>
                 
