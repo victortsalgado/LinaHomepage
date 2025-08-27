@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   // Definir slides com conteúdo único
   const slides = [
@@ -206,12 +207,14 @@ export default function HeroSection() {
 
   // Auto-play do carrossel
   useEffect(() => {
+    if (isPaused) return;
+    
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000); // Muda a cada 5 segundos
 
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, [slides.length, isPaused]);
 
   const currentSlideData = slides[currentSlide];
 
@@ -278,7 +281,11 @@ export default function HeroSection() {
             />
             
             <div className="mx-auto max-w-7xl px-6">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div 
+                className="grid lg:grid-cols-2 gap-12 items-center"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+              >
                 {/* Left Column - Text Content */}
                 <div className="text-center lg:text-left">
                   <AnimatePresence mode="wait">
@@ -372,6 +379,8 @@ export default function HeroSection() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.8, duration: 0.4 }}
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
                   >
                     {slides.map((_, index) => (
                       <button
