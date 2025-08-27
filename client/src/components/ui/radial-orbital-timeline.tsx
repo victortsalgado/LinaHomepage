@@ -120,10 +120,8 @@ export default function RadialOrbitalTimeline({
     const y = radius * Math.sin(radian) + centerOffset.y;
 
     const zIndex = Math.round(100 + 50 * Math.cos(radian));
-    const opacity = Math.max(
-      0.4,
-      Math.min(1, 0.4 + 0.6 * ((1 + Math.sin(radian)) / 2))
-    );
+    // Removed opacity variation - keep all nodes fully visible
+    const opacity = 1;
 
     return { x, y, angle, zIndex, opacity };
   };
@@ -243,7 +241,7 @@ export default function RadialOrbitalTimeline({
                       : "border-[#00F0D8]/40"
                   }
                   transition-all duration-300 transform
-                  ${isExpanded ? "scale-150" : ""}
+                  ${isExpanded ? "scale-150" : "hover:scale-110 hover:bg-[#00F0D8] hover:border-[#00F0D8] hover:shadow-lg hover:shadow-[#00F0D8]/30"}
                 `}
                 >
                   <Icon size={16} />
