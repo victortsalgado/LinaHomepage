@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedGroup } from "@/components/ui/animated-group";
+import { CpuArchitecture } from "@/components/ui/cpu-architecture";
 
 export default function HeroSection() {
   return (
@@ -19,6 +20,20 @@ export default function HeroSection() {
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00F0D8]/20 to-transparent animate-slide-right" />
         <div className="absolute bottom-1/3 right-0 w-px h-full bg-gradient-to-b from-transparent via-[#00F0D8]/15 to-transparent animate-slide-up" />
         
+        {/* CPU Architecture Animation */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-10 dark:opacity-20 pointer-events-none">
+          <div className="w-[800px] h-[400px] max-w-full max-h-full">
+            <CpuArchitecture 
+              className="w-full h-full text-[#00F0D8]" 
+              text="TECH"
+              animateText={true}
+              animateLines={true}
+              animateMarkers={true}
+              showCpuConnections={true}
+            />
+          </div>
+        </div>
+
         {/* Subtle Grid Pattern */}
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]" style={{
           backgroundImage: `
