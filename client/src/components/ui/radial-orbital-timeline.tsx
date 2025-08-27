@@ -166,11 +166,15 @@ export default function RadialOrbitalTimeline({
           }}
         >
           {/* Open Finance Symbol in Center */}
-          <div className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-[#00F0D8] via-[#00F0D8] to-[#009999] animate-pulse flex items-center justify-center z-10 border-2 border-white/20">
-            <div className="absolute w-24 h-24 rounded-full border border-[#00F0D8]/20 animate-ping opacity-70"></div>
+          <div className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-[#00F0D8] via-[#00F0D8] to-[#009999] animate-pulse flex items-center justify-center z-10 border-2 border-white/20 shadow-lg shadow-[#00F0D8]/50">
+            <div className="absolute w-24 h-24 rounded-full border-2 border-[#00F0D8]/40 animate-ping opacity-80"></div>
             <div
-              className="absolute w-28 h-28 rounded-full border border-[#00F0D8]/10 animate-ping opacity-50"
+              className="absolute w-28 h-28 rounded-full border-2 border-[#00F0D8]/30 animate-ping opacity-60"
               style={{ animationDelay: "0.5s" }}
+            ></div>
+            <div
+              className="absolute w-32 h-32 rounded-full border border-[#00F0D8]/20 animate-ping opacity-40"
+              style={{ animationDelay: "1s" }}
             ></div>
             
             {/* Open Finance Official Symbol - Using provided image */}
@@ -183,7 +187,30 @@ export default function RadialOrbitalTimeline({
             </div>
           </div>
 
-          <div className="absolute w-[440px] h-[440px] rounded-full border border-[#00F0D8]/10"></div>
+          <div className="absolute w-[440px] h-[440px] rounded-full border-2 border-[#00F0D8]/20"></div>
+
+          {/* Connection Rays */}
+          {timelineData.map((item, index) => {
+            const position = calculateNodePosition(index, timelineData.length);
+            const angle = ((index / timelineData.length) * 360 + rotationAngle) % 360;
+            
+            return (
+              <div
+                key={`ray-${item.id}`}
+                className="absolute w-px bg-gradient-to-r from-[#00F0D8]/30 via-[#00F0D8]/60 to-transparent"
+                style={{
+                  height: '220px',
+                  transformOrigin: 'bottom center',
+                  transform: `rotate(${angle}deg)`,
+                  left: '50%',
+                  top: '50%',
+                  marginLeft: '-0.5px',
+                  marginTop: '-110px',
+                  opacity: 0.6,
+                }}
+              />
+            );
+          })}
 
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
