@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { University, CreditCard, TrendingUp, UserCheck, Database } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import dataLinkImage from "../../assets/data-link-image.png";
 
 export default function DataLinkSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
@@ -111,29 +112,14 @@ export default function DataLinkSection() {
               <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-2xl opacity-20"></div>
               <div className="absolute bottom-8 left-8 w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-400 rounded-full opacity-30"></div>
               
-              {/* Main image container with modern styling */}
-              <div className="relative bg-gradient-to-br from-teal-800 to-cyan-700 rounded-3xl overflow-hidden shadow-2xl">
-                {/* Professional woman using financial technology */}
+              {/* Data Link illustration */}
+              <div className="flex justify-center">
                 <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                  alt="Professional woman analyzing financial data" 
-                  className="w-full h-80 lg:h-96 object-cover object-center"
+                  src={dataLinkImage}
+                  alt="Professional woman with Data Link interface" 
+                  className="w-full max-w-md object-contain"
                   data-testid="img-data-link-main"
                 />
-                
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-teal-900/20 via-transparent to-transparent"></div>
-                
-                {/* Floating notification */}
-                <div 
-                  className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-lg"
-                  data-testid="card-floating-notification"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></div>
-                    <span className="text-xs font-medium text-gray-700">Conectado</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
