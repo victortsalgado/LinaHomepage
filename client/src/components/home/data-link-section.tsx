@@ -9,24 +9,24 @@ export default function DataLinkSection() {
 
   const features = [
     {
-      icon: University,
-      title: "Contas Bancárias",
+      title: "Contas bancárias",
       description: "Saldo, extrato, limite e transações"
     },
     {
-      icon: CreditCard,
-      title: "Cartões de Crédito",
-      description: "Faturas e lançamentos, limites"
+      title: "Operações de crédito",
+      description: "Adiantamento a depositante e direitos creditórios"
     },
     {
-      icon: TrendingUp,
-      title: "Investimentos",
-      description: "Renda fixa e variável, títulos públicos"
-    },
-    {
-      icon: UserCheck,
-      title: "Dados Cadastrais",
+      title: "Dados cadastrais",
       description: "Pessoa física e jurídica"
+    },
+    {
+      title: "Cartões de crédito",
+      description: "Faturas e lançamentos, limites contratados, utilizados e disponíveis"
+    },
+    {
+      title: "Investimentos",
+      description: "Renda fixa e variável, títulos públicos federais e fundos de investimento"
     }
   ];
 
@@ -37,96 +37,104 @@ export default function DataLinkSection() {
       data-testid="section-data-link"
     >
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
-          <div 
-            ref={contentRef}
-            className={`space-y-8 ${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
-          >
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 gradient-lina rounded-xl flex items-center justify-center">
-                <Database className="text-white" size={24} />
-              </div>
+        {/* Block Card Layout */}
+        <div className="bg-gradient-to-br from-white via-teal-50 to-cyan-100 rounded-3xl shadow-xl overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-0 items-center">
+            {/* Content */}
+            <div 
+              ref={contentRef}
+              className={`p-8 lg:p-12 ${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
+            >
+              {/* Title with gradient highlight */}
               <h2 
-                className="text-4xl font-bold text-lina-dark"
+                className="text-3xl lg:text-4xl font-bold mb-6 leading-tight"
                 data-testid="heading-data-link-title"
               >
-                Data Link
+                <span className="bg-gradient-to-r from-teal-600 to-cyan-500 bg-clip-text text-transparent">
+                  Integre dados financeiros
+                </span>
+                <br />
+                <span className="text-gray-800">
+                  para decisões e processos inteligentes
+                </span>
               </h2>
-            </div>
-            
-            <p 
-              className="text-xl text-gray-600 leading-relaxed"
-              data-testid="text-data-link-description"
-            >
-              Integre dados financeiros para decisões e processos inteligentes. Conecte dados financeiros em tempo real, diretamente do Open Finance.
-            </p>
-            
-            {/* Features Grid */}
-            <div className="grid md:grid-cols-2 gap-6">
-              {features.map((feature, index) => (
-                <div 
-                  key={feature.title}
-                  className={`bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow ${contentVisible ? `scroll-reveal-scale-in scroll-reveal-stagger-${(index % 4) + 1}` : 'scroll-reveal-hidden'}`}
-                  data-testid={`card-feature-${index}`}
-                >
-                  <div className="w-12 h-12 bg-lina-light rounded-xl flex items-center justify-center mb-4">
-                    <feature.icon className="text-lina-cyan text-xl" size={24} />
+              
+              {/* Subtitle with bold parts */}
+              <p 
+                className="text-lg text-gray-700 mb-8 leading-relaxed"
+                data-testid="text-data-link-description"
+              >
+                <span className="font-bold">Conecte dados financeiros em tempo real, diretamente do Open Finance</span>, conectando transações, saldos, limites, contratos de crédito, cartões, investimentos e muito mais!
+              </p>
+              
+              {/* Bullet Points List */}
+              <div className="space-y-4 mb-8">
+                {features.map((feature, index) => (
+                  <div 
+                    key={feature.title}
+                    className={`flex items-start gap-4 ${contentVisible ? `scroll-reveal-scale-in scroll-reveal-stagger-${(index % 5) + 1}` : 'scroll-reveal-hidden'}`}
+                    data-testid={`item-feature-${index}`}
+                  >
+                    <div className="w-3 h-3 bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h3 
+                        className="font-bold text-gray-800 mb-1"
+                        data-testid={`text-feature-title-${index}`}
+                      >
+                        {feature.title}
+                      </h3>
+                      <p 
+                        className="text-gray-600 text-sm"
+                        data-testid={`text-feature-description-${index}`}
+                      >
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 
-                    className="font-semibold text-lina-dark mb-2"
-                    data-testid={`text-feature-title-${index}`}
-                  >
-                    {feature.title}
-                  </h3>
-                  <p 
-                    className="text-gray-600 text-sm"
-                    data-testid={`text-feature-description-${index}`}
-                  >
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-            
-            <Button 
-              className="gradient-lina text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
-              data-testid="button-learn-data-link"
-            >
-              Conheça o Data Link
-            </Button>
-          </div>
-          
-          {/* Illustration */}
-          <div 
-            ref={imageRef}
-            className={`relative ${imageVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
-          >
-            {/* Professional woman using financial technology */}
-            <img 
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-              alt="Professional woman analyzing financial data on multiple screens" 
-              className="rounded-2xl shadow-2xl w-full"
-              data-testid="img-data-link-main"
-            />
-            
-            {/* Floating Cards */}
-            <div 
-              className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl animate-float"
-              data-testid="card-floating-sync"
-            >
-              <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span className="text-sm font-semibold">Dados Sincronizados</span>
+                ))}
               </div>
+              
+              <Button 
+                className="gradient-lina text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+                data-testid="button-learn-data-link"
+              >
+                Conheça o Data Link
+              </Button>
             </div>
             
+            {/* Image */}
             <div 
-              className="absolute -bottom-6 -left-6 gradient-lina text-white p-4 rounded-xl shadow-xl animate-float-delayed"
-              data-testid="card-floating-institutions"
+              ref={imageRef}
+              className={`relative p-8 lg:p-12 ${imageVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
             >
-              <div className="text-2xl font-bold">50+</div>
-              <div className="text-sm">Instituições Conectadas</div>
+              {/* Modern geometric elements */}
+              <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-2xl opacity-20"></div>
+              <div className="absolute bottom-8 left-8 w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-400 rounded-full opacity-30"></div>
+              
+              {/* Main image container with modern styling */}
+              <div className="relative bg-gradient-to-br from-teal-800 to-cyan-700 rounded-3xl overflow-hidden shadow-2xl">
+                {/* Professional woman using financial technology */}
+                <img 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                  alt="Professional woman analyzing financial data" 
+                  className="w-full h-80 lg:h-96 object-cover object-center"
+                  data-testid="img-data-link-main"
+                />
+                
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-900/20 via-transparent to-transparent"></div>
+                
+                {/* Floating notification */}
+                <div 
+                  className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-lg"
+                  data-testid="card-floating-notification"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></div>
+                    <span className="text-xs font-medium text-gray-700">Conectado</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
