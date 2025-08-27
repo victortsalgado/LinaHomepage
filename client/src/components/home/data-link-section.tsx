@@ -127,7 +127,7 @@ export default function DataLinkSection() {
                   <img 
                     src={datalinkAnimation}
                     alt="DataLink animated logo" 
-                    className="w-full h-full object-cover rounded-xl pl-[0px] pr-[0px] ml-[-97px] mr-[-97px] mt-[-34px] mb-[-34px]"
+                    className="w-full h-full object-cover rounded-xl pl-[0px] pr-[0px] ml-[-62px] mr-[-62px] mt-[-77px] mb-[-77px]"
                     data-testid="img-datalink-animation"
                   />
                 </div>
