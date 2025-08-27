@@ -195,28 +195,6 @@ export default function RadialOrbitalTimeline({
 
           <div className="absolute w-[440px] h-[440px] rounded-full border-2 border-[#00F0D8]/30 shadow-lg shadow-[#00F0D8]/20"></div>
 
-          {/* Connection Rays */}
-          {timelineData.map((item, index) => {
-            const position = calculateNodePosition(index, timelineData.length);
-            const angle = ((index / timelineData.length) * 360 + rotationAngle) % 360;
-            
-            return (
-              <div
-                key={`ray-${item.id}`}
-                className="absolute w-px bg-gradient-to-r from-[#00F0D8]/80 via-[#00F0D8]/60 to-[#00F0D8]/30"
-                style={{
-                  height: '200px',
-                  transformOrigin: '50% 100%',
-                  transform: `rotate(${angle}deg) translate(-50%, 0)`,
-                  left: '50%',
-                  top: '50%',
-                  marginTop: '-200px',
-                  opacity: 0.9,
-                }}
-              />
-            );
-          })}
-
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
             const isExpanded = expandedItems[item.id];
