@@ -101,7 +101,7 @@ export default function DataLinkSection() {
                           : ''
                       }`}
                       style={{
-                        animationDelay: index === 0 ? '0.1s' : `${0.9 + (index * 0.8)}s`
+                        animationDelay: index === 0 ? '0.1s' : `${1.2 + (index * 0.8)}s`
                       }}
                     >
                       <div className="relative z-10 w-4 h-4 bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
