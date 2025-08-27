@@ -1,8 +1,67 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Database, CreditCard, Shield, Smartphone, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedGroup } from "@/components/ui/animated-group";
+import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
 
 export default function HeroSection() {
+  const linaTimelineData = [
+    {
+      id: 1,
+      title: "Data Link",
+      date: "2024",
+      content: "Integração completa com Open Finance para dados bancários e de investimento em tempo real.",
+      category: "Dados",
+      icon: Database,
+      relatedIds: [2, 3],
+      status: "completed" as const,
+      energy: 100,
+    },
+    {
+      id: 2,
+      title: "Lina Pay",
+      date: "2024",
+      content: "PIX Automático e PIX Biometria para pagamentos inovadores e seguros.",
+      category: "Pagamentos",
+      icon: CreditCard,
+      relatedIds: [1, 4],
+      status: "completed" as const,
+      energy: 95,
+    },
+    {
+      id: 3,
+      title: "Open Finance",
+      date: "2024",
+      content: "Plataforma completa para entidades reguladas com conformidade total do Bacen.",
+      category: "Regulamentação",
+      icon: Shield,
+      relatedIds: [1, 5],
+      status: "in-progress" as const,
+      energy: 80,
+    },
+    {
+      id: 4,
+      title: "JSR",
+      date: "2024",
+      content: "Jornada Sem Redirecionamento com biometria FIDO2 para experiência superior.",
+      category: "Experiência",
+      icon: Smartphone,
+      relatedIds: [2, 5],
+      status: "in-progress" as const,
+      energy: 75,
+    },
+    {
+      id: 5,
+      title: "Analytics",
+      date: "2024",
+      content: "Insights avançados e monitoramento em tempo real para tomada de decisões.",
+      category: "Inteligência",
+      icon: TrendingUp,
+      relatedIds: [3, 4],
+      status: "pending" as const,
+      energy: 60,
+    },
+  ];
+
   return (
     <>
       {/* Simple Floating Ball Background */}
@@ -58,7 +117,9 @@ export default function HeroSection() {
             />
             
             <div className="mx-auto max-w-7xl px-6">
-              <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Left Column - Text Content */}
+                <div className="text-center lg:text-left">
                 <AnimatedGroup 
                   variants={{
                     container: {
@@ -182,6 +243,12 @@ export default function HeroSection() {
                     </div>
                   </Button>
                 </AnimatedGroup>
+                </div>
+                
+                {/* Right Column - Orbital Animation */}
+                <div className="hidden lg:block h-[600px]">
+                  <RadialOrbitalTimeline timelineData={linaTimelineData} />
+                </div>
               </div>
             </div>
 
