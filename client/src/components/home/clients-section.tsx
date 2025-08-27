@@ -26,8 +26,8 @@ export default function ClientsSection() {
           
           <div className="relative py-6 md:w-[calc(100%-11rem)]">
             <InfiniteSlider
-              durationOnHover={15}
-              duration={25}
+              durationOnHover={30}
+              duration={8}
               gap={64}
             >
               {clients.map((client, index) => (
