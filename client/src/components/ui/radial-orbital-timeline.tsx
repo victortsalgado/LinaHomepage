@@ -180,7 +180,7 @@ export default function RadialOrbitalTimeline({
               <img 
                 src="/open-finance-logo.png" 
                 alt="Open Finance Symbol" 
-                className="w-full h-full object-contain filter invert"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
