@@ -1,6 +1,5 @@
-import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import HeroSection from "@/components/home/hero-section";
+import { HeroSection } from "@/components/ui/hero-section-3";
 import DataLinkSection from "@/components/home/data-link-section";
 import LinaPaySection from "@/components/home/lina-pay-section";
 import RegulatedEntitiesSection from "@/components/home/regulated-entities-section";
@@ -9,21 +8,18 @@ import BlogSection from "@/components/home/blog-section";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-background dark:bg-background relative">
       {/* Animated Blur Background */}
       <div className="floating-blur"></div>
       
       {/* Content Layer */}
       <div className="content-layer">
-        <Header />
-        <main>
-          <HeroSection />
-          <DataLinkSection />
-          <LinaPaySection />
-          <RegulatedEntitiesSection />
-          <ClientsSection />
-          <BlogSection />
-        </main>
+        <HeroSection />
+        <DataLinkSection />
+        <LinaPaySection />
+        <RegulatedEntitiesSection />
+        <ClientsSection />
+        <BlogSection />
         <Footer />
       </div>
     </div>
