@@ -218,7 +218,7 @@ export default function HeroSection() {
                       },
                     },
                   }}
-                  className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
+                  className="mt-12 flex flex-col items-start justify-start gap-2 md:flex-row"
                 >
                   <Button
                     size="lg"
