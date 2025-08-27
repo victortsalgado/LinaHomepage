@@ -70,14 +70,17 @@ export default function DataLinkSection() {
               </p>
               
               {/* Bullet Points List */}
-              <div className="space-y-6 mb-8">
+              <div className="relative space-y-6 mb-8">
+                {/* Vertical connecting line */}
+                <div className="absolute left-2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-teal-500 to-cyan-400"></div>
+                
                 {features.map((feature, index) => (
                   <div 
                     key={feature.title}
-                    className={`flex items-start gap-4 ${contentVisible ? `scroll-reveal-scale-in scroll-reveal-stagger-${(index % 5) + 1}` : 'scroll-reveal-hidden'}`}
+                    className={`relative flex items-start gap-4 ${contentVisible ? `scroll-reveal-scale-in scroll-reveal-stagger-${(index % 5) + 1}` : 'scroll-reveal-hidden'}`}
                     data-testid={`item-feature-${index}`}
                   >
-                    <div className="w-4 h-4 bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
+                    <div className="relative z-10 w-4 h-4 bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
                     <div className="flex-1">
                       <h3 
                         className="font-bold text-teal-600 mb-1 text-base"
