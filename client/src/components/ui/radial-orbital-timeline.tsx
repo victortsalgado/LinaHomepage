@@ -205,13 +205,12 @@ export default function RadialOrbitalTimeline({
                 key={`ray-${item.id}`}
                 className="absolute w-px bg-gradient-to-r from-[#00F0D8]/80 via-[#00F0D8]/60 to-[#00F0D8]/30"
                 style={{
-                  height: '220px',
-                  transformOrigin: 'bottom center',
-                  transform: `rotate(${angle}deg)`,
+                  height: '200px',
+                  transformOrigin: '50% 100%',
+                  transform: `rotate(${angle}deg) translate(-50%, 0)`,
                   left: '50%',
                   top: '50%',
-                  marginLeft: '-0.5px',
-                  marginTop: '-110px',
+                  marginTop: '-200px',
                   opacity: 0.9,
                 }}
               />
