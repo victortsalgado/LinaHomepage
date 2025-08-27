@@ -208,7 +208,7 @@ export default function HeroSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000); // Muda a cada 6 segundos
+    }, 5000); // Muda a cada 5 segundos
 
     return () => clearInterval(interval);
   }, [slides.length]);
