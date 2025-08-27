@@ -74,28 +74,46 @@ export default function DataLinkSection() {
                 {features.map((feature, index) => (
                   <div 
                     key={feature.title}
-                    className={`relative flex items-start gap-4 ${contentVisible ? `scroll-reveal-scale-in scroll-reveal-stagger-${(index % 5) + 1}` : 'scroll-reveal-hidden'}`}
+                    className="relative"
                     data-testid={`item-feature-${index}`}
                   >
-                    {/* Vertical connecting line for this item */}
+                    {/* Vertical connecting line appears after this bullet point */}
                     {index < features.length - 1 && (
-                      <div className={`absolute left-2 top-6 w-0.5 h-6 bg-gradient-to-b from-teal-500 to-cyan-400 transition-all duration-700 ${contentVisible ? `scroll-reveal-stagger-${(index % 5) + 2}` : 'opacity-0'}`}></div>
+                      <div 
+                        className={`absolute left-2 top-6 w-0.5 h-6 bg-gradient-to-b from-teal-500 to-cyan-400 ${
+                          contentVisible 
+                            ? `scroll-reveal-line-stagger-${index + 1}` 
+                            : 'opacity-0'
+                        }`}
+                        style={{
+                          transformOrigin: 'top'
+                        }}
+                      ></div>
                     )}
                     
-                    <div className="relative z-10 w-4 h-4 bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
-                    <div className="flex-1">
-                      <h3 
-                        className="font-bold text-teal-600 mb-1 text-base"
-                        data-testid={`text-feature-title-${index}`}
-                      >
-                        {feature.title}
-                      </h3>
-                      <p 
-                        className="text-gray-700 text-sm leading-relaxed"
-                        data-testid={`text-feature-description-${index}`}
-                      >
-                        {feature.description}
-                      </p>
+                    {/* Bullet point */}
+                    <div 
+                      className={`flex items-start gap-4 ${
+                        contentVisible 
+                          ? `scroll-reveal-scale-in ${index === 0 ? 'scroll-reveal-stagger-1' : `scroll-reveal-stagger-${index + 2}`}` 
+                          : 'scroll-reveal-hidden'
+                      }`}
+                    >
+                      <div className="relative z-10 w-4 h-4 bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
+                      <div className="flex-1">
+                        <h3 
+                          className="font-bold text-teal-600 mb-1 text-base"
+                          data-testid={`text-feature-title-${index}`}
+                        >
+                          {feature.title}
+                        </h3>
+                        <p 
+                          className="text-gray-700 text-sm leading-relaxed"
+                          data-testid={`text-feature-description-${index}`}
+                        >
+                          {feature.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}
