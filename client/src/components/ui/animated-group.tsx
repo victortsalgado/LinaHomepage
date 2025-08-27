@@ -44,7 +44,7 @@ const defaultVariants = {
 
 export function AnimatedGroup({
   children,
-  variants = defaultVariants,
+  variants,
   className,
   initial = 'hidden',
   animate = 'visible',
@@ -52,7 +52,7 @@ export function AnimatedGroup({
   delay = 0,
   ...props
 }: AnimatedGroupProps) {
-  const mergedVariants = { ...defaultVariants, ...variants }
+  const mergedVariants = variants || defaultVariants
 
   return (
     <motion.div

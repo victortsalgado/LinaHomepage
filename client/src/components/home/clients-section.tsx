@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
 
 export default function ClientsSection() {
   const clients = [
@@ -17,7 +18,33 @@ export default function ClientsSection() {
       className="bg-background pb-16 pt-16 md:pb-32"
       data-testid="section-clients"
     >
-      <div className="group relative m-auto max-w-5xl px-6">
+      <div className="group relative m-auto max-w-6xl px-6">
+        <div className="flex flex-col items-center md:flex-row">
+          <div className="inline md:max-w-44 md:border-r md:pr-6">
+            <p className="text-end text-sm text-muted-foreground">Confiando em nossas soluções</p>
+          </div>
+          
+          <div className="relative py-6 md:w-[calc(100%-11rem)]">
+            <InfiniteSlider
+              durationOnHover={20}
+              duration={40}
+              gap={112}
+            >
+              {clients.map((client, index) => (
+                <div key={client} className="flex" data-testid={`logo-client-${index}`}>
+                  <div className="mx-auto h-5 w-fit dark:invert bg-gray-200 dark:bg-zinc-700 rounded px-3 py-2 flex items-center justify-center">
+                    <span className="text-xs font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">{client}</span>
+                  </div>
+                </div>
+              ))}
+            </InfiniteSlider>
+            
+            {/* Gradient overlays for smooth fade effect */}
+            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+          </div>
+        </div>
+        
         {/* Hover Overlay */}
         <div className="absolute inset-0 z-10 flex scale-95 items-center justify-center opacity-0 duration-500 group-hover:scale-100 group-hover:opacity-100">
           <a
@@ -28,17 +55,6 @@ export default function ClientsSection() {
             <span>Conheça Nossos Clientes</span>
             <ChevronRight className="ml-1 inline-block size-3" />
           </a>
-        </div>
-        
-        {/* Clients Grid */}
-        <div className="group-hover:blur-xs mx-auto mt-12 grid max-w-2xl grid-cols-4 gap-x-12 gap-y-8 transition-all duration-500 group-hover:opacity-50 sm:gap-x-16 sm:gap-y-14">
-          {clients.map((client, index) => (
-            <div key={client} className="flex" data-testid={`logo-client-${index}`}>
-              <div className="mx-auto h-5 w-fit dark:invert bg-gray-200 dark:bg-zinc-700 rounded px-3 py-2 flex items-center justify-center">
-                <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{client}</span>
-              </div>
-            </div>
-          ))}
         </div>
         
         {/* Background effect */}
