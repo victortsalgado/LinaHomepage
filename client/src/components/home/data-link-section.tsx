@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { University, CreditCard, TrendingUp, UserCheck, Database } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import dataLinkImage from "../../assets/data-link-image.png";
+import datalinkAnimation from "../../assets/datalink-animation.gif";
 
 export default function DataLinkSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
@@ -113,13 +114,23 @@ export default function DataLinkSection() {
               <div className="absolute bottom-8 left-8 w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-400 rounded-full opacity-30"></div>
               
               {/* Data Link illustration */}
-              <div className="flex justify-center">
+              <div className="flex justify-center relative">
                 <img 
                   src={dataLinkImage}
                   alt="Professional woman with Data Link interface" 
                   className="w-full max-w-md object-contain"
                   data-testid="img-data-link-main"
                 />
+                
+                {/* Animated DataLink logo positioned over the green square */}
+                <div className="absolute top-[8%] right-[8%] w-16 h-16 lg:w-20 lg:h-20">
+                  <img 
+                    src={datalinkAnimation}
+                    alt="DataLink animated logo" 
+                    className="w-full h-full object-contain"
+                    data-testid="img-datalink-animation"
+                  />
+                </div>
               </div>
             </div>
           </div>
