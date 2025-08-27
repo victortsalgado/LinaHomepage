@@ -175,16 +175,33 @@ export default function RadialOrbitalTimeline({
               style={{ animationDelay: "0.5s" }}
             ></div>
             
-            {/* Open Finance Icon - Network/Connection Symbol */}
-            <div className="relative w-10 h-10 flex items-center justify-center">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Workflow size={24} className="text-white drop-shadow-lg" />
+            {/* Open Finance Official Symbol */}
+            <div className="relative w-8 h-8 flex items-center justify-center">
+              <div className="relative w-full h-full">
+                {/* Center circle */}
+                <div className="absolute inset-[30%] rounded-full bg-white"></div>
+                
+                {/* Outer ring segments */}
+                <div className="absolute inset-0 rounded-full" style={{
+                  background: `conic-gradient(
+                    white 0deg 45deg,
+                    transparent 45deg 60deg,
+                    white 60deg 105deg,
+                    transparent 105deg 120deg,
+                    white 120deg 165deg,
+                    transparent 165deg 180deg,
+                    white 180deg 225deg,
+                    transparent 225deg 240deg,
+                    white 240deg 285deg,
+                    transparent 285deg 300deg,
+                    white 300deg 345deg,
+                    transparent 345deg 360deg
+                  )`
+                }}></div>
+                
+                {/* Inner ring - creates the gap */}
+                <div className="absolute inset-[20%] rounded-full bg-gradient-to-br from-[#00F0D8] via-[#00F0D8] to-[#009999]"></div>
               </div>
-              {/* Small accent dots around the icon to represent interconnectedness */}
-              <div className="absolute -top-1 -left-1 w-2 h-2 rounded-full bg-white/60 animate-pulse" style={{ animationDelay: "0s" }}></div>
-              <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-white/60 animate-pulse" style={{ animationDelay: "0.3s" }}></div>
-              <div className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full bg-white/60 animate-pulse" style={{ animationDelay: "0.6s" }}></div>
-              <div className="absolute -bottom-1 -right-1 w-2 h-2 rounded-full bg-white/60 animate-pulse" style={{ animationDelay: "0.9s" }}></div>
             </div>
           </div>
 
