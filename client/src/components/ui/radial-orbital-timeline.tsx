@@ -201,36 +201,20 @@ export default function RadialOrbitalTimeline({
             const angle = ((index / timelineData.length) * 360 + rotationAngle) % 360;
             
             return (
-              <div key={`ray-container-${item.id}`} className="absolute inset-0">
-                {/* Main Ray */}
-                <div
-                  className="absolute w-0.5 bg-gradient-to-r from-[#00F0D8]/70 via-[#00F0D8]/40 to-transparent"
-                  style={{
-                    height: '200px',
-                    transformOrigin: 'bottom center',
-                    transform: `rotate(${angle}deg)`,
-                    left: '50%',
-                    top: '50%',
-                    marginLeft: '-1px',
-                    marginTop: '-100px',
-                    opacity: 0.8,
-                  }}
-                />
-                {/* Glow Effect */}
-                <div
-                  className="absolute w-1 bg-gradient-to-r from-[#00F0D8]/20 via-[#00F0D8]/10 to-transparent blur-sm"
-                  style={{
-                    height: '200px',
-                    transformOrigin: 'bottom center',
-                    transform: `rotate(${angle}deg)`,
-                    left: '50%',
-                    top: '50%',
-                    marginLeft: '-2px',
-                    marginTop: '-100px',
-                    opacity: 0.6,
-                  }}
-                />
-              </div>
+              <div
+                key={`ray-${item.id}`}
+                className="absolute w-px bg-gradient-to-r from-[#00F0D8]/80 via-[#00F0D8]/60 to-[#00F0D8]/30"
+                style={{
+                  height: '220px',
+                  transformOrigin: 'bottom center',
+                  transform: `rotate(${angle}deg)`,
+                  left: '50%',
+                  top: '50%',
+                  marginLeft: '-0.5px',
+                  marginTop: '-110px',
+                  opacity: 0.9,
+                }}
+              />
             );
           })}
 
