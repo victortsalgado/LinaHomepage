@@ -1,7 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Shield, Code, Smartphone, BarChart, Headphones, Settings, Building } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export default function RegulatedEntitiesSection() {
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
+  const { ref: contentRef, isVisible: contentVisible } = useScrollReveal<HTMLDivElement>();
+  const { ref: featuresRef, isVisible: featuresVisible } = useScrollReveal<HTMLDivElement>();
+
   const features = [
     {
       icon: Shield,
@@ -37,6 +42,7 @@ export default function RegulatedEntitiesSection() {
 
   return (
     <section 
+      ref={sectionRef}
       className="py-20 gradient-dark text-white relative overflow-hidden"
       data-testid="section-regulated-entities"
     >
@@ -48,7 +54,10 @@ export default function RegulatedEntitiesSection() {
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
-          <div className="space-y-8">
+          <div 
+            ref={contentRef}
+            className={`space-y-8 ${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
+          >
             <div className="flex items-center space-x-3">
               <div className="w-12 h-12 bg-lina-cyan rounded-xl flex items-center justify-center">
                 <Building className="text-lina-dark" size={24} />
@@ -87,7 +96,10 @@ export default function RegulatedEntitiesSection() {
           </div>
           
           {/* Features List */}
-          <div className="space-y-6">
+          <div 
+            ref={featuresRef}
+            className="space-y-6"
+          >
             <h3 
               className="text-2xl font-bold mb-8"
               data-testid="heading-open-finance-title"
@@ -99,7 +111,7 @@ export default function RegulatedEntitiesSection() {
               {features.map((feature, index) => (
                 <div 
                   key={feature.title}
-                  className="flex items-start space-x-4 bg-white/5 p-4 rounded-xl"
+                  className={`flex items-start space-x-4 bg-white/5 p-4 rounded-xl ${featuresVisible ? `scroll-reveal-slide-left scroll-reveal-stagger-${(index % 5) + 1}` : 'scroll-reveal-hidden'}`}
                   data-testid={`card-regulated-feature-${index}`}
                 >
                   <div className="w-8 h-8 bg-lina-cyan rounded-lg flex items-center justify-center flex-shrink-0">

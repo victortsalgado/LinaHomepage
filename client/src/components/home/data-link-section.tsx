@@ -1,7 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { University, CreditCard, TrendingUp, UserCheck, Database } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export default function DataLinkSection() {
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
+  const { ref: contentRef, isVisible: contentVisible } = useScrollReveal<HTMLDivElement>();
+  const { ref: imageRef, isVisible: imageVisible } = useScrollReveal<HTMLDivElement>();
+
   const features = [
     {
       icon: University,
@@ -27,13 +32,17 @@ export default function DataLinkSection() {
 
   return (
     <section 
+      ref={sectionRef}
       className="py-20 bg-gray-50"
       data-testid="section-data-link"
     >
       <div className="container mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
-          <div className="space-y-8">
+          <div 
+            ref={contentRef}
+            className={`space-y-8 ${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
+          >
             <div className="flex items-center space-x-3">
               <div className="w-12 h-12 gradient-lina rounded-xl flex items-center justify-center">
                 <Database className="text-white" size={24} />
@@ -58,7 +67,7 @@ export default function DataLinkSection() {
               {features.map((feature, index) => (
                 <div 
                   key={feature.title}
-                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow"
+                  className={`bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow ${contentVisible ? `scroll-reveal-scale-in scroll-reveal-stagger-${(index % 4) + 1}` : 'scroll-reveal-hidden'}`}
                   data-testid={`card-feature-${index}`}
                 >
                   <div className="w-12 h-12 bg-lina-light rounded-xl flex items-center justify-center mb-4">
@@ -89,7 +98,10 @@ export default function DataLinkSection() {
           </div>
           
           {/* Illustration */}
-          <div className="relative">
+          <div 
+            ref={imageRef}
+            className={`relative ${imageVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
+          >
             {/* Professional woman using financial technology */}
             <img 
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 

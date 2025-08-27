@@ -1,7 +1,10 @@
 import { ChevronRight } from "lucide-react";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export default function ClientsSection() {
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
+
   const clients = [
     "Prudential",
     "Semear", 
@@ -15,7 +18,8 @@ export default function ClientsSection() {
 
   return (
     <section 
-      className="bg-background pb-16 pt-16 md:pb-32"
+      ref={sectionRef}
+      className={`bg-background pb-16 pt-16 md:pb-32 ${sectionVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
       data-testid="section-clients"
     >
       <div className="relative m-auto max-w-6xl px-6">

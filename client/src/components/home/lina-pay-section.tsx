@@ -1,14 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { RefreshCw, Fingerprint, ArrowRight, CreditCard } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export default function LinaPaySection() {
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal<HTMLDivElement>();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal<HTMLDivElement>();
+
   return (
     <section 
+      ref={sectionRef}
       className="py-20 bg-white"
       data-testid="section-lina-pay"
     >
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 ${headerVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
+        >
           <div className="flex items-center justify-center space-x-3 mb-6">
             <div className="w-16 h-16 gradient-lina rounded-2xl flex items-center justify-center">
               <CreditCard className="text-white" size={32} />
@@ -28,10 +37,13 @@ export default function LinaPaySection() {
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div 
+          ref={cardsRef}
+          className="grid lg:grid-cols-2 gap-12"
+        >
           {/* PIX Automático Card */}
           <div 
-            className="bg-gradient-to-br from-lina-light to-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+            className={`bg-gradient-to-br from-lina-light to-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ${cardsVisible ? 'scroll-reveal-slide-up scroll-reveal-stagger-1' : 'scroll-reveal-hidden'}`}
             data-testid="card-pix-automatico"
           >
             <div className="w-16 h-16 gradient-lina rounded-2xl flex items-center justify-center mb-6">
@@ -57,7 +69,7 @@ export default function LinaPaySection() {
           
           {/* PIX Biometria Card */}
           <div 
-            className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+            className={`bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ${cardsVisible ? 'scroll-reveal-slide-up scroll-reveal-stagger-2' : 'scroll-reveal-hidden'}`}
             data-testid="card-pix-biometria"
           >
             <div className="w-16 h-16 gradient-dark rounded-2xl flex items-center justify-center mb-6">
