@@ -224,7 +224,7 @@ export default function RadialOrbitalTimeline({
 
                 <div
                   className={`
-                  w-10 h-10 rounded-full flex items-center justify-center
+                  w-12 h-12 rounded-full flex items-center justify-center
                   ${
                     isExpanded
                       ? "bg-white text-[#009999]"
@@ -244,7 +244,7 @@ export default function RadialOrbitalTimeline({
                   ${isExpanded ? "scale-150" : "hover:scale-110 hover:bg-[#00F0D8] hover:border-[#00F0D8] hover:shadow-lg hover:shadow-[#00F0D8]/30"}
                 `}
                 >
-                  <Icon size={16} />
+                  <Icon size={20} />
                 </div>
 
                 <div
