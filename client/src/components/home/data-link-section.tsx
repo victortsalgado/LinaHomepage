@@ -95,10 +95,10 @@ export default function DataLinkSection() {
                     
                     {/* Bullet point */}
                     <div 
-                      className={`flex items-start gap-4 ${
+                      className={`flex items-start gap-4 scroll-reveal-hidden ${
                         contentVisible 
                           ? 'scroll-reveal-scale-in'
-                          : 'scroll-reveal-hidden'
+                          : ''
                       }`}
                       style={{
                         animationDelay: index === 0 ? '0.1s' : `${0.9 + (index * 0.8)}s`
