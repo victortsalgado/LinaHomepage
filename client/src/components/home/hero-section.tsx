@@ -246,7 +246,7 @@ export default function HeroSection() {
                 </div>
                 
                 {/* Right Column - Orbital Animation */}
-                <div className="hidden lg:block h-[600px]">
+                <div className="hidden lg:block h-[800px] w-full">
                   <RadialOrbitalTimeline timelineData={linaTimelineData} />
                 </div>
               </div>

@@ -113,7 +113,7 @@ export default function RadialOrbitalTimeline({
 
   const calculateNodePosition = (index: number, total: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
-    const radius = 200;
+    const radius = 280;
     const radian = (angle * Math.PI) / 180;
 
     const x = radius * Math.cos(radian) + centerOffset.x;
@@ -158,7 +158,7 @@ export default function RadialOrbitalTimeline({
       ref={containerRef}
       onClick={handleContainerClick}
     >
-      <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
+      <div className="relative w-full max-w-5xl h-full flex items-center justify-center">
         <div
           className="absolute w-full h-full flex items-center justify-center"
           ref={orbitRef}
@@ -168,15 +168,15 @@ export default function RadialOrbitalTimeline({
           }}
         >
           {/* Open Finance Symbol in Center */}
-          <div className="absolute w-16 h-16 rounded-full bg-gradient-to-br from-[#00F0D8] via-[#00F0D8] to-[#009999] animate-pulse flex items-center justify-center z-10 border-2 border-white/20">
-            <div className="absolute w-20 h-20 rounded-full border border-[#00F0D8]/20 animate-ping opacity-70"></div>
+          <div className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-[#00F0D8] via-[#00F0D8] to-[#009999] animate-pulse flex items-center justify-center z-10 border-2 border-white/20">
+            <div className="absolute w-24 h-24 rounded-full border border-[#00F0D8]/20 animate-ping opacity-70"></div>
             <div
-              className="absolute w-24 h-24 rounded-full border border-[#00F0D8]/10 animate-ping opacity-50"
+              className="absolute w-28 h-28 rounded-full border border-[#00F0D8]/10 animate-ping opacity-50"
               style={{ animationDelay: "0.5s" }}
             ></div>
             
             {/* Open Finance Official Symbol - Using provided image */}
-            <div className="relative w-8 h-8 flex items-center justify-center">
+            <div className="relative w-10 h-10 flex items-center justify-center">
               <img 
                 src="/open-finance-logo.png" 
                 alt="Open Finance Symbol" 
@@ -185,7 +185,7 @@ export default function RadialOrbitalTimeline({
             </div>
           </div>
 
-          <div className="absolute w-96 h-96 rounded-full border border-[#00F0D8]/10"></div>
+          <div className="absolute w-[560px] h-[560px] rounded-full border border-[#00F0D8]/10"></div>
 
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
