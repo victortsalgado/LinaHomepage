@@ -118,7 +118,7 @@ export default function DataLinkSection() {
                 <img 
                   src={dataLinkImage}
                   alt="Professional woman with Data Link interface" 
-                  className="w-full max-w-md object-contain"
+                  className="w-full max-w-md object-contain mt-[-5px] mb-[-5px] ml-[0px] mr-[0px] pl-[2px] pr-[2px]"
                   data-testid="img-data-link-main"
                 />
                 
@@ -127,7 +127,7 @@ export default function DataLinkSection() {
                   <img 
                     src={datalinkAnimation}
                     alt="DataLink animated logo" 
-                    className="w-full h-full object-cover rounded-xl pl-[0px] pr-[0px] ml-[-61px] mr-[-61px] mt-[-77px] mb-[-77px]"
+                    className="w-full h-full object-cover rounded-xl pl-[0px] pr-[0px] ml-[-97px] mr-[-97px] mt-[-34px] mb-[-34px]"
                     data-testid="img-datalink-animation"
                   />
                 </div>
