@@ -16,7 +16,7 @@ export default function LinaPaySection() {
         {/* Lina Pay Block */}
         <div 
           ref={blockRef}
-          className={`max-w-4xl mx-auto bg-gradient-to-br from-emerald-900 via-teal-800 to-emerald-800 rounded-3xl p-8 relative overflow-hidden ${blockVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
+          className={`bg-gradient-to-br from-emerald-900 via-teal-800 to-emerald-800 rounded-3xl p-8 lg:p-12 relative overflow-hidden ${blockVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
         >
           {/* Decorative shapes */}
           <div className="absolute top-6 right-6 w-24 h-24 border-2 border-emerald-400 rounded-2xl opacity-20 transform rotate-12"></div>
