@@ -40,7 +40,7 @@ export default function DataLinkSection() {
     >
       <div className="container mx-auto px-6 lg:px-8">
         {/* Block Card Layout */}
-        <div className="bg-gradient-to-br from-white via-teal-50 to-cyan-100 rounded-3xl shadow-xl overflow-hidden">
+        <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm">
           <div className="grid lg:grid-cols-2 gap-0 items-center">
             {/* Content */}
             <div 
