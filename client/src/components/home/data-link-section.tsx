@@ -125,9 +125,10 @@ export default function DataLinkSection() {
               </div>
               
               <Button 
-                className="gradient-lina text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+                className="btn-lina-light"
                 data-testid="button-learn-data-link"
               >
+                <span>→</span>
                 Conheça o Data Link
               </Button>
             </div>
