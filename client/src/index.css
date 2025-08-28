@@ -246,69 +246,81 @@
   /* Simple Floating Ball */
   @keyframes floatingBall {
     0% {
-      transform: translate(-50%, -50%) translateX(-40vw) translateY(-100px);
+      transform: translate(-50%, -50%) translateX(-45vw) translateY(-30vh);
       opacity: 0.3;
     }
     25% {
-      transform: translate(-50%, -50%) translateX(30vw) translateY(-200px);
+      transform: translate(-50%, -50%) translateX(20vw) translateY(15vh);
       opacity: 0.4;
     }
     50% {
-      transform: translate(-50%, -50%) translateX(45vw) translateY(100px);
+      transform: translate(-50%, -50%) translateX(40vw) translateY(-20vh);
       opacity: 0.3;
     }
     75% {
-      transform: translate(-50%, -50%) translateX(-25vw) translateY(150px);
+      transform: translate(-50%, -50%) translateX(-15vw) translateY(25vh);
       opacity: 0.4;
     }
     100% {
-      transform: translate(-50%, -50%) translateX(-40vw) translateY(-100px);
+      transform: translate(-50%, -50%) translateX(-45vw) translateY(-30vh);
       opacity: 0.3;
     }
   }
 
   @keyframes floatingBall2 {
     0% {
-      transform: translate(-50%, -50%) translateX(35vw) translateY(200px);
+      transform: translate(-50%, -50%) translateX(0vw) translateY(35vh);
       opacity: 0.25;
     }
-    25% {
-      transform: translate(-50%, -50%) translateX(-35vw) translateY(-100px);
+    20% {
+      transform: translate(-50%, -50%) translateX(-40vw) translateY(10vh);
+      opacity: 0.3;
+    }
+    40% {
+      transform: translate(-50%, -50%) translateX(-20vw) translateY(-25vh);
       opacity: 0.35;
     }
-    50% {
-      transform: translate(-50%, -50%) translateX(-50vw) translateY(150px);
+    60% {
+      transform: translate(-50%, -50%) translateX(35vw) translateY(-15vh);
+      opacity: 0.3;
+    }
+    80% {
+      transform: translate(-50%, -50%) translateX(45vw) translateY(20vh);
       opacity: 0.25;
-    }
-    75% {
-      transform: translate(-50%, -50%) translateX(25vw) translateY(-180px);
-      opacity: 0.35;
     }
     100% {
-      transform: translate(-50%, -50%) translateX(35vw) translateY(200px);
+      transform: translate(-50%, -50%) translateX(0vw) translateY(35vh);
       opacity: 0.25;
     }
   }
 
   @keyframes floatingBall3 {
     0% {
-      transform: translate(-50%, -50%) translateX(50vw) translateY(-150px);
+      transform: translate(-50%, -50%) translateX(-25vw) translateY(-35vh);
       opacity: 0.2;
     }
-    25% {
-      transform: translate(-50%, -50%) translateX(-30vw) translateY(100px);
+    16% {
+      transform: translate(-50%, -50%) translateX(-50vw) translateY(-5vh);
+      opacity: 0.25;
+    }
+    33% {
+      transform: translate(-50%, -50%) translateX(-10vw) translateY(30vh);
       opacity: 0.3;
     }
     50% {
-      transform: translate(-50%, -50%) translateX(40vw) translateY(250px);
+      transform: translate(-50%, -50%) translateX(30vw) translateY(25vh);
+      opacity: 0.25;
+    }
+    66% {
+      transform: translate(-50%, -50%) translateX(50vw) translateY(-10vh);
       opacity: 0.2;
     }
-    75% {
-      transform: translate(-50%, -50%) translateX(-45vw) translateY(-50px);
+    83% {
+      transform: translate(-50%, -50%) translateX(15vw) translateY(-30vh);
       opacity: 0.3;
     }
     100% {
-      transform: translate(-50%, -50%) translateX(50vw) translateY(-150px);
+      transform: translate(-50%, -50%) translateX(-25vw) translateY(-35vh);
       opacity: 0.2;
     }
   }
