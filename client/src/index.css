@@ -267,6 +267,52 @@
     }
   }
 
+  @keyframes floatingBall2 {
+    0% {
+      transform: translate(-50%, -50%) translateX(150px) translateY(200px);
+      opacity: 0.25;
+    }
+    25% {
+      transform: translate(-50%, -50%) translateX(-150px) translateY(-100px);
+      opacity: 0.35;
+    }
+    50% {
+      transform: translate(-50%, -50%) translateX(-250px) translateY(150px);
+      opacity: 0.25;
+    }
+    75% {
+      transform: translate(-50%, -50%) translateX(100px) translateY(-180px);
+      opacity: 0.35;
+    }
+    100% {
+      transform: translate(-50%, -50%) translateX(150px) translateY(200px);
+      opacity: 0.25;
+    }
+  }
+
+  @keyframes floatingBall3 {
+    0% {
+      transform: translate(-50%, -50%) translateX(300px) translateY(-150px);
+      opacity: 0.2;
+    }
+    25% {
+      transform: translate(-50%, -50%) translateX(-100px) translateY(100px);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translate(-50%, -50%) translateX(150px) translateY(250px);
+      opacity: 0.2;
+    }
+    75% {
+      transform: translate(-50%, -50%) translateX(-200px) translateY(-50px);
+      opacity: 0.3;
+    }
+    100% {
+      transform: translate(-50%, -50%) translateX(300px) translateY(-150px);
+      opacity: 0.2;
+    }
+  }
+
   .floating-ball {
     position: fixed;
     top: 50%;
@@ -277,6 +323,34 @@
     border-radius: 50%;
     filter: blur(40px);
     animation: floatingBall 25s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .floating-ball-2 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--lina-cyan) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: floatingBall2 30s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .floating-ball-3 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, var(--lina-cyan) 0%, transparent 65%);
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: floatingBall3 35s ease-in-out infinite;
     z-index: 0;
     pointer-events: none;
   }

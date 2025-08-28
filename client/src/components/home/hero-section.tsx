@@ -234,6 +234,8 @@ export default function HeroSection() {
         className="fixed inset-0 pointer-events-none isolate overflow-hidden"
       >
         <div className="floating-ball" />
+        <div className="floating-ball-2" />
+        <div className="floating-ball-3" />
       </div>
       <main className="overflow-hidden bg-background dark:bg-background">
         <section>
