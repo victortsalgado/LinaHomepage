@@ -56,7 +56,7 @@ export default function DataLinkSection() {
                   Integre dados financeiros
                 </span>
                 <br />
-                <span className="text-gray-800">
+                <span className="text-gray-800 font-medium">
                   para decisões e processos inteligentes
                 </span>
               </h2>
