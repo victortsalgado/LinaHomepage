@@ -330,7 +330,7 @@ export default function HeroSection() {
                       
                       {/* Main Heading */}
                       <motion.h1
-                        className="mt-8 max-w-4xl mx-auto text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] font-bold text-foreground"
+                        className="mt-8 max-w-4xl mx-auto text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] font-bold text-foreground ml-[-28px] mr-[-28px]"
                         data-testid="heading-hero-title"
                         initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
                         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
