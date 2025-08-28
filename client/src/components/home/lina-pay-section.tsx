@@ -15,7 +15,7 @@ export default function LinaPaySection() {
       <div className="container mx-auto px-6 lg:px-8">
         {/* Lina Pay Block */}
         <div 
-          className="bg-gradient-to-br from-emerald-900 via-teal-800 to-emerald-800 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm"
+          className="bg-gradient-to-br from-emerald-900 via-teal-800 to-emerald-800 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px]"
         >
           <div className="grid lg:grid-cols-2 gap-0 items-center">
             {/* Content */}
