@@ -125,7 +125,7 @@ export default function DataLinkSection() {
               </div>
               
               <Button 
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 btn-lina-light bg-[#2ec9bc]"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 btn-lina-light bg-[#2ec9bc]/90 hover:bg-[#2ec9bc] text-white hover:text-white border border-[#2ec9bc] hover:border-[#2ec9bc]"
                 data-testid="button-learn-data-link"
               >
                 <span className="text-[#3affef]">→</span>
