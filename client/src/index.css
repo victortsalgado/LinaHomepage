@@ -593,7 +593,7 @@
 
 /* Button styles for light and dark backgrounds */
 .btn-lina-light {
-  @apply bg-gradient-to-r from-teal-500 to-cyan-400 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:from-teal-600 hover:to-cyan-500 transform hover:scale-105 transition-all duration-200 flex items-center gap-2;
+  @apply bg-cyan-400 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:bg-cyan-500 transform hover:scale-105 transition-all duration-200 flex items-center gap-2;
 }
 
 .btn-lina-dark {
