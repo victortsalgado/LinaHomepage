@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import logoPixBg from "@/assets/Home_Logo_Pix_BG_LinaPay_1756226661320.png";
 
 export default function LinaPaySection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
@@ -21,6 +22,15 @@ export default function LinaPaySection() {
             ref={blockRef}
             className={`p-8 lg:p-12 relative ${blockVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
           >
+            {/* PIX LINA Pay Logo - Top Right */}
+            <div className="absolute top-6 right-6 lg:top-8 lg:right-8">
+              <img 
+                src={logoPixBg} 
+                alt="PIX LINA Pay" 
+                className="h-16 w-auto lg:h-20 opacity-90"
+                data-testid="img-pix-lina-pay-logo"
+              />
+            </div>
             {/* Icon */}
             <div className="mb-6">
               <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center">
