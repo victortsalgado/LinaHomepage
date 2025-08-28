@@ -9,7 +9,7 @@ export default function LinaPaySection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-20 bg-white"
+      className="py-12 bg-white"
       data-testid="section-lina-pay"
     >
       <div className="container mx-auto px-6 lg:px-8">
