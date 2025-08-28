@@ -107,7 +107,7 @@ export default function DataLinkSection() {
                       <div className="relative z-10 w-4 h-4 bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
                       <div className="flex-1">
                         <h3 
-                          className="font-bold text-teal-600 mb-1 text-base"
+                          className="font-bold mb-1 text-base text-[#006666]"
                           data-testid={`text-feature-title-${index}`}
                         >
                           {feature.title}
