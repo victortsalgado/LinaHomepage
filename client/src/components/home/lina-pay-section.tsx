@@ -46,6 +46,49 @@ export default function LinaPaySection() {
                 </div>
               </div>
               
+              {/* Features List */}
+              <div className="space-y-6 mb-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-4 h-4 bg-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="font-bold mb-1 text-base text-white">Pagamentos Recorrentes</h3>
+                    <p className="text-white/80 text-sm leading-relaxed">Automação completa com valores variáveis</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-4 h-4 bg-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="font-bold mb-1 text-base text-white">Segurança Biométrica</h3>
+                    <p className="text-white/80 text-sm leading-relaxed">Autenticação direta no checkout</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-4 h-4 bg-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="font-bold mb-1 text-base text-white">Zero Quebra de Jornada</h3>
+                    <p className="text-white/80 text-sm leading-relaxed">Experiência fluida para o usuário</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-4 h-4 bg-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="font-bold mb-1 text-base text-white">Aumento de Conversão</h3>
+                    <p className="text-white/80 text-sm leading-relaxed">Impulsiona vendas e fidelização</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-4 h-4 bg-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="font-bold mb-1 text-base text-white">Limites Personalizados</h3>
+                    <p className="text-white/80 text-sm leading-relaxed">Controle total pelo cliente</p>
+                  </div>
+                </div>
+              </div>
+              
               {/* Button */}
               <div className="mb-8">
                 <Button 
