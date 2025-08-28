@@ -104,7 +104,7 @@ export default function DataLinkSection() {
                         animationDelay: index === 0 ? '0.1s' : index === 1 ? '0.8s' : index === 2 ? '1.6s' : index === 3 ? '2.4s' : '3.2s'
                       }}
                     >
-                      <div className="relative z-10 w-4 h-4 bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full mt-1 flex-shrink-0"></div>
+                      <div className="relative z-10 w-4 h-4 from-teal-500 to-cyan-400 rounded-full mt-1 flex-shrink-0 text-[#2ec9bc] bg-[#027775]"></div>
                       <div className="flex-1">
                         <h3 
                           className="font-bold mb-1 text-base text-[#006666]"
