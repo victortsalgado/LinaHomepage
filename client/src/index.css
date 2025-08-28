@@ -275,7 +275,7 @@
     height: 600px;
     background: radial-gradient(circle, var(--lina-cyan) 0%, transparent 60%);
     border-radius: 50%;
-    filter: blur(100px);
+    filter: blur(40px);
     animation: floatingBall 25s ease-in-out infinite;
     z-index: 0;
     pointer-events: none;
