@@ -125,7 +125,7 @@ export default function DataLinkSection() {
               </div>
               
               <Button 
-                className="bg-transparent border border-[#2ec9bc] text-[#2ec9bc] hover:bg-[#2ec9bc] hover:text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2"
+                className="bg-[#2ec9bc] border border-[#2ec9bc] text-white hover:bg-transparent hover:text-[#2ec9bc] px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2"
                 data-testid="button-learn-data-link"
               >
                 <span>→</span>
