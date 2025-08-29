@@ -4,6 +4,8 @@ import { AnimatedGroup } from "@/components/ui/animated-group";
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import businessGrowthImage from "@assets/generated_images/3D_business_growth_visualization_676e1f0e.png";
+import securityComplianceImage from "@assets/generated_images/3D_security_compliance_visualization_053fa71b.png";
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -399,7 +401,7 @@ export default function HeroSection() {
                   </motion.div>
                 </div>
                 
-                {/* Right Column - Orbital Animation */}
+                {/* Right Column - Orbital Animation (First slide) or 3D Images (Other slides) */}
                 <div className="hidden lg:block h-[800px] w-full">
                   <AnimatePresence mode="wait">
                     <motion.div
@@ -415,7 +417,26 @@ export default function HeroSection() {
                       }}
                       className="w-full h-full"
                     >
-                      <RadialOrbitalTimeline timelineData={currentSlideData.timelineData} />
+                      {currentSlide === 0 ? (
+                        <RadialOrbitalTimeline timelineData={currentSlideData.timelineData} />
+                      ) : (
+                        <div className="flex items-center justify-center w-full h-full">
+                          <motion.img
+                            src={currentSlide === 1 ? businessGrowthImage : securityComplianceImage}
+                            alt={currentSlide === 1 ? "3D Business Growth Visualization" : "3D Security Compliance Visualization"}
+                            className="w-full h-auto max-w-2xl object-contain filter drop-shadow-2xl"
+                            initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
+                            animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+                            transition={{ 
+                              duration: 0.8, 
+                              type: 'spring', 
+                              bounce: 0.1,
+                              delay: 0.2
+                            }}
+                            data-testid={`img-3d-${currentSlide === 1 ? 'business-growth' : 'security-compliance'}`}
+                          />
+                        </div>
+                      )}
                     </motion.div>
                   </AnimatePresence>
                 </div>
