@@ -41,7 +41,7 @@ export default function NewsletterSection() {
           
           {/* Subtitle */}
           <p 
-            className="text-lg md:text-xl text-gray-300 mb-8 md:mb-12"
+            className="text-lg md:text-xl text-[var(--lina-cyan)] mb-8 md:mb-12"
             style={{ fontFamily: 'Inter, sans-serif' }}
             data-testid="text-newsletter-subtitle"
           >
