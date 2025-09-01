@@ -90,7 +90,7 @@ export default function BlogHeroSection() {
   return (
     <section 
       ref={ref}
-      className="relative py-20 lg:py-32 overflow-hidden z-10"
+      className="relative py-20 lg:py-32 overflow-visible"
       style={{ 
         backgroundColor: 'var(--lina-dark)',
         background: `
@@ -154,7 +154,8 @@ export default function BlogHeroSection() {
                 variants={searchBarVariants}
                 initial="hidden"
                 animate="visible"
-                className="max-w-2xl mx-auto"
+                className="max-w-2xl mx-auto relative z-[9999]"
+                style={{ zIndex: 9999 }}
               >
                 <SearchDropdown
                   searchTerm={searchTerm}

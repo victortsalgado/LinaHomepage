@@ -69,7 +69,7 @@ export default function AllPostsSection() {
   return (
     <section 
       ref={ref}
-      className="py-20 lg:py-32 bg-white"
+      className="py-20 lg:py-32 bg-white relative z-0"
       data-testid="section-all-posts"
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
