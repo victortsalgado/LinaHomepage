@@ -66,7 +66,7 @@ export default function RegulatedEntitiesSection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-20 bg-white text-lina-dark relative overflow-hidden"
+      className="py-20 text-lina-dark relative overflow-hidden"
       data-testid="section-regulated-entities"
     >
       {/* Decorative background elements */}
@@ -231,10 +231,10 @@ export default function RegulatedEntitiesSection() {
             </div>
             
             {/* Tech labels for context */}
-            <div className="absolute -bottom-6 left-0 right-0 flex text-xs text-gray-600">
-              <span className="ml-8">Sandbox</span>
+            <div className="absolute -bottom-3 left-0 right-0 flex text-xs text-gray-600">
+              <span className="ml-44">Sandbox</span>
               <span className="flex-1 text-center">Produção</span>
-              <span className="mr-8">Escala</span>
+              <span className="mr-44">Escala</span>
             </div>
           </div>
         </div>
