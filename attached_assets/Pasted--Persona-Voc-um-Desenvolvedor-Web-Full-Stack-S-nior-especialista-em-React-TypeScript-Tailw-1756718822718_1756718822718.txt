@@ -1,0 +1,29 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é construir um componente de prova social que seja elegante, confiável e que utilize componentes e padrões de animação já existentes no projeto.
+
+**Missão:** Construir o componente para a seção **"Resultados validados por quem já usa"** da página de produto LinaPay.
+
+**Porquê Estratégico:** Esta seção é essencial para construir confiança e credibilidade. Apresentar um depoimento forte e logos de clientes reconhecidos quebra objeções e valida a eficácia da solução LinaPay para novos prospects, acelerando a decisão de compra.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/lina-pay/sections/SocialProofSection.tsx`.
+    * A seção deve ter um fundo claro (ex: `bg-gray-50` ou `bg-white`).
+
+2.  **Layout e Conteúdo Explícito:**
+    * **Título da Seção:** "Resultados validados por quem já usa".
+    * **Card de Depoimento:**
+        * Crie um card centralizado e visualmente destacado para o depoimento.
+        * Dentro do card, inclua um ícone de aspas (`Quote` da `lucide-react`).
+        * **Texto do Depoimento:** "A solução de Pix via Open Finance da Lina foi fundamental para o sucesso da jornada de investimento em previdência via WhatsApp da Brasilprev. Com ela, os clientes podem investir a partir de qualquer banco, de forma simples e segura. A Lina contribuiu diretamente para solucionar o desafio de levar a previdência para cada vez mais brasileiros."
+        * **Autor:** "Leonardo Rainhos".
+    * **Barra de Logos de Clientes:**
+        * Abaixo do card de depoimento, implemente o componente reutilizável `<InfiniteSlider />`, similar ao usado na `ClientsSection` da Home page.
+        * **Logos a serem exibidos:** BRASILPREV, BRASILCAP, brp, BRB, Iugu, SEMEAR.
+
+3.  **Animação e Estilo:**
+    * **Animação de Entrada:** Utilize o hook `useScrollReveal` para animar a entrada de toda a seção quando ela se tornar visível.
+    * **Animações Internas:** Use `framer-motion` para aplicar um efeito de entrada em cascata (staggered) para o título, o card de depoimento e a barra de logos.
+    * **Estilo:** Mantenha a consistência visual com o restante do site, utilizando as fontes (`Lexend`, `Inter`), cores e o estilo premium já estabelecidos.
+
+**Entregável:** O código-fonte completo para o novo componente `SocialProofSection.tsx`, totalmente responsivo, animado e funcional, pronto para ser integrado à página `lina-pay.tsx`.

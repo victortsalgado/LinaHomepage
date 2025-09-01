@@ -14,6 +14,7 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import LinaPayHeroSection from "@/components/views/lina-pay/sections/LinaPayHeroSection";
 import AboutLinaPaySection from "@/components/views/lina-pay/sections/AboutLinaPaySection";
+import SocialProofSection from "@/components/views/lina-pay/sections/SocialProofSection";
 
 const featureCards = [
   {
@@ -152,84 +153,8 @@ export default function LinaPay(): JSX.Element {
             {/* What is Lina Pay Section */}
             <AboutLinaPaySection />
 
-            {/* Testimonials Section */}
-            <section className="w-full h-[638px] rounded-[40px_40px_0px_0px] bg-[linear-gradient(0deg,rgba(251,250,250,1)_0%,rgba(152,216,211,1)_100%)] relative">
-              <div className="px-[252px] pt-[160px]">
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <h2 className="[font-family:'Lexend',Helvetica] font-medium text-[40px] leading-[56px] mb-8">
-                      <span className="text-[#606060]">Resultados </span>
-                      <span className="text-[#0ab5aa]">validados </span>
-                      <span className="text-[#606060]">por quem já usa</span>
-                    </h2>
-
-                    <div className="flex items-center gap-4 mb-8">
-                      <div className="flex -space-x-2">
-                        <img
-                          className="w-10 h-10 rounded-full"
-                          alt="Client"
-                          src="/figmaAssets/client.png"
-                        />
-                        <img
-                          className="w-10 h-10 rounded-full"
-                          alt="Client"
-                          src="/figmaAssets/client-1.png"
-                        />
-                        <img
-                          className="w-10 h-10 rounded-full"
-                          alt="Client"
-                          src="/figmaAssets/client-2.png"
-                        />
-                      </div>
-                    </div>
-
-                    <Button className="w-[260px] h-auto px-8 py-4 bg-[#0ab5aa] rounded-[80px] [font-family:'Lexend',Helvetica] font-bold text-white text-base">
-                      Descubra como funciona
-                    </Button>
-                  </div>
-
-                  <Card className="w-[552px] h-[367px] bg-[#003a38] rounded-[32px] shadow-[4px_4px_8px_#0ab5aa1a] border-0">
-                    <CardContent className="p-[55px]">
-                      <blockquote className="[font-family:'Lexend',Helvetica] font-light text-white text-lg leading-6 mb-8">
-                        "A solução de Pix via Open Finance da Lina foi fundamental
-                        para o sucesso da jornada de investimento em previdência
-                        via WhatsApp da Brasilprev. Com ela os clientes podem
-                        investir a partir de qualquer banco, de forma simples e
-                        segura. A Lina contribuiu diretamente para solucionar o
-                        desafio de levar a previdência para cada vez mais
-                        brasileiros."
-                      </blockquote>
-
-                      <div className="flex items-center gap-3">
-                        <img
-                          className="w-10 h-10"
-                          alt="Client"
-                          src="/figmaAssets/client-3.svg"
-                        />
-                        <div>
-                          <div className="[font-family:'Inter',Helvetica] font-bold text-white text-base">
-                            Leonardo Rainhos
-                          </div>
-                          <div className="[font-family:'Inter',Helvetica] font-light text-white text-xs">
-                            Gerente de Produtos da Brasilprev
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              <div className="absolute top-[127px] left-[492px] bg-[#0ab5aa] rounded-[17px] w-[34px] h-[34px]">
-                <div className="relative w-[17px] h-4 top-[9px] left-[9px] bg-[url(/figmaAssets/ativo-1-1.png)] bg-cover bg-[50%_50%]" />
-              </div>
-
-              <img
-                className="absolute w-[89px] h-[66px] top-[-36px] left-[1045px]"
-                alt="Image"
-                src="/figmaAssets/-.svg"
-              />
-            </section>
+            {/* Social Proof Section */}
+            <SocialProofSection />
 
             {/* Logos Section */}
             <section className="w-full h-[595px] bg-[#f8f3f3] rounded-[0px_0px_40px_40px] relative">
