@@ -1,0 +1,52 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em visualização de dados interativa e animações complexas com React, TypeScript, Tailwind CSS e Framer Motion.
+
+**Missão:** Construir o componente da seção **"Pensado para diferentes tipos de negócio"** utilizando uma **nuvem de tags interativa** que controla um painel de conteúdo dinâmico.
+
+**Porquê Estratégico:** Para quebrar a monotonia de layouts em grade, esta seção deve oferecer uma experiência memorável e altamente interativa. A nuvem de tags incentiva a exploração e reforça a imagem inovadora da marca, enquanto o painel dinâmico entrega a informação de forma focada e clara.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo: `src/components/views/lina-pay/sections/SegmentsCloudSection.tsx`.
+    * A seção deve ter um fundo escuro (`bg-[var(--lina-dark)]`).
+    * Implemente um layout principal de duas colunas (`grid lg:grid-cols-2`), com alinhamento vertical (`items-center`).
+
+2.  **Coluna da Esquerda (Nuvem de Tags Interativa):**
+    * Adicione o título da seção: "Pensado para diferentes tipos de negócio" e o subtítulo "Veja como aplicamos no seu setor".
+    * Crie um container para a nuvem de tags.
+    * Renderize os 6 segmentos de negócio como botões ou "tags" estilizadas (formato "pill", `rounded-full`).
+    * Use tamanhos de fonte e/ou cores sutilmente diferentes para criar uma aparência de "nuvem" orgânica.
+    * A tag correspondente ao segmento ativo deve ter um estilo de destaque (ex: fundo `lina-cyan` sólido, texto escuro).
+    * As tags inativas devem ter um estilo secundário (ex: borda `lina-cyan`, fundo transparente) com um efeito de `hover`.
+
+3.  **Coluna da Direita (Painel de Conteúdo Dinâmico):**
+    * Esta área exibirá um único card com as informações do segmento selecionado na nuvem de tags.
+    * O card deve ter um fundo claro (`bg-white`) e conter: um ícone grande e estilizado, o título do segmento e o texto descritivo.
+
+4.  **Interatividade e Animação:**
+    * Utilize `useState` para gerenciar o ID do segmento ativo.
+    * Ao clicar em uma tag na coluna da esquerda, o estado deve ser atualizado.
+    * **Obrigatório:** Utilize `framer-motion` e `<AnimatePresence mode="wait">` no painel da direita. Quando o estado mudar, o card antigo deve ter uma animação de saída (ex: `exit={{ opacity: 0, scale: 0.95 }}`) e o novo card deve ter uma animação de entrada (ex: `initial={{ opacity: 0, scale: 0.95 }}`, `animate={{ opacity: 1, scale: 1 }}`).
+
+5.  **Conteúdo Explícito para os Segmentos:**
+
+    * **Segmento 1:**
+        * **Título:** "E-commerces e marketplaces"
+        * **Descrição:** "Melhore o checkout e reduza o abandono de carrinho com Pix por Biometria."
+    * **Segmento 2:**
+        * **Título:** "Carteiras digitais"
+        * **Descrição:** "Ofereça Pix por aproximação e uma experiência de pagamento superior."
+    * **Segmento 3:**
+        * **Título:** "Fintechs reguladas"
+        * **Descrição:** "Acesse o Open Finance sem lidar com as complexidades de homologações regulatórias."
+    * **Segmento 4:**
+        * **Título:** "Cooperativas de crédito"
+        * **Descrição:** "Adicione funcionalidades que reduzem custos e aumentam a satisfação dos cooperados."
+    * **Segmento 5:**
+        * **Título:** "Plataformas de pagamento e BaaS"
+        * **Descrição:** "Adicione funcionalidades que reduzem custos e aumentam o atendimento às necessidades dos clientes."
+    * **Segmento 6:**
+        * **Título:** "Plataformas SaaS"
+        * **Descrição:** "Ofereça aos seus clientes uma nova forma de pagamento com a agilidade e integração do Open Finance."
+
+**Entregável:** O código-fonte completo para o novo componente `SegmentsCloudSection.tsx`, implementando a nuvem de tags interativa e o painel de conteúdo animado. O componente deve ser responsivo e visualmente coeso com o design premium do site.

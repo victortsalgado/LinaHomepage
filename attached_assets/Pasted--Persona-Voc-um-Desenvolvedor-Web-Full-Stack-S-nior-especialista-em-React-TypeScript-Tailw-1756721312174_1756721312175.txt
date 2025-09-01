@@ -1,0 +1,55 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Seu trabalho é criar componentes informativos que rompem padrões visuais repetitivos, utilizando layouts limpos e focados na clareza.
+
+**Missão:** Refatorar o componente da seção **"Pensado para diferentes tipos de negócio"** para utilizar um **layout de duas colunas com lista de itens**, sem cards individuais.
+
+**Porquê Estratégico:** A página LinaPay já possui diversas seções baseadas em cards e carrosséis. Para garantir dinamismo visual e evitar repetição, esta seção apresentará os segmentos de forma mais direta, utilizando uma lista de benefícios para cada tipo de negócio, mantendo o usuário engajado.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Mantenha o arquivo: `src/components/views/lina-pay/sections/SegmentsSection.tsx`.
+    * A seção deve ter um fundo claro (ex: `bg-white`).
+    * Implemente um layout principal de duas colunas (`grid lg:grid-cols-2`), com o conteúdo da lista à direita e o título/descrição à esquerda (ou vice-versa, para criar assimetria).
+
+2.  **Layout e Conteúdo Explícito:**
+    * **Título da Seção:** "Pensado para diferentes tipos de negócio".
+    * **Subtítulo/Descrição de Apoio:** "Descubra como o Lina Pay se adapta perfeitamente ao seu modelo de negócio, independentemente do seu setor."
+    * **Coluna da Esquerda (Título e Subtítulo):**
+        * Exiba o título e o subtítulo/descrição de apoio, com o foco em apresentar a versatilidade.
+    * **Coluna da Direita (Lista de Itens):**
+        * Crie uma lista de itens, onde cada item representa um "tipo de negócio" e sua descrição relevante.
+        * Cada item da lista deve conter:
+            * Um ícone (`lucide-react`) apropriado que represente o segmento.
+            * O título do tipo de negócio.
+            * Uma breve descrição de como o LinaPay o beneficia.
+        * **Itens da Lista (6 itens no total):**
+            * **Item 1:**
+                * **Ícone:** `ShoppingCart`
+                * **Título:** "E-commerces e marketplaces"
+                * **Descrição:** "Melhore o checkout e reduza o abandono de carrinho com Pix por Biometria."
+            * **Item 2:**
+                * **Ícone:** `Wallet`
+                * **Título:** "Carteiras digitais"
+                * **Descrição:** "Ofereça Pix por aproximação e uma experiência de pagamento superior."
+            * **Item 3:**
+                * **Ícone:** `ShieldCheck`
+                * **Título:** "Fintechs reguladas"
+                * **Descrição:** "Acesse o Open Finance sem lidar com as complexidades de homologações regulatórias."
+            * **Item 4:**
+                * **Ícone:** `Users`
+                * **Título:** "Cooperativas de crédito"
+                * **Descrição:** "Adicione funcionalidades que reduzem custos e aumentam a satisfação dos cooperados."
+            * **Item 5:**
+                * **Ícone:** `CreditCard`
+                * **Título:** "Plataformas de pagamento e BaaS"
+                * **Descrição:** "Adicione funcionalidades que reduzem custos e aumentam o atendimento às necessidades dos clientes."
+            * **Item 6:**
+                * **Ícone:** `Server`
+                * **Título:** "Plataformas SaaS"
+                * **Descrição:** "Ofereça aos seus clientes uma nova forma de pagamento com a agilidade e integração do Open Finance."
+
+3.  **Estilo e Animação:**
+    * **Estilo da Lista:** Cada item da lista deve ter um layout limpo, com o ícone, título e descrição bem alinhados. O background deve ser transparente ou sutilmente diferente do fundo da seção para destacar os itens.
+    * **Animação:** Utilize o hook `useScrollReveal` e `framer-motion` para aplicar uma animação de entrada em cascata (staggered) nos itens da lista, ou um efeito de slide-in para cada coluna quando a seção se tornar visível.
+
+**Entregável:** O código-fonte completo e atualizado para o componente `SegmentsSection.tsx`, implementando um layout de duas colunas com lista de itens, totalmente responsivo, animado e funcional.

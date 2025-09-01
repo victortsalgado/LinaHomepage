@@ -9,9 +9,10 @@ import {
   CreditCard, 
   Server 
 } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
-// Segments cards data
-const segmentCards = [
+// Segments data for list items
+const segmentItems = [
   {
     id: 1,
     icon: ShoppingCart,
@@ -51,118 +52,107 @@ const segmentCards = [
 ];
 
 export default function SegmentsSection() {
-  // Animation variants for staggered card reveals
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 40,
-      scale: 0.95 
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal<HTMLDivElement>();
+  const { ref: listRef, isVisible: listVisible } = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section className="py-20 bg-white" data-testid="section-segments">
+    <section 
+      ref={sectionRef}
+      className="py-20 bg-white"
+      data-testid="section-segments"
+    >
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
-        {/* Section Title */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <h2 
-            className="text-3xl lg:text-4xl font-bold text-gray-900 max-w-4xl mx-auto leading-tight"
-            style={{ fontFamily: 'Lexend, sans-serif' }}
-            data-testid="heading-segments-title"
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Title and Description Column - Left */}
+          <motion.div
+            ref={titleRef}
+            initial={{ opacity: 0, x: -50 }}
+            animate={titleVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:pr-8"
           >
-            Pensado para diferentes tipos de negócio
-          </h2>
-        </motion.div>
+            {/* Main Title */}
+            <h2 
+              className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6 leading-tight"
+              style={{ fontFamily: 'Lexend, sans-serif' }}
+              data-testid="heading-segments-title"
+            >
+              Pensado para diferentes{" "}
+              <span className="bg-gradient-to-r from-[var(--lina-cyan)] to-teal-500 bg-clip-text text-transparent">
+                tipos de negócio
+              </span>
+            </h2>
 
-        {/* Segments Cards Grid */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          {segmentCards.map((card, index) => {
-            const IconComponent = card.icon;
-            
-            return (
-              <motion.div
-                key={card.id}
-                className="group relative bg-white rounded-2xl p-8 border border-gray-300/20 hover:border-[var(--lina-cyan)]/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[var(--lina-cyan)]/20"
-                variants={cardVariants}
-                whileHover={{ 
-                  y: -8,
-                  transition: { duration: 0.2 }
-                }}
-                data-testid={`card-segment-${index + 1}`}
-              >
-                {/* Card background gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--lina-cyan)]/5 to-teal-50/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            {/* Supporting Description */}
+            <p 
+              className="text-xl text-gray-600 leading-relaxed"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+              data-testid="text-segments-description"
+            >
+              Descubra como o Lina Pay se adapta perfeitamente ao seu modelo de negócio, 
+              independentemente do seu setor.
+            </p>
+          </motion.div>
+
+          {/* Segments List Column - Right */}
+          <motion.div
+            ref={listRef}
+            initial={{ opacity: 0, x: 50 }}
+            animate={listVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="lg:pl-8"
+          >
+            <div className="space-y-6">
+              {segmentItems.map((segment, index) => {
+                const IconComponent = segment.icon;
                 
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-[var(--lina-cyan)]/40 transition-all duration-300">
-                      <IconComponent 
-                        className="w-7 h-7 text-white" 
-                        data-testid={`icon-segment-${index + 1}`}
-                      />
+                return (
+                  <motion.div
+                    key={segment.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={listVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ 
+                      duration: 0.6, 
+                      delay: 0.4 + (index * 0.1),
+                      ease: "easeOut" 
+                    }}
+                    className="flex items-start space-x-4 p-4 rounded-xl bg-gray-50/50 hover:bg-gray-50 transition-all duration-300 group"
+                    data-testid={`item-segment-${index + 1}`}
+                  >
+                    {/* Icon Container */}
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:shadow-[var(--lina-cyan)]/30 transition-all duration-300">
+                        <IconComponent 
+                          className="w-6 h-6 text-white" 
+                          data-testid={`icon-segment-${index + 1}`}
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Title */}
-                  <h3 
-                    className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-gray-800 transition-colors duration-300"
-                    style={{ fontFamily: 'Lexend, sans-serif' }}
-                    data-testid={`title-segment-${index + 1}`}
-                  >
-                    {card.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p 
-                    className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                    data-testid={`description-segment-${index + 1}`}
-                  >
-                    {card.description}
-                  </p>
-                </div>
-
-                {/* Decorative elements */}
-                <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-[var(--lina-cyan)]/10 to-teal-100/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-4 left-4 w-6 h-6 bg-gradient-to-tr from-teal-100/50 to-[var(--lina-cyan)]/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
-            );
-          })}
-        </motion.div>
+                    {/* Content */}
+                    <div className="flex-1">
+                      <h3 
+                        className="text-lg font-bold text-gray-900 mb-2 leading-tight group-hover:text-gray-800 transition-colors duration-300"
+                        style={{ fontFamily: 'Lexend, sans-serif' }}
+                        data-testid={`title-segment-${index + 1}`}
+                      >
+                        {segment.title}
+                      </h3>
+                      <p 
+                        className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300"
+                        style={{ fontFamily: 'Inter, sans-serif' }}
+                        data-testid={`description-segment-${index + 1}`}
+                      >
+                        {segment.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
