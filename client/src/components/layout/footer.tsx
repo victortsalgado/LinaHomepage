@@ -37,19 +37,13 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16">
             {/* Coluna 1 - Contato */}
             <div>
-              <div className="flex items-center space-x-3 mb-8">
+              <div className="mb-8">
                 <img 
                   src={logoPath} 
                   alt="LINA Logo" 
-                  className="h-10 w-10"
+                  className="h-16 w-auto"
                   data-testid="img-footer-logo"
                 />
-                <span 
-                  className="text-2xl font-bold text-white"
-                  data-testid="text-footer-logo"
-                >
-                  Lina
-                </span>
               </div>
               
               <div className="space-y-4 mb-8">
