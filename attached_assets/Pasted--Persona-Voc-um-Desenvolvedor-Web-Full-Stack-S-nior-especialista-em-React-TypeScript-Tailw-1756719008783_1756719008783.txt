@@ -1,0 +1,50 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é replicar um padrão de componente de grade de features existente, populando-o com novo conteúdo para uma página de produto diferente.
+
+**Missão:** Construir o componente para a seção **"O que torna o Lina Pay diferente"**.
+
+**Porquê Estratégico:** Esta seção detalha os principais diferenciais competitivos do produto. Um layout claro e visualmente atraente é essencial para que o usuário compreenda rapidamente os múltiplos benefícios da solução, fortalecendo a proposta de valor e justificando a escolha pela Lina.
+
+**Requisitos e Diretrizes:**
+
+1.  **Ponto de Partida e Referência:**
+    * Utilize o componente `ValuePropositionSection.tsx` da página DataLink como a **principal referência de estilo, layout e animação**.
+    * O conteúdo (títulos e descrições dos cards) deve ser extraído da seção correspondente no arquivo `LP_LinaPay.pdf`.
+
+2.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/lina-pay/sections/DifferentiatorsSection.tsx`.
+    * A seção deve ter um fundo escuro (`bg-[var(--lina-dark)]`), consistente com a seção de referência.
+
+3.  **Layout e Conteúdo Explícito:**
+    * **Título da Seção:** "O que torna o Lina Pay diferente".
+    * **Layout da Grade:** Implemente uma grade responsiva que exiba 6 cards (3 colunas em desktop: `lg:grid-cols-3`).
+    * **Conteúdo dos Cards (6 cards no total):**
+        * **Card 1:**
+            * **Ícone:** `Fingerprint` (de `lucide-react`).
+            * **Título:** "Pix por biometria no e-commerce"
+            * **Descrição:** "Checkout com um toque, sem senhas ou redirecionamentos para apps."
+        * **Card 2:**
+            * **Ícone:** `Wallet` (de `lucide-react`).
+            * **Título:** "Pix por aproximação em carteiras digitais"
+            * **Descrição:** "Pagamentos em lojas físicas sem o uso de cartões físicos."
+        * **Card 3:**
+            * **Ícone:** `DollarSign` (de `lucide-react`).
+            * **Título:** "Menor custo por transação do mercado"
+            * **Descrição:** "Custos menores que boletos e cartões, sem intermediários."
+        * **Card 4:**
+            * **Ícone:** `TrendingUp` (de `lucide-react`).
+            * **Título:** "Modelo comercial flexível e escalável"
+            * **Descrição:** "Adapte o Lina Pay ao crescimento do seu negócio com condições alinhadas às suas necessidades."
+        * **Card 5:**
+            * **Ícone:** `Zap` (de `lucide-react`).
+            * **Título:** "Integração simplificada e rápida com APIs"
+            * **Descrição:** "Tempo de implementação reduzido com suporte técnico direto e documentação robusta."
+        * **Card 6:**
+            * **Ícone:** `ShieldCheck` (de `lucide-react`).
+            * **Título:** "Banco Central certificado no JSR e Open Finance"
+            * **Descrição:** "Segurança regulatória e conformidade com o primeiro ITP do Brasil."
+
+4.  **Estilo e Animação:**
+    * O estilo dos cards (fundo branco, bordas, sombras, efeito de hover, etc.) e do container de ícone deve ser **idêntico** ao do componente `ValuePropositionSection.tsx`.
+    * **Obrigatório:** Implemente a **mesma** animação de entrada em cascata (staggered) para os cards, utilizando `framer-motion` e o hook `useScrollReveal`, replicando o comportamento de `containerVariants` e `cardVariants` do componente de referência.
+
+**Entregável:** O código-fonte completo para o novo componente `DifferentiatorsSection.tsx`, totalmente responsivo, animado e funcional.
