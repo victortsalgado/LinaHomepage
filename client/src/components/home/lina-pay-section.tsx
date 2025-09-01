@@ -34,12 +34,14 @@ export default function LinaPaySection() {
             </div>
             {/* Icon */}
             <div className="mb-6">
-              <img 
-                src={linaPayGif} 
-                alt="LinaPay Icon" 
-                className="w-16 h-16 rounded-2xl"
-                data-testid="img-lina-pay-icon"
-              />
+              <div className="w-28 h-28 lg:w-44 lg:h-44">
+                <img 
+                  src={linaPayGif} 
+                  alt="LinaPay Icon" 
+                  className="w-full h-full object-cover rounded-xl pl-[0px] pr-[0px] ml-[-41px] mr-[-41px] mt-[-43px] mb-[-43px]"
+                  data-testid="img-lina-pay-icon"
+                />
+              </div>
             </div>
 
             {/* Title and Description */}
