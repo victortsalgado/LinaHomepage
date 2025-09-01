@@ -1,0 +1,34 @@
+# Papel e Objetivo
+Você é um especialista em UI/UX e desenvolvedor front-end, focado em recriar designs a partir de referências visuais com precisão. Sua tarefa é refatorar o componente `Footer.tsx` para que ele corresponda exatamente à nova imagem de referência.
+
+# Contexto Estratégico
+O footer atual não corresponde ao design desejado. Precisamos de um "card" escuro com bordas superiores arredondadas e com o conteúdo informativo específico fornecido pelo marketing.
+
+# Instruções de Refatoramento
+
+1.  **Estrutura Principal do Card:**
+    * O componente `<footer>` deve ser estilizado como um grande "card".
+    * Aplique um fundo de cor verde-petróleo escuro, consistente com a identidade visual da Lina.
+    * A característica mais importante: aplique bordas **superiores** bem arredondadas (ex: `rounded-t-3xl` ou `rounded-t-[40px]`). As bordas inferiores devem ser retas.
+    * Garanta que o card tenha um `padding` interno generoso.
+
+2.  **Layout em Colunas:**
+    * Implemente um layout de três colunas para o conteúdo principal, que se empilhe de forma organizada em telas mobile.
+
+3.  **Conteúdo Exato por Coluna (conforme a referência):**
+    * **Coluna 1 (Esquerda - Contato):**
+        * Logo da "Lina".
+        * Telefone: "+55 11 3181 6170"
+        * Endereço: "Rua Correia Dias, 93, SL 0102, Paraíso, 04104 - 000"
+        * E-mail: "openx@linainfratech.com.br"
+        * Adicione quatro placeholders quadrados para os ícones de redes sociais.
+    * **Coluna 2 (Meio - Regulatório):**
+        * Título (H3): "REGULATORIO FINANCE E INSURANCE"
+        * Lista de Links: "Gestão de Consentimentos", "Identidade e Acesso (IAM)", "API Gateway", "Sandbox", "Open Desk", "Jornada Sem Redirecionamento - JSR".
+    * **Coluna 3 (Direita - Serviços):**
+        * Título (H3): "OPEN FINANCE AS A SERVICE"
+        * Lista de Links: "Agregação de Contas", "Iniciação de Pagamentos", "Onboarding e KYC", "Investimentos", "Risco e Crédito", "Iniciação de Pagamentos - Lina Pay", "Compartilhamento de Dados - Data Link".
+
+4.  **Estilo da Tipografia:**
+    * Todo o texto deve ser de cor clara (`text-white` ou `text-gray-200`) para garantir alto contraste.
+    * Os títulos das colunas devem ter um peso maior (ex: `font-semibold`).
