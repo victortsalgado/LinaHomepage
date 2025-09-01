@@ -192,7 +192,7 @@ export default function LinaPayHeroSection() {
                     <Button
                       size="lg"
                       onClick={handleScrollToCTA}
-                      className="btn-lina-light group h-14 px-10 text-lg"
+                      className="bg-[#0ab5aa] hover:bg-[#0ab5aa]/90 text-white group h-14 px-10 text-lg rounded-[80px] font-bold"
                       data-testid="button-linapay-cta"
                     >
                       <span className="mr-2">Falar com um especialista</span>
