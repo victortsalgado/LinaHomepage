@@ -150,56 +150,55 @@ export default function LinaPaySection() {
                   data-testid={`stage-pix-${selection}`}
                 >
                   {/* Coordinated Animation Layout */}
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
+                  <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-center gap-8 lg:gap-16">
                     
                     {/* PIX Automático Layout */}
                     {selection === 'automatico' && (
                       <>
-                        {/* Image slides in from LEFT */}
+                        {/* Smartphone Mockup slides in from LEFT */}
                         <motion.div
-                          initial={{ x: -100, opacity: 0 }}
+                          initial={{ x: -120, opacity: 0 }}
                           animate={{ x: 0, opacity: 1 }}
-                          exit={{ x: -100, opacity: 0 }}
+                          exit={{ x: -120, opacity: 0 }}
                           transition={{ duration: 0.8, ease: "easeOut" }}
-                          className="flex-1 flex justify-center lg:justify-start"
+                          className="relative z-20 flex justify-center lg:justify-start"
                         >
-                          <div className="w-full max-w-xs lg:max-w-sm">
-                            {activeContent.imageSrc ? (
-                              <img 
-                                src={activeContent.imageSrc}
-                                alt={activeContent.imageAlt}
-                                className="w-full h-auto rounded-xl shadow-lg border border-cyan-400/20"
-                                data-testid={`img-pix-${selection}`}
-                              />
-                            ) : (
-                              <div 
-                                className="w-full aspect-square bg-gradient-to-br from-cyan-400/10 to-cyan-600/5 rounded-xl border border-cyan-400/30 flex items-center justify-center"
-                                data-testid={`placeholder-pix-${selection}`}
-                              >
-                                <div className="text-center">
-                                  <Repeat size={48} className="text-cyan-400/60 mx-auto mb-2" />
-                                  <p className="text-cyan-400/60 text-sm font-medium">
-                                    {activeContent.title}
-                                  </p>
+                          <div className="smartphone-mockup">
+                            {/* Smartphone Frame */}
+                            <div className="w-48 h-96 lg:w-56 lg:h-[28rem] bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-[2.5rem] shadow-2xl border-4 border-gray-700 relative overflow-hidden">
+                              {/* Screen */}
+                              <div className="absolute inset-3 bg-gradient-to-br from-gray-900 to-black rounded-[2rem] border border-gray-600">
+                                {/* Notch */}
+                                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-6 bg-black rounded-full"></div>
+                                {/* Screen Content */}
+                                <div className="flex items-center justify-center h-full">
+                                  <div className="text-center">
+                                    <Repeat size={32} className="text-cyan-400 mx-auto mb-3" />
+                                    <p className="text-cyan-400 text-sm font-medium px-4">
+                                      PIX Automático
+                                    </p>
+                                  </div>
                                 </div>
                               </div>
-                            )}
+                              {/* Camera */}
+                              <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-600 rounded-full"></div>
+                            </div>
                           </div>
                         </motion.div>
                         
-                        {/* Text Panel slides in from RIGHT and overlaps */}
+                        {/* Text Card emerges from BEHIND smartphone */}
                         <motion.div
-                          initial={{ x: 100, opacity: 0 }}
-                          animate={{ x: 0, opacity: 1 }}
-                          exit={{ x: 100, opacity: 0 }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                          className="flex-1 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-1/2 lg:z-10"
+                          initial={{ x: -60, opacity: 0, scale: 0.9 }}
+                          animate={{ x: 0, opacity: 1, scale: 1 }}
+                          exit={{ x: -60, opacity: 0, scale: 0.9 }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                          className="relative z-10 lg:absolute lg:left-32 lg:top-1/2 lg:-translate-y-1/2"
                         >
-                          <div className="backdrop-blur-lg bg-white/5 border border-cyan-400/20 p-6 lg:p-8 rounded-2xl shadow-2xl">
-                            <h3 className="text-cyan-400 font-lexend font-semibold text-2xl lg:text-3xl mb-4">
+                          <div className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl max-w-md">
+                            <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-4">
                               {activeContent.title}
                             </h3>
-                            <p className="text-gray-300 text-lg leading-relaxed font-sans">
+                            <p className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
                               {activeContent.description}
                             </p>
                           </div>
@@ -210,53 +209,52 @@ export default function LinaPaySection() {
                     {/* PIX Biometria Layout */}
                     {selection === 'biometria' && (
                       <>
-                        {/* Text Panel slides in from LEFT and overlaps */}
+                        {/* Text Card emerges from BEHIND smartphone */}
                         <motion.div
-                          initial={{ x: -100, opacity: 0 }}
-                          animate={{ x: 0, opacity: 1 }}
-                          exit={{ x: -100, opacity: 0 }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                          className="flex-1 lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-1/2 lg:z-10"
+                          initial={{ x: 60, opacity: 0, scale: 0.9 }}
+                          animate={{ x: 0, opacity: 1, scale: 1 }}
+                          exit={{ x: 60, opacity: 0, scale: 0.9 }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                          className="relative z-10 lg:absolute lg:right-32 lg:top-1/2 lg:-translate-y-1/2"
                         >
-                          <div className="backdrop-blur-lg bg-white/5 border border-cyan-400/20 p-6 lg:p-8 rounded-2xl shadow-2xl">
-                            <h3 className="text-cyan-400 font-lexend font-semibold text-2xl lg:text-3xl mb-4">
+                          <div className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl max-w-md">
+                            <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-4">
                               {activeContent.title}
                             </h3>
-                            <p className="text-gray-300 text-lg leading-relaxed font-sans">
+                            <p className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
                               {activeContent.description}
                             </p>
                           </div>
                         </motion.div>
                         
-                        {/* Image slides in from RIGHT */}
+                        {/* Smartphone Mockup slides in from RIGHT */}
                         <motion.div
-                          initial={{ x: 100, opacity: 0 }}
+                          initial={{ x: 120, opacity: 0 }}
                           animate={{ x: 0, opacity: 1 }}
-                          exit={{ x: 100, opacity: 0 }}
+                          exit={{ x: 120, opacity: 0 }}
                           transition={{ duration: 0.8, ease: "easeOut" }}
-                          className="flex-1 flex justify-center lg:justify-end"
+                          className="relative z-20 flex justify-center lg:justify-end"
                         >
-                          <div className="w-full max-w-xs lg:max-w-sm">
-                            {activeContent.imageSrc ? (
-                              <img 
-                                src={activeContent.imageSrc}
-                                alt={activeContent.imageAlt}
-                                className="w-full h-auto rounded-xl shadow-lg border border-cyan-400/20"
-                                data-testid={`img-pix-${selection}`}
-                              />
-                            ) : (
-                              <div 
-                                className="w-full aspect-square bg-gradient-to-br from-cyan-400/10 to-cyan-600/5 rounded-xl border border-cyan-400/30 flex items-center justify-center"
-                                data-testid={`placeholder-pix-${selection}`}
-                              >
-                                <div className="text-center">
-                                  <Fingerprint size={48} className="text-cyan-400/60 mx-auto mb-2" />
-                                  <p className="text-cyan-400/60 text-sm font-medium">
-                                    {activeContent.title}
-                                  </p>
+                          <div className="smartphone-mockup">
+                            {/* Smartphone Frame */}
+                            <div className="w-48 h-96 lg:w-56 lg:h-[28rem] bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-[2.5rem] shadow-2xl border-4 border-gray-700 relative overflow-hidden">
+                              {/* Screen */}
+                              <div className="absolute inset-3 bg-gradient-to-br from-gray-900 to-black rounded-[2rem] border border-gray-600">
+                                {/* Notch */}
+                                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-6 bg-black rounded-full"></div>
+                                {/* Screen Content */}
+                                <div className="flex items-center justify-center h-full">
+                                  <div className="text-center">
+                                    <Fingerprint size={32} className="text-cyan-400 mx-auto mb-3" />
+                                    <p className="text-cyan-400 text-sm font-medium px-4">
+                                      PIX Biometria
+                                    </p>
+                                  </div>
                                 </div>
                               </div>
-                            )}
+                              {/* Camera */}
+                              <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-600 rounded-full"></div>
+                            </div>
                           </div>
                         </motion.div>
                       </>
