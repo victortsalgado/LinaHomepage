@@ -81,7 +81,7 @@ export default function ValuePropositionSection() {
   };
 
   return (
-    <section className="py-20 bg-white" data-testid="section-value-proposition">
+    <section className="py-20" style={{ backgroundColor: 'var(--lina-dark)' }} data-testid="section-value-proposition">
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
         {/* Section Title */}
         <motion.div 
@@ -92,7 +92,7 @@ export default function ValuePropositionSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 
-            className="text-3xl lg:text-4xl font-bold text-gray-900 max-w-4xl mx-auto leading-tight"
+            className="text-3xl lg:text-4xl font-bold text-white max-w-4xl mx-auto leading-tight"
             style={{ fontFamily: 'Lexend, sans-serif' }}
             data-testid="heading-value-proposition-title"
           >
@@ -114,7 +114,7 @@ export default function ValuePropositionSection() {
             return (
               <motion.div
                 key={card.id}
-                className="group relative bg-white rounded-2xl p-8 border border-gray-200 hover:border-[var(--lina-cyan)]/30 transition-all duration-300 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/10"
+                className="group relative bg-white rounded-2xl p-8 border border-gray-300/20 hover:border-[var(--lina-cyan)]/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[var(--lina-cyan)]/20"
                 variants={cardVariants}
                 whileHover={{ 
                   y: -8,
@@ -129,7 +129,7 @@ export default function ValuePropositionSection() {
                 <div className="relative z-10">
                   {/* Icon */}
                   <div className="mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-[var(--lina-cyan)]/30 transition-all duration-300">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-[var(--lina-cyan)]/40 transition-all duration-300">
                       <IconComponent 
                         className="w-7 h-7 text-white" 
                         data-testid={`icon-value-${index + 1}`}
