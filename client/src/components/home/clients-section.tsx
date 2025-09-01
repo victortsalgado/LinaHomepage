@@ -1,46 +1,55 @@
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import brasilprevLogo from "@/assets/brasilprev.png";
+import bradescoSegurosLogo from "@/assets/bradesco-seguros.png";
+import safraLogo from "@/assets/safra.png";
+import sicoobLogo from "@/assets/sicoob.png";
+import caixaLogo from "@/assets/caixa.png";
+import stoneLogo from "@/assets/stone.png";
+import icatuSegurosLogo from "@/assets/icatu-seguros.png";
+import hdiSegurosLogo from "@/assets/hdi-seguros.png";
+import cloudwalkLogo from "@/assets/cloudwalk.png";
 
 export default function ClientsSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
 
-  // Client logos data with enhanced brand representations
+  // Client logos data with real brand logos
   const clients = [
     {
       name: "BrasilPrev",
-      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Ctext x='100' y='35' text-anchor='middle' font-family='Arial, sans-serif' font-size='18' font-weight='bold' fill='%23E74C3C'%3EBrasilPrev%3C/text%3E%3C/svg%3E"
+      logo: brasilprevLogo
     },
     {
       name: "Bradesco Seguros", 
-      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect x='10' y='15' width='30' height='30' fill='%23CC092F' rx='4'/%3E%3Ctext x='50' y='35' font-family='Arial, sans-serif' font-size='14' font-weight='bold' fill='%23CC092F'%3EBradesco Seguros%3C/text%3E%3C/svg%3E"
+      logo: bradescoSegurosLogo
     },
     {
       name: "Safra",
-      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Ccircle cx='30' cy='30' r='15' fill='%232E8B57'/%3E%3Ctext x='55' y='35' font-family='Arial, sans-serif' font-size='18' font-weight='bold' fill='%232E8B57'%3ESafra%3C/text%3E%3C/svg%3E"
+      logo: safraLogo
     },
     {
       name: "Sicoob",
-      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cpath d='M15 30 L30 15 L45 30 L30 45 Z' fill='%23FF6B35'/%3E%3Ctext x='55' y='35' font-family='Arial, sans-serif' font-size='16' font-weight='bold' fill='%23FF6B35'%3ESicoob%3C/text%3E%3C/svg%3E"
+      logo: sicoobLogo
     },
     {
       name: "Caixa",
-      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect x='15' y='20' width='20' height='20' fill='%23004B87'/%3E%3Ctext x='45' y='35' font-family='Arial, sans-serif' font-size='18' font-weight='bold' fill='%23004B87'%3ECaixa%3C/text%3E%3C/svg%3E"
+      logo: caixaLogo
     },
     {
       name: "Stone",
-      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Ccircle cx='25' cy='30' r='12' fill='%2300D4AA'/%3E%3Ctext x='45' y='35' font-family='Arial, sans-serif' font-size='18' font-weight='bold' fill='%2300D4AA'%3EStone%3C/text%3E%3C/svg%3E"
+      logo: stoneLogo
     },
     {
       name: "Icatu Seguros",
-      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cpath d='M20 20 L35 10 L35 50 L20 40 Z' fill='%23FF8C00'/%3E%3Ctext x='45' y='35' font-family='Arial, sans-serif' font-size='14' font-weight='bold' fill='%23FF8C00'%3EIcatu Seguros%3C/text%3E%3C/svg%3E"
+      logo: icatuSegurosLogo
     },
     {
-      name: "Prudential",
-      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cpath d='M15 40 Q30 15 45 40' stroke='%23003D82' stroke-width='3' fill='none'/%3E%3Ctext x='55' y='35' font-family='Arial, sans-serif' font-size='16' font-weight='bold' fill='%23003D82'%3EPrudential%3C/text%3E%3C/svg%3E"
+      name: "CloudWalk",
+      logo: cloudwalkLogo
     },
     {
       name: "HDI Seguros",
-      logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect x='15' y='20' width='25' height='20' fill='%23DC143C' rx='3'/%3E%3Ctext x='50' y='35' font-family='Arial, sans-serif' font-size='14' font-weight='bold' fill='%23DC143C'%3EHDI Seguros%3C/text%3E%3C/svg%3E"
+      logo: hdiSegurosLogo
     }
   ];
 
