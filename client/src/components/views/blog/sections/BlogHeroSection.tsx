@@ -90,7 +90,7 @@ export default function BlogHeroSection() {
   return (
     <section 
       ref={ref}
-      className="relative py-20 lg:py-32 overflow-hidden"
+      className="relative py-20 lg:py-32 overflow-hidden z-10"
       style={{ 
         backgroundColor: 'var(--lina-dark)',
         background: `
