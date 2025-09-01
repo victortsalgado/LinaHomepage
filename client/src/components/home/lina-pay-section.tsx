@@ -11,24 +11,27 @@ export default function LinaPaySection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-6 bg-white"
+      className="py-6 bg-gray-900"
       data-testid="section-lina-pay"
     >
       <div className="container mx-auto px-6 lg:px-8">
         {/* Lina Pay Block */}
         <div 
-          className="relative rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px]"
+          className="relative rounded-3xl shadow-2xl overflow-hidden min-h-[500px]"
           style={{
-            background: `linear-gradient(135deg, var(--lina-dark) 0%, var(--lina-medium) 100%)`,
-            backgroundImage: `radial-gradient(circle at 20% 80%, rgba(0, 239, 207, 0.1) 0%, transparent 50%), 
-                              radial-gradient(circle at 80% 20%, rgba(0, 239, 207, 0.1) 0%, transparent 50%),
-                              radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%)`
+            background: `var(--lina-dark)`,
+            backgroundImage: `radial-gradient(circle at 20% 20%, rgba(0, 239, 207, 0.1) 0%, transparent 40%), 
+                              radial-gradient(circle at 80% 80%, rgba(0, 239, 207, 0.05) 0%, transparent 40%),
+                              repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px)`
           }}
         >
           <div 
             ref={blockRef}
             className={`p-8 lg:p-12 relative ${blockVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
           >
+            {/* Decorative Icons */}
+            <div className="absolute top-6 left-6 w-12 h-12 bg-gradient-to-br from-cyan-400/20 to-cyan-500/20 rounded-xl border border-cyan-400/30"></div>
+            <div className="absolute top-6 right-20 lg:right-32 w-8 h-8 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-lg border border-cyan-400/20"></div>
             {/* PIX LINA Pay Logo - Top Right */}
             <div className="absolute top-6 right-6 lg:top-8 lg:right-8">
               <img 
@@ -59,10 +62,10 @@ export default function LinaPaySection() {
                 Transforme o PIX em motor de vendas, lucratividade e fidelização.
               </h2>
               <p 
-                className="text-white/80 text-lg leading-relaxed font-sans"
+                className="text-gray-200 text-lg leading-relaxed font-sans"
                 data-testid="text-lina-pay-description"
               >
-                Conheça a nova funcionalidade que automatiza pagamentos recorrentes, incluindo valores variáveis, <span className="font-semibold">trazendo benefícios diretos para empresas e consumidores.</span>
+                Conheça a nova funcionalidade que automatiza pagamentos recorrentes, incluindo valores variáveis, <span className="font-semibold text-white">trazendo benefícios diretos para empresas e consumidores.</span>
               </p>
             </div>
             
@@ -77,16 +80,16 @@ export default function LinaPaySection() {
               ></div>
               {/* PIX Automático Card */}
               <div 
-                className="relative bg-white/5 backdrop-blur-lg border border-cyan-400/20 p-6 rounded-2xl shadow-inner transition-all duration-300 hover:border-cyan-400/50 hover:-translate-y-1 hover:shadow-lg group"
+                className="relative bg-white/8 backdrop-blur-lg border border-cyan-400/30 p-6 rounded-2xl shadow-inner transition-all duration-300 hover:border-cyan-400/60 hover:-translate-y-1 hover:shadow-xl hover:bg-white/10 group"
                 data-testid="card-pix-automatico"
               >
                 <div className="mb-4">
-                  <h3 className="text-white font-lexend font-semibold text-lg mb-2">
+                  <h3 className="text-cyan-400 font-lexend font-semibold text-lg mb-2">
                     Pix Automático
                   </h3>
                 </div>
                 <p 
-                  className="text-white/90 text-sm leading-relaxed font-sans"
+                  className="text-gray-300 text-sm leading-relaxed font-sans"
                   data-testid="text-pix-automatico-description"
                 >
                   Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade.
@@ -98,16 +101,16 @@ export default function LinaPaySection() {
               
               {/* PIX Biometria Card */}
               <div 
-                className="relative bg-white/5 backdrop-blur-lg border border-cyan-400/20 p-6 rounded-2xl shadow-inner transition-all duration-300 hover:border-cyan-400/50 hover:-translate-y-1 hover:shadow-lg group"
+                className="relative bg-white/8 backdrop-blur-lg border border-cyan-400/30 p-6 rounded-2xl shadow-inner transition-all duration-300 hover:border-cyan-400/60 hover:-translate-y-1 hover:shadow-xl hover:bg-white/10 group"
                 data-testid="card-pix-biometria"
               >
                 <div className="mb-4">
-                  <h3 className="text-white font-lexend font-semibold text-lg mb-2">
+                  <h3 className="text-cyan-400 font-lexend font-semibold text-lg mb-2">
                     Pix Biometria
                   </h3>
                 </div>
                 <p 
-                  className="text-white/90 text-sm leading-relaxed font-sans"
+                  className="text-gray-300 text-sm leading-relaxed font-sans"
                   data-testid="text-pix-biometria-description"
                 >
                   Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebras na jornada.

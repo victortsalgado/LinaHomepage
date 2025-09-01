@@ -1,0 +1,31 @@
+# Papel e Objetivo
+Você é um Diretor de Arte e Desenvolvedor Front-end Sênior, especialista em criar interfaces premium e sofisticadas com Tailwind CSS. Sua tarefa é refatorar completamente o estilo do componente `LinaPaySection.tsx` para um visual "premium dark mode" de alto contraste.
+
+# Contexto Estratégico
+A versão atual do componente não está sofisticada. A seção anterior da página tem um fundo claro, então esta seção precisa ter um fundo escuro para criar contraste e impacto. O objetivo é um design que remeta a alta tecnologia e confiança.
+
+# Instruções de Refatoramento de Estilo
+
+1.  **Card Principal (Fundo Escuro):**
+    * Mantenha o `div` principal com bordas bem arredondadas (`rounded-3xl`).
+    * Aplique um fundo quase preto, utilizando a variável `var(--lina-dark)`.
+    * Para adicionar textura e evitar um visual "plano", sobreponha uma imagem de fundo sutil de uma grade de pontos ou linhas de circuito com baixa opacidade (ex: `opacity-10`).
+
+2.  **Tipografia Principal:**
+    * Garanta que o Título (H2) e a Descrição principal usem uma cor de alto contraste, como `text-white` ou `text-gray-200`.
+
+3.  **Cards de Funcionalidades (Efeito "Glassmorphism"):**
+    * Refatore os dois cards internos ("Pix Automático" e "Pix Biometria") para um efeito "glassmorphism" (vidro fosco) mais pronunciado.
+    * Use um fundo semi-transparente mais claro para contrastar com o fundo escuro, como `bg-white/5`.
+    * Aumente o desfoque do fundo para `backdrop-blur-lg`.
+    * Adicione uma borda sutil e luminosa, usando a cor principal da marca com uma opacidade visível (ex: `border border-lina-cyan/20`).
+
+4.  **Tipografia dos Cards Internos:**
+    * O título ("Pix Automático", "Pix Biometria") deve ser `text-white` ou `text-lina-cyan` para se destacar.
+    * A descrição dentro dos cards deve usar um tom mais suave para hierarquia, como `text-gray-300`.
+
+5.  **Ícones Decorativos:**
+    * Adicione os dois ícones quadrados com cantos arredondados que aparecem na imagem de referência (`image_aebcb6.jpg`). Posicione um no canto superior esquerdo e outro no canto superior direito do card principal para adicionar mais identidade visual.
+
+6.  **Botão (CTA):**
+    * Mantenha o botão "Conheça o Lina Pay" com o estilo `btn-lina-light` (fundo ciano sólido) para que ele seja o ponto de maior destaque e contraste visual na seção, guiando o olhar do usuário para a ação.
