@@ -1,5 +1,5 @@
 import { Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
-import logoPath from "../../assets/Home_Logo_Pix_BG_LinaPay_1756226661320.png";
+import logoPath from "@assets/Nova_logo_lina_1756708154690.png";
 
 export default function Footer() {
   const regulatoryLinks = [
