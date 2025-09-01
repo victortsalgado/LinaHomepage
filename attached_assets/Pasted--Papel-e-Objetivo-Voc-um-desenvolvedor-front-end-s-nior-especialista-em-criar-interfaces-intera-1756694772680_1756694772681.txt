@@ -1,0 +1,38 @@
+# Papel e Objetivo
+Você é um desenvolvedor front-end sênior, especialista em criar interfaces interativas e premium com Next.js, Tailwind CSS e Framer Motion. Sua tarefa é construir o componente `LinaPaySection.tsx` como uma experiência de "Palco Digital".
+
+# Contexto Estratégico
+O objetivo é criar uma seção única e memorável para o produto "LinaPay". Em vez de um layout estático, a seção deve ser interativa, permitindo que o usuário escolha qual funcionalidade explorar ("Pix Automático" ou "Pix Biometria"). O design deve ser escuro, sofisticado e criar um contraste visual com a seção anterior da página.
+
+# Instruções de Implementação
+
+1.  **Layout Principal (O Palco):**
+    * Crie uma seção com um fundo escuro e texturizado (use `var(--lina-dark)` com uma imagem de fundo sutil de grade de pontos com `opacity-10`).
+    * A seção deve ter bordas bem arredondadas (`rounded-3xl`) e um `padding` generoso (ex: `p-12` ou `p-16`).
+
+2.  **Conteúdo Fixo:**
+    * **Título (H2):** Centralizado no topo, com o texto "Transforme o PIX em motor de vendas, lucratividade e fidelização." Use a fonte 'Lexend', cor `text-white`.
+    * **Descrição:** Logo abaixo do título, com o texto "Conheça a nova funcionalidade que automatiza pagamentos recorrentes, incluindo valores variáveis, trazendo benefícios diretos para empresas e consumidores." Use a fonte 'Inter', cor `text-gray-300`.
+
+3.  **Controles Interativos (Toggle Buttons):**
+    * Abaixo da descrição, crie dois botões (toggles) lado a lado: "Pix Automático" e "Pix Biometria".
+    * Utilize `useState` para controlar qual dos dois está "ativo".
+    * O botão ativo deve ter um estilo de destaque (ex: fundo `bg-lina-cyan`, texto `text-lina-dark`).
+    * O botão inativo deve ter um estilo sutil (ex: `border border-gray-700`, `text-gray-400`).
+
+4.  **Área de Conteúdo Dinâmico (O Palco Iluminado):**
+    * Abaixo dos toggles, crie uma área central que mudará de conteúdo com base no botão ativo.
+    * Use `AnimatePresence` do Framer Motion para garantir transições suaves (fade in/out) quando o conteúdo for trocado.
+    * Esta área deve ser dividida em duas colunas (uma para o visual, outra para o texto).
+
+5.  **Conteúdo e Visuais por Funcionalidade:**
+    * **Quando "Pix Automático" estiver ativo:**
+        * **Visual:** Mostre uma imagem ou animação que represente pagamentos recorrentes automatizados.
+        * **Texto:** Título (H3): "Pix Automático". Descrição: "Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade."
+    * **Quando "Pix Biometria" estiver ativo:**
+        * **Visual:** Mostre uma imagem ou animação de um smartphone simulando um pagamento com biometria no checkout.
+        * **Texto:** Título (H3): "Pix Biometria". Descrição: "Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebras na jornada."
+
+6.  **Animação e Estilo:**
+    * A transição entre os conteúdos dinâmicos deve ser fluida e elegante.
+    * Utilize um efeito de "holofote" (um `radial-gradient` sutil) que se acende atrás do conteúdo ativo para dar destaque.
