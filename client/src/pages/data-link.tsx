@@ -4,6 +4,7 @@ import Footer from "@/components/layout/footer";
 import DataLinkHeroSection from "@/components/data-link/hero-section";
 import ValuePropositionSection from "@/components/data-link/value-proposition-section";
 import SocialProofSection from "@/components/data-link/social-proof-section";
+import ApisSection from "@/components/data-link/apis-section";
 
 export default function DataLink(): JSX.Element {
   return (
@@ -17,6 +18,7 @@ export default function DataLink(): JSX.Element {
         <main>
           <DataLinkHeroSection />
           <SocialProofSection />
+          <ApisSection />
           <ValuePropositionSection />
           {/* Other sections can be added here later */}
         </main>
