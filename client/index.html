@@ -71,25 +71,78 @@
     }
     </script>
     
+    <!-- Performance Critical Resources -->
+    <!-- Preload critical hero image for LCP optimization -->
+    <link rel="preload" href="/assets/generated_images/Fintech_innovation_infrastructure_visualization_95bfa7ab.webp" as="image" fetchpriority="high">
+    
     <!-- Preconnect to critical external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Preload critical fonts for LCP optimization -->
+    <!-- Optimized font loading with async CSS -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700&display=swap"></noscript>
     
     <!-- Critical inline CSS for fastest initial render -->
     <style>
-      /* Critical above-the-fold styles */
+      /* Critical above-the-fold styles for LCP optimization */
       #root { min-height: 100vh; }
-      body { margin: 0; font-family: Inter, sans-serif; }
-      .hero-section { min-height: 100vh; display: flex; align-items: center; }
+      body { 
+        margin: 0; 
+        font-family: Inter, sans-serif; 
+        font-display: swap;
+      }
+      .hero-section { 
+        min-height: 100vh; 
+        display: flex; 
+        align-items: center; 
+      }
+      /* Critical hero section styles */
+      .hero-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: center;
+        min-height: 600px;
+      }
+      @media (min-width: 1024px) {
+        .hero-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      /* Critical text styles */
+      .hero-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        line-height: 1.1;
+        color: #000;
+      }
+      @media (min-width: 768px) {
+        .hero-title { font-size: 3rem; }
+      }
+      @media (min-width: 1024px) {
+        .hero-title { font-size: 3.75rem; }
+      }
+      @media (min-width: 1280px) {
+        .hero-title { font-size: 4.5rem; }
+      }
+      .hero-description {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: #6b7280;
+        max-width: 32rem;
+        margin-top: 1.5rem;
+      }
     </style>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx" defer></script>
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js" defer></script>
   </body>

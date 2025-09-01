@@ -4,9 +4,10 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import fintechInnovationImage from "@assets/generated_images/Fintech_innovation_infrastructure_visualization_95bfa7ab.png";
-import businessGrowthImage from "@assets/generated_images/3D_business_growth_visualization_676e1f0e.png";
-import securityComplianceImage from "@assets/generated_images/3D_security_compliance_visualization_053fa71b.png";
+// Optimized WebP images for better performance
+const fintechInnovationImage = "/assets/generated_images/Fintech_innovation_infrastructure_visualization_95bfa7ab.webp";
+const businessGrowthImage = "/assets/generated_images/3D_business_growth_visualization_676e1f0e.webp";
+const securityComplianceImage = "/assets/generated_images/3D_security_compliance_visualization_053fa71b.webp";
 
 interface Slide {
   id: number;

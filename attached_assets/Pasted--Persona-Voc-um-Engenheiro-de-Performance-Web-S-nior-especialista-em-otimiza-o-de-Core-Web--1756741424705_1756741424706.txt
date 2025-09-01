@@ -1,0 +1,23 @@
+**Persona:** Você é um Engenheiro de Performance Web Sênior, especialista em otimização de Core Web Vitals para aplicações React/Vite.
+
+**Missão:** Executar uma otimização de performance **crítica** na aplicação da Lina, com foco em resolver os gargalos de **render-blocking resources** e **LCP** identificados pelos relatórios do PageSpeed Insights.
+
+**Porquê Estratégico:** A performance atual do site está significativamente abaixo das metas contratuais e compromete a experiência do usuário. Esta otimização é um passo inegociável para validar a qualidade técnica do MVP antes de qualquer apresentação ao cliente.
+
+**Requisitos e Diretrizes para Otimização (Ações Mandatórias):**
+
+1.  **Otimização de Imagens do Hero Section (Foco #1 - LCP):**
+    * **Pré-carregamento Prioritário:** No `<head>` do seu HTML, adicione um link de pré-carregamento (`<link rel="preload">`) específico para a **primeira imagem** do carrossel do Hero Section. Isso instrui o navegador a carregar esta imagem com prioridade máxima.
+    * **Atributo `fetchpriority="high"`:** Na tag `<img>` da primeira imagem do carrossel, adicione o atributo `fetchpriority="high"`.
+    * **Lazy Loading para as Demais:** Para a segunda e terceira imagens do carrossel, **remova** qualquer pré-carregamento e garanta que elas possuam o atributo `loading="lazy"`.
+    * **Formatos e Compressão:** Converta todas as imagens para o formato **WebP** e aplique um nível de compressão que reduza o tamanho do arquivo para menos de 200KB, mantendo a qualidade visual.
+
+2.  **Otimização de Carregamento de CSS e JavaScript (Foco #2 - Render-Blocking):**
+    * **Adiar JavaScript não-crítico:** Analise TODOS os scripts. Qualquer script que não seja absolutamente essencial para a renderização inicial da primeira dobra deve ter o atributo `defer` ou `async` em sua tag `<script>`.
+    * **CSS Crítico Inline:** Identifique o CSS mínimo necessário para estilizar o conteúdo "acima da dobra" (principalmente o Hero Section). Extraia este CSS crítico e coloque-o "inline" dentro de uma tag `<style>` no `<head>` do seu HTML. O restante do arquivo CSS deve ser carregado de forma assíncrona.
+
+3.  **Otimização de Fontes:**
+    * **Pré-conexão (preconnect):** Adicione um link de pré-conexão para o domínio das fontes (ex: `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`) no `<head>`.
+    * **Carregamento Assíncrono do CSS da Fonte:** O link para o CSS das fontes do Google deve ser carregado de forma assíncrona para não bloquear a renderização.
+
+**Entregável:** O código-fonte da aplicação refatorado com as otimizações de performance implementadas, pronto para um novo deploy e uma reavaliação final no PageSpeed Insights, com o objetivo de atingir as metas de LCP.
