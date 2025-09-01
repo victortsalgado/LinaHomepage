@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileMenu from "@/components/ui/mobile-menu";
-import logoLina from "../../assets/logo-lina.png";
+import logoLina from "@assets/7906d125-8a87-4c30-ba79-7e52df4e1545_1756708646805.png";
 import { Link } from "wouter";
 import {
   NavigationMenu,
