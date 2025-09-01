@@ -1,0 +1,28 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é criar uma página de contato completa, focada na usabilidade e na otimização da conversão.
+
+**Missão:** Construir a página de **"Contato"** completa para o site da Lina.
+
+**Porquê Estratégico:** A página de contato é o destino final para muitos usuários com alta intenção de compra. Um layout limpo, um formulário claro e informações de contato acessíveis são cruciais para garantir que um lead em potencial possa iniciar uma conversa sem qualquer fricção, maximizando as oportunidades de negócio.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura da Página e Componentes:**
+    * Crie um novo arquivo de página em `src/pages/contato.tsx` (ou o caminho correspondente no seu roteador).
+    * A página deve importar e utilizar os componentes globais `<Header />` e `<Footer />`.
+    * Crie um novo componente de seção principal em `src/components/views/contato/sections/ContactSection.tsx`.
+
+2.  **Layout e Conteúdo:**
+    * **Layout:** Implemente um layout de duas colunas (`grid lg:grid-cols-2`) para a seção principal, com alinhamento vertical (`items-center`).
+    * **Coluna da Esquerda (Informações):**
+        * **Título:** `Fale com um especialista`
+        * **Descrição:** `Estamos prontos para transformar o seu negócio. Preencha o formulário ao lado ou utilize um dos nossos canais de contato. Nossa equipe retornará o mais breve possível.`
+        * **Informações de Contato:** Inclua o telefone e o e-mail da empresa, com ícones apropriados.
+        * **Endereço:** Inclua o endereço físico da Lina.
+    * **Coluna da Direita (Formulário):**
+        * Utilize a mesma estrutura e campos do formulário de qualificação que já definimos, contido no componente `CtaFormSection.tsx` das páginas de produto. O formulário deve ser o elemento principal desta coluna.
+
+3.  **Estilo e Animação:**
+    * **Estilo:** A página deve ter um fundo claro (`bg-white`). O formulário na coluna da direita pode manter o estilo de "card" escuro para criar um ponto focal de conversão. Mantenha total consistência com a paleta de cores e tipografia do projeto.
+    * **Animação:** Utilize o hook `useScrollReveal` para aplicar uma animação de entrada suave para a seção.
+
+**Entregável:** O código-fonte completo para a nova página de "Contato" e seu componente de seção principal, totalmente responsivos e funcionais.

@@ -10,6 +10,7 @@ import DataLink from "@/pages/data-link";
 import LinaPay from "@/pages/lina-pay";
 import JSR from "@/pages/jsr";
 import QuemSomos from "@/pages/quem-somos";
+import Contato from "@/pages/contato";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/lina-pay" component={LinaPay} />
       <Route path="/jsr" component={JSR} />
       <Route path="/quem-somos" component={QuemSomos} />
+      <Route path="/contato" component={Contato} />
       <Route component={NotFound} />
     </Switch>
   );
