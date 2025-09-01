@@ -1,0 +1,21 @@
+**Persona:** Você é um Engenheiro de Performance Web Sênior, especialista em otimização de Core Web Vitals para aplicações React/Vite.
+
+**Missão:** Refatorar a aplicação da Lina para otimizar radicalmente o tempo de carregamento, com foco principal em reduzir o Largest Contentful Paint (LCP) e eliminar recursos que bloqueiam a renderização.
+
+**Porquê Estratégico:** Os testes de performance atuais indicam um LCP de 14,3s no mobile e 3,6s no desktop, que estão acima das metas contratuais. A otimização é crucial para garantir a melhor experiência do usuário, melhorar o ranqueamento no SEO e validar a qualidade técnica do MVP antes da apresentação ao cliente.
+
+**Requisitos e Diretrizes para Otimização:**
+
+1.  **Otimização de Imagens (Foco no LCP):**
+    * **Hero Section:** A imagem principal do Hero Section deve ser priorizada. Implemente o atributo `fetchpriority="high"` na tag `<img>` da imagem do primeiro slide do carrossel.
+    * **Lazy Loading:** Para todas as outras imagens abaixo da primeira dobra, garanta que o atributo `loading="lazy"` esteja implementado.
+    * **Compressão e Formatos Modernos:** Converta todas as imagens para formatos de última geração, como WebP, e utilize compressão para reduzir o tamanho dos arquivos sem perda de qualidade visual perceptível.
+
+2.  **Otimização de Carregamento de CSS e JavaScript:**
+    * **Remover Render-Blocking Resources:** Analise os scripts e folhas de estilo carregados no `<head>` do documento. Adie o carregamento de qualquer JavaScript ou CSS que não seja crítico para a renderização da primeira dobra utilizando os atributos `async` ou `defer`.
+    * **Code Splitting:** Revise a configuração do Vite para garantir que o "code splitting" esteja funcionando corretamente, dividindo o JavaScript em "chunks" menores que são carregados sob demanda.
+
+3.  **Otimização de Fontes:**
+    * Garanta que as fontes da web (ex: Google Fonts) estejam sendo pré-carregadas (`preload`) no `<head>` para evitar "layout shifts" e acelerar a renderização do texto.
+
+**Entregável:** O código-fonte da aplicação refatorado com as otimizações de performance implementadas, pronto para um novo deploy e reavaliação no PageSpeed Insights.
