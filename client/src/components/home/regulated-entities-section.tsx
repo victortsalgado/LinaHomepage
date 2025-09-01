@@ -231,10 +231,10 @@ export default function RegulatedEntitiesSection() {
             </div>
             
             {/* Tech labels for context */}
-            <div className="absolute -bottom-6 left-0 right-0 flex justify-between text-xs text-gray-600">
-              <span className="ml-2">Sandbox</span>
-              <span>Produção</span>
-              <span className="mr-2">Escala</span>
+            <div className="absolute -bottom-6 left-0 right-0 flex text-xs text-gray-600">
+              <span className="ml-8">Sandbox</span>
+              <span className="flex-1 text-center">Produção</span>
+              <span className="mr-8">Escala</span>
             </div>
           </div>
         </div>
