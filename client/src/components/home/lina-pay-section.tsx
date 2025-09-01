@@ -12,6 +12,23 @@ export default function LinaPaySection() {
   const [selection, setSelection] = useState<'automatico' | 'biometria'>('automatico');
   const [hasAutoToggled, setHasAutoToggled] = useState(false);
 
+  // Animation variants for elegant cascading effects
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   // Auto-toggle when section becomes visible
   useEffect(() => {
     if (sectionVisible && !hasAutoToggled) {
@@ -209,29 +226,42 @@ export default function LinaPaySection() {
                       <AnimatePresence mode="wait">
                         <motion.div
                           key={`text-${selection}`}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 1.3, ease: [0.23, 1, 0.32, 1] }}
+                          variants={containerVariants}
+                          initial="hidden"
+                          animate="visible"
+                          exit="hidden"
                           className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl h-96 lg:h-[28rem] flex flex-col justify-start"
                         >
                           <div className="pt-4 lg:pt-8">
-                            <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-3">
+                            <motion.h3 
+                              variants={itemVariants}
+                              className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-3"
+                            >
                               {activeContent.title}
-                            </h3>
-                            <p className="text-gray-300 text-base lg:text-lg mb-6 font-sans italic">
+                            </motion.h3>
+                            <motion.p 
+                              variants={itemVariants}
+                              className="text-gray-300 text-base lg:text-lg mb-6 font-sans italic"
+                            >
                               {activeContent.subtitle}
-                            </p>
-                            <ul className="space-y-4">
+                            </motion.p>
+                            <motion.ul 
+                              variants={itemVariants}
+                              className="space-y-4"
+                            >
                               {activeContent.benefits.map((benefit, index) => (
-                                <li key={index} className="flex items-start gap-3">
+                                <motion.li 
+                                  key={index} 
+                                  variants={itemVariants}
+                                  className="flex items-start gap-3"
+                                >
                                   <CheckCircle2 size={20} className="text-cyan-400 mt-0.5 flex-shrink-0" />
                                   <span className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
                                     {benefit}
                                   </span>
-                                </li>
+                                </motion.li>
                               ))}
-                            </ul>
+                            </motion.ul>
                           </div>
                         </motion.div>
                       </AnimatePresence>
