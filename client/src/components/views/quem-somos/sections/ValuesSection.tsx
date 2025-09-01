@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 // Define value icon paths as public assets
-const evolucaoIcon = "/assets/Valores_Lina_Icone_evolução_1756726422423.png";
+const evolucaoIcon = "/assets/evolucao.png";
 const multidiversidadeIcon = "/assets/Valores_Lina_Icone_mutidiversidade_1756726422423.png";
 const colaborativoIcon = "/assets/Valores_Lina_Icone_espirito_colaborativo_1756726422422.png";
 const compromissoIcon = "/assets/Valores_Lina_Icone_Compromisso_1756726422421.png";
-const paixaoIcon = "/assets/Valores_Lina_Icone_Paixão_1756726422424.png";
+const paixaoIcon = "/assets/paixao.png";
 
 export default function ValuesSection() {
   const { ref, isVisible } = useScrollReveal();
