@@ -1,0 +1,25 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Seu objetivo é criar a seção de abertura para uma página de produto, garantindo que ela seja visualmente impactante, informativa e totalmente consistente com a arquitetura e o design do projeto existente.
+
+**Missão:** Construir o componente **Hero Section** para a nova página de produto **LinaPay**.
+
+**Porquê Estratégico:** Esta é a primeira dobra da página e deve capturar a atenção do visitante imediatamente, comunicando o principal benefício da solução (transformação da experiência de compra e redução de custos) e estabelecendo um tom visual premium e dinâmico que convide à exploração do restante do conteúdo.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/sections/lina-pay/LinaPayHeroSection.tsx`.
+    * Implemente um layout responsivo de duas colunas (`grid lg:grid-cols-2`), similar ao padrão do `DataLinkHeroSection`.
+
+2.  **Conteúdo Explícito:**
+    * **Coluna da Esquerda (Conteúdo Textual):**
+        * [cite_start]**Título Principal:** `Transforme a experiência de compra e reduza custos com meios de pagamento` [cite: 4987]
+        * [cite_start]**Descrição:** `Com o Pix por Biometria, você elimina fricções no checkout e reduz custos com cartões e boletos, ao mesmo tempo em que oferece uma jornada de pagamento segura e inovadora.` (Texto adaptado de [cite: 4987])
+        * [cite_start]**Botão de CTA:** O botão deve ter o texto "Falar com um especialista" e, ao ser clicado, deve rolar suavemente para a seção de formulário no final da página[cite: 4992].
+    * **Coluna da Direita (Elemento Visual):**
+        * [cite_start]Crie um placeholder ou um container para uma imagem que represente um usuário interagindo com um smartphone de forma positiva, simbolizando uma experiência de pagamento fluida, conforme a referência visual da `LP_LinaPay.pdf`[cite: 4985].
+
+3.  **Animação e Estilo:**
+    * **Animação:** Utilize `framer-motion` para aplicar uma animação de entrada em cascata (staggered) nos elementos da coluna esquerda (título, descrição, botão), seguindo o padrão de alta qualidade já estabelecido.
+    * **Estilo:** O design deve ser coeso com o restante do site. Utilize as cores, fontes (`Lexend`, `Inter`) e o componente `Button` já definidos no projeto. O fundo da seção deve ser claro (`bg-white` ou `bg-gray-50`).
+
+**Entregável:** O código-fonte completo para o novo componente `LinaPayHeroSection.tsx`, totalmente responsivo, animado e funcional.
