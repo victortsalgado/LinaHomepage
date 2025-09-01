@@ -1,0 +1,26 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript e na integração de aplicações com Headless CMS via API, especialmente o Sanity.io.
+
+**Missão:** Refatorar as páginas do blog da Lina (`/blog` e `/blog/[slug]`) para buscar e renderizar o conteúdo dinamicamente a partir da API do Sanity.io, substituindo os dados mock estáticos.
+
+**Porquê Estratégico:** Esta integração é o passo final para transformar o blog em uma plataforma de conteúdo escalável e autônoma. Ao conectar o frontend com o CMS, capacitamos a equipe de marketing da Lina a gerenciar todo o ciclo de vida do conteúdo (criação, publicação, atualização) sem a necessidade de intervenção técnica, garantindo agilidade e consistência na estratégia de thought leadership.
+
+**Requisitos e Diretrizes:**
+
+1.  **Utilização do Cliente Sanity:**
+    * Utilize o cliente Sanity já configurado em `lib/sanity.ts` e os hooks React Query em `client/src/hooks/usePosts.ts` para realizar as chamadas à API.
+    * Garanta que as credenciais do Sanity (`SANITY_PROJECT_ID`, `SANITY_DATASET`) sejam lidas das variáveis de ambiente ("Secrets") do Replit.
+
+2.  **Refatoração da Página de Listagem do Blog (`/blog`):**
+    * Modifique os componentes `RecentBlogsSection.tsx` e `AllPostsSection.tsx`.
+    * Substitua os arrays de dados mock por chamadas à API do Sanity para buscar todos os artigos publicados. A query GROQ deve retornar os campos necessários para os cards de preview (`title`, `slug`, `mainImage`, `category`, `excerpt`, `publishedAt`).
+    * O carrossel de "Artigos Recentes" deve ser populado com os 5 posts mais recentes (ordenados por `publishedAt` de forma decrescente).
+    * A grade de "Todos os Artigos" deve exibir os posts restantes, com a devida paginação.
+    * A funcionalidade de filtro por categoria deve ser implementada, realizando novas chamadas à API ou filtrando os dados já carregados.
+
+3.  **Refatoração do Template de Artigo Individual (`/blog/[slug]`):**
+    * Modifique a página dinâmica `src/pages/blog/[slug].tsx`.
+    * A página deve buscar o conteúdo de um único artigo da API do Sanity, utilizando o `slug` da URL como parâmetro de busca.
+    * A query GROQ deve buscar todos os campos do schema `post`, incluindo o `body` (Rich Text).
+    * Renderize o conteúdo do campo `body` utilizando um componente apropriado para processar o formato "blockContent" do Sanity, garantindo que títulos, parágrafos, listas e outros elementos sejam exibidos corretamente.
+
+**Entregável:** As páginas do blog (`/blog` e `/blog/[slug]`) totalmente refatoradas, buscando e exibindo dados dinamicamente a partir do Sanity.io, substituindo completamente os dados estáticos.
