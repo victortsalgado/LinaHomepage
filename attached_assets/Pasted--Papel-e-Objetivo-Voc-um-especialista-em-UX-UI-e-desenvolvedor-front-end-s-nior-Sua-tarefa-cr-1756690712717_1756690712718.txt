@@ -1,0 +1,32 @@
+# Papel e Objetivo
+Você é um especialista em UX/UI e desenvolvedor front-end sênior. Sua tarefa é criar o componente `LinaPaySection.tsx`.
+
+# Contexto Estratégico
+Esta seção deve apresentar o produto "LinaPay", com foco em como ele transforma o PIX em uma ferramenta de crescimento para negócios. O design deve ser premium, utilizando a estrutura de "card dentro de card" da referência visual e o conteúdo estratégico da Landing Page de referência.
+
+# Instruções de Implementação
+
+1.  **Layout Principal:**
+    * Crie uma seção com um fundo de cor clara (`bg-white` ou `bg-gray-50`).
+    * Dentro da seção, crie um `div` principal que funcionará como um grande "card". Este card deve ter um fundo com gradiente escuro (usando `--lina-dark` e `--lina-medium` do CSS) e bordas bem arredondadas (`rounded-3xl`).
+
+2.  **Conteúdo Principal (Dentro do Card Escuro):**
+    * **Título (H2):** "Transforme o PIX em motor de vendas, lucratividade e fidelização."
+    * **Descrição:** "Conheça a nova funcionalidade que automatiza pagamentos recorrentes, incluindo valores variáveis, trazendo benefícios diretos para empresas e consumidores."
+    * **Grade de Funcionalidades:** Crie uma grade com duas colunas (`grid-cols-2`) para abrigar dois cards menores.
+
+3.  **Cards de Funcionalidades (Dentro da Grade):**
+    * **Estilo dos Cards:** Ambos os cards devem ter um fundo semi-transparente (`bg-white/5` ou similar), bordas arredondadas e um efeito de `backdrop-blur` para um visual moderno.
+    * **Card 1: Pix Automático**
+        * **Título (H3):** "Pix Automático"
+        * **Descrição:** "Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade."
+    * **Card 2: Pix Biometria**
+        * **Título (H3):** "Pix Biometria"
+        * **Descrição:** "Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebras na jornada."
+
+4.  **Botão Final (CTA):**
+    * Abaixo da grade de funcionalidades, adicione um botão centralizado com o texto "Conheça o Lina Pay". Utilize o estilo `btn-lina-light`.
+
+5.  **Estilo e Animação:**
+    * Utilize as fontes 'Lexend' para títulos e 'Inter' para os textos.
+    * Aplique animações de "scroll-reveal" para que a seção e seus cards internos apareçam de forma fluida conforme o usuário rola a página.
