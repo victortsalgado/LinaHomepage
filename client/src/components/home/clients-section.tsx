@@ -75,19 +75,19 @@ export default function ClientsSection() {
           <InfiniteSlider
             duration={25}
             durationOnHover={40}
-            gap={80}
-            className="py-8"
+            gap={100}
+            className="py-12"
           >
             {clients.map((client, index) => (
               <div 
                 key={`${client.name}-${index}`} 
-                className="flex items-center justify-center min-w-[180px]"
+                className="flex items-center justify-center min-w-[220px]"
                 data-testid={`logo-client-${index}`}
               >
                 <img
                   src={client.logo}
                   alt={`Logo ${client.name}`}
-                  className="h-10 w-auto grayscale hover:grayscale-0 transition-all duration-300 ease-in-out opacity-80 hover:opacity-100 cursor-pointer"
+                  className="h-16 w-auto grayscale hover:grayscale-0 transition-all duration-300 ease-in-out opacity-80 hover:opacity-100 cursor-pointer"
                   data-testid={`img-logo-${client.name.toLowerCase().replace(/\s+/g, '-')}`}
                 />
               </div>
