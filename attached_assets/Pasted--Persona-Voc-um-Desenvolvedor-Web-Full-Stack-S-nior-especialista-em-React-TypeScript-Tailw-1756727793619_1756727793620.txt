@@ -1,0 +1,34 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é criar uma página de listagem de blog elegante e funcional, com foco em usabilidade, performance e SEO.
+
+**Missão:** Construir a página principal do **Blog** (`/blog`), que servirá como o hub de todo o conteúdo da Lina.
+
+**Porquê Estratégico:** Esta página será o centro da estratégia de conteúdo da Lina, projetada para atrair tráfego orgânico, educar o mercado e estabelecer a empresa como uma líder de pensamento (thought leader) em Open Finance. O design deve incentivar a exploração e a descoberta de artigos.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura da Página e Componentes:**
+    * Crie um novo arquivo de página em `src/pages/blog.tsx`.
+    * A página deve importar e utilizar os componentes globais `<Header />` e `<Footer />`.
+    * O conteúdo principal deve ser encapsulado em um novo componente: `src/components/views/blog/BlogListingSection.tsx`.
+
+2.  **Layout e Conteúdo:**
+    * **Seção de Artigo em Destaque:** No topo da página, crie uma seção para o artigo mais recente ou em destaque. Este deve ter uma imagem maior e mais proeminente que os demais.
+    * **Filtros de Categoria:** Abaixo da seção de destaque, adicione uma barra de botões que permita ao usuário filtrar os artigos pelas seguintes categorias: `Todos`, `DataLink`, `LinaPay`, `JSR`, `Institucional`.
+    * **Grade de Artigos:** Implemente uma grade responsiva (`lg:grid-cols-3`) que exibirá os cards dos demais artigos.
+    * **Paginação:** Adicione controles simples de paginação na parte inferior da grade.
+
+3.  **Componente `BlogPostCard`:**
+    * Crie um componente reutilizável `src/components/ui/BlogPostCard.tsx`.
+    * O design deste card deve ser **idêntico** ao padrão já estabelecido na seção de blog da Home page (`blog-section.tsx`), contendo: imagem, tag de categoria, data, título e uma breve descrição.
+
+4.  **Conteúdo (Placeholder):**
+    * Para popular a página, crie um array de dados mock com pelo menos 12 posts de blog. Utilize os seguintes exemplos, baseados nos materiais de estratégia, para preencher os dados:
+        * `{ title: 'Pix Automático: como funciona e por que adotar na sua empresa', category: 'LinaPay', ... }`
+        * `{ title: 'O impacto do Open Finance na análise de crédito', category: 'DataLink', ... }`
+        * `{ title: 'Por que a JSR é a evolução dos pagamentos digitais?', category: 'JSR', ... }`
+
+5.  **Animação e Estilo:**
+    * Utilize o hook `useScrollReveal` para uma animação de entrada suave na seção.
+    * Aplique uma animação em cascata (staggered) com `framer-motion` para a exibição dos cards na grade.
+
+**Entregável:** O código-fonte completo para a nova página `blog.tsx` e seus componentes associados (`BlogListingSection.tsx`, `BlogPostCard.tsx`), populado com dados de exemplo.
