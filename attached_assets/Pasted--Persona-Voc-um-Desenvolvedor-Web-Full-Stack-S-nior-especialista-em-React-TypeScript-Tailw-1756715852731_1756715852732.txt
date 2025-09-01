@@ -1,0 +1,42 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua especialidade é criar componentes interativos e sofisticados que elevam a experiência do usuário em sites B2B.
+
+**Missão:** Construir o componente da seção **"Segmentos de Mercado"** para a página DataLink, utilizando um layout interativo de abas verticais.
+
+**Porquê Estratégico:** Esta seção precisa demonstrar de forma clara e focada como o DataLink se aplica a diferentes verticais de negócio. Um sistema de abas interativo engaja o usuário, permitindo que ele explore o conteúdo relevante para si, o que aumenta a percepção de valor e a chance de conversão.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo: `src/components/sections/data-link/SegmentsSection.tsx`.
+    * A seção deve ter o título principal: "Feito para resolver dores reais de diferentes segmentos", com o subtítulo "Veja como aplicamos no seu setor".
+    * Implemente um layout principal responsivo de duas colunas (`grid lg:grid-cols-2`).
+
+2.  **Layout e Interatividade (Sistema de Abas):**
+    * **Coluna da Esquerda (Navegação):**
+        * Crie uma lista vertical com quatro botões ou "abas", um para cada segmento de mercado.
+        * Utilize o estado (`useState`) do React para controlar qual aba está ativa.
+        * A aba ativa deve ter um estilo visual distinto (ex: cor de fundo, borda destacada com `var(--lina-cyan)`), indicando a seleção.
+    * **Coluna da Direita (Conteúdo Dinâmico):**
+        * Esta área deve exibir o conteúdo correspondente à aba ativa na esquerda.
+        * O conteúdo de cada aba deve incluir um ícone representativo, o título do segmento e o texto descritivo.
+
+3.  **Animações:**
+    * **Obrigatório:** Utilize a biblioteca `framer-motion` e o componente `<AnimatePresence mode="wait">` para envolver a área de conteúdo da coluna direita.
+    * Quando o usuário trocar de aba, o conteúdo antigo deve ter uma animação de saída (ex: `exit={{ opacity: 0, x: -20 }}`) e o novo conteúdo deve ter uma animação de entrada (ex: `initial={{ opacity: 0, x: 20 }}`, `animate={{ opacity: 1, x: 0 }}`). A transição deve ser suave.
+
+4.  **Conteúdo Explícito para as Abas:**
+
+    * **Aba 1:**
+        * **Título:** "Empresas de assessoria financeira e patrimonial"
+        * **Descrição:** "Tenha uma visão unificada das finanças dos clientes com dados integrados de contas, cartões, crédito e investimentos."
+    * **Aba 2:**
+        * **Título:** "Plataformas de investimento"
+        * **Descrição:** "Ofereça carteiras consolidadas e recomendações personalizadas conectando contas de investimento e bancárias em mais de 50 instituições."
+    * **Aba 3:**
+        * **Título:** "Plataformas e marketplaces de crédito"
+        * **Descrição:** "Automatize a análise de crédito e comprovação de renda com acesso direto a extratos bancários via API."
+    * **Aba 4:**
+        * **Título:** "Plataformas de contabilidade online"
+        * **Descrição:** "Concilie e categorize transações automaticamente com dados bancários padronizados."
+
+**Entregável:** O código-fonte completo para o novo componente `SegmentsSection.tsx`, implementando o sistema de abas verticais interativas com animações de transição suaves. O componente deve ser responsivo e visualmente coeso com o design premium do site.
