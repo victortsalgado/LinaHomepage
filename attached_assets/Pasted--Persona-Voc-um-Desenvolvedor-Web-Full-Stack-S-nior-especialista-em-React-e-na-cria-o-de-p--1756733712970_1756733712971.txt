@@ -1,0 +1,47 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React e na criação de páginas de conteúdo otimizadas para SEO e AIO (Artificial Intelligence Optimization).
+
+**Missão:** Criar a página para o artigo de blog migrado **"O Impacto das Últimas Atualizações do Open Finance"**.
+
+**Porquê Estratégico:** A migração correta deste artigo é crucial para posicionar a Lina como uma fonte de autoridade e informação atualizada (E-E-A-T), atraindo profissionais do setor que buscam entender as mudanças regulatórias e suas implicações práticas.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura da Página:**
+    * Utilize o template de artigo individual já criado (`src/pages/blog/[slug].tsx`).
+    * A URL (slug) para esta página deve ser: `impacto-ultimas-atualizacoes-open-finance`.
+
+2.  **Conteúdo e SEO On-Page:**
+    * **Título (H1):** `O Impacto das Últimas Atualizações do Open Finance`
+    * **Meta Title:** `<title>Últimas Atualizações do Open Finance: Impacto e Oportunidades | Lina</title>`
+    * **Meta Description:** `<meta name="description" content="Análise completa sobre as últimas atualizações do Open Finance no Brasil e o que elas significam para bancos, fintechs e instituições de pagamento.">`
+    * **Corpo do Artigo:** Insira o conteúdo completo do artigo original, formatado corretamente com subtítulos (H2, H3), parágrafos e listas para a classe `.prose`.
+    * **Links Internos:** Dentro do texto, adicione links contextuais para as páginas `/data-link`, `/lina-pay` e `/jsr`, explicando como cada solução se beneficia ou se adapta às novas regras.
+    * **Autor:** Defina o autor como "Time Lina".
+
+3.  **Dados Estruturados (Schema.org):**
+    * Implemente o seguinte JSON-LD no `<head>` da página. Note que o `@type` é `NewsArticle` devido à natureza noticiosa do conteúdo.
+      ```json
+      {
+        "@context": "[https://schema.org](https://schema.org)",
+        "@type": "NewsArticle",
+        "headline": "Últimas Atualizações do Open Finance: Impacto e Oportunidades | Lina",
+        "description": "Análise completa sobre as últimas atualizações do Open Finance no Brasil e o que elas significam para bancos, fintechs e instituições de pagamento.",
+        "author": {
+          "@type": "Organization",
+          "name": "Lina"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Lina",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "URL_DO_LOGO_LINA"
+          }
+        },
+        "about": [
+          { "@type": "Thing", "name": "Open Finance" }
+        ]
+      }
+      ```
+
+**Entregável:** O código ou arquivo para a nova página do artigo, com todo o conteúdo, metadados e schema implementados.

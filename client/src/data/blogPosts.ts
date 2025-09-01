@@ -33,6 +33,21 @@ export const allBlogPosts: BlogPost[] = [
     }
   },
   {
+    id: 14,
+    category: "Institucional",
+    title: "O Impacto das Últimas Atualizações do Open Finance",
+    description: "Análise completa sobre as últimas atualizações do Open Finance no Brasil e o que elas significam para bancos, fintechs e instituições de pagamento.",
+    date: "25 Jan 2025",
+    readTime: "8 min",
+    image: "/api/placeholder/600/400?text=Open+Finance+Updates",
+    alt: "Últimas atualizações do Open Finance no Brasil",
+    author: {
+      name: "Time Lina",
+      avatar: "/src/assets/mascote-astro-lina.png",
+      role: "Equipe Editorial"
+    }
+  },
+  {
     id: 1,
     category: "LinaPay",
     title: "Pix Automático: como funciona e por que adotar na sua empresa",

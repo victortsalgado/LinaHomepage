@@ -15,6 +15,8 @@ export default function BlogPostCard({ post, index, className = "" }: BlogPostCa
     slug = "pix-e-open-finance-remodelando-mercado-financeiro";
   } else if (post.id === 13) {
     slug = "open-insurance-futuro-mercado-seguros";
+  } else if (post.id === 14) {
+    slug = "impacto-ultimas-atualizacoes-open-finance";
   } else {
     slug = `${post.title
       .toLowerCase()

@@ -5,6 +5,7 @@ import PostHeader from "@/components/views/blog/post/PostHeader";
 import PostBody from "@/components/views/blog/post/PostBody";
 import PostBodyPIXOpenFinance from "@/components/views/blog/post/PostBodyPIXOpenFinance";
 import PostBodyOpenInsurance from "@/components/views/blog/post/PostBodyOpenInsurance";
+import PostBodyOpenFinanceUpdates from "@/components/views/blog/post/PostBodyOpenFinanceUpdates";
 import AuthorBox from "@/components/views/blog/post/AuthorBox";
 import RelatedPosts from "@/components/views/blog/post/RelatedPosts";
 import { allBlogPosts } from "@/data/blogPosts";
@@ -25,6 +26,9 @@ export default function BlogPost() {
     }
     if (slug === "open-insurance-futuro-mercado-seguros") {
       return allBlogPosts.find(p => p.id === 13) || null;
+    }
+    if (slug === "impacto-ultimas-atualizacoes-open-finance") {
+      return allBlogPosts.find(p => p.id === 14) || null;
     }
     
     // Convert slug back to ID (simple implementation)
@@ -49,6 +53,8 @@ export default function BlogPost() {
       title = "PIX e Open Finance: A Revolução no Mercado Financeiro | Lina";
     } else if (post.id === 13) {
       title = "Open Insurance no Brasil: O Futuro do Mercado de Seguros | Lina";
+    } else if (post.id === 14) {
+      title = "Últimas Atualizações do Open Finance: Impacto e Oportunidades | Lina";
     }
     document.title = title;
 
@@ -64,7 +70,7 @@ export default function BlogPost() {
     }
 
     // Add JSON-LD structured data for featured articles
-    if (post.id === 0 || post.id === 13) {
+    if (post.id === 0 || post.id === 13 || post.id === 14) {
       const existingSchema = document.querySelector('#blog-schema');
       if (existingSchema) {
         existingSchema.remove();
@@ -134,6 +140,35 @@ export default function BlogPost() {
           },
           "image": post.image
         };
+      } else if (post.id === 14) {
+        schemaData = {
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          "headline": "Últimas Atualizações do Open Finance: Impacto e Oportunidades | Lina",
+          "description": "Análise completa sobre as últimas atualizações do Open Finance no Brasil e o que elas significam para bancos, fintechs e instituições de pagamento.",
+          "author": {
+            "@type": "Organization",
+            "name": "Lina"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Lina",
+            "logo": {
+              "@type": "ImageObject",
+              "url": `${window.location.origin}/assets/new-lina-logo.png`
+            }
+          },
+          "about": [
+            { "@type": "Thing", "name": "Open Finance" }
+          ],
+          "datePublished": "2025-01-25",
+          "dateModified": "2025-01-25",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": window.location.href
+          },
+          "image": post.image
+        };
       }
       
       script.textContent = JSON.stringify(schemaData);
@@ -182,6 +217,8 @@ export default function BlogPost() {
           <PostBodyPIXOpenFinance post={post} />
         ) : post.id === 13 ? (
           <PostBodyOpenInsurance post={post} />
+        ) : post.id === 14 ? (
+          <PostBodyOpenFinanceUpdates post={post} />
         ) : (
           <PostBody post={post} />
         )}
