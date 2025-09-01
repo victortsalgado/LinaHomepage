@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import logoPixBg from "@/assets/Home_Logo_Pix_BG_LinaPay_1756226661320.png";
+import linaPayGif from "@/assets/LinaPay_1756690950351.gif";
 
 export default function LinaPaySection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
@@ -34,7 +35,7 @@ export default function LinaPaySection() {
             {/* Icon */}
             <div className="mb-6">
               <img 
-                src="/attached_assets/LinaPay_1756690950351.gif" 
+                src={linaPayGif} 
                 alt="LinaPay Icon" 
                 className="w-16 h-16 rounded-2xl"
                 data-testid="img-lina-pay-icon"
