@@ -51,7 +51,7 @@ export default function NewsletterSection() {
           {/* Email Subscription Form */}
           <form 
             onSubmit={handleSubmit}
-            className="max-w-2xl mx-auto"
+            className="max-w-4xl mx-auto"
             data-testid="form-newsletter-signup"
           >
             <div className="flex flex-col sm:flex-row gap-4">
@@ -63,7 +63,7 @@ export default function NewsletterSection() {
                   placeholder="Digite seu e-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-12 h-16 bg-white border-gray-300 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)] rounded-full text-gray-900"
+                  className="pl-12 h-18 bg-white border-gray-300 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)] rounded-full text-gray-900"
                   required
                   data-testid="input-newsletter-email"
                 />
@@ -73,7 +73,7 @@ export default function NewsletterSection() {
               <Button
                 type="submit"
                 disabled={isLoading || !email}
-                className="h-16 px-8 bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-black font-semibold rounded-full transition-all duration-300 shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="h-18 px-8 bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-black font-semibold rounded-full transition-all duration-300 shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30 disabled:opacity-50 disabled:cursor-not-allowed"
                 data-testid="button-newsletter-subscribe"
               >
                 {isLoading ? "Inscrevendo..." : "Inscrever"}
