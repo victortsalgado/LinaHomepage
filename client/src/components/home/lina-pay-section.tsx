@@ -31,9 +31,12 @@ export default function LinaPaySection() {
       <div className="container mx-auto px-6 lg:px-8">
         {/* Lina Pay Block */}
         <div 
-          className="relative rounded-3xl shadow-2xl overflow-hidden min-h-[500px] circuit-texture"
+          className="relative rounded-3xl shadow-2xl overflow-hidden min-h-[500px]"
           style={{
-            background: `var(--lina-dark)`
+            background: `var(--lina-dark)`,
+            backgroundImage: `radial-gradient(circle at 20% 20%, rgba(0, 239, 207, 0.1) 0%, transparent 40%), 
+                              radial-gradient(circle at 80% 80%, rgba(0, 239, 207, 0.05) 0%, transparent 40%),
+                              repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px)`
           }}
         >
           <div 
