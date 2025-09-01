@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -17,9 +18,31 @@ import {
 import { cn } from "@/lib/utils";
 
 export default function Header() {
+  const produtosDropdownItems = [
+    { 
+      title: "Data Link", 
+      href: "/data-link",
+      description: "Solução completa para integração de dados empresariais",
+      imageSrc: "/assets/menu/data-link.png"
+    },
+    { 
+      title: "Lina Pay", 
+      href: "/lina-pay",
+      description: "Sistema de pagamentos digitais integrado",
+      imageSrc: "/assets/menu/lina-pay.png"
+    },
+    { 
+      title: "JSR", 
+      href: "/jsr",
+      description: "Plataforma de gestão e relatórios avançados",
+      imageSrc: "/assets/menu/jsr.png"
+    },
+  ];
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeProduct, setActiveProduct] = useState(produtosDropdownItems[0]);
   const isMobile = useIsMobile();
 
   // Detectar scroll para efeitos do header
@@ -34,24 +57,6 @@ export default function Header() {
   // Função para detectar quando qualquer menu do NavigationMenu está aberto
   const handleMenuOpen = () => setIsMenuOpen(true);
   const handleMenuClose = () => setIsMenuOpen(false);
-
-  const produtosDropdownItems = [
-    { 
-      title: "Data Link", 
-      href: "/data-link",
-      description: "Solução completa para integração de dados empresariais"
-    },
-    { 
-      title: "Lina Pay", 
-      href: "/lina-pay",
-      description: "Sistema de pagamentos digitais integrado"
-    },
-    { 
-      title: "JSR", 
-      href: "/jsr",
-      description: "Plataforma de gestão e relatórios avançados"
-    },
-  ];
 
   const recursosDropdownItems = [
     {
@@ -138,29 +143,50 @@ export default function Header() {
                         Produtos
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <div className="grid gap-3 p-6 md:w-[600px] lg:w-[800px] lg:grid-cols-[.75fr_1fr]">
-                          <div className="row-span-3">
-                            <NavigationMenuLink asChild>
-                              <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/40 p-6 no-underline outline-none">
-                                <div className="mb-2 mt-4 text-lg font-medium">
-                                  Produtos LINA
-                                </div>
-                                <p className="text-sm leading-tight text-muted-foreground">
-                                  Soluções completas para integração e gestão de dados empresariais
-                                </p>
-                              </div>
-                            </NavigationMenuLink>
-                          </div>
+                        <div className="grid gap-3 p-6 md:w-[600px] lg:w-[800px] lg:grid-cols-[1fr_.75fr]">
+                          {/* Left Column - Product List */}
                           <div className="grid grid-cols-1 gap-3">
                             {produtosDropdownItems.map((item) => (
-                              <ListItem
+                              <div
                                 key={item.title}
-                                title={item.title}
-                                href={item.href}
+                                onMouseEnter={() => setActiveProduct(item)}
                               >
-                                {item.description}
-                              </ListItem>
+                                <ListItem
+                                  title={item.title}
+                                  href={item.href}
+                                >
+                                  {item.description}
+                                </ListItem>
+                              </div>
                             ))}
+                          </div>
+                          
+                          {/* Right Column - Dynamic Content */}
+                          <div className="row-span-3">
+                            <AnimatePresence mode="wait">
+                              <motion.div
+                                key={activeProduct.title}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/40 p-6 no-underline outline-none"
+                              >
+                                <div className="mb-4">
+                                  <img 
+                                    src={activeProduct.imageSrc} 
+                                    alt={activeProduct.title}
+                                    className="w-full h-32 object-cover rounded-md mb-4"
+                                  />
+                                </div>
+                                <div className="mb-2 mt-4 text-lg font-medium">
+                                  {activeProduct.title}
+                                </div>
+                                <p className="text-sm leading-tight text-muted-foreground">
+                                  {activeProduct.description}
+                                </p>
+                              </motion.div>
+                            </AnimatePresence>
                           </div>
                         </div>
                       </NavigationMenuContent>

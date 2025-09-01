@@ -1,0 +1,36 @@
+# Papel e Objetivo
+Você é um desenvolvedor front-end sênior, especialista em criar interações de UI complexas com React, Tailwind CSS, a biblioteca `shadcn/ui` e `Framer Motion`. Sua tarefa é refatorar o menu dropdown "Produtos" no componente `header.tsx` para torná-lo interativo.
+
+# Contexto Estratégico
+O menu dropdown "Produtos" atualmente exibe uma lista de produtos e uma área de conteúdo estática. Precisamos transformá-lo para que, ao passar o mouse (`hover`) sobre um item da lista de produtos à esquerda, a área de conteúdo à direita mude dinamicamente para exibir informações e uma imagem daquele produto específico.
+
+# Instruções de Refatoramento
+
+1.  **Atualize a Estrutura de Dados:**
+    * No array `produtosDropdownItems`, adicione uma nova propriedade `imageSrc` para cada objeto de produto. Utilize os seguintes caminhos como placeholder:
+        * Data Link: `"/assets/menu/data-link.png"`
+        * Lina Pay: `"/assets/menu/lina-pay.png"`
+        * JSR: `"/assets/menu/jsr.png"`
+
+2.  **Adicione um Estado de Hover:**
+    * No componente `Header`, crie um novo estado (`useState`) para rastrear o produto ativo no hover. Ex: `const [activeProduct, setActiveProduct] = useState(produtosDropdownItems[0])`.
+
+3.  **Reestruture o Layout do Dropdown de Produtos:**
+    * Dentro do `NavigationMenuContent` de "Produtos", inverta a ordem das colunas.
+    * A **coluna da esquerda** agora deve mapear (`map`) o array `produtosDropdownItems` para renderizar a lista de `ListItem` clicáveis.
+    * A **coluna da direita** será a área de conteúdo dinâmico.
+
+4.  **Implemente a Lógica de Hover:**
+    * Para cada `ListItem` na coluna da esquerda, adicione um evento `onMouseEnter={() => setActiveProduct(item)}`. Isso irá atualizar o estado do produto ativo sempre que o mouse passar sobre um item.
+
+5.  **Crie o Painel Dinâmico à Direita:**
+    * A coluna da direita agora deve exibir o conteúdo do `activeProduct` que está no estado.
+    * A estrutura deve ser: uma imagem de destaque no topo (`<img src={activeProduct.imageSrc} />`), seguida pelo título (`activeProduct.title`) e a descrição (`activeProduct.description`). Estilize-o para parecer um card de destaque.
+
+6.  **Adicione uma Animação Suave:**
+    * Envolva o conteúdo da coluna da direita com o componente `<AnimatePresence mode="wait">` do `Framer Motion`.
+    * Dentro dele, use um `<motion.div>` com uma `key` única (ex: `key={activeProduct.title}`) e aplique uma animação de "fade" (opacidade) para que a troca de imagem e texto seja suave e elegante.
+        * `initial={{ opacity: 0 }}`
+        * `animate={{ opacity: 1 }}`
+        * `exit={{ opacity: 0 }}`
+        * `transition={{ duration: 0.3 }}`
