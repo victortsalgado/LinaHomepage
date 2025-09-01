@@ -35,19 +35,22 @@ export function InfiniteSlider({
 
     let animationId: number
     let startTime: number | null = null
+    let totalDistance = 0
     
     const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp
       
       const elapsed = timestamp - startTime
-      const progress = (elapsed / (currentDuration * 1000)) % 1
+      const speed = width / (currentDuration * 1000) // pixels per millisecond
       
-      const size = direction === 'horizontal' ? width : height
-      const moveDistance = -size / 3 // Move by one third (one set of children)
+      totalDistance -= speed * 16.67 // approximately 60fps
       
-      const currentPosition = progress * moveDistance
-      translation.set(currentPosition)
+      // Reset position seamlessly when we've moved enough to show the duplicate
+      if (totalDistance <= -width / 3) {
+        totalDistance += width / 3
+      }
       
+      translation.set(totalDistance)
       animationId = requestAnimationFrame(animate)
     }
     
