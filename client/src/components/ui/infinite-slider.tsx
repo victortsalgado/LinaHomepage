@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
 type InfiniteSliderProps = {
   children: React.ReactNode
@@ -22,23 +22,15 @@ export function InfiniteSlider({
   reverse = false,
   className,
 }: InfiniteSliderProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
-
   useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
-
-    const firstChild = container.firstElementChild as HTMLElement
-    if (!firstChild) return
-
     // Create CSS animation that moves continuously
     const keyframes = `
-      @keyframes infiniteSlide {
-        from {
+      @keyframes infiniteScrolling {
+        0% {
           transform: translateX(0);
         }
-        to {
-          transform: translateX(-33.333%);
+        100% {
+          transform: translateX(-100%);
         }
       }
     `
@@ -55,26 +47,28 @@ export function InfiniteSlider({
     style.textContent = keyframes
     document.head.appendChild(style)
 
-    // Apply animation to the container
-    firstChild.style.animation = `infiniteSlide ${duration}s linear infinite`
-    firstChild.style.display = 'flex'
-    firstChild.style.gap = `${gap}px`
-
     return () => {
       if (style.parentNode) {
         style.parentNode.removeChild(style)
       }
     }
-  }, [duration, gap])
+  }, [])
+
+  const groupStyle = {
+    display: 'flex',
+    gap: `${gap}px`,
+    willChange: 'transform',
+    animation: `infiniteScrolling ${duration}s linear infinite`,
+    paddingRight: `${gap}px`,
+  }
 
   return (
-    <div className={cn('overflow-hidden', className)}>
-      <div ref={containerRef}>
-        <div className={cn('flex', direction === 'vertical' ? 'flex-col' : 'flex-row')}>
-          {children}
-          {children}
-          {children}
-        </div>
+    <div className={cn('overflow-hidden flex', className)}>
+      <div style={groupStyle}>
+        {children}
+      </div>
+      <div style={groupStyle} aria-hidden="true">
+        {children}
       </div>
     </div>
   )
