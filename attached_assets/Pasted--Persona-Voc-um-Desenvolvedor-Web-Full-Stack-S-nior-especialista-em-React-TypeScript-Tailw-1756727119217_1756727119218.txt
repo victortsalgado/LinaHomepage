@@ -1,0 +1,28 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é construir um componente de Chamada para Ação (CTA) claro, conciso e visualmente atraente para finalizar uma página institucional.
+
+**Missão:** Construir o componente da seção final de **CTA** para a página "Quem Somos".
+
+**Porquê Estratégico:** Esta seção finaliza a jornada do usuário na página 'Quem Somos', convertendo o interesse gerado pela história e valores da marca em uma ação concreta, seja ela um contato comercial ou o interesse em fazer parte da equipe.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/quem-somos/sections/QuemSomosCtaSection.tsx`.
+    * A seção deve ter um layout limpo com o conteúdo centralizado e um fundo que se destaque sutilmente (ex: `bg-gray-50`).
+
+2.  **Conteúdo Explícito:**
+    * **Título:** `Vamos transformar o futuro juntos?`
+    * **Descrição:** `Seja você uma fintech em busca de inovação, um banco em plena transformação digital ou um talento apaixonado por desafios, a Lina é o seu parceiro ideal. Conheça nossas soluções ou junte-se à nossa equipe.`
+    * **Botões de Ação:** Posicione dois botões lado a lado:
+        * **Botão Primário:**
+            * **Texto:** "Fale com um especialista"
+            * **Estilo:** Deve seguir o padrão do botão primário do site (fundo `lina-cyan` sólido).
+        * **Botão Secundário:**
+            * **Texto:** "Conheça nossas vagas"
+            * **Estilo:** Deve seguir o padrão de botão secundário (ex: variante "outline" ou "ghost" do seu componente de botão).
+
+3.  **Animação e Estilo:**
+    * **Animação:** Utilize o hook `useScrollReveal` e `framer-motion` para aplicar uma animação de "fade-in" suave em toda a seção quando ela se tornar visível.
+    * **Estilo:** Mantenha a consistência visual com o restante do site, utilizando as fontes (`Lexend`, `Inter`), cores e o componente `Button` do projeto.
+
+**Entregável:** O código-fonte completo para o novo componente `QuemSomosCtaSection.tsx`, totalmente responsivo e animado.
