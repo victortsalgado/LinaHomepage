@@ -34,14 +34,14 @@ export default function LinaPaySection() {
       id: 'automatico',
       title: "Pix Automático",
       description: "Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade.",
-      imageSrc: "/assets/pix-automatico-placeholder.png",
+      imageSrc: null,
       imageAlt: "PIX Automático - Pagamentos recorrentes automatizados"
     },
     {
       id: 'biometria',
       title: "Pix Biometria",
       description: "Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebras na jornada.",
-      imageSrc: "/assets/pix-biometria-placeholder.png",
+      imageSrc: null,
       imageAlt: "PIX Biometria - Autenticação biométrica para pagamentos"
     }
   ];
@@ -166,12 +166,30 @@ export default function LinaPaySection() {
                     {/* Image Column - Left on desktop, Top on mobile */}
                     <div className="flex justify-center lg:justify-start order-1 lg:order-1">
                       <div className="w-full max-w-xs lg:max-w-sm">
-                        <img 
-                          src={activeContent.imageSrc}
-                          alt={activeContent.imageAlt}
-                          className="w-full h-auto rounded-xl shadow-lg border border-cyan-400/20"
-                          data-testid={`img-pix-${selection}`}
-                        />
+                        {activeContent.imageSrc ? (
+                          <img 
+                            src={activeContent.imageSrc}
+                            alt={activeContent.imageAlt}
+                            className="w-full h-auto rounded-xl shadow-lg border border-cyan-400/20"
+                            data-testid={`img-pix-${selection}`}
+                          />
+                        ) : (
+                          <div 
+                            className="w-full aspect-square bg-gradient-to-br from-cyan-400/10 to-cyan-600/5 rounded-xl border border-cyan-400/30 flex items-center justify-center"
+                            data-testid={`placeholder-pix-${selection}`}
+                          >
+                            <div className="text-center">
+                              {selection === 'automatico' ? (
+                                <Fingerprint size={48} className="text-cyan-400/60 mx-auto mb-2" />
+                              ) : (
+                                <Repeat size={48} className="text-cyan-400/60 mx-auto mb-2" />
+                              )}
+                              <p className="text-cyan-400/60 text-sm font-medium">
+                                {activeContent.title}
+                              </p>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                     
