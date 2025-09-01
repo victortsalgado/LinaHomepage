@@ -162,7 +162,7 @@ export default function HeroSection() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.2, duration: 0.5 }}
                       >
-                        <span className="font-medium text-sm text-[var(--lina-cyan)]">
+                        <span className="font-light text-sm text-[var(--lina-cyan)]">
                           {currentSlideData.badge}
                         </span>
                         <div className="bg-[var(--lina-cyan)]/20 group-hover:bg-[var(--lina-cyan)]/30 size-6 overflow-hidden rounded-full duration-500">
