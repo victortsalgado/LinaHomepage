@@ -1,0 +1,43 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é criar uma página de listagem de blog (Resource Center) sofisticada, baseada em um design de referência, com múltiplas seções, incluindo um hero, um carrossel e uma grade de artigos.
+
+**Missão:** Construir a página principal do **Blog** (`/blog`), replicando a estrutura e o estilo visual do design de referência "Juspay Resource Center".
+
+**Porquê Estratégico:** A página principal do blog deve funcionar como um "Resource Center", um hub de conteúdo que não só lista artigos, mas também cria uma experiência de marca imersiva. O novo design irá posicionar a Lina como uma líder de pensamento, com uma seção de destaque para posts recentes e uma grade completa para todo o acervo.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura da Página e Componentes:**
+    * Crie/atualize o arquivo de página em `src/pages/blog.tsx`.
+    * A página deve importar e utilizar os componentes globais `<Header />` e `<Footer />`.
+    * A página deve ser composta por três novos componentes de seção principais:
+        1.  `src/components/views/blog/sections/BlogHeroSection.tsx`
+        2.  `src/components/views/blog/sections/RecentBlogsSection.tsx`
+        3.  `src/components/views/blog/sections/AllPostsSection.tsx`
+
+2.  **Componente 1: `BlogHeroSection.tsx`**
+    * **Estilo:** Fundo escuro (`bg-[var(--lina-dark)]`) com um padrão de grade sutil, como na referência.
+    * **Conteúdo:**
+        * **Título Principal:** `Lina Resource Center`
+        * **Descrição:** `A coleção completa de recursos e insights da Lina, em um só lugar - cobrindo uma ampla gama de tópicos que você vai adorar explorar.`
+    * **Animação:** Inclua um elemento visual central animado, como o círculo com pontos de dados da referência.
+
+3.  **Componente 2: `RecentBlogsSection.tsx` (Carrossel)**
+    * **Estilo:** Fundo claro (`bg-white`).
+    * **Layout:**
+        * **Título da Seção:** `Recent Blogs`.
+        * **Filtros:** Adicione dois botões de dropdown para filtros (use placeholders "Português" e "Latin America" por enquanto).
+        * **Carrossel Horizontal:** Implemente um carrossel que exiba **um post em destaque por vez**.
+            * Cada slide do carrossel deve conter, à esquerda, a imagem de destaque do post, e à direita, o título, a descrição, e informações do autor (foto, nome, tempo de leitura, data).
+            * Inclua setas de navegação (próximo/anterior) e indicadores de paginação (dots) abaixo do carrossel.
+
+4.  **Componente 3: `AllPostsSection.tsx` (Grade)**
+    * **Estilo:** Fundo claro (`bg-white`).
+    * **Título da Seção:** `All Blog Posts`.
+    * **Layout da Grade:** Utilize uma grade responsiva (`lg:grid-cols-3`) para exibir os cards dos posts.
+    * **Componente de Card:** Reutilize o componente `BlogPostCard.tsx` que já definimos (imagem, categoria, data, título, descrição).
+
+5.  **Animações e Conteúdo:**
+    * **Animação:** Aplique animações de entrada (`useScrollReveal` e `framer-motion`) para cada seção e para os elementos internos, como os cards da grade.
+    * **Conteúdo (Placeholder):** Utilize o array de dados mock com 12 posts que definimos anteriormente. Os 3 posts mais recentes devem popular o carrossel da `RecentBlogsSection`, e todos os 12 devem aparecer na grade da `AllPostsSection`.
+
+**Entregável:** O código-fonte completo para a nova página `blog.tsx` e seus três novos componentes de seção, replicando fielmente a estrutura e o design da referência "Juspay".
