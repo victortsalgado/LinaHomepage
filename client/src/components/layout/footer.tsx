@@ -153,7 +153,7 @@ export default function Footer() {
               className="text-gray-400 text-sm mb-4 md:mb-0"
               data-testid="text-footer-copyright"
             >
-              © 2025 LINA. Todos os direitos reservados. CNPJ: 00.000.000/0001-00
+              © 2025 LINA. Todos os direitos reservados. CNPJ: 37.663.090/0001-00
             </p>
             <div className="flex space-x-6">
               {legalLinks.map((link, index) => (
