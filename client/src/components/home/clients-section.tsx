@@ -66,9 +66,7 @@ export default function ClientsSection() {
             className="text-3xl lg:text-4xl font-bold mb-4"
             data-testid="heading-clients-title"
           >
-            <span className="bg-gradient-to-r from-teal-600 to-cyan-500 bg-clip-text text-transparent">
-              Confiado pelas maiores instituições do mercado
-            </span>
+            <span className="bg-gradient-to-r from-teal-600 to-cyan-500 bg-clip-text text-transparent">Nossos clientes são a nossa melhor referência!</span>
           </h2>
         </div>
         
