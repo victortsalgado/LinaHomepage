@@ -72,7 +72,7 @@ export default function NewsletterSection() {
               <Button
                 type="submit"
                 disabled={isLoading || !email}
-                className="h-14 px-8 bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-black font-semibold rounded-full transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed border-2 border-[var(--lina-cyan)]"
+                className="h-14 px-8 border-2 border-cyan-400 text-cyan-400 bg-transparent rounded-full font-medium hover:bg-cyan-400 hover:text-gray-900 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 data-testid="button-newsletter-subscribe"
               >
                 {isLoading ? "Inscrevendo..." : "Inscrever"}
