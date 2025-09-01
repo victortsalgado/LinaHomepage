@@ -115,9 +115,8 @@ export default function RegulatedEntitiesSection() {
                     style={{ background: 'var(--lina-cyan)' }}
                   >
                     <feature.icon 
-                      className="text-lina-dark" 
-                      size={20} 
-                      style={{ color: 'var(--lina-dark)' }}
+                      className="text-white" 
+                      size={20}
                     />
                   </div>
                   <div>
@@ -140,7 +139,7 @@ export default function RegulatedEntitiesSection() {
             
             {/* CTA Button */}
             <Button 
-              className="btn-lina-light"
+              className="bg-[#2ec9bc] border border-[#2ec9bc] text-white hover:bg-transparent hover:text-[#2ec9bc] px-8 py-4 rounded-xl font-semibold transition-all duration-200"
               data-testid="button-learn-more"
             >
               Saiba mais
@@ -232,7 +231,7 @@ export default function RegulatedEntitiesSection() {
             </div>
             
             {/* Tech labels for context */}
-            <div className="absolute bottom-0 left-0 right-0 flex justify-between text-xs text-gray-600 px-6">
+            <div className="absolute -bottom-6 left-0 right-0 flex justify-between text-xs text-gray-600 px-2">
               <span>Sandbox</span>
               <span>Produção</span>
               <span>Escala</span>
