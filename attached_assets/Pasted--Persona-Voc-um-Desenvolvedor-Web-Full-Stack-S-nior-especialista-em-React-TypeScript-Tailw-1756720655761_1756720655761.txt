@@ -1,0 +1,30 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Seu foco é construir componentes informativos e visualmente equilibrados, seguindo os padrões de arquitetura e animação de um projeto existente.
+
+**Missão:** Construir o componente para a seção **"Integre rápido, escale sem limites"** da página de produto LinaPay.
+
+**Porquê Estratégico:** Esta seção é desenhada para quebrar as objeções do público técnico (CTOs, Desenvolvedores), demonstrando a facilidade de integração, o suporte robusto e a conformidade da plataforma. É um passo crucial para gerar a confiança técnica necessária para a conversão.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/lina-pay/sections/IntegrationSection.tsx`.
+    * A seção deve ter um fundo claro (ex: `bg-white`).
+    * Implemente um layout responsivo de duas colunas (`grid lg:grid-cols-2`), com alinhamento vertical centralizado (`items-center`).
+
+2.  **Conteúdo Explícito (da referência `LP_LinaPay.pdf`):**
+    * **Coluna da Esquerda (Conteúdo Textual):**
+        * **Título:** `Integre rápido, escale sem limites`
+        * **Lista de Benefícios:** Crie uma lista com os seguintes itens, cada um precedido por um ícone de checkmark (`✓`):
+            * `APIs completas e documentadas`
+            * `Compatível com VTEX, Shopify, frameworks e mais`
+            * `Suporte técnico direto com o time de desenvolvedores e time de produto`
+            * `Homologado no Open Finance e 100% LGPD compliance`
+            * `Integração e período de testes para desenvolvedores em dias`
+    * **Coluna da Direita (Elemento Visual):**
+        * Crie um mockup visual de um smartphone exibindo uma tela com o texto "PIX por Biometria" e a logomarca da Lina, replicando a imagem de referência da `LP_LinaPay.pdf`.
+
+3.  **Animação e Estilo:**
+    * **Animação:** Utilize o hook `useScrollReveal` para aplicar animações de entrada ("slide-in") distintas para a coluna de texto e a coluna do visual quando a seção se tornar visível.
+    * **Estilo:** Mantenha a consistência visual com o restante do site, utilizando as fontes (`Lexend`, `Inter`), cores e o estilo premium já estabelecidos.
+
+**Entregável:** O código-fonte completo para o novo componente `IntegrationSection.tsx`, totalmente responsivo, animado e funcional.
