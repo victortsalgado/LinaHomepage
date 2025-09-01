@@ -31,12 +31,9 @@ export default function LinaPaySection() {
       <div className="container mx-auto px-6 lg:px-8">
         {/* Lina Pay Block */}
         <div 
-          className="relative rounded-3xl shadow-2xl overflow-hidden min-h-[500px]"
+          className="relative rounded-3xl shadow-2xl overflow-hidden min-h-[500px] circuit-texture"
           style={{
-            background: `var(--lina-dark)`,
-            backgroundImage: `radial-gradient(circle at 20% 20%, rgba(0, 239, 207, 0.1) 0%, transparent 40%), 
-                              radial-gradient(circle at 80% 80%, rgba(0, 239, 207, 0.05) 0%, transparent 40%),
-                              repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px)`
+            background: `var(--lina-dark)`
           }}
         >
           <div 
@@ -70,7 +67,7 @@ export default function LinaPaySection() {
             {/* Title and Description */}
             <div className="mb-12">
               <h2 
-                className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight font-lexend"
+                className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight font-lexend title-glow"
                 data-testid="heading-lina-pay-title"
               >
                 Transforme o PIX em motor de vendas, lucratividade e fidelização.
@@ -120,13 +117,20 @@ export default function LinaPaySection() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selection}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="bg-white/8 backdrop-blur-lg border border-cyan-400/30 p-8 rounded-2xl shadow-inner"
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -30, scale: 0.95 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="relative bg-white/8 backdrop-blur-lg border border-cyan-400/30 p-8 rounded-2xl shadow-inner"
                   data-testid={`content-pix-${selection}`}
                 >
+                  {/* Holographic Spotlight Effect */}
+                  <div 
+                    className="absolute inset-0 -z-10 spotlight-effect"
+                    style={{
+                      background: `radial-gradient(ellipse 120% 80% at center, rgba(0, 239, 207, 0.1) 0%, transparent 60%)`
+                    }}
+                  ></div>
                   <div className="text-center">
                     <h3 className="text-cyan-400 font-lexend font-semibold text-2xl mb-4">
                       {contentData[selection].title}
