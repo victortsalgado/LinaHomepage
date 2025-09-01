@@ -6,6 +6,7 @@ import LinaPaySection from "@/components/home/lina-pay-section";
 import RegulatedEntitiesSection from "@/components/home/regulated-entities-section";
 import ClientsSection from "@/components/home/clients-section";
 import BlogSection from "@/components/home/blog-section";
+import NewsletterSection from "@/components/home/newsletter-section";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
           <RegulatedEntitiesSection />
           <ClientsSection />
           <BlogSection />
+          <NewsletterSection />
         </main>
         <Footer />
       </div>
