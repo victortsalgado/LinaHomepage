@@ -135,22 +135,24 @@ export default function DataLinkSection() {
               <div className="absolute bottom-8 left-8 w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-400 rounded-full opacity-30"></div>
               
               {/* Data Link illustration */}
-              <div className="flex justify-center relative">
-                <img 
-                  src={dataLinkImage}
-                  alt="Professional woman with Data Link interface" 
-                  className="w-full max-w-md object-contain mt-[-5px] mb-[-5px] ml-[0px] mr-[0px] pl-[2px] pr-[2px]"
-                  data-testid="img-data-link-main"
-                />
-                
-                {/* Animated DataLink logo positioned over the turquoise square */}
-                <div className="absolute top-[12%] right-[8%] w-32 h-32 lg:w-40 lg:h-40">
+              <div className="flex justify-center">
+                <div className="relative">
                   <img 
-                    src={datalinkAnimation}
-                    alt="DataLink animated logo" 
-                    className="w-full h-full object-cover rounded-xl pl-[0px] pr-[0px] ml-[-62px] mr-[-62px] mt-[-77px] mb-[-77px]"
-                    data-testid="img-datalink-animation"
+                    src={dataLinkImage}
+                    alt="Professional woman with Data Link interface" 
+                    className="w-full max-w-md object-contain mt-[-5px] mb-[-5px] ml-[0px] mr-[0px] pl-[2px] pr-[2px]"
+                    data-testid="img-data-link-main"
                   />
+                  
+                  {/* Animated DataLink logo positioned over the turquoise square */}
+                  <div className="absolute top-[12%] right-[22%] w-32 h-32 lg:w-40 lg:h-40">
+                    <img 
+                      src={datalinkAnimation}
+                      alt="DataLink animated logo" 
+                      className="w-full h-full object-cover rounded-xl pl-[0px] pr-[0px] ml-[-62px] mr-[-62px] mt-[-77px] mb-[-77px]"
+                      data-testid="img-datalink-animation"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
