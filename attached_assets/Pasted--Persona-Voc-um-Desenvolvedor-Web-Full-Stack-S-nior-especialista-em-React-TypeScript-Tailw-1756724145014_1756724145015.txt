@@ -1,0 +1,37 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é construir um componente de grade de funcionalidades, utilizando um padrão de card leve e limpo já estabelecido no projeto.
+
+**Missão:** Construir o componente para a seção **"APIs construídas para facilitar a sua operação"** da página de produto JSR.
+
+**Porquê Estratégico:** Esta seção detalha as capacidades técnicas e os casos de uso práticos da JSR. O objetivo é mostrar aos desenvolvedores e gerentes de produto a flexibilidade e o poder da API, tornando a solução mais tangível e desejável.
+
+**Requisitos e Diretrizes:**
+
+1.  **Ponto de Partida e Referência:**
+    * Utilize o componente `FeaturesSection.tsx` da página LinaPay como a **principal referência de estilo para os cards**.
+
+2.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/jsr/sections/JsrApisSection.tsx`.
+    * A seção deve ter um fundo claro (ex: `bg-white`).
+
+3.  **Layout e Conteúdo Explícito (da referência `LP_JSR.pdf`):**
+    * **Título da Seção:** "APIs construídas para facilitar a sua operação".
+    * **Layout da Grade:** Implemente uma grade responsiva que exiba 3 cards (3 colunas em desktop: `lg:grid-cols-3`).
+    * **Conteúdo dos Cards (3 cards no total):**
+        * **Card 1:**
+            * **Ícone:** `Fingerprint`
+            * **Título:** "Pix por biometria"
+            * **Descrição:** "Checkout com pagamento por FaceID ou digital, sem a necessidade de senhas e sem redirecionamento."
+        * **Card 2:**
+            * **Ícone:** `Nfc`
+            * **Título:** "Pix por aproximação no varejo físico"
+            * **Descrição:** "Cliente paga em maquininhas, como se fosse um cartão, mas utilizando o saldo em conta."
+        * **Card 3:**
+            * **Ícone:** `Zap`
+            * **Título:** "Pix à vista, agendado, recorrente e automático"
+            * **Descrição:** "Pronto para todas as modalidades de pagamentos via Pix, com liberdade contratual."
+
+4.  **Estilo e Animação:**
+    * O estilo dos cards (fundo branco, borda sutil, efeito de hover, etc.) deve ser **idêntico** ao do componente `FeaturesSection.tsx`.
+    * **Obrigatório:** Implemente a **mesma** animação de entrada em cascata (staggered) para os cards, utilizando `framer-motion` e o hook `useScrollReveal`.
+
+**Entregável:** O código-fonte completo para o novo componente `JsrApisSection.tsx`, totalmente responsivo, animado e funcional.
