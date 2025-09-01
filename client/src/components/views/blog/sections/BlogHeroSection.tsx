@@ -127,17 +127,19 @@ export default function BlogHeroSection() {
               data-testid="button-hero-title"
             >
               <span className="actual-text">
-                {typewriterText}
-                <motion.span
-                  animate={{ opacity: [1, 0, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                  className="text-[var(--lina-cyan)]"
-                >
-                  |
-                </motion.span>
+                &nbsp;{typewriterText}&nbsp;
+                {typewriterText.length === fullText.length && (
+                  <motion.span
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                    className="text-[var(--lina-cyan)]"
+                  >
+                    |
+                  </motion.span>
+                )}
               </span>
               <span aria-hidden="true" className="hover-text">
-                &nbsp;{typewriterText}&nbsp;
+                &nbsp;Universo Open&nbsp;
               </span>
             </button>
           </div>
