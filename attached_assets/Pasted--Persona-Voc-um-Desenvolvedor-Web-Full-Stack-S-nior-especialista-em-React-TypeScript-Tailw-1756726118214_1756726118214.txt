@@ -1,0 +1,35 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é construir um componente institucional que apresente os pilares de uma empresa de forma clara, organizada e visualmente agradável.
+
+**Missão:** Construir o componente da seção **"Missão, Visão e Valores"** para a página "Quem Somos".
+
+**Porquê Estratégico:** Esta seção comunica o DNA da empresa. Apresentar estes conceitos de forma clara e profissional é fundamental para gerar confiança e alinhar a percepção de clientes, parceiros e talentos com a cultura da Lina.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/quem-somos/sections/MissionSection.tsx`.
+    * A seção deve ter um fundo claro (ex: `bg-gray-50`).
+    * Implemente um layout de grade responsivo com três colunas (`grid lg:grid-cols-3`), onde cada coluna representa um pilar (Missão, Visão, Valores).
+
+2.  **Conteúdo Explícito:**
+    * **Coluna 1 (Missão):**
+        * **Ícone:** Utilize um ícone apropriado (ex: `Target` da `lucide-react`).
+        * **Título:** `Nossa Missão`
+        * **Descrição:** `Simplificar a complexidade do Open Finance, oferecendo uma infraestrutura de pagamentos e dados que conecta empresas a novas oportunidades e acelera a inovação no mercado financeiro.`
+    * **Coluna 2 (Visão):**
+        * **Ícone:** Utilize um ícone apropriado (ex: `Eye` da `lucide-react`).
+        * **Título:** `Nossa Visão`
+        * **Descrição:** `Ser a plataforma de Open Finance líder e mais confiável da América Latina, reconhecida por impulsionar a próxima geração de serviços financeiros inclusivos e eficientes.`
+    * **Coluna 3 (Valores):**
+        * **Ícone:** Utilize um ícone apropriado (ex: `Gem` da `lucide-react`).
+        * **Título:** `Nossos Valores`
+        * **Descrição (use uma lista):**
+            * `**Inovação:** Buscamos constantemente novas formas de resolver problemas complexos.`
+            * `**Segurança:** A proteção dos dados de nossos parceiros é nossa prioridade máxima.`
+            * `**Parceria:** Crescemos junto com nossos clientes, como verdadeiros aliados estratégicos.`
+
+3.  **Estilo e Animação:**
+    * **Estilo:** Cada coluna pode ser um "card" sutil, com um leve preenchimento (`padding`) e bordas arredondadas. O estilo deve ser minimalista para focar na informação.
+    * **Animação:** Utilize o hook `useScrollReveal` e `framer-motion` para aplicar uma animação de entrada em cascata (staggered) nas três colunas quando a seção se tornar visível.
+
+**Entregável:** O código-fonte completo para o novo componente `MissionSection.tsx`, totalmente responsivo e animado.
