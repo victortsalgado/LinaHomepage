@@ -29,16 +29,24 @@ export default function LinaPaySection() {
     }
   }, [sectionVisible, hasAutoToggled]);
 
-  const contentData = {
-    automatico: {
+  const contentData = [
+    {
+      id: 'automatico',
       title: "Pix Automático",
-      description: "Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade."
+      description: "Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade.",
+      imageSrc: "/assets/pix-automatico-placeholder.png",
+      imageAlt: "PIX Automático - Pagamentos recorrentes automatizados"
     },
-    biometria: {
-      title: "Pix Biometria", 
-      description: "Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebras na jornada."
+    {
+      id: 'biometria',
+      title: "Pix Biometria",
+      description: "Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebras na jornada.",
+      imageSrc: "/assets/pix-biometria-placeholder.png",
+      imageAlt: "PIX Biometria - Autenticação biométrica para pagamentos"
     }
-  };
+  ];
+
+  const activeContent = contentData.find(item => item.id === selection) || contentData[0];
 
   return (
     <section 
@@ -152,13 +160,30 @@ export default function LinaPaySection() {
                       background: `radial-gradient(ellipse 120% 80% at center, rgba(0, 239, 207, 0.1) 0%, transparent 60%)`
                     }}
                   ></div>
-                  <div className="text-center">
-                    <h3 className="text-cyan-400 font-lexend font-semibold text-2xl mb-4">
-                      {contentData[selection].title}
-                    </h3>
-                    <p className="text-gray-300 text-lg leading-relaxed font-sans max-w-2xl mx-auto">
-                      {contentData[selection].description}
-                    </p>
+                  
+                  {/* Two-Column Grid Layout */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    {/* Image Column - Left on desktop, Top on mobile */}
+                    <div className="flex justify-center lg:justify-start order-1 lg:order-1">
+                      <div className="w-full max-w-xs lg:max-w-sm">
+                        <img 
+                          src={activeContent.imageSrc}
+                          alt={activeContent.imageAlt}
+                          className="w-full h-auto rounded-xl shadow-lg border border-cyan-400/20"
+                          data-testid={`img-pix-${selection}`}
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Text Content Column - Right on desktop, Bottom on mobile */}
+                    <div className="text-center lg:text-left order-2 lg:order-2">
+                      <h3 className="text-cyan-400 font-lexend font-semibold text-2xl lg:text-3xl mb-4">
+                        {activeContent.title}
+                      </h3>
+                      <p className="text-gray-300 text-lg leading-relaxed font-sans">
+                        {activeContent.description}
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
