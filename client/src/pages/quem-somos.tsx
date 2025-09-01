@@ -1,7 +1,7 @@
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import QuemSomosHeroSection from "@/components/views/quem-somos/sections/QuemSomosHeroSection";
-import MissionSection from "@/components/views/quem-somos/sections/MissionSection";
+import ValuesSection from "@/components/views/quem-somos/sections/ValuesSection";
 
 export default function QuemSomos() {
   return (
@@ -9,7 +9,7 @@ export default function QuemSomos() {
       <Header />
       <main>
         <QuemSomosHeroSection />
-        <MissionSection />
+        <ValuesSection />
         {/* Additional sections can be added here */}
       </main>
       <Footer />

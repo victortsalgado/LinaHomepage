@@ -1,0 +1,44 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é construir um componente institucional que apresenta os valores de uma marca, utilizando assets visuais específicos e garantindo uma apresentação elegante e animada.
+
+**Missão:** Construir o componente da seção **"Nossos Valores"** para a página "Quem Somos".
+
+**Porquê Estratégico:** Esta seção comunica o DNA e a cultura da empresa. Apresentar os valores de forma autêntica, com a identidade visual correta, é essencial para criar uma conexão com clientes e talentos que compartilham dos mesmos princípios.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/quem-somos/sections/ValuesSection.tsx`.
+    * A seção deve ter um fundo escuro (ex: `bg-[var(--lina-dark)]`) para destacar os elementos visuais.
+
+2.  **Layout e Conteúdo Explícito:**
+    * **Título da Seção:** `Nossos Valores`
+    * **Layout da Lista:** Crie uma lista vertical para os cinco valores. Cada item da lista deve ter um layout com o ícone à esquerda e o texto (título e descrição) à direita.
+    * **Conteúdo dos Itens da Lista (5 itens):**
+        * **Item 1:**
+            * **Ícone:** Utilize o asset `Valores_Lina_Icone_evolução.png`.
+            * **Título:** `evolução`
+            * **Descrição:** `Criamos o futuro, impulsionados pela coragem de questionar, reinventar e evoluir.`
+        * **Item 2:**
+            * **Ícone:** Utilize o asset `Valores_Lina_Icone_mutidiversidade.png`.
+            * **Título:** `multidiversidade`
+            * **Descrição:** `Somos movidos pela riqueza de sermos diferentes. Nossa pluralidade nos fortalece e amplia nossa visão.`
+        * **Item 3:**
+            * **Ícone:** Utilize o asset `Valores_Lina_Icone_espirito_colaborativo.png`.
+            * **Título:** `espírito colaborativo`
+            * **Descrição:** `A união de ideias, esforço e colaboração é a chave que transforma cada desafio em uma oportunidade.`
+        * **Item 4:**
+            * **Ícone:** Utilize o asset `Valores_Lina_Icone_Compromisso.png`.
+            * **Título:** `compromisso`
+            * **Descrição:** `Atuamos com dedicação, ética e disciplina para garantir que cada ação seja realizada com excelência e contribua para o sucesso coletivo.`
+        * **Item 5:**
+            * **Ícone:** Utilize o asset `Valores_Lina_Icone_Paixão.png`.
+            * **Título:** `paixão`
+            * **Descrição:** `A energia que nos conecta e nos inspira a sempre entregar o nosso melhor.`
+    * **Parágrafo de Encerramento:** Abaixo da lista de valores, adicione o seguinte parágrafo de texto:
+        * `Na Lina, nossos valores nos inspiram a transformar o futuro com propósito. Nossa essência está em evoluir continuamente, abraçando a mudança e a diversidade, cocriando soluções e avançando com compromisso e paixão para abrir novos caminhos.`
+
+3.  **Estilo e Animação:**
+    * **Estilo:** O design deve ser limpo e sofisticado, com tipografia clara e bom espaçamento, conforme a referência visual `Valores_Lina.jpg`. O texto deve ser de cor clara para contrastar com o fundo escuro.
+    * **Animação:** Utilize o hook `useScrollReveal` e `framer-motion` para aplicar uma animação de entrada em cascata (staggered) para cada item da lista de valores quando a seção se tornar visível.
+
+**Entregável:** O código-fonte completo para o novo componente `ValuesSection.tsx`, utilizando os assets de ícones específicos fornecidos, totalmente responsivo e animado.
