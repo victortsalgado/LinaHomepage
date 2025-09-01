@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/select";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import LinaPayHeroSection from "@/components/views/lina-pay/sections/LinaPayHeroSection";
 
 const featureCards = [
   {
@@ -145,143 +146,7 @@ export default function LinaPay(): JSX.Element {
       <div className="bg-white grid justify-items-center w-screen">
         <div className="bg-white w-full max-w-[1440px]">
           <div className="relative">
-            {/* Hero Section */}
-            <section className="w-full h-[820px] rounded-[40px_40px_0px_0px] bg-[linear-gradient(0deg,rgba(251,250,250,1)_0%,rgba(152,216,211,1)_100%)] relative">
-              <div className="flex justify-between items-start px-[252px] pt-[189px]">
-                <div className="flex-1 max-w-[456px]">
-                  <div className="w-[188px] h-[34px] mb-[31px]">
-                    <img
-                      className="w-[184px] h-[33px]"
-                      alt="Camada"
-                      src="/figmaAssets/camada-1.svg"
-                    />
-                  </div>
-
-                  <h1 className="[font-family:'Lexend',Helvetica] font-medium text-[40px] leading-[56px] mb-6">
-                    <span className="text-[#606060]">
-                      Transforme a experiência de compra e{" "}
-                    </span>
-                    <span className="text-[#0ab5aa]">
-                      reduza custos com meios de pagamento
-                    </span>
-                  </h1>
-
-                  <p className="[font-family:'Lexend',Helvetica] font-light text-[#606060] text-base leading-6 mb-10">
-                    Com o Pix por biometria, você elimina fricções no checkout,
-                    impulsiona a adoção do Pix nas compras online, e se livra de
-                    vez das taxas com cartões e boletos
-                  </p>
-
-                  <Button className="w-[260px] h-auto px-8 py-4 bg-[#0ab5aa] rounded-[80px] [font-family:'Lexend',Helvetica] font-bold text-white text-base">
-                    Falar com um especialista
-                  </Button>
-                </div>
-
-                {/* Contact Form */}
-                <Card className="w-[360px] h-[693px] bg-[#003a38] rounded-2xl shadow-[4px_4px_8px_#0ab5aa1a] border-0">
-                  <CardContent className="p-6 pt-8">
-                    <div className="text-center mb-6">
-                      <h3 className="[font-family:'Lexend',Helvetica] font-medium text-white text-base mb-2">
-                        Fale com um especialista hoje mesmo.
-                      </h3>
-                      <p className="[font-family:'Lexend',Helvetica] font-light text-white text-xs">
-                        Não se preocupe, seus dados estarão sempre seguros
-                        conosco.
-                      </p>
-                    </div>
-
-                    <div className="space-y-6">
-                      <div className="space-y-2">
-                        <Label className="[font-family:'Lexend',Helvetica] font-normal text-white text-[13px]">
-                          Nome completo <span className="text-white">*</span>
-                        </Label>
-                        <Input
-                          placeholder="Digite seu nome"
-                          className="bg-white border-[#cbcccc] [font-family:'Lexend',Helvetica] font-normal text-black text-base"
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label className="[font-family:'Lexend',Helvetica] font-normal text-white text-[13px]">
-                          E-mail corporativo <span className="text-white">*</span>
-                        </Label>
-                        <Input
-                          placeholder="Digite seu e-mail corporativo"
-                          className="bg-white border-[#cbcccc] [font-family:'Lexend',Helvetica] font-normal text-black text-base"
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label className="[font-family:'Lexend',Helvetica] font-normal text-white text-[13px]">
-                          Telefone <span className="text-white">*</span>
-                        </Label>
-                        <Input
-                          placeholder="DDD + Número"
-                          className="bg-white border-[#cbcccc] [font-family:'Lexend',Helvetica] font-normal text-black text-base"
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label className="[font-family:'Lexend',Helvetica] font-normal text-white text-[13px]">
-                          Empresa <span className="text-white">*</span>
-                        </Label>
-                        <Input
-                          placeholder="Nome da sua empresa"
-                          className="bg-white border-[#cbcccc] [font-family:'Lexend',Helvetica] font-normal text-black text-base"
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label className="[font-family:'Inter',Helvetica] font-normal text-white text-[13px]">
-                          Qual o Faturamento Anual da Empresa?
-                        </Label>
-                        <Select>
-                          <SelectTrigger className="bg-white border-[#cbcccc]">
-                            <SelectValue placeholder="Selecione aqui" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="ate-5mi">
-                              Até R$ 5 milhões
-                            </SelectItem>
-                            <SelectItem value="5-10mi">
-                              entre R$ 5 milhões e R$ 10 milhões
-                            </SelectItem>
-                            <SelectItem value="10-50mi">
-                              entre R$ 10 milhões e R$ 50 milhões
-                            </SelectItem>
-                            <SelectItem value="acima-50mi">
-                              acima de R$ 50 milhões
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label className="[font-family:'Inter',Helvetica] font-normal text-white text-[13px]">
-                          Label
-                        </Label>
-                        <Select>
-                          <SelectTrigger className="bg-white border-[#cbcccc]">
-                            <SelectValue placeholder="Aquisição" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="option1">Option 1</SelectItem>
-                            <SelectItem value="option2">Option 2</SelectItem>
-                            <SelectItem value="option3">Option 3</SelectItem>
-                            <SelectItem value="option4">Option 4</SelectItem>
-                            <SelectItem value="option5">Option 5</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <Button className="w-full h-auto px-8 py-4 bg-[#0ab5aa] rounded-[80px] [font-family:'Lexend',Helvetica] font-bold text-white text-base">
-                        Falar com um especialista
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </section>
+            <LinaPayHeroSection />
 
             {/* What is Lina Pay Section */}
             <section className="w-full h-[737px] bg-[#f8f3f3] rounded-[0px_0px_40px_40px] relative">
@@ -610,6 +475,7 @@ export default function LinaPay(): JSX.Element {
 
             {/* Final CTA Section */}
             <section
+              id="cta-form-section"
               className="w-full h-[587px] rounded-[40px_40px_0px_0px] bg-[linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(152,216,211,1)_100%)] relative"
             >
               <div className="text-center px-[444px] pt-[249px]">
