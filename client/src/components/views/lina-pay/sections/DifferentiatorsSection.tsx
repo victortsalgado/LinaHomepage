@@ -114,7 +114,10 @@ export default function DifferentiatorsSection() {
             return (
               <motion.div
                 key={card.id}
-                className="group relative rounded-2xl p-1 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 transition-all duration-300 hover:shadow-[0px_0px_30px_1px] hover:shadow-[var(--lina-cyan)]/30"
+                className="group relative rounded-2xl p-1 transition-all duration-300 hover:shadow-[0px_0px_30px_1px] hover:shadow-[var(--lina-cyan)]/30"
+                style={{
+                  background: 'linear-gradient(135deg, var(--lina-cyan) 0%, #14b8a6 100%)'
+                }}
                 variants={cardVariants}
                 whileHover={{ 
                   y: -8,
@@ -123,7 +126,7 @@ export default function DifferentiatorsSection() {
                 data-testid={`card-differentiator-${index + 1}`}
               >
                 {/* Inner card with white background */}
-                <div className="relative bg-white rounded-2xl p-8 h-full transition-all duration-200 hover:scale-[0.98]">
+                <div className="relative bg-white rounded-xl p-8 h-full transition-all duration-200 hover:scale-[0.98] m-[2px]">
                   {/* Card background gradient on hover */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[var(--lina-cyan)]/5 to-teal-50/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
