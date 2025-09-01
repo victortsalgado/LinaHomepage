@@ -32,7 +32,7 @@ export default function Footer() {
       className="bg-[#1a4d4d] text-white rounded-t-[40px] mt-0"
       data-testid="footer-main"
     >
-      <div className="px-8 py-12 lg:px-16 lg:py-16">
+      <div className="px-8 py-12 lg:px-16 lg:py-16 mt-[-40px] mb-[-40px]">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16">
             {/* Coluna 1 - Contato */}
