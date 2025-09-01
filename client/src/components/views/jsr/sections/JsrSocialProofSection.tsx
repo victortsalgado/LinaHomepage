@@ -3,7 +3,6 @@
 import { Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { motion } from "framer-motion";
 
@@ -13,33 +12,6 @@ export default function JsrSocialProofSection() {
     rootMargin: '0px 0px -10% 0px',
   });
 
-  // Client logos for social proof slider
-  const clientLogos = [
-    {
-      name: "BRASILPREV",
-      logo: "/figmaAssets/client.png"
-    },
-    {
-      name: "BRASILCAP", 
-      logo: "/figmaAssets/client-1.png"
-    },
-    {
-      name: "BRP",
-      logo: "/figmaAssets/client-2.png"
-    },
-    {
-      name: "BRB",
-      logo: "/figmaAssets/client.png"
-    },
-    {
-      name: "Iugu",
-      logo: "/figmaAssets/client-1.png"
-    },
-    {
-      name: "SEMEAR",
-      logo: "/figmaAssets/client-2.png"
-    }
-  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -229,37 +201,6 @@ export default function JsrSocialProofSection() {
             </motion.div>
           </div>
 
-          {/* Client Logos Slider */}
-          <motion.div 
-            variants={itemVariants}
-            className="relative overflow-hidden"
-            data-testid="section-jsr-client-logos"
-          >
-            <InfiniteSlider
-              duration={25}
-              gap={80}
-              className="py-8"
-            >
-              {clientLogos.map((client, index) => (
-                <div 
-                  key={`${client.name}-${index}`} 
-                  className="flex items-center justify-center min-w-[180px]"
-                  data-testid={`logo-jsr-client-${index}`}
-                >
-                  <img
-                    src={client.logo}
-                    alt={`Logo ${client.name}`}
-                    className="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300 ease-in-out opacity-70 hover:opacity-100 cursor-pointer"
-                    data-testid={`img-jsr-logo-${client.name.toLowerCase().replace(/\s+/g, '-')}`}
-                  />
-                </div>
-              ))}
-            </InfiniteSlider>
-            
-            {/* Gradient overlays for fade in/out effect */}
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#E0F3F3] to-transparent pointer-events-none z-10" />
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#C9E5E5] to-transparent pointer-events-none z-10" />
-          </motion.div>
         </motion.div>
       </div>
     </section>
