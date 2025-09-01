@@ -9,6 +9,7 @@ import Footer from "@/components/layout/footer";
 import JsrHeroSection from "@/components/views/jsr/sections/JsrHeroSection";
 import SolutionSection from "@/components/views/jsr/sections/SolutionSection";
 import JsrSocialProofSection from "@/components/views/jsr/sections/JsrSocialProofSection";
+import JsrDifferentiatorsSection from "@/components/views/jsr/sections/JsrDifferentiatorsSection";
 
 const clientLogos = [
   { src: "/figmaAssets/client.png", alt: "Client" },
@@ -133,6 +134,7 @@ export default function JSR(): JSX.Element {
       <JsrHeroSection />
       <SolutionSection />
       <JsrSocialProofSection />
+      <JsrDifferentiatorsSection />
       <div className="bg-white grid justify-items-center [align-items:start] w-screen">
         <div className="bg-white w-[1440px] h-[6196px] relative">
           <div className="absolute w-[1440px] h-[4606px] top-[1590px] left-0">
