@@ -103,24 +103,31 @@ export default function SegmentsSection() {
                   whileTap={{ scale: 0.95 }}
                   data-testid={`tab-segment-${index + 1}`}
                 >
-                  <div className="flex items-center justify-center flex-col text-center h-24">
+                  <div className="flex items-center gap-4 h-16">
                     {/* Icon */}
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-2 bg-white/20 backdrop-blur-sm">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/20 backdrop-blur-sm flex-shrink-0">
                       <IconComponent 
-                        className="w-5 h-5 text-white"
+                        className="w-6 h-6 text-white"
                         data-testid={`icon-tab-${index + 1}`}
                       />
                     </div>
                     
-                    {/* Tab Title */}
-                    <div className="flex-1 flex items-center justify-center">
+                    {/* Content */}
+                    <div className="flex-1 text-center">
                       <h3 
-                        className="text-xs font-bold leading-tight text-white text-center"
+                        className="text-sm font-bold leading-tight text-white mb-1"
                         style={{ fontFamily: 'Lexend, sans-serif' }}
                         data-testid={`title-tab-${index + 1}`}
                       >
                         {segment.title}
                       </h3>
+                      <p 
+                        className="text-xs text-white/80 leading-tight"
+                        style={{ fontFamily: 'Inter, sans-serif' }}
+                        data-testid={`subtitle-tab-${index + 1}`}
+                      >
+                        Clique para saber mais
+                      </p>
                     </div>
                   </div>
                 </motion.button>
