@@ -1,0 +1,30 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript e Tailwind CSS. Sua tarefa é construir o componente de conversão final para uma página de produto, garantindo um design de alta qualidade e consistência com os padrões do projeto.
+
+**Missão:** Construir o componente final da página LinaPay: a seção de **CTA e Formulário de Contato**.
+
+**Porquê Estratégico:** Sendo o último ponto de contato da página, esta seção deve reforçar a proposta de valor e oferecer um caminho claro e de baixo atrito para a conversão, maximizando a captura de leads qualificados.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/lina-pay/sections/CtaFormSection.tsx`.
+    * A seção deve ter um fundo claro (`bg-white` ou `bg-gray-100`) para contrastar com a seção escura anterior.
+
+2.  **Conteúdo Explícito:**
+    * **Título da Seção:** "Vamos simplificar e reduzir o custo dos pagamentos?"
+    * **Subtítulo da Seção:** "Fale com um especialista e descubra como o LinaPay pode transformar a experiência de compra dos seus clientes e otimizar sua receita."
+    * **Container do Formulário:** O formulário deve ser apresentado dentro de um "card" com fundo escuro (`bg-[var(--lina-dark)]`), conforme o padrão visual estabelecido.
+    * **Campos do Formulário (com qualificação):**
+        * Nome completo*
+        * E-mail corporativo*
+        * Telefone*
+        * Empresa*
+        * Qual o Faturamento Anual da Empresa? (Dropdown com as opções: "Até R$ 5 milhões", "entre R$ 5 milhões e R$ 10 milhões", "entre R$ 10 milhões e R$ 50 milhões", "acima de R$ 50 milhões")
+        * Qual o segmento da sua empresa? (Dropdown com as opções: "Bancos e Instituições Financeiras", "Fintechs e Meios de Pagamento", "E-commerce e Marketplaces", "Seguradoras (Insurtechs)", "Software e SaaS", "Outro")
+    * **Botão de Envio (CTA):** O texto do botão deve ser "Falar com um especialista".
+
+3.  **Estilo e Animação:**
+    * Utilize o hook `useScrollReveal` para uma animação suave de "fade-in" em toda a seção.
+    * O estilo do formulário (inputs, labels, dropdowns, botão) deve ser idêntico ao padrão já definido para o site.
+
+**Entregável:** O código-fonte completo para o novo componente `CtaFormSection.tsx`, totalmente responsivo e funcional, finalizando a estrutura da página LinaPay.
