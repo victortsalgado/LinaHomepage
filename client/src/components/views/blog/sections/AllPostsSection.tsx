@@ -3,27 +3,18 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import BlogPostCard from "@/components/ui/BlogPostCard";
-import { useBlogSearch, sanityPostToBlogPost } from "@/contexts/BlogSearchContext";
+import { useBlogSearch } from "@/contexts/BlogSearchContext";
 import { useMemo } from "react";
-import { usePosts } from "@/hooks/usePosts";
+import { allBlogPosts } from "@/data/blogPosts";
 
 
 export default function AllPostsSection() {
   const { ref, isVisible } = useScrollReveal();
   const { searchTerm, category, tag } = useBlogSearch();
-  
-  // Fetch posts from Sanity
-  const { data: sanityPosts, isLoading, error } = usePosts();
-  
-  // Convert Sanity posts to legacy format
-  const allPosts = useMemo(() => {
-    if (!sanityPosts) return [];
-    return sanityPosts.map((post, index) => sanityPostToBlogPost(post, index));
-  }, [sanityPosts]);
 
   // Filter posts based on search term and filters
   const filteredPosts = useMemo(() => {
-    return allPosts.filter(post => {
+    return allBlogPosts.filter(post => {
       const matchesSearch = searchTerm === "" || 
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -34,7 +25,7 @@ export default function AllPostsSection() {
       
       return matchesSearch && matchesCategory;
     });
-  }, [allPosts, searchTerm, category, tag]);
+  }, [searchTerm, category, tag]);
 
   // Animation variants
   const containerVariants = {
@@ -98,28 +89,12 @@ export default function AllPostsSection() {
               style={{ fontFamily: 'Lexend, sans-serif' }}
               data-testid="heading-all-posts"
             >
-              Todos os Artigos
+              All Blog Posts
             </h2>
           </motion.div>
 
-          {/* Loading State */}
-          {isLoading ? (
-            <motion.div
-              variants={itemVariants}
-              className="flex justify-center py-16"
-            >
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--lina-cyan)]"></div>
-            </motion.div>
-          ) : error ? (
-            <motion.div
-              variants={itemVariants}
-              className="text-center py-16"
-            >
-              <p className="text-xl text-red-500">
-                Erro ao carregar artigos. Tente novamente mais tarde.
-              </p>
-            </motion.div>
-          ) : filteredPosts.length > 0 ? (
+          {/* Posts Grid */}
+          {filteredPosts.length > 0 ? (
             <motion.div
               variants={gridVariants}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"

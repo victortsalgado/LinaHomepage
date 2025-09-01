@@ -6,22 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState, useMemo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useBlogSearch, sanityPostToBlogPost } from "@/contexts/BlogSearchContext";
-import { usePosts } from "@/hooks/usePosts";
+import { useBlogSearch } from "@/contexts/BlogSearchContext";
+import { allBlogPosts } from "@/data/blogPosts";
+
+// Get the 5 most recent posts
+const recentPosts = allBlogPosts.slice(0, 5);
 
 export default function RecentBlogsSection() {
   const { ref, isVisible } = useScrollReveal();
   const { searchTerm, category, setCategory, tag, setTag } = useBlogSearch();
   const [currentSlide, setCurrentSlide] = useState(0);
-  
-  // Fetch posts from Sanity
-  const { data: sanityPosts, isLoading, error } = usePosts();
-  
-  // Get the 5 most recent posts and convert to legacy format
-  const recentPosts = useMemo(() => {
-    if (!sanityPosts) return [];
-    return sanityPosts.slice(0, 5).map((post, index) => sanityPostToBlogPost(post, index));
-  }, [sanityPosts]);
 
   // Filter posts based on search term and filters
   const filteredPosts = useMemo(() => {
@@ -85,58 +79,6 @@ export default function RecentBlogsSection() {
   };
 
   const currentPost = filteredPosts[currentSlide];
-
-  // Show loading state
-  if (isLoading) {
-    return (
-      <section 
-        ref={ref}
-        className="py-20 lg:py-32 bg-white"
-        data-testid="section-recent-blogs"
-      >
-        <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
-          <div className="text-center space-y-8">
-            <h2
-              className="text-4xl lg:text-5xl font-bold text-gray-900"
-              style={{ fontFamily: 'Lexend, sans-serif' }}
-            >
-              Artigos Recentes
-            </h2>
-            <div className="flex justify-center py-16">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--lina-cyan)]"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-  
-  // Show error state
-  if (error) {
-    return (
-      <section 
-        ref={ref}
-        className="py-20 lg:py-32 bg-white"
-        data-testid="section-recent-blogs"
-      >
-        <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
-          <div className="text-center space-y-8">
-            <h2
-              className="text-4xl lg:text-5xl font-bold text-gray-900"
-              style={{ fontFamily: 'Lexend, sans-serif' }}
-            >
-              Artigos Recentes
-            </h2>
-            <div className="text-center py-16">
-              <p className="text-xl text-red-500">
-                Erro ao carregar artigos. Tente novamente mais tarde.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   // Show message if no posts match filters
   if (filteredPosts.length === 0) {

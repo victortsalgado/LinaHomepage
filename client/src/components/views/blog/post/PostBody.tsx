@@ -1,24 +1,12 @@
 import { motion } from "framer-motion";
 import { BlogPost } from "@/contexts/BlogSearchContext";
-import { Post } from "../../../../lib/sanity";
 import PostSidebar from "@/components/views/blog/post/PostSidebar";
-import PortableText from "@/components/ui/PortableText";
 
 interface PostBodyProps {
-  post: BlogPost | Post;
-  sanityPost?: Post;
+  post: BlogPost;
 }
 
-// Type guard to check if post is Sanity Post
-function isSanityPost(post: BlogPost | Post): post is Post {
-  return '_id' in post;
-}
-
-export default function PostBody({ post, sanityPost }: PostBodyProps) {
-  // Use Sanity post data if available
-  const actualPost = sanityPost || post;
-  
-  const hasRichContent = isSanityPost(actualPost) && actualPost.body && actualPost.body.length > 0;
+export default function PostBody({ post }: PostBodyProps) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -41,12 +29,7 @@ export default function PostBody({ post, sanityPost }: PostBodyProps) {
             style={{ fontFamily: 'Inter, sans-serif' }}
             data-testid="article-content"
           >
-            {/* Render Rich Text content from Sanity or fallback content */}
-            {hasRichContent ? (
-              <PortableText value={(actualPost as Post).body} />
-            ) : (
-              <>
-                <h2>Introdução ao PIX Automático</h2>
+            <h2>Introdução ao PIX Automático</h2>
             <p>
               O PIX Automático representa uma das maiores evoluções no sistema de pagamentos brasileiro desde o lançamento do PIX em 2020. Esta nova modalidade permite que empresas configurem pagamentos recorrentes de forma automatizada, eliminando a necessidade de intervenção manual tanto do lado do pagador quanto do recebedor.
             </p>
@@ -89,7 +72,7 @@ export default function PostBody({ post, sanityPost }: PostBodyProps) {
               Além disso, o custo operacional é significativamente menor comparado a outros meios de pagamento recorrente. Enquanto os débitos automáticos tradicionais podem levar dias para serem processados, o PIX Automático é processado em tempo real, melhorando o fluxo de caixa das empresas.
             </p>
 
-                <h2>Implementação Prática</h2>
+            <h2>Implementação Prática</h2>
             <p>
               Para empresas interessadas em implementar o PIX Automático, é essencial contar com uma solução tecnológica robusta e confiável. A LINA oferece através do LinaPay uma integração completa com as funcionalidades do PIX Automático, permitindo que empresas de qualquer porte possam aproveitar todos os benefícios desta nova modalidade.
             </p>
@@ -99,11 +82,9 @@ export default function PostBody({ post, sanityPost }: PostBodyProps) {
             </p>
 
             <h2>Conclusão</h2>
-                <p>
-                  O PIX Automático representa o futuro dos pagamentos recorrentes no Brasil. Com sua implementação, esperamos ver uma redução significativa nos custos operacionais das empresas e uma melhoria na experiência do consumidor. É uma oportunidade única para empresas se posicionarem na vanguarda da inovação em pagamentos.
-                </p>
-              </>
-            )}
+            <p>
+              O PIX Automático representa o futuro dos pagamentos recorrentes no Brasil. Com sua implementação, esperamos ver uma redução significativa nos custos operacionais das empresas e uma melhoria na experiência do consumidor. É uma oportunidade única para empresas se posicionarem na vanguarda da inovação em pagamentos.
+            </p>
           </article>
         </div>
 
