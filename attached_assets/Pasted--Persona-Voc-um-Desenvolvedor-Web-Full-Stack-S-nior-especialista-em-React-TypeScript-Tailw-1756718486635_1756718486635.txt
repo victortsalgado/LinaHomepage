@@ -1,0 +1,27 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Seu foco é em criar componentes que seguem rigorosamente um design de referência e se integram perfeitamente a uma arquitetura existente.
+
+**Missão:** Construir o componente para a seção **"O que é o Lina Pay?"**, que serve como a introdução principal ao produto.
+
+**Porquê Estratégico:** Esta seção é a primeira oportunidade, após o Hero, de explicar o produto em detalhe. Ela deve ser clara, concisa e visualmente alinhada para educar o usuário sobre o valor da solução e incentivá-lo a continuar a leitura.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/lina-pay/sections/AboutLinaPaySection.tsx`.
+    * Implemente um layout responsivo de duas colunas (`grid lg:grid-cols-2`), com o conteúdo textual à esquerda e a imagem à direita.
+
+2.  **Conteúdo Explícito (da referência `LP_LinaPay.pdf`):**
+    * **Coluna da Esquerda (Conteúdo Textual):**
+        * **Título:** `O que é o Lina Pay?`
+        * **Descrição:** `O Lina Pay é uma plataforma de pagamentos via Open Finance que permite que a sua empresa ofereça uma experiência de checkout fluida, segura e com custo reduzido. Com ele, o consumidor paga com um toque, por reconhecimento facial ou biometria, sem senhas e sem interrupções, para que vendas não sejam mais perdidas. Nossa solução é homologada pelo Banco Central e conectada a +100 instituições.`
+        * **Botão de CTA:** O botão deve ter o texto "Descubra como funciona".
+
+    * **Coluna da Direita (Elemento Visual):**
+        * Posicione a imagem de referência (mulher sorrindo ao usar o celular) que consta na `LP_LinaPay.pdf`.
+
+3.  **Estilo e Animação:**
+    * **Estilo do Botão:** Para o botão "Descubra como funciona", aplique o novo padrão para fundos claros: fundo sólido utilizando a cor `var(--lina-cyan)`, texto na cor branca, e cantos totalmente arredondados (`rounded-full`).
+    * **Animação:** Utilize o hook `useScrollReveal` para aplicar uma animação de entrada suave (ex: "slide-in" ou "fade-in") quando a seção se tornar visível na tela.
+    * **Estilo Geral:** Mantenha a consistência com o restante do site, utilizando as fontes (`Lexend`, `Inter`) e cores do projeto.
+
+**Entregável:** O código-fonte completo para o novo componente `AboutLinaPaySection.tsx`, totalmente responsivo, animado e funcional, pronto para ser integrado à página `lina-pay.tsx`.
