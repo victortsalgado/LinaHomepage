@@ -1,0 +1,45 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é construir um componente informativo que detalha tanto os benefícios técnicos quanto os casos de uso de mercado de uma solução.
+
+**Missão:** Construir o componente da seção **"Infraestrutura e Aplicações da JSR"** da página de produto JSR.
+
+**Porquê Estratégico:** Esta seção combina a proposta de valor técnica (APIs simples, suporte) com os casos de uso de mercado (Bancos, Fintechs). O objetivo é demonstrar tanto a facilidade de implementação quanto a ampla aplicabilidade da JSR, quebrando objeções tanto do time técnico quanto do time de negócios.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/jsr/sections/JsrInfrastructureSection.tsx`.
+    * A seção deve ter um fundo claro (ex: `bg-white`).
+    * Implemente um layout responsivo de duas colunas (`grid lg:grid-cols-2`), com alinhamento vertical centralizado.
+
+2.  **Conteúdo Explícito (da referência `LP_JSR.pdf`):**
+    * **Coluna da Esquerda (Conteúdo Textual):**
+        * **Título 1:** `APIs simples, suporte técnico próximo e foco em produção rápida`
+        * **Parágrafo 1:** `Nossas APIs e SDKs contam com suporte técnico dedicado e documentação completa. Somos certificados no Open Finance e pelo Banco Central.`
+        * **Título 2:** `Infraestrutura JSR desenhada para vários modelos de instituições financeiras`
+        * **Subtítulo 2:** `Veja como aplicamos no seu setor`
+        * **Lista de Segmentos (4 itens):**
+            * **Item 1:**
+                * **Ícone:** `Landmark`
+                * **Título:** "Bancos e cooperativas"
+                * **Descrição:** "Saia na frente e ofereça o jeito mais moderno de pagar com o Pix."
+            * **Item 2:**
+                * **Ícone:** `Shield`
+                * **Título:** "Instituições de Pagamentos e Fintechs"
+                * **Descrição:** "Antecipe tendências e gere vantagem competitiva transformando contas digitais em meios de pagamento Pix."
+            * **Item 3:**
+                * **Ícone:** `Wallet`
+                * **Título:** "Carteiras digitais"
+                * **Descrição:** "Adicione o Pix por aproximação em sua wallet e seja a carteira preferida dos clientes."
+            * **Item 4:**
+                * **Ícone:** `CreditCard`
+                * **Título:** "Plataformas de pagamento e BaaS"
+                * **Descrição:** "Reduza custos por transação e amplie a oferta de serviços aos clientes finais."
+
+    * **Coluna da Direita (Elemento Visual):**
+        * Posicione o mockup de smartphone exibindo a tela "PIX por Biometria", conforme a referência na `LP_JSR.pdf`.
+
+3.  **Animação e Estilo:**
+    * **Animação:** Utilize o hook `useScrollReveal` para aplicar animações de entrada ("slide-in") distintas para a coluna de texto e a coluna do visual quando a seção se tornar visível.
+    * **Estilo:** Mantenha a consistência visual com o restante do site, utilizando as fontes (`Lexend`, `Inter`), cores e componentes reutilizáveis do projeto.
+
+**Entregável:** O código-fonte completo para o novo componente `JsrInfrastructureSection.tsx`, totalmente responsivo, animado e funcional.
