@@ -19,7 +19,9 @@ const NotFound = () => (
     </div>
   </div>
 );
-import { usePost } from '@/hooks/usePosts';
+import { usePost, usePosts } from '@/hooks/usePosts';
+import { useMemo } from 'react';
+import { sanityPostToBlogPost } from '@/contexts/BlogSearchContext';
 import { allBlogPosts as mockPosts } from '@/data/blogPosts';
 
 export default function BlogSlugPage() {
@@ -29,17 +31,22 @@ export default function BlogSlugPage() {
   // Fetch Sanity post data
   const { data: sanityPost, isLoading, error } = usePost(slug || '');
   
-  // Find fallback mock post
-  const post = mockPosts.find(p => p.slug === slug);
+  // Get related posts from Sanity data
+  const { data: allSanityPosts } = usePosts();
+  const relatedPosts = useMemo(() => {
+    if (!sanityPost || !allSanityPosts) return [];
+    return allSanityPosts
+      .filter(p => p.slug.current !== slug && p.category === sanityPost.category)
+      .slice(0, 3)
+      .map((post, index) => sanityPostToBlogPost(post, index));
+  }, [sanityPost, allSanityPosts, slug]);
   
-  // Get related posts from mock data (since Sanity data might not have categories yet)
-  const relatedPosts = mockPosts
-    .filter(p => p.slug !== slug && p.category === post?.category)
-    .slice(0, 3);
+  // Find fallback mock post only if no Sanity data
+  const mockPost = mockPosts.find(p => p.slug === slug);
 
   // JSON-LD Schema
   useEffect(() => {
-    if (!sanityPost && !post) return;
+    if (!sanityPost && !mockPost) return;
 
     const script = document.createElement('script');
     script.type = 'application/ld+json';
@@ -48,8 +55,8 @@ export default function BlogSlugPage() {
     const schemaData = {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": sanityPost?.title || post?.title || '',
-      "description": sanityPost?.description || post?.description || '',
+      "headline": sanityPost?.title || mockPost?.title || '',
+      "description": sanityPost?.excerpt || mockPost?.description || '',
       "author": {
         "@type": "Organization",
         "name": "Lina"
@@ -62,8 +69,8 @@ export default function BlogSlugPage() {
           "url": `${window.location.origin}/assets/new-lina-logo.png`
         }
       },
-      "datePublished": sanityPost?.publishedAt || post?.date || "2025-01-15",
-      "dateModified": sanityPost?._updatedAt || post?.date || "2025-01-15",
+      "datePublished": sanityPost?.publishedAt || mockPost?.date || "2025-01-15",
+      "dateModified": sanityPost?.publishedAt || mockPost?.date || "2025-01-15",
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": window.location.href
@@ -79,15 +86,27 @@ export default function BlogSlugPage() {
         existingScript.remove();
       }
     };
-  }, [sanityPost, post]);
+  }, [sanityPost, mockPost]);
 
-  // If no post found in either Sanity or mock data
-  if (!isLoading && !sanityPost && !post) {
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Carregando post...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // If no post found in Sanity, try fallback to mock data
+  if (!sanityPost && !mockPost) {
     return <NotFound />;
   }
 
-  // Use Sanity post if available, otherwise fallback to mock post
-  const displayPost = post; // Always use mock post for structure, Sanity data passed separately
+  // Use Sanity post as primary, mock as fallback
+  const displayPost = sanityPost ? sanityPostToBlogPost(sanityPost, 0) : mockPost;
 
   if (!displayPost) {
     return <NotFound />;
@@ -111,8 +130,8 @@ export default function BlogSlugPage() {
           className="w-full mb-12"
         >
           <img 
-            src={sanityPost?.mainImage?.asset ? `/api/placeholder/800/400?text=${encodeURIComponent(sanityPost.title)}` : displayPost.image} 
-            alt={sanityPost?.mainImage?.alt || displayPost.alt} 
+            src={sanityPost?.mainImage?.asset ? `/api/placeholder/800/400?text=${encodeURIComponent(sanityPost.title)}` : displayPost?.image || '/api/placeholder/800/400'} 
+            alt={sanityPost?.mainImage?.alt || displayPost?.alt || 'Post image'} 
             className="w-full h-64 md:h-96 object-cover"
             data-testid="img-post-featured"
           />
