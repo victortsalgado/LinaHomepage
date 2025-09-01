@@ -1,0 +1,27 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Seu foco é construir componentes informativos que combinam texto persuasivo com visuais de alta qualidade, mantendo a consistência de um design system existente.
+
+**Missão:** Construir o componente para a seção **"A solução ideal para ativar o Pix por aproximação sem travar o roadmap"** da página de produto JSR.
+
+**Porquê Estratégico:** Esta seção aborda uma dor central do público técnico: a complexidade de implementação. O objetivo é comunicar que a solução da Lina não é apenas poderosa, mas também rápida de integrar, permitindo que as equipes do cliente mantenham o foco em suas prioridades estratégicas sem atrasar o roadmap.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/jsr/sections/SolutionSection.tsx`.
+    * A seção deve ter um fundo claro (ex: `bg-white`).
+    * Implemente um layout responsivo de duas colunas (`grid lg:grid-cols-2`), com alinhamento vertical centralizado.
+
+2.  **Conteúdo Explícito (da referência `LP_JSR.pdf`):**
+    * **Coluna da Esquerda (Conteúdo Textual):**
+        * **Título:** `A solução ideal para ativar o Pix por aproximação sem travar o roadmap`
+        * **Descrição:** `Com a infraestrutura JSR da Lina, instituições financeiras que precisam implementar o Pix por aproximação (NFC) não precisam se preocupar com o desenvolvimento e homologação da tecnologia. A Lina oferece a infraestrutura pronta e certificada para processar os pagamentos, permitindo que as equipes se concentrem no que é mais importante: o cliente.`
+        * **Botão de CTA:** O botão deve ter o texto "Descubra como funciona".
+    * **Coluna da Direita (Elemento Visual):**
+        * Posicione a imagem de referência (mulher de óculos analisando uma interface) que consta na `LP_JSR.pdf`.
+
+3.  **Animação e Estilo:**
+    * **Animação:** Utilize o hook `useScrollReveal` para aplicar animações de entrada ("slide-in") distintas para a coluna de texto e a coluna da imagem quando a seção se tornar visível.
+    * **Estilo do Botão:** O botão deve seguir o padrão para fundos claros: fundo sólido com a cor `var(--lina-cyan)`, texto branco e cantos totalmente arredondados.
+    * **Estilo Geral:** Mantenha a consistência visual com o restante do site, utilizando as fontes (`Lexend`, `Inter`), cores e componentes reutilizáveis do projeto.
+
+**Entregável:** O código-fonte completo para o novo componente `SolutionSection.tsx`, totalmente responsivo, animado e funcional.
