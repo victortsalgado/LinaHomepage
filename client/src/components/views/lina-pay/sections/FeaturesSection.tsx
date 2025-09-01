@@ -1,14 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useCallback, useEffect } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { 
   Fingerprint, 
   Nfc, 
   Zap, 
   CalendarClock, 
   Repeat, 
-  Bot 
+  Bot,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // Features cards data
 const featureCards = [
@@ -51,34 +56,44 @@ const featureCards = [
 ];
 
 export default function FeaturesSection() {
-  // Animation variants for staggered card reveals
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.15,
-      },
-    },
-  };
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'start',
+    slidesToScroll: 1,
+    breakpoints: {
+      '(min-width: 768px)': { slidesToScroll: 2 },
+      '(min-width: 1024px)': { slidesToScroll: 3 }
+    }
+  });
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 40,
-      scale: 0.95 
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  const scrollTo = useCallback((index: number) => {
+    if (emblaApi) emblaApi.scrollTo(index);
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+  }, [emblaApi, onSelect]);
 
   return (
     <section className="py-20 bg-gray-50" data-testid="section-features">
@@ -100,57 +115,110 @@ export default function FeaturesSection() {
           </h2>
         </motion.div>
 
-        {/* Features Cards Grid */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+        {/* Carousel Container */}
+        <motion.div 
+          className="relative"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          {featureCards.map((card, index) => {
-            const IconComponent = card.icon;
-            
-            return (
-              <motion.div
-                key={card.id}
-                className="group relative bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg hover:scale-105 transition-all duration-300"
-                variants={cardVariants}
-                data-testid={`card-feature-${index + 1}`}
-              >
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
-                      <IconComponent 
-                        className="w-7 h-7 text-white" 
-                        data-testid={`icon-feature-${index + 1}`}
-                      />
-                    </div>
+          {/* Navigation Buttons */}
+          <div className="flex justify-center gap-4 mb-8">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={scrollPrev}
+              disabled={!canScrollPrev}
+              className="h-10 w-10 p-0 rounded-full border-[var(--lina-cyan)] text-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+              data-testid="button-carousel-prev"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={scrollNext}
+              disabled={!canScrollNext}
+              className="h-10 w-10 p-0 rounded-full border-[var(--lina-cyan)] text-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+              data-testid="button-carousel-next"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+
+          {/* Carousel */}
+          <div className="overflow-hidden" ref={emblaRef} data-testid="carousel-features">
+            <div className="flex">
+              {featureCards.map((card, index) => {
+                const IconComponent = card.icon;
+                
+                return (
+                  <div
+                    key={card.id}
+                    className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] pl-4 pr-4"
+                    data-testid={`slide-feature-${index + 1}`}
+                  >
+                    <motion.div
+                      className="group relative bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg hover:scale-105 transition-all duration-300 h-full"
+                      whileHover={{ 
+                        y: -4,
+                        transition: { duration: 0.2 }
+                      }}
+                      data-testid={`card-feature-${index + 1}`}
+                    >
+                      {/* Content */}
+                      <div className="relative z-10">
+                        {/* Icon */}
+                        <div className="mb-6">
+                          <div className="w-14 h-14 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
+                            <IconComponent 
+                              className="w-7 h-7 text-white" 
+                              data-testid={`icon-feature-${index + 1}`}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Title */}
+                        <h3 
+                          className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-gray-800 transition-colors duration-300"
+                          style={{ fontFamily: 'Lexend, sans-serif' }}
+                          data-testid={`title-feature-${index + 1}`}
+                        >
+                          {card.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p 
+                          className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300"
+                          style={{ fontFamily: 'Inter, sans-serif' }}
+                          data-testid={`description-feature-${index + 1}`}
+                        >
+                          {card.description}
+                        </p>
+                      </div>
+                    </motion.div>
                   </div>
+                );
+              })}
+            </div>
+          </div>
 
-                  {/* Title */}
-                  <h3 
-                    className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-gray-800 transition-colors duration-300"
-                    style={{ fontFamily: 'Lexend, sans-serif' }}
-                    data-testid={`title-feature-${index + 1}`}
-                  >
-                    {card.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p 
-                    className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                    data-testid={`description-feature-${index + 1}`}
-                  >
-                    {card.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+          {/* Dot Indicators */}
+          <div className="flex justify-center gap-2 mt-8">
+            {featureCards.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === selectedIndex 
+                    ? 'bg-[var(--lina-cyan)] w-8' 
+                    : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+                data-testid={`dot-indicator-${index + 1}`}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

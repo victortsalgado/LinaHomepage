@@ -1,0 +1,50 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Seu trabalho é criar componentes interativos e visuais de alto impacto que engajam o usuário e diferenciam o produto.
+
+**Missão:** Refatorar o componente da seção **"Funcionalidades que resolvem problemas reais"** para utilizar um **carrossel/slider horizontal** interativo, em vez de uma grade estática de cards.
+
+**Porquê Estratégico:** A seção anterior também utilizou uma grade de cards. Para manter a página LinaPay dinâmica e evitar redundância visual, um carrossel interativo oferecerá uma experiência de navegação mais engajadora para as funcionalidades, permitindo que cada uma seja destacada individualmente.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Mantenha o arquivo: `src/components/views/lina-pay/sections/FeaturesSection.tsx`.
+    * A seção deve ter um fundo claro (`bg-white` ou `bg-gray-50`).
+
+2.  **Layout e Interatividade (Carrossel/Slider):**
+    * **Título da Seção:** "Funcionalidades que resolvem problemas reais".
+    * Implemente um carrossel horizontal que permita navegar entre os 6 cards de funcionalidades.
+    * O carrossel deve ter setas de navegação (próximo/anterior) e/ou indicadores de página (dots) para a navegação.
+    * Cada "slide" do carrossel deve ser um card de funcionalidade.
+    * Utilize um **design de card limpo e elegante**: fundo branco (`bg-white`), borda sutil, e um leve `box-shadow`.
+    * **Conteúdo dos Cards (6 cards, a serem exibidos um por vez ou em grupos pequenos no carrossel):**
+        * **Card 1:**
+            * **Ícone:** `Fingerprint`
+            * **Título:** "Pix por biometria"
+            * **Descrição:** "Pagamentos autorizados com um toque direto no checkout. Segurança e fluidez para o seu e-commerce."
+        * **Card 2:**
+            * **Ícone:** `Nfc`
+            * **Título:** "Pix por aproximação"
+            * **Descrição:** "Permite pagamentos presenciais com a simples aproximação do celular, sem precisar de cartões."
+        * **Card 3:**
+            * **Ícone:** `Zap`
+            * **Título:** "Pix instantâneo"
+            * **Descrição:** "Pagamento é confirmado imediatamente para a conta de destino, sem intermediários."
+        * **Card 4:**
+            * **Ícone:** `CalendarClock`
+            * **Título:** "Pix agendado"
+            * **Descrição:** "Agende pagamentos futuros de forma simples, debitando automaticamente na data escolhida."
+        * **Card 5:**
+            * **Ícone:** `Repeat`
+            * **Título:** "Pix recorrente"
+            * **Descrição:** "Automatize cobranças com valor fixo, como assinaturas, garantindo previsibilidade de caixa."
+        * **Card 6:**
+            * **Ícone:** `Bot`
+            * **Título:** "Pix automático"
+            * **Descrição:** "Pagamentos inteligentes iniciados por eventos e gatilhos pré-definidos pelo cliente."
+
+3.  **Animação e Estilo:**
+    * **Animações de Transição:** Ao navegar pelo carrossel, implemente animações suaves (ex: `slide` ou `fade`) para a transição dos cards, utilizando `framer-motion` se aplicável ou uma biblioteca de carrossel que ofereça transições elegantes.
+    * **Animação de Entrada da Seção:** Mantenha o `useScrollReveal` para animar a entrada de toda a seção quando ela se tornar visível.
+    * **Estilo:** Mantenha a consistência com o restante do site, utilizando as fontes (`Lexend`, `Inter`) e cores do projeto.
+
+**Entregável:** O código-fonte completo e atualizado para o componente `FeaturesSection.tsx`, implementando um carrossel/slider horizontal interativo, totalmente responsivo, animado e funcional.
