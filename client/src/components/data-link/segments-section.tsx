@@ -41,6 +41,17 @@ export default function SegmentsSection() {
   const [activeTab, setActiveTab] = useState(1);
 
   const activeSegment = segmentTabs.find(segment => segment.id === activeTab);
+  
+  // Define colors for each card based on LINA brand
+  const cardColors = [
+    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 1
+    'bg-gradient-to-br from-blue-500 to-blue-600',           // Card 2  
+    'bg-gradient-to-br from-emerald-500 to-emerald-600',     // Card 3
+    'bg-gradient-to-br from-purple-500 to-purple-600'        // Card 4
+  ];
+  
+  // Get the color for the active card
+  const activeCardColor = cardColors[activeTab - 1];
 
   return (
     <section className="py-20" style={{ backgroundColor: 'var(--lina-dark)' }} data-testid="section-segments">
@@ -83,13 +94,6 @@ export default function SegmentsSection() {
               const IconComponent = segment.icon;
               const isActive = activeTab === segment.id;
               
-              // Define colors for each card based on LINA brand
-              const cardColors = [
-                'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 1
-                'bg-gradient-to-br from-blue-500 to-blue-600',           // Card 2  
-                'bg-gradient-to-br from-emerald-500 to-emerald-600',     // Card 3
-                'bg-gradient-to-br from-purple-500 to-purple-600'        // Card 4
-              ];
               
               return (
                 <motion.button
@@ -150,7 +154,7 @@ export default function SegmentsSection() {
                 >
                   {/* Content Icon */}
                   <div className="mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-3xl flex items-center justify-center shadow-lg">
+                    <div className={`w-20 h-20 ${activeCardColor} rounded-3xl flex items-center justify-center shadow-lg`}>
                       <activeSegment.icon 
                         className="w-10 h-10 text-white" 
                         data-testid={`icon-content-${activeSegment.id}`}
