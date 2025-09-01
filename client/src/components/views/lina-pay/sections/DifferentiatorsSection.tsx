@@ -114,7 +114,7 @@ export default function DifferentiatorsSection() {
             return (
               <motion.div
                 key={card.id}
-                className="group relative bg-white rounded-2xl p-8 border border-gray-300/20 hover:border-[var(--lina-cyan)]/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[var(--lina-cyan)]/20"
+                className="group relative rounded-2xl p-1 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 transition-all duration-300 hover:shadow-[0px_0px_30px_1px] hover:shadow-[var(--lina-cyan)]/30"
                 variants={cardVariants}
                 whileHover={{ 
                   y: -8,
@@ -122,43 +122,46 @@ export default function DifferentiatorsSection() {
                 }}
                 data-testid={`card-differentiator-${index + 1}`}
               >
-                {/* Card background gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--lina-cyan)]/5 to-teal-50/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-[var(--lina-cyan)]/40 transition-all duration-300">
-                      <IconComponent 
-                        className="w-7 h-7 text-white" 
-                        data-testid={`icon-differentiator-${index + 1}`}
-                      />
+                {/* Inner card with white background */}
+                <div className="relative bg-white rounded-2xl p-8 h-full transition-all duration-200 hover:scale-[0.98]">
+                  {/* Card background gradient on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--lina-cyan)]/5 to-teal-50/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    {/* Icon */}
+                    <div className="mb-6">
+                      <div className="w-14 h-14 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-[var(--lina-cyan)]/40 transition-all duration-300">
+                        <IconComponent 
+                          className="w-7 h-7 text-white" 
+                          data-testid={`icon-differentiator-${index + 1}`}
+                        />
+                      </div>
                     </div>
+
+                    {/* Title */}
+                    <h3 
+                      className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-gray-800 transition-colors duration-300"
+                      style={{ fontFamily: 'Lexend, sans-serif' }}
+                      data-testid={`title-differentiator-${index + 1}`}
+                    >
+                      {card.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p 
+                      className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300"
+                      style={{ fontFamily: 'Inter, sans-serif' }}
+                      data-testid={`description-differentiator-${index + 1}`}
+                    >
+                      {card.description}
+                    </p>
                   </div>
 
-                  {/* Title */}
-                  <h3 
-                    className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-gray-800 transition-colors duration-300"
-                    style={{ fontFamily: 'Lexend, sans-serif' }}
-                    data-testid={`title-differentiator-${index + 1}`}
-                  >
-                    {card.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p 
-                    className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                    data-testid={`description-differentiator-${index + 1}`}
-                  >
-                    {card.description}
-                  </p>
+                  {/* Decorative elements */}
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-[var(--lina-cyan)]/10 to-teal-100/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-4 left-4 w-6 h-6 bg-gradient-to-tr from-teal-100/50 to-[var(--lina-cyan)]/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-
-                {/* Decorative elements */}
-                <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-[var(--lina-cyan)]/10 to-teal-100/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-4 left-4 w-6 h-6 bg-gradient-to-tr from-teal-100/50 to-[var(--lina-cyan)]/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
             );
           })}
