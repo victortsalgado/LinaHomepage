@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -74,6 +74,14 @@ export default function HeroSection() {
     setCurrentSlide(index);
   };
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
   // Variantes de animação para Framer Motion
   const slideVariants = {
     enter: (direction: number) => ({
@@ -134,10 +142,28 @@ export default function HeroSection() {
             
             <div className="mx-auto max-w-7xl px-6">
               <div 
-                className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]"
+                className="relative grid lg:grid-cols-2 gap-12 items-center min-h-[600px] group"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
               >
+                {/* Navigation Arrows */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-2 lg:p-3 text-white hover:bg-[var(--lina-cyan)]/20 hover:border-[var(--lina-cyan)]/50"
+                  data-testid="carousel-prev-button"
+                  aria-label="Slide anterior"
+                >
+                  <ChevronLeft size={20} className="lg:w-6 lg:h-6" />
+                </button>
+
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-2 lg:p-3 text-white hover:bg-[var(--lina-cyan)]/20 hover:border-[var(--lina-cyan)]/50"
+                  data-testid="carousel-next-button"
+                  aria-label="Próximo slide"
+                >
+                  <ChevronRight size={20} className="lg:w-6 lg:h-6" />
+                </button>
                 {/* Left Column - Content */}
                 <div className="text-center lg:text-left">
                   <AnimatePresence mode="wait" custom={currentSlide}>
@@ -225,9 +251,9 @@ export default function HeroSection() {
                     </motion.div>
                   </AnimatePresence>
 
-                  {/* Carousel Indicators */}
+                  {/* Carousel Indicators - Circular Dots */}
                   <motion.div 
-                    className="flex justify-center lg:justify-start items-center gap-3 mt-12"
+                    className="flex justify-center lg:justify-start items-center gap-4 mt-12"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.8, duration: 0.4 }}
@@ -236,10 +262,10 @@ export default function HeroSection() {
                       <button
                         key={index}
                         onClick={() => goToSlide(index)}
-                        className={`h-2 rounded-full transition-all duration-500 ${
+                        className={`rounded-full transition-all duration-300 hover:scale-110 ${
                           index === currentSlide 
-                            ? 'w-12 bg-[var(--lina-cyan)]' 
-                            : 'w-2 bg-muted-foreground/30 hover:bg-[var(--lina-cyan)]/50'
+                            ? 'w-4 h-4 bg-[var(--lina-cyan)] shadow-lg shadow-[var(--lina-cyan)]/30' 
+                            : 'w-3 h-3 bg-muted-foreground/40 hover:bg-[var(--lina-cyan)]/60 hover:shadow-md hover:shadow-[var(--lina-cyan)]/20'
                         }`}
                         data-testid={`carousel-indicator-${index}`}
                         aria-label={`Ir para slide ${index + 1}`}
