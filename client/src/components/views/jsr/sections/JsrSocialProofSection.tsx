@@ -82,31 +82,31 @@ export default function JsrSocialProofSection() {
               >
                 <div className="flex -space-x-3">
                   {/* Avatar 1 */}
-                  <div className="w-12 h-12 rounded-full border-2 border-white shadow-lg overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
-                      alt="Profile 1"
-                      className="w-full h-full object-cover"
-                      data-testid="img-avatar-1"
-                    />
+                  <div className="w-12 h-12 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                    <span 
+                      className="text-white font-bold text-sm"
+                      style={{ fontFamily: 'Lexend, sans-serif' }}
+                    >
+                      JD
+                    </span>
                   </div>
                   {/* Avatar 2 */}
-                  <div className="w-12 h-12 rounded-full border-2 border-white shadow-lg overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
-                      alt="Profile 2"
-                      className="w-full h-full object-cover"
-                      data-testid="img-avatar-2"
-                    />
+                  <div className="w-12 h-12 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                    <span 
+                      className="text-white font-bold text-sm"
+                      style={{ fontFamily: 'Lexend, sans-serif' }}
+                    >
+                      AS
+                    </span>
                   </div>
                   {/* Avatar 3 */}
-                  <div className="w-12 h-12 rounded-full border-2 border-white shadow-lg overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1494790108755-2616b612b647?w=100&h=100&fit=crop&crop=face"
-                      alt="Profile 3"
-                      className="w-full h-full object-cover"
-                      data-testid="img-avatar-3"
-                    />
+                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-[var(--lina-cyan)] rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                    <span 
+                      className="text-white font-bold text-sm"
+                      style={{ fontFamily: 'Lexend, sans-serif' }}
+                    >
+                      LR
+                    </span>
                   </div>
                 </div>
                 <p 
@@ -169,13 +169,13 @@ export default function JsrSocialProofSection() {
                     {/* Author Information */}
                     <div className="flex items-center space-x-4 pt-4">
                       {/* Author Avatar */}
-                      <div className="w-14 h-14 rounded-full border-2 border-[var(--lina-cyan)] shadow-lg overflow-hidden">
-                        <img
-                          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
-                          alt="Marcelo Bueno"
-                          className="w-full h-full object-cover"
-                          data-testid="img-author-avatar"
-                        />
+                      <div className="w-14 h-14 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-full flex items-center justify-center border-2 border-[var(--lina-cyan)] shadow-lg">
+                        <span 
+                          className="text-[var(--lina-dark)] font-bold text-lg"
+                          style={{ fontFamily: 'Lexend, sans-serif' }}
+                        >
+                          MB
+                        </span>
                       </div>
                       
                       <div className="text-left">
