@@ -31,37 +31,33 @@ export function InfiniteSlider({
   const [key, setKey] = useState(0)
 
   useEffect(() => {
-    let controls
-    const size = direction === 'horizontal' ? width : height
-    const contentSize = size + gap
-    const from = reverse ? -contentSize / 2 : 0
-    const to = reverse ? 0 : -contentSize / 2
+    if (width === 0 || height === 0) return
 
-    if (isTransitioning) {
-      controls = animate(translation, [translation.get(), to], {
-        ease: 'linear',
-        duration:
-          currentDuration * Math.abs((translation.get() - to) / contentSize),
-        onComplete: () => {
-          setIsTransitioning(false)
-          setKey((prevKey) => prevKey + 1)
-        },
-      })
-    } else {
-      // Create truly infinite loop without jumping back
-      controls = animate(translation, -contentSize, {
-        ease: 'linear',
-        duration: currentDuration,
-        repeat: Infinity,
-        repeatType: 'loop',
-        repeatDelay: 0,
-        onRepeat: () => {
-          translation.set(0)
-        },
-      })
+    let animationId: number
+    let startTime: number | null = null
+    
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp
+      
+      const elapsed = timestamp - startTime
+      const progress = (elapsed / (currentDuration * 1000)) % 1
+      
+      const size = direction === 'horizontal' ? width : height
+      const moveDistance = -size / 3 // Move by one third (one set of children)
+      
+      const currentPosition = progress * moveDistance
+      translation.set(currentPosition)
+      
+      animationId = requestAnimationFrame(animate)
     }
-
-    return controls?.stop
+    
+    animationId = requestAnimationFrame(animate)
+    
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId)
+      }
+    }
   }, [
     key,
     currentDuration,
