@@ -2,6 +2,7 @@ import React from "react";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import DataLinkHeroSection from "@/components/data-link/hero-section";
+import ValuePropositionSection from "@/components/data-link/value-proposition-section";
 import SocialProofSection from "@/components/data-link/social-proof-section";
 
 export default function DataLink(): JSX.Element {
@@ -15,6 +16,7 @@ export default function DataLink(): JSX.Element {
         <Header />
         <main>
           <DataLinkHeroSection />
+          <ValuePropositionSection />
           <SocialProofSection />
           {/* Other sections can be added here later */}
         </main>
