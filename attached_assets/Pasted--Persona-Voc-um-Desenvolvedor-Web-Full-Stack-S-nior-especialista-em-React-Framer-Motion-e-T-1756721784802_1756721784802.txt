@@ -1,0 +1,40 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, Framer Motion e Tailwind CSS. Sua tarefa é refinar um componente interativo existente, adicionando uma camada de elementos visuais decorativos para aumentar a profundidade e o apelo estético sem comprometer a usabilidade.
+
+**Missão:** Modificar o componente `SegmentsCloudSection.tsx` para adicionar uma camada de "palavras-chave de contexto" não interativas no fundo, aumentando a densidade visual da seção.
+
+**Porquê Estratégico:** O objetivo é enriquecer visualmente a seção, criando uma sensação de profundidade e reforçando os conceitos tecnológicos associados à Lina, sem comprometer a clareza ou a funcionalidade das tags interativas principais.
+
+**Requisitos e Diretrizes:**
+
+1.  **Arquivo a ser Modificado:** `src/components/views/lina-pay/sections/SegmentsCloudSection.tsx`.
+
+2.  **Manter Funcionalidade Existente:** As 6 tags de segmentos interativas e coloridas, bem como o painel de conteúdo dinâmico à direita, devem permanecer com seu comportamento e estilo inalterados.
+
+3.  **Adicionar Camada de Fundo (Background Layer):**
+    * No container da coluna da esquerda (a nuvem de tags), adicione uma nova camada de elementos de texto posicionada *atrás* das tags interativas (utilizando `z-index`).
+    * Popule esta camada com a seguinte lista de palavras-chave:
+        * Checkout sem Fricção
+        * PIX por Biometria
+        * Pagamento por Aproximação
+        * Redução de Custos
+        * Aumento de Conversão
+        * Segurança Bancária
+        * Compliance
+        * JSR
+        * API de Pagamentos
+        * NFC
+        * Recorrência
+        * White Label
+        * Integração Rápida
+        * Experiência do Usuário
+        * Automação
+
+4.  **Estilo das Palavras-chave de Fundo:**
+    * **Não Interativas:** Devem ser visualmente distintas e claramente não clicáveis. Aplique a classe `pointer-events-none`.
+    * **Visual Sutil:** Utilize um estilo que as faça recuar para o fundo. Sugestão: `font-size` pequeno (`text-xs`), cor neutra e com baixa opacidade (ex: `text-white/20`).
+    * **Layout:** Distribua estas palavras de forma orgânica ao redor das tags interativas principais para preencher o espaço e criar a sensação de uma "nuvem" densa.
+
+5.  **Animação (Opcional, mas recomendado):**
+    * Aplique uma animação de "fade-in" muito sutil e lenta para estes termos de fundo, garantindo que não distraiam o usuário.
+
+**Entregável:** O código-fonte modificado do componente `SegmentsCloudSection.tsx`, com a nova camada de palavras-chave de fundo implementada conforme as diretrizes de estilo, posicionamento e funcionalidade.

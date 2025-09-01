@@ -118,6 +118,160 @@ export default function SegmentsCloudSection() {
 
             {/* Interactive Tags Cloud with Floating Animation */}
             <div className="relative h-96">
+              {/* Background Keywords Layer */}
+              <div className="absolute inset-0 pointer-events-none z-0">
+                {/* Background keywords positioned organically */}
+                <motion.span
+                  className="absolute top-8 left-4 text-xs text-white/20 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.2 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 1 }}
+                >
+                  Checkout sem Fricção
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-20 right-16 text-xs text-white/15 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.15 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 1.2 }}
+                >
+                  PIX por Biometria
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-36 left-0 text-xs text-white/25 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.25 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 1.4 }}
+                >
+                  Segurança Bancária
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-56 right-8 text-xs text-white/20 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.2 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 1.6 }}
+                >
+                  API de Pagamentos
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-72 left-12 text-xs text-white/18 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.18 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 1.8 }}
+                >
+                  Compliance
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-88 right-20 text-xs text-white/22 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.22 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 2 }}
+                >
+                  Integração Rápida
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-4 right-32 text-xs text-white/17 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.17 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 2.2 }}
+                >
+                  NFC
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-28 left-32 text-xs text-white/19 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.19 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 2.4 }}
+                >
+                  Redução de Custos
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-52 left-24 text-xs text-white/21 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.21 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 2.6 }}
+                >
+                  White Label
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-76 right-4 text-xs text-white/16 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.16 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 2.8 }}
+                >
+                  JSR
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-12 left-48 text-xs text-white/23 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.23 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 3 }}
+                >
+                  Pagamento por Aproximação
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-44 right-28 text-xs text-white/18 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.18 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 3.2 }}
+                >
+                  Aumento de Conversão
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-68 left-36 text-xs text-white/20 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.2 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 3.4 }}
+                >
+                  Recorrência
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-84 right-12 text-xs text-white/24 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.24 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 3.6 }}
+                >
+                  Experiência do Usuário
+                </motion.span>
+                
+                <motion.span
+                  className="absolute top-16 left-56 text-xs text-white/19 font-light"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  initial={{ opacity: 0 }}
+                  animate={cloudVisible ? { opacity: 0.19 } : { opacity: 0 }}
+                  transition={{ duration: 2, delay: 3.8 }}
+                >
+                  Automação
+                </motion.span>
+              </div>
+
               {segments.map((segment, index) => {
                 const isActive = activeSegment === segment.id;
                 
@@ -224,8 +378,8 @@ export default function SegmentsCloudSection() {
                   delay: 2
                 }}
               />
+              })}
             </div>
-          </motion.div>
 
           {/* Right Column - Dynamic Content Panel */}
           <motion.div
