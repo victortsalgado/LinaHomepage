@@ -2,18 +2,27 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useBlogSearch } from "@/contexts/BlogSearchContext";
+import SearchDropdown from "@/components/ui/SearchDropdown";
 
 export default function BlogHeroSection() {
   const { ref, isVisible } = useScrollReveal();
-  const { searchTerm, setSearchTerm } = useBlogSearch();
+  const { searchTerm, setSearchTerm, setSelectedPostId } = useBlogSearch();
   const [typewriterText, setTypewriterText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
   
   const fullText = "Universo Open";
+
+  const handlePostSelect = (postId: number) => {
+    setSelectedPostId(postId);
+    // For now, we'll just scroll to the post in the grid
+    // In a real app, this would navigate to a detailed post page
+    const element = document.querySelector(`[data-post-id="${postId}"]`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
 
   // Typewriter effect
   useEffect(() => {
@@ -147,18 +156,11 @@ export default function BlogHeroSection() {
                 animate="visible"
                 className="max-w-2xl mx-auto"
               >
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input
-                    type="text"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Pesquisar artigos, insights e recursos..."
-                    className="pl-12 pr-6 py-4 text-lg bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)] rounded-full"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                    data-testid="input-search-blog"
-                  />
-                </div>
+                <SearchDropdown
+                  searchTerm={searchTerm}
+                  onSearchChange={setSearchTerm}
+                  onPostSelect={handlePostSelect}
+                />
               </motion.div>
             )}
           </AnimatePresence>

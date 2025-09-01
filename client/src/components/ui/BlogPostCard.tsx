@@ -1,14 +1,6 @@
 "use client";
 
-interface BlogPost {
-  id: number;
-  category: string;
-  title: string;
-  description: string;
-  date: string;
-  image: string;
-  alt: string;
-}
+import { BlogPost } from "@/contexts/BlogSearchContext";
 
 interface BlogPostCardProps {
   post: BlogPost;
@@ -22,6 +14,7 @@ export default function BlogPostCard({ post, index, className = "" }: BlogPostCa
       href="#"
       className={`group bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden block ${className}`}
       data-testid={`link-blog-post-${index}`}
+      data-post-id={post.id}
     >
       {/* Image with Category Tag */}
       <div className="relative overflow-hidden">

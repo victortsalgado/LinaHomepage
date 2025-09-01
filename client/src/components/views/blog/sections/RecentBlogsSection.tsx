@@ -7,85 +7,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState, useMemo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useBlogSearch } from "@/contexts/BlogSearchContext";
+import { allBlogPosts } from "@/data/blogPosts";
 
-// Recent blog posts data (5 most recent)
-const recentPosts = [
-  {
-    id: 1,
-    category: "LinaPay",
-    title: "Pix Automático: como funciona e por que adotar na sua empresa",
-    description: "Descubra como o PIX Automático está revolucionando pagamentos recorrentes e trazendo benefícios para empresas e consumidores. Uma análise completa sobre implementação, vantagens e casos de uso práticos.",
-    date: "15 Jan 2025",
-    readTime: "8 min",
-    image: "/api/placeholder/600/400?text=PIX+Automatico",
-    alt: "PIX Automático visualization",
-    author: {
-      name: "Carolina Ribeiro",
-      avatar: "/api/placeholder/40/40?text=CR",
-      role: "Product Manager"
-    }
-  },
-  {
-    id: 2,
-    category: "DataLink",
-    title: "O impacto do Open Finance na análise de crédito",
-    description: "Entenda como o compartilhamento de dados está revolucionando a forma como as instituições avaliam o risco de crédito. Explore casos reais e benefícios para consumidores e empresas.",
-    date: "12 Jan 2025",
-    readTime: "6 min",
-    image: "/api/placeholder/600/400?text=Open+Finance+Credit",
-    alt: "Open Finance credit analysis",
-    author: {
-      name: "Roberto Silva",
-      avatar: "/api/placeholder/40/40?text=RS",
-      role: "Tech Lead"
-    }
-  },
-  {
-    id: 3,
-    category: "JSR",
-    title: "Por que a JSR é a evolução dos pagamentos digitais?",
-    description: "Explore como a JavaScript Registry está transformando a infraestrutura de pagamentos no Brasil e preparando o futuro. Uma visão técnica e estratégica sobre a nova era dos pagamentos.",
-    date: "10 Jan 2025",
-    readTime: "10 min",
-    image: "/api/placeholder/600/400?text=JSR+Evolution",
-    alt: "JSR payment evolution",
-    author: {
-      name: "Marina Costa",
-      avatar: "/api/placeholder/40/40?text=MC",
-      role: "CTO"
-    }
-  },
-  {
-    id: 4,
-    category: "Institucional",
-    title: "Lina anuncia parceria estratégica com Mastercard",
-    description: "Nova parceria acelera a adoção de pagamentos sem fricção através da tecnologia JSR, marcando um novo capítulo na história da empresa.",
-    date: "08 Jan 2025",
-    readTime: "5 min",
-    image: "/api/placeholder/600/400?text=Lina+Mastercard",
-    alt: "Lina Mastercard partnership",
-    author: {
-      name: "André Martins",
-      avatar: "/api/placeholder/40/40?text=AM",
-      role: "CEO"
-    }
-  },
-  {
-    id: 5,
-    category: "DataLink",
-    title: "Como o Open Finance está democratizando o acesso ao crédito",
-    description: "Análise profunda sobre como a tecnologia está quebrando barreiras e criando novas oportunidades de inclusão financeira no Brasil.",
-    date: "05 Jan 2025",
-    readTime: "7 min",
-    image: "/api/placeholder/600/400?text=Credit+Democratization",
-    alt: "Credit democratization through Open Finance",
-    author: {
-      name: "Juliana Santos",
-      avatar: "/api/placeholder/40/40?text=JS",
-      role: "Data Scientist"
-    }
-  }
-];
+// Get the 5 most recent posts
+const recentPosts = allBlogPosts.slice(0, 5);
 
 export default function RecentBlogsSection() {
   const { ref, isVisible } = useScrollReveal();
@@ -322,28 +247,34 @@ export default function RecentBlogsSection() {
                   </p>
 
                   {/* Author Info */}
-                  <div className="flex items-center space-x-4">
-                    <img 
-                      src={currentPost.author.avatar}
-                      alt={currentPost.author.name}
-                      className="w-12 h-12 rounded-full"
-                      data-testid="img-carousel-author"
-                    />
-                    <div>
-                      <p 
-                        className="font-semibold text-gray-900"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid="text-carousel-author-name"
-                      >
-                        {currentPost.author.name}
-                      </p>
-                      <div className="flex items-center space-x-2 text-sm text-gray-500">
-                        <span data-testid="text-carousel-read-time">{currentPost.readTime} de leitura</span>
-                        <span>•</span>
-                        <span data-testid="text-carousel-date">{currentPost.date}</span>
+                  {currentPost.author && (
+                    <div className="flex items-center space-x-4">
+                      <img 
+                        src={currentPost.author.avatar}
+                        alt={currentPost.author.name}
+                        className="w-12 h-12 rounded-full"
+                        data-testid="img-carousel-author"
+                      />
+                      <div>
+                        <p 
+                          className="font-semibold text-gray-900"
+                          style={{ fontFamily: 'Inter, sans-serif' }}
+                          data-testid="text-carousel-author-name"
+                        >
+                          {currentPost.author.name}
+                        </p>
+                        <div className="flex items-center space-x-2 text-sm text-gray-500">
+                          {currentPost.readTime && (
+                            <>
+                              <span data-testid="text-carousel-read-time">{currentPost.readTime} de leitura</span>
+                              <span>•</span>
+                            </>
+                          )}
+                          <span data-testid="text-carousel-date">{currentPost.date}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
