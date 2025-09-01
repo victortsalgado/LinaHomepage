@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import pixBlogImage from "@assets/generated_images/PIX_2.0_blog_thumbnail_3b7ec595.png";
 import openFinanceBlogImage from "@assets/generated_images/Open_Finance_blog_thumbnail_48730c91.png";
 import openInsuranceBlogImage from "@assets/generated_images/Open_Insurance_blog_thumbnail_11c02fc5.png";
@@ -106,10 +107,11 @@ export default function BlogSection() {
         {/* CTA Button */}
         <div className="text-center">
           <Button 
-            className="bg-lina-cyan hover:bg-lina-cyan/90 text-white px-8 py-3 rounded-full font-semibold"
+            className="bg-[#2ec9bc] border border-[#2ec9bc] text-white hover:bg-transparent hover:text-[#2ec9bc] px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2"
             data-testid="button-view-all-articles"
           >
-            Ver todos os artigos
+            <span>Ver todos os artigos</span>
+            <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
       </div>
