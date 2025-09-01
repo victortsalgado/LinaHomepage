@@ -116,7 +116,7 @@ export default function SegmentsCloudSection() {
               </div>
             </div>
 
-            {/* Interactive Tags Cloud */}
+            {/* Interactive Tags Cloud with Floating Animation */}
             <div className="relative h-96">
               {segments.map((segment, index) => {
                 const isActive = activeSegment === segment.id;
@@ -126,28 +126,104 @@ export default function SegmentsCloudSection() {
                     key={segment.id}
                     onClick={() => setActiveSegment(segment.id)}
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={cloudVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                    animate={cloudVisible ? { 
+                      opacity: 1, 
+                      scale: 1,
+                      y: [0, -8, 0],
+                      x: [0, 4, 0],
+                      rotate: [0, 1, -1, 0]
+                    } : { opacity: 0, scale: 0.8 }}
                     transition={{ 
-                      duration: 0.6, 
-                      delay: 0.3 + (index * 0.1),
-                      ease: "easeOut" 
+                      opacity: { duration: 0.6, delay: 0.3 + (index * 0.1), ease: "easeOut" },
+                      scale: { duration: 0.6, delay: 0.3 + (index * 0.1), ease: "easeOut" },
+                      y: { 
+                        duration: 3 + (index * 0.5), 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: index * 0.8
+                      },
+                      x: { 
+                        duration: 4 + (index * 0.3), 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: index * 0.6
+                      },
+                      rotate: { 
+                        duration: 6 + (index * 0.4), 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: index * 0.4
+                      }
                     }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ 
+                      scale: 1.1,
+                      y: -4,
+                      transition: { duration: 0.2 }
+                    }}
                     whileTap={{ scale: 0.95 }}
                     className={`
-                      absolute ${segment.position} ${segment.tagSize} rounded-full font-medium transition-all duration-300 cursor-pointer
+                      absolute ${segment.position} ${segment.tagSize} rounded-full font-medium cursor-pointer backdrop-blur-sm
                       ${isActive 
-                        ? 'bg-[var(--lina-cyan)] text-[var(--lina-dark)] shadow-lg shadow-[var(--lina-cyan)]/40' 
-                        : 'border-2 border-[var(--lina-cyan)] text-[var(--lina-cyan)] bg-transparent hover:bg-[var(--lina-cyan)]/10'
+                        ? 'bg-[var(--lina-cyan)] text-[var(--lina-dark)] shadow-lg shadow-[var(--lina-cyan)]/40 border-2 border-[var(--lina-cyan)]' 
+                        : 'border-2 border-[var(--lina-cyan)]/60 text-[var(--lina-cyan)] bg-white/5 hover:bg-[var(--lina-cyan)]/10 hover:border-[var(--lina-cyan)] shadow-md'
                       }
+                      transition-colors duration-300
                     `}
-                    style={{ fontFamily: 'Lexend, sans-serif' }}
+                    style={{ 
+                      fontFamily: 'Lexend, sans-serif',
+                      willChange: 'transform'
+                    }}
                     data-testid={`tag-segment-${index + 1}`}
                   >
                     {segment.title}
                   </motion.button>
                 );
               })}
+              
+              {/* Floating particles for extra dynamism */}
+              <motion.div
+                className="absolute top-12 left-32 w-2 h-2 bg-[var(--lina-cyan)]/30 rounded-full"
+                animate={{
+                  y: [0, -20, 0],
+                  x: [0, 10, 0],
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.7, 0.3]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <motion.div
+                className="absolute top-64 right-24 w-3 h-3 bg-teal-400/40 rounded-full"
+                animate={{
+                  y: [0, 15, 0],
+                  x: [0, -8, 0],
+                  scale: [1, 0.8, 1],
+                  opacity: [0.4, 0.8, 0.4]
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              />
+              <motion.div
+                className="absolute top-40 right-8 w-1 h-1 bg-[var(--lina-cyan)]/50 rounded-full"
+                animate={{
+                  y: [0, -12, 0],
+                  x: [0, 6, 0],
+                  opacity: [0.5, 1, 0.5]
+                }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2
+                }}
+              />
             </div>
           </motion.div>
 
