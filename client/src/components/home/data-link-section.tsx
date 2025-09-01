@@ -82,21 +82,6 @@ export default function DataLinkSection() {
                     className="relative"
                     data-testid={`item-feature-${index}`}
                   >
-                    {/* Vertical connecting line appears after this bullet point */}
-                    {index < features.length - 1 && (
-                      <div 
-                        className={`absolute left-2 top-4 w-0.5 bg-gradient-to-b from-teal-500 to-cyan-400 opacity-0 ${
-                          contentVisible 
-                            ? `scroll-reveal-line-stagger-${index + 1}` 
-                            : ''
-                        }`}
-                        style={{
-                          transformOrigin: 'top',
-                          height: 'calc(100% + 1.5rem)',
-                          transform: 'scaleY(0)'
-                        }}
-                      ></div>
-                    )}
                     
                     {/* Icon */}
                     <div 
