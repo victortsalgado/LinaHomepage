@@ -214,7 +214,7 @@ export default function Header() {
                     <NavigationMenuItem>
                       <NavigationMenuLink 
                         href="#integracoes" 
-                        className="hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9 bg-transparent border-none shadow-none px-4 py-2"
+                        className="relative font-normal text-gray-600 text-[15px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0"
                         data-testid="link-integrations"
                       >
                         Integrações
@@ -224,7 +224,7 @@ export default function Header() {
                     <NavigationMenuItem>
                       <NavigationMenuLink 
                         href="#demo" 
-                        className="hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9 bg-transparent border-none shadow-none px-4 py-2"
+                        className="relative font-normal text-gray-600 text-[15px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0"
                         data-testid="link-demo"
                       >
                         Demo
@@ -234,7 +234,7 @@ export default function Header() {
                     <NavigationMenuItem>
                       <NavigationMenuLink 
                         href="#quem-somos" 
-                        className="hover:text-lina-cyan/80 font-normal transition-colors text-gray-600 text-[15px] h-9 bg-transparent border-none shadow-none px-4 py-2"
+                        className="relative font-normal text-gray-600 text-[15px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0"
                         data-testid="link-about"
                       >
                         Quem Somos
