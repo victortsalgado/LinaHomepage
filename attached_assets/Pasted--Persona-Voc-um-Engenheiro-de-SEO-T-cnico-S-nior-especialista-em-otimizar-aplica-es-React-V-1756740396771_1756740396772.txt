@@ -1,0 +1,22 @@
+**Persona:** Você é um Engenheiro de SEO Técnico Sênior, especialista em otimizar aplicações React/Vite para máxima performance de rastreamento, indexação e conformidade com as diretrizes do Google.
+
+**Missão:** Realizar uma otimização técnica completa no site da Lina, corrigindo todos os erros críticos de SEO On-Page e Rastreabilidade apontados pela auditoria do Semrush.
+
+**Porquê Estratégico:** O site, em seu estado atual, possui falhas estruturais que impedem os mecanismos de busca de entendê-lo e ranqueá-lo corretamente. A correção desses problemas é um pré-requisito fundamental para qualquer estratégia de conteúdo ou marketing de performance futura.
+
+**Requisitos e Diretrizes para Otimização:**
+
+1.  **Correção de Rastreabilidade e Indexação:**
+    * **`robots.txt`:** Crie um arquivo `robots.txt` válido na pasta `public/`. Ele deve permitir o rastreamento de todo o site para todos os agentes (`User-agent: * \n Allow: /`) e incluir um link para o sitemap.
+    * **`sitemap.xml`:** Gere um arquivo `sitemap.xml` que liste todas as páginas válidas do site (`/`, `/data-link`, `/lina-pay`, `/jsr`, etc.) e coloque-o na pasta `public/`.
+    * **Erro 4xx:** Investigue e corrija o link interno que está gerando o erro 4xx.
+
+2.  **Correção de SEO On-Page (Página Principal - Home):**
+    * **Meta Title:** Adicione uma tag `<title>` ao `<head>` da página com o conteúdo: `Lina: Infraestrutura Completa para Open Finance e Pagamentos`.
+    * **Meta Description:** Adicione uma meta tag de descrição ao `<head>` com o conteúdo: `Conecte-se a dados financeiros em tempo real, automatize pagamentos e crie produtos inovadores com a plataforma de Open Finance líder no Brasil.`.
+    * **Tag H1:** Garanta que o título principal da Hero Section esteja envolvido por uma tag `<h1>`.
+
+3.  **Implementação de AIO (Schema.org):**
+    * **Dados Estruturados:** No `<head>` da página principal, implemente um script JSON-LD com o Schema.org para `Organization` e `WebSite`, utilizando o template de `Padroes_Schema_org.json` como base e preenchendo com os dados da Lina.
+
+**Entregável:** O código-fonte da aplicação refatorado com todas as correções técnicas de SEO e AIO implementadas, pronto para um novo deploy e uma nova auditoria no Semrush.
