@@ -16,7 +16,7 @@ export default function LinaPaySection() {
       <div className="container mx-auto px-6 lg:px-8">
         {/* Lina Pay Block */}
         <div 
-          className="bg-gradient-to-br from-emerald-900 via-teal-800 to-emerald-800 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px]"
+          className="gradient-dark rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px]"
         >
           <div 
             ref={blockRef}
@@ -43,16 +43,16 @@ export default function LinaPaySection() {
             {/* Title and Description */}
             <div className="mb-12">
               <h2 
-                className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight"
+                className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight font-lexend"
                 data-testid="heading-lina-pay-title"
               >
                 Transforme o PIX em motor de vendas, lucratividade e fidelização.
               </h2>
               <p 
-                className="text-white/80 text-lg leading-relaxed"
+                className="text-white/80 text-lg leading-relaxed font-sans"
                 data-testid="text-lina-pay-description"
               >
-                Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, <span className="font-semibold">trazendo benefícios diretos para empresas e consumidores.</span>
+                Conheça a nova funcionalidade que automatiza pagamentos recorrentes, incluindo valores variáveis, <span className="font-semibold">trazendo benefícios diretos para empresas e consumidores.</span>
               </p>
             </div>
             
@@ -64,15 +64,15 @@ export default function LinaPaySection() {
                 data-testid="card-pix-automatico"
               >
                 <div className="mb-4">
-                  <span className="inline-block bg-emerald-600/50 text-white px-3 py-1 rounded-lg text-sm font-medium">
+                  <h3 className="text-white font-lexend font-semibold text-lg mb-2">
                     Pix Automático
-                  </span>
+                  </h3>
                 </div>
                 <p 
-                  className="text-white/90 text-sm leading-relaxed"
+                  className="text-white/90 text-sm leading-relaxed font-sans"
                   data-testid="text-pix-automatico-description"
                 >
-                  Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade
+                  Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade.
                 </p>
                 <div className="mt-4 flex items-center text-cyan-300 text-sm">
                   <ArrowRight size={16} className="mr-2" />
@@ -85,15 +85,15 @@ export default function LinaPaySection() {
                 data-testid="card-pix-biometria"
               >
                 <div className="mb-4">
-                  <span className="inline-block bg-emerald-600/50 text-white px-3 py-1 rounded-lg text-sm font-medium">
+                  <h3 className="text-white font-lexend font-semibold text-lg mb-2">
                     Pix Biometria
-                  </span>
+                  </h3>
                 </div>
                 <p 
-                  className="text-white/90 text-sm leading-relaxed"
+                  className="text-white/90 text-sm leading-relaxed font-sans"
                   data-testid="text-pix-biometria-description"
                 >
-                  Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebra de jornada.
+                  Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebras na jornada.
                 </p>
                 <div className="mt-4 flex items-center text-cyan-300 text-sm">
                   <ArrowRight size={16} className="mr-2" />
@@ -104,11 +104,11 @@ export default function LinaPaySection() {
             {/* Button */}
             <div className="flex justify-center">
               <Button 
-                className="bg-transparent border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-emerald-900 px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2"
+                className="btn-lina-light"
                 data-testid="button-learn-lina-pay"
               >
-                <ArrowRight size={16} />
                 <span>Conheça o Lina Pay</span>
+                <ArrowRight size={16} />
               </Button>
             </div>
           </div>
