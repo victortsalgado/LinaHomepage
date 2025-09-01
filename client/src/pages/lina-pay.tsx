@@ -8,47 +8,10 @@ import SocialProofSection from "@/components/views/lina-pay/sections/SocialProof
 import DifferentiatorsSection from "@/components/views/lina-pay/sections/DifferentiatorsSection";
 import FeaturesSection from "@/components/views/lina-pay/sections/FeaturesSection";
 import IntegrationSection from "@/components/views/lina-pay/sections/IntegrationSection";
+import SegmentsSection from "@/components/views/lina-pay/sections/SegmentsSection";
 
 
 
-const businessTypes = [
-  {
-    icon: "/figmaAssets/union-4.svg",
-    title: "E-commerces e marketplaces",
-    description:
-      "Melhore o check-out e reduza o abandono com Pix por Biometria.",
-  },
-  {
-    icon: "/figmaAssets/union-1.svg",
-    title: "Fintechs reguladas",
-    description:
-      "Acesse o Open Finance sem lidar com homologações regulatórias.",
-  },
-  {
-    icon: "/figmaAssets/union-3.svg",
-    title: "Carteiras digitais",
-    description:
-      "Ofereça Pix por aproximação e uma jornada sem etapas manuais.",
-  },
-  {
-    icon: "/figmaAssets/union-2.svg",
-    title: "Plataformas de pagamento",
-    description:
-      "Adicione funcionalidades que reduzem custos e aumentam o atendimento às necessidades dos clientes.",
-  },
-  {
-    icon: "/figmaAssets/union-5.svg",
-    title: "Cooperativas de crédito",
-    description:
-      "Adicione funcionalidades que reduzem custos e aumentam a satisfação.",
-  },
-  {
-    icon: "/figmaAssets/union.svg",
-    title: "Plataformas BaaS",
-    description:
-      "Ofereça novos serviços com agilidade e integração ao Open Finance.",
-  },
-];
 
 
 export default function LinaPay(): JSX.Element {
@@ -75,56 +38,8 @@ export default function LinaPay(): JSX.Element {
             {/* Integration Section */}
             <IntegrationSection />
 
-            {/* Business Types Section */}
-            <section className="w-full h-[961px] bg-[#003a38] rounded-[0px_0px_40px_40px] border border-solid border-black relative">
-              <div className="px-[252px] pt-[198px]">
-                <div className="mb-16">
-                  <h2 className="[font-family:'Lexend',Helvetica] font-medium text-5xl leading-[56px] mb-8">
-                    <span className="text-white">Pensado para diferentes </span>
-                    <span className="text-[#07f4e2]">tipos de negócio</span>
-                  </h2>
-
-                  <div className="flex items-center gap-4 mb-12">
-                    <p className="[font-family:'Inter',Helvetica] font-bold text-white text-base">
-                      Veja como aplicamos no seu setor
-                    </p>
-                    <img
-                      className="w-[34px] h-[34px]"
-                      alt="Component"
-                      src="/figmaAssets/component-5.svg"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-x-[427px] gap-y-8">
-                  {businessTypes.map((business, index) => (
-                    <div key={index} className="flex items-start gap-6">
-                      <div className="w-14 h-14 bg-[#07f4e2] rounded-xl flex items-center justify-center flex-shrink-0">
-                        <img
-                          className="w-[27px] h-auto"
-                          alt="Union"
-                          src={business.icon}
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="[font-family:'Lexend',Helvetica] font-bold text-white text-base mb-2">
-                          {business.title}
-                        </h3>
-                        <p className="[font-family:'Lexend',Helvetica] font-light text-white text-base leading-6">
-                          {business.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <img
-                className="absolute w-[360px] h-[328px] bottom-0 right-[252px] object-cover"
-                alt="Man"
-                src="/figmaAssets/man-3.png"
-              />
-            </section>
+            {/* Segments Section */}
+            <SegmentsSection />
 
             {/* Final CTA Section */}
             <section

@@ -1,0 +1,50 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é construir um componente de grade de features, replicando com precisão os padrões de estilo e animação de um componente de referência.
+
+**Missão:** Construir o componente para a seção **"Pensado para diferentes tipos de negócio"** da página de produto LinaPay.
+
+**Porquê Estratégico:** Esta seção finaliza a apresentação de valor do LinaPay, mostrando sua aplicabilidade em diversos mercados. É crucial para que diferentes tipos de decisores se identifiquem com a solução, visualizando o produto em seu próprio contexto de negócio, o que amplia o potencial de conversão.
+
+**Requisitos e Diretrizes:**
+
+1.  **Ponto de Partida e Referência:**
+    * Utilize o componente `DifferentiatorsSection.tsx` como a **principal referência de estilo, layout e animação** para os cards.
+    * O conteúdo (títulos e descrições dos cards) deve ser extraído da seção correspondente no arquivo `LP_LinaPay.pdf`.
+
+2.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/lina-pay/sections/SegmentsSection.tsx`.
+    * A seção deve ter um fundo claro (ex: `bg-white`).
+
+3.  **Layout e Conteúdo Explícito:**
+    * **Título da Seção:** "Pensado para diferentes tipos de negócio".
+    * **Layout da Grade:** Implemente uma grade responsiva que exiba 6 cards (3 colunas em desktop: `lg:grid-cols-3`).
+    * **Conteúdo dos Cards (6 cards no total):**
+        * **Card 1:**
+            * **Ícone:** `ShoppingCart`
+            * **Título:** "E-commerces e marketplaces"
+            * **Descrição:** "Melhore o checkout e reduza o abandono de carrinho com Pix por Biometria."
+        * **Card 2:**
+            * **Ícone:** `Wallet`
+            * **Título:** "Carteiras digitais"
+            * **Descrição:** "Ofereça Pix por aproximação e uma experiência de pagamento superior."
+        * **Card 3:**
+            * **Ícone:** `ShieldCheck`
+            * **Título:** "Fintechs reguladas"
+            * **Descrição:** "Acesse o Open Finance sem lidar com as complexidades de homologações regulatórias."
+        * **Card 4:**
+            * **Ícone:** `Users`
+            * **Título:** "Cooperativas de crédito"
+            * **Descrição:** "Adicione funcionalidades que reduzem custos e aumentam a satisfação dos cooperados."
+        * **Card 5:**
+            * **Ícone:** `CreditCard`
+            * **Título:** "Plataformas de pagamento e BaaS"
+            * **Descrição:** "Adicione funcionalidades que reduzem custos e aumentam o atendimento às necessidades dos clientes."
+        * **Card 6:**
+            * **Ícone:** `Server`
+            * **Título:** "Plataformas SaaS"
+            * **Descrição:** "Ofereça aos seus clientes uma nova forma de pagamento com a agilidade e integração do Open Finance."
+
+4.  **Estilo e Animação:**
+    * O estilo dos cards (fundo, bordas, sombras, efeito de hover, etc.) e do container de ícone deve ser **idêntico** ao do componente `DifferentiatorsSection.tsx`.
+    * **Obrigatório:** Implemente a **mesma** animação de entrada em cascata (staggered) para os cards, utilizando `framer-motion` e o hook `useScrollReveal`, replicando o comportamento já estabelecido.
+
+**Entregável:** O código-fonte completo para o novo componente `SegmentsSection.tsx`, totalmente responsivo, animado e funcional.
