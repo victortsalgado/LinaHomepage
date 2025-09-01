@@ -18,8 +18,9 @@ export default function LinaPaySection() {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.5,
-        staggerChildren: 0.1
+        duration: 2.0,
+        staggerChildren: 0.1,
+        ease: [0.4, 0, 0.2, 1]
       }
     }
   };
@@ -185,7 +186,7 @@ export default function LinaPaySection() {
                         {/* Smartphone Frame */}
                         <div className="w-48 h-96 lg:w-56 lg:h-[28rem] bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-[2.5rem] shadow-2xl border-4 border-gray-700 relative overflow-hidden">
                           {/* Dynamic Screen with Color Transition */}
-                          <div className={`absolute inset-3 rounded-[2rem] border border-gray-600 transition-all duration-[1500ms] ease-[cubic-bezier(0.23,1,0.32,1)] ${
+                          <div className={`absolute inset-3 rounded-[2rem] border border-gray-600 transition-all duration-[2000ms] ease-out ${
                             selection === 'automatico' ? 'bg-white' : 'bg-gray-900'
                           }`}>
                             {/* Notch */}
@@ -198,7 +199,7 @@ export default function LinaPaySection() {
                                   initial={{ opacity: 0 }}
                                   animate={{ opacity: 1 }}
                                   exit={{ opacity: 0 }}
-                                  transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+                                  transition={{ duration: 1.5, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
                                   className="text-center"
                                 >
                                   {selection === 'automatico' ? (
@@ -245,15 +246,12 @@ export default function LinaPaySection() {
                             >
                               {activeContent.subtitle}
                             </motion.p>
-                            <motion.ul 
-                              variants={itemVariants}
-                              className="space-y-4"
-                            >
+                            <div>
                               {activeContent.benefits.map((benefit, index) => (
                                 <motion.li 
                                   key={index} 
                                   variants={itemVariants}
-                                  className="flex items-start gap-3"
+                                  className="flex items-start gap-3 mb-4"
                                 >
                                   <CheckCircle2 size={20} className="text-cyan-400 mt-0.5 flex-shrink-0" />
                                   <span className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
@@ -261,7 +259,7 @@ export default function LinaPaySection() {
                                   </span>
                                 </motion.li>
                               ))}
-                            </motion.ul>
+                            </div>
                           </div>
                         </motion.div>
                       </AnimatePresence>
