@@ -1,7 +1,7 @@
 import { Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
 import logoPath from "@assets/Nova_logo_lina_1756708154690.png";
 
-export default function Footer() {
+export function Footer() {
   const regulatoryLinks = [
     "Gestão de Consentimentos",
     "Identidade e Acesso (IAM)",
@@ -167,3 +167,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

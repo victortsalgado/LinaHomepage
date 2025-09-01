@@ -6,7 +6,7 @@ interface PostBodyProps {
   post: BlogPost;
 }
 
-export default function PostBody({ post }: PostBodyProps) {
+export function PostBody({ post }: PostBodyProps) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -96,3 +96,5 @@ export default function PostBody({ post }: PostBodyProps) {
     </motion.section>
   );
 }
+
+export default PostBody;

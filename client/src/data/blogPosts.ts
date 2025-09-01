@@ -1,7 +1,7 @@
 import { BlogPost } from "@/contexts/BlogSearchContext";
 
 // Complete blog posts database for search functionality
-export const allBlogPosts: BlogPost[] = [
+export const mockPosts: BlogPost[] = [
   {
     id: 0,
     category: "Institucional",
@@ -223,3 +223,5 @@ export const allBlogPosts: BlogPost[] = [
     alt: "Lina building bridges in Open Finance"
   }
 ];
+
+export const allBlogPosts = mockPosts;

@@ -6,7 +6,7 @@ interface PostHeaderProps {
   post: BlogPost;
 }
 
-export default function PostHeader({ post }: PostHeaderProps) {
+export function PostHeader({ post }: PostHeaderProps) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 30 }}
@@ -104,3 +104,5 @@ export default function PostHeader({ post }: PostHeaderProps) {
     </motion.section>
   );
 }
+
+export default PostHeader;

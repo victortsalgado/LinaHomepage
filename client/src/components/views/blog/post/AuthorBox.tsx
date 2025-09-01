@@ -11,7 +11,7 @@ interface AuthorBoxProps {
   author?: Author;
 }
 
-export default function AuthorBox({ author }: AuthorBoxProps) {
+export function AuthorBox({ author }: AuthorBoxProps) {
   if (!author) return null;
 
   return (
@@ -110,3 +110,5 @@ export default function AuthorBox({ author }: AuthorBoxProps) {
     </motion.section>
   );
 }
+
+export default AuthorBox;
