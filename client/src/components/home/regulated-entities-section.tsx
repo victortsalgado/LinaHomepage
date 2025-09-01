@@ -111,8 +111,7 @@ export default function RegulatedEntitiesSection() {
                   data-testid={`card-regulated-feature-${index}`}
                 >
                   <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'var(--lina-cyan)' }}
+                    className="w-10 h-10 bg-[#2ec9bc] rounded-lg flex items-center justify-center flex-shrink-0"
                   >
                     <feature.icon 
                       className="text-white" 
