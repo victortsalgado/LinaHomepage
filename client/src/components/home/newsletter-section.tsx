@@ -27,7 +27,7 @@ export default function NewsletterSection() {
       className="w-full py-16 md:py-20 bg-[var(--lina-dark)]"
       data-testid="section-newsletter"
     >
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className="container mx-auto px-6 lg:px-8 mt-[45px] mb-[45px]">
         <div className="text-center max-w-4xl mx-auto">
           {/* Title */}
           <h2 
