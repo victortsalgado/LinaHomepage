@@ -1,0 +1,48 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React e na criação de páginas de conteúdo otimizadas para SEO e AIO (Artificial Intelligence Optimization).
+
+**Missão:** Criar a página para o artigo de blog migrado **"Nivelando o Jogo e Destravando o Mercado de Crédito com Open Finance"**.
+
+**Porquê Estratégico:** A migração otimizada deste artigo é fundamental para atrair leads de fundo de funil interessados em soluções de análise de crédito. O conteúdo reforça a autoridade da Lina e serve como um ativo de conversão direto para a solução DataLink.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura da Página:**
+    * Utilize o template de artigo individual já criado (`src/pages/blog/[slug].tsx`).
+    * A URL (slug) para esta página deve ser: `open-finance-mercado-de-credito`.
+
+2.  **Conteúdo e SEO On-Page:**
+    * **Título (H1):** `Nivelando o Jogo e Destravando o Mercado de Crédito com Open Finance`
+    * **Meta Title:** `<title>Como o Open Finance está Destravando o Mercado de Crédito | Lina</title>`
+    * **Meta Description:** `<meta name="description" content="Descubra como a análise de dados via Open Finance está nivelando o jogo, reduzindo riscos e criando novas oportunidades no mercado de crédito.">`
+    * **Corpo do Artigo:** Insira o conteúdo completo do artigo original, garantindo a formatação correta para a classe `.prose` do Tailwind.
+    * **Links Internos:** Dentro do texto, adicione um link contextual forte e um CTA (Call to Action) para a página `/data-link`.
+    * **Autor:** Defina o autor como "Time Lina".
+
+3.  **Dados Estruturados (Schema.org):**
+    * Implemente o seguinte JSON-LD no `<head>` da página:
+      ```json
+      {
+        "@context": "[https://schema.org](https://schema.org)",
+        "@type": "TechArticle",
+        "headline": "Como o Open Finance está Destravando o Mercado de Crédito | Lina",
+        "description": "Descubra como a análise de dados via Open Finance está nivelando o jogo, reduzindo riscos e criando novas oportunidades no mercado de crédito.",
+        "author": {
+          "@type": "Organization",
+          "name": "Lina"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Lina",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "URL_DO_LOGO_LINA"
+          }
+        },
+        "about": [
+          { "@type": "Thing", "name": "Análise de Crédito" },
+          { "@type": "Thing", "name": "Open Finance" }
+        ]
+      }
+      ```
+
+**Entregável:** O código ou arquivo para a nova página do artigo, com todo o conteúdo, metadados e schema implementados.

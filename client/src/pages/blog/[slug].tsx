@@ -6,6 +6,7 @@ import PostBody from "@/components/views/blog/post/PostBody";
 import PostBodyPIXOpenFinance from "@/components/views/blog/post/PostBodyPIXOpenFinance";
 import PostBodyOpenInsurance from "@/components/views/blog/post/PostBodyOpenInsurance";
 import PostBodyOpenFinanceUpdates from "@/components/views/blog/post/PostBodyOpenFinanceUpdates";
+import PostBodyOpenFinanceCredit from "@/components/views/blog/post/PostBodyOpenFinanceCredit";
 import AuthorBox from "@/components/views/blog/post/AuthorBox";
 import RelatedPosts from "@/components/views/blog/post/RelatedPosts";
 import { allBlogPosts } from "@/data/blogPosts";
@@ -29,6 +30,9 @@ export default function BlogPost() {
     }
     if (slug === "impacto-ultimas-atualizacoes-open-finance") {
       return allBlogPosts.find(p => p.id === 14) || null;
+    }
+    if (slug === "open-finance-mercado-de-credito") {
+      return allBlogPosts.find(p => p.id === 15) || null;
     }
     
     // Convert slug back to ID (simple implementation)
@@ -55,6 +59,8 @@ export default function BlogPost() {
       title = "Open Insurance no Brasil: O Futuro do Mercado de Seguros | Lina";
     } else if (post.id === 14) {
       title = "Últimas Atualizações do Open Finance: Impacto e Oportunidades | Lina";
+    } else if (post.id === 15) {
+      title = "Como o Open Finance está Destravando o Mercado de Crédito | Lina";
     }
     document.title = title;
 
@@ -70,7 +76,7 @@ export default function BlogPost() {
     }
 
     // Add JSON-LD structured data for featured articles
-    if (post.id === 0 || post.id === 13 || post.id === 14) {
+    if (post.id === 0 || post.id === 13 || post.id === 14 || post.id === 15) {
       const existingSchema = document.querySelector('#blog-schema');
       if (existingSchema) {
         existingSchema.remove();
@@ -169,6 +175,36 @@ export default function BlogPost() {
           },
           "image": post.image
         };
+      } else if (post.id === 15) {
+        schemaData = {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "Como o Open Finance está Destravando o Mercado de Crédito | Lina",
+          "description": "Descubra como a análise de dados via Open Finance está nivelando o jogo, reduzindo riscos e criando novas oportunidades no mercado de crédito.",
+          "author": {
+            "@type": "Organization",
+            "name": "Lina"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Lina",
+            "logo": {
+              "@type": "ImageObject",
+              "url": `${window.location.origin}/assets/new-lina-logo.png`
+            }
+          },
+          "about": [
+            { "@type": "Thing", "name": "Análise de Crédito" },
+            { "@type": "Thing", "name": "Open Finance" }
+          ],
+          "datePublished": "2025-01-28",
+          "dateModified": "2025-01-28",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": window.location.href
+          },
+          "image": post.image
+        };
       }
       
       script.textContent = JSON.stringify(schemaData);
@@ -219,6 +255,8 @@ export default function BlogPost() {
           <PostBodyOpenInsurance post={post} />
         ) : post.id === 14 ? (
           <PostBodyOpenFinanceUpdates post={post} />
+        ) : post.id === 15 ? (
+          <PostBodyOpenFinanceCredit post={post} />
         ) : (
           <PostBody post={post} />
         )}

@@ -17,6 +17,8 @@ export default function BlogPostCard({ post, index, className = "" }: BlogPostCa
     slug = "open-insurance-futuro-mercado-seguros";
   } else if (post.id === 14) {
     slug = "impacto-ultimas-atualizacoes-open-finance";
+  } else if (post.id === 15) {
+    slug = "open-finance-mercado-de-credito";
   } else {
     slug = `${post.title
       .toLowerCase()

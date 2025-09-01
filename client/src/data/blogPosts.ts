@@ -48,6 +48,21 @@ export const allBlogPosts: BlogPost[] = [
     }
   },
   {
+    id: 15,
+    category: "DataLink",
+    title: "Nivelando o Jogo e Destravando o Mercado de Crédito com Open Finance",
+    description: "Descubra como a análise de dados via Open Finance está nivelando o jogo, reduzindo riscos e criando novas oportunidades no mercado de crédito.",
+    date: "28 Jan 2025",
+    readTime: "9 min",
+    image: "/api/placeholder/600/400?text=Open+Finance+Credit+Market",
+    alt: "Open Finance destravando o mercado de crédito brasileiro",
+    author: {
+      name: "Time Lina",
+      avatar: "/src/assets/mascote-astro-lina.png",
+      role: "Equipe Editorial"
+    }
+  },
+  {
     id: 1,
     category: "LinaPay",
     title: "Pix Automático: como funciona e por que adotar na sua empresa",
