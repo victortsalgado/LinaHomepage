@@ -8,7 +8,7 @@ import SocialProofSection from "@/components/views/lina-pay/sections/SocialProof
 import DifferentiatorsSection from "@/components/views/lina-pay/sections/DifferentiatorsSection";
 import FeaturesSection from "@/components/views/lina-pay/sections/FeaturesSection";
 import IntegrationSection from "@/components/views/lina-pay/sections/IntegrationSection";
-import SegmentsSection from "@/components/views/lina-pay/sections/SegmentsSection";
+import SegmentsCloudSection from "@/components/views/lina-pay/sections/SegmentsCloudSection";
 
 
 
@@ -38,8 +38,8 @@ export default function LinaPay(): JSX.Element {
             {/* Integration Section */}
             <IntegrationSection />
 
-            {/* Segments Section */}
-            <SegmentsSection />
+            {/* Segments Cloud Section */}
+            <SegmentsCloudSection />
 
             {/* Final CTA Section */}
             <section
