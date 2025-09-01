@@ -67,7 +67,7 @@ export default function ClientsSection() {
             data-testid="heading-clients-title"
           >
             <span className="bg-gradient-to-r from-teal-600 to-cyan-500 bg-clip-text text-transparent">
-              <span className="font-light">Nossos clientes são a</span> <span className="font-black">nossa melhor referência!</span>
+              <span className="font-light">Nossos clientes são a</span> <span className="font-bold">nossa melhor referência!</span>
             </span>
           </h2>
         </div>
