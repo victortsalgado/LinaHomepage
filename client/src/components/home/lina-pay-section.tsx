@@ -85,22 +85,24 @@ export default function LinaPaySection() {
             
             {/* Toggle Selector */}
             <div className="flex justify-center mb-8">
-              <label className="switch-button" data-testid="switch-pix-selector">
-                <input 
-                  type="checkbox" 
-                  checked={selection === 'biometria'}
-                  onChange={(e) => setSelection(e.target.checked ? 'biometria' : 'automatico')}
-                />
-                <div className="button-toggle"></div>
-                
-                {/* Left Icon - Repeat (Automático) */}
-                <div className={`switch-icons icon-left ${selection === 'biometria' ? 'opacity-100' : 'opacity-40'}`}>
-                  <Repeat size={20} className="text-cyan-400" />
-                </div>
-                
-                {/* Right Icon - Fingerprint (Biometria) */}
-                <div className={`switch-icons icon-right ${selection === 'automatico' ? 'opacity-100' : 'opacity-40'}`}>
-                  <Fingerprint size={20} className="text-cyan-400" />
+              <label className="switch-button" htmlFor="switch" data-testid="switch-pix-selector">
+                <div className="switch-outer">
+                  <input 
+                    id="switch"
+                    type="checkbox" 
+                    checked={selection === 'biometria'}
+                    onChange={(e) => setSelection(e.target.checked ? 'biometria' : 'automatico')}
+                  />
+                  <div className="button">
+                    <span className="button-toggle"></span>
+                    <span className="button-indicator">
+                      {selection === 'automatico' ? (
+                        <Fingerprint size={14} className="text-cyan-400" />
+                      ) : (
+                        <Repeat size={14} className="text-cyan-400" />
+                      )}
+                    </span>
+                  </div>
                 </div>
               </label>
             </div>
