@@ -25,24 +25,24 @@ export default function SocialProofSection() {
       logo: brasilprevLogo
     },
     {
-      name: "BrasilCap", 
-      logo: brasilprevLogo // Using BrasilPrev logo as placeholder for BrasilCap
+      name: "Bradesco Seguros", 
+      logo: bradescoSegurosLogo
     },
     {
-      name: "BRP",
-      logo: brasilprevLogo // Using BrasilPrev logo as placeholder for BRP
+      name: "Caixa",
+      logo: caixaLogo
     },
     {
-      name: "BRB",
-      logo: caixaLogo // Using Caixa logo as placeholder for BRB
+      name: "Icatu Seguros",
+      logo: icatuSegurosLogo
     },
     {
-      name: "Iugu",
-      logo: cloudwalkLogo // Using CloudWalk logo as placeholder for Iugu
+      name: "HDI Seguros",
+      logo: hdiSegurosLogo
     },
     {
-      name: "Semear",
-      logo: icatuSegurosLogo // Using Icatu logo as placeholder for Semear
+      name: "CloudWalk",
+      logo: cloudwalkLogo
     }
   ];
 
