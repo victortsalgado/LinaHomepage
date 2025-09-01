@@ -17,7 +17,13 @@ export default function LinaPaySection() {
       <div className="container mx-auto px-6 lg:px-8">
         {/* Lina Pay Block */}
         <div 
-          className="gradient-dark rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px]"
+          className="relative rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px]"
+          style={{
+            background: `linear-gradient(135deg, var(--lina-dark) 0%, var(--lina-medium) 100%)`,
+            backgroundImage: `radial-gradient(circle at 20% 80%, rgba(0, 239, 207, 0.1) 0%, transparent 50%), 
+                              radial-gradient(circle at 80% 20%, rgba(0, 239, 207, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%)`
+          }}
         >
           <div 
             ref={blockRef}
@@ -61,10 +67,17 @@ export default function LinaPaySection() {
             </div>
             
             {/* Cards Grid */}
-            <div className="grid lg:grid-cols-2 gap-6 mb-8">
+            <div className="relative grid lg:grid-cols-2 gap-6 mb-8">
+              {/* Glow Effect Behind Cards */}
+              <div 
+                className="absolute inset-0 -z-10"
+                style={{
+                  background: `radial-gradient(ellipse at center, rgba(0, 239, 207, 0.1) 0%, transparent 70%)`
+                }}
+              ></div>
               {/* PIX Automático Card */}
               <div 
-                className="bg-emerald-700/40 backdrop-blur-sm border border-emerald-600/30 p-6 rounded-2xl"
+                className="relative bg-white/5 backdrop-blur-lg border border-cyan-400/20 p-6 rounded-2xl shadow-inner transition-all duration-300 hover:border-cyan-400/50 hover:-translate-y-1 hover:shadow-lg group"
                 data-testid="card-pix-automatico"
               >
                 <div className="mb-4">
@@ -78,14 +91,14 @@ export default function LinaPaySection() {
                 >
                   Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade.
                 </p>
-                <div className="mt-4 flex items-center text-cyan-300 text-sm">
+                <div className="mt-4 flex items-center text-cyan-300 text-sm transition-all duration-300 group-hover:text-cyan-200 group-hover:translate-x-1">
                   <ArrowRight size={16} className="mr-2" />
                 </div>
               </div>
               
               {/* PIX Biometria Card */}
               <div 
-                className="bg-emerald-700/40 backdrop-blur-sm border border-emerald-600/30 p-6 rounded-2xl"
+                className="relative bg-white/5 backdrop-blur-lg border border-cyan-400/20 p-6 rounded-2xl shadow-inner transition-all duration-300 hover:border-cyan-400/50 hover:-translate-y-1 hover:shadow-lg group"
                 data-testid="card-pix-biometria"
               >
                 <div className="mb-4">
@@ -99,7 +112,7 @@ export default function LinaPaySection() {
                 >
                   Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebras na jornada.
                 </p>
-                <div className="mt-4 flex items-center text-cyan-300 text-sm">
+                <div className="mt-4 flex items-center text-cyan-300 text-sm transition-all duration-300 group-hover:text-cyan-200 group-hover:translate-x-1">
                   <ArrowRight size={16} className="mr-2" />
                 </div>
               </div>

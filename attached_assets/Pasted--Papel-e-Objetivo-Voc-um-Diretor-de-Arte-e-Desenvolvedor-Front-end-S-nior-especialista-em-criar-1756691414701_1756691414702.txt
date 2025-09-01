@@ -1,0 +1,26 @@
+# Papel e Objetivo
+Você é um Diretor de Arte e Desenvolvedor Front-end Sênior, especialista em criar interfaces premium e sofisticadas com Tailwind CSS. Sua tarefa é refatorar o estilo do componente `LinaPaySection.tsx` para adicionar profundidade, textura e um acabamento de alta tecnologia.
+
+# Contexto Estratégico
+O layout e o conteúdo do componente estão corretos, mas o design atual está muito simples. Precisamos transformar a aparência para que seja mais bonita e sofisticada, alinhada a uma marca de tecnologia financeira de ponta.
+
+# Instruções de Refatoramento de Estilo
+
+1.  **Card Principal (Fundo Escuro):**
+    * Altere o fundo do `div` principal. Em vez de um gradiente simples, aplique um `linear-gradient` mais dinâmico, por exemplo, de `var(--lina-dark)` para `var(--lina-medium)`.
+    * Adicionalmente, para criar textura, adicione uma imagem de fundo sutil e abstrata (como uma grade de pontos finos ou linhas de circuito) com baixa opacidade (`opacity-10` ou `opacity-20`).
+
+2.  **Cards de Funcionalidades (Pix Automático e Pix Biometria):**
+    * Aplique um efeito de "glassmorphism" (vidro fosco) nestes cards para dar uma sensação de profundidade e modernidade.
+    * Aumente o efeito de desfoque do fundo para `backdrop-blur-lg`.
+    * Adicione uma borda sutil e luminosa, usando a cor principal da marca com baixa opacidade (ex: `border border-lina-cyan/20`).
+    * Adicione uma leve sombra interna (`shadow-inner`) para criar a percepção de que o texto está "esculpido" no vidro.
+
+3.  **Efeito de Iluminação (Glow):**
+    * Crie um `div` com `position: absolute` e um `radial-gradient` (de `var(--lina-cyan)` com opacidade de 10% no centro para `transparent` nas bordas). Posicione este `div` atrás dos dois cards de funcionalidades para criar um efeito de "brilho" sutil, como se uma luz estivesse emanando por trás deles.
+
+4.  **Microinterações (Hover):**
+    * Adicione um efeito de `hover` nos dois cards de funcionalidades. Ao passar o mouse:
+        * A borda deve ficar um pouco mais brilhante (ex: `hover:border-lina-cyan/50`).
+        * O card deve se mover sutilmente para cima (ex: `hover:-translate-y-1`).
+        * A seta no canto inferior direito deve se tornar mais visível.
