@@ -1,0 +1,36 @@
+# Papel e Objetivo
+Você é um desenvolvedor front-end sênior, especialista em criar interfaces interativas e elegantes com React, Tailwind CSS e Framer Motion. Sua tarefa é criar o componente da seção "APIs do DataLink".
+
+# Contexto Estratégico
+Para evitar a repetição visual de "cards", esta seção deve apresentar os endpoints da API de forma mais dinâmica e técnica. O objetivo é comunicar a robustez da API de uma maneira que seja visualmente interessante tanto para decisores de negócio quanto para desenvolvedores, mantendo o tema claro da página.
+
+# Instruções de Implementação
+
+1.  **Layout Principal:**
+    * Crie uma seção com um fundo claro (`bg-white` ou `bg-gray-50`).
+    * O layout deve ser de duas colunas em telas grandes (`grid-cols-2`), com alinhamento centralizado (`items-center`). Em telas mobile, a coluna visual deve aparecer primeiro, seguida pela lista.
+    * Adicione um título (H2) centralizado acima das colunas: "APIs construídas para facilitar a sua operação".
+
+2.  **Coluna da Esquerda (Lista de APIs):**
+    * Crie uma lista vertical simples e elegante dos 5 principais endpoints. **Não use cards**.
+    * Cada item da lista deve conter um ícone, o nome do endpoint e uma breve descrição.
+    * Implemente um estado no React (`useState`) para controlar qual item da lista está "ativo" (em `hover`).
+    * Ao passar o mouse (`onMouseEnter`) sobre um item da lista, o estado deve ser atualizado para refletir aquele item.
+    * O item ativo na lista deve ter um destaque visual sutil (ex: cor de texto `text-lina-cyan` ou um fundo levemente acinzentado).
+
+3.  **Coluna da Direita (Visualização Dinâmica):**
+    * Esta coluna deve exibir um conteúdo que muda dinamicamente com base no item "ativo" na lista da esquerda.
+    * Crie um "mockup" de um editor de código (um `div` com fundo escuro, bordas arredondadas e talvez um cabeçalho com 3 pontos coloridos como em um macOS).
+    * Dentro do mockup do editor, o conteúdo (um trecho de código de exemplo) deve mudar com uma animação de "fade" (usando `Framer Motion` e `AnimatePresence`) sempre que o item ativo na lista da esquerda mudar.
+
+4.  **Conteúdo para a Seção:**
+    * **Lista da Esquerda:**
+        * **GET/Contas:** (Ícone `Landmark`) "Acesse saldos, extratos e limites."
+        * **GET/Cartões:** (Ícone `CreditCard`) "Análise de risco e recomendação de produtos."
+        * **GET/Crédito:** (Ícone `AreaChart`) "Informações de empréstimos para modelagem."
+        * **GET/Investimentos:** (Ícone `TrendingUp`) "Dados de posição para carteiras consolidadas."
+        * **GET/Cadastral:** (Ícone `UserCheck`) "Validação de dados para onboarding e compliance."
+    * **Conteúdo do Editor de Código (Direita - exemplos simplificados):**
+        * **Quando "GET/Contas" estiver ativo, mostre:** `curl "api.lina/v1/contas?id=..."`
+        * **Quando "GET/Cartões" estiver ativo, mostre:** `curl "api.lina/v1/cartoes?id=..."`
+        * E assim por diante para cada endpoint.
