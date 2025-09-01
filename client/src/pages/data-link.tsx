@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import DataLinkHeroSection from "@/components/data-link/hero-section";
-import ValuePropositionSection from "@/components/data-link/value-proposition-section";
-import SocialProofSection from "@/components/data-link/social-proof-section";
-import SegmentsSection from "@/components/data-link/segments-section";
-import ApisSection from "@/components/data-link/apis-section";
-import IntegrationSection from "@/components/data-link/integration-section";
-import CtaFormSection from "@/components/data-link/cta-form-section";
+import DataLinkHeroSection from "@/components/views/data-link/sections/hero-section";
+import ValuePropositionSection from "@/components/views/data-link/sections/value-proposition-section";
+import SocialProofSection from "@/components/views/data-link/sections/social-proof-section";
+import SegmentsSection from "@/components/views/data-link/sections/segments-section";
+import ApisSection from "@/components/views/data-link/sections/apis-section";
+import IntegrationSection from "@/components/views/data-link/sections/integration-section";
+import CtaFormSection from "@/components/views/data-link/sections/cta-form-section";
 
 export default function DataLink(): JSX.Element {
   return (

@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { University, CreditCard, TrendingUp, UserCheck, Database, ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import dataLinkImage from "../../assets/data-link-image.png";
-import datalinkAnimation from "../../assets/datalink-animation.gif";
+import dataLinkImage from "../../../../assets/data-link-image.png";
+import datalinkAnimation from "../../../../assets/datalink-animation.gif";
 
 export default function DataLinkSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();

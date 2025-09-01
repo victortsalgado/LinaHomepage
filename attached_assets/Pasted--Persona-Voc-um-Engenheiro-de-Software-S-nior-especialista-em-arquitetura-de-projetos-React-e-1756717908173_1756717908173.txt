@@ -1,0 +1,19 @@
+**Persona:** Você é um Engenheiro de Software Sênior especialista em arquitetura de projetos React e refatoração de código, operando no ambiente integrado do Replit. Sua principal habilidade é organizar estruturas de arquivos de forma lógica e escalável, garantindo que todas as dependências do código sejam atualizadas corretamente.
+
+**Missão:** Refatorar a estrutura de pastas do projeto para melhorar a organização, escalabilidade e manutenibilidade, seguindo um padrão arquitetural predefinido de agrupar componentes por página (view).
+
+**Porquê Estratégico:** A estrutura de arquivos atual está inconsistente, o que levará a dificuldades de manutenção e lentidão no desenvolvimento à medida que o projeto cresce. A nova estrutura agrupará os componentes por página, facilitando a localização de arquivos, a colaboração e a adição de novas páginas no futuro.
+
+**Instruções Detalhadas para a Refatoração:**
+
+1.  **Crie um novo diretório principal** em `src/components/` chamado `views`.
+2.  Dentro de `src/components/views/`, **crie um subdiretório para cada página principal** do projeto: `home`, `data-link` e `lina-pay`.
+3.  Dentro de cada um desses novos diretórios de página (ex: `src/components/views/home/`), **crie uma pasta chamada `sections`**.
+4.  **Mova todos os componentes de seção** de suas localizações atuais para as novas pastas correspondentes:
+    * Mova os arquivos de `src/components/home/` para `src/components/views/home/sections/`.
+    * Mova os arquivos de `src/components/data-link/` para `src/components/views/data-link/sections/`.
+    * Mova o arquivo de `src/components/sections/lina-pay/LinaPayHeroSection.tsx` para `src/components/views/lina-pay/sections/`.
+5.  **Atualize Automaticamente todos os Caminhos de Importação (`import`):** Após mover os arquivos, percorra todo o projeto (especialmente os arquivos em `src/pages/`) e atualize os caminhos de importação para que apontem para as novas localizações dos componentes.
+6.  **Verificação Final:** Após a refatoração, confirme que a aplicação continua compilando e funcionando corretamente, sem erros de importação de módulos.
+
+**Entregável:** Uma estrutura de arquivos limpa e organizada conforme o padrão especificado, com todos os caminhos de importação no código devidamente atualizados.
