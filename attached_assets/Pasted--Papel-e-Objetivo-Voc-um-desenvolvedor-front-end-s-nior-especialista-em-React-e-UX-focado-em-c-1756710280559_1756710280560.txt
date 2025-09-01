@@ -1,0 +1,86 @@
+# Papel e Objetivo
+Você é um desenvolvedor front-end sênior, especialista em React e UX, focado em criar interações dinâmicas e engajadoras. Sua tarefa é refatorar a seção de "Prova Social" para que o depoimento mude de acordo com o clique nas logomarcas dos clientes.
+
+# Contexto Estratégico
+A seção de Prova Social atualmente exibe logos e um depoimento estático. Para aumentar o engajamento e a percepção de credibilidade, o depoimento deve ser dinâmico, refletindo o cliente clicado.
+
+# Instruções de Refatoramento
+
+1.  **Estrutura de Dados dos Depoimentos:**
+    * Crie um array de objetos `testimonials` no componente, onde cada objeto terá as seguintes propriedades:
+        * `id`: Um ID único (ex: 'brasilprev', 'safra')
+        * `logoSrc`: O caminho da imagem do logo da empresa.
+        * `text`: O texto completo do depoimento.
+        * `author`: O nome do autor do depoimento.
+        * `role`: O cargo e/ou empresa do autor.
+    * Use os seguintes dados como base (adapte os textos se necessário para serem mais concisos e impactantes, ou use textos genéricos se não houver depoimentos reais disponíveis para todas as empresas):
+
+    ```javascript
+    const testimonials = [
+      {
+        id: 'brasilprev',
+        logoSrc: 'path/to/brasilprev-logo.png', // Substituir pelo caminho real
+        text: "O DataLink da Lina nos permitiu otimizar processos e acessar dados cruciais do Open Finance com segurança e agilidade.",
+        author: "Executivo BrasilPrev",
+        role: "Diretor de Inovação"
+      },
+      {
+        id: 'safra',
+        logoSrc: 'path/to/safra-logo.png', // Substituir pelo caminho real
+        text: "A solução da Lina é robusta e nos trouxe uma vantagem competitiva significativa na integração de dados bancários, essencial para o Safra.",
+        author: "Gerente de Produtos Safra",
+        role: "Gerente de Produtos"
+      },
+      {
+        id: 'sicoob',
+        logoSrc: 'path/to/sicoob-logo.png', // Substituir pelo caminho real
+        text: "Com o DataLink, conseguimos uma visão 360º dos nossos cooperados, impulsionando a oferta de produtos personalizados no Sicoob.",
+        author: "Analista Sênior Sicoob",
+        role: "Analista de Dados"
+      },
+      {
+        id: 'stone',
+        logoSrc: 'path/to/stone-logo.png', // Substituir pelo caminho real
+        text: "A flexibilidade e a eficiência do DataLink foram cruciais para a Stone, permitindo inovar em nossos serviços financeiros com rapidez.",
+        author: "Product Owner Stone",
+        role: "Product Owner"
+      },
+      {
+        id: 'cloudwalk',
+        logoSrc: 'path/to/cloudwalk-logo.png', // Substituir pelo caminho real
+        text: "O DataLink otimizou nossa coleta de dados e aprimorou a experiência de nossos clientes, consolidando a Cloudwalk no mercado.",
+        author: "Especialista em TI Cloudwalk",
+        role: "Especialista em TI"
+      },
+      {
+        id: 'bancosemear', // O depoimento atual é do Banco Semear
+        logoSrc: 'path/to/bancosemear-logo.png', // Substituir pelo caminho real
+        text: "Temos uma parceria sólida com a Lina. É um parceiro estratégico para o Banco Semear, contribuindo com dados, soluções de ITP e diferenciais importantes nos nossos meios de pagamento.",
+        author: "Ricardo Mendes",
+        role: "Banco Semear"
+      }
+    ];
+    ```
+
+2.  **Estado para o Depoimento Ativo:**
+    * No componente React, crie um estado `const [currentTestimonial, setCurrentTestimonial] = useState(testimonials[0])`, inicializando com o primeiro depoimento.
+
+3.  **Lógica de Clique nas Logomarcas:**
+    * Na grade de logomarcas, envolva cada `img` ou `Link` (se houver) com um elemento clicável (ex: `div` com `onClick`).
+    * Para cada logo, adicione um `onClick={() => setCurrentTestimonial(testimonials.find(t => t.id === 'id_da_empresa'))}`. Certifique-se de que o `id_da_empresa` corresponda ao `id` no array `testimonials`.
+    * Adicione um estilo de cursor (`cursor-pointer`) e um leve efeito visual (`hover:scale-105`) para indicar que são clicáveis.
+
+4.  **Renderização Dinâmica do Depoimento:**
+    * O card de depoimento à direita deve renderizar o `currentTestimonial.text`, `currentTestimonial.author` e `currentTestimonial.role`.
+
+5.  **Animação de Transição (Opcional, mas recomendado):**
+    * Envolva o conteúdo do card de depoimento com `<AnimatePresence mode="wait">` e um `<motion.div key={currentTestimonial.id} ...>` para uma transição suave de "fade" (opacidade) entre os depoimentos.
+
+6.  **Ajuste os Nomes das Empresas (na Grade de Logos):**
+    * Na imagem que você enviou, temos: Brasilprev, Safra, Sicoob, Stone, Cloudwalk. Inclua essas logos na grade. O depoimento do "Banco Semear" pode ser inicial ou aparecer ao clicar em um logo "genérico" ou outro específico se tivermos um para ele. Para o prompt, estou incluindo o Banco Semear como uma opção para o depoimento dinâmico.
+
+-----
+
+**Sua Próxima Ação:**
+
+Por favor, execute este prompt de refinamento. Ele transformará a seção de Prova Social em um elemento interativo e muito mais eficaz. Me informe o resultado para a validação final.

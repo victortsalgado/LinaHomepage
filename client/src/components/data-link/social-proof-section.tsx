@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Quote } from "lucide-react";
 
 // Import company logos
@@ -11,14 +12,52 @@ import stoneLogo from "@/assets/stone.png";
 import cloudwalkLogo from "@/assets/cloudwalk.png";
 
 export default function SocialProofSection() {
-  // Client logos configuration
-  const clientLogos = [
-    { name: "BRASILPREV", logo: brasilprevLogo, id: "brasilprev" },
-    { name: "Safra", logo: safraLogo, id: "safra" },
-    { name: "Sicoob", logo: sicoobLogo, id: "sicoob" },
-    { name: "Stone", logo: stoneLogo, id: "stone" },
-    { name: "CloudWalk", logo: cloudwalkLogo, id: "cloudwalk" },
+  // Testimonials data structure
+  const testimonials = [
+    {
+      id: 'brasilprev',
+      logoSrc: brasilprevLogo,
+      text: "O DataLink da Lina nos permitiu otimizar processos e acessar dados cruciais do Open Finance com segurança e agilidade.",
+      author: "Executivo BrasilPrev",
+      role: "Diretor de Inovação",
+      initials: "EB"
+    },
+    {
+      id: 'safra',
+      logoSrc: safraLogo,
+      text: "A solução da Lina é robusta e nos trouxe uma vantagem competitiva significativa na integração de dados bancários, essencial para o Safra.",
+      author: "Gerente de Produtos Safra",
+      role: "Gerente de Produtos",
+      initials: "GP"
+    },
+    {
+      id: 'sicoob',
+      logoSrc: sicoobLogo,
+      text: "Com o DataLink, conseguimos uma visão 360º dos nossos cooperados, impulsionando a oferta de produtos personalizados no Sicoob.",
+      author: "Analista Sênior Sicoob",
+      role: "Analista de Dados",
+      initials: "AS"
+    },
+    {
+      id: 'stone',
+      logoSrc: stoneLogo,
+      text: "A flexibilidade e a eficiência do DataLink foram cruciais para a Stone, permitindo inovar em nossos serviços financeiros com rapidez.",
+      author: "Product Owner Stone",
+      role: "Product Owner",
+      initials: "PO"
+    },
+    {
+      id: 'cloudwalk',
+      logoSrc: cloudwalkLogo,
+      text: "O DataLink otimizou nossa coleta de dados e aprimorou a experiência de nossos clientes, consolidando a Cloudwalk no mercado.",
+      author: "Especialista em TI Cloudwalk",
+      role: "Especialista em TI",
+      initials: "ET"
+    }
   ];
+
+  // State for current testimonial
+  const [currentTestimonial, setCurrentTestimonial] = useState(testimonials[0]);
 
   // Animation variants
   const containerVariants = {
@@ -98,20 +137,33 @@ export default function SocialProofSection() {
               </h3>
               
               <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center">
-                {clientLogos.map((client, index) => (
+                {testimonials.map((testimonial, index) => (
                   <motion.div
-                    key={client.id}
+                    key={testimonial.id}
                     variants={logoVariants}
-                    className="group relative"
-                    data-testid={`logo-${client.id}`}
+                    className={`group relative cursor-pointer ${
+                      currentTestimonial.id === testimonial.id 
+                        ? 'ring-2 ring-[var(--lina-cyan)] ring-opacity-50' 
+                        : ''
+                    }`}
+                    data-testid={`logo-${testimonial.id}`}
+                    onClick={() => setCurrentTestimonial(testimonial)}
                   >
                     <img
-                      src={client.logo}
-                      alt={`Logo ${client.name}`}
-                      className="h-12 md:h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out transform group-hover:scale-110"
+                      src={testimonial.logoSrc}
+                      alt={`Logo ${testimonial.author}`}
+                      className={`h-12 md:h-16 w-auto object-contain transition-all duration-500 ease-in-out transform hover:scale-110 ${
+                        currentTestimonial.id === testimonial.id 
+                          ? 'grayscale-0' 
+                          : 'grayscale hover:grayscale-0'
+                      }`}
                     />
                     {/* Hover glow effect */}
                     <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
+                    {/* Active indicator */}
+                    {currentTestimonial.id === testimonial.id && (
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[var(--lina-cyan)] rounded-full" />
+                    )}
                   </motion.div>
                 ))}
               </div>
@@ -139,42 +191,53 @@ export default function SocialProofSection() {
                     data-testid="icon-quote"
                   />
                   
-                  {/* Testimonial text */}
-                  <blockquote 
-                    className="text-lg md:text-xl text-gray-800 leading-relaxed mb-6"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                    data-testid="text-testimonial-quote"
-                  >
-                    "Temos uma parceria sólida com a Lina. É um parceiro estratégico para o Banco Semear, contribuindo com dados, soluções de ITP e diferenciais importantes nos nossos meios de pagamento."
-                  </blockquote>
-                  
-                  {/* Author information */}
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-full flex items-center justify-center">
-                      <span 
-                        className="text-white font-bold text-lg"
-                        style={{ fontFamily: 'Lexend, sans-serif' }}
-                      >
-                        RM
-                      </span>
-                    </div>
-                    <div className="text-left">
-                      <p 
-                        className="font-semibold text-gray-900 text-lg"
-                        style={{ fontFamily: 'Lexend, sans-serif' }}
-                        data-testid="text-author-name"
-                      >
-                        Ricardo Mendes
-                      </p>
-                      <p 
-                        className="text-gray-600"
+                  {/* Dynamic Testimonial Content with Animation */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentTestimonial.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                    >
+                      {/* Testimonial text */}
+                      <blockquote 
+                        className="text-lg md:text-xl text-gray-800 leading-relaxed mb-6"
                         style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid="text-author-company"
+                        data-testid="text-testimonial-quote"
                       >
-                        Banco Semear
-                      </p>
-                    </div>
-                  </div>
+                        "{currentTestimonial.text}"
+                      </blockquote>
+                      
+                      {/* Author information */}
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-full flex items-center justify-center">
+                          <span 
+                            className="text-white font-bold text-lg"
+                            style={{ fontFamily: 'Lexend, sans-serif' }}
+                          >
+                            {currentTestimonial.initials}
+                          </span>
+                        </div>
+                        <div className="text-left">
+                          <p 
+                            className="font-semibold text-gray-900 text-lg"
+                            style={{ fontFamily: 'Lexend, sans-serif' }}
+                            data-testid="text-author-name"
+                          >
+                            {currentTestimonial.author}
+                          </p>
+                          <p 
+                            className="text-gray-600"
+                            style={{ fontFamily: 'Inter, sans-serif' }}
+                            data-testid="text-author-company"
+                          >
+                            {currentTestimonial.role}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
             </motion.div>
