@@ -24,11 +24,11 @@ export default function NewsletterSection() {
 
   return (
     <section 
-      className="w-full py-16 md:py-20 bg-[var(--lina-dark)]"
+      className="w-full py-16 md:py-20 bg-[var(--lina-dark)] flex items-center justify-center min-h-[400px]"
       data-testid="section-newsletter"
     >
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="text-center max-w-4xl mx-auto">
+        <div className="text-center max-w-4xl mx-auto flex flex-col items-center justify-center">
           {/* Title */}
           <h2 
             className="text-3xl md:text-4xl lg:text-5xl text-white mb-4"
