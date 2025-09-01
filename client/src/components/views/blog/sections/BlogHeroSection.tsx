@@ -118,30 +118,22 @@ export default function BlogHeroSection() {
             BEM VINDO AO
           </motion.p>
 
-          {/* Main Title with Typewriter Effect and Hover Animation */}
+          {/* Main Title with Typewriter Effect */}
           <div className="min-h-[120px] lg:min-h-[160px] flex items-center justify-center">
-            <button 
-              className="universo-button text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight"
+            <h1
+              className="text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight"
               style={{ fontFamily: 'Lexend, sans-serif' }}
-              data-text="Universo Open"
-              data-testid="button-hero-title"
+              data-testid="heading-hero-title"
             >
-              <span className="actual-text">
-                &nbsp;{typewriterText}&nbsp;
-                {typewriterText.length === fullText.length && (
-                  <motion.span
-                    animate={{ opacity: [1, 0, 1] }}
-                    transition={{ duration: 1, repeat: Infinity }}
-                    className="text-[var(--lina-cyan)]"
-                  >
-                    |
-                  </motion.span>
-                )}
-              </span>
-              <span aria-hidden="true" className="hover-text">
-                &nbsp;Universo Open&nbsp;
-              </span>
-            </button>
+              {typewriterText}
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 1, repeat: Infinity }}
+                className="text-[var(--lina-cyan)]"
+              >
+                |
+              </motion.span>
+            </h1>
           </div>
 
           {/* Search Bar */}
