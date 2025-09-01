@@ -1,0 +1,31 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é refinar elementos visuais de um componente existente, focando na integração de imagens de perfil de forma elegante e que se alinhe ao design de referência.
+
+**Missão:** Refatorar o componente `JsrSocialProofSection.tsx` para substituir as iniciais (`MB, LC, RS`) por imagens de perfil reais (ou placeholders) no elemento de avatares sobrepostos, e remover o carrossel de fotos genéricas que estava abaixo da seção principal.
+
+**Porquê Estratégico:** A intenção é aumentar a humanização e a credibilidade da prova social, utilizando fotos de perfil no lugar de iniciais. Remover o carrossel de fotos genéricas evita redundância e mantém o foco nos depoimentos autênticos, elevando a qualidade do design e a **Ordem** visual.
+
+**Requisitos e Diretrizes para Refatoração:**
+
+1.  **Arquivo a ser Modificado:** `src/components/views/jsr/sections/JsrSocialProofSection.tsx`.
+
+2.  **Elemento de Avatares (Coluna da Esquerda):**
+    * Localize o elemento que atualmente exibe as iniciais (`MB, LC, RS`).
+    * **Substitua as iniciais por 3 imagens de perfil (placeholders por enquanto)**, mantendo o estilo de sobreposição circular existente.
+    * Cada imagem deve ser um círculo perfeito, e a sobreposição deve ser feita de forma elegante, com um leve deslocamento lateral para dar a impressão de um grupo de pessoas.
+    * Ao lado dos avatares, mantenha o texto `+100 clientes satisfeitos`.
+
+3.  **Remoção de Componente:**
+    * **Remova completamente** o componente ou o código que renderiza o carrossel de fotos genéricas de perfis (`<InfiniteSlider />` ou similar, se foi usado para fotos de perfil) que estava abaixo do `JsrSocialProofSection` principal. *O `<InfiniteSlider />` que exibe os logos de clientes (BRASILPREV, BRASILCAP, etc.) deve ser mantido, apenas o de fotos de pessoas deve ser removido.*
+
+4.  **Conteúdo e Estilo Existente:**
+    * Mantenha o gradiente de fundo da seção principal.
+    * Mantenha o título da seção (`Resultados validados por quem já usa`), com a palavra "validados" em destaque e a estrela.
+    * Mantenha o botão "Descubra como funciona".
+    * Mantenha o card de depoimento da direita (`bg-[var(--lina-dark)]`), com o ícone de aspas, texto do depoimento, imagem/iniciais do autor ("MB") e seu cargo.
+    * Mantenha a barra de logos de clientes abaixo da área de duas colunas.
+
+5.  **Animação e Estilo Geral:**
+    * Mantenha as animações (`useScrollReveal`, `framer-motion`) existentes.
+    * A tipografia, espaçamento e proporções devem continuar alinhadas à imagem de referência.
+
+**Entregável:** O código-fonte do componente `JsrSocialProofSection.tsx` refatorado, com as imagens de perfil no lugar das iniciais, o carrossel de fotos genéricas removido, e a seção pronta para ser integrada à página `jsr.tsx`.
