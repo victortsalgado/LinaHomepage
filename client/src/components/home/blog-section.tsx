@@ -43,7 +43,7 @@ export default function BlogSection() {
         {/* Centralized Title */}
         <div className="text-center mb-16">
           <h2 
-            className="text-4xl font-light text-lina-dark mb-4"
+            className="text-4xl font-light text-[#006666] mb-4"
             data-testid="heading-blog-title"
           >
             Acompanhe nosso Blog e fique por dentro de tudo o que acontece no <span className="font-bold">Universo Open</span>
