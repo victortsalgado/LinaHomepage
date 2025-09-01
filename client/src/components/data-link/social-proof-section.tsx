@@ -141,11 +141,7 @@ export default function SocialProofSection() {
                   <motion.div
                     key={testimonial.id}
                     variants={logoVariants}
-                    className={`group relative cursor-pointer ${
-                      currentTestimonial.id === testimonial.id 
-                        ? 'ring-2 ring-[var(--lina-cyan)] ring-opacity-50' 
-                        : ''
-                    }`}
+                    className="group relative cursor-pointer"
                     data-testid={`logo-${testimonial.id}`}
                     onClick={() => setCurrentTestimonial(testimonial)}
                   >
