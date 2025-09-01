@@ -1,0 +1,29 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Seu foco é em criar componentes modulares que replicam fielmente um design de referência, mantendo a consistência de estilo e animação de um projeto existente.
+
+**Missão:** Construir o componente para a seção **"Integração com segurança e agilidade"** da página de produto DataLink.
+
+**Porquê Estratégico:** Esta seção é fundamental para quebrar objeções técnicas do público-alvo (desenvolvedores, CTOs), demonstrando que a integração com a plataforma Lina não é apenas poderosa, mas também rápida, segura e bem suportada, o que aumenta a confiança para a conversão.
+
+**Requisitos e Diretrizes:**
+
+1.  **Fonte da Verdade:** O conteúdo (título, itens da lista) e o layout devem ser baseados exclusivamente na seção "Integração com segurança e agilidade" do arquivo `LP_DataLink.pdf`.
+
+2.  **Estrutura do Componente:**
+    * Crie um novo arquivo para este componente, por exemplo: `src/components/sections/data-link/IntegrationSection.tsx`.
+    * Implemente um layout responsivo de duas colunas (`grid lg:grid-cols-2`).
+
+3.  **Conteúdo das Colunas:**
+    * **Coluna da Esquerda (Conteúdo):**
+        * Adicione o título principal: "Integração com segurança e agilidade".
+        * Liste os três pontos de destaque, cada um precedido por um ícone de checkmark (`✓`). O texto deve ser extraído do PDF (ex: "API REST com documentação e módulos...").
+    * **Coluna da Direita (Visual):**
+        * Insira a imagem estática correspondente a esta seção, conforme exibido no `LP_DataLink.pdf`.
+
+4.  **Animações:**
+    * **Obrigatório:** Utilize o hook `useScrollReveal` para acionar animações de entrada quando a seção se tornar visível.
+    * Aplique um efeito de "slide-in" para a coluna de texto e um efeito de "fade-in" ou "slide-in" oposto para a coluna da imagem, replicando o padrão dinâmico das outras seções.
+
+5.  **Estilização:**
+    * Utilize as classes do Tailwind CSS e as variáveis de cor (`--lina-cyan`, etc.) e fontes (`Lexend`, `Inter`) já definidas no projeto para garantir a consistência visual.
+
+**Entregável:** O código-fonte completo para o novo componente `IntegrationSection.tsx`. O componente deve ser totalmente responsivo, animado de acordo com os padrões existentes e visualmente fiel à referência `LP_DataLink.pdf`.
