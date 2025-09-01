@@ -9,9 +9,17 @@ interface BlogPostCardProps {
 }
 
 export default function BlogPostCard({ post, index, className = "" }: BlogPostCardProps) {
+  // Generate slug from title and id
+  const slug = `${post.title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim()}-${post.id}`;
+
   return (
     <a
-      href="#"
+      href={`/blog/${slug}`}
       className={`group bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden block ${className}`}
       data-testid={`link-blog-post-${index}`}
       data-post-id={post.id}
