@@ -99,7 +99,7 @@ export default function SegmentsSection() {
                 <motion.button
                   key={segment.id}
                   onClick={() => setActiveTab(segment.id)}
-                  className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-[400ms] group/card cursor-pointer ${cardColors[index]} ${
+                  className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-500 group/card cursor-pointer ${cardColors[index]} ${
                     isActive 
                       ? 'border-white/30 shadow-xl shadow-black/20 scale-105' 
                       : 'border-white/10 hover:border-white/30'
