@@ -13,6 +13,7 @@ import {
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import LinaPayHeroSection from "@/components/views/lina-pay/sections/LinaPayHeroSection";
+import AboutLinaPaySection from "@/components/views/lina-pay/sections/AboutLinaPaySection";
 
 const featureCards = [
   {
@@ -149,50 +150,7 @@ export default function LinaPay(): JSX.Element {
             <LinaPayHeroSection />
 
             {/* What is Lina Pay Section */}
-            <section className="w-full h-[737px] bg-[#f8f3f3] rounded-[0px_0px_40px_40px] relative">
-              <div className="flex justify-between items-start px-[252px] pt-[144px]">
-                <div className="flex-1 max-w-[360px]">
-                  <h2 className="[font-family:'Lexend',Helvetica] font-medium text-[40px] leading-[48px] mb-8">
-                    <span className="text-[#606060]">O que é o </span>
-                    <span className="text-[#0ab5aa]">Lina Pay</span>
-                  </h2>
-
-                  <p className="[font-family:'Lexend',Helvetica] font-light text-[#606060] text-base leading-6 mb-10">
-                    O Lina Pay é um meio de pagamento via Pix projetado para dar
-                    fluidez, segurança e controle à jornada de pagamento no
-                    e-commerce, marketplaces, carteiras digitais e nas
-                    transferências entre contas.
-                    <br />
-                    <br />
-                    Com ele, o consumidor paga com um toque, por reconhecimento
-                    facial ou biometria digital — sem abrir o app do banco, sem QR
-                    Code, sem interrupções. Para quem vende, é a oportunidade de
-                    reduzir custos com boletos e cartões, automatizar cobranças e
-                    escalar com previsibilidade, com uma solução homologada pelo
-                    Banco Central e conectada a mais de 100 instituições
-                    financeiras.
-                  </p>
-
-                  <Button className="w-[260px] h-auto px-8 py-4 bg-[#0ab5aa] rounded-[80px] [font-family:'Lexend',Helvetica] font-bold text-white text-base">
-                    Descubra como funciona
-                  </Button>
-                </div>
-
-                <div className="flex-1 flex justify-end">
-                  <img
-                    className="w-[638px] h-[455px] object-cover"
-                    alt="Woman"
-                    src="/figmaAssets/woman-4.png"
-                  />
-                </div>
-              </div>
-
-              <img
-                className="absolute w-[34px] h-[34px] top-[205px] left-[420px]"
-                alt="Component"
-                src="/figmaAssets/component-5.svg"
-              />
-            </section>
+            <AboutLinaPaySection />
 
             {/* Testimonials Section */}
             <section className="w-full h-[638px] rounded-[40px_40px_0px_0px] bg-[linear-gradient(0deg,rgba(251,250,250,1)_0%,rgba(152,216,211,1)_100%)] relative">
