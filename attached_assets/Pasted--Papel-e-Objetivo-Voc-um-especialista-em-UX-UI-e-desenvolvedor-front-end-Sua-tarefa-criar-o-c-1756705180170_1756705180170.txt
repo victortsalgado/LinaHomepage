@@ -1,0 +1,42 @@
+# Papel e Objetivo
+Você é um especialista em UX/UI e desenvolvedor front-end. Sua tarefa é criar o componente `BlogSection.tsx`, que funcionará como um "Painel de Insights" para a empresa Lina.
+
+# Contexto Estratégico
+Esta seção deve posicionar a Lina como uma líder de pensamento (*thought leader*) no universo Open Finance. O objetivo é apresentar conteúdo de alto valor que demonstre expertise e resultados práticos, atraindo um público qualificado. O design deve ser limpo, profissional e seguir o padrão rítmico da página, utilizando um fundo claro.
+
+# Instruções de Implementação
+
+1.  **Estrutura Principal:**
+    * Crie uma seção com um fundo claro (`bg-white` ou `bg-gray-50`).
+    * Adicione um título (H2) centralizado: "Acompanhe nosso Blog e fique por dentro de tudo o que acontece no Universo Open".
+    * Abaixo do título, crie uma grade responsiva que exiba 3 cards de conteúdo lado a lado em telas de desktop (`grid-cols-3`), e que se empilhe verticalmente em telas mobile.
+
+2.  **Design dos Cards de Conteúdo:**
+    * Cada card deve ter um design limpo e moderno, com bordas bem arredondadas (`rounded-2xl` ou `rounded-3xl`), um fundo branco (`bg-white`) e uma leve sombra que se intensifica no `hover` (`shadow-lg`, `hover:shadow-xl`).
+    * O card inteiro deve ser um link clicável para o artigo.
+    * Adicione um efeito de transição suave (`transition-all duration-300`) e um leve movimento para cima no `hover` (`hover:-translate-y-2`) para incentivar a interação.
+
+3.  **Estrutura de Conteúdo de Cada Card:**
+    * **Imagem de Destaque:** No topo do card, inclua uma imagem de destaque com bordas arredondadas na parte superior. A imagem deve ter uma animação de zoom sutil no `hover` do card (`group-hover:scale-110`).
+    * **Tag de Categoria:** Sobreposta à imagem, no canto superior esquerdo, adicione uma "tag" com a categoria do post (ex: "PIX AUTOMÁTICO", "OPEN FINANCE").
+    * **Área de Texto:** Abaixo da imagem, adicione um `padding` (ex: `p-6`).
+    * **Título (H3):** O título do artigo, com a fonte 'Lexend'.
+    * **Data de Publicação:** Uma data fictícia para simular a publicação.
+    * **Descrição Curta:** Um parágrafo breve que resume o conteúdo do artigo.
+
+4.  **Conteúdo dos Cards (Use estes textos):**
+    * **Card 1:**
+        * **Categoria:** PIX 2.0
+        * **Título:** "Pix Automático: como funciona e por que adotar na sua empresa"
+        * **Descrição:** "Descubra como o PIX Automático está revolucionando pagamentos recorrentes e trazendo benefícios para empresas e consumidores."
+    * **Card 2:**
+        * **Categoria:** OPEN FINANCE
+        * **Título:** "Pix e Open Finance: Remodelando o Mercado Financeiro"
+        * **Descrição:** "Entenda a sinergia entre as duas maiores inovações do sistema financeiro e como sua empresa pode se beneficiar."
+    * **Card 3:**
+        * **Categoria:** OPEN INSURANCE
+        * **Título:** "Open Insurance: O Futuro dos Seguros no Brasil Digital"
+        * **Descrição:** "Explore como o compartilhamento de dados está criando um novo ecossistema de seguros mais justo e personalizado."
+
+5.  **Botão Final (CTA):**
+    * Abaixo da grade de cards, adicione um botão centralizado com o texto "Ver todos os artigos".
