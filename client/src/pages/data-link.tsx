@@ -16,8 +16,8 @@ export default function DataLink(): JSX.Element {
         <Header />
         <main>
           <DataLinkHeroSection />
-          <ValuePropositionSection />
           <SocialProofSection />
+          <ValuePropositionSection />
           {/* Other sections can be added here later */}
         </main>
         <Footer />
