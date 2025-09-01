@@ -1,0 +1,34 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é **refatorar completamente** o componente de prova social, alinhando-o a um novo e exigente design de referência, focando em layout, tipografia e elementos visuais específicos.
+
+**Missão:** Refatorar o componente `JsrSocialProofSection.tsx` para replicar o design da nova imagem de referência fornecida, com um layout de duas colunas, foco na tipografia e um elemento visual único para a equipe.
+
+**Porquê Estratégico:** A prova social é um pilar da credibilidade. O novo design proposto eleva a sofisticação da seção, tornando o depoimento mais impactante e visualmente distinto, o que é crucial para persuadir decisores em um mercado competitivo.
+
+**Requisitos e Diretrizes para Refatoração:**
+
+1.  **Arquivo a ser Modificado:** `src/components/views/jsr/sections/JsrSocialProofSection.tsx`.
+
+2.  **Estrutura da Seção:**
+    * A seção deve ter um fundo claro, como o `bg-gradient-to-br from-[#E0F3F3] to-[#C9E5E5]` da imagem de referência, criando um gradiente sutil.
+    * Mantenha o layout principal de **duas colunas (`grid lg:grid-cols-2`)** para o título e o depoimento.
+
+3.  **Coluna da Esquerda (Título e CTA):**
+    * **Título da Seção:** `Resultados validados por quem já usa` (com a palavra "validados" em uma cor diferente, `text-[var(--lina-cyan)]` ou similar, e a estrela).
+    * Abaixo do título, adicione um elemento visual de três avatares sobrepostos para a equipe (referência visual da imagem). Use placeholders ou avatares genéricos por enquanto.
+    * Adicione um botão de CTA com o texto "Descubra como funciona", seguindo o novo padrão de botão (fundo `lina-cyan` sólido, texto branco, `rounded-full`).
+
+4.  **Coluna da Direita (Card de Depoimento):**
+    * Crie um card de depoimento com o fundo escuro (`bg-[var(--lina-dark)]`), bordas arredondadas e sombra, conforme a referência.
+    * **Ícone de Aspas:** Posicione o ícone de aspas (cor `lina-cyan` ou similar) no canto superior direito do card, de forma proeminente.
+    * **Texto do Depoimento:** "Estamos com a Lina desde o início do Open Finance e a nossa parceria sempre foi muito forte. Com a Lina, o BRP foi um dos primeiros bancos a obter a certificação funcional na Fase 1 e desde então sempre estivemos muito próximos dos diretores e corpo técnico, que nos dão todo o apoio e suporte necessários. Estamos muito satisfeitos com a parceria."
+    * **Dados do Autor:** Inclua a imagem do autor (placeholder por enquanto), nome ("Marcelo Bueno") e cargo ("Gerente de Controladoria e Compliance, BRP") abaixo do depoimento.
+
+5.  **Barra de Logos de Clientes:**
+    * Mantenha o componente `<InfiniteSlider />` abaixo da área principal de duas colunas.
+    * **Logos a serem exibidos:** BRASILPREV, BRASILCAP, brp, BRB, Iugu, SEMEAR.
+
+6.  **Animação e Estilo:**
+    * **Animação:** Mantenha o hook `useScrollReveal` e as animações `framer-motion` para entrada dos elementos.
+    * **Estilo Geral:** A tipografia, espaçamento e proporções devem replicar a imagem de referência com a máxima fidelidade. Use as variáveis de cores e fontes do projeto.
+
+**Entregável:** O código-fonte **completamente refatorado** do componente `JsrSocialProofSection.tsx`, alinhado à nova referência visual e funcional.

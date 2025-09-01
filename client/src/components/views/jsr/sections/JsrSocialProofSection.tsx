@@ -1,6 +1,7 @@
 "use client";
 
-import { Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
@@ -66,7 +67,7 @@ export default function JsrSocialProofSection() {
   return (
     <section 
       ref={sectionRef}
-      className="w-full bg-gray-50 py-16 lg:py-24"
+      className="w-full bg-gradient-to-br from-[#E0F3F3] to-[#C9E5E5] py-16 lg:py-24"
       data-testid="section-jsr-social-proof"
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
@@ -76,77 +77,159 @@ export default function JsrSocialProofSection() {
           animate={sectionVisible ? "visible" : "hidden"}
           className="space-y-16"
         >
-          {/* Title */}
-          <motion.div 
-            variants={itemVariants}
-            className="text-center"
-          >
-            <h2 
-              className="text-3xl lg:text-4xl xl:text-5xl font-medium mb-6"
-              style={{ fontFamily: 'Lexend, sans-serif' }}
-              data-testid="heading-jsr-social-proof-title"
+          {/* Main Two-Column Layout */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Column - Title, Team Avatars, and CTA */}
+            <motion.div 
+              variants={itemVariants}
+              className="space-y-8"
             >
-              <span className="text-[#606060]">Resultados </span>
-              <span className="text-[var(--lina-cyan)]">validados </span>
-              <span className="text-[#606060]">por quem já usa</span>
-            </h2>
-          </motion.div>
+              {/* Title with Star */}
+              <div>
+                <h2 
+                  className="text-3xl lg:text-4xl xl:text-5xl font-medium mb-6 flex flex-wrap items-center gap-3"
+                  style={{ fontFamily: 'Lexend, sans-serif' }}
+                  data-testid="heading-jsr-social-proof-title"
+                >
+                  <span className="text-[#606060]">Resultados</span>
+                  <span className="text-[var(--lina-cyan)]">validados</span>
+                  <Star 
+                    className="w-8 h-8 lg:w-10 lg:h-10 text-[var(--lina-cyan)] fill-current"
+                    data-testid="icon-star"
+                  />
+                  <span className="text-[#606060]">por quem já usa</span>
+                </h2>
+              </div>
 
-          {/* Testimonial Card */}
-          <motion.div 
-            variants={itemVariants}
-            className="flex justify-center"
-          >
-            <Card 
-              className="max-w-4xl w-full bg-[#003a38] text-white rounded-2xl shadow-lg border-0"
-              data-testid="card-jsr-testimonial"
-            >
-              <CardContent className="p-8 lg:p-12">
-                <div className="space-y-6">
-                  {/* Quote Icon */}
-                  <div className="flex justify-center lg:justify-start">
-                    <div className="w-12 h-12 bg-[var(--lina-cyan)] rounded-full flex items-center justify-center">
-                      <Quote 
-                        className="w-6 h-6 text-[#003a38]"
-                        data-testid="icon-jsr-quote"
-                      />
-                    </div>
+              {/* Team Avatars */}
+              <motion.div 
+                variants={itemVariants}
+                className="flex items-center space-x-4"
+                data-testid="section-team-avatars"
+              >
+                <div className="flex -space-x-3">
+                  {/* Avatar 1 */}
+                  <div className="w-12 h-12 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                    <span 
+                      className="text-white font-bold text-sm"
+                      style={{ fontFamily: 'Lexend, sans-serif' }}
+                    >
+                      MB
+                    </span>
                   </div>
-                  
-                  {/* Testimonial Text */}
-                  <blockquote 
-                    className="text-lg lg:text-xl leading-relaxed font-light text-center lg:text-left"
-                    style={{ fontFamily: 'Lexend, sans-serif' }}
-                    data-testid="text-jsr-testimonial-quote"
-                  >
-                    "Estamos com a Lina desde o início do Open Finance e a nossa parceria sempre foi muito forte. Com a Lina, o BRP foi um dos primeiros bancos a obter a certificação funcional na Fase 1 e desde então sempre estivemos muito próximos dos diretores e corpo técnico, que nos dão todo o apoio e suporte necessários. Estamos muito satisfeitos com a parceria."
-                  </blockquote>
-
-                  {/* Author */}
-                  <div className="flex justify-center lg:justify-start">
-                    <div className="text-center lg:text-left">
-                      <div 
-                        className="font-bold text-white text-lg"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid="text-jsr-testimonial-author"
-                      >
-                        Marcelo Bueno
-                      </div>
-                      <div 
-                        className="font-light text-gray-300 text-sm"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid="text-jsr-testimonial-role"
-                      >
-                        BRP
-                      </div>
-                    </div>
+                  {/* Avatar 2 */}
+                  <div className="w-12 h-12 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                    <span 
+                      className="text-white font-bold text-sm"
+                      style={{ fontFamily: 'Lexend, sans-serif' }}
+                    >
+                      LC
+                    </span>
+                  </div>
+                  {/* Avatar 3 */}
+                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-[var(--lina-cyan)] rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                    <span 
+                      className="text-white font-bold text-sm"
+                      style={{ fontFamily: 'Lexend, sans-serif' }}
+                    >
+                      RS
+                    </span>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+                <p 
+                  className="text-sm text-gray-600 ml-4"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  data-testid="text-team-info"
+                >
+                  +100 clientes satisfeitos
+                </p>
+              </motion.div>
 
-          {/* Client Logos */}
+              {/* CTA Button */}
+              <motion.div variants={itemVariants}>
+                <Button
+                  size="lg"
+                  className="bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-white font-semibold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  style={{ fontFamily: 'Lexend, sans-serif' }}
+                  data-testid="button-jsr-social-proof-cta"
+                >
+                  Descubra como funciona
+                  <motion.div
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="ml-2"
+                  >
+                    →
+                  </motion.div>
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Column - Testimonial Card */}
+            <motion.div 
+              variants={itemVariants}
+              className="lg:pl-8"
+            >
+              <Card 
+                className="w-full bg-[var(--lina-dark)] text-white rounded-2xl shadow-xl border-0 relative overflow-hidden"
+                data-testid="card-jsr-testimonial"
+              >
+                <CardContent className="p-8 lg:p-10 relative">
+                  {/* Quote Icon - Top Right */}
+                  <div className="absolute top-6 right-6">
+                    <Quote 
+                      className="w-10 h-10 text-[var(--lina-cyan)]"
+                      data-testid="icon-jsr-quote"
+                    />
+                  </div>
+                  
+                  <div className="space-y-6 pr-8">
+                    {/* Testimonial Text */}
+                    <blockquote 
+                      className="text-lg lg:text-xl leading-relaxed font-light"
+                      style={{ fontFamily: 'Lexend, sans-serif' }}
+                      data-testid="text-jsr-testimonial-quote"
+                    >
+                      "Estamos com a Lina desde o início do Open Finance e a nossa parceria sempre foi muito forte. Com a Lina, o BRP foi um dos primeiros bancos a obter a certificação funcional na Fase 1 e desde então sempre estivemos muito próximos dos diretores e corpo técnico, que nos dão todo o apoio e suporte necessários. Estamos muito satisfeitos com a parceria."
+                    </blockquote>
+
+                    {/* Author Information */}
+                    <div className="flex items-center space-x-4 pt-4">
+                      {/* Author Avatar */}
+                      <div className="w-14 h-14 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-full flex items-center justify-center">
+                        <span 
+                          className="text-[var(--lina-dark)] font-bold text-lg"
+                          style={{ fontFamily: 'Lexend, sans-serif' }}
+                        >
+                          MB
+                        </span>
+                      </div>
+                      
+                      <div className="text-left">
+                        <div 
+                          className="font-bold text-white text-lg"
+                          style={{ fontFamily: 'Inter, sans-serif' }}
+                          data-testid="text-jsr-testimonial-author"
+                        >
+                          Marcelo Bueno
+                        </div>
+                        <div 
+                          className="font-light text-gray-300 text-base"
+                          style={{ fontFamily: 'Inter, sans-serif' }}
+                          data-testid="text-jsr-testimonial-role"
+                        >
+                          Gerente de Controladoria e Compliance, BRP
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+
+          {/* Client Logos Slider */}
           <motion.div 
             variants={itemVariants}
             className="relative overflow-hidden"
@@ -174,8 +257,8 @@ export default function JsrSocialProofSection() {
             </InfiniteSlider>
             
             {/* Gradient overlays for fade in/out effect */}
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-50 to-transparent pointer-events-none z-10" />
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none z-10" />
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#E0F3F3] to-transparent pointer-events-none z-10" />
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#C9E5E5] to-transparent pointer-events-none z-10" />
           </motion.div>
         </motion.div>
       </div>
