@@ -1,0 +1,16 @@
+{
+  "name": "lina-blog-sanity",
+  "version": "1.0.0",
+  "description": "Sanity Studio para o blog da Lina",
+  "main": "sanity.config.ts",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "sanity": "^3.0.0",
+    "@sanity/vision": "^3.0.0"
+  }
+}

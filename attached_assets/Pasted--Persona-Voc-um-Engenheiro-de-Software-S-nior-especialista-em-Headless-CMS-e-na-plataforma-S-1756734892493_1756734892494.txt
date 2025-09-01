@@ -1,0 +1,34 @@
+**Persona:** Você é um Engenheiro de Software Sênior, especialista em Headless CMS e na plataforma Sanity.io. Sua tarefa é inicializar e configurar um novo projeto Sanity, criando os modelos de conteúdo (schemas) necessários para um blog de uma empresa de tecnologia.
+
+**Missão:** Configurar o backend do Headless CMS no Sanity.io para o blog da Lina, incluindo a inicialização do projeto e a definição do schema para os artigos.
+
+**Porquê Estratégico:** Uma modelagem de conteúdo bem-estruturada no CMS é a fundação para uma gestão de conteúdo eficiente e escalável. Ao definir todos os campos necessários agora, garantimos que a equipe de marketing da Lina terá autonomia total para criar e gerenciar posts de blog ricos em informação e otimizados para SEO.
+
+**Requisitos e Diretrizes:**
+
+1.  **Inicialização do Projeto (conforme sua recomendação anterior):**
+    * Execute os seguintes comandos no terminal do projeto Replit:
+      ```bash
+      # Instalar o cliente Sanity e o image-url helper
+      npm install @sanity/client @sanity/image-url
+
+      # Instalar o Sanity CLI globalmente e iniciar o projeto
+      npm install -g @sanity/cli
+      sanity init
+      ```
+    * Siga as instruções do `sanity init` para conectar a um novo projeto Sanity.
+
+2.  **Modelagem de Conteúdo (Schema Definition):**
+    * Dentro da estrutura do projeto Sanity recém-criado, defina um novo tipo de schema chamado `post` (Artigo do Blog).
+    * O schema `post` deve conter os seguintes campos:
+        * **`title`**: (string) - Título principal do artigo (H1).
+        * **`slug`**: (slug) - URL única do post (com `source: 'title'`).
+        * **`mainImage`**: (image) - Imagem de destaque do artigo, com um campo para `alt` text.
+        * **`category`**: (string) - Categoria do post, com uma lista de opções pré-definidas: "DataLink", "LinaPay", "JSR", "Institucional".
+        * **`excerpt`**: (text) - Resumo/excerto do artigo para os cards de preview.
+        * **`body`**: (blockContent) - Editor de Rich Text para o conteúdo completo do artigo.
+        * **`publishedAt`**: (datetime) - Data de publicação.
+        * **`seoTitle`**: (string) - Campo para o Meta Title (SEO).
+        * **`seoDescription`**: (string) - Campo para a Meta Description (SEO).
+
+**Entregável:** Um projeto Sanity inicializado e configurado dentro do Replit, com o schema "Artigo do Blog" (`post`) criado e pronto para que o conteúdo dos 5 artigos migrados seja inserido.
