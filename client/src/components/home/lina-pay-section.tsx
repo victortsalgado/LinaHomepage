@@ -33,10 +33,11 @@ export default function LinaPaySection() {
     {
       id: 'automatico',
       title: "Cobranças Inteligentes, Receita Previsível",
+      subtitle: "O DDA turbinado, com muito mais liberdade.",
       benefits: [
         "Reduz a inadimplência em cobranças recorrentes.",
         "Garante o fluxo de caixa com pagamentos automáticos.",
-        "Oferece mais liberdade que o débito automático tradicional (DDA turbinado)."
+        "Oferece mais liberdade que o débito automático tradicional."
       ],
       imageSrc: null,
       imageAlt: "PIX Automático - Pagamentos recorrentes automatizados"
@@ -44,9 +45,10 @@ export default function LinaPaySection() {
     {
       id: 'biometria',
       title: "Checkout em 1 Toque, Sem Fricção",
+      subtitle: "Aumente sua conversão no e-commerce com pagamentos por biometria.",
       benefits: [
-        "Aumenta a conversão com checkout de 1 toque, sem fricção.",
         "Elimina a necessidade de senhas e redirecionamentos para outros apps.",
+        "Aumenta a conversão com uma experiência de checkout sem atritos.",
         "Garante segurança máxima com autenticação biométrica certificada."
       ],
       imageSrc: null,
@@ -213,11 +215,14 @@ export default function LinaPaySection() {
                       transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
                       className="relative z-10 flex-1"
                     >
-                      <div className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl h-96 lg:h-[28rem] flex flex-col justify-center">
-                        <div>
-                          <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-6">
+                      <div className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl h-96 lg:h-[28rem] flex flex-col justify-start">
+                        <div className="pt-4 lg:pt-8">
+                          <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-3">
                             {activeContent.title}
                           </h3>
+                          <p className="text-gray-300 text-base lg:text-lg mb-6 font-sans italic">
+                            {activeContent.subtitle}
+                          </p>
                           <ul className="space-y-4">
                             {activeContent.benefits.map((benefit, index) => (
                               <li key={index} className="flex items-start gap-3">

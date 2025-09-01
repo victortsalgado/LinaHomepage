@@ -1,0 +1,31 @@
+# Papel e Objetivo
+Você é um especialista em UX/UI e desenvolvedor front-end sênior com foco em design de informação e layout. Sua tarefa é fazer o ajuste final no layout e no conteúdo dos painéis de texto do componente `LinaPaySection.tsx`.
+
+# Contexto Estratégico
+O layout do "Painel Interativo" está funcionando, mas precisamos refinar a apresentação do conteúdo para melhorar o equilíbrio visual, aproveitar melhor o espaço vertical e aumentar a clareza da informação.
+
+# Instruções de Refatoramento
+
+1.  **Ajuste o Layout do Painel de Texto:**
+    * Localize o "card" de texto deslizante (o painel da direita).
+    * Altere seu layout para que o conteúdo interno (título, subtítulo, bullet points) seja alinhado ao topo, em vez de centralizado. Utilize `flexbox` com as classes `flex flex-col justify-center` no container do painel para garantir que ele ocupe toda a altura, mas o conteúdo flua a partir de cima.
+
+2.  **Reestruture o Conteúdo (Adicionar Subtítulo):**
+    * Para cada funcionalidade ("Pix Automático" e "Pix Biometria"), adicione um subtítulo entre o título principal e a lista de bullet points.
+    * **Para 'Pix Automático', utilize a seguinte estrutura e textos:**
+        * **Título (H3):** "Cobranças Inteligentes, Receita Previsível"
+        * **Subtítulo:** "O DDA turbinado, com muito mais liberdade."
+        * **Bullet Points:**
+            * Reduz a inadimplência em cobranças recorrentes.
+            * Garante o fluxo de caixa com pagamentos automáticos.
+            * Oferece mais liberdade que o débito automático tradicional.
+    * **Para 'Pix Biometria', utilize a seguinte estrutura e textos:**
+        * **Título (H3):** "Checkout em 1 Toque, Sem Fricção"
+        * **Subtítulo:** "Aumente sua conversão no e-commerce com pagamentos por biometria."
+        * **Bullet Points:**
+            * Elimina a necessidade de senhas e redirecionamentos para outros apps.
+            * Aumenta a conversão com uma experiência de checkout sem atritos.
+            * Garante segurança máxima com autenticação biométrica certificada.
+
+3.  **Estilo dos Bullet Points:**
+    * Certifique-se de que cada item da lista de bullet points seja precedido por um ícone de "check" (`CheckCircle2`) da biblioteca `lucide-react`, com a cor `var(--lina-cyan)`.
