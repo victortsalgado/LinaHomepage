@@ -15,7 +15,7 @@ export default function AboutLinaPaySection() {
   });
 
   return (
-    <section className="w-full h-[737px] bg-[#f8f3f3]/40 rounded-[0px_0px_40px_40px] relative">
+    <section className="w-full h-[737px] bg-[#f8f3f3]/70 rounded-[0px_0px_40px_40px] relative">
       <div className="grid lg:grid-cols-2 gap-12 items-start px-6 lg:px-[252px] pt-[144px]">
         
         {/* Left Column - Content */}
