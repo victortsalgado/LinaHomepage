@@ -48,14 +48,15 @@ export function InfiniteSlider({
         },
       })
     } else {
-      controls = animate(translation, [from, to], {
+      // Create truly infinite loop without jumping back
+      controls = animate(translation, -contentSize, {
         ease: 'linear',
         duration: currentDuration,
         repeat: Infinity,
         repeatType: 'loop',
         repeatDelay: 0,
         onRepeat: () => {
-          translation.set(from)
+          translation.set(0)
         },
       })
     }
@@ -99,6 +100,7 @@ export function InfiniteSlider({
         }}
         ref={ref}
       >
+        {children}
         {children}
         {children}
       </motion.div>
