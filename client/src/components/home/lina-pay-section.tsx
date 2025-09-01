@@ -133,8 +133,8 @@ export default function LinaPaySection() {
               </label>
             </div>
 
-            {/* Dynamic Content Area */}
-            <div className="relative mb-8">
+            {/* Interactive Stage - Dynamic Content Area */}
+            <div className="relative mb-8 min-h-[300px] lg:min-h-[400px]">
               {/* Glow Effect Behind Content */}
               <div 
                 className="absolute inset-0 -z-10"
@@ -146,62 +146,122 @@ export default function LinaPaySection() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selection}
-                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -30, scale: 0.95 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="relative bg-white/8 backdrop-blur-lg border border-cyan-400/30 p-8 rounded-2xl shadow-inner"
-                  data-testid={`content-pix-${selection}`}
+                  className="relative w-full h-full"
+                  data-testid={`stage-pix-${selection}`}
                 >
-                  {/* Holographic Spotlight Effect */}
-                  <div 
-                    className="absolute inset-0 -z-10 spotlight-effect"
-                    style={{
-                      background: `radial-gradient(ellipse 120% 80% at center, rgba(0, 239, 207, 0.1) 0%, transparent 60%)`
-                    }}
-                  ></div>
-                  
-                  {/* Two-Column Grid Layout */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                    {/* Image Column - Left on desktop, Top on mobile */}
-                    <div className="flex justify-center lg:justify-start order-1 lg:order-1">
-                      <div className="w-full max-w-xs lg:max-w-sm">
-                        {activeContent.imageSrc ? (
-                          <img 
-                            src={activeContent.imageSrc}
-                            alt={activeContent.imageAlt}
-                            className="w-full h-auto rounded-xl shadow-lg border border-cyan-400/20"
-                            data-testid={`img-pix-${selection}`}
-                          />
-                        ) : (
-                          <div 
-                            className="w-full aspect-square bg-gradient-to-br from-cyan-400/10 to-cyan-600/5 rounded-xl border border-cyan-400/30 flex items-center justify-center"
-                            data-testid={`placeholder-pix-${selection}`}
-                          >
-                            <div className="text-center">
-                              {selection === 'automatico' ? (
-                                <Repeat size={48} className="text-cyan-400/60 mx-auto mb-2" />
-                              ) : (
-                                <Fingerprint size={48} className="text-cyan-400/60 mx-auto mb-2" />
-                              )}
-                              <p className="text-cyan-400/60 text-sm font-medium">
-                                {activeContent.title}
-                              </p>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
+                  {/* Coordinated Animation Layout */}
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
                     
-                    {/* Text Content Column - Right on desktop, Bottom on mobile */}
-                    <div className="text-center lg:text-left order-2 lg:order-2">
-                      <h3 className="text-cyan-400 font-lexend font-semibold text-2xl lg:text-3xl mb-4">
-                        {activeContent.title}
-                      </h3>
-                      <p className="text-gray-300 text-lg leading-relaxed font-sans">
-                        {activeContent.description}
-                      </p>
-                    </div>
+                    {/* PIX Automático Layout */}
+                    {selection === 'automatico' && (
+                      <>
+                        {/* Image slides in from LEFT */}
+                        <motion.div
+                          initial={{ x: -100, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: -100, opacity: 0 }}
+                          transition={{ duration: 0.8, ease: "easeOut" }}
+                          className="flex-1 flex justify-center lg:justify-start"
+                        >
+                          <div className="w-full max-w-xs lg:max-w-sm">
+                            {activeContent.imageSrc ? (
+                              <img 
+                                src={activeContent.imageSrc}
+                                alt={activeContent.imageAlt}
+                                className="w-full h-auto rounded-xl shadow-lg border border-cyan-400/20"
+                                data-testid={`img-pix-${selection}`}
+                              />
+                            ) : (
+                              <div 
+                                className="w-full aspect-square bg-gradient-to-br from-cyan-400/10 to-cyan-600/5 rounded-xl border border-cyan-400/30 flex items-center justify-center"
+                                data-testid={`placeholder-pix-${selection}`}
+                              >
+                                <div className="text-center">
+                                  <Repeat size={48} className="text-cyan-400/60 mx-auto mb-2" />
+                                  <p className="text-cyan-400/60 text-sm font-medium">
+                                    {activeContent.title}
+                                  </p>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </motion.div>
+                        
+                        {/* Text Panel slides in from RIGHT and overlaps */}
+                        <motion.div
+                          initial={{ x: 100, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: 100, opacity: 0 }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                          className="flex-1 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-1/2 lg:z-10"
+                        >
+                          <div className="backdrop-blur-lg bg-white/5 border border-cyan-400/20 p-6 lg:p-8 rounded-2xl shadow-2xl">
+                            <h3 className="text-cyan-400 font-lexend font-semibold text-2xl lg:text-3xl mb-4">
+                              {activeContent.title}
+                            </h3>
+                            <p className="text-gray-300 text-lg leading-relaxed font-sans">
+                              {activeContent.description}
+                            </p>
+                          </div>
+                        </motion.div>
+                      </>
+                    )}
+                    
+                    {/* PIX Biometria Layout */}
+                    {selection === 'biometria' && (
+                      <>
+                        {/* Text Panel slides in from LEFT and overlaps */}
+                        <motion.div
+                          initial={{ x: -100, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: -100, opacity: 0 }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                          className="flex-1 lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-1/2 lg:z-10"
+                        >
+                          <div className="backdrop-blur-lg bg-white/5 border border-cyan-400/20 p-6 lg:p-8 rounded-2xl shadow-2xl">
+                            <h3 className="text-cyan-400 font-lexend font-semibold text-2xl lg:text-3xl mb-4">
+                              {activeContent.title}
+                            </h3>
+                            <p className="text-gray-300 text-lg leading-relaxed font-sans">
+                              {activeContent.description}
+                            </p>
+                          </div>
+                        </motion.div>
+                        
+                        {/* Image slides in from RIGHT */}
+                        <motion.div
+                          initial={{ x: 100, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: 100, opacity: 0 }}
+                          transition={{ duration: 0.8, ease: "easeOut" }}
+                          className="flex-1 flex justify-center lg:justify-end"
+                        >
+                          <div className="w-full max-w-xs lg:max-w-sm">
+                            {activeContent.imageSrc ? (
+                              <img 
+                                src={activeContent.imageSrc}
+                                alt={activeContent.imageAlt}
+                                className="w-full h-auto rounded-xl shadow-lg border border-cyan-400/20"
+                                data-testid={`img-pix-${selection}`}
+                              />
+                            ) : (
+                              <div 
+                                className="w-full aspect-square bg-gradient-to-br from-cyan-400/10 to-cyan-600/5 rounded-xl border border-cyan-400/30 flex items-center justify-center"
+                                data-testid={`placeholder-pix-${selection}`}
+                              >
+                                <div className="text-center">
+                                  <Fingerprint size={48} className="text-cyan-400/60 mx-auto mb-2" />
+                                  <p className="text-cyan-400/60 text-sm font-medium">
+                                    {activeContent.title}
+                                  </p>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </motion.div>
+                      </>
+                    )}
+                    
                   </div>
                 </motion.div>
               </AnimatePresence>
