@@ -15,45 +15,8 @@ import Footer from "@/components/layout/footer";
 import LinaPayHeroSection from "@/components/views/lina-pay/sections/LinaPayHeroSection";
 import AboutLinaPaySection from "@/components/views/lina-pay/sections/AboutLinaPaySection";
 import SocialProofSection from "@/components/views/lina-pay/sections/SocialProofSection";
+import DifferentiatorsSection from "@/components/views/lina-pay/sections/DifferentiatorsSection";
 
-const featureCards = [
-  {
-    icon: "/figmaAssets/icones-com-efeito.svg",
-    title: "Pix por biometria no e-commerce",
-    description:
-      "Autenticação facial ou digital direto no check-out, sem redirecionamento para o app do banco.",
-  },
-  {
-    icon: "/figmaAssets/icones-com-efeito-1.svg",
-    title: "Pix por aproximação em carteiras digitais",
-    description:
-      "Pagamentos via NFC com celulares e wearables, como já fazemos com cartões físicos.",
-  },
-  {
-    icon: "/figmaAssets/icones-com-efeito-4.svg",
-    title: "Menor custo por transação do mercado",
-    description:
-      "Reduza drasticamente os custos com taxas de boletos e cartões, sem perder o controle dos pagamentos.",
-  },
-  {
-    icon: "/figmaAssets/icones-com-efeito-2.svg",
-    title: "Modelo comercial flexível e escalável",
-    description:
-      "Adapte o uso do Lina Pay ao crescimento do seu negócio, com condições que acompanham sua operação e necessidades técnicas.",
-  },
-  {
-    icon: "/figmaAssets/icones-com-efeito-3.svg",
-    title: "Integração simplificada e rápida com APIs",
-    description:
-      "Tempo de homologação otimizado, com suporte dedicado e documentação robusta.",
-  },
-  {
-    icon: "/figmaAssets/icones-com-efeito-5.svg",
-    title: "Banco Central e certificado na JSR Open Finance",
-    description:
-      "Segurança regulatória e confiança técnica, pronto para escalar desde o primeiro dia.",
-  },
-];
 
 const productFeatures = [
   {
@@ -165,53 +128,8 @@ export default function LinaPay(): JSX.Element {
               />
             </section>
 
-            {/* Features Grid Section */}
-            <section className="w-full bg-white rounded-[0px_0px_40px_40px] py-[115px] relative">
-              <div className="px-[252px]">
-                <div className="text-center mb-16">
-                  <h2 className="[font-family:'Lexend',Helvetica] font-medium text-[40px] leading-[56px] mb-4">
-                    <span className="text-[#606060]">
-                      O que torna o Lina Pay{" "}
-                    </span>
-                    <span className="text-[#0ab5aa]">diferente</span>
-                  </h2>
-                  <img
-                    className="inline-block w-[34px] h-[34px] ml-4"
-                    alt="Component"
-                    src="/figmaAssets/component-5.svg"
-                  />
-                </div>
-
-                <div className="grid grid-cols-3 gap-6">
-                  {featureCards.map((feature, index) => (
-                    <Card
-                      key={index}
-                      className="w-[360px] h-[308px] bg-white rounded-2xl shadow-[4px_4px_8px_#0ab5aa1a]"
-                    >
-                      <CardContent className="p-6 text-center">
-                        <img
-                          className="w-[65px] h-[65px] mx-auto mb-4"
-                          alt="Icon"
-                          src={feature.icon}
-                        />
-                        <h3 className="[font-family:'Lexend',Helvetica] font-bold text-[#606060] text-base mb-4">
-                          {feature.title}
-                        </h3>
-                        <p className="[font-family:'Lexend',Helvetica] font-light text-[#606060] text-base leading-6">
-                          {feature.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-
-                <div className="text-center mt-12">
-                  <Button className="w-[388px] h-auto px-8 py-4 bg-[#0ab5aa] rounded-[80px] [font-family:'Lexend',Helvetica] font-bold text-white text-base">
-                    Veja nossos diferenciais na prática
-                  </Button>
-                </div>
-              </div>
-            </section>
+            {/* Differentiators Section */}
+            <DifferentiatorsSection />
 
             {/* Product Features Section */}
             <section className="w-full bg-white py-[115px] relative">
