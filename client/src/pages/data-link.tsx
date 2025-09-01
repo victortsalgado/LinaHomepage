@@ -21,9 +21,9 @@ export default function DataLink(): JSX.Element {
           <DataLinkHeroSection />
           <SocialProofSection />
           <ValuePropositionSection />
-          <SegmentsSection />
           <ApisSection />
           <IntegrationSection />
+          <SegmentsSection />
           {/* Other sections can be added here later */}
         </main>
         <Footer />
