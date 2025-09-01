@@ -1,0 +1,34 @@
+# Papel e Objetivo
+Você é um desenvolvedor front-end sênior, especialista em criar componentes de rodapé (footers) B2B que sejam informativos, profissionais e visualmente alinhados à marca. Sua tarefa é criar o componente `Footer.tsx`.
+
+# Contexto Estratégico
+O footer é o fechamento da experiência do usuário na página. Ele deve consolidar as informações mais importantes da empresa, fornecer links de navegação essenciais e reforçar a credibilidade da marca Lina. O design deve ser escuro, seguindo o nosso padrão rítmico.
+
+# Instruções de Implementação
+
+1.  **Estrutura Principal:**
+    * Crie uma seção de `<footer>` com um fundo escuro e texturizado (`var(--lina-dark)`).
+    * O layout deve ser dividido em múltiplas colunas (idealmente 4 colunas em desktop) que se empilham de forma organizada em telas mobile.
+
+2.  **Conteúdo das Colunas:**
+    * **Coluna 1 (Identidade da Marca):**
+        * Logo da LINA em destaque.
+        * Informações de contato: Telefone, Endereço e E-mail.
+        * Ícones de redes sociais (LinkedIn, Twitter/X, YouTube, etc.) com links para os perfis da Lina.
+    * **Coluna 2 (Produtos/Soluções):**
+        * Título da coluna: "Produtos"
+        * Lista de links para as páginas principais: "Data Link", "Lina Pay", "JSR", "Pix Automático".
+    * **Coluna 3 (Empresa):**
+        * Título da coluna: "Empresa"
+        * Lista de links para páginas institucionais: "Sobre nós", "Carreira", "Blog", "Contato".
+    * **Coluna 4 (Legal):**
+        * Título da coluna: "Legal"
+        * Lista de links para páginas de conformidade: "Política de Privacidade", "Termos de Uso", "Política de Cookies".
+
+3.  **Barra de Copyright (Inferior):**
+    * Abaixo das colunas, crie uma barra de rodapé com uma borda superior sutil (`border-t border-gray-700`).
+    * Nesta barra, inclua o texto de copyright: "© 2025 LINA. Todos os direitos reservados." e o CNPJ da empresa.
+
+4.  **Estilo e Tipografia:**
+    * Utilize a fonte 'Lexend' para os títulos das colunas e a fonte 'Inter' para os links e textos.
+    * As cores devem ser de alto contraste (ex: `text-white` para títulos, `text-gray-300` para links, com um efeito `hover:text-lina-cyan`).
