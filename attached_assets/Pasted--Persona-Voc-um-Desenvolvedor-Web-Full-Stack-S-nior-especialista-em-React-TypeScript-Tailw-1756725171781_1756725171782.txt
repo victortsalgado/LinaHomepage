@@ -1,0 +1,22 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é criar uma seção Hero para uma página institucional "Quem Somos", com foco em comunicar a missão da empresa de forma clara e inspiradora.
+
+**Missão:** Construir o componente **Hero Section** para a nova página **"Quem Somos"**.
+
+**Porquê Estratégico:** Esta seção é a primeira impressão da página e deve comunicar a missão e a visão da Lina de forma impactante. O objetivo é estabelecer uma conexão humana com o visitante, construindo confiança e diferenciando a Lina dos concorrentes puramente técnicos.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo diretório e arquivo de componente em: `src/components/views/quem-somos/sections/QuemSomosHeroSection.tsx`.
+    * A seção deve ter um layout de tela cheia ou de grande impacto visual, com o conteúdo centralizado.
+
+2.  **Conteúdo Explícito (Baseado na visão geral da empresa):**
+    * [cite_start]**Título Principal:** `Somos a ponte que conecta empresas ao universo de oportunidades do Open Finance.` [cite: 5588, 6588]
+    * **Descrição de Apoio:** `Nossa tecnologia revoluciona a forma como bancos, pessoas e empresas compartilham dados e informações financeiras, gerando inovação e criando oportunidades únicas. [cite_start]Simplificamos a complexidade para que nossos parceiros possam focar no crescimento.` [cite: 5588, 6588]
+
+3.  **Estilo e Animação:**
+    * **Plano de Fundo:** Utilize um fundo visualmente limpo e profissional. Pode ser um gradiente sutil usando as cores da marca (ex: `var(--lina-dark)` com elementos `lina-cyan`) ou uma imagem de alta qualidade que represente conexão e tecnologia.
+    * **Tipografia:** Use as fontes `Lexend` para o título e `Inter` para a descrição, conforme o padrão do site, garantindo excelente legibilidade e impacto.
+    * **Animação:** Utilize `framer-motion` para aplicar uma animação de entrada elegante e em cascata (staggered) para o título e a descrição.
+
+**Entregável:** O código-fonte completo para o novo componente `QuemSomosHeroSection.tsx`, totalmente responsivo e animado.
