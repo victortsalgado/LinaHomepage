@@ -864,7 +864,7 @@
   filter: grayscale(0.7) blur(3px) !important;
   transform: scale(0.85) !important;
   opacity: 0.4 !important;
-  transition: all 1.8s ease-in-out !important;
+  transition: all 1.2s ease-in-out !important;
 }
 
 /* Hovered card stays clear, focused and much larger */
@@ -873,5 +873,5 @@
   transform: scale(1.3) !important;
   z-index: 50 !important;
   opacity: 1 !important;
-  transition: all 1.8s ease-in-out !important;
+  transition: all 1.2s ease-in-out !important;
 }
