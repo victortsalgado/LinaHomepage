@@ -78,45 +78,44 @@ export default function SegmentsSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Left Column - Tab Navigation */}
-          <div className="space-y-4">
+          <div className="space-y-4 group/cards">
             {segmentTabs.map((segment, index) => {
               const IconComponent = segment.icon;
               const isActive = activeTab === segment.id;
+              
+              // Define colors for each card based on LINA brand
+              const cardColors = [
+                'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 1
+                'bg-gradient-to-br from-blue-500 to-blue-600',           // Card 2  
+                'bg-gradient-to-br from-emerald-500 to-emerald-600',     // Card 3
+                'bg-gradient-to-br from-purple-500 to-purple-600'        // Card 4
+              ];
               
               return (
                 <motion.button
                   key={segment.id}
                   onClick={() => setActiveTab(segment.id)}
-                  className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-300 group ${
+                  className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-[400ms] group/card cursor-pointer ${cardColors[index]} ${
                     isActive 
-                      ? 'bg-white border-[var(--lina-cyan)] shadow-xl shadow-[var(--lina-cyan)]/20' 
-                      : 'bg-white/10 border-white/20 hover:bg-white/20 hover:border-white/40'
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                      ? 'border-white/30 shadow-xl shadow-black/20 scale-105' 
+                      : 'border-white/10 hover:border-white/30'
+                  } hover:scale-110 group-hover/cards:[&:not(:hover)]:blur-[10px] group-hover/cards:[&:not(:hover)]:scale-90`}
+                  whileTap={{ scale: 0.95 }}
                   data-testid={`tab-segment-${index + 1}`}
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-center justify-center flex-col text-center h-24">
                     {/* Icon */}
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                      isActive 
-                        ? 'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 shadow-lg' 
-                        : 'bg-white/20 group-hover:bg-white/30'
-                    }`}>
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-2 bg-white/20 backdrop-blur-sm">
                       <IconComponent 
-                        className={`w-6 h-6 transition-colors duration-300 ${
-                          isActive ? 'text-white' : 'text-white/80 group-hover:text-white'
-                        }`}
+                        className="w-5 h-5 text-white"
                         data-testid={`icon-tab-${index + 1}`}
                       />
                     </div>
                     
                     {/* Tab Title */}
-                    <div className="flex-1">
+                    <div className="flex-1 flex items-center justify-center">
                       <h3 
-                        className={`text-lg font-bold leading-tight transition-colors duration-300 ${
-                          isActive ? 'text-gray-900' : 'text-white group-hover:text-white/90'
-                        }`}
+                        className="text-xs font-bold leading-tight text-white text-center"
                         style={{ fontFamily: 'Lexend, sans-serif' }}
                         data-testid={`title-tab-${index + 1}`}
                       >
