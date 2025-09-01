@@ -136,7 +136,7 @@ export default function SegmentsSection() {
           </div>
 
           {/* Right Column - Dynamic Content */}
-          <div className="relative min-h-[400px] flex items-center">
+          <div className="relative min-h-[500px] flex items-center">
             <AnimatePresence mode="wait">
               {activeSegment && (
                 <motion.div
@@ -145,14 +145,14 @@ export default function SegmentsSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="w-full bg-white rounded-2xl p-8 shadow-2xl border border-gray-300/20"
+                  className="w-full bg-white rounded-3xl p-12 shadow-2xl border border-gray-300/20"
                   data-testid={`content-segment-${activeSegment.id}`}
                 >
                   {/* Content Icon */}
-                  <div className="mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="mb-8">
+                    <div className="w-20 h-20 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-3xl flex items-center justify-center shadow-lg">
                       <activeSegment.icon 
-                        className="w-8 h-8 text-white" 
+                        className="w-10 h-10 text-white" 
                         data-testid={`icon-content-${activeSegment.id}`}
                       />
                     </div>
@@ -160,7 +160,7 @@ export default function SegmentsSection() {
 
                   {/* Content Title */}
                   <h3 
-                    className="text-2xl font-bold text-gray-900 mb-6 leading-tight"
+                    className="text-3xl font-bold text-gray-900 mb-8 leading-tight"
                     style={{ fontFamily: 'Lexend, sans-serif' }}
                     data-testid={`title-content-${activeSegment.id}`}
                   >
@@ -169,7 +169,7 @@ export default function SegmentsSection() {
 
                   {/* Content Description */}
                   <p 
-                    className="text-lg text-gray-600 leading-relaxed"
+                    className="text-xl text-gray-600 leading-relaxed"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                     data-testid={`description-content-${activeSegment.id}`}
                   >
@@ -177,8 +177,8 @@ export default function SegmentsSection() {
                   </p>
 
                   {/* Decorative elements */}
-                  <div className="absolute top-6 right-6 w-12 h-12 bg-gradient-to-br from-[var(--lina-cyan)]/10 to-teal-100/50 rounded-full" />
-                  <div className="absolute bottom-6 left-6 w-8 h-8 bg-gradient-to-tr from-teal-100/50 to-[var(--lina-cyan)]/10 rounded-full" />
+                  <div className="absolute top-8 right-8 w-16 h-16 bg-gradient-to-br from-[var(--lina-cyan)]/10 to-teal-100/50 rounded-full" />
+                  <div className="absolute bottom-8 left-8 w-12 h-12 bg-gradient-to-tr from-teal-100/50 to-[var(--lina-cyan)]/10 rounded-full" />
                 </motion.div>
               )}
             </AnimatePresence>
