@@ -1,0 +1,47 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React e na criação de páginas de conteúdo otimizadas para SEO e AIO (Artificial Intelligence Optimization).
+
+**Missão:** Criar a página para o artigo de blog migrado **"Open Insurance: O Futuro do Mercado Brasileiro de Seguros Digitalizado e Personalizado"**.
+
+**Porquê Estratégico:** A migração correta deste conteúdo posiciona a Lina como uma autoridade no nicho emergente de Open Insurance, um diferencial competitivo importante. A otimização garantirá que o valor de SEO deste ativo seja preservado e ampliado.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura da Página:**
+    * Utilize o template de artigo individual já criado (`src/pages/blog/[slug].tsx`).
+    * A URL (slug) para esta página deve ser: `open-insurance-futuro-mercado-seguros`.
+
+2.  **Conteúdo e SEO On-Page:**
+    * **Título (H1):** `Open Insurance: O Futuro do Mercado Brasileiro de Seguros Digitalizado e Personalizado`
+    * **Meta Title:** `<title>Open Insurance no Brasil: O Futuro do Mercado de Seguros | Lina</title>`
+    * **Meta Description:** `<meta name="description" content="Explore como o Open Insurance está personalizando produtos e digitalizando o mercado de seguros no Brasil. Prepare sua empresa para o futuro.">`
+    * **Corpo do Artigo:** Insira o conteúdo completo do artigo original, garantindo a formatação correta para a classe `.prose` do Tailwind (parágrafos, subtítulos, etc.).
+    * **Links Internos:** Dentro do texto, adicione um link contextual para a página `/data-link`, relacionando o compartilhamento de dados do Open Insurance com a solução DataLink.
+    * **Autor:** Defina o autor como "Time Lina".
+
+3.  **Dados Estruturados (Schema.org):**
+    * Implemente o seguinte JSON-LD no `<head>` da página:
+      ```json
+      {
+        "@context": "[https://schema.org](https://schema.org)",
+        "@type": "TechArticle",
+        "headline": "Open Insurance no Brasil: O Futuro do Mercado de Seguros | Lina",
+        "description": "Explore como o Open Insurance está personalizando produtos e digitalizando o mercado de seguros no Brasil. Prepare sua empresa para o futuro.",
+        "author": {
+          "@type": "Organization",
+          "name": "Lina"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Lina",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "URL_DO_LOGO_LINA"
+          }
+        },
+        "about": [
+          { "@type": "Thing", "name": "Open Insurance" }
+        ]
+      }
+      ```
+
+**Entregável:** O código ou arquivo para a nova página do artigo, com todo o conteúdo, metadados e schema implementados.

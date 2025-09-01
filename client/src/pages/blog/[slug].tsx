@@ -4,6 +4,7 @@ import Footer from "@/components/layout/footer";
 import PostHeader from "@/components/views/blog/post/PostHeader";
 import PostBody from "@/components/views/blog/post/PostBody";
 import PostBodyPIXOpenFinance from "@/components/views/blog/post/PostBodyPIXOpenFinance";
+import PostBodyOpenInsurance from "@/components/views/blog/post/PostBodyOpenInsurance";
 import AuthorBox from "@/components/views/blog/post/AuthorBox";
 import RelatedPosts from "@/components/views/blog/post/RelatedPosts";
 import { allBlogPosts } from "@/data/blogPosts";
@@ -18,9 +19,12 @@ export default function BlogPost() {
   const post = useMemo(() => {
     if (!slug) return null;
     
-    // Handle specific slug for PIX Open Finance article
+    // Handle specific slugs for featured articles
     if (slug === "pix-e-open-finance-remodelando-mercado-financeiro") {
       return allBlogPosts.find(p => p.id === 0) || null;
+    }
+    if (slug === "open-insurance-futuro-mercado-seguros") {
+      return allBlogPosts.find(p => p.id === 13) || null;
     }
     
     // Convert slug back to ID (simple implementation)
@@ -40,9 +44,12 @@ export default function BlogPost() {
     if (!post) return;
 
     // Set document title
-    const title = post.id === 0 
-      ? "PIX e Open Finance: A Revolução no Mercado Financeiro | Lina"
-      : `${post.title} | Lina`;
+    let title = `${post.title} | Lina`;
+    if (post.id === 0) {
+      title = "PIX e Open Finance: A Revolução no Mercado Financeiro | Lina";
+    } else if (post.id === 13) {
+      title = "Open Insurance no Brasil: O Futuro do Mercado de Seguros | Lina";
+    }
     document.title = title;
 
     // Set meta description
@@ -56,8 +63,8 @@ export default function BlogPost() {
       document.head.appendChild(meta);
     }
 
-    // Add JSON-LD structured data for PIX Open Finance article
-    if (post.id === 0) {
+    // Add JSON-LD structured data for featured articles
+    if (post.id === 0 || post.id === 13) {
       const existingSchema = document.querySelector('#blog-schema');
       if (existingSchema) {
         existingSchema.remove();
@@ -66,35 +73,70 @@ export default function BlogPost() {
       const script = document.createElement('script');
       script.id = 'blog-schema';
       script.type = 'application/ld+json';
-      script.textContent = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "TechArticle",
-        "headline": "PIX e Open Finance: A Revolução no Mercado Financeiro | Lina",
-        "description": "Entenda como a sinergia entre PIX e Open Finance está criando novas soluções de pagamento, reduzindo custos e transformando a experiência do cliente. Saiba mais.",
-        "author": {
-          "@type": "Organization",
-          "name": "Lina"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Lina",
-          "logo": {
-            "@type": "ImageObject",
-            "url": `${window.location.origin}/assets/new-lina-logo.png`
-          }
-        },
-        "about": [
-          { "@type": "Thing", "name": "PIX" },
-          { "@type": "Thing", "name": "Open Finance" }
-        ],
-        "datePublished": "2025-01-20",
-        "dateModified": "2025-01-20",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": window.location.href
-        },
-        "image": post.image
-      });
+      
+      let schemaData;
+      if (post.id === 0) {
+        schemaData = {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "PIX e Open Finance: A Revolução no Mercado Financeiro | Lina",
+          "description": "Entenda como a sinergia entre PIX e Open Finance está criando novas soluções de pagamento, reduzindo custos e transformando a experiência do cliente. Saiba mais.",
+          "author": {
+            "@type": "Organization",
+            "name": "Lina"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Lina",
+            "logo": {
+              "@type": "ImageObject",
+              "url": `${window.location.origin}/assets/new-lina-logo.png`
+            }
+          },
+          "about": [
+            { "@type": "Thing", "name": "PIX" },
+            { "@type": "Thing", "name": "Open Finance" }
+          ],
+          "datePublished": "2025-01-20",
+          "dateModified": "2025-01-20",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": window.location.href
+          },
+          "image": post.image
+        };
+      } else if (post.id === 13) {
+        schemaData = {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "Open Insurance no Brasil: O Futuro do Mercado de Seguros | Lina",
+          "description": "Explore como o Open Insurance está personalizando produtos e digitalizando o mercado de seguros no Brasil. Prepare sua empresa para o futuro.",
+          "author": {
+            "@type": "Organization",
+            "name": "Lina"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Lina",
+            "logo": {
+              "@type": "ImageObject",
+              "url": `${window.location.origin}/assets/new-lina-logo.png`
+            }
+          },
+          "about": [
+            { "@type": "Thing", "name": "Open Insurance" }
+          ],
+          "datePublished": "2025-01-22",
+          "dateModified": "2025-01-22",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": window.location.href
+          },
+          "image": post.image
+        };
+      }
+      
+      script.textContent = JSON.stringify(schemaData);
       document.head.appendChild(script);
     }
 
@@ -138,6 +180,8 @@ export default function BlogPost() {
 
         {post.id === 0 ? (
           <PostBodyPIXOpenFinance post={post} />
+        ) : post.id === 13 ? (
+          <PostBodyOpenInsurance post={post} />
         ) : (
           <PostBody post={post} />
         )}

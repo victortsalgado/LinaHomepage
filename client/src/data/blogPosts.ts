@@ -18,6 +18,21 @@ export const allBlogPosts: BlogPost[] = [
     }
   },
   {
+    id: 13,
+    category: "DataLink",
+    title: "Open Insurance: O Futuro do Mercado Brasileiro de Seguros Digitalizado e Personalizado",
+    description: "Explore como o Open Insurance está personalizando produtos e digitalizando o mercado de seguros no Brasil. Prepare sua empresa para o futuro.",
+    date: "22 Jan 2025",
+    readTime: "10 min",
+    image: "/api/placeholder/600/400?text=Open+Insurance+Brazil",
+    alt: "Open Insurance transformando o mercado de seguros no Brasil",
+    author: {
+      name: "Time Lina",
+      avatar: "/src/assets/mascote-astro-lina.png",
+      role: "Equipe Editorial"
+    }
+  },
+  {
     id: 1,
     category: "LinaPay",
     title: "Pix Automático: como funciona e por que adotar na sua empresa",
