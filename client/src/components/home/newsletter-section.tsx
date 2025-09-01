@@ -31,11 +31,12 @@ export default function NewsletterSection() {
         <div className="text-center max-w-4xl mx-auto">
           {/* Title */}
           <h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl text-white mb-4"
             style={{ fontFamily: 'Lexend, sans-serif' }}
             data-testid="heading-newsletter-title"
           >
-            Fique por dentro do Universo Open!
+            <span className="font-normal">Fique por dentro do </span>
+            <span className="font-bold">Universo Open!</span>
           </h2>
           
           {/* Subtitle */}
