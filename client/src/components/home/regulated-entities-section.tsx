@@ -104,10 +104,11 @@ export default function RegulatedEntitiesSection() {
               {features.map((feature, index) => (
                 <motion.div 
                   key={feature.title}
-                  className="flex items-start space-x-4 bg-white p-4 rounded-xl border border-gray-200 shadow-md"
+                  className="flex items-start space-x-4 bg-white p-4 rounded-xl border border-gray-200 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
                   initial={{ opacity: 0, x: -20 }}
                   animate={contentVisible ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
+                  whileHover={{ y: -2 }}
                   data-testid={`card-regulated-feature-${index}`}
                 >
                   <div 
