@@ -3,6 +3,21 @@ import { BlogPost } from "@/contexts/BlogSearchContext";
 // Complete blog posts database for search functionality
 export const allBlogPosts: BlogPost[] = [
   {
+    id: 0,
+    category: "Institucional",
+    title: "Inovação em Movimento: Como o PIX e o Open Finance Estão Remodelando o Mercado Financeiro",
+    description: "Entenda como a sinergia entre PIX e Open Finance está criando novas soluções de pagamento, reduzindo custos e transformando a experiência do cliente. Saiba mais.",
+    date: "20 Jan 2025",
+    readTime: "12 min",
+    image: "/api/placeholder/600/400?text=PIX+Open+Finance+Revolution",
+    alt: "PIX e Open Finance transformando o mercado financeiro",
+    author: {
+      name: "Time Lina",
+      avatar: "/api/placeholder/40/40?text=TL",
+      role: "Equipe Editorial"
+    }
+  },
+  {
     id: 1,
     category: "LinaPay",
     title: "Pix Automático: como funciona e por que adotar na sua empresa",

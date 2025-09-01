@@ -9,13 +9,15 @@ interface BlogPostCardProps {
 }
 
 export default function BlogPostCard({ post, index, className = "" }: BlogPostCardProps) {
-  // Generate slug from title and id
-  const slug = `${post.title
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .trim()}-${post.id}`;
+  // Generate slug from title and id, with special handling for PIX Open Finance article
+  const slug = post.id === 0 
+    ? "pix-e-open-finance-remodelando-mercado-financeiro"
+    : `${post.title
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim()}-${post.id}`;
 
   return (
     <a

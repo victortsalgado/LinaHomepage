@@ -1,0 +1,48 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React e na criação de páginas de conteúdo otimizadas para SEO.
+
+**Missão:** Criar a página para o artigo de blog migrado **"Inovação em Movimento: Como o PIX e o Open Finance Estão Remodelando o Mercado Financeiro"**.
+
+**Porquê Estratégico:** A migração correta deste conteúdo, com todas as otimizações de SEO On-Page e AIO, é fundamental para transferir a autoridade do site antigo para o novo e começar a popular o blog com conteúdo estratégico.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura da Página:**
+    * Utilize o template de artigo individual já criado (`src/pages/blog/[slug].tsx`).
+    * A URL (slug) para esta página deve ser: `pix-e-open-finance-remodelando-mercado-financeiro`.
+
+2.  **Conteúdo e SEO On-Page:**
+    * **Título (H1):** `Inovação em Movimento: Como o PIX e o Open Finance Estão Remodelando o Mercado Financeiro`
+    * **Meta Title:** `<title>PIX e Open Finance: A Revolução no Mercado Financeiro | Lina</title>`
+    * **Meta Description:** `<meta name="description" content="Entenda como a sinergia entre PIX e Open Finance está criando novas soluções de pagamento, reduzindo custos e transformando a experiência do cliente. Saiba mais.">`
+    * **Corpo do Artigo:** Insira o conteúdo completo do artigo original. Garanta que a formatação (parágrafos, subtítulos H2/H3, listas) esteja correta para a classe `.prose` do Tailwind.
+    * **Links Internos:** Dentro do texto, adicione links contextuais para as páginas `/lina-pay` e `/jsr`.
+    * **Autor:** Defina um autor para o post (ex: "Time Lina").
+
+3.  **Dados Estruturados (Schema.org):**
+    * Implemente o seguinte JSON-LD no `<head>` da página:
+      ```json
+      {
+        "@context": "[https://schema.org](https://schema.org)",
+        "@type": "TechArticle",
+        "headline": "PIX e Open Finance: A Revolução no Mercado Financeiro | Lina",
+        "description": "Entenda como a sinergia entre PIX e Open Finance está criando novas soluções de pagamento, reduzindo custos e transformando a experiência do cliente. Saiba mais.",
+        "author": {
+          "@type": "Organization",
+          "name": "Lina"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Lina",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "URL_DO_LOGO_LINA"
+          }
+        },
+        "about": [
+          { "@type": "Thing", "name": "PIX" },
+          { "@type": "Thing", "name": "Open Finance" }
+        ]
+      }
+      ```
+
+**Entregável:** O código ou arquivo para a nova página do artigo, com todo o conteúdo, metadados e schema implementados.
