@@ -1,0 +1,46 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é construir um componente de grade de funcionalidades, introduzindo uma variação de estilo sutil para manter o design da página dinâmico e interessante.
+
+**Missão:** Construir o componente para a seção **"Funcionalidades que resolvem problemas reais"** da página de produto LinaPay.
+
+**Porquê Estratégico:** Esta seção aprofunda a proposta de valor, detalhando os casos de uso específicos que o LinaPay resolve. Ao apresentar as funcionalidades de forma clara e organizada, demonstramos a versatilidade da plataforma e ajudamos o cliente a visualizar a aplicação direta em seu negócio, fortalecendo a decisão de conversão.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/lina-pay/sections/FeaturesSection.tsx`.
+    * A seção deve ter um fundo claro (`bg-white` ou `bg-gray-50`).
+
+2.  **Layout e Conteúdo Explícito:**
+    * **Título da Seção:** "Funcionalidades que resolvem problemas reais".
+    * **Layout da Grade:** Implemente uma grade responsiva que exiba 6 cards (3 colunas em desktop: `lg:grid-cols-3`).
+    * **Conteúdo dos Cards (6 cards):**
+        * **Card 1:**
+            * **Ícone:** `Fingerprint`
+            * **Título:** "Pix por biometria"
+            * **Descrição:** "Pagamentos autorizados com um toque direto no checkout. Segurança e fluidez para o seu e-commerce."
+        * **Card 2:**
+            * **Ícone:** `Nfc`
+            * **Título:** "Pix por aproximação"
+            * **Descrição:** "Permite pagamentos presenciais com a simples aproximação do celular, sem precisar de cartões."
+        * **Card 3:**
+            * **Ícone:** `Zap`
+            * **Título:** "Pix instantâneo"
+            * **Descrição:** "Pagamento é confirmado imediatamente para a conta de destino, sem intermediários."
+        * **Card 4:**
+            * **Ícone:** `CalendarClock`
+            * **Título:** "Pix agendado"
+            * **Descrição:** "Agende pagamentos futuros de forma simples, debitando automaticamente na data escolhida."
+        * **Card 5:**
+            * **Ícone:** `Repeat`
+            * **Título:** "Pix recorrente"
+            * **Descrição:** "Automatize cobranças com valor fixo, como assinaturas, garantindo previsibilidade de caixa."
+        * **Card 6:**
+            * **Ícone:** `Bot`
+            * **Título:** "Pix automático"
+            * **Descrição:** "Pagamentos inteligentes iniciados por eventos e gatilhos pré-definidos pelo cliente."
+
+3.  **Estilo e Animação:**
+    * **Estilo do Card:** Crie um estilo de card mais leve para esta seção. Utilize um fundo branco (`bg-white`), uma borda sutil (`border border-gray-200`), e um leve efeito de sombra e escala no hover (`hover:shadow-lg hover:scale-105`). Cada card deve conter o ícone, título e descrição.
+    * **Animação:** Mantenha a consistência. Utilize o hook `useScrollReveal` e `framer-motion` para aplicar a mesma animação de entrada em cascata (staggered) dos cards das seções anteriores.
+
+**Entregável:** O código-fonte completo para o novo componente `FeaturesSection.tsx`, totalmente responsivo, animado e funcional.

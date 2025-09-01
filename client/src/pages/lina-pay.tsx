@@ -1,61 +1,15 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import LinaPayHeroSection from "@/components/views/lina-pay/sections/LinaPayHeroSection";
 import AboutLinaPaySection from "@/components/views/lina-pay/sections/AboutLinaPaySection";
 import SocialProofSection from "@/components/views/lina-pay/sections/SocialProofSection";
 import DifferentiatorsSection from "@/components/views/lina-pay/sections/DifferentiatorsSection";
+import FeaturesSection from "@/components/views/lina-pay/sections/FeaturesSection";
 
 
-const productFeatures = [
-  {
-    icon: "/figmaAssets/icon-card-4.svg",
-    title: "Pix por biometria",
-    description:
-      "Pagamentos são autorizados com biometria, direto no check-out do site. Traz segurança e fluidez para o e-commerce, sem quebra na jornada.",
-  },
-  {
-    icon: "/figmaAssets/icon-card.svg",
-    title: "Pix por aproximação",
-    description:
-      "Permite pagamentos presenciais com um simples toque, via NFC. O cliente não precisa abrir o app do banco nem digitar senha.",
-  },
-  {
-    icon: "/figmaAssets/icon-card-3.svg",
-    title: "Pix instantâneo",
-    description:
-      "O pagamento acontece no momento da compra e o valor é transferido imediatamente para a conta de quem vende, sem intermediários.",
-  },
-  {
-    icon: "/figmaAssets/icon-card-2.svg",
-    title: "Pix agendado",
-    description:
-      "O cliente escolhe a data do pagamento, e o valor é transferido automaticamente. Mais controle e zero esquecimentos.",
-  },
-  {
-    icon: "/figmaAssets/icon-card-1.svg",
-    title: "Pix recorrente",
-    description:
-      "Automatiza cobranças com valores e datas fixas, ideal para serviços de assinatura. Reduz a inadimplência e garante previsibilidade de receita.",
-  },
-  {
-    icon: "/figmaAssets/icon-card-5.svg",
-    title: "Pix automático",
-    description:
-      "Ideal para contas recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade.",
-  },
-];
 
 const businessTypes = [
   {
@@ -122,60 +76,8 @@ export default function LinaPay(): JSX.Element {
             {/* Differentiators Section */}
             <DifferentiatorsSection />
 
-            {/* Product Features Section */}
-            <section className="w-full bg-white py-[115px] relative">
-              <div className="px-[252px]">
-                <div className="text-center mb-16">
-                  <h2 className="[font-family:'Lexend',Helvetica] font-medium text-[40px] leading-[56px] mb-4">
-                    <span className="text-[#606060]">
-                      Funcionalidades que
-                      <br />
-                    </span>
-                    <span className="text-[#0ab5aa]">resolvem problemas </span>
-                    <span className="text-[#606060]">reais</span>
-                  </h2>
-                  <div className="flex justify-center">
-                    <div className="w-[34px] h-[34px] bg-[#0ab5aa] rounded-[17px] flex items-center justify-center">
-                      <img
-                        className="w-[15px] h-3.5 object-cover"
-                        alt="Camada"
-                        src="/figmaAssets/camada-1-1.png"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-3 gap-6">
-                  {productFeatures.map((feature, index) => (
-                    <Card
-                      key={index}
-                      className={`w-[360px] ${index === 5 ? "h-[277px]" : "h-[254px]"} bg-white rounded-2xl shadow-[4px_4px_8px_#0ab5aa1a] relative`}
-                    >
-                      <CardContent className="p-6">
-                        <div className="flex items-center justify-between mb-4">
-                          <img
-                            className="w-10 h-10"
-                            alt="Icon card"
-                            src={feature.icon}
-                          />
-                          <h3 className="[font-family:'Lexend',Helvetica] font-normal text-[#003a38] text-2xl flex-1 ml-4">
-                            {feature.title}
-                          </h3>
-                        </div>
-                        <p className="[font-family:'Lexend',Helvetica] font-light text-[#606060] text-base leading-6">
-                          {feature.description}
-                        </p>
-                        <img
-                          className="absolute w-[34px] h-[34px] bottom-6 right-6"
-                          alt="Button icon"
-                          src="/figmaAssets/button-icon.svg"
-                        />
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            </section>
+            {/* Features Section */}
+            <FeaturesSection />
 
             {/* Integration Section */}
             <section className="w-full h-[787px] rounded-[40px_40px_0px_0px] bg-[linear-gradient(0deg,rgba(251,250,250,1)_0%,rgba(152,216,211,1)_100%)] relative">
