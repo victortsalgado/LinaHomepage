@@ -32,15 +32,15 @@ export default function LinaPaySection() {
   const contentData = [
     {
       id: 'automatico',
-      title: "Pix Automático",
-      description: "Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade.",
+      title: "Cobranças Inteligentes, Receita Previsível",
+      description: "Automatize pagamentos recorrentes com valores fixos ou variáveis. Reduza a inadimplência e garanta o fluxo de caixa com o DDA turbinado.",
       imageSrc: null,
       imageAlt: "PIX Automático - Pagamentos recorrentes automatizados"
     },
     {
       id: 'biometria',
-      title: "Pix Biometria",
-      description: "Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebras na jornada.",
+      title: "Checkout em 1 Toque, Sem Fricção",
+      description: "Aumente sua conversão no e-commerce com pagamentos por biometria. Uma experiência segura, sem senhas e sem redirecionamentos.",
       imageSrc: null,
       imageAlt: "PIX Biometria - Autenticação biométrica para pagamentos"
     }
@@ -149,116 +149,71 @@ export default function LinaPaySection() {
                   className="relative w-full h-full"
                   data-testid={`stage-pix-${selection}`}
                 >
-                  {/* Coordinated Animation Layout */}
-                  <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-center gap-8 lg:gap-16">
+                  {/* Consistent Left-Right Layout */}
+                  <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-16">
                     
-                    {/* PIX Automático Layout */}
-                    {selection === 'automatico' && (
-                      <>
-                        {/* Smartphone Mockup slides in from LEFT */}
-                        <motion.div
-                          initial={{ x: -120, opacity: 0 }}
-                          animate={{ x: 0, opacity: 1 }}
-                          exit={{ x: -120, opacity: 0 }}
-                          transition={{ duration: 0.8, ease: "easeOut" }}
-                          className="relative z-20 flex justify-center lg:justify-start"
-                        >
-                          <div className="smartphone-mockup">
-                            {/* Smartphone Frame */}
-                            <div className="w-48 h-96 lg:w-56 lg:h-[28rem] bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-[2.5rem] shadow-2xl border-4 border-gray-700 relative overflow-hidden">
-                              {/* Screen */}
-                              <div className="absolute inset-3 bg-gradient-to-br from-gray-900 to-black rounded-[2rem] border border-gray-600">
-                                {/* Notch */}
-                                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-6 bg-black rounded-full"></div>
-                                {/* Screen Content */}
-                                <div className="flex items-center justify-center h-full">
-                                  <div className="text-center">
+                    {/* Smartphone Mockup - ALWAYS LEFT */}
+                    <motion.div
+                      initial={{ x: -120, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: -120, opacity: 0 }}
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                      className="relative z-20 flex justify-center lg:justify-start flex-shrink-0"
+                    >
+                      <div className="smartphone-mockup">
+                        {/* Smartphone Frame */}
+                        <div className="w-48 h-96 lg:w-56 lg:h-[28rem] bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-[2.5rem] shadow-2xl border-4 border-gray-700 relative overflow-hidden">
+                          {/* Screen */}
+                          <div className="absolute inset-3 bg-gradient-to-br from-gray-900 to-black rounded-[2rem] border border-gray-600">
+                            {/* Notch */}
+                            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-6 bg-black rounded-full"></div>
+                            {/* Dynamic Screen Content */}
+                            <div className="flex items-center justify-center h-full">
+                              <AnimatePresence mode="wait">
+                                <motion.div
+                                  key={selection}
+                                  initial={{ opacity: 0, scale: 0.8 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  exit={{ opacity: 0, scale: 0.8 }}
+                                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                                  className="text-center"
+                                >
+                                  {selection === 'automatico' ? (
                                     <Repeat size={32} className="text-cyan-400 mx-auto mb-3" />
-                                    <p className="text-cyan-400 text-sm font-medium px-4">
-                                      PIX Automático
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              {/* Camera */}
-                              <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-600 rounded-full"></div>
-                            </div>
-                          </div>
-                        </motion.div>
-                        
-                        {/* Text Card emerges from BEHIND smartphone */}
-                        <motion.div
-                          initial={{ x: -60, opacity: 0, scale: 0.9 }}
-                          animate={{ x: 0, opacity: 1, scale: 1 }}
-                          exit={{ x: -60, opacity: 0, scale: 0.9 }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                          className="relative z-10 lg:absolute lg:left-32 lg:top-1/2 lg:-translate-y-1/2"
-                        >
-                          <div className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl max-w-md">
-                            <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-4">
-                              {activeContent.title}
-                            </h3>
-                            <p className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
-                              {activeContent.description}
-                            </p>
-                          </div>
-                        </motion.div>
-                      </>
-                    )}
-                    
-                    {/* PIX Biometria Layout */}
-                    {selection === 'biometria' && (
-                      <>
-                        {/* Text Card emerges from BEHIND smartphone */}
-                        <motion.div
-                          initial={{ x: 60, opacity: 0, scale: 0.9 }}
-                          animate={{ x: 0, opacity: 1, scale: 1 }}
-                          exit={{ x: 60, opacity: 0, scale: 0.9 }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                          className="relative z-10 lg:absolute lg:right-32 lg:top-1/2 lg:-translate-y-1/2"
-                        >
-                          <div className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl max-w-md">
-                            <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-4">
-                              {activeContent.title}
-                            </h3>
-                            <p className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
-                              {activeContent.description}
-                            </p>
-                          </div>
-                        </motion.div>
-                        
-                        {/* Smartphone Mockup slides in from RIGHT */}
-                        <motion.div
-                          initial={{ x: 120, opacity: 0 }}
-                          animate={{ x: 0, opacity: 1 }}
-                          exit={{ x: 120, opacity: 0 }}
-                          transition={{ duration: 0.8, ease: "easeOut" }}
-                          className="relative z-20 flex justify-center lg:justify-end"
-                        >
-                          <div className="smartphone-mockup">
-                            {/* Smartphone Frame */}
-                            <div className="w-48 h-96 lg:w-56 lg:h-[28rem] bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-[2.5rem] shadow-2xl border-4 border-gray-700 relative overflow-hidden">
-                              {/* Screen */}
-                              <div className="absolute inset-3 bg-gradient-to-br from-gray-900 to-black rounded-[2rem] border border-gray-600">
-                                {/* Notch */}
-                                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-6 bg-black rounded-full"></div>
-                                {/* Screen Content */}
-                                <div className="flex items-center justify-center h-full">
-                                  <div className="text-center">
+                                  ) : (
                                     <Fingerprint size={32} className="text-cyan-400 mx-auto mb-3" />
-                                    <p className="text-cyan-400 text-sm font-medium px-4">
-                                      PIX Biometria
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              {/* Camera */}
-                              <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-600 rounded-full"></div>
+                                  )}
+                                  <p className="text-cyan-400 text-sm font-medium px-4">
+                                    {selection === 'automatico' ? 'PIX Automático' : 'PIX Biometria'}
+                                  </p>
+                                </motion.div>
+                              </AnimatePresence>
                             </div>
                           </div>
-                        </motion.div>
-                      </>
-                    )}
+                          {/* Camera */}
+                          <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-600 rounded-full"></div>
+                        </div>
+                      </div>
+                    </motion.div>
+                    
+                    {/* Text Panel - ALWAYS RIGHT */}
+                    <motion.div
+                      key={`text-${selection}`}
+                      initial={{ x: 120, opacity: 0, scale: 0.9 }}
+                      animate={{ x: 0, opacity: 1, scale: 1 }}
+                      exit={{ x: 120, opacity: 0, scale: 0.9 }}
+                      transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                      className="relative z-10 flex-1"
+                    >
+                      <div className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl">
+                        <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-4">
+                          {activeContent.title}
+                        </h3>
+                        <p className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
+                          {activeContent.description}
+                        </p>
+                      </div>
+                    </motion.div>
                     
                   </div>
                 </motion.div>

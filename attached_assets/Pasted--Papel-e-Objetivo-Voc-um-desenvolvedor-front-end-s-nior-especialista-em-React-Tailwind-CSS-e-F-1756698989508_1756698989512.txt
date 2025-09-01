@@ -1,0 +1,26 @@
+# Papel e Objetivo
+Você é um desenvolvedor front-end sênior, especialista em React, Tailwind CSS e Framer Motion. Sua tarefa é fazer o refinamento final de layout, conteúdo e interatividade no componente `LinaPaySection.tsx`.
+
+# Contexto Estratégico
+O conceito de "Painel Interativo" com o mockup de smartphone está aprovado. Agora, precisamos ajustar a composição para um layout mais claro (visual à esquerda, texto à direita), otimizar os textos para serem mais impactantes e adicionar um feedback visual dinâmico na tela do smartphone.
+
+# Instruções de Refatoramento
+
+1.  **Ajuste o Layout e a Animação:**
+    * Modifique o layout da área de conteúdo dinâmico para que o mockup do smartphone fique **sempre posicionado à esquerda** e o painel de texto fique **sempre à direita**.
+    * A animação de `slide-in` do Framer Motion deve ser ajustada para que o celular sempre entre pela esquerda e o painel de texto pela direita, independentemente da seleção na "alavanca".
+
+2.  **Aprimore os Textos Descritivos:**
+    * Atualize os textos dentro dos painéis de informação para serem mais diretos e focados nos benefícios para o cliente. Utilize o seguinte:
+    * **Para 'Pix Automático':**
+        * Título (H3): "Cobranças Inteligentes, Receita Previsível"
+        * Descrição: "Automatize pagamentos recorrentes com valores fixos ou variáveis. Reduza a inadimplência e garanta o fluxo de caixa com o DDA turbinado."
+    * **Para 'Pix Biometria':**
+        * Título (H3): "Checkout em 1 Toque, Sem Fricção"
+        * Descrição: "Aumente sua conversão no e-commerce com pagamentos por biometria. Uma experiência segura, sem senhas e sem redirecionamentos."
+
+3.  **Adicione Conteúdo Dinâmico ao Mockup do Smartphone:**
+    * Dentro da "tela" do mockup do smartphone, adicione um ícone da biblioteca `lucide-react` que muda de acordo com a seleção na "alavanca".
+    * Quando 'Pix Automático' estiver ativo, mostre o ícone `Repeat`.
+    * Quando 'Pix Biometria' estiver ativo, mostre o ícone `Fingerprint`.
+    * Garanta que a troca de ícone dentro da tela do celular tenha uma animação suave de fade (cross-fade) usando `AnimatePresence`.
