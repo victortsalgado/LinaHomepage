@@ -1,0 +1,41 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é criar componentes de narrativa visual, como timelines interativas, que contam a história de uma marca de forma elegante.
+
+**Missão:** Construir o componente da seção **"Nossa História"** para a página "Quem Somos", utilizando um layout de linha do tempo vertical e animada.
+
+**Porquê Estratégico:** Uma linha do tempo visualiza o progresso e a credibilidade da empresa ao longo do tempo. Esta seção contará a história de inovação da Lina, desde sua fundação até as parcerias estratégicas, reforçando sua posição como uma empresa pioneira e confiável no setor.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/quem-somos/sections/TimelineSection.tsx`.
+    * A seção deve ter um fundo claro (ex: `bg-gray-50`).
+
+2.  **Layout e Conteúdo Explícito:**
+    * **Título da Seção:** `Nossa História`
+    * **Layout da Timeline:** Crie uma linha do tempo vertical. Uma linha central percorrerá a seção, e os "cards" de cada marco aparecerão alternadamente à esquerda e à direita desta linha.
+    * **Estrutura do Card de Marco:** Cada card deve conter:
+        * O ano do marco.
+        * Um título para o evento.
+        * Uma breve descrição.
+    * **Conteúdo dos Marcos:**
+        * **Marco 1 (2021):**
+            * **Título:** `Fundação da Lina`
+            * **Descrição:** `Nasce a Lina, com a missão de simplificar a complexidade do Open Finance no Brasil, atuando como a ponte que conecta empresas a um universo de novas oportunidades.`
+        * **Marco 2 (2022):**
+            * **Título:** `Pioneirismo e Certificação`
+            * **Descrição:** `Lançamento da plataforma DataLink e certificação como um dos primeiros players na Fase 1 do Open Finance, estabelecendo um novo padrão de mercado.`
+        * **Marco 3 (2023):**
+            * **Título:** `Inovação em Pagamentos`
+            * **Descrição:** `Expansão do portfólio com o lançamento do LinaPay, revolucionando os pagamentos digitais com a introdução do PIX por biometria.`
+        * **Marco 4 (2024):**
+            * **Título:** `Reconhecimento de Mercado`
+            * **Descrição:** `Nomeada como LinkedIn Top Startup, consolidando nossa posição como uma das empresas mais inovadoras e promissoras do cenário tecnológico.`
+        * **Marco 5 (2025):**
+            * **Título:** `Parceria Estratégica Global`
+            * **Descrição:** `Anunciada parceria estratégica com a Mastercard para acelerar a adoção de pagamentos sem fricção através da tecnologia JSR.`
+
+3.  **Estilo e Animação:**
+    * **Estilo:** O design deve ser limpo e moderno, utilizando a tipografia e a paleta de cores da marca para destacar os títulos e o ano.
+    * **Animação:** Utilize o hook `useScrollReveal` e `framer-motion`. À medida que o usuário rola a página, cada marco da linha do tempo deve animar sua entrada (ex: deslizando da lateral para o centro).
+
+**Entregável:** O código-fonte completo para o novo componente `TimelineSection.tsx`, totalmente responsivo e animado.
