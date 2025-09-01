@@ -1,0 +1,46 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é construir o componente de conversão final para uma página de produto, garantindo um design de alta qualidade, baixo atrito e total consistência com a identidade visual do projeto.
+
+**Missão:** Construir o componente final da página DataLink: a seção de **CTA e Formulário de Contato**.
+
+**Porquê Estratégico:** Este é o componente de conversão mais importante da página. Seu design deve ser convidativo, e o formulário precisa ser simples e focado em qualificação para maximizar a geração de leads, resolvendo o principal desafio de negócio do site.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/sections/data-link/CtaFormSection.tsx`.
+
+2.  **Design e Estilo (Nova Diretriz):**
+    * A seção deve ter um **fundo claro** (ex: `bg-white` ou `bg-gray-100`).
+    * Todo o texto do título e subtítulo da seção deve ser escuro para garantir contraste (ex: `text-[var(--lina-dark)]`).
+    * O container do formulário em si deve ter um fundo escuro (`bg-[var(--lina-dark)]`) com textos e labels claros (branco ou cinza claro), criando um "card" de destaque sobre o fundo claro da seção, conforme as imagens de referência.
+
+3.  **Conteúdo Explícito do Formulário:**
+    * **Título da Seção:** "Vamos juntos transformar complexidade em agilidade?"
+    * **Subtítulo da Seção:** "Nossa infraestrutura de Open Finance já impulsiona os maiores players do mercado. Fale com um especialista e descubra o potencial para o seu negócio."
+    * **Título do Formulário:** "Fale com um especialista hoje mesmo."
+    * **Subtítulo do Formulário:** "Não se preocupe, seus dados estarão sempre seguros conosco."
+    * **Campos do Formulário:**
+        * **Nome completo\*** (Input de texto)
+        * **E-mail corporativo\*** (Input de e-mail)
+        * **Telefone\*** (Input de texto)
+        * **Empresa\*** (Input de texto)
+        * **Qual o Faturamento Anual da Empresa?** (Dropdown/Select) com as opções:
+            * "Até R$ 5 milhões"
+            * "entre R$ 5 milhões e R$ 10 milhões"
+            * "entre R$ 10 milhões e R$ 50 milhões"
+            * "acima de R$ 50 milhões"
+        * **Qual o segmento da sua empresa?** (Dropdown/Select) com as opções:
+            * "Bancos e Instituições Financeiras"
+            * "Fintechs e Meios de Pagamento"
+            * "E-commerce e Marketplaces"
+            * "Seguradoras (Insurtechs)"
+            * "Software e SaaS"
+            * "Outro"
+    * **Botão de Envio (CTA):**
+        * **Texto:** "Falar com um especialista"
+        * **Estilo:** Deve seguir o padrão visual do botão primário do site (cor `lina-cyan`).
+
+4.  **Animação:**
+    * Utilize o hook `useScrollReveal` para aplicar uma animação suave de "fade-in" quando a seção inteira entrar no campo de visão do usuário.
+
+**Entregável:** O código-fonte completo para o novo componente `CtaFormSection.tsx`. O componente deve ser totalmente responsivo, funcional e estilizado de acordo com as diretrizes e referências visuais fornecidas.
