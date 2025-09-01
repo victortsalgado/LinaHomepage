@@ -239,7 +239,7 @@ export default function HeroSection() {
                         className={`h-2 rounded-full transition-all duration-500 ${
                           index === currentSlide 
                             ? 'w-12 bg-[var(--lina-cyan)]' 
-                            : 'w-2 bg-muted-foreground/30 hover:bg-[var(--lina-cyan)]/50'
+                            : 'w-2 bg-gray-400 dark:bg-gray-600 hover:bg-[var(--lina-cyan)]/50'
                         }`}
                         data-testid={`carousel-indicator-${index}`}
                         aria-label={`Ir para slide ${index + 1}`}
