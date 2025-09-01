@@ -96,7 +96,7 @@ export default function FeaturesSection() {
                   style={{ '--position': (index + 1).toString() } as React.CSSProperties}
                   data-testid={`slide-feature-${index + 1}`}
                 >
-                  <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg h-full transition-all duration-300 hover:shadow-xl">
+                  <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg h-full transition-all duration-300 hover:shadow-2xl hover:border-[var(--lina-cyan)]/50">
                     {/* Content */}
                     <div className="relative z-10 h-full flex flex-col">
                       {/* Icon */}
