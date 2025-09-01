@@ -43,6 +43,7 @@ export default function BlogPostCard({ post, index, className = "" }: BlogPostCa
           src={post.image} 
           alt={post.alt} 
           className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+          loading="lazy"
           data-testid={`img-blog-post-${index}`}
         />
         {/* Category Tag */}

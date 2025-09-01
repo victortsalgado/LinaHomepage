@@ -89,6 +89,7 @@ export default function ClientsSection() {
                   src={client.logo}
                   alt={`Logo ${client.name}`}
                   className="h-16 w-auto grayscale hover:grayscale-0 transition-all duration-300 ease-in-out opacity-80 hover:opacity-100 cursor-pointer"
+                  loading="lazy"
                   data-testid={`img-logo-${client.name.toLowerCase().replace(/\s+/g, '-')}`}
                 />
               </div>
