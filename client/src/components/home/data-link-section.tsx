@@ -145,11 +145,11 @@ export default function DataLinkSection() {
                   />
                   
                   {/* Animated DataLink logo positioned over the turquoise square */}
-                  <div className="absolute top-[11%] right-[-10.7%] w-40 h-40 lg:w-44 lg:h-44">
+                  <div className="absolute top-4 right-4 w-28 h-28 lg:top-6 lg:right-6 lg:w-36 lg:h-36">
                     <img 
                       src={datalinkAnimation}
                       alt="DataLink animated logo" 
-                      className="w-full h-full object-cover rounded-xl pl-[0px] pr-[0px] ml-[-62px] mr-[-62px] mt-[-77px] mb-[-77px]"
+                      className="w-full h-full object-cover rounded-xl"
                       data-testid="img-datalink-animation"
                     />
                   </div>
