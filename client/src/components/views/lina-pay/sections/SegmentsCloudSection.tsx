@@ -378,8 +378,8 @@ export default function SegmentsCloudSection() {
                   delay: 2
                 }}
               />
-              })}
             </div>
+          </motion.div>
 
           {/* Right Column - Dynamic Content Panel */}
           <motion.div
