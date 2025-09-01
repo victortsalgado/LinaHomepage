@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Fingerprint, Repeat } from "lucide-react";
+import { ArrowRight, Fingerprint, Repeat, CheckCircle2 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -33,14 +33,22 @@ export default function LinaPaySection() {
     {
       id: 'automatico',
       title: "Cobranças Inteligentes, Receita Previsível",
-      description: "Automatize pagamentos recorrentes com valores fixos ou variáveis. Reduza a inadimplência e garanta o fluxo de caixa com o DDA turbinado.",
+      benefits: [
+        "Reduz a inadimplência em cobranças recorrentes.",
+        "Garante o fluxo de caixa com pagamentos automáticos.",
+        "Oferece mais liberdade que o débito automático tradicional (DDA turbinado)."
+      ],
       imageSrc: null,
       imageAlt: "PIX Automático - Pagamentos recorrentes automatizados"
     },
     {
       id: 'biometria',
       title: "Checkout em 1 Toque, Sem Fricção",
-      description: "Aumente sua conversão no e-commerce com pagamentos por biometria. Uma experiência segura, sem senhas e sem redirecionamentos.",
+      benefits: [
+        "Aumenta a conversão com checkout de 1 toque, sem fricção.",
+        "Elimina a necessidade de senhas e redirecionamentos para outros apps.",
+        "Garante segurança máxima com autenticação biométrica certificada."
+      ],
       imageSrc: null,
       imageAlt: "PIX Biometria - Autenticação biométrica para pagamentos"
     }
@@ -205,13 +213,22 @@ export default function LinaPaySection() {
                       transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
                       className="relative z-10 flex-1"
                     >
-                      <div className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl">
-                        <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-4">
-                          {activeContent.title}
-                        </h3>
-                        <p className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
-                          {activeContent.description}
-                        </p>
+                      <div className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl h-96 lg:h-[28rem] flex flex-col justify-center">
+                        <div>
+                          <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-6">
+                            {activeContent.title}
+                          </h3>
+                          <ul className="space-y-4">
+                            {activeContent.benefits.map((benefit, index) => (
+                              <li key={index} className="flex items-start gap-3">
+                                <CheckCircle2 size={20} className="text-cyan-400 mt-0.5 flex-shrink-0" />
+                                <span className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
+                                  {benefit}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </motion.div>
                     
