@@ -54,30 +54,29 @@ export default function NewsletterSection() {
             className="max-w-4xl mx-auto"
             data-testid="form-newsletter-signup"
           >
-            <div className="flex flex-col sm:flex-row gap-4">
-              {/* Email Input */}
-              <div className="flex-1 relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <div className="relative flex items-center">
+              {/* Email Input - Large rounded field */}
+              <div className="relative w-full">
                 <Input
                   type="email"
                   placeholder="Digite seu e-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-12 h-18 bg-white border-gray-300 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)] rounded-full text-gray-900"
+                  className="w-full h-16 pl-6 pr-32 bg-white border-0 focus:border-0 focus:ring-2 focus:ring-[var(--lina-cyan)] rounded-full text-gray-900 text-lg shadow-lg"
                   required
                   data-testid="input-newsletter-email"
                 />
+                
+                {/* Subscribe Button - Positioned inside the input field */}
+                <Button
+                  type="submit"
+                  disabled={isLoading || !email}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 h-12 px-6 bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-black font-semibold rounded-full transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                  data-testid="button-newsletter-subscribe"
+                >
+                  {isLoading ? "Inscrevendo..." : "Inscrever"}
+                </Button>
               </div>
-              
-              {/* Subscribe Button */}
-              <Button
-                type="submit"
-                disabled={isLoading || !email}
-                className="h-18 px-8 bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-black font-semibold rounded-full transition-all duration-300 shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30 disabled:opacity-50 disabled:cursor-not-allowed"
-                data-testid="button-newsletter-subscribe"
-              >
-                {isLoading ? "Inscrevendo..." : "Inscrever"}
-              </Button>
             </div>
           </form>
         </div>
