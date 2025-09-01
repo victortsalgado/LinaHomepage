@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import LinaPayHeroSection from "@/components/views/lina-pay/sections/LinaPayHeroSection";
@@ -8,6 +7,7 @@ import AboutLinaPaySection from "@/components/views/lina-pay/sections/AboutLinaP
 import SocialProofSection from "@/components/views/lina-pay/sections/SocialProofSection";
 import DifferentiatorsSection from "@/components/views/lina-pay/sections/DifferentiatorsSection";
 import FeaturesSection from "@/components/views/lina-pay/sections/FeaturesSection";
+import IntegrationSection from "@/components/views/lina-pay/sections/IntegrationSection";
 
 
 
@@ -50,13 +50,6 @@ const businessTypes = [
   },
 ];
 
-const integrationFeatures = [
-  "APIs completas e documentadas",
-  "Compatível com VTEX, Shopify, Nuvemshop, entre outras",
-  "Suporte técnico direto com nosso time de especialistas",
-  "Homologado no Open Finance e 100% LGPD compliant",
-  "Processos de integração pensados para desenvolvedores e times ágeis",
-];
 
 export default function LinaPay(): JSX.Element {
   return (
@@ -80,41 +73,7 @@ export default function LinaPay(): JSX.Element {
             <FeaturesSection />
 
             {/* Integration Section */}
-            <section className="w-full h-[787px] rounded-[40px_40px_0px_0px] bg-[linear-gradient(0deg,rgba(251,250,250,1)_0%,rgba(152,216,211,1)_100%)] relative">
-              <div className="flex justify-between items-center px-[294px] pt-[157px]">
-                <Card className="w-[552px] h-[535px] bg-white rounded-2xl border-0">
-                  <CardContent className="p-10">
-                    <h2 className="[font-family:'Lexend',Helvetica] font-medium text-5xl leading-[56px] mb-8">
-                      <span className="text-[#003a38]">
-                        Integre rápido, escale
-                      </span>
-                      <span className="text-[#0ab5aa]"> sem limites</span>
-                    </h2>
-
-                    <div className="space-y-6">
-                      {integrationFeatures.map((feature, index) => (
-                        <div key={index} className="flex items-start gap-4">
-                          <img
-                            className="w-4 h-4 mt-1"
-                            alt="Check"
-                            src="/figmaAssets/check.svg"
-                          />
-                          <p className="[font-family:'Lexend',Helvetica] font-light text-[#606060] text-base leading-6">
-                            {feature}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <img
-                  className="w-[277px] h-[562px] object-cover"
-                  alt="Mockup"
-                  src="/figmaAssets/mockup01-1.png"
-                />
-              </div>
-            </section>
+            <IntegrationSection />
 
             {/* Business Types Section */}
             <section className="w-full h-[961px] bg-[#003a38] rounded-[0px_0px_40px_40px] border border-solid border-black relative">
