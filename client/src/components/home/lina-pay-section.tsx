@@ -159,22 +159,18 @@ export default function LinaPaySection() {
                   className="relative w-full h-full"
                   data-testid={`stage-pix-${selection}`}
                 >
-                  {/* Consistent Left-Right Layout */}
+                  {/* Fixed Left-Right Layout */}
                   <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-16">
                     
-                    {/* Smartphone Mockup - ALWAYS LEFT */}
-                    <motion.div
-                      initial={{ x: -120, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      exit={{ x: -120, opacity: 0 }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                      className="relative z-20 flex justify-center lg:justify-start flex-shrink-0"
-                    >
+                    {/* Smartphone Mockup - FIXED LEFT */}
+                    <div className="relative z-20 flex justify-center lg:justify-start flex-shrink-0">
                       <div className="smartphone-mockup">
                         {/* Smartphone Frame */}
                         <div className="w-48 h-96 lg:w-56 lg:h-[28rem] bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-[2.5rem] shadow-2xl border-4 border-gray-700 relative overflow-hidden">
-                          {/* Screen */}
-                          <div className="absolute inset-3 bg-gradient-to-br from-gray-900 to-black rounded-[2rem] border border-gray-600">
+                          {/* Dynamic Screen with Color Transition */}
+                          <div className={`absolute inset-3 rounded-[2rem] border border-gray-600 transition-colors duration-500 ${
+                            selection === 'automatico' ? 'bg-white' : 'bg-gray-900'
+                          }`}>
                             {/* Notch */}
                             <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-6 bg-black rounded-full"></div>
                             {/* Dynamic Screen Content */}
@@ -182,18 +178,20 @@ export default function LinaPaySection() {
                               <AnimatePresence mode="wait">
                                 <motion.div
                                   key={selection}
-                                  initial={{ opacity: 0, scale: 0.8 }}
-                                  animate={{ opacity: 1, scale: 1 }}
-                                  exit={{ opacity: 0, scale: 0.8 }}
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  exit={{ opacity: 0 }}
                                   transition={{ duration: 0.4, ease: "easeInOut" }}
                                   className="text-center"
                                 >
                                   {selection === 'automatico' ? (
-                                    <Repeat size={32} className="text-cyan-400 mx-auto mb-3" />
+                                    <Repeat size={32} className="text-black mx-auto mb-3" />
                                   ) : (
-                                    <Fingerprint size={32} className="text-cyan-400 mx-auto mb-3" />
+                                    <Fingerprint size={32} className="text-white mx-auto mb-3" />
                                   )}
-                                  <p className="text-cyan-400 text-sm font-medium px-4">
+                                  <p className={`text-sm font-medium px-4 ${
+                                    selection === 'automatico' ? 'text-black' : 'text-white'
+                                  }`}>
                                     {selection === 'automatico' ? 'PIX Automático' : 'PIX Biometria'}
                                   </p>
                                 </motion.div>
@@ -204,38 +202,40 @@ export default function LinaPaySection() {
                           <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-600 rounded-full"></div>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                     
-                    {/* Text Panel - ALWAYS RIGHT */}
-                    <motion.div
-                      key={`text-${selection}`}
-                      initial={{ x: 120, opacity: 0, scale: 0.9 }}
-                      animate={{ x: 0, opacity: 1, scale: 1 }}
-                      exit={{ x: 120, opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                      className="relative z-10 flex-1"
-                    >
-                      <div className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl h-96 lg:h-[28rem] flex flex-col justify-start">
-                        <div className="pt-4 lg:pt-8">
-                          <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-3">
-                            {activeContent.title}
-                          </h3>
-                          <p className="text-gray-300 text-base lg:text-lg mb-6 font-sans italic">
-                            {activeContent.subtitle}
-                          </p>
-                          <ul className="space-y-4">
-                            {activeContent.benefits.map((benefit, index) => (
-                              <li key={index} className="flex items-start gap-3">
-                                <CheckCircle2 size={20} className="text-cyan-400 mt-0.5 flex-shrink-0" />
-                                <span className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
-                                  {benefit}
-                                </span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </motion.div>
+                    {/* Text Panel - FIXED RIGHT */}
+                    <div className="relative z-10 flex-1">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={`text-${selection}`}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.5, ease: "easeInOut" }}
+                          className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl h-96 lg:h-[28rem] flex flex-col justify-start"
+                        >
+                          <div className="pt-4 lg:pt-8">
+                            <h3 className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-3">
+                              {activeContent.title}
+                            </h3>
+                            <p className="text-gray-300 text-base lg:text-lg mb-6 font-sans italic">
+                              {activeContent.subtitle}
+                            </p>
+                            <ul className="space-y-4">
+                              {activeContent.benefits.map((benefit, index) => (
+                                <li key={index} className="flex items-start gap-3">
+                                  <CheckCircle2 size={20} className="text-cyan-400 mt-0.5 flex-shrink-0" />
+                                  <span className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
+                                    {benefit}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
                     
                   </div>
                 </motion.div>
