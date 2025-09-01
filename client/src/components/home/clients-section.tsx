@@ -73,7 +73,7 @@ export default function ClientsSection() {
         {/* Infinite Carousel */}
         <div className="relative overflow-hidden">
           <InfiniteSlider
-            duration={8}
+            duration={20}
             gap={100}
             className="py-12"
           >
