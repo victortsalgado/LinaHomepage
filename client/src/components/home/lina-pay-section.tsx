@@ -123,9 +123,9 @@ export default function LinaPaySection() {
                     <span className="button-toggle"></span>
                     <span className="button-indicator">
                       {selection === 'automatico' ? (
-                        <Fingerprint size={14} className="text-cyan-400" />
-                      ) : (
                         <Repeat size={14} className="text-cyan-400" />
+                      ) : (
+                        <Fingerprint size={14} className="text-cyan-400" />
                       )}
                     </span>
                   </div>
@@ -180,9 +180,9 @@ export default function LinaPaySection() {
                           >
                             <div className="text-center">
                               {selection === 'automatico' ? (
-                                <Fingerprint size={48} className="text-cyan-400/60 mx-auto mb-2" />
-                              ) : (
                                 <Repeat size={48} className="text-cyan-400/60 mx-auto mb-2" />
+                              ) : (
+                                <Fingerprint size={48} className="text-cyan-400/60 mx-auto mb-2" />
                               )}
                               <p className="text-cyan-400/60 text-sm font-medium">
                                 {activeContent.title}
