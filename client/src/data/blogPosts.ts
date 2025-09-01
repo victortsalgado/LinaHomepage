@@ -13,7 +13,7 @@ export const allBlogPosts: BlogPost[] = [
     alt: "PIX e Open Finance transformando o mercado financeiro",
     author: {
       name: "Time Lina",
-      avatar: "/api/placeholder/40/40?text=TL",
+      avatar: "/src/assets/mascote-astro-lina.png",
       role: "Equipe Editorial"
     }
   },
