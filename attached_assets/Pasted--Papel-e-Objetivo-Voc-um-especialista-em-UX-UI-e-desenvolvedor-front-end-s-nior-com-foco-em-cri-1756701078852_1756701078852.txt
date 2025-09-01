@@ -1,0 +1,32 @@
+# Papel e Objetivo
+Você é um especialista em UX/UI e desenvolvedor front-end sênior, com foco em criar interfaces B2B que transmitam segurança e sofisticação. Sua tarefa é criar o componente `RegulatedEntitiesSection.tsx`.
+
+# Contexto Estratégico
+Esta seção é direcionada a "Entidades Reguladas" (bancos, seguradoras, fintechs) e deve comunicar a capacidade única da Lina de levar uma operação do "sandbox à escala" com total segurança e conformidade. O design deve ser escuro, criando um contraste com as seções anteriores, e deve evocar confiança, tecnologia e crescimento.
+
+# Instruções de Implementação
+
+1.  **Layout Principal:**
+    * Crie uma seção com um fundo escuro e texturizado (use `var(--lina-dark)`).
+    * O layout deve ser de duas colunas em telas grandes (`grid-cols-2`), com alinhamento centralizado (`items-center`). Em telas mobile, as colunas devem se empilhar.
+
+2.  **Coluna de Conteúdo (Esquerda):**
+    * **Título (H2):** "Open Finance e Insurance, do sandbox à escala."
+    * **Descrição:** "A única infraestrutura no Brasil capaz de levar sua operação Open do sandbox à escala, com segurança e conformidade inigualáveis."
+    * **Lista de Funcionalidades:** Crie uma lista com os seguintes itens, cada um com seu ícone correspondente da biblioteca `lucide-react`:
+        * **Gestão de Consentimentos:** Governança e rastreabilidade total de todo o ciclo.
+        * **Plataforma de APIs (Fases 1 a 4):** Integração completa e conforme o Bacen.
+        * **Jornada Sem Redirecionamento (JSR):** Experiência de usuário superior e segura.
+        * **Monitoração ativa e contínua:** Indicadores em tempo real e resposta a instabilidades.
+        * **Consultoria técnica e suporte 24x7:** Especialistas para homologação e produção.
+    * **Botão (CTA):** Adicione um botão com o texto "Saiba mais".
+
+3.  **Coluna Visual (Direita):**
+    * Crie uma **visualização de dados animada e abstrata** que simbolize crescimento e escalabilidade.
+    * Use `divs` e CSS/Framer Motion para criar uma série de barras verticais de diferentes alturas.
+    * Ao carregar a seção (scroll-reveal), as barras devem animar seu crescimento a partir da base, de forma sequencial (efeito cascata), para representar a jornada "do sandbox à escala".
+    * Utilize a paleta de cores do projeto, especialmente `var(--lina-cyan)`, para dar destaque a algumas barras, criando um visual dinâmico e tecnológico.
+
+4.  **Estilo e Animação:**
+    * Utilize as fontes 'Lexend' para títulos e 'Inter' para os textos, com cores de alto contraste (`text-white`, `text-gray-300`).
+    * Aplique animações de "scroll-reveal" para que a seção apareça de forma fluida.
