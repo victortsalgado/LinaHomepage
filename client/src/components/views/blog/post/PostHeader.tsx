@@ -1,12 +1,42 @@
 import { motion } from "framer-motion";
 import { BlogPost } from "@/contexts/BlogSearchContext";
+import { Post } from "../../../../lib/sanity";
 import { Clock, Calendar } from "lucide-react";
 
 interface PostHeaderProps {
-  post: BlogPost;
+  post: BlogPost | Post;
+  sanityPost?: Post;
 }
 
-export default function PostHeader({ post }: PostHeaderProps) {
+// Type guard to check if post is Sanity Post
+function isSanityPost(post: BlogPost | Post): post is Post {
+  return '_id' in post;
+}
+
+export default function PostHeader({ post, sanityPost }: PostHeaderProps) {
+  // Use Sanity post data if available, otherwise use legacy post data
+  const actualPost = sanityPost || post;
+  
+  let title: string;
+  let excerpt: string;
+  let category: string;
+  let publishedDate: string;
+  
+  if (isSanityPost(actualPost)) {
+    title = actualPost.title;
+    excerpt = actualPost.excerpt;
+    category = actualPost.category;
+    publishedDate = new Date(actualPost.publishedAt).toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    });
+  } else {
+    title = actualPost.title;
+    excerpt = actualPost.description;
+    category = actualPost.category;
+    publishedDate = actualPost.date;
+  }
   return (
     <motion.section
       initial={{ opacity: 0, y: 30 }}
@@ -25,7 +55,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
           className="inline-block bg-[var(--lina-cyan)] text-white px-4 py-2 rounded-full text-sm font-semibold"
           data-testid="tag-post-category"
         >
-          {post.category}
+          {category}
         </span>
       </motion.div>
 
@@ -38,7 +68,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
         style={{ fontFamily: 'Lexend, sans-serif' }}
         data-testid="heading-post-title"
       >
-        {post.title}
+        {title}
       </motion.h1>
 
       {/* Excerpt/Subtitle */}
@@ -50,7 +80,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
         style={{ fontFamily: 'Inter, sans-serif' }}
         data-testid="text-post-excerpt"
       >
-        {post.description}
+        {excerpt}
       </motion.p>
 
       {/* Author Information */}
@@ -62,8 +92,8 @@ export default function PostHeader({ post }: PostHeaderProps) {
       >
         {/* Author Avatar */}
         <img 
-          src={post.author?.avatar || "/api/placeholder/60/60?text=Author"} 
-          alt={`${post.author?.name || "Author"} avatar`}
+          src="/src/assets/mascote-astro-lina.png" 
+          alt="Time Lina avatar"
           className="w-12 h-12 rounded-full object-cover"
           data-testid="img-author-avatar"
         />
@@ -75,30 +105,26 @@ export default function PostHeader({ post }: PostHeaderProps) {
             style={{ fontFamily: 'Lexend, sans-serif' }}
             data-testid="text-author-name"
           >
-            {post.author?.name || "Author"}
+            Time Lina
           </h3>
-          {post.author?.role && (
-            <p 
-              className="text-gray-600 text-sm"
-              data-testid="text-author-role"
-            >
-              {post.author.role}
-            </p>
-          )}
+          <p 
+            className="text-gray-600 text-sm"
+            data-testid="text-author-role"
+          >
+            Equipe Editorial
+          </p>
         </div>
 
         {/* Meta Information */}
         <div className="flex items-center gap-6 text-sm text-gray-500">
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4" />
-            <span data-testid="text-post-date">{post.date}</span>
+            <span data-testid="text-post-date">{publishedDate}</span>
           </div>
-          {post.readTime && (
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              <span data-testid="text-post-read-time">{post.readTime}</span>
-            </div>
-          )}
+          <div className="flex items-center gap-2">
+            <Clock className="w-4 h-4" />
+            <span data-testid="text-post-read-time">5 min de leitura</span>
+          </div>
         </div>
       </motion.div>
     </motion.section>
