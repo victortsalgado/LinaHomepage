@@ -1,0 +1,38 @@
+# Papel e Objetivo
+Você é um especialista em UX/UI e desenvolvedor front-end, focado em traduzir informações técnicas em layouts claros e visualmente organizados. Sua tarefa é criar a seção "APIs do DataLink".
+
+# Contexto Estratégico
+Esta seção deve detalhar os principais endpoints da API do DataLink, comunicando sua abrangência e facilidade de uso para um público que pode incluir tanto decisores de negócio quanto desenvolvedores. O design deve ser limpo e seguir o padrão rítmico da página, utilizando um fundo claro.
+
+# Instruções de Implementação
+
+1.  **Layout Principal:**
+    * Crie uma seção com um fundo claro (`bg-white` ou `bg-gray-50`).
+    * A seção deve ter um título (H2) centralizado: "APIs construídas para facilitar a sua operação".
+    * Abaixo do título, crie uma grade responsiva com 2 colunas (`grid-cols-2`) em telas de desktop, que se empilhe para uma única coluna em telas mobile, para apresentar os cards das APIs.
+
+2.  **Design dos Cards de API:**
+    * Cada um dos 5 cards de API deve ter um design limpo, com fundo `bg-white`, bordas arredondadas, uma borda sutil (`border border-gray-200`) e uma leve sombra que se intensifica no `hover`.
+    * Cada card deve conter um ícone, o nome do endpoint (título H3) e uma breve descrição.
+
+3.  **Conteúdo dos Cards (extraído da LP de referência):**
+    * **Card 1: GET/Contas**
+        * **Ícone:** `Landmark` (lucide-react)
+        * **Descrição:** "Acesse saldos, extratos e limites de contas de pessoa física e jurídica."
+    * **Card 2: GET/Cartões**
+        * **Ícone:** `CreditCard` (lucide-react)
+        * **Descrição:** "Perfeito para análise de risco e recomendação de produtos financeiros."
+    * **Card 3: GET/Crédito**
+        * **Ícone:** `AreaChart` (lucide-react)
+        * **Descrição:** "Informações de empréstimos e financiamentos para modelagem de crédito."
+    * **Card 4: GET/Investimentos**
+        * **Ícone:** `TrendingUp` (lucide-react)
+        * **Descrição:** "Dados de posição e extrato de produtos de investimento para carteiras consolidadas."
+    * **Card 5: GET/Cadastral**
+        * **Ícone:** `UserCheck` (lucide-react)
+        * **Descrição:** "Validação de dados cadastrais, endereços e contatos para onboarding e compliance."
+
+4.  **Estilo e Animação:**
+    * Utilize as fontes 'Lexend' para títulos e 'Inter' para os textos.
+    * Os ícones devem ter a cor de destaque `text-lina-cyan`.
+    * Aplique animações de "scroll-reveal" em cascata para que os cards apareçam de forma sequencial.
