@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Recent blog posts data (3 most recent)
+// Recent blog posts data (5 most recent)
 const recentPosts = [
   {
     id: 1,
@@ -53,14 +53,44 @@ const recentPosts = [
       avatar: "/api/placeholder/40/40?text=MC",
       role: "CTO"
     }
+  },
+  {
+    id: 4,
+    category: "Institucional",
+    title: "Lina anuncia parceria estratégica com Mastercard",
+    description: "Nova parceria acelera a adoção de pagamentos sem fricção através da tecnologia JSR, marcando um novo capítulo na história da empresa.",
+    date: "08 Jan 2025",
+    readTime: "5 min",
+    image: "/api/placeholder/600/400?text=Lina+Mastercard",
+    alt: "Lina Mastercard partnership",
+    author: {
+      name: "André Martins",
+      avatar: "/api/placeholder/40/40?text=AM",
+      role: "CEO"
+    }
+  },
+  {
+    id: 5,
+    category: "DataLink",
+    title: "Como o Open Finance está democratizando o acesso ao crédito",
+    description: "Análise profunda sobre como a tecnologia está quebrando barreiras e criando novas oportunidades de inclusão financeira no Brasil.",
+    date: "05 Jan 2025",
+    readTime: "7 min",
+    image: "/api/placeholder/600/400?text=Credit+Democratization",
+    alt: "Credit democratization through Open Finance",
+    author: {
+      name: "Juliana Santos",
+      avatar: "/api/placeholder/40/40?text=JS",
+      role: "Data Scientist"
+    }
   }
 ];
 
 export default function RecentBlogsSection() {
   const { ref, isVisible } = useScrollReveal();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [language, setLanguage] = useState("pt");
-  const [region, setRegion] = useState("latam");
+  const [category, setCategory] = useState("todas");
+  const [tag, setTag] = useState("todas");
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % recentPosts.length);
@@ -126,36 +156,40 @@ export default function RecentBlogsSection() {
               style={{ fontFamily: 'Lexend, sans-serif' }}
               data-testid="heading-recent-blogs"
             >
-              Recent Blogs
+              Artigos Recentes
             </h2>
 
             {/* Filter Dropdowns */}
             <div className="flex space-x-4">
-              <Select value={language} onValueChange={setLanguage}>
+              <Select value={category} onValueChange={setCategory}>
                 <SelectTrigger 
-                  className="w-40"
-                  data-testid="select-language-filter"
+                  className="w-48"
+                  data-testid="select-category-filter"
                 >
-                  <SelectValue placeholder="Idioma" />
+                  <SelectValue placeholder="Categorias" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="pt">Português</SelectItem>
-                  <SelectItem value="en">English</SelectItem>
-                  <SelectItem value="es">Español</SelectItem>
+                  <SelectItem value="todas">Todas as Categorias</SelectItem>
+                  <SelectItem value="datalink">DataLink</SelectItem>
+                  <SelectItem value="linapay">LinaPay</SelectItem>
+                  <SelectItem value="jsr">JSR</SelectItem>
+                  <SelectItem value="institucional">Institucional</SelectItem>
                 </SelectContent>
               </Select>
 
-              <Select value={region} onValueChange={setRegion}>
+              <Select value={tag} onValueChange={setTag}>
                 <SelectTrigger 
-                  className="w-40"
-                  data-testid="select-region-filter"
+                  className="w-48"
+                  data-testid="select-tag-filter"
                 >
-                  <SelectValue placeholder="Região" />
+                  <SelectValue placeholder="Tags" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="latam">Latin America</SelectItem>
-                  <SelectItem value="br">Brasil</SelectItem>
-                  <SelectItem value="global">Global</SelectItem>
+                  <SelectItem value="todas">Todas as Tags</SelectItem>
+                  <SelectItem value="inovacao">Inovação</SelectItem>
+                  <SelectItem value="pagamentos">Pagamentos</SelectItem>
+                  <SelectItem value="tecnologia">Tecnologia</SelectItem>
+                  <SelectItem value="mercado">Mercado</SelectItem>
                 </SelectContent>
               </Select>
             </div>

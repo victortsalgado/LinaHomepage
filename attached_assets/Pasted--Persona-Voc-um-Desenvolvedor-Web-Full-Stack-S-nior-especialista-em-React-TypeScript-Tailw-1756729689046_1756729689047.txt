@@ -1,0 +1,30 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é refatorar a página principal de um blog (Resource Center) com base em novas diretrizes de design e conteúdo.
+
+**Missão:** Refatorar a página principal do **Blog** (`/blog`) para alinhar-se com o novo design de referência, incluindo um novo Hero, um carrossel com conteúdo específico e filtros por categorias.
+
+**Porquê Estratégico:** A página do blog precisa ser um hub de conteúdo convidativo e funcional. O novo Hero cria um ponto de entrada mais direto e alinhado à marca, enquanto a curadoria de posts recentes e os filtros por assunto melhoram a experiência do usuário e a descoberta de conteúdo relevante.
+
+**Requisitos e Diretrizes para Refatoração:**
+
+1.  **Componente 1: `BlogHeroSection.tsx` (Refatoração)**
+    * **Estilo Visual:**
+        * Implemente o design da imagem de referência.
+        * Utilize um fundo escuro com um gradiente sutil (`--lina-dark` com `radial-gradient` na cor `lina-cyan` de baixa opacidade no centro), criando a aparência de "universo".
+    * **Conteúdo:**
+        * Texto "BEM VINDO AO" em uma linha.
+        * Título principal "Universo Open" em destaque.
+    * **Animação (Nova Diretriz):**
+        * Para o título "Universo Open", aplique um efeito de "máquina de escrever" (typewriter) que revela o texto letra por letra.
+        * Abaixo do título, adicione uma barra de busca (`<Input />`) que aparece com um "fade-in" suave após a animação do título.
+
+2.  **Componente 2: `RecentBlogsSection.tsx` (Modificação)**
+    * **Título da Seção:** Mantenha "Artigos Recentes".
+    * **Filtros:** Substitua os dropdowns de "Idioma" e "Região" por dropdowns de **"Categorias"** e **"Tags"**. Use placeholders por enquanto.
+    * **Carrossel:**
+        * O carrossel deve ser populado com exatamente **5 posts**.
+        * O design do slide deve ser idêntico à referência: imagem à esquerda e, à direita, título do post, descrição, e informações do autor.
+
+3.  **Componente 3: `AllPostsSection.tsx` (Manter Estrutura)**
+    * Mantenha a grade `lg:grid-cols-3` para exibir todos os outros posts do blog, garantindo a consistência visual com os cards do carrossel.
+
+**Entregável:** O código-fonte completo e atualizado para a página `blog.tsx` e seus componentes de seção, refletindo fielmente as novas diretrizes de design, conteúdo e funcionalidade.

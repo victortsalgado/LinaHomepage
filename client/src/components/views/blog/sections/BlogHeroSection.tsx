@@ -1,10 +1,41 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function BlogHeroSection() {
   const { ref, isVisible } = useScrollReveal();
+  const [typewriterText, setTypewriterText] = useState("");
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  
+  const fullText = "Universo Open";
+
+  // Typewriter effect
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let timeoutId: NodeJS.Timeout;
+    let currentIndex = 0;
+
+    const typeWriter = () => {
+      if (currentIndex <= fullText.length) {
+        setTypewriterText(fullText.slice(0, currentIndex));
+        currentIndex++;
+        timeoutId = setTimeout(typeWriter, 150); // 150ms delay between letters
+      } else {
+        // Show search bar after typewriter completes
+        setTimeout(() => setShowSearchBar(true), 500);
+      }
+    };
+
+    // Start typewriter after a short delay
+    timeoutId = setTimeout(typeWriter, 800);
+
+    return () => clearTimeout(timeoutId);
+  }, [isVisible]);
 
   // Animation variants
   const containerVariants = {
@@ -20,48 +51,24 @@ export default function BlogHeroSection() {
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 60 },
+  const welcomeVariants = {
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut",
       },
     },
   };
 
-  const circleVariants = {
-    hidden: { scale: 0, opacity: 0 },
+  const searchBarVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
     visible: {
+      opacity: 1,
+      y: 0,
       scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 1.2,
-        ease: "easeOut",
-        delay: 0.5,
-      },
-    },
-  };
-
-  const dotsVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 1.5,
-        delay: 1,
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const dotVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
       transition: {
         duration: 0.6,
         ease: "easeOut",
@@ -73,100 +80,84 @@ export default function BlogHeroSection() {
     <section 
       ref={ref}
       className="relative py-20 lg:py-32 overflow-hidden"
-      style={{ backgroundColor: 'var(--lina-dark)' }}
+      style={{ 
+        backgroundColor: 'var(--lina-dark)',
+        background: `
+          radial-gradient(circle at 50% 50%, rgba(0, 175, 170, 0.1) 0%, transparent 50%),
+          var(--lina-dark)
+        `
+      }}
       data-testid="section-blog-hero"
     >
       {/* Grid Pattern Background */}
       <div 
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-5"
         style={{
           backgroundImage: `
             linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px'
+          backgroundSize: '60px 60px'
         }}
       />
 
-      <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative">
+      <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
           className="text-center space-y-8"
         >
-          {/* Main Title */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
-            style={{ fontFamily: 'Lexend, sans-serif' }}
-            data-testid="heading-hero-title"
-          >
-            Lina Resource Center
-          </motion.h1>
-
-          {/* Description */}
+          {/* Welcome Text */}
           <motion.p
-            variants={itemVariants}
-            className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+            variants={welcomeVariants}
+            className="text-lg lg:text-xl text-gray-300 font-medium tracking-wider uppercase"
             style={{ fontFamily: 'Inter, sans-serif' }}
-            data-testid="text-hero-description"
+            data-testid="text-hero-welcome"
           >
-            A coleção completa de recursos e insights da Lina, em um só lugar - cobrindo uma ampla gama de tópicos que você vai adorar explorar.
+            BEM VINDO AO
           </motion.p>
 
-          {/* Animated Central Visual Element */}
-          <motion.div
-            variants={circleVariants}
-            className="relative flex justify-center items-center mt-16"
-          >
-            {/* Central Circle */}
-            <div 
-              className="relative w-48 h-48 lg:w-64 lg:h-64 rounded-full border-2 border-[var(--lina-cyan)] flex items-center justify-center"
-              data-testid="visual-central-circle"
+          {/* Main Title with Typewriter Effect */}
+          <div className="min-h-[120px] lg:min-h-[160px] flex items-center justify-center">
+            <h1
+              className="text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight"
+              style={{ fontFamily: 'Lexend, sans-serif' }}
+              data-testid="heading-hero-title"
             >
-              {/* Inner Circle */}
-              <div 
-                className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-[var(--lina-cyan)] flex items-center justify-center"
+              {typewriterText}
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 1, repeat: Infinity }}
+                className="text-[var(--lina-cyan)]"
               >
-                <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white" />
-              </div>
+                |
+              </motion.span>
+            </h1>
+          </div>
 
-              {/* Animated Dots around Circle */}
+          {/* Search Bar */}
+          <AnimatePresence>
+            {showSearchBar && (
               <motion.div
-                variants={dotsVariants}
-                className="absolute inset-0"
+                variants={searchBarVariants}
+                initial="hidden"
+                animate="visible"
+                className="max-w-2xl mx-auto"
               >
-                {Array.from({ length: 8 }).map((_, index) => {
-                  const angle = (index * 45) * Math.PI / 180;
-                  const radius = 120; // Distance from center
-                  const x = Math.cos(angle) * radius;
-                  const y = Math.sin(angle) * radius;
-                  
-                  return (
-                    <motion.div
-                      key={index}
-                      variants={dotVariants}
-                      className="absolute w-3 h-3 bg-[var(--lina-cyan)] rounded-full"
-                      style={{
-                        left: `calc(50% + ${x}px - 6px)`,
-                        top: `calc(50% + ${y}px - 6px)`,
-                      }}
-                      animate={{
-                        scale: [1, 1.5, 1],
-                        opacity: [0.6, 1, 0.6],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.2,
-                      }}
-                    />
-                  );
-                })}
+                <div className="relative">
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Input
+                    type="text"
+                    placeholder="Pesquisar artigos, insights e recursos..."
+                    className="pl-12 pr-6 py-4 text-lg bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)] rounded-full"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
+                    data-testid="input-search-blog"
+                  />
+                </div>
               </motion.div>
-            </div>
-          </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>
