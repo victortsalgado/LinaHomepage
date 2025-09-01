@@ -168,7 +168,7 @@ export default function LinaPaySection() {
                         {/* Smartphone Frame */}
                         <div className="w-48 h-96 lg:w-56 lg:h-[28rem] bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-[2.5rem] shadow-2xl border-4 border-gray-700 relative overflow-hidden">
                           {/* Dynamic Screen with Color Transition */}
-                          <div className={`absolute inset-3 rounded-[2rem] border border-gray-600 transition-colors duration-700 ease-in-out ${
+                          <div className={`absolute inset-3 rounded-[2rem] border border-gray-600 transition-colors duration-1000 ease-out ${
                             selection === 'automatico' ? 'bg-white' : 'bg-gray-900'
                           }`}>
                             {/* Notch */}
@@ -181,7 +181,7 @@ export default function LinaPaySection() {
                                   initial={{ opacity: 0 }}
                                   animate={{ opacity: 1 }}
                                   exit={{ opacity: 0 }}
-                                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                                  transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
                                   className="text-center"
                                 >
                                   {selection === 'automatico' ? (
@@ -212,7 +212,7 @@ export default function LinaPaySection() {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
-                          transition={{ duration: 0.7, ease: "easeInOut" }}
+                          transition={{ duration: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
                           className="backdrop-blur-xl bg-white/8 border border-cyan-400/30 p-6 lg:p-8 rounded-2xl shadow-2xl h-96 lg:h-[28rem] flex flex-col justify-start"
                         >
                           <div className="pt-4 lg:pt-8">
