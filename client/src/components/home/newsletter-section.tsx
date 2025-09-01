@@ -54,29 +54,29 @@ export default function NewsletterSection() {
             className="max-w-4xl mx-auto"
             data-testid="form-newsletter-signup"
           >
-            <div className="relative flex items-center">
+            <div className="flex flex-row gap-4 items-center">
               {/* Email Input - Large rounded field */}
-              <div className="relative w-full">
+              <div className="flex-1">
                 <Input
                   type="email"
                   placeholder="Digite seu e-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full h-16 pl-6 pr-32 bg-white border-0 focus:border-0 focus:ring-2 focus:ring-[var(--lina-cyan)] rounded-full text-gray-900 text-lg shadow-lg"
+                  className="w-full h-14 px-6 bg-white border-0 focus:border-0 focus:ring-2 focus:ring-[var(--lina-cyan)] rounded-full text-gray-900 text-lg shadow-lg"
                   required
                   data-testid="input-newsletter-email"
                 />
-                
-                {/* Subscribe Button - Positioned inside the input field */}
-                <Button
-                  type="submit"
-                  disabled={isLoading || !email}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 h-12 px-6 bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-black font-semibold rounded-full transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
-                  data-testid="button-newsletter-subscribe"
-                >
-                  {isLoading ? "Inscrevendo..." : "Inscrever"}
-                </Button>
               </div>
+              
+              {/* Subscribe Button - Separate element */}
+              <Button
+                type="submit"
+                disabled={isLoading || !email}
+                className="h-14 px-8 bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-black font-semibold rounded-full transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed border-2 border-[var(--lina-cyan)]"
+                data-testid="button-newsletter-subscribe"
+              >
+                {isLoading ? "Inscrevendo..." : "Inscrever"}
+              </Button>
             </div>
           </form>
         </div>
