@@ -1,0 +1,46 @@
+# Papel e Objetivo
+Você é um especialista em UX/UI e desenvolvedor front-end. Sua tarefa é criar a seção de "Proposta de Valor" para a página de produto "DataLink", focada em destacar seus principais diferenciais.
+
+# Contexto Estratégico
+Esta seção deve educar o visitante sobre os benefícios fundamentais do DataLink. O design deve ser limpo, organizado e usar iconografia para facilitar a compreensão rápida dos conceitos. A seção deve seguir o tema claro da página.
+
+# Instruções de Implementação
+
+1.  **Layout Principal:**
+    * Crie uma seção com um fundo claro (`bg-white` ou `bg-gray-50`).
+    * A seção deve ter um título (H2) centralizado no topo.
+    * Abaixo do título, crie uma grade responsiva com 3 colunas (`grid-cols-3`) para os itens de valor. Em telas mobile, a grade deve se transformar em uma única coluna.
+
+2.  **Título da Seção:**
+    * Utilize o título: "Por que o Data Link entrega mais valor em menos tempo?".
+
+3.  **Conteúdo dos Cards de Valor:**
+    * Crie 6 cards, cada um contendo um ícone, um título (H3) e uma descrição.
+    * **Card 1:**
+        * **Ícone:** `Database` (lucide-react)
+        * **Título:** "Dados bancários e de investimento em uma única API"
+        * **Descrição:** "Acesse dados de PF e PJ em mais de 50 instituições com uma única integração."
+    * **Card 2:**
+        * **Ícone:** `Zap` (lucide-react)
+        * **Título:** "Integração rápida com APIs padronizadas"
+        * **Descrição:** "Reduza o tempo de desenvolvimento com suporte técnico direto e documentação robusta."
+    * **Card 3:**
+        * **Ícone:** `ShieldCheck` (lucide-react)
+        * **Título:** "Segurança e conformidade como padrão"
+        * **Descrição:** "Tecnologia em conformidade com o Open Finance, FIDO2 e LGPD."
+    * **Card 4:**
+        * **Ícone:** `Users` (lucide-react)
+        * **Título:** "Personalização e segmentação avançada"
+        * **Descrição:** "Use dados para criar ofertas sob medida e melhorar a experiência do cliente."
+    * **Card 5:**
+        * **Ícone:** `Lightbulb` (lucide-react)
+        * **Título:** "Insights acionáveis com base em dados reais"
+        * **Descrição:** "Enriqueça dados para alimentar seu CRM e modelos de análise de risco e crédito."
+    * **Card 6:**
+        * **Ícone:** `Server` (lucide-react)
+        * **Título:** "Tecnologia proprietária com flexibilidade para escalar"
+        * **Descrição:** "Soluções desenvolvidas pela Lina, sem dependência de terceiros."
+
+4.  **Estilo e Animação:**
+    * Cada card deve ter um estilo limpo, com fundo `bg-white`, bordas arredondadas e uma leve sombra no `hover`.
+    * Aplique animações de "scroll-reveal" em cascata (staggered) para que os cards apareçam de forma fluida e sequencial.
