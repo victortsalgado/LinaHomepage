@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { University, CreditCard, TrendingUp, UserCheck, Database } from "lucide-react";
+import { University, CreditCard, TrendingUp, UserCheck, Database, ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import dataLinkImage from "../../assets/data-link-image.png";
 import datalinkAnimation from "../../assets/datalink-animation.gif";
@@ -12,23 +12,28 @@ export default function DataLinkSection() {
   const features = [
     {
       title: "Contas bancárias",
-      description: "Saldo, extrato, limite e transações"
+      description: "Saldo, extrato, limite e transações",
+      icon: Database
     },
     {
       title: "Operações de crédito",
-      description: "Adiantamento a depositante e direitos creditórios"
+      description: "Adiantamento a depositante e direitos creditórios",
+      icon: TrendingUp
     },
     {
       title: "Dados cadastrais",
-      description: "Pessoa física e jurídica"
+      description: "Pessoa física e jurídica",
+      icon: UserCheck
     },
     {
       title: "Cartões de crédito",
-      description: "Faturas e lançamentos, limites contratados, utilizados e disponíveis"
+      description: "Faturas e lançamentos, limites contratados, utilizados e disponíveis",
+      icon: CreditCard
     },
     {
       title: "Investimentos",
-      description: "Renda fixa e variável, títulos públicos federais e fundos de investimento"
+      description: "Renda fixa e variável, títulos públicos federais e fundos de investimento",
+      icon: University
     }
   ];
 
@@ -93,7 +98,7 @@ export default function DataLinkSection() {
                       ></div>
                     )}
                     
-                    {/* Bullet point */}
+                    {/* Icon */}
                     <div 
                       className={`flex items-start gap-4 scroll-reveal-hidden ${
                         contentVisible 
@@ -104,7 +109,9 @@ export default function DataLinkSection() {
                         animationDelay: index === 0 ? '0.1s' : index === 1 ? '0.8s' : index === 2 ? '1.6s' : index === 3 ? '2.4s' : '3.2s'
                       }}
                     >
-                      <div className="relative z-10 w-4 h-4 from-teal-500 to-cyan-400 rounded-full mt-1 flex-shrink-0 bg-[#2ec9bc] text-[#2ec9bc]"></div>
+                      <div className="relative z-10 mt-1 flex-shrink-0">
+                        <feature.icon className="w-5 h-5 text-[#2ec9bc]" />
+                      </div>
                       <div className="flex-1">
                         <h3 
                           className="font-bold mb-1 text-base text-[#006666]"
@@ -128,8 +135,8 @@ export default function DataLinkSection() {
                 className="bg-[#2ec9bc] border border-[#2ec9bc] text-white hover:bg-transparent hover:text-[#2ec9bc] px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2"
                 data-testid="button-learn-data-link"
               >
-                <span>→</span>
                 <span>Conheça o Data Link</span>
+                <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
             
