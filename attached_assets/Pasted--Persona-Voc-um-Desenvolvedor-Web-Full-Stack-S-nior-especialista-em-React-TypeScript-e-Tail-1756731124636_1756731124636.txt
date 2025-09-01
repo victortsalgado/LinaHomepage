@@ -1,0 +1,36 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript e Tailwind CSS, com um forte foco em criar layouts de conteúdo otimizados para legibilidade, engajamento e SEO.
+
+**Missão:** Construir o template da página para um **artigo de blog individual**.
+
+**Porquê Estratégico:** Este template é o destino final do tráfego orgânico e das campanhas de conteúdo. Uma experiência de leitura limpa, profissional e livre de distrações é essencial para reter a atenção do usuário, transmitir autoridade (E-E-A-T) e guiá-lo para uma ação de conversão, como se inscrever na newsletter ou entrar em contato.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura da Página e Componentes:**
+    * Crie um novo arquivo de página para uma rota dinâmica, por exemplo: `src/pages/blog/[slug].tsx`.
+    * A página deve importar e utilizar os componentes globais `<Header />` e `<Footer />`.
+    * O layout deve ser componentizado em seções distintas (ex: `<PostHeader />`, `<PostBody />`).
+
+2.  **Layout da Página (Estrutura):**
+    * **Cabeçalho do Artigo:** Uma seção de abertura que contém:
+        * Tag de Categoria (ex: "LinaPay").
+        * Título Principal do Artigo (H1).
+        * Um breve excerto ou subtítulo.
+        * Informações do Autor: foto (placeholder), nome, data de publicação e tempo de leitura estimado.
+    * **Imagem de Destaque:** Uma imagem de largura total posicionada abaixo do cabeçalho do artigo.
+    * **Corpo do Artigo (Layout de 2 Colunas):**
+        * **Coluna Principal (Esquerda):** A área para o conteúdo do artigo. Utilize o plugin `@tailwindcss/typography` (`className="prose"`) para estilizar o conteúdo de forma otimizada para leitura (tamanhos de fonte, espaçamento entre linhas, margens, etc.).
+        * **Coluna Secundária (Direita - Sidebar):** Uma barra lateral que pode ser "sticky" (fixa durante a rolagem). Ela deve conter:
+            * Um sumário com links âncora para as seções do artigo ("Neste artigo").
+            * Um CTA para inscrição na newsletter.
+    * **Box do Autor:** Ao final do conteúdo do artigo, uma seção dedicada com uma breve biografia do autor e links para suas redes sociais.
+    * **Seção de Artigos Relacionados:** No final da página, antes do footer, exiba uma grade com 3 cards de outros artigos, reutilizando o componente `BlogPostCard.tsx`.
+
+3.  **Conteúdo (Placeholder):**
+    * Popule o template com conteúdo de exemplo para visualizar a estrutura. Use um título como "Pix Automático: como funciona e por que adotar na sua empresa" e preencha o corpo do artigo com texto `lorem ipsum`, mas inclua subtítulos (H2, H3), parágrafos e uma lista para demonstrar todos os estilos.
+
+4.  **Animação e Estilo:**
+    * Utilize `framer-motion` para aplicar uma animação de entrada suave nos elementos principais da página (cabeçalho, imagem, corpo do texto).
+    * O estilo deve ser minimalista e focado na legibilidade, usando a paleta de cores e a tipografia do projeto.
+
+**Entregável:** O código-fonte completo para o novo template da página de artigo individual, `[slug].tsx`, e seus componentes associados, pronto para receber conteúdo dinâmico.
