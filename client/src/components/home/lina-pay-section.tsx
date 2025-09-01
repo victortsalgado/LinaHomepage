@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Fingerprint, Repeat } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logoPixBg from "@/assets/Home_Logo_Pix_BG_LinaPay_1756226661320.png";
 import linaPayGif from "@/assets/LinaPay_1756690950351.gif";
@@ -10,6 +10,24 @@ export default function LinaPaySection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
   const { ref: blockRef, isVisible: blockVisible } = useScrollReveal<HTMLDivElement>();
   const [selection, setSelection] = useState<'automatico' | 'biometria'>('automatico');
+  const [hasAutoToggled, setHasAutoToggled] = useState(false);
+
+  // Auto-toggle when section becomes visible
+  useEffect(() => {
+    if (sectionVisible && !hasAutoToggled) {
+      const timer = setTimeout(() => {
+        setSelection('biometria');
+        setHasAutoToggled(true);
+        
+        // Toggle back to automatico after showing biometria
+        setTimeout(() => {
+          setSelection('automatico');
+        }, 2500);
+      }, 1000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [sectionVisible, hasAutoToggled]);
 
   const contentData = {
     automatico: {
