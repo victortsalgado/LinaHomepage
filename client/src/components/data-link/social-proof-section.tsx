@@ -156,10 +156,6 @@ export default function SocialProofSection() {
                     />
                     {/* Hover glow effect */}
                     <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
-                    {/* Active indicator */}
-                    {currentTestimonial.id === testimonial.id && (
-                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[var(--lina-cyan)] rounded-full" />
-                    )}
                   </motion.div>
                 ))}
               </div>
