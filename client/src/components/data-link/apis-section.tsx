@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Landmark, CreditCard, AreaChart, TrendingUp, UserCheck } from "lucide-react";
 
@@ -44,8 +44,33 @@ export default function ApisSection() {
     }
   ];
 
-  // State for active API endpoint
+  // State for active API endpoint and typing effect
   const [activeEndpoint, setActiveEndpoint] = useState(apiEndpoints[0]);
+  const [typedText, setTypedText] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+
+  // Typing effect when active endpoint changes
+  useEffect(() => {
+    if (!activeEndpoint) return;
+    
+    setIsTyping(true);
+    setTypedText("");
+    
+    const targetText = activeEndpoint.codeExample;
+    let currentIndex = 0;
+    
+    const typeInterval = setInterval(() => {
+      if (currentIndex < targetText.length) {
+        setTypedText(targetText.slice(0, currentIndex + 1));
+        currentIndex++;
+      } else {
+        setIsTyping(false);
+        clearInterval(typeInterval);
+      }
+    }, 50); // 50ms delay between each character
+    
+    return () => clearInterval(typeInterval);
+  }, [activeEndpoint]);
 
   // Animation variants
   const containerVariants = {
@@ -176,34 +201,27 @@ export default function ApisSection() {
                 </div>
 
                 {/* Editor Content */}
-                <div className="p-6 min-h-[200px] flex items-center">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeEndpoint.id}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="w-full"
-                      data-testid={`code-content-${activeEndpoint.id}`}
-                    >
-                      {/* Command Prompt */}
-                      <div className="flex items-center space-x-2 mb-4">
-                        <span className="text-lina-cyan font-mono text-sm">$</span>
-                        <div className="flex-1">
-                          <pre className="text-green-400 font-mono text-sm leading-relaxed">
-                            {activeEndpoint.codeExample}
-                          </pre>
-                        </div>
+                <div className="p-6 min-h-[200px] flex flex-col justify-center">
+                  <div className="w-full">
+                    {/* Command Prompt with Typing Effect */}
+                    <div className="flex items-center space-x-2 mb-4">
+                      <span className="text-lina-cyan font-mono text-sm">$</span>
+                      <div className="flex-1">
+                        <pre className="text-green-400 font-mono text-sm leading-relaxed">
+                          {typedText}
+                          {isTyping && <span className="inline-block w-2 h-4 bg-green-400 ml-1 animate-pulse"></span>}
+                        </pre>
                       </div>
+                    </div>
 
-                      {/* Cursor Blink Effect */}
+                    {/* Empty Command Line with Cursor */}
+                    {!isTyping && (
                       <div className="flex items-center">
                         <span className="text-lina-cyan font-mono text-sm">$</span>
                         <div className="ml-2 w-2 h-5 bg-lina-cyan animate-pulse"></div>
                       </div>
-                    </motion.div>
-                  </AnimatePresence>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
