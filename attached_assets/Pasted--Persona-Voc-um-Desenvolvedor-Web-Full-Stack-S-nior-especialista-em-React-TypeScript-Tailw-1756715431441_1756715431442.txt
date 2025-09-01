@@ -1,0 +1,38 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion, operando no ambiente integrado do Replit. Você cria componentes modulares e animados que seguem rigorosamente os padrões de arquitetura e estilo de um projeto existente.
+
+**Missão:** Construir o componente da seção **"Segmentos de Mercado"** para a página de produto DataLink.
+
+**Porquê Estratégico:** Esta seção é crucial para que os diferentes perfis de cliente (assessorias financeiras, plataformas de investimento, etc.) se identifiquem imediatamente com a solução, demonstrando a versatilidade do produto e aumentando a relevância da página para acelerar a conversão.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/sections/data-link/SegmentsSection.tsx`.
+    * A seção deve conter um título principal e uma grade (grid) responsiva que se organize em 2 colunas em desktops (`md:grid-cols-2`).
+
+2.  **Conteúdo Explícito:**
+    * **Título da Seção:** "Feito para resolver dores reais de diferentes segmentos"
+    * **Subtítulo/Apoio:** "Veja como aplicamos no seu setor"
+    * **Conteúdo dos Cards (4 cards no total):**
+        * **Card 1:**
+            * **Ícone:** Utilize um ícone apropriado (ex: `Users` ou `Briefcase` da biblioteca `lucide-react`).
+            * **Título:** "Empresas de assessoria financeira e patrimonial"
+            * **Descrição:** "Tenha uma visão unificada das finanças dos clientes com dados integrados de contas, cartões, crédito e investimentos."
+        * **Card 2:**
+            * **Ícone:** Utilize um ícone apropriado (ex: `TrendingUp` da `lucide-react`).
+            * **Título:** "Plataformas de investimento"
+            * **Descrição:** "Ofereça carteiras consolidadas e recomendações personalizadas conectando contas de investimento e bancárias em mais de 50 instituições."
+        * **Card 3:**
+            * **Ícone:** Utilize um ícone apropriado (ex: `Landmark` da `lucide-react`).
+            * **Título:** "Plataformas e marketplaces de crédito"
+            * **Descrição:** "Automatize a análise de crédito e comprovação de renda com acesso direto a extratos bancários via API."
+        * **Card 4:**
+            * **Ícone:** Utilize um ícone apropriado (ex: `Library` da `lucide-react`).
+            * **Título:** "Plataformas de contabilidade online"
+            * **Descrição:** "Concilie e categorize transações automaticamente com dados bancários padronizados."
+
+3.  **Estilo e Animação:**
+    * **Estilo:** O design dos cards (fundo, borda, sombra, tipografia, ícone) deve ser visualmente **consistente** com o estilo já estabelecido no componente `ValuePropositionSection.tsx`.
+    * **Animação:** **Obrigatório:** Utilize o hook `useScrollReveal` e a biblioteca `framer-motion` para aplicar uma animação de entrada em cascata (staggered) nos cards. A animação deve ser acionada quando a seção entra no campo de visão, replicando o comportamento de `containerVariants` e `cardVariants` do componente `ValuePropositionSection.tsx`.
+
+**Entregável:** O código-fonte completo para o novo componente `SegmentsSection.tsx`. O componente deve ser totalmente responsivo, animado e visualmente coeso com o restante da página DataLink.
