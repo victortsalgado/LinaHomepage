@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import JsrHeroSection from "@/components/views/jsr/sections/JsrHeroSection";
 
 const clientLogos = [
   { src: "/figmaAssets/client.png", alt: "Client" },
@@ -127,6 +128,7 @@ export default function JSR(): JSX.Element {
   return (
     <>
       <Header />
+      <JsrHeroSection />
       <div className="bg-white grid justify-items-center [align-items:start] w-screen">
         <div className="bg-white w-[1440px] h-[6196px] relative">
           <div className="absolute w-[1440px] h-[4606px] top-[1590px] left-0">
@@ -442,7 +444,7 @@ export default function JSR(): JSX.Element {
                 Falar com um especialista
               </div>
             </Button>
-            <Card className="absolute w-[364px] h-[693px] top-[71px] left-[828px]">
+            <Card className="absolute w-[364px] h-[693px] top-[71px] left-[828px]" data-testid="section-cta-form">
               <CardContent className="relative w-[360px] h-[693px] bg-[#003a38] rounded-2xl shadow-[4px_4px_8px_#0ab5aa1a] p-0">
                 <div className="flex flex-col w-[312px] items-start gap-2 absolute top-28 left-6">
                   <div className="flex h-[15px] items-start gap-0.5 relative self-stretch w-full">
