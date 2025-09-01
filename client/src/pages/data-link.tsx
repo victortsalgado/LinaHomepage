@@ -7,6 +7,7 @@ import SocialProofSection from "@/components/data-link/social-proof-section";
 import SegmentsSection from "@/components/data-link/segments-section";
 import ApisSection from "@/components/data-link/apis-section";
 import IntegrationSection from "@/components/data-link/integration-section";
+import CtaFormSection from "@/components/data-link/cta-form-section";
 
 export default function DataLink(): JSX.Element {
   return (
@@ -24,7 +25,7 @@ export default function DataLink(): JSX.Element {
           <ApisSection />
           <IntegrationSection />
           <SegmentsSection />
-          {/* Other sections can be added here later */}
+          <CtaFormSection />
         </main>
         <Footer />
       </div>

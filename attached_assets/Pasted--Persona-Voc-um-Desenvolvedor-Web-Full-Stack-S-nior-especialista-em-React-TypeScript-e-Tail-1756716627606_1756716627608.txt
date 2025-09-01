@@ -1,0 +1,33 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript e Tailwind CSS. Sua tarefa é construir o componente final de conversão para uma página de produto, replicando com precisão os padrões de design e estrutura existentes.
+
+**Missão:** Construir o componente final da página DataLink: a seção de **CTA e Formulário de Contato**.
+
+**Porquê Estratégico:** Este é o componente de conversão mais importante da página. Seu design deve ser convidativo e o formulário precisa ser simples para maximizar a geração de leads qualificados, resolvendo o principal desafio de negócio do site.
+
+**Requisitos e Diretrizes:**
+
+1.  **Ponto de Partida e Referência:**
+    * O estilo visual, a estrutura do formulário e o layout geral devem ser baseados no componente `newsletter-section.tsx` já existente na Home page.
+    * O conteúdo textual (título e subtítulo) deve ser extraído da seção final do `LP_DataLink.pdf`.
+
+2.  **Estrutura do Componente:**
+    * Crie um novo arquivo para este componente: `src/components/sections/data-link/CtaFormSection.tsx`.
+    * A seção deve ter um fundo escuro, consistente com o `newsletter-section.tsx` (ex: `bg-[var(--lina-dark)]`).
+
+3.  **Conteúdo Explícito:**
+    * **Título Principal:** "Vamos juntos transformar complexidade em agilidade?"
+    * **Subtítulo:** "Nossa infraestrutura de Open Finance já impulsiona os maiores players do mercado. Fale com um especialista e descubra o potencial para o seu negócio."
+    * **Campos do Formulário:** O formulário deve conter os seguintes campos:
+        * Nome
+        * Empresa
+        * E-mail Corporativo
+        * Telefone
+        * Cargo
+        * Mensagem (opcional)
+    * **Botão de Envio (CTA):** O texto do botão deve ser "Falar com um especialista".
+
+4.  **Estilo e Animação:**
+    * Replique o estilo dos campos de `Input` e do `Button` do componente `newsletter-section.tsx` para manter a identidade visual.
+    * Utilize o hook `useScrollReveal` para aplicar uma animação de "fade-in" suave quando a seção entrar no campo de visão do usuário.
+
+**Entregável:** O código-fonte completo para o novo componente `CtaFormSection.tsx`. O componente deve ser totalmente responsivo e visualmente coeso com o restante do projeto, servindo como a conclusão natural da jornada do usuário na página.
