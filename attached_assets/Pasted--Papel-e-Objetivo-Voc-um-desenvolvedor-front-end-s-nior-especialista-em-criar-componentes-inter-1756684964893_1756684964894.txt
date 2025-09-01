@@ -1,0 +1,44 @@
+# Papel e Objetivo
+Você é um desenvolvedor front-end sênior, especialista em criar componentes interativos e de alta performance com Next.js, Tailwind CSS e Framer Motion. Sua tarefa é construir o componente `HeroSection.tsx` como um carrossel de 3 slides.
+
+# Contexto Estratégico
+O objetivo é criar uma seção de herói que seja flexível para o time de marketing, mas que priorize um carregamento rápido (LCP) e uma proposta de valor direta para o visitante. A seção deve ser visualmente impactante e transmitir as principais mensagens da Lina.
+
+# Instruções de Implementação
+
+1.  **Estrutura do Carrossel:**
+    * Gerencie o estado de 3 slides.
+    * Implemente a troca automática de slides a cada 8 segundos, que deve pausar no `hover` do mouse.
+    * Inclua indicadores visuais (pontos ou barras) na parte inferior para mostrar o slide ativo e permitir a navegação manual.
+
+2.  **Otimização de Performance (Crítico):**
+    * Apenas o conteúdo do primeiro slide deve ter carregamento prioritário.
+    * As imagens dos slides 2 e 3 devem usar "lazy loading" para não impactar o LCP.
+
+3.  **Estrutura de Dados (Pronta para CMS):**
+    * Estruture os dados dos slides em um array de objetos, contendo `id`, `badge`, `title`, `description`, `buttonText` e `imageSrc`.
+
+4.  **Conteúdo e Visuais dos Slides:**
+    * **Slide 1 (Foco: Inovação e Solução Principal):**
+        * **Badge:** "Novidade: PIX Automático Disponível"
+        * **Título (H1):** "A infraestrutura completa para Iniciação de Pagamentos e Open Finance."
+        * **Descrição:** "Conecte-se a dados financeiros em tempo real, automatize pagamentos e crie produtos inovadores com uma única API, homologada pelo Banco Central."
+        * **Botão:** "Conheça nossas soluções"
+        * **Visual:** Utilize uma imagem de alto impacto que represente inovação e tecnologia no setor financeiro.
+    * **Slide 2 (Foco: Crescimento e Resultados):**
+        * **Badge:** "Resultados Comprovados"
+        * **Título (H1):** "Transforme dados em novas fontes de receita e oportunidades de negócio."
+        * **Descrição:** "Acelere seus resultados com nossa plataforma de crescimento. Automação inteligente, análises preditivas e integração completa em uma única solução."
+        * **Botão:** "Veja os cases de sucesso"
+        * **Visual:** Utilize a imagem `businessGrowthImage` que já existe no projeto.
+    * **Slide 3 (Foco: Segurança e Compliance):**
+        * **Badge:** "Exclusivo: Arquitetura de Segurança"
+        * **Título (H1):** "Segurança e Compliance de Nível Bancário para sua operação."
+        * **Descrição:** "Proteja seus dados e transações com nossa infraestrutura certificada. Conformidade total com LGPD e regulamentações do Banco Central."
+        * **Botão:** "Saiba mais sobre segurança"
+        * **Visual:** Utilize a imagem `securityComplianceImage` que já existe no projeto.
+
+5.  **Estilo e Animação:**
+    * Fontes: 'Lexend' para títulos e 'Inter' para textos.
+    * Cores: Utilize as variáveis CSS do projeto, com `--lina-cyan` como destaque.
+    * Animação: Use Framer Motion para uma transição de slides suave (fade in/out).
