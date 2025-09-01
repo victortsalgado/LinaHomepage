@@ -66,15 +66,14 @@ export default function RegulatedEntitiesSection() {
   return (
     <section 
       ref={sectionRef}
-      style={{ background: 'var(--lina-dark)' }}
-      className="py-20 text-white relative overflow-hidden circuit-texture"
+      className="py-20 bg-gray-50 text-lina-dark relative overflow-hidden"
       data-testid="section-regulated-entities"
     >
       {/* Decorative background elements */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-20 w-40 h-40 rounded-full blur-3xl" style={{ background: 'var(--lina-cyan)' }}></div>
         <div className="absolute bottom-20 right-20 w-32 h-32 rounded-full blur-2xl" style={{ background: 'var(--lina-cyan)' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 rounded-full blur-3xl opacity-5" style={{ background: 'var(--lina-cyan)' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 rounded-full blur-3xl opacity-3" style={{ background: 'var(--lina-cyan)' }}></div>
       </div>
       
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
@@ -86,7 +85,7 @@ export default function RegulatedEntitiesSection() {
           >
             {/* Main Title */}
             <h2 
-              className="text-4xl lg:text-5xl font-bold leading-tight font-lexend title-glow"
+              className="text-4xl lg:text-5xl font-bold leading-tight font-lexend text-lina-dark"
               data-testid="heading-regulated-entities-title"
             >
               Open Finance e Insurance, do sandbox à escala.
@@ -94,7 +93,7 @@ export default function RegulatedEntitiesSection() {
             
             {/* Description */}
             <p 
-              className="text-xl text-gray-300 leading-relaxed"
+              className="text-xl text-gray-700 leading-relaxed"
               data-testid="text-regulated-entities-description"
             >
               A única infraestrutura no Brasil capaz de levar sua operação Open do sandbox à escala, com segurança e conformidade inigualáveis.
@@ -105,7 +104,7 @@ export default function RegulatedEntitiesSection() {
               {features.map((feature, index) => (
                 <motion.div 
                   key={feature.title}
-                  className="flex items-start space-x-4 bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10"
+                  className="flex items-start space-x-4 bg-white p-4 rounded-xl border border-gray-200 shadow-md"
                   initial={{ opacity: 0, x: -20 }}
                   animate={contentVisible ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
@@ -123,13 +122,13 @@ export default function RegulatedEntitiesSection() {
                   </div>
                   <div>
                     <h4 
-                      className="font-semibold mb-1 text-white"
+                      className="font-semibold mb-1 text-lina-dark"
                       data-testid={`text-regulated-feature-title-${index}`}
                     >
                       {feature.title}
                     </h4>
                     <p 
-                      className="text-gray-300 text-sm"
+                      className="text-gray-700 text-sm"
                       data-testid={`text-regulated-feature-description-${index}`}
                     >
                       {feature.description}
@@ -141,8 +140,7 @@ export default function RegulatedEntitiesSection() {
             
             {/* CTA Button */}
             <Button 
-              className="text-lina-dark px-8 py-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200"
-              style={{ background: 'var(--lina-cyan)' }}
+              className="btn-lina-light"
               data-testid="button-learn-more"
             >
               Saiba mais
@@ -157,11 +155,11 @@ export default function RegulatedEntitiesSection() {
           >
             <div className="relative h-80 flex items-end justify-center space-x-2 p-6">
               {/* Background grid for tech feel */}
-              <div className="absolute inset-0 opacity-10">
+              <div className="absolute inset-0 opacity-20">
                 <div className="h-full w-full" style={{
                   backgroundImage: `
-                    linear-gradient(rgba(0, 239, 207, 0.1) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 239, 207, 0.1) 1px, transparent 1px)
+                    linear-gradient(rgba(0, 239, 207, 0.2) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 239, 207, 0.2) 1px, transparent 1px)
                   `,
                   backgroundSize: '20px 20px'
                 }}></div>
@@ -171,13 +169,14 @@ export default function RegulatedEntitiesSection() {
               {dataVisualizationBars.map((bar, index) => (
                 <motion.div
                   key={index}
-                  className="relative flex-1 max-w-4 rounded-t-lg"
+                  className="relative flex-1 max-w-4 rounded-t-lg border border-gray-300"
                   style={{ 
                     background: index % 3 === 0 ? 'var(--lina-cyan)' : 
-                               index % 3 === 1 ? 'rgba(0, 239, 207, 0.7)' : 
-                               'rgba(0, 239, 207, 0.4)'
+                               index % 3 === 1 ? 'rgba(0, 239, 207, 0.8)' : 
+                               'rgba(0, 239, 207, 0.6)',
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
                   }}
-                  initial={{ height: 0, opacity: 0.6 }}
+                  initial={{ height: 0, opacity: 0.7 }}
                   animate={animateBars ? { 
                     height: bar.height, 
                     opacity: 1 
@@ -189,13 +188,16 @@ export default function RegulatedEntitiesSection() {
                   }}
                   data-testid={`bar-growth-${index}`}
                 >
-                  {/* Subtle glow effect for highlighted bars */}
+                  {/* Subtle shadow effect for highlighted bars */}
                   {index % 3 === 0 && (
                     <motion.div
-                      className="absolute inset-0 rounded-t-lg blur-sm"
-                      style={{ background: 'var(--lina-cyan)' }}
+                      className="absolute inset-0 rounded-t-lg"
+                      style={{ 
+                        background: 'var(--lina-cyan)',
+                        boxShadow: '0 4px 12px rgba(0, 239, 207, 0.3)'
+                      }}
                       initial={{ opacity: 0 }}
-                      animate={animateBars ? { opacity: 0.3 } : {}}
+                      animate={animateBars ? { opacity: 0.8 } : {}}
                       transition={{ delay: bar.delay + 0.5, duration: 0.5 }}
                     />
                   )}
@@ -230,7 +232,7 @@ export default function RegulatedEntitiesSection() {
             </div>
             
             {/* Tech labels for context */}
-            <div className="absolute bottom-0 left-0 right-0 flex justify-between text-xs text-gray-400 px-6">
+            <div className="absolute bottom-0 left-0 right-0 flex justify-between text-xs text-gray-600 px-6">
               <span>Sandbox</span>
               <span>Produção</span>
               <span>Escala</span>
