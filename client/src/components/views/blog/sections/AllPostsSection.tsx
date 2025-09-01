@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import BlogPostCard from "@/components/ui/BlogPostCard";
+import { useBlogSearch } from "@/contexts/BlogSearchContext";
+import { useMemo } from "react";
 
 // All blog posts data (12 posts)
 const allBlogPosts = [
@@ -118,6 +120,22 @@ const allBlogPosts = [
 
 export default function AllPostsSection() {
   const { ref, isVisible } = useScrollReveal();
+  const { searchTerm, category, tag } = useBlogSearch();
+
+  // Filter posts based on search term and filters
+  const filteredPosts = useMemo(() => {
+    return allBlogPosts.filter(post => {
+      const matchesSearch = searchTerm === "" || 
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.category.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesCategory = category === "todas" || 
+        post.category.toLowerCase() === category.toLowerCase();
+      
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchTerm, category, tag]);
 
   // Animation variants
   const containerVariants = {
@@ -186,16 +204,30 @@ export default function AllPostsSection() {
           </motion.div>
 
           {/* Posts Grid */}
-          <motion.div
-            variants={gridVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {allBlogPosts.map((post, index) => (
-              <motion.div key={post.id} variants={itemVariants}>
-                <BlogPostCard post={post} index={index} />
-              </motion.div>
-            ))}
-          </motion.div>
+          {filteredPosts.length > 0 ? (
+            <motion.div
+              variants={gridVariants}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {filteredPosts.map((post, index) => (
+                <motion.div key={post.id} variants={itemVariants}>
+                  <BlogPostCard post={post} index={index} />
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              variants={itemVariants}
+              className="text-center py-16"
+            >
+              <p className="text-xl text-gray-500">
+                {searchTerm 
+                  ? `Nenhum artigo encontrado para "${searchTerm}"` 
+                  : "Nenhum artigo encontrado para os filtros selecionados."
+                }
+              </p>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </section>

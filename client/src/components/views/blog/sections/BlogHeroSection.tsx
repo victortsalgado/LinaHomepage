@@ -5,9 +5,11 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useBlogSearch } from "@/contexts/BlogSearchContext";
 
 export default function BlogHeroSection() {
   const { ref, isVisible } = useScrollReveal();
+  const { searchTerm, setSearchTerm } = useBlogSearch();
   const [typewriterText, setTypewriterText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
   
@@ -149,6 +151,8 @@ export default function BlogHeroSection() {
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <Input
                     type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Pesquisar artigos, insights e recursos..."
                     className="pl-12 pr-6 py-4 text-lg bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)] rounded-full"
                     style={{ fontFamily: 'Inter, sans-serif' }}

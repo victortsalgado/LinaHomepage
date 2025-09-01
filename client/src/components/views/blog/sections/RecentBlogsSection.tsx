@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useBlogSearch } from "@/contexts/BlogSearchContext";
 
 // Recent blog posts data (5 most recent)
 const recentPosts = [
@@ -88,16 +89,37 @@ const recentPosts = [
 
 export default function RecentBlogsSection() {
   const { ref, isVisible } = useScrollReveal();
+  const { searchTerm, category, setCategory, tag, setTag } = useBlogSearch();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [category, setCategory] = useState("todas");
-  const [tag, setTag] = useState("todas");
+
+  // Filter posts based on search term and filters
+  const filteredPosts = useMemo(() => {
+    return recentPosts.filter(post => {
+      const matchesSearch = searchTerm === "" || 
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.category.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesCategory = category === "todas" || 
+        post.category.toLowerCase() === category.toLowerCase();
+      
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchTerm, category, tag]);
+
+  // Reset slide when filters change
+  useState(() => {
+    if (currentSlide >= filteredPosts.length) {
+      setCurrentSlide(0);
+    }
+  });
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % recentPosts.length);
+    setCurrentSlide((prev) => (prev + 1) % filteredPosts.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + recentPosts.length) % recentPosts.length);
+    setCurrentSlide((prev) => (prev - 1 + filteredPosts.length) % filteredPosts.length);
   };
 
   const goToSlide = (index: number) => {
@@ -131,7 +153,69 @@ export default function RecentBlogsSection() {
     },
   };
 
-  const currentPost = recentPosts[currentSlide];
+  const currentPost = filteredPosts[currentSlide];
+
+  // Show message if no posts match filters
+  if (filteredPosts.length === 0) {
+    return (
+      <section 
+        ref={ref}
+        className="py-20 lg:py-32 bg-white"
+        data-testid="section-recent-blogs"
+      >
+        <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
+          <div className="text-center space-y-8">
+            <h2
+              className="text-4xl lg:text-5xl font-bold text-gray-900"
+              style={{ fontFamily: 'Lexend, sans-serif' }}
+            >
+              Artigos Recentes
+            </h2>
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-6 lg:space-y-0 mb-12">
+              <div className="flex space-x-4 mx-auto lg:mx-0">
+                <Select value={category} onValueChange={setCategory}>
+                  <SelectTrigger 
+                    className="w-48"
+                    data-testid="select-category-filter"
+                  >
+                    <SelectValue placeholder="Categorias" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="todas">Todas as Categorias</SelectItem>
+                    <SelectItem value="datalink">DataLink</SelectItem>
+                    <SelectItem value="linapay">LinaPay</SelectItem>
+                    <SelectItem value="jsr">JSR</SelectItem>
+                    <SelectItem value="institucional">Institucional</SelectItem>
+                  </SelectContent>
+                </Select>
+
+                <Select value={tag} onValueChange={setTag}>
+                  <SelectTrigger 
+                    className="w-48"
+                    data-testid="select-tag-filter"
+                  >
+                    <SelectValue placeholder="Tags" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="todas">Todas as Tags</SelectItem>
+                    <SelectItem value="inovacao">Inovação</SelectItem>
+                    <SelectItem value="pagamentos">Pagamentos</SelectItem>
+                    <SelectItem value="tecnologia">Tecnologia</SelectItem>
+                    <SelectItem value="mercado">Mercado</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <div className="text-center py-16">
+              <p className="text-xl text-gray-500">
+                Nenhum artigo encontrado para "{searchTerm}" na categoria selecionada.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section 
@@ -291,7 +375,7 @@ export default function RecentBlogsSection() {
             variants={itemVariants}
             className="flex justify-center space-x-3"
           >
-            {recentPosts.map((_, index) => (
+            {filteredPosts.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
