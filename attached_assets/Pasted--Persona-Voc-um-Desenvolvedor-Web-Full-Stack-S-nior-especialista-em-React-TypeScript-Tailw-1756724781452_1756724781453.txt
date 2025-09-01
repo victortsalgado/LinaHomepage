@@ -1,0 +1,35 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é construir o componente de conversão final para uma página de produto, garantindo um design de alta qualidade e consistência com os padrões do projeto.
+
+**Missão:** Construir o componente final da página JSR: a seção de **CTA e Formulário de Contato**.
+
+**Porquê Estratégico:** Este componente é o ponto de conversão final da página. Ele deve capitalizar o senso de urgência criado pelo conteúdo anterior e fornecer um caminho simples e claro para o lead qualificado iniciar o contato com a equipe comercial.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/jsr/sections/JsrCtaFormSection.tsx`.
+
+2.  **Design e Estilo:**
+    * A seção deve ter um **fundo claro** (ex: `bg-white` ou `bg-gray-100`).
+    * O título e subtítulo da seção devem ter texto em cor escura para garantir o contraste (ex: `text-[var(--lina-dark)]`).
+    * O container do formulário deve ser um "card" com fundo escuro (`bg-[var(--lina-dark)]`) e textos internos (labels, placeholders) em cores claras, seguindo o padrão já estabelecido nas outras páginas.
+
+3.  **Conteúdo Explícito:**
+    * **Título da Seção:** "Antecipe-se à obrigatoriedade e lidere a nova era do Pix"
+    * **Subtítulo da Seção:** "A JSR será obrigatória em 2026, mas somente quem se antecipar terá vantagem competitiva. Com a infraestrutura JSR da Lina, sua instituição entra em produção rapidamente e começa a colher os frutos da inovação em pagamentos."
+    * **Título do Formulário:** "Fale com um especialista hoje mesmo."
+    * **Campos do Formulário (Padrão de Qualificação):**
+        * Nome completo*
+        * E-mail corporativo*
+        * Telefone*
+        * Empresa*
+        * Qual o Faturamento Anual da Empresa? (Dropdown com as opções: "Até R$ 5 milhões", "entre R$ 5 milhões e R$ 10 milhões", "entre R$ 10 milhões e R$ 50 milhões", "acima de R$ 50 milhões")
+        * Qual o segmento da sua empresa? (Dropdown com as opções: "Bancos e Instituições Financeiras", "Fintechs e Meios de Pagamento", "E-commerce e Marketplaces", "Seguradoras (Insurtechs)", "Software e SaaS", "Outro")
+    * **Botão de Envio (CTA):**
+        * **Texto:** "Solicitar demonstração"
+        * **Estilo:** Deve seguir o padrão visual do botão primário do site (cor `lina-cyan`).
+
+4.  **Animação:**
+    * Utilize o hook `useScrollReveal` para uma animação suave de "fade-in" em toda a seção.
+
+**Entregável:** O código-fonte completo para o novo componente `JsrCtaFormSection.tsx`, totalmente responsivo e funcional, finalizando a estrutura da página JSR.
