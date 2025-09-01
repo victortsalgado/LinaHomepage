@@ -73,7 +73,7 @@ export default function ClientsSection() {
         {/* Infinite Carousel */}
         <div className="relative overflow-hidden">
           <InfiniteSlider
-            duration={15}
+            duration={8}
             gap={100}
             className="py-12"
           >
@@ -93,6 +93,10 @@ export default function ClientsSection() {
             ))}
           </InfiniteSlider>
           
+          
+          {/* Gradient overlays for fade in/out effect */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-50 to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none z-10" />
         </div>
       </div>
     </section>
