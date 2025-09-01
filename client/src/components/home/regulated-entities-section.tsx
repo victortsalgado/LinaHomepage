@@ -66,7 +66,7 @@ export default function RegulatedEntitiesSection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-20 bg-gray-50 text-lina-dark relative overflow-hidden"
+      className="py-20 bg-white text-lina-dark relative overflow-hidden"
       data-testid="section-regulated-entities"
     >
       {/* Decorative background elements */}
@@ -155,11 +155,11 @@ export default function RegulatedEntitiesSection() {
           >
             <div className="relative h-80 flex items-end justify-center space-x-2 p-6">
               {/* Background grid for tech feel */}
-              <div className="absolute inset-0 opacity-20">
+              <div className="absolute inset-0 opacity-15">
                 <div className="h-full w-full" style={{
                   backgroundImage: `
-                    linear-gradient(rgba(0, 239, 207, 0.2) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 239, 207, 0.2) 1px, transparent 1px)
+                    linear-gradient(rgba(0, 102, 102, 0.3) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 102, 102, 0.3) 1px, transparent 1px)
                   `,
                   backgroundSize: '20px 20px'
                 }}></div>
@@ -171,9 +171,9 @@ export default function RegulatedEntitiesSection() {
                   key={index}
                   className="relative flex-1 max-w-4 rounded-t-lg border border-gray-300"
                   style={{ 
-                    background: index % 3 === 0 ? 'var(--lina-cyan)' : 
-                               index % 3 === 1 ? 'rgba(0, 239, 207, 0.8)' : 
-                               'rgba(0, 239, 207, 0.6)',
+                    background: index % 3 === 0 ? '#006666' : 
+                               index % 3 === 1 ? '#008080' : 
+                               '#0a5d5d',
                     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
                   }}
                   initial={{ height: 0, opacity: 0.7 }}
@@ -193,8 +193,8 @@ export default function RegulatedEntitiesSection() {
                     <motion.div
                       className="absolute inset-0 rounded-t-lg"
                       style={{ 
-                        background: 'var(--lina-cyan)',
-                        boxShadow: '0 4px 12px rgba(0, 239, 207, 0.3)'
+                        background: '#004d4d',
+                        boxShadow: '0 4px 12px rgba(0, 102, 102, 0.3)'
                       }}
                       initial={{ opacity: 0 }}
                       animate={animateBars ? { opacity: 0.8 } : {}}
@@ -211,7 +211,7 @@ export default function RegulatedEntitiesSection() {
                 animate={animateBars ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 1.5, duration: 0.6 }}
               >
-                <div className="text-sm font-medium" style={{ color: 'var(--lina-cyan)' }}>
+                <div className="text-sm font-medium text-teal-700">
                   Do Sandbox à Escala
                 </div>
                 <motion.div
@@ -224,7 +224,7 @@ export default function RegulatedEntitiesSection() {
                     duration: 2,
                     delay: 2
                   }}
-                  style={{ color: 'var(--lina-cyan)' }}
+                  className="text-teal-700"
                 >
                   ↗
                 </motion.div>
