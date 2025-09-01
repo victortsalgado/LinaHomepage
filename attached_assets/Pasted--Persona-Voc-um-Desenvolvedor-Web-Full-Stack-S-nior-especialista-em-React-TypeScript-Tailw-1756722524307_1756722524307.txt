@@ -1,0 +1,27 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Seu objetivo é criar a seção de abertura para uma página de produto B2B, focada em criar um senso de urgência e oportunidade através de um design de alto impacto.
+
+**Missão:** Construir o componente **Hero Section** para a nova página de produto **JSR**.
+
+**Porquê Estratégico:** Esta seção deve capturar a atenção de decisores de bancos e fintechs, comunicando que a JSR é uma evolução inevitável e uma oportunidade competitiva. O objetivo é gerar urgência e posicionar a Lina como a parceira ideal para liderar esta transição.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura do Componente:**
+    * Crie um novo diretório e arquivo de componente em: `src/components/views/jsr/sections/JsrHeroSection.tsx`.
+    * Implemente um layout responsivo de duas colunas (`grid lg:grid-cols-2`), com alinhamento vertical centralizado.
+    * A seção deve ter um fundo claro (`bg-white`).
+
+2.  **Conteúdo Explícito:**
+    * **Coluna da Esquerda (Conteúdo Textual):**
+        * **Título Principal:** `A nova era do Pix já começou — e sua instituição precisa estar pronta`
+        * **Descrição:** `Antecipe-se à obrigatoriedade de 2026. Com a infraestrutura JSR da Lina, sua instituição entra em produção rapidamente, oferecendo pagamentos por biometria e aproximação sem fricção.`
+        * **Botão de CTA:** O botão deve ter o texto "Fale com um especialista" e, ao ser clicado, deve rolar suavemente para a seção de formulário no final da página.
+
+    * **Coluna da Direita (Elemento Visual):**
+        * Crie uma visualização ou animação sofisticada que represente a "Jornada Sem Redirecionamento". Pode ser um mockup de celular demonstrando um pagamento por aproximação (NFC) ou biometria que acontece de forma instantânea, sem sair da tela do app. O estilo deve ser consistente com as outras animações do site.
+
+3.  **Animação e Estilo:**
+    * **Animação:** Utilize `framer-motion` para aplicar uma animação de entrada em cascata (staggered) nos elementos da coluna esquerda (título, descrição, botão).
+    * **Estilo:** Mantenha a consistência visual com o restante do site, utilizando as fontes (`Lexend`, `Inter`), cores e o componente `Button` já definidos no projeto.
+
+**Entregável:** O código-fonte completo para o novo componente `JsrHeroSection.tsx`, totalmente responsivo, animado e funcional.
