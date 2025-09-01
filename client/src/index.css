@@ -875,3 +875,11 @@ body:has(.features-slider .item:hover) .features-slider .item:not(:hover) {
   transform: scale(0.95);
   opacity: 0.7;
 }
+
+/* Keep the hovered card clear and focused */
+.features-slider .item:hover {
+  filter: none !important;
+  transform: scale(1.15) !important;
+  z-index: 50;
+  opacity: 1 !important;
+}
