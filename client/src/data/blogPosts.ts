@@ -63,6 +63,21 @@ export const allBlogPosts: BlogPost[] = [
     }
   },
   {
+    id: 16,
+    category: "Institucional",
+    title: "O Momento Atual do Open Finance no Brasil",
+    description: "Um panorama completo sobre o momento atual do Open Finance no Brasil. Entenda a adesão, o impacto nos bancos e as tendências para o futuro.",
+    date: "30 Jan 2025",
+    readTime: "7 min",
+    image: "/api/placeholder/600/400?text=Open+Finance+Brasil+Cenario",
+    alt: "Cenário atual do Open Finance no Brasil",
+    author: {
+      name: "Time Lina",
+      avatar: "/src/assets/mascote-astro-lina.png",
+      role: "Equipe Editorial"
+    }
+  },
+  {
     id: 1,
     category: "LinaPay",
     title: "Pix Automático: como funciona e por que adotar na sua empresa",

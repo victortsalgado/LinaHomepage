@@ -19,6 +19,8 @@ export default function BlogPostCard({ post, index, className = "" }: BlogPostCa
     slug = "impacto-ultimas-atualizacoes-open-finance";
   } else if (post.id === 15) {
     slug = "open-finance-mercado-de-credito";
+  } else if (post.id === 16) {
+    slug = "cenario-open-finance-brasil";
   } else {
     slug = `${post.title
       .toLowerCase()

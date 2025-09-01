@@ -7,6 +7,7 @@ import PostBodyPIXOpenFinance from "@/components/views/blog/post/PostBodyPIXOpen
 import PostBodyOpenInsurance from "@/components/views/blog/post/PostBodyOpenInsurance";
 import PostBodyOpenFinanceUpdates from "@/components/views/blog/post/PostBodyOpenFinanceUpdates";
 import PostBodyOpenFinanceCredit from "@/components/views/blog/post/PostBodyOpenFinanceCredit";
+import PostBodyOpenFinanceScenario from "@/components/views/blog/post/PostBodyOpenFinanceScenario";
 import AuthorBox from "@/components/views/blog/post/AuthorBox";
 import RelatedPosts from "@/components/views/blog/post/RelatedPosts";
 import { allBlogPosts } from "@/data/blogPosts";
@@ -33,6 +34,9 @@ export default function BlogPost() {
     }
     if (slug === "open-finance-mercado-de-credito") {
       return allBlogPosts.find(p => p.id === 15) || null;
+    }
+    if (slug === "cenario-open-finance-brasil") {
+      return allBlogPosts.find(p => p.id === 16) || null;
     }
     
     // Convert slug back to ID (simple implementation)
@@ -61,6 +65,8 @@ export default function BlogPost() {
       title = "Últimas Atualizações do Open Finance: Impacto e Oportunidades | Lina";
     } else if (post.id === 15) {
       title = "Como o Open Finance está Destravando o Mercado de Crédito | Lina";
+    } else if (post.id === 16) {
+      title = "O Cenário do Open Finance no Brasil: Situação Atual e Tendências";
     }
     document.title = title;
 
@@ -76,7 +82,7 @@ export default function BlogPost() {
     }
 
     // Add JSON-LD structured data for featured articles
-    if (post.id === 0 || post.id === 13 || post.id === 14 || post.id === 15) {
+    if (post.id === 0 || post.id === 13 || post.id === 14 || post.id === 15 || post.id === 16) {
       const existingSchema = document.querySelector('#blog-schema');
       if (existingSchema) {
         existingSchema.remove();
@@ -205,6 +211,35 @@ export default function BlogPost() {
           },
           "image": post.image
         };
+      } else if (post.id === 16) {
+        schemaData = {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "O Cenário do Open Finance no Brasil: Situação Atual e Tendências",
+          "description": "Um panorama completo sobre o momento atual do Open Finance no Brasil. Entenda a adesão, o impacto nos bancos e as tendências para o futuro.",
+          "author": {
+            "@type": "Organization",
+            "name": "Lina"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Lina",
+            "logo": {
+              "@type": "ImageObject",
+              "url": `${window.location.origin}/assets/new-lina-logo.png`
+            }
+          },
+          "about": [
+            { "@type": "Thing", "name": "Open Finance Brasil" }
+          ],
+          "datePublished": "2025-01-30",
+          "dateModified": "2025-01-30",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": window.location.href
+          },
+          "image": post.image
+        };
       }
       
       script.textContent = JSON.stringify(schemaData);
@@ -257,6 +292,8 @@ export default function BlogPost() {
           <PostBodyOpenFinanceUpdates post={post} />
         ) : post.id === 15 ? (
           <PostBodyOpenFinanceCredit post={post} />
+        ) : post.id === 16 ? (
+          <PostBodyOpenFinanceScenario post={post} />
         ) : (
           <PostBody post={post} />
         )}
