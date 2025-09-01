@@ -1,0 +1,31 @@
+# Papel e Objetivo
+Você é um desenvolvedor front-end sênior, especialista em React, Tailwind CSS, e em converter designs de CSS puro para o ecossistema Tailwind. Sua tarefa é refatorar o componente `LinaPaySection.tsx`, substituindo os botões de toggle por um único seletor no estilo "alavanca".
+
+# Contexto Estratégico
+Precisamos de um controle de seleção único e sofisticado que permita ao usuário alternar entre as visualizações das funcionalidades "Pix Automático" e "Pix Biometria". O design e a funcionalidade devem ser baseados no HTML/CSS fornecido pelo usuário, mas adaptados para React e Tailwind, e com iconografia customizada.
+
+# Instruções de Refatoramento
+
+1.  **Adapte o Seletor para React/Tailwind:**
+    * Analise o HTML e CSS fornecidos para o `.switch-button`.
+    * Recrie a estrutura e o estilo deste seletor como um componente React, utilizando classes do Tailwind CSS sempre que possível para replicar o visual (backgrounds, sombras, bordas, etc.).
+    * Para os estilos mais complexos que não podem ser replicados com Tailwind (como a animação `@keyframes indicator`), adicione-os ao arquivo `index.css` global.
+
+2.  **Substitua os Indicadores por Ícones:**
+    * Modifique o design do seletor para usar ícones da biblioteca `lucide-react` em vez dos círculos indicadores.
+    * No lado direito (estado "desligado" do checkbox), posicione o ícone `Fingerprint` (representando Biometria).
+    * No lado esquerdo (estado "ligado" do checkbox), posicione o ícone `Repeat` (representando Automático).
+    * O botão deslizante (`.button-toggle`) deve cobrir o ícone do estado inativo. Por exemplo, quando o seletor está à esquerda (Automático), o ícone `Fingerprint` fica visível à direita. Quando desliza para a direita (Biometria), o ícone `Repeat` fica visível à esquerda.
+
+3.  **Implemente a Lógica de Estado:**
+    * Utilize um `useState` para controlar o estado do seletor (ex: `const [selection, setSelection] = useState('automatico')`).
+    * O `input type="checkbox"` dentro do seletor deve controlar este estado. Quando o checkbox está marcado (`checked`), a seleção deve ser "biometria"; quando não está, deve ser "automatico".
+
+4.  **Conecte ao Conteúdo Dinâmico:**
+    * Mantenha a área de conteúdo dinâmico que planejamos no conceito de "Palco Digital".
+    * Quando `selection` for 'automatico', exiba o conteúdo e o visual correspondentes a "Pix Automático".
+    * Quando `selection` for 'biometria', exiba o conteúdo e o visual de "Pix Biometria".
+    * Utilize `Framer Motion` para criar uma transição suave (fade in/out) quando o conteúdo abaixo do seletor for alterado.
+
+5.  **Limpeza:**
+    * Remova completamente os dois botões de toggle ("Pix Automático" e "Pix Biometria") que existiam anteriormente.

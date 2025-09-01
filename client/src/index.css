@@ -685,3 +685,58 @@
 .btn-lina-dark {
   @apply border-2 border-teal-400 text-teal-400 bg-transparent px-8 py-4 rounded-full font-semibold hover:bg-teal-400 hover:text-gray-900 transform hover:scale-105 transition-all duration-200 flex items-center gap-2;
 }
+
+/* Premium Switch Component Styles */
+.switch-button {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 239, 207, 0.3);
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.switch-button:hover {
+  border-color: rgba(0, 239, 207, 0.5);
+  box-shadow: 0 0 20px rgba(0, 239, 207, 0.2);
+}
+
+.switch-button input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.button-toggle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 46px;
+  height: 46px;
+  background: linear-gradient(135deg, var(--lina-cyan) 0%, rgba(0, 239, 207, 0.8) 100%);
+  border-radius: 50%;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.switch-button input:checked + .button-toggle {
+  transform: translateX(150px);
+}
+
+.switch-icons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease;
+}
+
+.icon-left {
+  left: 15px;
+}
+
+.icon-right {
+  right: 15px;
+}

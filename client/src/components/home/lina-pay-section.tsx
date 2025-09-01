@@ -1,12 +1,26 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Fingerprint, Repeat } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import logoPixBg from "@/assets/Home_Logo_Pix_BG_LinaPay_1756226661320.png";
 import linaPayGif from "@/assets/LinaPay_1756690950351.gif";
 
 export default function LinaPaySection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
   const { ref: blockRef, isVisible: blockVisible } = useScrollReveal<HTMLDivElement>();
+  const [selection, setSelection] = useState<'automatico' | 'biometria'>('automatico');
+
+  const contentData = {
+    automatico: {
+      title: "Pix Automático",
+      description: "Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade."
+    },
+    biometria: {
+      title: "Pix Biometria", 
+      description: "Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebras na jornada."
+    }
+  };
 
   return (
     <section 
@@ -69,56 +83,58 @@ export default function LinaPaySection() {
               </p>
             </div>
             
-            {/* Cards Grid */}
-            <div className="relative grid lg:grid-cols-2 gap-6 mb-8">
-              {/* Glow Effect Behind Cards */}
+            {/* Toggle Selector */}
+            <div className="flex justify-center mb-8">
+              <label className="switch-button" data-testid="switch-pix-selector">
+                <input 
+                  type="checkbox" 
+                  checked={selection === 'biometria'}
+                  onChange={(e) => setSelection(e.target.checked ? 'biometria' : 'automatico')}
+                />
+                <div className="button-toggle"></div>
+                
+                {/* Left Icon - Repeat (Automático) */}
+                <div className={`switch-icons icon-left ${selection === 'biometria' ? 'opacity-100' : 'opacity-40'}`}>
+                  <Repeat size={20} className="text-cyan-400" />
+                </div>
+                
+                {/* Right Icon - Fingerprint (Biometria) */}
+                <div className={`switch-icons icon-right ${selection === 'automatico' ? 'opacity-100' : 'opacity-40'}`}>
+                  <Fingerprint size={20} className="text-cyan-400" />
+                </div>
+              </label>
+            </div>
+
+            {/* Dynamic Content Area */}
+            <div className="relative mb-8">
+              {/* Glow Effect Behind Content */}
               <div 
                 className="absolute inset-0 -z-10"
                 style={{
                   background: `radial-gradient(ellipse at center, rgba(0, 239, 207, 0.1) 0%, transparent 70%)`
                 }}
               ></div>
-              {/* PIX Automático Card */}
-              <div 
-                className="relative bg-white/8 backdrop-blur-lg border border-cyan-400/30 p-6 rounded-2xl shadow-inner transition-all duration-300 hover:border-cyan-400/60 hover:-translate-y-1 hover:shadow-xl hover:bg-white/10 group"
-                data-testid="card-pix-automatico"
-              >
-                <div className="mb-4">
-                  <h3 className="text-cyan-400 font-lexend font-semibold text-lg mb-2">
-                    Pix Automático
-                  </h3>
-                </div>
-                <p 
-                  className="text-gray-300 text-sm leading-relaxed font-sans"
-                  data-testid="text-pix-automatico-description"
-                >
-                  Ideal para pagamentos recorrentes com valor variável. O pagamento ocorre automaticamente se estiver dentro dos limites definidos pelo cliente. É o DDA turbinado, com muito mais liberdade.
-                </p>
-                <div className="mt-4 flex items-center text-cyan-300 text-sm transition-all duration-300 group-hover:text-cyan-200 group-hover:translate-x-1">
-                  <ArrowRight size={16} className="mr-2" />
-                </div>
-              </div>
               
-              {/* PIX Biometria Card */}
-              <div 
-                className="relative bg-white/8 backdrop-blur-lg border border-cyan-400/30 p-6 rounded-2xl shadow-inner transition-all duration-300 hover:border-cyan-400/60 hover:-translate-y-1 hover:shadow-xl hover:bg-white/10 group"
-                data-testid="card-pix-biometria"
-              >
-                <div className="mb-4">
-                  <h3 className="text-cyan-400 font-lexend font-semibold text-lg mb-2">
-                    Pix Biometria
-                  </h3>
-                </div>
-                <p 
-                  className="text-gray-300 text-sm leading-relaxed font-sans"
-                  data-testid="text-pix-biometria-description"
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selection}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="bg-white/8 backdrop-blur-lg border border-cyan-400/30 p-8 rounded-2xl shadow-inner"
+                  data-testid={`content-pix-${selection}`}
                 >
-                  Pagamentos são autorizados com biometria, direto no check-out. Traz segurança e conveniência para o e-commerce, impulsionando a adoção do PIX, sem quebras na jornada.
-                </p>
-                <div className="mt-4 flex items-center text-cyan-300 text-sm transition-all duration-300 group-hover:text-cyan-200 group-hover:translate-x-1">
-                  <ArrowRight size={16} className="mr-2" />
-                </div>
-              </div>
+                  <div className="text-center">
+                    <h3 className="text-cyan-400 font-lexend font-semibold text-2xl mb-4">
+                      {contentData[selection].title}
+                    </h3>
+                    <p className="text-gray-300 text-lg leading-relaxed font-sans max-w-2xl mx-auto">
+                      {contentData[selection].description}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             {/* Button */}
