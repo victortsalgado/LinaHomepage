@@ -1,0 +1,49 @@
+**Persona:** Você é um Desenvolvedor Web Full-Stack Sênior, especialista em React, TypeScript, Tailwind CSS e Framer Motion. Sua tarefa é construir um componente de grade de features, replicando com precisão os padrões de estilo e animação de um componente de referência para garantir a consistência visual em todo o site.
+
+**Missão:** Construir o componente da seção de diferenciais da JSR, intitulada **"Por que a JSR entrega mais valor em menos tempo?"**.
+
+**Porquê Estratégico:** Esta seção é crucial para comunicar os múltiplos benefícios da JSR de forma rápida e visualmente organizada. Ela ajuda a justificar o valor da solução para um público técnico e de negócios, abordando pontos como segurança, velocidade de implementação e flexibilidade.
+
+**Requisitos e Diretrizes:**
+
+1.  **Ponto de Partida e Referência:**
+    * Utilize o componente `ValuePropositionSection.tsx` da página DataLink como a **principal referência de estilo, layout e animação**.
+
+2.  **Estrutura do Componente:**
+    * Crie um novo arquivo de componente em: `src/components/views/jsr/sections/JsrDifferentiatorsSection.tsx`.
+    * A seção deve ter um fundo escuro (`bg-[var(--lina-dark)]`), consistente com a seção de referência.
+
+3.  **Layout e Conteúdo Explícito:**
+    * **Título da Seção:** "Por que a JSR entrega mais valor em menos tempo?"
+    * **Layout da Grade:** Implemente uma grade responsiva que exiba 6 cards (3 colunas em desktop: `lg:grid-cols-3`).
+    * **Conteúdo dos Cards (6 cards no total):**
+        * **Card 1:**
+            * **Ícone:** `ShieldCheck`
+            * **Título:** "Infraestrutura homologada e certificada"
+            * **Descrição:** "Solução certificada pelo Banco Central e FIDO2, garantindo segurança e compliance regulatório."
+        * **Card 2:**
+            * **Ícone:** `FileText`
+            * **Título:** "Zero fricção regulatória"
+            * **Descrição:** "Deixe os desafios de homologação e as complexidades regulatórias com a nossa equipe."
+        * **Card 3:**
+            * **Ícone:** `Zap`
+            * **Título:** "Integração simples e rápida via API"
+            * **Descrição:** "Time-to-market reduzido com APIs robustas e suporte técnico direto."
+        * **Card 4:**
+            * **Ícone:** `TrendingUp`
+            * **Título:** "Modelo comercial flexível e escalável"
+            * **Descrição:** "Condições adaptadas à realidade de bancos, fintechs e cooperativas de todos os portes."
+        * **Card 5:**
+            * **Ícone:** `Palette`
+            * **Título:** "Jornadas UI/UX whitelabel"
+            * **Descrição:** "Interfaces customizáveis para uma experiência de usuário fluida e alinhada à sua marca."
+        * **Card 6:**
+            * **Ícone:** `Server`
+            * **Título:** "Tecnologia proprietária para escalar"
+            * **Descrição:** "Soluções desenvolvidas pela Lina, sem dependência de terceiros, garantindo performance."
+
+4.  **Estilo e Animação:**
+    * O estilo dos cards (fundo branco, bordas, sombras, efeito de hover, etc.) e do container de ícone deve ser **idêntico** ao do componente `ValuePropositionSection.tsx`.
+    * **Obrigatório:** Implemente a **mesma** animação de entrada em cascata (staggered) para os cards, utilizando `framer-motion` e o hook `useScrollReveal`, replicando o comportamento já estabelecido.
+
+**Entregável:** O código-fonte completo para o novo componente `JsrDifferentiatorsSection.tsx`, totalmente responsivo, animado e funcional.

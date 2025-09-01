@@ -84,7 +84,7 @@ export default function JsrSocialProofSection() {
                   {/* Avatar 1 */}
                   <div className="w-12 h-12 rounded-full border-2 border-white shadow-lg overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+                      src="https://i.pravatar.cc/100?img=1"
                       alt="Profile 1"
                       className="w-full h-full object-cover"
                       data-testid="img-avatar-1"
@@ -93,7 +93,7 @@ export default function JsrSocialProofSection() {
                   {/* Avatar 2 */}
                   <div className="w-12 h-12 rounded-full border-2 border-white shadow-lg overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1494790108755-2616b612b647?w=100&h=100&fit=crop&crop=face"
+                      src="https://i.pravatar.cc/100?img=2"
                       alt="Profile 2"
                       className="w-full h-full object-cover"
                       data-testid="img-avatar-2"
@@ -102,7 +102,7 @@ export default function JsrSocialProofSection() {
                   {/* Avatar 3 */}
                   <div className="w-12 h-12 rounded-full border-2 border-white shadow-lg overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+                      src="https://i.pravatar.cc/100?img=3"
                       alt="Profile 3"
                       className="w-full h-full object-cover"
                       data-testid="img-avatar-3"
@@ -171,7 +171,7 @@ export default function JsrSocialProofSection() {
                       {/* Author Avatar */}
                       <div className="w-14 h-14 rounded-full border-2 border-[var(--lina-cyan)] shadow-lg overflow-hidden">
                         <img
-                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+                          src="https://i.pravatar.cc/100?img=4"
                           alt="Marcelo Bueno"
                           className="w-full h-full object-cover"
                           data-testid="img-author-avatar"
