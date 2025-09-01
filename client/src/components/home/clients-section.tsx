@@ -63,10 +63,12 @@ export default function ClientsSection() {
         {/* Title */}
         <div className="text-center mb-12">
           <h2 
-            className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+            className="text-3xl lg:text-4xl font-bold mb-4"
             data-testid="heading-clients-title"
           >
-            Confiado pelas maiores instituições do mercado
+            <span className="bg-gradient-to-r from-teal-600 to-cyan-500 bg-clip-text text-transparent">
+              Confiado pelas maiores instituições do mercado
+            </span>
           </h2>
         </div>
         
