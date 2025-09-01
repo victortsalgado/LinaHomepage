@@ -210,11 +210,10 @@ export default function LinaPaySection() {
             {/* Button */}
             <div className="flex justify-center">
               <Button 
-                className="btn-lina-light"
+                className="border-2 border-cyan-400 text-cyan-400 bg-transparent px-8 py-3 rounded-full font-medium hover:bg-cyan-400 hover:text-gray-900 transition-all duration-200"
                 data-testid="button-learn-lina-pay"
               >
-                <span>Conheça o Lina Pay</span>
-                <ArrowRight size={16} />
+                Conheça o Lina Pay
               </Button>
             </div>
           </div>
