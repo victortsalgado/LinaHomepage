@@ -119,15 +119,6 @@ export default function LinaPay(): JSX.Element {
             {/* Social Proof Section */}
             <SocialProofSection />
 
-            {/* Logos Section */}
-            <section className="w-full h-[595px] bg-[#f8f3f3] rounded-[0px_0px_40px_40px] relative">
-              <img
-                className="absolute w-[936px] h-[45px] top-[390px] left-[252px] object-cover"
-                alt="Logos"
-                src="/figmaAssets/logos-1.png"
-              />
-            </section>
-
             {/* Differentiators Section */}
             <DifferentiatorsSection />
 
