@@ -101,10 +101,7 @@ export default function Header() {
                 <img 
                   src={logoLina} 
                   alt="LINA" 
-                  className={cn(
-                    "w-auto cursor-pointer transition-all duration-300",
-                    isScrolled ? "h-5" : "h-6"
-                  )}
+                  className="w-auto h-6 cursor-pointer transition-all duration-300"
                   data-testid="img-logo"
                 />
               </Link>
@@ -254,7 +251,7 @@ export default function Header() {
                   <NavigationMenuItem>
                     <NavigationMenuLink 
                       href="#contato" 
-                      className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] text-[20px] h-9 bg-transparent border-none shadow-none px-4 py-2"
+                      className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] h-9 bg-transparent border-none shadow-none px-4 py-2 text-[20px]"
                       data-testid="link-contact"
                     >
                       Entre em Contato
