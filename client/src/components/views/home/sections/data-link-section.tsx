@@ -143,8 +143,6 @@ export default function DataLinkSection() {
                     className="w-full max-w-md object-contain mt-[-5px] mb-[-5px] ml-[0px] mr-[0px] pl-[2px] pr-[2px]"
                     data-testid="img-data-link-main"
                   />
-                  
-                  
                 </div>
               </div>
             </div>
