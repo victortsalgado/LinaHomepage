@@ -190,9 +190,10 @@ export default function LinaPayHeroSection() {
                     transition={{ delay: 0.4, duration: 0.8 }}
                   >
                     <Button
+                      variant="light-bg"
                       size="lg"
                       onClick={handleScrollToCTA}
-                      className="bg-[#0ab5aa] hover:bg-[#0ab5aa]/90 text-white group h-14 px-10 text-lg rounded-[80px] font-bold"
+                      className="group h-14 px-10 text-lg rounded-[80px] font-bold"
                       data-testid="button-linapay-cta"
                     >
                       <span className="mr-2">Falar com um especialista</span>

@@ -167,8 +167,9 @@ export default function DataLinkHeroSection() {
                     transition={{ delay: 0.4, duration: 0.8 }}
                   >
                     <Button
+                      variant="light-bg"
                       size="lg"
-                      className="btn-lina-light group h-14 px-10 text-lg"
+                      className="group h-14 px-10 text-lg"
                       data-testid="button-datalink-cta"
                     >
                       <span className="mr-2">Solicitar Demonstração</span>

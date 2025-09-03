@@ -254,8 +254,9 @@ export default function JsrHeroSection() {
             >
               <Button
                 onClick={handleScrollToForm}
+                variant="light-bg"
                 size="lg"
-                className="bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-[var(--lina-dark)] font-semibold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="font-semibold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl"
                 style={{ fontFamily: 'Lexend, sans-serif' }}
               >
                 Fale com um especialista

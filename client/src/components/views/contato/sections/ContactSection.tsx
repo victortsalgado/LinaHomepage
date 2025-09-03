@@ -392,8 +392,9 @@ export default function ContactSection() {
                     {/* Submit Button */}
                     <Button
                       type="submit"
+                      variant="light-bg"
                       size="lg"
-                      className="w-full bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-white font-bold py-4 px-8 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                      className="w-full font-bold py-4 px-8 text-lg rounded-full shadow-lg hover:shadow-xl"
                       style={{ fontFamily: 'Lexend, sans-serif' }}
                       data-testid="button-submit-form"
                     >
