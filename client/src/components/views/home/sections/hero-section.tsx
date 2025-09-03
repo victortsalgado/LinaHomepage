@@ -141,7 +141,7 @@ export default function HeroSection() {
       
       {/* Title */}
       <h1
-        className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
+        className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground h-[120px] md:h-[160px] lg:h-[200px] flex items-center overflow-hidden"
         style={{ fontFamily: 'Lexend, sans-serif' }}
         data-testid="heading-hero-title"
       >
@@ -213,7 +213,7 @@ export default function HeroSection() {
         
         {/* Title */}
         <motion.h1
-          className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
+          className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground h-[120px] md:h-[160px] lg:h-[200px] flex items-center overflow-hidden"
           style={{ fontFamily: 'Lexend, sans-serif' }}
           data-testid="heading-hero-title"
           initial={{ opacity: 0, y: 30 }}
@@ -278,10 +278,10 @@ export default function HeroSection() {
             
             <div className="mx-auto max-w-7xl px-6">
               <div 
-                className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]"
+                className="grid lg:grid-cols-2 gap-12 items-center h-[600px]"
               >
                 {/* Left Column - Content */}
-                <div className="text-center lg:text-left min-h-[500px] md:min-h-[550px] flex flex-col justify-center">
+                <div className="text-center lg:text-left h-[500px] md:h-[550px] flex flex-col justify-center">
                   {/* Mobile: Conteúdo estático sem animações para performance */}
                   <div className="md:hidden">
                     <StaticContent />
