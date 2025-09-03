@@ -260,7 +260,8 @@ export default function LinaPaySection() {
             {/* Button */}
             <div className="flex justify-center">
               <Button 
-                className="border-2 border-cyan-400 text-cyan-400 bg-transparent px-8 py-3 rounded-full font-medium hover:bg-cyan-400 hover:text-gray-900 transition-all duration-200 flex items-center gap-2"
+                variant="dark-bg"
+                className="px-8 py-3 rounded-full flex items-center gap-2"
                 data-testid="button-learn-lina-pay"
               >
                 Conheça o Lina Pay

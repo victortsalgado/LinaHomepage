@@ -160,8 +160,9 @@ export default function HeroSection() {
       {/* CTA Button */}
       <div className="mt-8 flex justify-center lg:justify-start">
         <Button
+          variant="light-bg"
           size="lg"
-          className="group h-12 rounded-xl px-8 bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-black font-semibold transition-all duration-300 shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
+          className="h-12 rounded-xl px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
           data-testid="button-cta"
         >
           <span>{currentSlideData.buttonText}</span>
@@ -242,8 +243,9 @@ export default function HeroSection() {
           transition={{ delay: 0.5, duration: 0.6 }}
         >
           <Button
+            variant="light-bg"
             size="lg"
-            className="group h-12 rounded-xl px-8 bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-black font-semibold transition-all duration-300 shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
+            className="h-12 rounded-xl px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
             data-testid="button-cta"
           >
             <span>{currentSlideData.buttonText}</span>
