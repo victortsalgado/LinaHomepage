@@ -56,12 +56,6 @@ export default function QuemSomosHeroSection() {
       }}
       data-testid="section-quem-somos-hero"
     >
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-[var(--lina-cyan)] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-teal-400 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-[var(--lina-cyan)] rounded-full blur-2xl"></div>
-      </div>
 
       {/* Content Container */}
       <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative z-10">

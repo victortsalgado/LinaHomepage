@@ -97,9 +97,6 @@ export default function LinaPaySection() {
             ref={blockRef}
             className={`p-8 lg:p-12 relative ${blockVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
           >
-            {/* Decorative Icons */}
-            <div className="absolute top-6 left-6 w-12 h-12 bg-gradient-to-br from-cyan-400/20 to-cyan-500/20 rounded-xl border border-cyan-400/30"></div>
-            <div className="absolute top-6 right-20 lg:right-32 w-8 h-8 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-lg border border-cyan-400/20"></div>
             {/* PIX LINA Pay Logo - Top Right */}
             <div className="absolute top-6 right-6 lg:top-8 lg:right-8">
               <img 

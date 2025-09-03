@@ -11,11 +11,9 @@ import NewsletterSection from "@/components/views/home/sections/newsletter-secti
 export default function Home() {
   return (
     <div className="min-h-screen bg-white relative">
-      {/* Animated Blur Background */}
-      <div className="floating-blur"></div>
       
       {/* Content Layer */}
-      <div className="content-layer">
+      <div>
         <Header />
         <main>
           <HeroSection />

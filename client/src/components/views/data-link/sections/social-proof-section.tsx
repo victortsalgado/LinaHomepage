@@ -97,14 +97,6 @@ export default function SocialProofSection() {
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-      {/* Background decoration */}
-      <div 
-        aria-hidden="true"
-        className="absolute inset-0 opacity-40"
-      >
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-full blur-3xl opacity-10" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-l from-[var(--lina-light)] to-cyan-200 rounded-full blur-3xl opacity-10" />
-      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <motion.div
@@ -155,7 +147,6 @@ export default function SocialProofSection() {
                       }`}
                     />
                     {/* Hover glow effect */}
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
                   </motion.div>
                 ))}
               </div>

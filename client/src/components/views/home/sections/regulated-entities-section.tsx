@@ -69,12 +69,6 @@ export default function RegulatedEntitiesSection() {
       className="py-20 bg-white/40 text-lina-dark relative overflow-hidden"
       data-testid="section-regulated-entities"
     >
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 w-40 h-40 rounded-full blur-3xl" style={{ background: 'var(--lina-cyan)' }}></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 rounded-full blur-2xl" style={{ background: 'var(--lina-cyan)' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 rounded-full blur-3xl opacity-3" style={{ background: 'var(--lina-cyan)' }}></div>
-      </div>
       
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
