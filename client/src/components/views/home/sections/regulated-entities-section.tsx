@@ -139,7 +139,8 @@ export default function RegulatedEntitiesSection() {
             
             {/* CTA Button */}
             <Button 
-              className="bg-[#2ec9bc] border border-[#2ec9bc] text-white hover:bg-transparent hover:text-[#2ec9bc] px-8 py-4 rounded-xl font-semibold transition-all duration-200"
+              variant="light-bg"
+              className="px-8 font-semibold"
               data-testid="button-learn-more"
             >
               Saiba mais
