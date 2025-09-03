@@ -22,7 +22,6 @@ interface Slide {
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   // Estrutura de dados otimizada para CMS
   const slides: Slide[] = [
@@ -60,7 +59,6 @@ export default function HeroSection() {
 
   // Auto-play do carrossel a cada 8 segundos - apenas para desktop
   useEffect(() => {
-    if (isPaused) return;
     
     // Verificar se está no desktop antes de iniciar o carrossel
     const isDesktop = window.matchMedia('(min-width: 768px)').matches;
@@ -71,7 +69,7 @@ export default function HeroSection() {
     }, 8000);
 
     return () => clearInterval(interval);
-  }, [slides.length, isPaused]);
+  }, [slides.length]);
 
   // Para mobile, sempre usar o primeiro slide
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
@@ -291,8 +289,6 @@ export default function HeroSection() {
             <div className="mx-auto max-w-7xl px-6">
               <div 
                 className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]"
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}
               >
                 {/* Left Column - Content */}
                 <div className="text-center lg:text-left min-h-[500px] md:min-h-[550px] flex flex-col justify-center">
