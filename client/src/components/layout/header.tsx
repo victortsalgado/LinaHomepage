@@ -254,7 +254,7 @@ export default function Header() {
                   <NavigationMenuItem>
                     <NavigationMenuLink 
                       href="#contato" 
-                      className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] text-[15px] h-9 bg-transparent border-none shadow-none px-4 py-2"
+                      className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] text-[20px] h-9 bg-transparent border-none shadow-none px-4 py-2"
                       data-testid="link-contact"
                     >
                       Entre em Contato
