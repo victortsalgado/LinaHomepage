@@ -120,7 +120,7 @@ export default function HeroSection() {
 
   // Componente de conteúdo otimizado para mobile
   const StaticContent = () => (
-    <div>
+    <div className="h-full flex flex-col justify-center">
       {/* Badge */}
       <div
         className="hover:bg-[var(--lina-cyan)]/20 bg-[var(--lina-cyan)]/10 border-[var(--lina-cyan)]/30 group mx-auto lg:mx-0 flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-[var(--lina-cyan)]/10 transition-all duration-300 backdrop-blur-sm"
@@ -143,7 +143,7 @@ export default function HeroSection() {
       
       {/* Title */}
       <h1
-        className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground"
+        className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
         style={{ fontFamily: 'Lexend, sans-serif' }}
         data-testid="heading-hero-title"
       >
@@ -193,6 +193,7 @@ export default function HeroSection() {
           type: 'spring', 
           bounce: 0.2,
         }}
+        className="h-full flex flex-col justify-center"
       >
         {/* Badge */}
         <motion.div
@@ -219,7 +220,7 @@ export default function HeroSection() {
         
         {/* Title */}
         <motion.h1
-          className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground"
+          className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
           style={{ fontFamily: 'Lexend, sans-serif' }}
           data-testid="heading-hero-title"
           initial={{ opacity: 0, y: 30 }}
