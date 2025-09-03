@@ -11,15 +11,9 @@ import NewsletterSection from "@/components/views/home/sections/newsletter-secti
 export default function Home() {
   return (
     <div className="min-h-screen bg-white relative">
-      {/* Background blur circles */}
-      <div className="floating-blur-circles">
-        <div className="blur-circle"></div>
-        <div className="blur-circle"></div>
-        <div className="blur-circle"></div>
-      </div>
       
       {/* Content Layer */}
-      <div style={{ position: 'relative', zIndex: 10 }}>
+      <div>
         <Header />
         <main>
           <HeroSection />
