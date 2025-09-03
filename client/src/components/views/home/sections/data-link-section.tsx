@@ -125,7 +125,29 @@ export default function DataLinkSection() {
               </Button>
             </div>
             
-            
+            {/* Image */}
+            <div 
+              ref={imageRef}
+              className={`relative p-8 lg:p-12 ${imageVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
+            >
+              {/* Modern geometric elements */}
+              <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-2xl opacity-20"></div>
+              <div className="absolute bottom-8 left-8 w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-400 rounded-full opacity-30"></div>
+              
+              {/* Data Link illustration */}
+              <div className="flex justify-center">
+                <div className="relative">
+                  <img 
+                    src={dataLinkImage}
+                    alt="Professional woman with Data Link interface" 
+                    className="w-full max-w-md object-contain mt-[-5px] mb-[-5px] ml-[0px] mr-[0px] pl-[2px] pr-[2px]"
+                    data-testid="img-data-link-main"
+                  />
+                  
+                  
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
