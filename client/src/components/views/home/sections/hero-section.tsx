@@ -294,14 +294,14 @@ export default function HeroSection() {
                 onMouseLeave={() => setIsPaused(false)}
               >
                 {/* Left Column - Content */}
-                <div className="text-center lg:text-left">
+                <div className="text-center lg:text-left min-h-[500px] md:min-h-[550px] flex flex-col justify-center">
                   {/* Mobile: Conteúdo estático sem animações para performance */}
                   <div className="md:hidden">
                     <StaticContent />
                   </div>
 
                   {/* Desktop: Conteúdo animado com carrossel */}
-                  <div className="hidden md:block">
+                  <div className="hidden md:block flex flex-col justify-between h-full">
                     <AnimatedContent />
                     
                     {/* Carousel Indicators - apenas no desktop */}
