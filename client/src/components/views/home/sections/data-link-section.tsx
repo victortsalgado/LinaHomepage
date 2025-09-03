@@ -133,7 +133,6 @@ export default function DataLinkSection() {
               {/* Modern geometric elements */}
               <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-2xl opacity-20"></div>
               
-              
               {/* Data Link illustration */}
               <div className="flex justify-center">
                 <div className="relative">
