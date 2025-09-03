@@ -193,7 +193,7 @@ export default function LinaPayHeroSection() {
                       variant="light-bg"
                       size="lg"
                       onClick={handleScrollToCTA}
-                      className="group h-14 px-10 text-lg font-bold"
+                      className="group px-10 text-lg font-bold"
                       data-testid="button-linapay-cta"
                     >
                       <span className="mr-2">Falar com um especialista</span>

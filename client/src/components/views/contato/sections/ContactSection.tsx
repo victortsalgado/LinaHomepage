@@ -394,7 +394,7 @@ export default function ContactSection() {
                       type="submit"
                       variant="light-bg"
                       size="lg"
-                      className="w-full font-bold py-4 px-8 text-lg shadow-lg hover:shadow-xl"
+                      className="w-full font-bold px-8 text-lg shadow-lg hover:shadow-xl"
                       style={{ fontFamily: 'Lexend, sans-serif' }}
                       data-testid="button-submit-form"
                     >

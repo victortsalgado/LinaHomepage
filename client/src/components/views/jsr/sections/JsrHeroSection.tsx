@@ -256,7 +256,7 @@ export default function JsrHeroSection() {
                 onClick={handleScrollToForm}
                 variant="light-bg"
                 size="lg"
-                className="font-semibold px-8 py-4 text-lg shadow-lg hover:shadow-xl"
+                className="font-semibold px-8 text-lg shadow-lg hover:shadow-xl"
                 style={{ fontFamily: 'Lexend, sans-serif' }}
               >
                 Fale com um especialista
