@@ -85,14 +85,14 @@ export default function Header() {
           style={{ top: '80px' }}
         />
       )}
-      
+
       <header 
         className="fixed top-0 w-full z-50 transition-all duration-300"
         data-testid="header-main"
       >
         <div className={cn(
-          "container mx-auto mt-2 px-6 transition-all duration-300 lg:px-8",
-          isScrolled && "bg-white/90 rounded-full border backdrop-blur-lg shadow-sm max-w-7xl"
+          "container mx-auto mt-2 px-6 transition-all duration-300 lg:px-8 max-w-[92rem]",
+          isScrolled && "bg-white/90 rounded-full border backdrop-blur-lg shadow-sm"
         )}>
           <nav className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4 transition-all duration-300">
             <div className="flex w-full justify-between lg:w-auto">
@@ -139,7 +139,7 @@ export default function Header() {
                 }}>
                   <NavigationMenuList>
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger className="relative text-gray-600 font-normal text-[15px] h-9 bg-transparent border-none shadow-none transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 [&[data-state=open]>svg]:text-lina-cyan [&[data-state=open]]:text-lina-cyan [&[data-state=open]]:scale-105 [&[data-state=open]]:before:w-full [&[data-state=open]]:before:left-0">
+                      <NavigationMenuTrigger className="relative text-gray-600 font-normal text-[20px] h-9 bg-transparent border-none shadow-none transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 [&[data-state=open]>svg]:text-lina-cyan [&[data-state=open]]:text-lina-cyan [&[data-state=open]]:scale-105 [&[data-state=open]]:before:w-full [&[data-state=open]]:before:left-0">
                         Produtos
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -160,7 +160,7 @@ export default function Header() {
                               </div>
                             ))}
                           </div>
-                          
+
                           {/* Right Column - Dynamic Content */}
                           <div className="row-span-3">
                             <AnimatePresence mode="wait">
