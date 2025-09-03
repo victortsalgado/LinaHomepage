@@ -293,7 +293,7 @@ export default function HeroSection() {
                     
                     {/* Carousel Indicators - apenas no desktop */}
                     <motion.div 
-                      className="flex justify-center lg:justify-start items-center gap-3 mt-12"
+                      className="flex justify-center items-center gap-3 mt-12"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.8, duration: 0.4 }}
@@ -323,7 +323,7 @@ export default function HeroSection() {
                     alt={slides[0].imageAlt}
                     className="w-full h-auto max-w-2xl mx-auto object-contain filter drop-shadow-2xl"
                     loading="eager"
-                    fetchPriority="high"
+                    fetchpriority="high"
                     data-testid="hero-image-mobile-static"
                   />
                 </div>
@@ -350,7 +350,7 @@ export default function HeroSection() {
                         alt={currentSlideData.imageAlt}
                         className="w-full h-auto max-w-2xl object-contain filter drop-shadow-2xl"
                         loading={currentSlideData.priority ? "eager" : "lazy"}
-                        {...(currentSlideData.priority && { fetchPriority: "high" })}
+                        {...(currentSlideData.priority && { fetchpriority: "high" })}
                         data-testid={`hero-image-${currentSlideData.id}`}
                       />
                     </motion.div>
