@@ -261,7 +261,7 @@ export default function LinaPaySection() {
             <div className="flex justify-center">
               <Button 
                 variant="dark-bg"
-                className="px-8 py-3 rounded-full flex items-center gap-2"
+                className="px-8 py-3 flex items-center gap-2"
                 data-testid="button-learn-lina-pay"
               >
                 Conheça o Lina Pay

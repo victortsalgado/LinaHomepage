@@ -162,7 +162,7 @@ export default function HeroSection() {
         <Button
           variant="light-bg"
           size="lg"
-          className="h-12 rounded-xl px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
+          className="h-12 rounded-lg px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
           data-testid="button-cta"
         >
           <span>{currentSlideData.buttonText}</span>
@@ -245,7 +245,7 @@ export default function HeroSection() {
           <Button
             variant="light-bg"
             size="lg"
-            className="h-12 rounded-xl px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
+            className="h-12 rounded-lg px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
             data-testid="button-cta"
           >
             <span>{currentSlideData.buttonText}</span>
