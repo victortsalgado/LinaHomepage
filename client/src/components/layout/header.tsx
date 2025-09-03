@@ -91,7 +91,7 @@ export default function Header() {
         data-testid="header-main"
       >
         <div className={cn(
-          "mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12",
+          "container mx-auto mt-2 px-6 transition-all duration-300 lg:px-8",
           isScrolled && "bg-white/90 rounded-full border backdrop-blur-lg shadow-sm"
         )}>
           <nav className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4 transition-all duration-300">
