@@ -73,7 +73,7 @@ export default function NewsletterSection() {
                 type="submit"
                 disabled={isLoading || !email}
                 variant="dark-bg"
-                className="px-6 py-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2 disabled:opacity-50 disabled:cursor-not-allowed pt-[26px] pb-[26px] pl-[41px] pr-[41px]"
                 data-testid="button-newsletter-subscribe"
               >
                 {isLoading ? "Inscrevendo..." : "Inscrever"}
