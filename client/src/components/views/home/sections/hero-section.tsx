@@ -164,13 +164,7 @@ export default function HeroSection() {
           className="group h-12 rounded-xl px-8 bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-black font-semibold transition-all duration-300 shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
           data-testid="button-cta"
         >
-          <span className="mr-2">{currentSlideData.buttonText}</span>
-          <div className="overflow-hidden w-4">
-            <div className="flex w-8 -translate-x-1/2 duration-300 ease-in-out group-hover:translate-x-0">
-              <ArrowRight className="w-4 h-4" />
-              <ArrowRight className="w-4 h-4" />
-            </div>
-          </div>
+          <span>{currentSlideData.buttonText}</span>
         </Button>
       </div>
     </div>
@@ -252,13 +246,7 @@ export default function HeroSection() {
             className="group h-12 rounded-xl px-8 bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-black font-semibold transition-all duration-300 shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
             data-testid="button-cta"
           >
-            <span className="mr-2">{currentSlideData.buttonText}</span>
-            <div className="overflow-hidden w-4">
-              <div className="flex w-8 -translate-x-1/2 duration-300 ease-in-out group-hover:translate-x-0">
-                <ArrowRight className="w-4 h-4" />
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </div>
+            <span>{currentSlideData.buttonText}</span>
           </Button>
         </motion.div>
       </motion.div>
