@@ -83,6 +83,32 @@ export default function SolutionSection() {
                 data-testid="img-solution-reference"
               />
               
+              {/* Floating accent elements */}
+              <motion.div
+                className="absolute -top-4 -right-4 w-8 h-8 bg-[var(--lina-cyan)] rounded-full opacity-60"
+                animate={{
+                  y: [-10, 10, -10],
+                  x: [-5, 5, -5],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <motion.div
+                className="absolute -bottom-6 -left-6 w-6 h-6 bg-teal-400 rounded-full opacity-40"
+                animate={{
+                  y: [10, -10, 10],
+                  x: [5, -5, 5],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+              />
             </div>
           </motion.div>
         </div>

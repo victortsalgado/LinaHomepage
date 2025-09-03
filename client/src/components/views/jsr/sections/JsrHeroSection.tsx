@@ -139,6 +139,32 @@ const JsrPaymentAnimation = () => {
           </div>
         </motion.div>
         
+        {/* Floating elements for extra dynamism */}
+        <motion.div
+          className="absolute -top-4 -left-4 w-6 h-6 bg-[var(--lina-cyan)] rounded-full opacity-60"
+          animate={{
+            y: [-10, 10, -10],
+            x: [-5, 5, -5],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-6 -right-6 w-8 h-8 bg-teal-400 rounded-full opacity-40"
+          animate={{
+            y: [10, -10, 10],
+            x: [5, -5, 5],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
       </motion.div>
     </div>
   );

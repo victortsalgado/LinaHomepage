@@ -12,9 +12,11 @@ import CtaFormSection from "@/components/views/data-link/sections/cta-form-secti
 export default function DataLink(): JSX.Element {
   return (
     <div className="min-h-screen bg-white relative">
+      {/* Animated Blur Background */}
+      <div className="floating-blur"></div>
       
       {/* Content Layer */}
-      <div>
+      <div className="content-layer">
         <Header />
         <main>
           <DataLinkHeroSection />

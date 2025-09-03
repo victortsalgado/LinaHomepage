@@ -39,6 +39,8 @@ export default function IntegrationSection() {
         aria-hidden="true"
         className="absolute inset-0 opacity-30"
       >
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-full blur-3xl opacity-10" />
+        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-gradient-to-l from-[var(--lina-light)] to-cyan-200 rounded-full blur-3xl opacity-10" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">

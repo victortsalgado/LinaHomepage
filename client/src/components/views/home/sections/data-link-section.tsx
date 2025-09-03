@@ -130,6 +130,9 @@ export default function DataLinkSection() {
               ref={imageRef}
               className={`relative p-8 lg:p-12 ${imageVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
             >
+              {/* Modern geometric elements */}
+              <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-2xl opacity-20"></div>
+              <div className="absolute bottom-8 left-8 w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-400 rounded-full opacity-30"></div>
               
               {/* Data Link illustration */}
               <div className="flex justify-center">

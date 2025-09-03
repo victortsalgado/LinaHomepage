@@ -268,6 +268,16 @@ export default function HeroSection() {
 
   return (
     <>
+      {/* Background Elements */}
+      <div 
+        aria-hidden
+        className="fixed inset-0 pointer-events-none isolate overflow-hidden"
+      >
+        <div className="floating-ball" />
+        <div className="floating-ball-2" />
+        <div className="floating-ball-3" />
+      </div>
+
       <main className="overflow-hidden bg-background">
         <section>
           <div className="relative pt-24 md:pt-36">
