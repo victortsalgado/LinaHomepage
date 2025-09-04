@@ -24,7 +24,7 @@ export default function NewsletterSection() {
 
   return (
     <section 
-      className="w-full py-16 md:py-20 bg-[var(--lina-dark)]"
+      className="w-full py-24 md:py-32 lg:py-40 bg-[var(--lina-dark)] min-h-screen flex items-center"
       data-testid="section-newsletter"
     >
       <div className="container mx-auto px-6 lg:px-8 pt-[16px] pb-[16px] mt-[43px] mb-[43px]">

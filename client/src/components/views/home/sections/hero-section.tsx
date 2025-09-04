@@ -268,8 +268,8 @@ export default function HeroSection() {
       </div>
 
       <main className="overflow-hidden bg-background">
-        <section>
-          <div className="relative pt-24 md:pt-36">
+        <section className="min-h-screen">
+          <div className="relative pt-24 md:pt-36 pb-24 md:pb-36">
             {/* Background Gradient */}
             <div 
               aria-hidden 

@@ -40,7 +40,7 @@ export default function DataLinkSection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-6 bg-gray-50"
+      className="py-24 md:py-32 lg:py-40 bg-gray-50 min-h-screen flex items-center"
       data-testid="section-data-link"
     >
       <div className="container mx-auto px-6 lg:px-8">
