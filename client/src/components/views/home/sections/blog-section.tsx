@@ -37,7 +37,7 @@ export default function BlogSection() {
 
   return (
     <section 
-      className="py-3 md:py-4 lg:py-5 bg-gray-50 rounded-b-[40px] min-h-screen flex items-center"
+      className="py-0 bg-gray-50 rounded-b-[40px] min-h-screen flex items-center"
       data-testid="section-blog"
     >
       <div className="container mx-auto px-6 lg:px-8">
