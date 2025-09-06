@@ -40,17 +40,17 @@ export default function DataLinkSection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-24 md:py-32 lg:py-40 bg-gray-50 min-h-screen flex items-center"
+      className="py-48 md:py-64 lg:py-80 bg-gray-50 min-h-screen flex items-center"
       data-testid="section-data-link"
     >
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className="container mx-auto px-12 lg:px-16">
         {/* Block Card Layout */}
         <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px]">
           <div className="grid lg:grid-cols-2 gap-0 items-center">
             {/* Content */}
             <div 
               ref={contentRef}
-              className={`p-8 lg:p-12 ${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
+              className={`p-16 lg:p-24 ${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
             >
               {/* Title with gradient highlight */}
               <h2 
@@ -129,7 +129,7 @@ export default function DataLinkSection() {
             {/* Image */}
             <div 
               ref={imageRef}
-              className={`relative p-8 lg:p-12 ${imageVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
+              className={`relative p-16 lg:p-24 ${imageVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
             >
               
               {/* Data Link illustration */}
