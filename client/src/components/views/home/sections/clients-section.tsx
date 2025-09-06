@@ -56,7 +56,7 @@ export default function ClientsSection() {
   return (
     <section 
       ref={sectionRef}
-      className={`w-full bg-gray-50 py-12 md:py-16 lg:py-20 min-h-screen flex items-center ${sectionVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
+      className={`w-full bg-gray-50 py-6 md:py-8 lg:py-10 min-h-screen flex items-center ${sectionVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
       data-testid="section-clients"
     >
       <div className="container mx-auto px-6 lg:px-8">
