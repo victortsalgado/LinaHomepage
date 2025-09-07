@@ -230,7 +230,7 @@ export default function JsrHeroSection() {
               data-testid="heading-jsr-hero-title"
             >
               A nova era do Pix já começou —{" "}
-              <span className="bg-gradient-to-r from-[#008F7F] to-[#2EC38C] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">
                 e sua instituição precisa estar pronta
               </span>
             </motion.h1>

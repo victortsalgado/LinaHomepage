@@ -58,7 +58,7 @@ export default function IntegrationSection() {
               style={{ fontFamily: 'Lexend, sans-serif' }}
               data-testid="heading-integration-title"
             >
-              <span className="bg-gradient-to-r from-[#008F7F] to-[#2EC38C] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">
                 Integração com segurança
               </span>
               <br />

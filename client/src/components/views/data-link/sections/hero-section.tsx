@@ -141,7 +141,7 @@ export default function DataLinkHeroSection() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                   >
                     Conecte dados bancários em{" "}
-                    <span className="bg-gradient-to-r from-[#008F7F] to-[#2EC38C] bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">
                       um clique
                     </span>
                     {" "}— direto do Open Finance.

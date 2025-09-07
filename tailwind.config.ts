@@ -111,7 +111,7 @@ export default {
         'gradient-dark': 'linear-gradient(135deg, var(--lina-dark) 0%, var(--lina-medium) 100%)',
         'hero-bg': 'linear-gradient(135deg, var(--lina-dark) 0%, var(--lina-medium) 50%, var(--lina-cyan) 100%)',
         'text-gradient': 'linear-gradient(to right, var(--lina-dark), var(--lina-cyan))',
-        'text-gradient-teal': 'linear-gradient(to right, #008F7F, #2EC38C)',
+        'text-gradient-teal': 'linear-gradient(to right, #00857F, #2EC9BC)',
       },
     },
   },

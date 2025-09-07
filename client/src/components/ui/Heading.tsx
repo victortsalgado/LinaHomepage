@@ -80,7 +80,7 @@ const Heading: React.FC<HeadingProps> = ({
       const regex = new RegExp(`\\b${word}\\b`, 'gi');
       processedText = processedText.replace(
         regex,
-        `<span class="bg-gradient-to-r from-[#008F7F] to-[#2EC38C] bg-clip-text text-transparent">${word}</span>`
+        `<span class="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">${word}</span>`
       );
     });
 
