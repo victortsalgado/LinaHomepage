@@ -291,30 +291,8 @@ export default function HeroSection() {
                   </div>
 
                   {/* Desktop: Conteúdo animado com carrossel */}
-                  <div className="hidden md:block flex flex-col justify-between h-full">
+                  <div className="hidden md:block flex flex-col justify-center h-full">
                     <AnimatedContent />
-                    
-                    {/* Carousel Indicators - apenas no desktop */}
-                    <motion.div 
-                      className="flex justify-center items-center gap-3 mt-12"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.8, duration: 0.4 }}
-                    >
-                      {slides.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => goToSlide(index)}
-                          className={`h-2 rounded-full transition-all duration-500 ${
-                            index === currentSlide 
-                              ? 'w-12 bg-[var(--lina-cyan)]' 
-                              : 'w-2 bg-gray-400 dark:bg-gray-600 hover:bg-[var(--lina-cyan)]/50'
-                          }`}
-                          data-testid={`carousel-indicator-${index}`}
-                          aria-label={`Ir para slide ${index + 1}`}
-                        />
-                      ))}
-                    </motion.div>
                   </div>
                 </div>
                 
@@ -360,6 +338,28 @@ export default function HeroSection() {
                   </AnimatePresence>
                 </div>
               </div>
+              
+              {/* Carousel Indicators - centralizados na parte inferior */}
+              <motion.div 
+                className="hidden md:flex justify-center items-center gap-3 mt-16 pb-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8, duration: 0.4 }}
+              >
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`h-2 rounded-full transition-all duration-500 ${
+                      index === currentSlide 
+                        ? 'w-12 bg-[var(--lina-cyan)]' 
+                        : 'w-2 bg-gray-400 dark:bg-gray-600 hover:bg-[var(--lina-cyan)]/50'
+                    }`}
+                    data-testid={`carousel-indicator-${index}`}
+                    aria-label={`Ir para slide ${index + 1}`}
+                  />
+                ))}
+              </motion.div>
             </div>
           </div>
         </section>
