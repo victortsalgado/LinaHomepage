@@ -83,58 +83,67 @@ export default function RegulatedEntitiesSection() {
             ref={contentRef}
             className={`space-y-8 ${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
           >
-            {/* Main Title */}
-            <h2 
-              className="text-4xl lg:text-5xl font-bold leading-tight font-lexend text-lina-dark"
-              data-testid="heading-regulated-entities-title"
-            >
-              Open Finance e Insurance, do sandbox à escala.
-            </h2>
+            {/* Main Title - Two Lines */}
+            <div className="text-left">
+              <h2 
+                className="text-4xl lg:text-5xl font-bold leading-tight font-lexend text-lina-dark"
+                data-testid="heading-regulated-entities-title"
+              >
+                Infraestrutura & Conectividade
+              </h2>
+              <h3 
+                className="text-2xl lg:text-3xl font-medium leading-tight font-lexend text-lina-dark mt-2"
+                data-testid="subheading-regulated-entities-subtitle"
+              >
+                Soluções de conformidade para entidades reguladas
+              </h3>
+            </div>
             
-            {/* Description */}
-            <p 
-              className="text-xl text-gray-700 leading-relaxed"
-              data-testid="text-regulated-entities-description"
-            >
-              A única infraestrutura no Brasil capaz de levar sua operação Open do sandbox à escala, com segurança e conformidade inigualáveis.
-            </p>
-            
-            {/* Features List */}
-            <div className="space-y-4">
-              {features.map((feature, index) => (
-                <motion.div 
-                  key={feature.title}
-                  className="flex items-start space-x-4 bg-white p-4 rounded-xl border border-gray-200 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={contentVisible ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
-                  whileHover={{ y: -2 }}
-                  data-testid={`card-regulated-feature-${index}`}
+            {/* Content Sections */}
+            <div className="space-y-6">
+              {/* First Subtitle */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={contentVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="text-left"
+              >
+                <p 
+                  className="text-lg text-gray-700 leading-relaxed mb-4"
+                  data-testid="text-regulated-entities-tech"
                 >
-                  <div 
-                    className="w-10 h-10 bg-[#2ec9bc] rounded-lg flex items-center justify-center flex-shrink-0"
-                  >
-                    <feature.icon 
-                      className="text-white" 
-                      size={20}
-                    />
-                  </div>
-                  <div>
-                    <h4 
-                      className="font-semibold mb-1 text-lina-dark"
-                      data-testid={`text-regulated-feature-title-${index}`}
-                    >
-                      {feature.title}
-                    </h4>
-                    <p 
-                      className="text-gray-700 text-sm"
-                      data-testid={`text-regulated-feature-description-${index}`}
-                    >
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+                  Tecnologia 100% proprietária com foco em performance e conformidade regulatória.
+                </p>
+                <p 
+                  className="text-lg text-gray-700 leading-relaxed"
+                  data-testid="text-regulated-entities-certification"
+                >
+                  Certificamos e homologamos mais de 50 instituições financeiras no Open Finance Brasil, com módulos e serviços sob medida para:
+                </p>
+              </motion.div>
+              
+              {/* Second Subtitle - Bullet Points */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={contentVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.6, duration: 0.6 }}
+                className="text-left"
+              >
+                <ul className="space-y-3 text-lg text-gray-700">
+                  <li className="flex items-start">
+                    <span className="text-[#2ec9bc] mr-3 text-xl font-bold">•</span>
+                    <span>Transmissores e Receptores de Dados</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#2ec9bc] mr-3 text-xl font-bold">•</span>
+                    <span>Detentores de Contas</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#2ec9bc] mr-3 text-xl font-bold">•</span>
+                    <span>Iniciadores de Pagamentos - ITP</span>
+                  </li>
+                </ul>
+              </motion.div>
             </div>
             
             {/* CTA Button */}
