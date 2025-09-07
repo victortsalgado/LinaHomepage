@@ -96,7 +96,7 @@ export default function SocialProofSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section className="py-48 md:py-64 lg:py-80 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div 
         aria-hidden="true"
@@ -106,7 +106,7 @@ export default function SocialProofSection() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-l from-[var(--lina-light)] to-cyan-200 rounded-full blur-3xl opacity-10" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-12 lg:px-16">
         <motion.div
           initial="hidden"
           whileInView="visible"

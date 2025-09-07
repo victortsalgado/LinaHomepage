@@ -97,8 +97,8 @@ export default function ApisSection() {
   };
 
   return (
-    <section className="py-20 bg-gray-50" data-testid="section-apis">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="py-48 md:py-64 lg:py-80 bg-gray-50" data-testid="section-apis">
+      <div className="mx-auto max-w-7xl px-12 lg:px-16">
         <motion.div
           initial="hidden"
           whileInView="visible"

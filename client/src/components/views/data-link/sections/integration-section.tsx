@@ -31,7 +31,7 @@ export default function IntegrationSection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-20 bg-white relative overflow-hidden"
+      className="py-48 md:py-64 lg:py-80 bg-white relative overflow-hidden"
       data-testid="section-integration"
     >
       {/* Background decoration */}
@@ -43,7 +43,7 @@ export default function IntegrationSection() {
         <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-gradient-to-l from-[var(--lina-light)] to-cyan-200 rounded-full blur-3xl opacity-10" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-12 lg:px-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content Column - Left */}
           <motion.div
