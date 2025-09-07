@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 export default function LinaPaySection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
   const { ref: blockRef, isVisible: blockVisible } = useScrollReveal<HTMLDivElement>();
+  const { ref: listRef, isVisible: listVisible } = useScrollReveal<HTMLDivElement>();
+  const { ref: phoneRef, isVisible: phoneVisible } = useScrollReveal<HTMLDivElement>();
 
   // PIX features data based on the provided image
   const pixFeatures = [
@@ -76,13 +78,16 @@ export default function LinaPaySection() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
               
               {/* Left Side - PIX Features */}
-              <div className="space-y-6">
+              <div 
+                ref={listRef}
+                className={`space-y-6 ${listVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
+              >
                 {pixFeatures.map((feature, index) => (
                   <motion.div 
                     key={feature.id}
                     className="flex items-start space-x-4 bg-white/30 p-4 rounded-xl border border-gray-200 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
                     initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    animate={listVisible ? { opacity: 1, x: 0 } : {}}
                     transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
                     whileHover={{ y: -2 }}
                     data-testid={`feature-${feature.id}`}
@@ -114,7 +119,10 @@ export default function LinaPaySection() {
               </div>
               
               {/* Right Side - Phone and Box */}
-              <div className="flex flex-col order-2 lg:order-none">
+              <div 
+                ref={phoneRef}
+                className={`flex flex-col order-2 lg:order-none ${phoneVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
+              >
                 
                 {/* Phone Container with Green Background - Full Height */}
                 <div 
