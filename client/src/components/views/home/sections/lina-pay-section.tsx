@@ -88,7 +88,7 @@ export default function LinaPaySection() {
         <div 
           className="relative rounded-3xl shadow-2xl overflow-hidden min-h-[500px]"
           style={{
-            backgroundColor: 'rgba(56, 204, 191, 0.8)'
+            backgroundColor: 'rgba(56, 204, 191, 0.2)'
           }}
         >
           <div 
