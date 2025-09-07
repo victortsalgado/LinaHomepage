@@ -2,45 +2,39 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Landmark, CreditCard, AreaChart, TrendingUp, UserCheck } from "lucide-react";
 
 export default function ApisSection() {
   // API endpoints data with code examples
   const apiEndpoints = [
     {
       id: "contas",
-      icon: Landmark,
-      title: "GET/Contas",
-      description: "Acesse saldos, extratos e limites.",
+      title: "Contas bancárias",
+      description: "Saldo, extrato, limite e transações",
       codeExample: 'curl "api.lina/v1/contas?id=..."'
     },
     {
-      id: "cartoes",
-      icon: CreditCard,
-      title: "GET/Cartões",
-      description: "Análise de risco e recomendação de produtos.",
-      codeExample: 'curl "api.lina/v1/cartoes?id=..."'
-    },
-    {
       id: "credito",
-      icon: AreaChart,
-      title: "GET/Crédito",
-      description: "Informações de empréstimos para modelagem.",
+      title: "Operações de crédito",
+      description: "Adiantamento a depositante e direitos creditórios",
       codeExample: 'curl "api.lina/v1/credito?id=..."'
     },
     {
-      id: "investimentos",
-      icon: TrendingUp,
-      title: "GET/Investimentos",
-      description: "Dados de posição para carteiras consolidadas.",
-      codeExample: 'curl "api.lina/v1/investimentos?id=..."'
+      id: "cadastral",
+      title: "Dados cadastrais",
+      description: "Pessoa física e jurídica",
+      codeExample: 'curl "api.lina/v1/cadastral?id=..."'
     },
     {
-      id: "cadastral",
-      icon: UserCheck,
-      title: "GET/Cadastral",
-      description: "Validação de dados para onboarding e compliance.",
-      codeExample: 'curl "api.lina/v1/cadastral?id=..."'
+      id: "cartoes",
+      title: "Cartões de crédito",
+      description: "Faturas e lançamentos, limites contratados, utilizados e disponíveis",
+      codeExample: 'curl "api.lina/v1/cartoes?id=..."'
+    },
+    {
+      id: "investimentos",
+      title: "Investimentos",
+      description: "Renda fixa e variável, títulos públicos federais e fundos de investimento",
+      codeExample: 'curl "api.lina/v1/investimentos?id=..."'
     }
   ];
 
@@ -123,9 +117,8 @@ export default function ApisSection() {
             {/* Mobile: Code Editor First, Desktop: API List First */}
             <div className="order-2 lg:order-1">
               {/* API Endpoints List */}
-              <div className="space-y-2">
+              <div className="space-y-4">
                 {apiEndpoints.map((endpoint) => {
-                  const IconComponent = endpoint.icon;
                   const isActive = activeEndpoint.id === endpoint.id;
                   
                   return (
@@ -140,20 +133,13 @@ export default function ApisSection() {
                       data-testid={`api-item-${endpoint.id}`}
                     >
                       <div className="flex items-start space-x-4">
-                        {/* Icon */}
-                        <div className={`w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                          isActive 
-                            ? 'bg-lina-cyan/10' 
-                            : 'bg-gray-100 group-hover:bg-lina-cyan/5'
-                        }`}>
-                          <IconComponent 
-                            className={`w-6 h-6 transition-all duration-300 ${
-                              isActive 
-                                ? 'text-lina-cyan' 
-                                : 'text-gray-600 group-hover:text-lina-cyan'
-                            }`}
-                            data-testid={`icon-${endpoint.id}`}
-                          />
+                        {/* Bulletpoint */}
+                        <div className="flex items-center justify-center mt-1">
+                          <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            isActive 
+                              ? 'bg-[var(--lina-cyan)]' 
+                              : 'bg-gray-400 group-hover:bg-[var(--lina-cyan)]'
+                          }`}></div>
                         </div>
 
                         {/* Content */}
@@ -161,8 +147,8 @@ export default function ApisSection() {
                           <h3
                             className={`text-lg font-semibold transition-colors duration-300 ${
                               isActive 
-                                ? 'text-lina-cyan' 
-                                : 'text-gray-900 group-hover:text-lina-cyan'
+                                ? 'text-[var(--lina-cyan)]' 
+                                : 'text-gray-900 group-hover:text-[var(--lina-cyan)]'
                             }`}
                             style={{ fontFamily: 'Lexend, sans-serif' }}
                             data-testid={`title-${endpoint.id}`}
@@ -170,7 +156,7 @@ export default function ApisSection() {
                             {endpoint.title}
                           </h3>
                           <p
-                            className="text-gray-600 text-sm mt-1"
+                            className="text-gray-600 text-sm mt-1 leading-relaxed"
                             style={{ fontFamily: 'Inter, sans-serif' }}
                             data-testid={`description-${endpoint.id}`}
                           >
