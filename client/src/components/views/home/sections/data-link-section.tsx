@@ -64,7 +64,7 @@ export default function DataLinkSection() {
                 className="text-lg text-gray-700 mb-8 leading-relaxed"
                 data-testid="text-data-link-description"
               >
-                <span className="font-bold">Conecte dados financeiros em tempo real, diretamente do Open Finance</span>, conectando transações, saldos, limites, contratos de crédito, cartões, investimentos e muito mais!
+                <span className="font-bold">Conecte contas bancárias em tempo real, diretamente do Open Finance</span>, conectando transações, saldos, limites, contratos de crédito, cartões, investimentos e muito mais!
               </p>
               
               {/* Bullet Points List */}
