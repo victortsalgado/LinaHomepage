@@ -85,11 +85,11 @@ export default function RegulatedEntitiesSection() {
           >
             {/* Main Title */}
             <h2 
-              className="text-4xl lg:text-5xl font-bold leading-tight font-lexend text-lina-dark"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-lexend text-lina-dark"
               data-testid="heading-regulated-entities-title"
             >
-              Infraestrutura & Conectividade<br />
-              Soluções de conformidade para entidades reguladas
+              <span className="whitespace-nowrap">Infraestrutura & Conectividade</span><br />
+              <span>Soluções de conformidade para entidades reguladas</span>
             </h2>
             
             {/* Description */}
