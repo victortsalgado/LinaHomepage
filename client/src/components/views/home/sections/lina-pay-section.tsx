@@ -11,31 +11,31 @@ export default function LinaPaySection() {
   const pixFeatures = [
     {
       id: 'automatico',
-      icon: <Repeat size={24} className="text-[#00F4E2]" />,
+      icon: <Repeat size={24} className="text-white" />,
       title: "Pix Automático",
       description: "Automatize cobranças recorrentes e reduza custos e inadimplência"
     },
     {
       id: 'inteligente',
-      icon: <Zap size={24} className="text-[#00F4E2]" />,
+      icon: <Zap size={24} className="text-white" />,
       title: "Pix Inteligente", 
       description: "Simplifique o cashin de contas digitais e impulsione a ativação!"
     },
     {
       id: 'id',
-      icon: <Fingerprint size={24} className="text-[#00F4E2]" />,
+      icon: <Fingerprint size={24} className="text-white" />,
       title: "Pix ID",
       description: "Dê adeus ao QR Code e ao Copia&Cola. Chegou a vez do Pix Biometria!"
     },
     {
       id: 'aproximacao',
-      icon: <CreditCard size={24} className="text-[#00F4E2]" />,
+      icon: <CreditCard size={24} className="text-white" />,
       title: "Pix Aproximação",
       description: "Vincule contas e habilite o Pix por aproximação na carteira digital!"
     },
     {
       id: 'manager',
-      icon: <Shield size={24} className="text-[#00F4E2]" />,
+      icon: <Shield size={24} className="text-white" />,
       title: "Pix Manager",
       description: "EXCLUSIVO: gerencie e controle cobranças com a flexibilidade do Open!"
     }
@@ -79,18 +79,18 @@ export default function LinaPaySection() {
                 {pixFeatures.map((feature, index) => (
                   <div 
                     key={feature.id}
-                    className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/30 hover:shadow-xl transition-all duration-300"
+                    className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/30 hover:shadow-xl transition-all duration-300"
                     data-testid={`feature-${feature.id}`}
                   >
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md">
+                      <div className="flex-shrink-0 w-12 h-12 bg-[var(--lina-cyan)] rounded-full flex items-center justify-center shadow-md">
                         {feature.icon}
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-lg text-gray-800 mb-2" style={{ fontFamily: 'Lexend, sans-serif' }}>
+                        <h3 className="font-bold text-xl text-gray-800 mb-2" style={{ fontFamily: 'Lexend, sans-serif' }}>
                           {feature.title}
                         </h3>
-                        <p className="text-gray-700 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        <p className="text-gray-700 text-base leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
                           {feature.description}
                         </p>
                       </div>
