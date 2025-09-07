@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Heading } from "@/components/ui/Heading";
 import { 
   Users, 
   TrendingUp, 
@@ -64,13 +65,15 @@ export default function SegmentsSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 
-            className="text-3xl lg:text-4xl font-bold text-white max-w-4xl mx-auto leading-tight mb-4"
-            style={{ fontFamily: 'Lexend, sans-serif' }}
+          <Heading
+            level="h2"
+            size="lg"
+            className="text-white max-w-4xl mx-auto mb-4"
+            gradientWords={['diferentes segmentos']}
             data-testid="heading-segments-title"
           >
             Feito para resolver dores reais de diferentes segmentos
-          </h2>
+          </Heading>
           <p 
             className="text-xl text-gray-300 max-w-2xl mx-auto"
             style={{ fontFamily: 'Inter, sans-serif' }}

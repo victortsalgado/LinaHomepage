@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Heading } from "@/components/ui/Heading";
 import { 
   Database, 
   Zap, 
@@ -91,13 +92,15 @@ export default function ValuePropositionSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 
-            className="text-3xl lg:text-4xl font-bold text-white max-w-4xl mx-auto leading-tight"
-            style={{ fontFamily: 'Lexend, sans-serif' }}
+          <Heading
+            level="h2"
+            size="lg"
+            className="text-white max-w-4xl mx-auto"
+            gradientWords={['Data Link']}
             data-testid="heading-value-proposition-title"
           >
             Por que o Data Link entrega mais valor em menos tempo?
-          </h2>
+          </Heading>
         </motion.div>
 
         {/* Value Cards Grid */}

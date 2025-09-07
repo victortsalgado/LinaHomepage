@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Heading } from "@/components/ui/Heading";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // Optimized WebP images for better performance
@@ -140,13 +141,15 @@ export default function HeroSection() {
       </div>
       
       {/* Title */}
-      <h1
-        className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
-        style={{ fontFamily: 'Lexend, sans-serif' }}
+      <Heading
+        level="h1"
+        size="lg"
+        className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
+        gradientWords={currentSlide === 0 ? ['Open Finance'] : currentSlide === 1 ? ['receita', 'oportunidades'] : ['Bancário']}
         data-testid="heading-hero-title"
       >
         {currentSlideData.title}
-      </h1>
+      </Heading>
       
       {/* Description */}
       <p

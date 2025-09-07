@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Heading } from "@/components/ui/Heading";
 import { University, CreditCard, TrendingUp, UserCheck, Database, ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import dataLinkImage from "../../../../assets/data-link-image.png";
@@ -53,18 +54,15 @@ export default function DataLinkSection() {
               className={`p-16 lg:p-24 ${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
             >
               {/* Title with gradient highlight */}
-              <h2 
-                className="text-3xl lg:text-4xl font-bold mb-6 leading-tight"
+              <Heading
+                level="h2"
+                size="lg"
+                className="text-gray-800 mb-6"
+                gradientWords={['dados financeiros']}
                 data-testid="heading-data-link-title"
               >
-                <span className="bg-gradient-to-r from-teal-600 to-cyan-500 bg-clip-text text-transparent">
-                  Integre dados financeiros
-                </span>
-                <br />
-                <span className="text-gray-800 font-medium">
-                  para decisões e processos inteligentes
-                </span>
-              </h2>
+                Integre dados financeiros para decisões e processos inteligentes
+              </Heading>
               
               {/* Subtitle with bold parts */}
               <p 

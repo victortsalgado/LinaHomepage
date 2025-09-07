@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Heading } from "@/components/ui/Heading";
 import { motion } from "framer-motion";
 
 // Animated smartphone interaction visualization
@@ -155,20 +156,21 @@ export default function LinaPayHeroSection() {
                 {/* Left Column - Content */}
                 <div className="text-center lg:text-left">
                   {/* Title */}
-                  <motion.h1
-                    className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
-                    style={{ fontFamily: 'Lexend, sans-serif' }}
-                    data-testid="heading-linapay-hero-title"
+                  <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                   >
-                    Transforme a experiência de compra e{" "}
-                    <span className="bg-gradient-to-r from-[var(--lina-cyan)] to-teal-500 bg-clip-text text-transparent">
-                      reduza custos
-                    </span>
-                    {" "}com meios de pagamento
-                  </motion.h1>
+                    <Heading
+                      level="h1"
+                      size="lg"
+                      className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-gray-900"
+                      gradientWords={['reduza custos']}
+                      data-testid="heading-linapay-hero-title"
+                    >
+                      Transforme a experiência de compra e reduza custos com meios de pagamento
+                    </Heading>
+                  </motion.div>
                   
                   {/* Description */}
                   <motion.p
