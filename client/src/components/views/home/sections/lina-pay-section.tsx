@@ -174,17 +174,6 @@ export default function LinaPaySection() {
             </div>
 
 
-            {/* Bottom Button */}
-            <div className="flex justify-center mt-12">
-              <Button 
-                variant="dark-bg"
-                className="px-8 py-3 flex items-center gap-2"
-                data-testid="button-learn-lina-pay"
-              >
-                Conheça o Lina Pay
-                <ArrowRight size={16} />
-              </Button>
-            </div>
           </div>
         </div>
       </div>
