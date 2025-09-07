@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Heading } from "@/components/ui/Heading";
 import { ArrowRight, Repeat, Fingerprint, CreditCard, Zap, Shield } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
@@ -61,14 +62,16 @@ export default function LinaPaySection() {
           >
             
             {/* Title */}
-            <div className="mb-12 text-center">
-              <h2 
-                className="text-3xl lg:text-4xl font-bold text-black mb-4 leading-tight font-lexend"
-                style={{ fontFamily: 'Lexend, sans-serif' }}
+            <div className="mb-12">
+              <Heading
+                level="h2"
+                size="lg"
+                className="text-gray-800 mb-6"
+                gradientWords={['Open Finance!']}
                 data-testid="heading-lina-pay-title"
               >
-                Pix no checkout sem QR Code: isso é Open Finance!
-              </h2>
+                Pix no checkout sem QR Code: <br />isso é Open Finance!
+              </Heading>
             </div>
             
             {/* Main Content Layout */}
