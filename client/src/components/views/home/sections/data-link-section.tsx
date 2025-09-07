@@ -98,7 +98,7 @@ export default function DataLinkSection() {
                           {feature.title}
                         </h3>
                         <p 
-                          className="text-gray-700 text-sm leading-relaxed"
+                          className="text-gray-700 text-sm leading-relaxed max-w-md"
                           data-testid={`text-feature-description-${index}`}
                         >
                           {feature.description}
