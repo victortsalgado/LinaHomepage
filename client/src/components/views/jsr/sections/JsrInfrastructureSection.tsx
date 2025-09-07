@@ -162,7 +162,7 @@ export default function JsrInfrastructureSection() {
             {/* Smartphone Mockup */}
             <div className="relative">
               <motion.div
-                className="relative w-80 h-96 bg-gray-900 rounded-3xl border-8 border-gray-800 shadow-2xl overflow-hidden"
+                className="relative w-80 h-96 bg-black rounded-3xl border-8 border-gray-800 shadow-2xl overflow-hidden"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={visualVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                 transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}

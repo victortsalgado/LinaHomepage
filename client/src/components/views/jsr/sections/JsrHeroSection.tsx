@@ -10,7 +10,7 @@ const JsrPaymentAnimation = () => {
     <div className="relative w-full h-full flex items-center justify-center">
       {/* Main smartphone mockup */}
       <motion.div
-        className="relative w-80 h-96 bg-gray-900 rounded-3xl border-8 border-gray-800 shadow-2xl overflow-hidden"
+        className="relative w-80 h-96 bg-black rounded-3xl border-8 border-gray-800 shadow-2xl overflow-hidden"
         initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
         animate={{ opacity: 1, scale: 1, rotateY: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}

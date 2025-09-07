@@ -79,7 +79,7 @@ export default function LinaPaySection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-48 md:py-64 lg:py-80 bg-gray-900 min-h-screen flex items-center"
+      className="py-48 md:py-64 lg:py-80 bg-black min-h-screen flex items-center"
       data-testid="section-lina-pay"
     >
       <div className="container mx-auto px-6 lg:px-8">
@@ -174,7 +174,7 @@ export default function LinaPaySection() {
                         <div className="w-48 h-96 lg:w-56 lg:h-[28rem] bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-[2.5rem] shadow-2xl border-4 border-gray-700 relative overflow-hidden">
                           {/* Dynamic Screen with Color Transition */}
                           <div className={`absolute inset-3 rounded-[2rem] border border-gray-600 transition-all duration-1000 ease-out ${
-                            selection === 'automatico' ? 'bg-white' : 'bg-gray-900'
+                            selection === 'automatico' ? 'bg-white' : 'bg-black'
                           }`}>
                             {/* Notch */}
                             <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-6 bg-black rounded-full"></div>

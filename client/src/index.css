@@ -169,7 +169,7 @@
 
   /* LINA Custom Colors */
   --lina-cyan: hsl(176, 100%, 47%);
-  --lina-dark: hsl(183, 82%, 9%);
+  --lina-dark: #000000;
   --lina-medium: hsl(181, 58%, 13%);
   --lina-light: hsl(176, 100%, 94%);
 }
@@ -223,7 +223,7 @@
 
   /* LINA Custom Colors for Dark Mode */
   --lina-cyan: hsl(176, 100%, 47%);
-  --lina-dark: hsl(183, 82%, 9%);
+  --lina-dark: #000000;
   --lina-medium: hsl(181, 58%, 13%);
   --lina-light: hsl(176, 100%, 94%);
 }
