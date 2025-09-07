@@ -131,41 +131,15 @@ export default function LinaPaySection() {
                 >
                   
                   
-                  {/* Smartphone Mockup */}
+                  {/* LinaPay GIF/Animation */}
                   <div className="flex justify-center mb-6">
-                    <div className="w-48 h-96 bg-gradient-to-b from-gray-800 via-gray-900 to-black rounded-[2.5rem] shadow-2xl border-4 border-gray-700 relative overflow-hidden">
-                      {/* Screen */}
-                      <div className="absolute inset-3 rounded-[2rem] border border-gray-600 bg-white">
-                        {/* Notch */}
-                        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-6 bg-black rounded-full"></div>
-                        
-                        {/* Screen Content */}
-                        <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-                          <div className="bg-gray-100 rounded-xl p-4 mb-4 w-full">
-                            <div className="text-xs text-gray-600 mb-2">CHECKOUT</div>
-                            <div className="text-sm font-medium text-gray-800 mb-2">Item do produto</div>
-                            <div className="text-lg font-bold text-gray-800">R$ 149,90</div>
-                          </div>
-                          
-                          {/* Biometric Circle */}
-                          <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            <div className="w-8 h-8 bg-gray-400 rounded-full"></div>
-                          </div>
-                          
-                          {/* Action Text */}
-                          <div className="text-xs text-gray-600 mb-2">Use a face ou digital</div>
-                          <div className="text-xs text-gray-600 mb-4">para realizar?</div>
-                          
-                          {/* Button */}
-                          <div className="bg-blue-500 text-white text-xs px-4 py-2 rounded-lg">
-                            Confirmar
-                          </div>
-                          <div className="text-xs text-blue-500 mt-2">Que legal! Já realizado!</div>
-                        </div>
+                    {/* Placeholder for GIF - replace src with actual GIF path once file size is reduced */}
+                    <div className="w-48 h-96 bg-gray-200 rounded-[2.5rem] shadow-2xl border-4 border-gray-300 relative overflow-hidden flex items-center justify-center">
+                      <div className="text-center text-gray-600">
+                        <div className="text-sm font-medium mb-2">LinaPay GIF</div>
+                        <div className="text-xs">File too large</div>
+                        <div className="text-xs">Please compress to &lt;3.5MB</div>
                       </div>
-                      
-                      {/* Camera */}
-                      <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-600 rounded-full"></div>
                     </div>
                   </div>
                   
