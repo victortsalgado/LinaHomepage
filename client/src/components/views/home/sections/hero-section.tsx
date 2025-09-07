@@ -279,7 +279,7 @@ export default function HeroSection() {
               className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--background)_75%)]" 
             />
             
-            <div className="mx-auto max-w-7xl px-6">
+            <div className="container mx-auto max-w-[92rem] px-6 lg:px-8">
               <div 
                 className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]"
               >

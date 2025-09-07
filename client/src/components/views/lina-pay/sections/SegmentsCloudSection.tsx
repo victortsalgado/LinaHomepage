@@ -79,7 +79,7 @@ export default function SegmentsCloudSection() {
       style={{ backgroundColor: 'var(--lina-dark)' }}
       data-testid="section-segments-cloud"
     >
-      <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Title and Tags Cloud */}
           <motion.div
