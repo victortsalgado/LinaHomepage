@@ -1,0 +1,35 @@
+**Persona:** Você é um Desenvolvedor Frontend Sênior, especialista em React, TypeScript e Tailwind CSS, com um olhar apurado para design e user experience.
+
+**Missão:** Refatorar a seção `LinaPaySection.tsx` na Home Page (`src/components/views/home/sections/LinaPaySection.tsx`) para implementar um novo design baseado na imagem de referência fornecida, focando em um layout claro e intuitivo para os recursos do PIX.
+
+**Porquê Estratégico:** Esta nova seção irá comunicar de forma mais eficaz os diferenciais da LinaPay, destacando seus recursos PIX de maneira organizada e visualmente atraente, o que é crucial para atrair e engajar potenciais clientes na Home Page.
+
+**Requisitos e Diretrizes para a Refatoração:**
+
+1.  **Estrutura da Seção:**
+    * A seção deve ter um layout de **duas colunas** (em desktop).
+    * **Coluna da Esquerda:** Listar os recursos do PIX.
+    * **Coluna da Direita:** Exibir o mockup do smartphone com a interface da LinaPay.
+
+2.  **Coluna da Esquerda (Recursos PIX):**
+    * **Título Principal:** `Pix no checkout sem QR Code: isso é Open Finance!`
+    * **Lista de Recursos:** Crie um componente reutilizável para cada item da lista de recursos do PIX, com a seguinte estrutura:
+        * **Ícone:** Utilize ícones padrão de uma biblioteca (ex: `lucide-react`) que representem cada funcionalidade. A cor do ícone deve ser um tom de verde (`#00F4E2` ou similar).
+        * **Título do Recurso:** (Ex: "Pix Automático", "Pix Inteligente")
+        * **Descrição do Recurso:** (Ex: "Automatize cobranças recorrentes e reduza custos e inadimplência")
+        * Cada item deve ter um fundo branco ou muito claro, com bordas arredondadas e um leve sombreamento ou borda sutil, como visto na imagem.
+    * **Botão "Saiba mais":** Adicione um botão "Saiba mais" no final da coluna, com o estilo padronizado de botões do site (`rounded-full` e cor de destaque).
+
+3.  **Coluna da Direita (Mockup e Descrição):**
+    * **Background:** O fundo desta coluna deve ser um tom de verde (`#00CDC2` ou similar, da paleta da Lina).
+    * **Mockup do Smartphone:** Incorpore uma imagem do mockup do smartphone com a interface da LinaPay. Garanta que ela esteja otimizada para web (WebP, comprimida).
+    * **Texto Descritivo:** Abaixo do mockup, adicione um parágrafo com o texto de apoio, como: `A solução que transforma a experiência do cliente e traz inúmeras vantagens para e-commerces, marketplaces, plataformas de pagamento e provedores de serviços.` A cor do texto deve contrastar bem com o fundo verde.
+
+4.  **Responsividade:**
+    * Em telas móveis, o layout deve se adaptar para exibir o título principal, a lista de recursos e, em seguida, o mockup com sua descrição, empilhados verticalmente.
+
+5.  **Cores e Tipografia:**
+    * Utilize as cores da paleta da Lina (`#00F4E2`, `#00CDC2`, `#006666`, etc.).
+    * As fontes devem seguir o padrão `Lexend` para títulos e `Inter` para textos, conforme definido no Design System.
+
+**Entregável:** O código-fonte do componente `LinaPaySection.tsx` atualizado com o novo design, responsivo e funcional, na Home Page.

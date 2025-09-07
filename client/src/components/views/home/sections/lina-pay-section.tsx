@@ -10,31 +10,31 @@ export default function LinaPaySection() {
   const pixFeatures = [
     {
       id: 'automatico',
-      icon: <Repeat size={24} className="text-[var(--lina-cyan)]" />,
+      icon: <Repeat size={24} className="text-[#00F4E2]" />,
       title: "Pix Automático",
       description: "Automatize cobranças recorrentes e reduza custos e inadimplência"
     },
     {
       id: 'inteligente',
-      icon: <Zap size={24} className="text-[var(--lina-cyan)]" />,
+      icon: <Zap size={24} className="text-[#00F4E2]" />,
       title: "Pix Inteligente", 
       description: "Simplifique o cashin de contas digitais e impulsione a ativação!"
     },
     {
       id: 'id',
-      icon: <Fingerprint size={24} className="text-[var(--lina-cyan)]" />,
+      icon: <Fingerprint size={24} className="text-[#00F4E2]" />,
       title: "Pix ID",
       description: "Dê adeus ao QR Code e ao Copia&Cola. Chegou a vez do Pix Biometria!"
     },
     {
       id: 'aproximacao',
-      icon: <CreditCard size={24} className="text-[var(--lina-cyan)]" />,
+      icon: <CreditCard size={24} className="text-[#00F4E2]" />,
       title: "Pix Aproximação",
       description: "Vincule contas e habilite o Pix por aproximação na carteira digital!"
     },
     {
       id: 'manager',
-      icon: <Shield size={24} className="text-[var(--lina-cyan)]" />,
+      icon: <Shield size={24} className="text-[#00F4E2]" />,
       title: "Pix Manager",
       description: "EXCLUSIVO: gerencie e controle cobranças com a flexibilidade do Open!"
     }
@@ -64,6 +64,7 @@ export default function LinaPaySection() {
             <div className="mb-12 text-center">
               <h2 
                 className="text-3xl lg:text-4xl font-bold text-black mb-4 leading-tight font-lexend"
+                style={{ fontFamily: 'Lexend, sans-serif' }}
                 data-testid="heading-lina-pay-title"
               >
                 Pix no checkout sem QR Code: isso é Open Finance!
@@ -71,7 +72,7 @@ export default function LinaPaySection() {
             </div>
             
             {/* Main Content Layout */}
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
               
               {/* Left Side - PIX Features */}
               <div className="space-y-6">
@@ -86,10 +87,10 @@ export default function LinaPaySection() {
                         {feature.icon}
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-lg text-gray-800 mb-2">
+                        <h3 className="font-bold text-lg text-gray-800 mb-2" style={{ fontFamily: 'Lexend, sans-serif' }}>
                           {feature.title}
                         </h3>
-                        <p className="text-gray-700 text-sm leading-relaxed">
+                        <p className="text-gray-700 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
                           {feature.description}
                         </p>
                       </div>
@@ -100,7 +101,8 @@ export default function LinaPaySection() {
                 {/* Saiba Mais Button */}
                 <div className="pt-4">
                   <Button 
-                    className="bg-[var(--lina-cyan)] text-white px-6 py-3 rounded-full hover:bg-[#2EC9BC] transition-colors"
+                    className="bg-[#00F4E2] text-black px-6 py-3 rounded-full hover:bg-[#00CDC2] transition-colors font-medium"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
                     data-testid="button-saiba-mais"
                   >
                     Saiba mais
@@ -109,16 +111,16 @@ export default function LinaPaySection() {
               </div>
               
               {/* Right Side - Phone and Box */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center order-2 lg:order-none">
                 
-                {/* Phone Container with Cyan Background */}
+                {/* Phone Container with Green Background */}
                 <div 
-                  className="relative rounded-3xl p-8 mb-6 shadow-xl"
-                  style={{ backgroundColor: 'var(--lina-cyan)' }}
+                  className="relative rounded-3xl p-8 mb-6 shadow-xl w-full max-w-sm"
+                  style={{ backgroundColor: '#00CDC2' }}
                 >
                   {/* LINA PAY Label */}
                   <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-3 mb-6 text-center">
-                    <span className="font-bold text-gray-800 text-lg">LINA PAY</span>
+                    <span className="font-bold text-gray-800 text-lg" style={{ fontFamily: 'Lexend, sans-serif' }}>LINA PAY</span>
                   </div>
                   
                   {/* Smartphone Mockup */}
@@ -162,7 +164,7 @@ export default function LinaPaySection() {
                 
                 {/* Description Text */}
                 <div className="text-center max-w-sm">
-                  <p className="text-gray-700 text-sm leading-relaxed">
+                  <p className="text-white text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
                     A solução que transforma a experiência do cliente e traz inúmeras vantagens para e-commerces, marketplaces, plataformas de pagamento e provedores de serviços.
                   </p>
                 </div>
