@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/Heading";
-import { University, CreditCard, TrendingUp, UserCheck, Database, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import dataLinkImage from "../../../../assets/data-link-image.png";
 import datalinkAnimation from "../../../../assets/datalink-animation.gif";
@@ -13,28 +13,23 @@ export default function DataLinkSection() {
   const features = [
     {
       title: "Contas bancárias",
-      description: "Saldo, extrato, limite e transações",
-      icon: Database
+      description: "Saldo, extrato, limite e transações"
     },
     {
       title: "Operações de crédito",
-      description: "Adiantamento a depositante e direitos creditórios",
-      icon: TrendingUp
+      description: "Adiantamento a depositante e direitos creditórios"
     },
     {
       title: "Dados cadastrais",
-      description: "Pessoa física e jurídica",
-      icon: UserCheck
+      description: "Pessoa física e jurídica"
     },
     {
       title: "Cartões de crédito",
-      description: "Faturas e lançamentos, limites contratados, utilizados e disponíveis",
-      icon: CreditCard
+      description: "Faturas e lançamentos, limites contratados, utilizados e disponíveis"
     },
     {
       title: "Investimentos",
-      description: "Renda fixa e variável, títulos públicos federais e fundos de investimento",
-      icon: University
+      description: "Renda fixa e variável, títulos públicos federais e fundos de investimento"
     }
   ];
 
@@ -81,7 +76,7 @@ export default function DataLinkSection() {
                     data-testid={`item-feature-${index}`}
                   >
                     
-                    {/* Icon */}
+                    {/* Bullet Point */}
                     <div 
                       className={`flex items-start gap-4 scroll-reveal-hidden ${
                         contentVisible 
@@ -92,8 +87,8 @@ export default function DataLinkSection() {
                         animationDelay: index === 0 ? '0.1s' : index === 1 ? '0.8s' : index === 2 ? '1.6s' : index === 3 ? '2.4s' : '3.2s'
                       }}
                     >
-                      <div className="relative z-10 mt-1 flex-shrink-0">
-                        <feature.icon className="w-5 h-5 text-[#2ec9bc]" />
+                      <div className="relative z-10 mt-2 flex-shrink-0">
+                        <div className="w-2 h-2 bg-[#2ec9bc] rounded-full"></div>
                       </div>
                       <div className="flex-1">
                         <h3 
