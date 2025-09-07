@@ -126,7 +126,7 @@ export default function LinaPaySection() {
                 
                 {/* Phone Container with Green Background - Full Height */}
                 <div 
-                  className="relative rounded-3xl p-8 shadow-xl w-full max-w-lg mx-auto flex-1 flex flex-col justify-center"
+                  className="relative rounded-3xl py-16 px-8 shadow-xl w-full max-w-lg mx-auto flex-1 flex flex-col justify-center min-h-[600px]"
                   style={{ backgroundColor: '#00CDC2' }}
                 >
                   {/* LINA PAY Label */}
