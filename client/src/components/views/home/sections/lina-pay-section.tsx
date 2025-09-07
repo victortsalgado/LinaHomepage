@@ -3,7 +3,7 @@ import { ArrowRight, Fingerprint, Repeat, CheckCircle2 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoPixBg from "@/assets/Home_Logo_Pix_BG_LinaPay_1756226661320.png";
+
 import linaPayGif from "@/assets/LinaPay_1756690950351.gif";
 
 export default function LinaPaySection() {
@@ -95,15 +95,7 @@ export default function LinaPaySection() {
             ref={blockRef}
             className={`p-8 lg:p-12 relative ${blockVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
           >
-            {/* PIX LINA Pay Logo - Top Right */}
-            <div className="absolute top-6 right-6 lg:top-8 lg:right-8">
-              <img 
-                src={logoPixBg} 
-                alt="PIX LINA Pay" 
-                className="h-16 w-auto lg:h-20 opacity-90"
-                data-testid="img-pix-lina-pay-logo"
-              />
-            </div>
+            
             
 
             {/* Title and Description */}
