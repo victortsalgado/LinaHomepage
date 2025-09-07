@@ -89,7 +89,7 @@ export default function RegulatedEntitiesSection() {
               data-testid="heading-regulated-entities-title"
             >
               <span className="whitespace-nowrap bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Infraestrutura & Conectividade</span><br />
-              <span>Soluções de conformidade para entidades reguladas</span>
+              <span className="whitespace-nowrap">Soluções de conformidade para entidades reguladas</span>
             </h2>
             
             {/* Description */}
