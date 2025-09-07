@@ -3,6 +3,7 @@ import { Heading } from "@/components/ui/Heading";
 import { ArrowRight, Repeat, Fingerprint, CreditCard, Zap, Shield } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { motion } from "framer-motion";
+import linaPay from '@assets/linapay mockup_1757211256291.gif';
 
 export default function LinaPaySection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
@@ -134,7 +135,7 @@ export default function LinaPaySection() {
                   {/* LinaPay GIF/Animation */}
                   <div className="flex justify-center mb-6">
                     <img 
-                      src="/attached_assets/linapay mockup_1757211256291.gif"
+                      src={linaPay}
                       alt="LinaPay PIX por Biometria mockup"
                       className="w-48 h-96 rounded-[2.5rem] shadow-2xl object-cover"
                       data-testid="img-linapay-mockup"
