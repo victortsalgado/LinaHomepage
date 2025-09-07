@@ -77,7 +77,7 @@ export default function RegulatedEntitiesSection() {
       </div>
       
       <div className="container mx-auto px-6 lg:px-8 max-w-[92rem] relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Content Column (Left) */}
           <div 
             ref={contentRef}
@@ -150,7 +150,7 @@ export default function RegulatedEntitiesSection() {
           {/* Visual Column (Right) - Animated Data Visualization */}
           <div 
             ref={visualRef}
-            className={`relative ${visualVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
+            className={`relative hidden lg:block ${visualVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
             data-testid="visualization-data-growth"
           >
             <div className="relative h-80 flex items-end justify-center space-x-2 p-6">
