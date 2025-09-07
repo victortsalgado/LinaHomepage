@@ -81,7 +81,7 @@ export default function QuemSomosHeroSection() {
             <span className="block">Somos a ponte que conecta</span>
             <span className="block">
               empresas ao universo de{" "}
-              <span className="bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-teal-700 to-cyan-400 bg-clip-text text-transparent">
                 oportunidades
               </span>
             </span>
