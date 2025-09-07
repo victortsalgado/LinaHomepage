@@ -153,14 +153,27 @@ export default function RegulatedEntitiesSection() {
               ))}
             </div>
             
+            {/* Centered Text Section */}
+            <div className="text-center space-y-4 pt-8">
+              <p className="text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
+                <span className="font-bold">Tecnologia, performance, segurança</span> e o nível de<br />
+                suporte técnico eoperacional que o ecossistema exige!
+              </p>
+              <p className="text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
+                <span className="font-bold">Infraestrutura robusta.</span> Soluções que integram. <span className="font-bold">Resultados que escalam.</span>
+              </p>
+            </div>
+            
             {/* CTA Button */}
-            <Button 
-              variant="light-bg"
-              className="px-8 font-semibold"
-              data-testid="button-learn-more"
-            >
-              Saiba mais
-            </Button>
+            <div className="text-center pt-6">
+              <Button 
+                variant="light-bg"
+                className="px-8 font-semibold"
+                data-testid="button-learn-more"
+              >
+                Saiba mais
+              </Button>
+            </div>
           </div>
           
           {/* Visual Column (Right) - Animated Data Visualization */}
