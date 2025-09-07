@@ -72,7 +72,7 @@ export default function LinaPaySection() {
             </div>
             
             {/* Main Content Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
               
               {/* Left Side - PIX Features */}
               <div className="space-y-6">
@@ -111,11 +111,11 @@ export default function LinaPaySection() {
               </div>
               
               {/* Right Side - Phone and Box */}
-              <div className="flex flex-col items-center order-2 lg:order-none">
+              <div className="flex flex-col order-2 lg:order-none">
                 
-                {/* Phone Container with Green Background */}
+                {/* Phone Container with Green Background - Full Height */}
                 <div 
-                  className="relative rounded-3xl p-8 mb-6 shadow-xl w-full max-w-sm"
+                  className="relative rounded-3xl p-8 shadow-xl w-full max-w-sm mx-auto flex-1 flex flex-col justify-center"
                   style={{ backgroundColor: '#00CDC2' }}
                 >
                   {/* LINA PAY Label */}
@@ -162,15 +162,17 @@ export default function LinaPaySection() {
                   </div>
                 </div>
                 
-                {/* Description Text */}
-                <div className="text-center max-w-sm">
-                  <p className="text-white text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    A solução que transforma a experiência do cliente e traz inúmeras vantagens para e-commerces, marketplaces, plataformas de pagamento e provedores de serviços.
-                  </p>
-                </div>
-                
               </div>
               
+            </div>
+
+            {/* Description Text - Outside the grid */}
+            <div className="text-center mt-8">
+              <div className="max-w-sm mx-auto">
+                <p className="text-gray-700 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  A solução que transforma a experiência do cliente e traz inúmeras vantagens para e-commerces, marketplaces, plataformas de pagamento e provedores de serviços.
+                </p>
+              </div>
             </div>
 
             {/* Bottom Button */}
