@@ -102,11 +102,10 @@ export default function LinaPaySection() {
                 <div className="pt-4">
                   <Button 
                     variant="light-bg"
-                    className="px-6 py-2 flex items-center space-x-2"
+                    className="px-6 py-2 font-normal"
                     data-testid="button-saiba-mais"
                   >
-                    <span>Saiba mais</span>
-                    <ArrowRight className="w-4 h-4" />
+                    Saiba mais
                   </Button>
                 </div>
               </div>
