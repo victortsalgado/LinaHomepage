@@ -71,6 +71,8 @@ export default {
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
         poppins: ['Poppins', 'sans-serif'],
+        lexend: ['Lexend', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {
@@ -108,6 +110,8 @@ export default {
         'gradient-lina': 'linear-gradient(135deg, var(--lina-cyan) 0%, var(--lina-medium) 100%)',
         'gradient-dark': 'linear-gradient(135deg, var(--lina-dark) 0%, var(--lina-medium) 100%)',
         'hero-bg': 'linear-gradient(135deg, var(--lina-dark) 0%, var(--lina-medium) 50%, var(--lina-cyan) 100%)',
+        'text-gradient': 'linear-gradient(to right, var(--lina-cyan), #008080)',
+        'text-gradient-teal': 'linear-gradient(to right, #06b6d4, #14b8a6)',
       },
     },
   },
