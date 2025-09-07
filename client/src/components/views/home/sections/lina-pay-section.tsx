@@ -80,7 +80,7 @@ export default function LinaPaySection() {
     <section 
       ref={sectionRef}
       className="py-48 md:py-64 lg:py-80 min-h-screen flex items-center"
-      style={{ backgroundColor: '#38CCBF' }}
+      style={{ backgroundColor: '#D0F5F2' }}
       data-testid="section-lina-pay"
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
