@@ -101,11 +101,12 @@ export default function LinaPaySection() {
                 {/* Saiba Mais Button */}
                 <div className="pt-4">
                   <Button 
-                    className="bg-[#00F4E2] text-black px-6 py-3 rounded-full hover:bg-[#00CDC2] transition-colors font-medium"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
+                    variant="light-bg"
+                    className="px-6 py-2 flex items-center space-x-2"
                     data-testid="button-saiba-mais"
                   >
-                    Saiba mais
+                    <span>Saiba mais</span>
+                    <ArrowRight className="w-4 h-4" />
                   </Button>
                 </div>
               </div>
