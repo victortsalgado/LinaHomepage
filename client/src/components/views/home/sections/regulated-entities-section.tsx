@@ -88,7 +88,7 @@ export default function RegulatedEntitiesSection() {
               className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-lexend text-lina-dark"
               data-testid="heading-regulated-entities-title"
             >
-              <span className="whitespace-nowrap">Infraestrutura & Conectividade</span><br />
+              <span className="whitespace-nowrap bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Infraestrutura & Conectividade</span><br />
               <span>Soluções de conformidade para entidades reguladas</span>
             </h2>
             
