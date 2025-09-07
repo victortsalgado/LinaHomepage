@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/Heading";
 import { ArrowRight, Repeat, Fingerprint, CreditCard, Zap, Shield } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { motion } from "framer-motion";
 
 export default function LinaPaySection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
@@ -77,25 +78,27 @@ export default function LinaPaySection() {
               {/* Left Side - PIX Features */}
               <div className="space-y-6">
                 {pixFeatures.map((feature, index) => (
-                  <div 
+                  <motion.div 
                     key={feature.id}
-                    className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/30 hover:shadow-xl transition-all duration-300"
+                    className="flex items-start space-x-4 bg-white p-4 rounded-xl border border-gray-200 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
+                    whileHover={{ y: -2 }}
                     data-testid={`feature-${feature.id}`}
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-[var(--lina-cyan)] rounded-full flex items-center justify-center shadow-md">
-                        {feature.icon}
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-bold text-xl text-gray-800 mb-2" style={{ fontFamily: 'Lexend, sans-serif' }}>
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-700 text-base leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                          {feature.description}
-                        </p>
-                      </div>
+                    <div className="w-10 h-10 bg-[#2ec9bc] rounded-lg flex items-center justify-center flex-shrink-0">
+                      {feature.icon}
                     </div>
-                  </div>
+                    <div>
+                      <h4 className="font-semibold mb-1 text-lina-dark">
+                        {feature.title}
+                      </h4>
+                      <p className="text-gray-700 text-sm">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </motion.div>
                 ))}
                 
                 {/* Saiba Mais Button */}
