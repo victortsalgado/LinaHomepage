@@ -88,10 +88,7 @@ export default function LinaPaySection() {
         <div 
           className="relative rounded-3xl shadow-2xl overflow-hidden min-h-[500px]"
           style={{
-            background: `var(--lina-dark)`,
-            backgroundImage: `radial-gradient(circle at 20% 20%, rgba(0, 239, 207, 0.1) 0%, transparent 40%), 
-                              radial-gradient(circle at 80% 80%, rgba(0, 239, 207, 0.05) 0%, transparent 40%),
-                              repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px)`
+            backgroundColor: 'rgba(56, 204, 191, 0.8)'
           }}
         >
           <div 
