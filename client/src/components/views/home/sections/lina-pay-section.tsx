@@ -101,16 +101,16 @@ export default function LinaPaySection() {
             {/* Title and Description */}
             <div className="mb-12">
               <h2 
-                className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight font-lexend title-glow"
+                className="text-3xl lg:text-4xl font-bold text-black mb-4 leading-tight font-lexend title-glow"
                 data-testid="heading-lina-pay-title"
               >
                 Transforme o PIX em motor de vendas, lucratividade e fidelização.
               </h2>
               <p 
-                className="text-gray-200 text-lg leading-relaxed font-sans"
+                className="text-gray-800 text-lg leading-relaxed font-sans"
                 data-testid="text-lina-pay-description"
               >
-                Conheça a nova funcionalidade que automatiza pagamentos recorrentes, incluindo valores variáveis, <span className="font-semibold text-white">trazendo benefícios diretos para empresas e consumidores.</span>
+                Conheça a nova funcionalidade que automatiza pagamentos recorrentes, incluindo valores variáveis, <span className="font-semibold text-black">trazendo benefícios diretos para empresas e consumidores.</span>
               </p>
             </div>
             
@@ -213,13 +213,13 @@ export default function LinaPaySection() {
                           <div className="pt-4 lg:pt-8">
                             <motion.h3 
                               variants={itemVariants}
-                              className="text-cyan-400 font-lexend font-semibold text-xl lg:text-2xl mb-3"
+                              className="text-cyan-600 font-lexend font-semibold text-xl lg:text-2xl mb-3"
                             >
                               {activeContent.title}
                             </motion.h3>
                             <motion.p 
                               variants={itemVariants}
-                              className="text-gray-300 text-base lg:text-lg mb-6 font-sans italic"
+                              className="text-gray-700 text-base lg:text-lg mb-6 font-sans italic"
                             >
                               {activeContent.subtitle}
                             </motion.p>
@@ -230,8 +230,8 @@ export default function LinaPaySection() {
                                   variants={itemVariants}
                                   className="flex items-start gap-3 mb-4"
                                 >
-                                  <CheckCircle2 size={20} className="text-cyan-400 mt-0.5 flex-shrink-0" />
-                                  <span className="text-gray-200 text-base lg:text-lg leading-relaxed font-sans">
+                                  <CheckCircle2 size={20} className="text-cyan-600 mt-0.5 flex-shrink-0" />
+                                  <span className="text-gray-800 text-base lg:text-lg leading-relaxed font-sans">
                                     {benefit}
                                   </span>
                                 </motion.li>
