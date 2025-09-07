@@ -129,10 +129,7 @@ export default function LinaPaySection() {
                   className="relative rounded-3xl py-16 px-8 shadow-xl w-full max-w-lg mx-auto flex-1 flex flex-col justify-center min-h-[600px] mt-[-69px] mb-[-69px] ml-[55.0156px] mr-[55.0156px] pt-[103px] pb-[103px]"
                   style={{ backgroundColor: '#00CDC2' }}
                 >
-                  {/* LINA PAY Label */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-3 mb-6 text-center">
-                    <span className="font-bold text-gray-800 text-lg" style={{ fontFamily: 'Lexend, sans-serif' }}>LINA PAY</span>
-                  </div>
+                  
                   
                   {/* Smartphone Mockup */}
                   <div className="flex justify-center mb-6">
