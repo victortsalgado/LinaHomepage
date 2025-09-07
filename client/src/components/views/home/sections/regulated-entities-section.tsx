@@ -16,27 +16,32 @@ export default function RegulatedEntitiesSection() {
     {
       icon: Shield,
       title: "Gestão de Consentimentos",
-      description: "Governança e rastreabilidade total de todo o ciclo."
+      description: "Governança e rastreabilidade total de todo o ciclo de consentimentos."
     },
     {
       icon: Code,
       title: "Plataforma de APIs (Fases 1 a 4)",
-      description: "Integração completa e conforme o Bacen."
+      description: "Integração completa e conforme o Bacen, para dados e pagamentos."
     },
     {
       icon: Smartphone,
-      title: "Jornada Sem Redirecionamento (JSR)",
-      description: "Experiência de usuário superior e segura."
+      title: "Jornada Sem Redirecionamento | JSR",
+      description: "PIX 2.0 com biometria e aproximação, certificado FIDO2."
     },
     {
       icon: BarChart,
       title: "Monitoração ativa e contínua",
-      description: "Indicadores em tempo real e resposta a instabilidades."
+      description: "Indicadores em tempo real e resposta imediata a instabilidades."
     },
     {
       icon: Headphones,
-      title: "Consultoria técnica e suporte 24x7",
-      description: "Especialistas para homologação e produção."
+      title: "Consultoria técnica e suporte 24×7",
+      description: "Especialistas para homologação, produção e SLAs regulatórios."
+    },
+    {
+      icon: Settings,
+      title: "Servidores de Autorização FAPI OP/RP",
+      description: "Autenticação robusta com padrões internacionais de segurança."
     }
   ];
 
