@@ -88,7 +88,8 @@ export default function RegulatedEntitiesSection() {
               className="text-4xl lg:text-5xl font-bold leading-tight font-lexend text-lina-dark"
               data-testid="heading-regulated-entities-title"
             >
-              Open Finance e Insurance, do sandbox à escala.
+              Infraestrutura & Conectividade<br />
+              Soluções de conformidade para entidades reguladas
             </h2>
             
             {/* Description */}
