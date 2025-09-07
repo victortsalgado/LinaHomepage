@@ -130,7 +130,7 @@ export default function PostBodyOpenFinanceCredit({ post }: PostBodyProps) {
                 Descubra como nossa plataforma pode revolucionar suas decisões de crédito, reduzir inadimplência e aumentar sua competitividade no mercado.
               </p>
               <Link href="/data-link">
-                <button className="bg-[var(--lina-cyan)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[var(--lina-cyan)]/90 transition-colors">
+                <button className="bg-[var(--lina-cyan)] text-white px-6 py-3 rounded-full font-semibold hover:bg-[var(--lina-cyan)]/90 transition-colors">
                   Conheça o DataLink →
                 </button>
               </Link>
