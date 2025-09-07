@@ -93,12 +93,22 @@ export default function RegulatedEntitiesSection() {
             </h2>
             
             {/* Description */}
-            <p 
-              className="text-xl text-gray-700 leading-relaxed"
+            <div 
+              className="text-xl text-gray-700 leading-relaxed space-y-4"
               data-testid="text-regulated-entities-description"
             >
-              A única infraestrutura no Brasil capaz de levar sua operação Open do sandbox à escala, com segurança e conformidade inigualáveis.
-            </p>
+              <p>
+                Tecnologia 100% proprietária com foco em performance e conformidade regulatória.
+              </p>
+              <p>
+                Certificamos e homologamos mais de 50 instituições financeiras no Open Finance Brasil, com módulos e serviços sob medida para:
+              </p>
+              <ul className="space-y-2 ml-4">
+                <li>• Transmissores e Receptores de Dados</li>
+                <li>• Detentores de Contas</li>
+                <li>• Iniciadores de Pagamentos - ITP</li>
+              </ul>
+            </div>
             
             {/* Features List */}
             <div className="space-y-4">
