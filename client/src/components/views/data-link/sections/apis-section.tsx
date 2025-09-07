@@ -189,7 +189,7 @@ export default function ApisSection() {
               {/* Code Editor Mockup */}
               <div className="bg-black rounded-xl shadow-2xl overflow-hidden" data-testid="code-editor-mockup">
                 {/* Editor Header */}
-                <div className="bg-gray-800 px-4 py-3 flex items-center space-x-2">
+                <div className="bg-black px-4 py-3 flex items-center space-x-2">
                   <div className="flex space-x-2">
                     <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                     <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
