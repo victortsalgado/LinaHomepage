@@ -75,7 +75,7 @@ export default function SegmentsCloudSection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-20"
+      className="py-48 md:py-64 lg:py-80"
       style={{ backgroundColor: 'var(--lina-dark)' }}
       data-testid="section-segments-cloud"
     >

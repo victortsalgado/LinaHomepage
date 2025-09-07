@@ -210,7 +210,7 @@ export default function JsrHeroSection() {
 
   return (
     <section 
-      className="bg-white py-20 lg:py-24"
+      className="bg-white py-48 md:py-64 lg:py-80"
       data-testid="section-jsr-hero"
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl">

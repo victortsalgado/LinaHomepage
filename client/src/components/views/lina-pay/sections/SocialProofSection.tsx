@@ -72,7 +72,7 @@ export default function SocialProofSection() {
   return (
     <section 
       ref={sectionRef}
-      className="w-full bg-white py-16 lg:py-24"
+      className="w-full bg-white py-48 md:py-64 lg:py-80"
       data-testid="section-social-proof"
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl">

@@ -92,7 +92,7 @@ export default function ContactSection() {
   return (
     <section 
       ref={ref}
-      className="py-20 lg:py-32 bg-white"
+      className="py-48 md:py-64 lg:py-80 bg-white"
       data-testid="section-contact"
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl">

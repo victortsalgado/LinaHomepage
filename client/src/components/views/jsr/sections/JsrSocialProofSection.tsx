@@ -39,7 +39,7 @@ export default function JsrSocialProofSection() {
   return (
     <section 
       ref={sectionRef}
-      className="w-full bg-gradient-to-br from-[#E0F3F3] to-[#C9E5E5] py-16 lg:py-24"
+      className="w-full bg-gradient-to-br from-[#E0F3F3] to-[#C9E5E5] py-48 md:py-64 lg:py-80"
       data-testid="section-jsr-social-proof"
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl">

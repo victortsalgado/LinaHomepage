@@ -120,7 +120,7 @@ export default function TimelineSection() {
   return (
     <section 
       ref={ref}
-      className="py-20 lg:py-32 bg-gray-50"
+      className="py-48 md:py-64 lg:py-80 bg-gray-50"
       data-testid="section-timeline"
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-6xl">

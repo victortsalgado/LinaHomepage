@@ -55,7 +55,7 @@ export default function JsrCtaFormSection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-20 bg-gray-100" 
+      className="py-48 md:py-64 lg:py-80 bg-gray-100" 
       data-testid="section-jsr-cta-form"
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
