@@ -63,15 +63,12 @@ export default function LinaPaySection() {
             
             {/* Title */}
             <div className="mb-12">
-              <Heading
-                level="h2"
-                size="lg"
-                className="text-gray-800 mb-6"
-                gradientWords={['Open Finance!']}
+              <h2 
+                className="text-3xl md:text-4xl lg:text-5xl font-lexend font-bold leading-tight text-gray-800 mb-6"
                 data-testid="heading-lina-pay-title"
               >
-                Pix no checkout sem QR Code: <br />isso é Open Finance!
-              </Heading>
+                Pix no checkout sem QR Code: <br />isso é <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Open Finance!</span>
+              </h2>
             </div>
             
             {/* Main Content Layout */}
