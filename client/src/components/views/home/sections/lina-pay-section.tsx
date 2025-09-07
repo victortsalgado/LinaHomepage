@@ -79,21 +79,19 @@ export default function LinaPaySection() {
                 {pixFeatures.map((feature, index) => (
                   <div 
                     key={feature.id}
-                    className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/30 hover:shadow-xl transition-all duration-300"
+                    className="flex items-start gap-4 py-3"
                     data-testid={`feature-${feature.id}`}
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md">
-                        {feature.icon}
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-bold text-lg text-gray-800 mb-2" style={{ fontFamily: 'Lexend, sans-serif' }}>
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-700 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                          {feature.description}
-                        </p>
-                      </div>
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00F4E2' }}>
+                      {feature.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-bold text-lg text-gray-800 mb-1" style={{ fontFamily: 'Lexend, sans-serif' }}>
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-700 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {feature.description}
+                      </p>
                     </div>
                   </div>
                 ))}
