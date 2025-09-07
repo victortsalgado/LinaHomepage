@@ -97,7 +97,7 @@ export default function SegmentsCloudSection() {
                 data-testid="heading-segments-cloud-title"
               >
                 Pensado para diferentes{" "}
-                <span className="bg-gradient-to-r from-teal-700 to-cyan-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#008F7F] to-[#2EC38C] bg-clip-text text-transparent">
                   tipos de negócio
                 </span>
               </h2>

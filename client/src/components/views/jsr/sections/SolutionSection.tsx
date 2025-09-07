@@ -30,7 +30,7 @@ export default function SolutionSection() {
               data-testid="heading-solution-title"
             >
               A solução ideal para ativar o{" "}
-              <span className="bg-gradient-to-r from-teal-700 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#008F7F] to-[#2EC38C] bg-clip-text text-transparent">
                 Pix por aproximação sem travar o roadmap
               </span>
             </h2>
