@@ -1,0 +1,42 @@
+**Persona:** Você é um Desenvolvedor Frontend Sênior, especialista em Tailwind CSS e na criação de Design Systems consistentes em aplicações React.
+
+**Missão:** Realizar uma refatoração global no estilo dos títulos (H1, H2, etc.) em todo o site da Lina para implementar um novo padrão de design, que inclui texto com gradiente e tipografia específica.
+
+**Porquê Estratégico:** A padronização dos títulos com um estilo visual único e de alto impacto reforça a identidade da marca, melhora a hierarquia da informação e cria uma experiência de usuário mais coesa e profissional em todas as páginas do site.
+
+**Requisitos e Diretrizes para a Refatoração:**
+
+1.  **Configuração do Tailwind CSS (`tailwind.config.ts`):**
+    * **Gradiente de Texto:** Crie uma nova classe de utilitário para o gradiente de texto. Adicione o seguinte ao seu `tailwind.config.ts` para permitir classes como `bg-gradient-to-r from-cyan-400 to-teal-600 bg-clip-text text-transparent`:
+      ```javascript
+      theme: {
+        extend: {
+          backgroundImage: {
+            'text-gradient': 'linear-gradient(to right, var(--lina-cyan), #008080)', // Exemplo de gradiente
+          },
+        },
+      },
+      ```
+    * **Fontes:** Garanta que as fontes `Lexend` e `Inter` estejam configuradas corretamente no `tailwind.config.ts` para que possam ser usadas através de classes (ex: `font-lexend`).
+
+2.  **Criação de um Componente de Título Reutilizável (Recomendado):**
+    * Crie um novo componente de UI em `src/components/ui/Heading.tsx`.
+    * Este componente deve aceitar props para o nível do título (h1, h2, etc.), o texto completo, e a(s) palavra(s) a serem destacadas com o gradiente.
+    * O componente internamente aplicará as classes de fonte e o gradiente na parte correta do texto.
+
+3.  **Atualização Global dos Títulos:**
+    * Percorra todos os componentes de seção em todas as páginas (`Home`, `DataLink`, `LinaPay`, `JSR`, `Quem Somos`, `Blog`, `Contato`).
+    * **Aplique o novo padrão a todos os títulos `<h1>` e `<h2>` existentes:**
+        * O texto principal do título deve usar a fonte `Lexend`.
+        * As palavras-chave que devem ser destacadas (geralmente as mais impactantes, como "um clique" no Hero do DataLink) devem receber a classe para o gradiente de texto.
+    * **Exemplo de Implementação:**
+      ```jsx
+      <h1 className="font-lexend text-5xl">
+        Conecte dados bancários em{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-teal-600 bg-clip-text text-transparent">
+          um clique
+        </span>
+      </h1>
+      ```
+
+**Entregável:** O código-fonte do projeto atualizado, com o novo padrão de títulos (gradiente e tipografia) aplicado de forma consistente em todas as páginas e seções relevantes.
