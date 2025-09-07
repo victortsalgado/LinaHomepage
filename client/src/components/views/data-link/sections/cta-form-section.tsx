@@ -67,7 +67,7 @@ export default function CtaFormSection() {
       className="w-full py-48 md:py-64 lg:py-80 bg-white"
       data-testid="section-cta-form"
     >
-      <div className="container mx-auto px-12 lg:px-16 max-w-6xl">
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         {/* Section Title and Subtitle */}
         <motion.div 
           className="text-center max-w-4xl mx-auto mb-12"

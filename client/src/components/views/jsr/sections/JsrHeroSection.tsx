@@ -213,7 +213,7 @@ export default function JsrHeroSection() {
       className="bg-white py-48 md:py-64 lg:py-80"
       data-testid="section-jsr-hero"
     >
-      <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Text Content */}
           <motion.div

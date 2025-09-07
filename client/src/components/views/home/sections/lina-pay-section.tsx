@@ -82,7 +82,7 @@ export default function LinaPaySection() {
       className="py-48 md:py-64 lg:py-80 bg-black min-h-screen flex items-center"
       data-testid="section-lina-pay"
     >
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         {/* Lina Pay Block */}
         <div 
           className="relative rounded-3xl shadow-2xl overflow-hidden min-h-[500px]"

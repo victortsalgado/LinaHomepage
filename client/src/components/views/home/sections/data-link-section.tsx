@@ -44,7 +44,7 @@ export default function DataLinkSection() {
       className="py-48 md:py-64 lg:py-80 bg-gray-50 min-h-screen flex items-center"
       data-testid="section-data-link"
     >
-      <div className="container mx-auto px-12 lg:px-16">
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         {/* Block Card Layout */}
         <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px]">
           <div className="grid lg:grid-cols-2 gap-0 items-center">

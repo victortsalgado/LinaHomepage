@@ -40,7 +40,7 @@ export default function BlogSection() {
       className="py-48 md:py-64 lg:py-80 bg-gray-50 rounded-b-[40px]"
       data-testid="section-blog"
     >
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         {/* Centralized Title */}
         <div className="text-center mb-16">
           <h2 

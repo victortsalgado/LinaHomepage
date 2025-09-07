@@ -53,7 +53,7 @@ const featureCards = [
 export default function FeaturesSection() {
   return (
     <section className="py-48 md:py-64 lg:py-80 bg-gray-50" data-testid="section-features">
-      <div className="container mx-auto px-12 lg:px-16 max-w-7xl">
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         {/* Section Title */}
         <motion.div 
           className="text-center mb-16"
