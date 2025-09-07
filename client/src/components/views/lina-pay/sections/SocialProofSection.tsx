@@ -40,10 +40,6 @@ export default function SocialProofSection() {
       name: "HDI Seguros",
       logo: hdiSegurosLogo
     },
-    {
-      name: "CloudWalk",
-      logo: cloudwalkLogo
-    }
   ];
 
   const containerVariants = {

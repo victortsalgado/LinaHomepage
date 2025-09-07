@@ -44,10 +44,6 @@ export default function ClientsSection() {
       logo: icatuSegurosLogo
     },
     {
-      name: "CloudWalk",
-      logo: cloudwalkLogo
-    },
-    {
       name: "HDI Seguros",
       logo: hdiSegurosLogo
     }
