@@ -133,14 +133,12 @@ export default function LinaPaySection() {
                   
                   {/* LinaPay GIF/Animation */}
                   <div className="flex justify-center mb-6">
-                    {/* Placeholder for GIF - replace src with actual GIF path once file size is reduced */}
-                    <div className="w-48 h-96 bg-gray-200 rounded-[2.5rem] shadow-2xl border-4 border-gray-300 relative overflow-hidden flex items-center justify-center">
-                      <div className="text-center text-gray-600">
-                        <div className="text-sm font-medium mb-2">LinaPay GIF</div>
-                        <div className="text-xs">File too large</div>
-                        <div className="text-xs">Please compress to &lt;3.5MB</div>
-                      </div>
-                    </div>
+                    <img 
+                      src="/attached_assets/linapay mockup_1757211256291.gif"
+                      alt="LinaPay PIX por Biometria mockup"
+                      className="w-48 h-96 rounded-[2.5rem] shadow-2xl object-cover"
+                      data-testid="img-linapay-mockup"
+                    />
                   </div>
                   
                   {/* Description Text - Inside the green box, below phone */}
