@@ -152,30 +152,6 @@ export default function RegulatedEntitiesSection() {
                 </motion.div>
               ))}
             </div>
-            
-            {/* Centered Text Section */}
-            <div className="flex justify-center pt-8">
-              <div className="text-left space-y-4 max-w-2xl">
-                <p className="text-xl text-gray-700 leading-relaxed">
-                  <span className="font-bold">Tecnologia, performance, segurança</span> e o nível de<br />
-                  suporte técnico eoperacional que o ecossistema exige!
-                </p>
-                <p className="text-xl text-gray-700 leading-relaxed whitespace-nowrap">
-                  <span className="font-bold">Infraestrutura robusta.</span> Soluções que integram. <span className="font-bold">Resultados que escalam.</span>
-                </p>
-              </div>
-            </div>
-            
-            {/* CTA Button */}
-            <div className="text-center pt-6">
-              <Button 
-                variant="light-bg"
-                className="px-8 font-semibold"
-                data-testid="button-learn-more"
-              >
-                Saiba mais
-              </Button>
-            </div>
           </div>
           
           {/* Visual Column (Right) - Animated Data Visualization */}
@@ -269,6 +245,30 @@ export default function RegulatedEntitiesSection() {
               <span className="mr-44">Escala</span>
             </div>
           </div>
+        </div>
+        
+        {/* Centered Text Section - Full Width */}
+        <div className="flex justify-center pt-16">
+          <div className="text-left space-y-4 max-w-2xl">
+            <p className="text-xl text-gray-700 leading-relaxed">
+              <span className="font-bold">Tecnologia, performance, segurança</span> e o nível de<br />
+              suporte técnico eoperacional que o ecossistema exige!
+            </p>
+            <p className="text-xl text-gray-700 leading-relaxed whitespace-nowrap">
+              <span className="font-bold">Infraestrutura robusta.</span> Soluções que integram. <span className="font-bold">Resultados que escalam.</span>
+            </p>
+          </div>
+        </div>
+        
+        {/* CTA Button - Full Width */}
+        <div className="text-center pt-6">
+          <Button 
+            variant="light-bg"
+            className="px-8 font-semibold"
+            data-testid="button-learn-more"
+          >
+            Saiba mais
+          </Button>
         </div>
       </div>
     </section>
