@@ -88,7 +88,7 @@ export default function DataLinkSection() {
                       }}
                     >
                       <div className="relative z-10 mt-2 flex-shrink-0">
-                        <div className="w-2 h-2 bg-[#2ec9bc] rounded-full"></div>
+                        <div className="w-4 h-4 bg-[#2ec9bc] rounded-full"></div>
                       </div>
                       <div className="flex-1">
                         <h3 
