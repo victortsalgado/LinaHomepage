@@ -125,7 +125,7 @@ export default function HeroSection() {
         className="hover:bg-[var(--lina-cyan)]/20 bg-[var(--lina-cyan)]/10 border-[var(--lina-cyan)]/30 group mx-auto lg:mx-0 flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-[var(--lina-cyan)]/10 transition-all duration-300 backdrop-blur-sm"
         data-testid="announcement-badge"
       >
-        <span className="font-light text-sm text-[var(--lina-cyan)]">
+        <span className="font-light text-sm text-[#2ec9bc]">
           {currentSlideData.badge}
         </span>
         <div className="bg-[var(--lina-cyan)]/20 group-hover:bg-[var(--lina-cyan)]/30 size-6 overflow-hidden rounded-full duration-500">
@@ -199,7 +199,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          <span className="font-light text-sm text-[var(--lina-cyan)]">
+          <span className="font-light text-sm text-[#2ec9bc]">
             {currentSlideData.badge}
           </span>
           <div className="bg-[var(--lina-cyan)]/20 group-hover:bg-[var(--lina-cyan)]/30 size-6 overflow-hidden rounded-full duration-500">
