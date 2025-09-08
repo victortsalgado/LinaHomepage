@@ -13,6 +13,7 @@ export default function Trial() {
         <Header />
         <main>
           <TrialSection />
+          <TrialSection />
         </main>
         <Footer />
       </div>
