@@ -71,7 +71,7 @@ export default function RegulatedEntitiesSection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-48 md:py-64 lg:py-80 bg-white/40 text-lina-dark relative overflow-hidden"
+      className="py-24 md:py-32 lg:py-40 bg-white/40 text-lina-dark relative overflow-hidden"
       data-testid="section-regulated-entities"
     >
       {/* Decorative background elements */}

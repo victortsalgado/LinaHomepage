@@ -48,7 +48,7 @@ export default function LinaPaySection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-48 md:py-64 lg:py-80 min-h-screen flex items-center"
+      className="py-24 md:py-32 lg:py-40 min-h-screen flex items-center"
       style={{ backgroundColor: '#D0F5F2' }}
       data-testid="section-lina-pay"
     >
