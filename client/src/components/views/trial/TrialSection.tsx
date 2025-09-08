@@ -68,7 +68,7 @@ export default function TrialSection() {
           </div>
 
           {/* Bottom Section - Two Boxes */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 shadow-sm">
             
             {/* First Box - Teste o Pix Automático */}
             <div className={`bg-white border-2 border-lina-cyan rounded-2xl p-8 transition-all duration-1000 delay-700 ${
