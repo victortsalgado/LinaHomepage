@@ -43,7 +43,7 @@ export default function TrialSection2() {
               
               {/* Subtitle */}
               <p className="text-xl lg:text-2xl leading-relaxed text-[#23252f]">
-                <span className="font-bold">Conecte dados bancários em um clique direto do Open Finance</span>, com acesso a informações de mais de 50 instituições financeiras, trazendo praticidade para empresas e clientes.
+                <span className="font-bold">Integre dados financeiros em tempo real, diretamente do Open Finance</span>, conectando transações, saldos, limites, contratos de crédito, cartões, investimentos e muito mais!
               </p>
             </div>
 
@@ -77,11 +77,11 @@ export default function TrialSection2() {
                 : 'opacity-0 translate-y-8'
             }`}>
               <h2 className="text-2xl lg:text-3xl font-lexend mb-4 text-[#009895]">
-                Teste o <span className="font-bold">Data Link</span>
+                Conheça a solução de <span className="font-bold">PFM</span>
               </h2>
               
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Veja na prática a conexão com dados bancários.
+                Conecte suas contas para uma gestão financeira inteligente.
               </p>
               
               <Button 
