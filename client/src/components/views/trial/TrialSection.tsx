@@ -31,7 +31,7 @@ export default function TrialSection() {
             }`}>
               <div className="flex items-center gap-4 mb-6">
                 <img 
-                  src="/attached_assets/Ícone_Produto_Icone-LinaPay_1757332826232.png" 
+                  src="/lina-pay-icon.png" 
                   alt="Lina Pay Icon" 
                   className="w-16 h-16 object-contain"
                   data-testid="img-lina-pay-icon"
