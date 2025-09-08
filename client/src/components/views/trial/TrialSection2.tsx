@@ -31,7 +31,7 @@ export default function TrialSection2() {
             }`}>
               <div className="flex items-center gap-4 mb-6">
                 <img 
-                  src="/data-link-icon.png" 
+                  src="/datalink-icon.png?v=1" 
                   alt="Data Link Icon" 
                   className="w-16 h-16 object-contain"
                   data-testid="img-data-link-icon"
