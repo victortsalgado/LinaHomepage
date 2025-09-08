@@ -82,7 +82,7 @@ export default function RegulatedEntitiesSection() {
       </div>
       
       <div className="container mx-auto px-6 lg:px-8 max-w-[92rem] relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
           {/* Content Column (Left) - Title, Description & Graph */}
           <div 
             ref={contentRef}
@@ -209,7 +209,7 @@ export default function RegulatedEntitiesSection() {
           </div>
           
           {/* Features Column (Right) - Features List */}
-          <div className={`space-y-4 ${contentVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}>
+          <div className={`space-y-4 self-end ${contentVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}>
             {features.map((feature, index) => (
               <motion.div 
                 key={feature.title}
