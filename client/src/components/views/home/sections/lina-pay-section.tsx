@@ -68,7 +68,7 @@ export default function LinaPaySection() {
             {/* Title */}
             <div className="mb-12">
               <h2 
-                className="text-3xl md:text-4xl lg:text-5xl font-lexend font-bold leading-tight text-gray-800 mb-6 max-w-lg"
+                className="text-2xl md:text-3xl lg:text-4xl font-lexend font-bold leading-tight text-gray-800 mb-6 max-w-1xl"
                 data-testid="heading-lina-pay-title"
               >
                 Pix no checkout sem QR Code: <br />isso é <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Open Finance!</span>
@@ -142,12 +142,7 @@ export default function LinaPaySection() {
                     />
                   </div>
                   
-                  {/* Description Text - Inside the green box, below phone */}
-                  <div className="text-center px-4">
-                    <p className="text-white text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      A solução que transforma a experiência do cliente e traz inúmeras vantagens para e-commerces, marketplaces, plataformas de pagamento e provedores de serviços.
-                    </p>
-                  </div>
+                  
                 </div>
                 
               </div>
