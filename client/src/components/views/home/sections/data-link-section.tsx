@@ -56,7 +56,9 @@ export default function DataLinkSection() {
                 gradientWords={['dados financeiros']}
                 data-testid="heading-data-link-title"
               >
-                Integre dados financeiros para decisões e processos inteligentes
+                Integre dados financeiros<br />
+                para decisões e processos<br />
+                inteligentes
               </Heading>
               
               {/* Subtitle with bold parts */}
