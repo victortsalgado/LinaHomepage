@@ -32,18 +32,18 @@ export default function TrialSection2() {
               <div className="flex items-center gap-4 mb-6">
                 <img 
                   src="/lina-pay-icon.png" 
-                  alt="Lina Pay Icon" 
+                  alt="Data Link Icon" 
                   className="w-16 h-16 object-contain"
                   data-testid="img-lina-pay-icon"
                 />
                 <h1 className="text-4xl lg:text-5xl font-lexend">
-                  <span className="text-[#009895]">Lina</span> <span className="font-bold" style={{color: '#0AB5AB'}}>Pay</span>
+                  <span className="text-[#009895]">Data</span> <span className="font-bold" style={{color: '#0AB5AB'}}>Link</span>
                 </h1>
               </div>
               
               {/* Subtitle */}
               <p className="text-xl lg:text-2xl leading-relaxed text-[#23252f]">
-                <span className="font-bold">Explore a nova funcionalidade que automatiza pagamentos recorrentes</span>, incluindo valores, variáveis, trazendo benefícios diretos para empresas e consumidores.
+                <span className="font-bold">Conecte dados bancários em um clique direto do Open Finance</span>, com acesso a informações de mais de 50 instituições financeiras, trazendo praticidade para empresas e clientes.
               </p>
             </div>
 
@@ -57,7 +57,7 @@ export default function TrialSection2() {
                 <iframe
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/F_puVKxZLuw?controls=1&modestbranding=1&rel=0"
-                  title="Lina Pay - Vídeo Demonstração"
+                  title="Data Link - Vídeo Demonstração"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -77,11 +77,11 @@ export default function TrialSection2() {
                 : 'opacity-0 translate-y-8'
             }`}>
               <h2 className="text-2xl lg:text-3xl font-lexend mb-4 text-[#009895]">
-                Teste off <span className="font-bold">Pix Automático</span>
+                Teste o <span className="font-bold">Data Link</span>
               </h2>
               
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Veja na prática a evolução dos pagamentos via pix.
+                Veja na prática a conexão com dados bancários.
               </p>
               
               <Button 
@@ -90,7 +90,7 @@ export default function TrialSection2() {
                 data-testid="button-test-pix"
               >
                 <ArrowRight className="w-5 h-5" />
-                <span>Testar agora</span>
+                <span>Conectar agora</span>
               </Button>
             </div>
 
