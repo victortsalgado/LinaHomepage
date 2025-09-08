@@ -68,7 +68,7 @@ export default function LinaPaySection() {
             {/* Title */}
             <div className="mb-12">
               <h2 
-                className="text-3xl md:text-4xl lg:text-5xl font-lexend font-bold leading-tight text-white mb-6 max-w-lg"
+                className="text-2xl md:text-3xl lg:text-4xl font-lexend font-bold leading-tight text-white mb-6 max-w-2xl"
                 data-testid="heading-lina-pay-title"
               >
                 Pix no checkout sem QR Code: <br />isso é <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Open Finance!</span>
