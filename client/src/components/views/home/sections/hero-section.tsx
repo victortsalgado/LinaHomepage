@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // Optimized WebP images for better performance
 const fintechInnovationImage = "/Ilustra_Destaque_01_Home.png";
-const businessGrowthImage = "/assets/generated_images/3D_business_growth_visualization_676e1f0e.webp";
+const businessGrowthImage = "/lina-mastercard-partnership.png";
 const securityComplianceImage = "/assets/generated_images/3D_security_compliance_visualization_053fa71b.webp";
 
 interface Slide {
