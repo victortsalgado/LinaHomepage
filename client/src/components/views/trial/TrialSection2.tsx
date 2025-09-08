@@ -31,10 +31,10 @@ export default function TrialSection2() {
             }`}>
               <div className="flex items-center gap-4 mb-6">
                 <img 
-                  src="/attached_assets/Ícone_Produto_Icone-DataLink.png" 
+                  src="/data-link-icon.png" 
                   alt="Data Link Icon" 
                   className="w-16 h-16 object-contain"
-                  data-testid="img-lina-pay-icon"
+                  data-testid="img-data-link-icon"
                 />
                 <h1 className="text-4xl lg:text-5xl font-lexend">
                   <span className="text-[#009895]">Data</span> <span className="font-bold" style={{color: '#0AB5AB'}}>Link</span>
