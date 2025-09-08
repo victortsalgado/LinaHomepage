@@ -36,7 +36,7 @@ export default function TrialSection() {
                   className="w-16 h-16 object-contain"
                   data-testid="img-lina-pay-icon"
                 />
-                <h1 className="text-4xl lg:text-5xl font-lexend">
+                <h1 className="text-4xl lg:text-5xl font-lexend drop-shadow-sm">
                   <span className="text-[#009895]">Data</span> <span className="font-bold" style={{color: '#0AB5AB'}}>Link</span>
                 </h1>
               </div>
