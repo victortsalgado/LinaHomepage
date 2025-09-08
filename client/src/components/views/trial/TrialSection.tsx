@@ -76,7 +76,7 @@ export default function TrialSection() {
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}>
-              <h2 className="text-2xl lg:text-3xl font-lexend text-gray-900 mb-4">
+              <h2 className="text-2xl lg:text-3xl font-lexend mb-4 text-[#009895]">
                 Teste o <span className="font-bold">Pix Automático</span>
               </h2>
               
@@ -119,7 +119,7 @@ export default function TrialSection() {
                 </Button>
                 
                 <Button 
-                  className="px-6 py-3 font-medium bg-[#2ec9bc] border-2 border-[#2ec9bc] text-white hover:bg-transparent hover:text-[#2ec9bc] transition-all duration-200 rounded-full"
+                  className="px-6 py-3 font-medium bg-transparent border-2 border-[#2ec9bc] text-[#2ec9bc] hover:bg-[#2ec9bc] hover:text-white transition-all duration-200 rounded-full"
                   data-testid="button-documentation"
                 >
                   Documentação
