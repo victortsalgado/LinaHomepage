@@ -136,7 +136,7 @@ export default function Header() {
                 }}>
                   <NavigationMenuList>
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger className="relative text-gray-600 font-normal text-[20px] h-9 bg-transparent border-none shadow-none transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 [&[data-state=open]>svg]:text-lina-cyan [&[data-state=open]]:text-lina-cyan [&[data-state=open]]:scale-105 [&[data-state=open]]:before:w-full [&[data-state=open]]:before:left-0">
+                      <NavigationMenuTrigger className="relative text-gray-600 font-normal text-[16px] h-9 bg-transparent border-none shadow-none transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 [&[data-state=open]>svg]:text-lina-cyan [&[data-state=open]]:text-lina-cyan [&[data-state=open]]:scale-105 [&[data-state=open]]:before:w-full [&[data-state=open]]:before:left-0">
                         Produtos
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -190,7 +190,7 @@ export default function Header() {
                     </NavigationMenuItem>
 
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger className="relative text-gray-600 font-normal text-[20px] h-9 bg-transparent border-none shadow-none transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 [&[data-state=open]>svg]:text-lina-cyan [&[data-state=open]]:text-lina-cyan [&[data-state=open]]:scale-105 [&[data-state=open]]:before:w-full [&[data-state=open]]:before:left-0">
+                      <NavigationMenuTrigger className="relative text-gray-600 font-normal text-[16px] h-9 bg-transparent border-none shadow-none transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 [&[data-state=open]>svg]:text-lina-cyan [&[data-state=open]]:text-lina-cyan [&[data-state=open]]:scale-105 [&[data-state=open]]:before:w-full [&[data-state=open]]:before:left-0">
                         Recursos
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -211,7 +211,7 @@ export default function Header() {
                     <NavigationMenuItem>
                       <NavigationMenuLink 
                         href="#integracoes" 
-                        className="relative font-normal text-gray-600 text-[20px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0"
+                        className="relative font-normal text-gray-600 text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0"
                         data-testid="link-integrations"
                       >
                         Integrações
@@ -222,7 +222,7 @@ export default function Header() {
                       <NavigationMenuLink asChild>
                         <Link 
                           to="/trial" 
-                          className="relative font-normal text-gray-600 text-[20px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0"
+                          className="relative font-normal text-gray-600 text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0"
                           data-testid="link-trial"
                         >
                           Trial
@@ -234,7 +234,7 @@ export default function Header() {
                       <NavigationMenuLink asChild>
                         <Link 
                           to="/quem-somos" 
-                          className="relative font-normal text-gray-600 text-[20px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0"
+                          className="relative font-normal text-gray-600 text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0"
                           data-testid="link-about"
                         >
                           Quem Somos
@@ -253,7 +253,7 @@ export default function Header() {
                   <NavigationMenuItem>
                     <NavigationMenuLink 
                       href="#contato" 
-                      className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] h-9 bg-transparent border-none shadow-none px-4 py-2 text-[20px]"
+                      className="hover:text-lina-cyan/80 font-medium transition-colors text-[#009999] h-9 bg-transparent border-none shadow-none px-4 py-2 text-[16px]"
                       data-testid="link-contact"
                     >
                       Entre em Contato
