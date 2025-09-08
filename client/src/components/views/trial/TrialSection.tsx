@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CreditCard } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export default function TrialSection() {
@@ -30,8 +30,14 @@ export default function TrialSection() {
                 : 'opacity-0 -translate-x-8'
             }`}>
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-lina-cyan to-teal-600 rounded-2xl flex items-center justify-center shadow-lg">
-                  <CreditCard className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 via-teal-400 to-cyan-600 rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden">
+                  {/* Diagonal stripe effect to match the LinaPay icon */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-teal-500/40 via-transparent to-cyan-500/40"></div>
+                  <div className="absolute top-0 left-0 w-full h-full">
+                    <div className="absolute top-2 right-2 w-4 h-4 bg-gradient-to-br from-white to-cyan-100 rounded-full shadow-lg opacity-90"></div>
+                    <div className="absolute bottom-4 left-4 w-4 h-4 bg-gradient-to-br from-white to-cyan-100 rounded-full shadow-lg opacity-90"></div>
+                    <div className="absolute inset-2 bg-gradient-to-br from-teal-600 to-cyan-700 rounded-lg transform rotate-45 opacity-60"></div>
+                  </div>
                 </div>
                 <h1 className="text-4xl lg:text-5xl font-lexend text-gray-900">
                   Lina <span className="font-bold">Pay</span>
