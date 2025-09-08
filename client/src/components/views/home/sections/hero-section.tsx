@@ -6,7 +6,7 @@ import { Heading } from "@/components/ui/Heading";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // Optimized WebP images for better performance
-const fintechInnovationImage = "/assets/generated_images/Fintech_innovation_infrastructure_visualization_95bfa7ab.webp";
+const fintechInnovationImage = "attached_assets/Ilustra_Destaque_01_Home (1).png";
 const businessGrowthImage = "/assets/generated_images/3D_business_growth_visualization_676e1f0e.webp";
 const securityComplianceImage = "/assets/generated_images/3D_security_compliance_visualization_053fa71b.webp";
 
@@ -31,7 +31,7 @@ export default function HeroSection() {
       badge: "Novidade: PIX Automático Disponível",
       title: "Open Finance na prática!",
       description: "Explore soluções para pagamentos, integração de dados financeiros e experiência digital, em uma infraestrutura robusta para escalar resultados!",
-      buttonText: "Conheça nossas soluções",
+      buttonText: "Saiba mais",
       imageSrc: fintechInnovationImage,
       imageAlt: "Infraestrutura de pagamentos e Open Finance da Lina",
       priority: true, // Primeiro slide tem prioridade para LCP
@@ -140,7 +140,7 @@ export default function HeroSection() {
           <span>
             <span className="font-bold bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Open Finance</span>
             <br />
-            <span className="font-normal">na prática</span>
+            <span className="font-normal">na prática!</span>
           </span>
         </h1>
       ) : (
@@ -231,7 +231,7 @@ export default function HeroSection() {
             <span>
               <span className="font-bold bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Open Finance</span>
               <br />
-              <span className="font-normal">na prática</span>
+              <span className="font-normal">na prática!</span>
             </span>
           </motion.h1>
         ) : (
