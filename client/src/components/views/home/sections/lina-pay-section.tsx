@@ -97,7 +97,7 @@ export default function LinaPaySection() {
                       {feature.icon}
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-1 text-lina-dark">
+                      <h4 className="font-semibold mb-1 text-lina-dark text-[20px]">
                         {feature.title}
                       </h4>
                       <p className="text-gray-700 text-sm">

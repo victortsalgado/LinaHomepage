@@ -49,16 +49,23 @@ export default function DataLinkSection() {
               className={`p-16 lg:p-24 ${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
             >
               {/* Title with gradient highlight */}
-              <Heading
-                level="h2"
-                size="lg"
-                className="text-gray-800 mb-6"
-                gradientWords={['dados financeiros']}
-                data-testid="heading-data-link-title"
-              >
-                Integre dados financeiros para decisões e processos inteligentes
-              </Heading>
-              
+              <div className="mb-6">
+                <Heading
+                  level="h2"
+                  size="md"
+                  className="text-gray-800 leading-[1.1]"
+                  gradientWords={['dados financeiros']}
+                  data-testid="heading-data-link-title"
+                  style={{
+                    maxWidth: '478px',
+                    wordBreak: 'break-word',
+                    hyphens: 'manual'
+                  }}
+                >
+                  Integre dados financeiros para decisões e processos inteligentes
+                </Heading>
+              </div>
+
               {/* Subtitle with bold parts */}
               <p 
                 className="text-lg text-gray-700 mb-8 leading-relaxed"
@@ -66,7 +73,7 @@ export default function DataLinkSection() {
               >
                 <span className="font-bold">Conecte contas bancárias em tempo real, diretamente do Open Finance</span>, conectando transações, saldos, limites, contratos de crédito, cartões, investimentos e muito mais!
               </p>
-              
+
               {/* Bullet Points List */}
               <div className="relative space-y-6 mb-8">
                 {features.map((feature, index) => (
@@ -75,7 +82,7 @@ export default function DataLinkSection() {
                     className="relative"
                     data-testid={`item-feature-${index}`}
                   >
-                    
+
                     {/* Bullet Point */}
                     <div 
                       className={`flex items-start gap-4 scroll-reveal-hidden ${
@@ -108,7 +115,7 @@ export default function DataLinkSection() {
                   </div>
                 ))}
               </div>
-              
+
               <Button 
                 variant="light-bg"
                 className="px-6 py-2 flex items-center space-x-2"
@@ -118,13 +125,13 @@ export default function DataLinkSection() {
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
-            
+
             {/* Image */}
             <div 
               ref={imageRef}
               className={`relative p-16 lg:p-24 ${imageVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
             >
-              
+
               {/* Data Link illustration */}
               <div className="flex justify-center">
                 <div className="relative">
