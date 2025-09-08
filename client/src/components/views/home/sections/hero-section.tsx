@@ -122,22 +122,12 @@ export default function HeroSection() {
     <div className="h-full flex flex-col justify-center">
       {/* Badge */}
       <div
-        className="hover:bg-[var(--lina-cyan)]/20 bg-[var(--lina-cyan)]/10 border-[var(--lina-cyan)]/30 group mx-auto lg:mx-0 flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-[var(--lina-cyan)]/10 transition-all duration-300 backdrop-blur-sm"
+        className="bg-[var(--lina-cyan)]/10 border-[#2ec9bc] mx-auto lg:mx-0 flex w-fit items-center rounded-full border px-4 py-2 transition-all duration-300 backdrop-blur-sm"
         data-testid="announcement-badge"
       >
         <span className="font-light text-sm text-[#2ec9bc]">
           {currentSlideData.badge}
         </span>
-        <div className="bg-[var(--lina-cyan)]/20 group-hover:bg-[var(--lina-cyan)]/30 size-6 overflow-hidden rounded-full duration-500">
-          <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
-            <span className="flex size-6">
-              <ArrowRight className="m-auto size-3 text-[var(--lina-cyan)]" />
-            </span>
-            <span className="flex size-6">
-              <ArrowRight className="m-auto size-3 text-[var(--lina-cyan)]" />
-            </span>
-          </div>
-        </div>
       </div>
       
       {/* Title */}
@@ -193,7 +183,7 @@ export default function HeroSection() {
       >
         {/* Badge */}
         <motion.div
-          className="hover:bg-[var(--lina-cyan)]/20 bg-[var(--lina-cyan)]/10 border-[var(--lina-cyan)]/30 group mx-auto lg:mx-0 flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-[var(--lina-cyan)]/10 transition-all duration-300 backdrop-blur-sm"
+          className="bg-[var(--lina-cyan)]/10 border-[#2ec9bc] mx-auto lg:mx-0 flex w-fit items-center rounded-full border px-4 py-2 transition-all duration-300 backdrop-blur-sm"
           data-testid="announcement-badge"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -202,16 +192,6 @@ export default function HeroSection() {
           <span className="font-light text-sm text-[#2ec9bc]">
             {currentSlideData.badge}
           </span>
-          <div className="bg-[var(--lina-cyan)]/20 group-hover:bg-[var(--lina-cyan)]/30 size-6 overflow-hidden rounded-full duration-500">
-            <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
-              <span className="flex size-6">
-                <ArrowRight className="m-auto size-3 text-[var(--lina-cyan)]" />
-              </span>
-              <span className="flex size-6">
-                <ArrowRight className="m-auto size-3 text-[var(--lina-cyan)]" />
-              </span>
-            </div>
-          </div>
         </motion.div>
         
         {/* Title */}
