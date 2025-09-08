@@ -18,7 +18,7 @@ export default function TrialSection() {
       <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         
         {/* Main Content Block */}
-        <div className="bg-white rounded-3xl shadow-lg p-8 lg:p-12">
+        <div className="bg-white rounded-3xl shadow-lg p-16 lg:p-24">
           
           {/* Header Section */}
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-12">
