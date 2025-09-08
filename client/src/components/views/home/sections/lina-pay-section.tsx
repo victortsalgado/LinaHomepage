@@ -81,7 +81,7 @@ export default function LinaPaySection() {
               {/* Left Side - PIX Features */}
               <div 
                 ref={listRef}
-                className={`space-y-6 ${listVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
+                className="p-16 lg:p-24 relative scroll-reveal-fade-in bg-[#009391] text-[#fafefe]"
               >
                 {pixFeatures.map((feature, index) => (
                   <motion.div 
