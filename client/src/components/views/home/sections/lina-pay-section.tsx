@@ -76,7 +76,7 @@ export default function LinaPaySection() {
             </div>
             
             {/* Main Content Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-18 lg:gap-24 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
               
               {/* Left Side - PIX Features */}
               <div 
