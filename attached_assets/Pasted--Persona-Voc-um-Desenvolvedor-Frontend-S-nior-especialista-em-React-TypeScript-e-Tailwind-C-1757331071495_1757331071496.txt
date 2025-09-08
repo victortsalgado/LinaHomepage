@@ -1,0 +1,46 @@
+**Persona:** Você é um Desenvolvedor Frontend Sênior, especialista em React, TypeScript e Tailwind CSS, com vasta experiência na criação de landing pages e formulários de inscrição de alta conversão.
+
+**Missão:** Construir uma nova página de **Trial** (`/trial`) para a plataforma Lina, replicando com precisão o design e a funcionalidade apresentados na imagem de referência (`Layout_Trial.jpg`).
+
+**Porquê Estratégico:** A página de Trial é o ponto de entrada principal para novos usuários e potenciais clientes. Uma experiência de inscrição clara, rápida e sem fricção é fundamental para maximizar as conversões e demonstrar a eficiência da plataforma Lina desde o primeiro contato.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura da Página e Componentes:**
+    * Crie um novo arquivo de página em `src/pages/trial.tsx` e adicione a rota correspondente no seu roteador.
+    * A página deve importar e utilizar os componentes globais `<Header />` e `<Footer />`.
+    * O conteúdo principal deve ser encapsulado em um novo componente: `src/components/views/trial/TrialSection.tsx`.
+
+2.  **Layout Geral:**
+    * Implemente um layout de duas colunas (`grid lg:grid-cols-2`) com alinhamento vertical (`items-center`). A seção deve ter um fundo claro (`bg-white` ou `bg-gray-50`).
+
+3.  **Coluna da Esquerda (Conteúdo Informativo):**
+    * **Título (H1):** "Ative o potencial do Open Finance com a Lina"
+    * **Descrição:** "Crie sua conta e comece a explorar a nossa documentação completa, SDKs e tudo o que você precisa para começar a construir com Open Finance em minutos."
+    * **Lista de Benefícios:** Crie uma lista com 4 itens. Cada item deve conter um ícone, um título e uma descrição:
+        * **Item 1:** Ícone de API -> **Título:** `Explore nossas APIs`
+        * **Item 2:** Ícone de App -> **Título:** `Crie um app de teste`
+        * **Item 3:** Ícone de Check -> **Título:** `Valide seu caso de uso`
+        * **Item 4:** Ícone de Foguete -> **Título:** `Acelere seu go-to-market`
+    * **Seção CTA Final:** Um bloco de texto com o título "Fale com um especialista" e uma breve descrição sobre o suporte disponível.
+
+4.  **Coluna da Direita (Formulário de Inscrição):**
+    * **Título do Formulário:** "Comece seu trial gratuito"
+    * **Subtítulo:** "Sem cartão de crédito. Fale com nosso time de especialistas."
+    * **Social Logins:** Adicione dois botões para login social: "Continue with Google" e "Continue with Microsoft", com seus respectivos ícones.
+    * **Separador:** Um divisor com o texto "OU".
+    * **Campos do Formulário:**
+        * `Nome completo` (Input de texto)
+        * `E-mail corporativo` (Input de e-mail)
+        * `Nome da sua empresa` (Input de texto)
+        * `Telefone` (Input de telefone)
+        * `Crie sua senha` (Input de senha com um botão ou ícone para "Mostrar/Ocultar" a senha).
+    * **Termos de Serviço:** Um checkbox com o texto "Eu concordo com os Termos de Serviço e a Política de Privacidade."
+    * **Botão de Submissão:** Um botão primário com o texto "Criar minha conta".
+
+5.  **Estilo e Animação:**
+    * O design deve ser limpo e profissional, utilizando a paleta de cores e a tipografia (`Lexend`, `Inter`) já definidas no `tailwind.config.ts`.
+    * O formulário deve ser o ponto focal da página, com inputs claros e um botão de CTA proeminente.
+    * Utilize o hook `useScrollReveal` para aplicar uma animação de "fade-in" suave quando a página carregar.
+
+**Entregável:** O código-fonte completo para a nova página `trial.tsx` e seu componente `TrialSection.tsx`, totalmente responsivos, funcionais e visualmente idênticos à imagem de referência.
