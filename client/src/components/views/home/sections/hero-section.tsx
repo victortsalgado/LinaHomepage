@@ -29,7 +29,7 @@ export default function HeroSection() {
     {
       id: 0,
       badge: "Novidade: PIX Automático Disponível",
-      title: "Open Finance na prática",
+      title: "Open Finance na prática!",
       description: "Explore soluções para pagamentos, integração de dados financeiros e experiência digital, em uma infraestrutura robusta para escalar resultados!",
       buttonText: "Conheça nossas soluções",
       imageSrc: fintechInnovationImage,
