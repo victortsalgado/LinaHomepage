@@ -2,13 +2,13 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
-export default function TrialSection() {
+export default function TrialSection2() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
 
   return (
     <section 
       ref={sectionRef}
-      className={`py-48 md:py-64 lg:py-80 bg-gray-50 transition-all duration-1000 ${
+      className={`-mt-32 md:-mt-40 lg:-mt-48 py-48 md:py-64 lg:py-80 bg-gray-50 transition-all duration-1000 ${
         sectionVisible 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 translate-y-8'

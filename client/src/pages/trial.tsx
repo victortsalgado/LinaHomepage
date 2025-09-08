@@ -1,15 +1,7 @@
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import TrialSection from "@/components/views/trial/TrialSection";
-
-// Seção com margem reduzida - criando um wrapper que sobrescreve o padding
-function TrialSectionReduced() {
-  return (
-    <div className="-mt-32 md:-mt-40 lg:-mt-48">
-      <TrialSection />
-    </div>
-  );
-}
+import TrialSection2 from "@/components/views/trial/TrialSection2";
 
 export default function Trial() {
   return (
@@ -22,7 +14,7 @@ export default function Trial() {
         <Header />
         <main>
           <TrialSection />
-          <TrialSectionReduced />
+          <TrialSection2 />
         </main>
         <Footer />
       </div>
