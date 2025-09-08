@@ -37,13 +37,13 @@ export default function TrialSection() {
                   data-testid="img-lina-pay-icon"
                 />
                 <h1 className="text-4xl lg:text-5xl font-lexend">
-                  <span className="text-[#009895]">Data</span> <span className="font-bold" style={{color: '#0AB5AB'}}>Pay</span>
+                  <span className="text-[#009895]">Data</span> <span className="font-bold" style={{color: '#0AB5AB'}}>Link</span>
                 </h1>
               </div>
               
               {/* Subtitle */}
               <p className="text-xl lg:text-2xl leading-relaxed text-[#23252f]">
-                <span className="font-bold">Explore a nova funcionalidade que automatiza pagamentos recorrentes</span>, incluindo valores, variáveis, trazendo benefícios diretos para empresas e consumidores.
+                <span className="font-bold">Integre dados financeiros em tempo real, diretamente do OpenFinance</span>, conectando t.
               </p>
             </div>
 
