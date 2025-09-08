@@ -53,7 +53,7 @@ export default function TrialSection() {
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 translate-x-8'
             }`}>
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
                 <iframe
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/F_puVKxZLuw?controls=1&modestbranding=1&rel=0"
