@@ -37,7 +37,7 @@ export default function TrialSection() {
                   data-testid="img-lina-pay-icon"
                 />
                 <h1 className="text-4xl lg:text-5xl font-lexend">
-                  <span style={{color: '#009895'}}>Lina</span> <span className="font-bold" style={{color: '#0AB5AB'}}>Pay</span>
+                  <span className="text-[#009895]">Data</span> <span className="font-bold" style={{color: '#0AB5AB'}}>Pay</span>
                 </h1>
               </div>
               
