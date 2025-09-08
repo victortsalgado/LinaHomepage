@@ -100,7 +100,7 @@ export default function TrialSection() {
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
             }`}>
-              <h2 className="text-2xl lg:text-3xl font-lexend text-gray-900 mb-4">
+              <h2 className="text-2xl lg:text-3xl font-lexend mb-4 text-[#009895]">
                 Acesse nossas <span className="font-bold">APIs</span>
               </h2>
               
