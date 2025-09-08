@@ -95,11 +95,7 @@ export default function TrialSection() {
             </div>
 
             {/* Second Box - Acesse nossas APIs */}
-            <div className={`bg-white border-2 border-lina-cyan rounded-2xl p-8 transition-all duration-1000 delay-900 ${
-              sectionVisible 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}>
+            <div className="text-2xl lg:text-3xl font-lexend mb-4 text-[#009895]">
               <h2 className="text-2xl lg:text-3xl font-lexend text-gray-900 mb-4">
                 Acesse nossas <span className="font-bold">APIs</span>
               </h2>
