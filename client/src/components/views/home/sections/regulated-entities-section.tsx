@@ -83,7 +83,7 @@ export default function RegulatedEntitiesSection() {
       
       <div className="container mx-auto px-6 lg:px-8 max-w-[92rem] relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Content Column (Left) */}
+          {/* Content Column (Left) - Title, Description & Graph */}
           <div 
             ref={contentRef}
             className={`space-y-8 ${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
@@ -114,136 +114,136 @@ export default function RegulatedEntitiesSection() {
                 <li>• Iniciadores de Pagamentos - ITP</li>
               </ul>
             </div>
-            
-            {/* Features List */}
-            <div className="space-y-4">
-              {features.map((feature, index) => (
-                <motion.div 
-                  key={feature.title}
-                  className="flex items-start space-x-4 bg-white p-4 rounded-xl border border-gray-200 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={contentVisible ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
-                  whileHover={{ y: -2 }}
-                  data-testid={`card-regulated-feature-${index}`}
-                >
-                  <div 
-                    className="w-10 h-10 bg-[#2ec9bc] rounded-lg flex items-center justify-center flex-shrink-0"
+
+            {/* Animated Data Visualization - Now on Left */}
+            <div 
+              ref={visualRef}
+              className={`relative ${visualVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
+              data-testid="visualization-data-growth"
+            >
+              <div className="relative h-80 flex items-end justify-center space-x-2 p-6">
+                {/* Background grid for tech feel */}
+                <div className="absolute inset-0 opacity-15">
+                  <div className="h-full w-full" style={{
+                    backgroundImage: `
+                      linear-gradient(rgba(0, 102, 102, 0.3) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 102, 102, 0.3) 1px, transparent 1px)
+                    `,
+                    backgroundSize: '20px 20px'
+                  }}></div>
+                </div>
+                
+                {/* Animated bars representing growth from sandbox to scale */}
+                {dataVisualizationBars.map((bar, index) => (
+                  <motion.div
+                    key={index}
+                    className="relative flex-1 max-w-4 rounded-t-lg border border-gray-300"
+                    style={{ 
+                      background: index % 3 === 0 ? '#006666' : 
+                                 index % 3 === 1 ? '#008080' : 
+                                 '#0a5d5d',
+                      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+                    }}
+                    initial={{ height: 0, opacity: 0.7 }}
+                    animate={animateBars ? { 
+                      height: bar.height, 
+                      opacity: 1 
+                    } : {}}
+                    transition={{ 
+                      delay: bar.delay, 
+                      duration: 0.8, 
+                      ease: [0.4, 0, 0.2, 1] 
+                    }}
+                    data-testid={`bar-growth-${index}`}
                   >
-                    <feature.icon 
-                      className="text-white" 
-                      size={20}
-                    />
+                    {/* Subtle shadow effect for highlighted bars */}
+                    {index % 3 === 0 && (
+                      <motion.div
+                        className="absolute inset-0 rounded-t-lg"
+                        style={{ 
+                          background: '#004d4d',
+                          boxShadow: '0 4px 12px rgba(0, 102, 102, 0.3)'
+                        }}
+                        initial={{ opacity: 0 }}
+                        animate={animateBars ? { opacity: 0.8 } : {}}
+                        transition={{ delay: bar.delay + 0.5, duration: 0.5 }}
+                      />
+                    )}
+                  </motion.div>
+                ))}
+                
+                {/* Growth arrow overlay */}
+                <motion.div
+                  className="absolute top-4 right-4 flex items-center space-x-2"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={animateBars ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 1.5, duration: 0.6 }}
+                >
+                  <div className="text-sm font-medium text-teal-700">
+                    Do Sandbox à Escala
                   </div>
-                  <div>
-                    <h4 
-                      className="font-semibold mb-1 text-lina-dark"
-                      data-testid={`text-regulated-feature-title-${index}`}
-                    >
-                      {feature.title}
-                    </h4>
-                    <p 
-                      className="text-gray-700 text-sm"
-                      data-testid={`text-regulated-feature-description-${index}`}
-                    >
-                      {feature.description}
-                    </p>
-                  </div>
+                  <motion.div
+                    animate={animateBars ? { 
+                      y: [0, -5, 0],
+                      opacity: [0.7, 1, 0.7]
+                    } : {}}
+                    transition={{ 
+                      repeat: Infinity, 
+                      duration: 2,
+                      delay: 2
+                    }}
+                    className="text-teal-700"
+                  >
+                    ↗
+                  </motion.div>
                 </motion.div>
-              ))}
+              </div>
+              
+              {/* Tech labels for context */}
+              <div className="absolute -bottom-3 left-0 right-0 flex text-xs text-gray-600">
+                <span className="ml-44">Sandbox</span>
+                <span className="flex-1 text-center">Produção</span>
+                <span className="mr-44">Escala</span>
+              </div>
             </div>
           </div>
           
-          {/* Visual Column (Right) - Animated Data Visualization */}
-          <div 
-            ref={visualRef}
-            className={`relative hidden lg:block ${visualVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
-            data-testid="visualization-data-growth"
-          >
-            <div className="relative h-80 flex items-end justify-center space-x-2 p-6">
-              {/* Background grid for tech feel */}
-              <div className="absolute inset-0 opacity-15">
-                <div className="h-full w-full" style={{
-                  backgroundImage: `
-                    linear-gradient(rgba(0, 102, 102, 0.3) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 102, 102, 0.3) 1px, transparent 1px)
-                  `,
-                  backgroundSize: '20px 20px'
-                }}></div>
-              </div>
-              
-              {/* Animated bars representing growth from sandbox to scale */}
-              {dataVisualizationBars.map((bar, index) => (
-                <motion.div
-                  key={index}
-                  className="relative flex-1 max-w-4 rounded-t-lg border border-gray-300"
-                  style={{ 
-                    background: index % 3 === 0 ? '#006666' : 
-                               index % 3 === 1 ? '#008080' : 
-                               '#0a5d5d',
-                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
-                  }}
-                  initial={{ height: 0, opacity: 0.7 }}
-                  animate={animateBars ? { 
-                    height: bar.height, 
-                    opacity: 1 
-                  } : {}}
-                  transition={{ 
-                    delay: bar.delay, 
-                    duration: 0.8, 
-                    ease: [0.4, 0, 0.2, 1] 
-                  }}
-                  data-testid={`bar-growth-${index}`}
-                >
-                  {/* Subtle shadow effect for highlighted bars */}
-                  {index % 3 === 0 && (
-                    <motion.div
-                      className="absolute inset-0 rounded-t-lg"
-                      style={{ 
-                        background: '#004d4d',
-                        boxShadow: '0 4px 12px rgba(0, 102, 102, 0.3)'
-                      }}
-                      initial={{ opacity: 0 }}
-                      animate={animateBars ? { opacity: 0.8 } : {}}
-                      transition={{ delay: bar.delay + 0.5, duration: 0.5 }}
-                    />
-                  )}
-                </motion.div>
-              ))}
-              
-              {/* Growth arrow overlay */}
-              <motion.div
-                className="absolute top-4 right-4 flex items-center space-x-2"
-                initial={{ opacity: 0, y: -10 }}
-                animate={animateBars ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 1.5, duration: 0.6 }}
+          {/* Features Column (Right) - Features List */}
+          <div className={`space-y-4 ${contentVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}>
+            {features.map((feature, index) => (
+              <motion.div 
+                key={feature.title}
+                className="flex items-start space-x-4 bg-white p-4 rounded-xl border border-gray-200 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
+                initial={{ opacity: 0, x: 20 }}
+                animate={contentVisible ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
+                whileHover={{ y: -2 }}
+                data-testid={`card-regulated-feature-${index}`}
               >
-                <div className="text-sm font-medium text-teal-700">
-                  Do Sandbox à Escala
-                </div>
-                <motion.div
-                  animate={animateBars ? { 
-                    y: [0, -5, 0],
-                    opacity: [0.7, 1, 0.7]
-                  } : {}}
-                  transition={{ 
-                    repeat: Infinity, 
-                    duration: 2,
-                    delay: 2
-                  }}
-                  className="text-teal-700"
+                <div 
+                  className="w-10 h-10 bg-[#2ec9bc] rounded-lg flex items-center justify-center flex-shrink-0"
                 >
-                  ↗
-                </motion.div>
+                  <feature.icon 
+                    className="text-white" 
+                    size={20}
+                  />
+                </div>
+                <div>
+                  <h4 
+                    className="font-semibold mb-1 text-lina-dark"
+                    data-testid={`text-regulated-feature-title-${index}`}
+                  >
+                    {feature.title}
+                  </h4>
+                  <p 
+                    className="text-gray-700 text-sm"
+                    data-testid={`text-regulated-feature-description-${index}`}
+                  >
+                    {feature.description}
+                  </p>
+                </div>
               </motion.div>
-            </div>
-            
-            {/* Tech labels for context */}
-            <div className="absolute -bottom-3 left-0 right-0 flex text-xs text-gray-600">
-              <span className="ml-44">Sandbox</span>
-              <span className="flex-1 text-center">Produção</span>
-              <span className="mr-44">Escala</span>
-            </div>
+            ))}
           </div>
         </div>
         
