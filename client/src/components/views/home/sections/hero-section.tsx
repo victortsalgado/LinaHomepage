@@ -29,8 +29,8 @@ export default function HeroSection() {
     {
       id: 0,
       badge: "Novidade: PIX Automático Disponível",
-      title: "A infraestrutura completa para Iniciação de Pagamentos e Open Finance.",
-      description: "Conecte-se a dados financeiros em tempo real, automatize pagamentos e crie produtos inovadores com uma única API, homologada pelo Banco Central.",
+      title: "Open Finance na prática",
+      description: "Explore soluções para pagamentos, integração de dados financeiros e experiência digital, em uma infraestrutura robusta para escalar resultados!",
       buttonText: "Conheça nossas soluções",
       imageSrc: fintechInnovationImage,
       imageAlt: "Infraestrutura de pagamentos e Open Finance da Lina",
@@ -131,24 +131,48 @@ export default function HeroSection() {
       </div>
       
       {/* Title */}
-      <Heading
-        level="h1"
-        size="lg"
-        className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
-        gradientWords={currentSlide === 0 ? ['Open Finance'] : currentSlide === 1 ? ['receita', 'oportunidades'] : ['Bancário']}
-        data-testid="heading-hero-title"
-      >
-        {currentSlideData.title}
-      </Heading>
+      {currentSlide === 0 ? (
+        <h1
+          className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
+          style={{ fontFamily: 'Lexend, sans-serif' }}
+          data-testid="heading-hero-title"
+        >
+          <span>
+            <span className="font-bold bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Open Finance</span>
+            <br />
+            <span className="font-normal">na prática</span>
+          </span>
+        </h1>
+      ) : (
+        <Heading
+          level="h1"
+          size="lg"
+          className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
+          gradientWords={currentSlide === 1 ? ['receita', 'oportunidades'] : ['Bancário']}
+          data-testid="heading-hero-title"
+        >
+          {currentSlideData.title}
+        </Heading>
+      )}
       
       {/* Description */}
-      <p
-        className="mx-auto lg:mx-0 mt-6 max-w-2xl text-balance text-lg text-muted-foreground leading-relaxed"
-        style={{ fontFamily: 'Inter, sans-serif' }}
-        data-testid="text-hero-description"
-      >
-        {currentSlideData.description}
-      </p>
+      {currentSlide === 0 ? (
+        <p
+          className="mx-auto lg:mx-0 mt-6 max-w-2xl text-balance text-lg text-muted-foreground leading-relaxed"
+          style={{ fontFamily: 'Inter, sans-serif' }}
+          data-testid="text-hero-description"
+        >
+          Explore soluções para <span className="font-bold">pagamentos, integração de dados financeiros e experiência digital</span>, em uma infraestrutura robusta para <span className="font-bold">escalar resultados!</span>
+        </p>
+      ) : (
+        <p
+          className="mx-auto lg:mx-0 mt-6 max-w-2xl text-balance text-lg text-muted-foreground leading-relaxed"
+          style={{ fontFamily: 'Inter, sans-serif' }}
+          data-testid="text-hero-description"
+        >
+          {currentSlideData.description}
+        </p>
+      )}
 
       {/* CTA Button */}
       <div className="mt-8 flex justify-center lg:justify-start">
@@ -195,28 +219,58 @@ export default function HeroSection() {
         </motion.div>
         
         {/* Title */}
-        <motion.h1
-          className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
-          style={{ fontFamily: 'Lexend, sans-serif' }}
-          data-testid="heading-hero-title"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          {currentSlideData.title}
-        </motion.h1>
+        {currentSlideData.id === 0 ? (
+          <motion.h1
+            className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
+            style={{ fontFamily: 'Lexend, sans-serif' }}
+            data-testid="heading-hero-title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            <span>
+              <span className="font-bold bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Open Finance</span>
+              <br />
+              <span className="font-normal">na prática</span>
+            </span>
+          </motion.h1>
+        ) : (
+          <motion.h1
+            className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
+            style={{ fontFamily: 'Lexend, sans-serif' }}
+            data-testid="heading-hero-title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            {currentSlideData.title}
+          </motion.h1>
+        )}
         
         {/* Description */}
-        <motion.p
-          className="mx-auto lg:mx-0 mt-6 max-w-2xl text-balance text-lg text-muted-foreground leading-relaxed"
-          style={{ fontFamily: 'Inter, sans-serif' }}
-          data-testid="text-hero-description"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-        >
-          {currentSlideData.description}
-        </motion.p>
+        {currentSlideData.id === 0 ? (
+          <motion.p
+            className="mx-auto lg:mx-0 mt-6 max-w-2xl text-balance text-lg text-muted-foreground leading-relaxed"
+            style={{ fontFamily: 'Inter, sans-serif' }}
+            data-testid="text-hero-description"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            Explore soluções para <span className="font-bold">pagamentos, integração de dados financeiros e experiência digital</span>, em uma infraestrutura robusta para <span className="font-bold">escalar resultados!</span>
+          </motion.p>
+        ) : (
+          <motion.p
+            className="mx-auto lg:mx-0 mt-6 max-w-2xl text-balance text-lg text-muted-foreground leading-relaxed"
+            style={{ fontFamily: 'Inter, sans-serif' }}
+            data-testid="text-hero-description"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            {currentSlideData.description}
+          </motion.p>
+        )}
 
         {/* CTA Button */}
         <motion.div
