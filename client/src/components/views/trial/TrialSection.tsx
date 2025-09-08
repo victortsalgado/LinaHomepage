@@ -36,14 +36,14 @@ export default function TrialSection() {
                   className="w-16 h-16 object-contain"
                   data-testid="img-lina-pay-icon"
                 />
-                <h1 className="text-4xl lg:text-5xl font-lexend drop-shadow-sm">
-                  <span className="text-[#009895]">Data</span> <span className="font-bold" style={{color: '#0AB5AB'}}>Link</span>
+                <h1 className="text-4xl lg:text-5xl font-lexend">
+                  <span className="text-[#009895]">Data</span> <span className="font-bold" style={{color: '#0AB5AB'}}>Pay</span>
                 </h1>
               </div>
               
               {/* Subtitle */}
               <p className="text-xl lg:text-2xl leading-relaxed text-[#23252f]">
-                <span className="font-bold">Integre dados financeiros em tempo real, diretamente do OpenFinance</span>, conectando transações, saldos, limites, contratos de crédito, cartões, investimentos e muito mais!
+                <span className="font-bold">Explore a nova funcionalidade que automatiza pagamentos recorrentes</span>, incluindo valores, variáveis, trazendo benefícios diretos para empresas e consumidores.
               </p>
             </div>
 
@@ -77,11 +77,11 @@ export default function TrialSection() {
                 : 'opacity-0 translate-y-8'
             }`}>
               <h2 className="text-2xl lg:text-3xl font-lexend mb-4 text-[#009895]">
-                Conheça a solução de <span className="font-bold">PFM</span>
+                Teste o <span className="font-bold">Pix Automático</span>
               </h2>
               
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Conecte suas contas para uma gestão financeira inteligente.
+                Veja na prática a evolução dos pagamentos via pix.
               </p>
               
               <Button 
