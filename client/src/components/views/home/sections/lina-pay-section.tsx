@@ -128,7 +128,6 @@ export default function LinaPaySection() {
                 {/* Phone Container with Green Background - Full Height */}
                 <div 
                   className="relative rounded-3xl py-16 px-8 shadow-xl w-full max-w-lg mx-auto flex-1 flex flex-col justify-center min-h-[600px] mt-[-69px] mb-[-69px] ml-[55.0156px] mr-[55.0156px] pt-[103px] pb-[103px]"
-                  style={{ backgroundColor: '#00CDC2' }}
                 >
                   
                   
@@ -144,7 +143,7 @@ export default function LinaPaySection() {
                   
                   {/* Description Text - Inside the green box, below phone */}
                   <div className="text-center px-4">
-                    <p className="text-white text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    <p className="text-gray-700 text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
                       A solução que transforma a experiência do cliente e traz inúmeras vantagens para e-commerces, marketplaces, plataformas de pagamento e provedores de serviços.
                     </p>
                   </div>
