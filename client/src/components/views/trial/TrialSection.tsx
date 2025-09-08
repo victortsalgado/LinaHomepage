@@ -42,7 +42,7 @@ export default function TrialSection() {
               </div>
               
               {/* Subtitle */}
-              <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+              <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed">
                 <span className="font-bold">Explore a nova funcionalidade que automatiza pagamentos recorrentes</span>, incluindo valores, variáveis, trazendo benefícios diretos para empresas e consumidores.
               </p>
             </div>
