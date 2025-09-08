@@ -38,12 +38,12 @@ export default function HeroSection() {
     },
     {
       id: 1,
-      badge: "Resultados Comprovados",
-      title: "Transforme dados em novas fontes de receita e oportunidades de negócio.",
-      description: "Acelere seus resultados com nossa plataforma de crescimento. Automação inteligente, análises preditivas e integração completa em uma única solução.",
-      buttonText: "Veja os cases de sucesso",
+      badge: "Parceria Estratégica",
+      title: "Lina + Mastercard: Inovação em pagamentos digitais",
+      description: "Tecnologia de ponta e expertise global se unem para oferecer soluções de pagamento mais seguras, rápidas e eficientes para o seu negócio.",
+      buttonText: "Conheça a parceria",
       imageSrc: businessGrowthImage,
-      imageAlt: "Crescimento empresarial e automação inteligente",
+      imageAlt: "Parceria Lina e Mastercard para inovação em pagamentos",
       priority: false, // Lazy loading para otimização
     },
     {
