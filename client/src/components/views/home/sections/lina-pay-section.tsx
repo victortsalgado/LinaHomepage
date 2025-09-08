@@ -62,7 +62,7 @@ export default function LinaPaySection() {
         >
           <div 
             ref={blockRef}
-            className={`p-8 lg:p-12 relative ${blockVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
+            className={`p-16 lg:p-24 relative ${blockVisible ? 'scroll-reveal-fade-in' : 'scroll-reveal-hidden'}`}
           >
             
             {/* Title */}
