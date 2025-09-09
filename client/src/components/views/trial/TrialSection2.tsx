@@ -8,7 +8,7 @@ export default function TrialSection2() {
   return (
     <section 
       ref={sectionRef}
-      className={`-mt-32 md:-mt-40 lg:-mt-48 py-48 md:py-64 lg:py-80 bg-gray-50 transition-all duration-1000 ${
+      className={`-mt-16 md:-mt-20 lg:-mt-24 py-24 md:py-32 lg:py-40 bg-gray-50 transition-all duration-1000 ${
         sectionVisible 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 translate-y-8'
