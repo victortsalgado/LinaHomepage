@@ -1,5 +1,6 @@
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import TrialHero from "@/components/views/trial/TrialHero";
 import TrialSection from "@/components/views/trial/TrialSection";
 import TrialSection2 from "@/components/views/trial/TrialSection2";
 
@@ -13,6 +14,7 @@ export default function Trial() {
       <div className="content-layer">
         <Header />
         <main>
+          <TrialHero />
           <TrialSection />
           <TrialSection2 />
         </main>
