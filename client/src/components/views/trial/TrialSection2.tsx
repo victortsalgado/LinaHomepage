@@ -42,7 +42,7 @@ export default function TrialSection2() {
               </div>
               
               {/* Subtitle */}
-              <p className="text-xl lg:text-2xl leading-relaxed text-[#23252f]">
+              <p className="text-lg lg:text-xl leading-relaxed text-[#23252f]">
                 <span className="font-bold">Integre dados financeiros em tempo real, diretamente do Open Finance</span>, conectando transações, saldos, limites, contratos de crédito, cartões, investimentos e muito mais!
               </p>
             </div>
