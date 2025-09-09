@@ -142,10 +142,7 @@ export function Footer() {
           </div>
           
           {/* Copyright Bar */}
-          <div className="mt-12 pt-8">
-            {/* Gradient line with fade effect */}
-            <div className="h-px bg-gradient-to-r from-transparent via-[#2ec9bc] to-transparent mb-8"></div>
-            <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="border-t border-[#2ec9bc] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p 
               className="text-gray-400 text-sm mb-4 md:mb-0"
               data-testid="text-footer-copyright"
@@ -163,7 +160,6 @@ export function Footer() {
                   {link}
                 </a>
               ))}
-            </div>
             </div>
           </div>
         </div>
