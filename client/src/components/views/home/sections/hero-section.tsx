@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // Optimized WebP images for better performance
 const fintechInnovationImage = "/Ilustra_Destaque_01_Home.png";
 const businessGrowthImage = "/mastercard-logo.webp";
-const securityComplianceImage = "/security-shield-3d.png";
+const securityComplianceImage = "/web-security-shield.png";
 
 interface Slide {
   id: number;
