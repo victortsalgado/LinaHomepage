@@ -6,7 +6,7 @@ export default function TrialHero() {
   return (
     <section 
       ref={heroRef}
-      className="relative pt-32 md:pt-40 lg:pt-48 pb-20 md:pb-24 lg:pb-28 bg-gradient-to-br from-gray-50 via-white to-gray-100"
+      className="relative pt-32 md:pt-40 lg:pt-48 pb-12 md:pb-16 lg:pb-20 bg-gradient-to-br from-gray-50 via-white to-gray-100"
       data-testid="section-trial-hero"
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
