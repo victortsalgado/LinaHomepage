@@ -71,7 +71,7 @@ export default function TrialSection2() {
           <div className="grid md:grid-cols-2 gap-8 shadow-sm">
             
             {/* First Box - Teste o Pix Automático */}
-            <div className={`bg-white border-2 border-lina-cyan rounded-2xl p-8 transition-all duration-1000 delay-700 ${
+            <div className={`bg-white border-2 border-[#009895] rounded-2xl p-8 transition-all duration-1000 delay-700 ${
               sectionVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
@@ -95,7 +95,7 @@ export default function TrialSection2() {
             </div>
 
             {/* Second Box - Acesse nossas APIs */}
-            <div className={`bg-white border-2 border-lina-cyan rounded-2xl p-8 transition-all duration-1000 delay-900 ${
+            <div className={`bg-white border-2 border-[#009895] rounded-2xl p-8 transition-all duration-1000 delay-900 ${
               sectionVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
