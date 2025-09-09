@@ -29,7 +29,7 @@ export function Footer() {
 
   return (
     <footer 
-      className="bg-[#1a4d4d] text-white rounded-t-[40px] mt-0"
+      className="bg-[#1a4d4d] text-black rounded-t-[40px] mt-0"
       data-testid="footer-main"
     >
       <div className="px-8 py-12 lg:px-16 lg:py-16 mt-[-40px] mb-[-40px]">
@@ -71,25 +71,25 @@ export function Footer() {
                   className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
                   data-testid="link-social-linkedin"
                 >
-                  <Linkedin size={16} className="text-white" />
+                  <Linkedin size={16} className="text-black" />
                 </div>
                 <div 
                   className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
                   data-testid="link-social-twitter"
                 >
-                  <Twitter size={16} className="text-white" />
+                  <Twitter size={16} className="text-black" />
                 </div>
                 <div 
                   className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
                   data-testid="link-social-youtube"
                 >
-                  <Youtube size={16} className="text-white" />
+                  <Youtube size={16} className="text-black" />
                 </div>
                 <div 
                   className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
                   data-testid="link-social-instagram"
                 >
-                  <Instagram size={16} className="text-white" />
+                  <Instagram size={16} className="text-black" />
                 </div>
               </div>
             </div>
