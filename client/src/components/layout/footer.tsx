@@ -68,25 +68,25 @@ export function Footer() {
               {/* Social Media Icons */}
               <div className="flex space-x-3">
                 <div 
-                  className="w-8 h-8 bg-gray-700 rounded flex items-center justify-center hover:bg-[#00EFCF] transition-colors"
+                  className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
                   data-testid="link-social-linkedin"
                 >
                   <Linkedin size={16} className="text-white" />
                 </div>
                 <div 
-                  className="w-8 h-8 bg-gray-700 rounded flex items-center justify-center hover:bg-[#00EFCF] transition-colors"
+                  className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
                   data-testid="link-social-twitter"
                 >
                   <Twitter size={16} className="text-white" />
                 </div>
                 <div 
-                  className="w-8 h-8 bg-gray-700 rounded flex items-center justify-center hover:bg-[#00EFCF] transition-colors"
+                  className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
                   data-testid="link-social-youtube"
                 >
                   <Youtube size={16} className="text-white" />
                 </div>
                 <div 
-                  className="w-8 h-8 bg-gray-700 rounded flex items-center justify-center hover:bg-[#00EFCF] transition-colors"
+                  className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
                   data-testid="link-social-instagram"
                 >
                   <Instagram size={16} className="text-white" />
