@@ -165,10 +165,10 @@ export default function SocialProofSection() {
                       whileHover={{ scale: 1.08, y: -4 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <div className={`relative p-6 rounded-xl transition-all duration-500 transform group-hover:-translate-y-1 ${
+                      <div className={`relative p-6 rounded-xl transition-all duration-500 transform hover:-translate-y-1 ${
                         currentTestimonial.id === testimonial.id 
                           ? 'bg-gradient-to-br from-white to-[var(--lina-cyan)]/5 border-2 border-[var(--lina-cyan)]/40 shadow-xl shadow-[var(--lina-cyan)]/20' 
-                          : 'bg-white border-2 border-gray-100 hover:border-[var(--lina-cyan)]/30 hover:shadow-lg group-hover:shadow-xl'
+                          : 'bg-white border-2 border-gray-100 hover:border-[var(--lina-cyan)]/30 hover:shadow-lg hover:shadow-xl'
                       }`}>
                         
                         {/* Background glow for selected state */}
@@ -184,7 +184,7 @@ export default function SocialProofSection() {
                             className={`h-full w-auto object-contain transition-all duration-500 ${
                               currentTestimonial.id === testimonial.id 
                                 ? 'grayscale-0 brightness-100' 
-                                : 'grayscale-[0.3] hover:grayscale-0 group-hover:brightness-110'
+                                : 'grayscale-[0.3] group-hover:grayscale-0 group-hover:brightness-110'
                             }`}
                           />
                         </div>
