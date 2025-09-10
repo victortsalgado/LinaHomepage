@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { useState } from "react";
+import FreeTrialPopup from "./FreeTrialPopup";
 
 export default function TrialSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
     <section 
@@ -113,6 +116,7 @@ export default function TrialSection() {
                   variant="light-bg"
                   className="px-6 py-3 flex items-center space-x-2 font-medium"
                   data-testid="button-request-access"
+                  onClick={() => setIsPopupOpen(true)}
                 >
                   <ArrowRight className="w-5 h-5" />
                   <span>Solicitar Acesso</span>
@@ -129,6 +133,12 @@ export default function TrialSection() {
           </div>
         </div>
       </div>
+      
+      {/* Free Trial Popup */}
+      <FreeTrialPopup 
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+      />
     </section>
   );
 }
