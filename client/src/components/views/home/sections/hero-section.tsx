@@ -6,7 +6,7 @@ import { Heading } from "@/components/ui/Heading";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // Optimized WebP images for better performance
-const fintechInnovationImage = "/ecossistema-lina.gif";
+const fintechInnovationImage = "/Ilustra_Destaque_01_Home.png";
 const businessGrowthImage = "/mastercard-logo.webp";
 const securityComplianceImage = "/web-security-shield.png";
 
