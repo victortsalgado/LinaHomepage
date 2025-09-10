@@ -96,14 +96,15 @@ export default function SocialProofSection() {
   };
 
   return (
-    <section className="py-48 md:py-64 lg:py-80 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-      {/* Background decoration */}
+    <section className="py-48 md:py-64 lg:py-80 bg-gradient-to-br from-slate-50 via-white to-cyan-50/30 relative overflow-hidden">
+      {/* Enhanced Background decoration */}
       <div 
         aria-hidden="true"
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0"
       >
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-full blur-3xl opacity-10" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-l from-[var(--lina-light)] to-cyan-200 rounded-full blur-3xl opacity-10" />
+        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-r from-[var(--lina-cyan)]/20 to-teal-400/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-l from-cyan-400/15 to-blue-400/15 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-teal-300/10 to-cyan-300/10 rounded-full blur-2xl" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-8 max-w-[92rem]">
@@ -114,123 +115,174 @@ export default function SocialProofSection() {
           variants={containerVariants}
           className="text-center"
         >
-          {/* Section Title */}
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-16"
-            style={{ fontFamily: 'Lexend, sans-serif' }}
-            data-testid="heading-social-proof-title"
-          >
-            Veja o impacto do DataLink na prática
-          </motion.h2>
+          {/* Enhanced Section Title */}
+          <motion.div variants={itemVariants} className="mb-20">
+            <div className="inline-flex items-center justify-center w-full mb-6">
+              <div className="w-12 h-1 bg-gradient-to-r from-transparent via-[var(--lina-cyan)] to-transparent rounded-full"></div>
+              <div className="mx-4 px-6 py-2 bg-gradient-to-r from-[var(--lina-cyan)]/10 to-teal-100/50 rounded-full border border-[var(--lina-cyan)]/20">
+                <span className="text-sm font-semibold text-[var(--lina-cyan)] uppercase tracking-wider">
+                  Casos de Sucesso
+                </span>
+              </div>
+              <div className="w-12 h-1 bg-gradient-to-r from-transparent via-[var(--lina-cyan)] to-transparent rounded-full"></div>
+            </div>
+            <h2
+              className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-[var(--lina-cyan)] bg-clip-text text-transparent mb-4"
+              style={{ fontFamily: 'Lexend, sans-serif' }}
+              data-testid="heading-social-proof-title"
+            >
+              Veja o impacto do DataLink na prática
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Empresas líderes já transformaram seus negócios com nossa tecnologia de Open Finance
+            </p>
+          </motion.div>
 
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Client Logos Grid */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <h3 
-                className="text-xl font-semibold text-gray-700 mb-8"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-                data-testid="heading-trusted-by"
-              >
-                Empresas que confiam na Lina
-              </h3>
-              
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center">
-                {testimonials.map((testimonial, index) => (
-                  <motion.div
-                    key={testimonial.id}
-                    variants={logoVariants}
-                    className="group relative cursor-pointer"
-                    data-testid={`logo-${testimonial.id}`}
-                    onClick={() => setCurrentTestimonial(testimonial)}
+            {/* Enhanced Client Logos Grid */}
+            <motion.div variants={itemVariants} className="lg:pr-8">
+              <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 shadow-xl">
+                <div className="text-center mb-10">
+                  <h3 
+                    className="text-2xl font-bold text-gray-800 mb-3"
+                    style={{ fontFamily: 'Lexend, sans-serif' }}
+                    data-testid="heading-trusted-by"
                   >
-                    <img
-                      src={testimonial.logoSrc}
-                      alt={`Logo ${testimonial.author}`}
-                      className={`h-12 md:h-16 w-auto object-contain transition-all duration-500 ease-in-out transform hover:scale-110 ${
+                    Empresas que confiam na Lina
+                  </h3>
+                  <div className="w-16 h-1 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 mx-auto rounded-full"></div>
+                </div>
+                
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6 items-center justify-items-center">
+                  {testimonials.map((testimonial, index) => (
+                    <motion.div
+                      key={testimonial.id}
+                      variants={logoVariants}
+                      className="group relative cursor-pointer w-full"
+                      data-testid={`logo-${testimonial.id}`}
+                      onClick={() => setCurrentTestimonial(testimonial)}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <div className={`p-4 rounded-2xl transition-all duration-500 ${
                         currentTestimonial.id === testimonial.id 
-                          ? 'grayscale-0' 
-                          : 'grayscale hover:grayscale-0'
-                      }`}
-                    />
-                    {/* Hover glow effect */}
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
-                  </motion.div>
-                ))}
+                          ? 'bg-gradient-to-br from-[var(--lina-cyan)]/10 to-teal-100/50 border-2 border-[var(--lina-cyan)]/30 shadow-lg' 
+                          : 'bg-gray-50/50 hover:bg-white border-2 border-transparent hover:border-gray-200 hover:shadow-md'
+                      }`}>
+                        <img
+                          src={testimonial.logoSrc}
+                          alt={`Logo ${testimonial.author}`}
+                          className={`h-10 md:h-12 w-auto object-contain mx-auto transition-all duration-500 ${
+                            currentTestimonial.id === testimonial.id 
+                              ? 'grayscale-0' 
+                              : 'grayscale hover:grayscale-0'
+                          }`}
+                        />
+                      </div>
+                      {/* Enhanced Hover glow effect */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500" />
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <div className="mt-8 text-center">
+                  <p className="text-sm text-gray-500 italic">
+                    Clique em um logo para ver o depoimento
+                  </p>
+                </div>
               </div>
             </motion.div>
 
-            {/* Testimonial Card */}
+            {/* Enhanced Testimonial Card */}
             <motion.div 
               variants={itemVariants}
               className="lg:pl-8"
             >
               <div 
-                className="relative bg-gradient-to-br from-white via-[var(--lina-light)] to-cyan-50 rounded-2xl p-8 shadow-xl border border-gray-100 overflow-hidden"
+                className="relative bg-gradient-to-br from-white via-cyan-50/30 to-white rounded-3xl p-10 shadow-2xl border border-[var(--lina-cyan)]/20 overflow-hidden backdrop-blur-sm"
                 data-testid="card-testimonial"
               >
-                {/* Background pattern */}
+                {/* Enhanced background patterns */}
                 <div 
                   aria-hidden="true"
-                  className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[var(--lina-cyan)] to-transparent opacity-10 rounded-bl-full"
-                />
+                  className="absolute inset-0"
+                >
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[var(--lina-cyan)]/15 via-teal-200/10 to-transparent opacity-60 rounded-bl-[3rem]" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-cyan-300/10 to-transparent opacity-40 rounded-tr-[2rem]" />
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[var(--lina-cyan)]/5 to-teal-300/5 rounded-full blur-3xl" />
+                </div>
                 
-                {/* Quote icon */}
+                {/* Quote icon with enhanced styling */}
                 <div className="relative z-10">
-                  <Quote 
-                    className="w-8 h-8 text-[var(--lina-cyan)] mb-6" 
-                    data-testid="icon-quote"
-                  />
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-2xl mb-8 shadow-lg">
+                    <Quote 
+                      className="w-8 h-8 text-white" 
+                      data-testid="icon-quote"
+                    />
+                  </div>
                   
-                  {/* Dynamic Testimonial Content with Animation */}
+                  {/* Dynamic Testimonial Content with Enhanced Animation */}
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentTestimonial.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -30, scale: 0.95 }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
                     >
-                      {/* Testimonial text */}
+                      {/* Testimonial text with better styling */}
                       <blockquote 
-                        className="text-lg md:text-xl text-gray-800 leading-relaxed mb-6"
+                        className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-8 font-medium"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                         data-testid="text-testimonial-quote"
                       >
                         "{currentTestimonial.text}"
                       </blockquote>
                       
-                      {/* Author information */}
-                      <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-full flex items-center justify-center">
-                          <span 
-                            className="text-white font-bold text-lg"
-                            style={{ fontFamily: 'Lexend, sans-serif' }}
-                          >
-                            {currentTestimonial.initials}
-                          </span>
+                      {/* Enhanced author information */}
+                      <div className="flex items-center space-x-5">
+                        <div className="relative">
+                          <div className="w-16 h-16 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-2xl flex items-center justify-center shadow-lg">
+                            <span 
+                              className="text-white font-bold text-xl"
+                              style={{ fontFamily: 'Lexend, sans-serif' }}
+                            >
+                              {currentTestimonial.initials}
+                            </span>
+                          </div>
+                          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-400 rounded-full border-2 border-white flex items-center justify-center">
+                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                          </div>
                         </div>
                         <div className="text-left">
                           <p 
-                            className="font-semibold text-gray-900 text-lg"
+                            className="font-bold text-gray-900 text-xl mb-1"
                             style={{ fontFamily: 'Lexend, sans-serif' }}
                             data-testid="text-author-name"
                           >
                             {currentTestimonial.author}
                           </p>
                           <p 
-                            className="text-gray-600"
+                            className="text-gray-600 text-base"
                             style={{ fontFamily: 'Inter, sans-serif' }}
                             data-testid="text-author-company"
                           >
                             {currentTestimonial.role}
                           </p>
+                          <div className="mt-2 flex items-center space-x-1">
+                            {[...Array(5)].map((_, i) => (
+                              <div key={i} className="w-2 h-2 bg-[var(--lina-cyan)] rounded-full"></div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </motion.div>
                   </AnimatePresence>
                 </div>
+                
+                {/* Subtle border glow */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[var(--lina-cyan)]/20 to-teal-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
               </div>
             </motion.div>
           </div>
