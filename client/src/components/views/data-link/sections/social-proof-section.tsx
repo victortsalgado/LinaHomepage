@@ -154,7 +154,7 @@ export default function SocialProofSection() {
                   <div className="w-16 h-1 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 mx-auto rounded-full"></div>
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6 items-center justify-items-center">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 items-center justify-items-center">
                   {testimonials.map((testimonial, index) => (
                     <motion.div
                       key={testimonial.id}
@@ -162,26 +162,46 @@ export default function SocialProofSection() {
                       className="group relative cursor-pointer w-full"
                       data-testid={`logo-${testimonial.id}`}
                       onClick={() => setCurrentTestimonial(testimonial)}
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.08, y: -4 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <div className={`p-4 rounded-2xl transition-all duration-500 ${
+                      <div className={`relative p-6 rounded-xl transition-all duration-500 transform group-hover:-translate-y-1 ${
                         currentTestimonial.id === testimonial.id 
-                          ? 'bg-gradient-to-br from-[var(--lina-cyan)]/10 to-teal-100/50 border-2 border-[var(--lina-cyan)]/30 shadow-lg' 
-                          : 'bg-gray-50/50 hover:bg-white border-2 border-transparent hover:border-gray-200 hover:shadow-md'
+                          ? 'bg-gradient-to-br from-white to-[var(--lina-cyan)]/5 border-2 border-[var(--lina-cyan)]/40 shadow-xl shadow-[var(--lina-cyan)]/20' 
+                          : 'bg-white border-2 border-gray-100 hover:border-[var(--lina-cyan)]/30 hover:shadow-lg group-hover:shadow-xl'
                       }`}>
-                        <img
-                          src={testimonial.logoSrc}
-                          alt={`Logo ${testimonial.author}`}
-                          className={`h-10 md:h-12 w-auto object-contain mx-auto transition-all duration-500 ${
-                            currentTestimonial.id === testimonial.id 
-                              ? 'grayscale-0' 
-                              : 'grayscale hover:grayscale-0'
-                          }`}
-                        />
+                        
+                        {/* Background glow for selected state */}
+                        {currentTestimonial.id === testimonial.id && (
+                          <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[var(--lina-cyan)]/10 to-teal-100/30 opacity-50" />
+                        )}
+                        
+                        {/* Logo container */}
+                        <div className="relative z-10 h-14 md:h-16 flex items-center justify-center">
+                          <img
+                            src={testimonial.logoSrc}
+                            alt={`Logo ${testimonial.author}`}
+                            className={`h-full w-auto object-contain transition-all duration-500 ${
+                              currentTestimonial.id === testimonial.id 
+                                ? 'grayscale-0 brightness-100' 
+                                : 'grayscale-[0.3] hover:grayscale-0 group-hover:brightness-110'
+                            }`}
+                          />
+                        </div>
+                        
+                        {/* Active indicator */}
+                        {currentTestimonial.id === testimonial.id && (
+                          <div className="absolute top-2 right-2 w-3 h-3 bg-[var(--lina-cyan)] rounded-full animate-pulse">
+                            <div className="absolute inset-0 w-3 h-3 bg-[var(--lina-cyan)] rounded-full animate-ping opacity-75"></div>
+                          </div>
+                        )}
+                        
+                        {/* Hover shine effect */}
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-all duration-700" />
                       </div>
-                      {/* Enhanced Hover glow effect */}
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500" />
+                      
+                      {/* Enhanced outer glow effect */}
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[var(--lina-cyan)]/20 to-teal-400/20 opacity-0 group-hover:opacity-30 blur-lg transition-all duration-500 transform group-hover:scale-110" />
                     </motion.div>
                   ))}
                 </div>
