@@ -1,0 +1,352 @@
+## INSTRUCTION FOR AI ASSISTANT:
+
+Help the user complete this Sanity.io + nextjs setup guide step-by-step. This creates TWO adjacent project folders:
+
+- `studio-lina-openx/` - Sanity CMS backend
+- `nextjs-lina-openx/` - Next.js frontend
+
+### Critical Rules:
+
+1. **Dev servers** - Never execute `npm run dev`. Instead tell the user:
+"Please open a new terminal and run:
+cd <folder_name>
+npm run dev
+Let me know when it's running"
+Then stop and wait for confirmation before proceeding.
+2.  **User actions **- For browser/UI tasks, provide clear instructions then say "Let me know when you've completed this." Always wait for confirmation.
+3. **Terminal commands** - Always include the cd command first. Assume user starts from root directory.
+4. **CLI Authentication** - If the Sanity CLI prompts for login during project creation, immediately tell the user:
+"The Sanity CLI needs you to authenticate. Please:
+1. Open a new terminal window
+2. Run: npx sanity@latest login
+3. Choose the same login method as you created the project with (Google, GitHub, or email)
+4. Complete the authentication in your browser
+5. Return here and let me know when you're logged in
+Then we'll retry creating the studio."
+
+Wait for confirmation, then retry the studio creation command.
+5. **Interactive prompts/errors** - If a command needs user input or fails, always provide the exact terminal commands to run manually (including cd path and the full command), explain what input is expected, then wait for confirmation.
+6. **Deploying studios** - Never execute `npm run deploy`. Instead tell the user:
+"Please open a new terminal and run:
+cd <folder_name>
+npm run deploy
+Let me know when it's deployed"
+Then stop and wait for confirmation before proceeding, this allows the user the select as host name.
+
+### You MUST pause and wait
+
+- After telling user to run any dev server
+- After asking user to complete any browser action (login, clicking, creating content)
+- When user reports an error (help fix it first)
+- Between major sections of the guide
+
+### Response Format:
+
+- Start with: "✅ [What was just completed]"
+- Provide clear instructions with full paths
+- End with an instruction "Let me know when..."
+- Wait for user response before continuing to next section
+
+Start with the first section below:
+
+
+---
+
+# (NEXT) Get started course for Manage
+
+# [Manage] Setting up your Studio
+
+Sanity Studio is an open-source React application that connects to your project’s hosted dataset. The Studio is configured locally and then deployed for content collaborators. Content and assets from the hosted dataset can be queried from Sanity’s APIs.
+
+## Create a new Studio with Sanity CLI
+
+Run the command in your Terminal to initialize your project on your local computer.
+
+See the documentation if you are [having issues with the CLI](https://www.sanity.io/help/cli-errors).
+
+```sh
+npm create sanity@latest -- --project 3guhodbf --dataset production --template clean --typescript --output-path studio-lina-openx
+cd studio-lina-openx
+```
+
+## Run Sanity Studio locally
+
+Inside the directory of the Studio, start the development server by running the following command.
+
+```sh
+# in studio-lina-openx
+npm run dev
+```
+
+## Log in to the Studio
+
+**Open** the Studio running locally in your browser from [http://localhost:3333](http://localhost:3333).
+
+You should now see a screen prompting you to log in to the Studio. Use the same service (Google, GitHub, or email) that you used when you logged in to the CLI.
+
+# [Manage] Defining a schema
+
+The Sanity Studio can only interact with documents in a dataset for which it has schema types registered in its configuration. It currently has none.
+
+## Create a new document type
+
+Create a new file in your Studio’s `schemaTypes` folder called `postType.ts` with the code below which contains a set of fields for a new `post` document type.
+
+```typescript
+import {defineField, defineType} from 'sanity'
+
+export const postType = defineType({
+  name: 'post',
+  title: 'Post',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'title',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'slug',
+      type: 'slug',
+      options: {source: 'title'},
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'publishedAt',
+      type: 'datetime',
+      initialValue: () => new Date().toISOString(),
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'image',
+      type: 'image',
+    }),
+    defineField({
+      name: 'body',
+      type: 'array',
+      of: [{type: 'block'}],
+    }),
+  ],
+})
+```
+
+## Register the `post` schema type to the Studio schema
+
+Now you can import this document type into the `schemaTypes` array in the `index.ts` file in the same folder.
+
+```typescript
+import {postType} from './postType'
+
+export const schemaTypes = [postType]
+```
+
+## Publish your first document
+
+When you save these two files, your Studio should automatically reload and show your first document type. Click the `+` symbol at the top left to create and publish a new `post` document.
+
+# [Manage] Querying content with GROQ
+
+Content from Sanity is typically fetched as JSON from your hosted dataset using the GROQ query language.
+
+## Open the Vision tool
+
+In the Studio's toolbar, next to Structure, click **Vision **to open a playground to test-run GROQ queries.
+
+## Write your first GROQ query
+
+Paste the example query below into the **Query** code block field.
+
+- `*` represents all documents in a dataset as an array
+- `[_type == "post"]` represents a **filter** to only return matching documents
+- `{ _id, title, slug, publishedAt }` represents a **projection** which defines the attributes from those documents that you wish to include in the response.
+
+```groq
+*[_type == "post"]{ _id, title }
+```
+
+## Run the query
+
+Click **Fetch** to see the JSON output in **Results**. You should see the document you previously published in the results.
+
+Queries run in Vision use your authenticated session, so you will see private documents – which have a `.` in the `_id` key, like `drafts.` – that you will not see when queried from your front end in the next step.
+
+# [Manage] (Next) Displaying content in a front end
+
+You’ve configured your Studio with a post document type and learned how to query from your hosted dataset. Before deploying the Studio, let’s query and display this content on the front-end framework of your choice.
+
+## Install a new Next.js application
+
+If you have an *existing* application, skip this first step and adapt the rest of the lesson to install Sanity dependencies to fetch and render content.
+
+**Run** the following in a new tab or window in your Terminal (keep the Studio running) to create a new Next.js application with Tailwind CSS and TypeScript.
+
+```sh
+# outside your studio directory
+npx create-next-app@latest nextjs-lina-openx --tailwind --ts --app --src-dir --eslint --import-alias "@/*" --turbopack
+cd nextjs-lina-openx
+```
+
+You should now have your Studio and Next.js application in two separate, adjacent folders:
+
+```sh
+├─ /nextjs-lina-openx
+└─ /studio-lina-openx
+```
+
+## Install Sanity dependencies
+
+**Run** the following inside the `nextjs-lina-openx` directory to install:
+
+- [next-sanity](https://github.com/sanity-io/next-sanity) a collection of utilities for integrating Next.js with Sanity
+- [@sanity/image-url](https://www.sanity.io/docs/image-url) helper functions to take image data from Sanity and create a URL
+
+```sh
+# in nextjs-lina-openx
+npm install --legacy-peer-deps next-sanity @sanity/image-url
+```
+
+## Start the development server
+
+**Run** the following command and open [http://localhost:3000](http://localhost:3000/) in your browser.
+
+```sh
+# in nextjs-lina-openx
+npm run dev
+```
+
+## Configure the Sanity client
+
+To fetch content from Sanity, you’ll first need to configure a Sanity Client.
+
+**Create** a directory `nextjs-lina-openx/src/sanity` and within it create a `client.ts` file, with the following code:
+
+```typescript
+import { createClient } from "next-sanity";
+
+export const client = createClient({
+  projectId: "3guhodbf",
+  dataset: "production",
+  apiVersion: "2024-01-01",
+  useCdn: false,
+});
+```
+
+## Display content on the homepage
+
+Next.js uses server components for loading data at specific routes. The current home page can be found at `src/app/page.tsx`.
+
+**Update** it to render a list of posts fetched from your Sanity dataset using the code below.
+
+```tsx
+import Link from "next/link";
+import { type SanityDocument } from "next-sanity";
+
+import { client } from "@/sanity/client";
+
+const POSTS_QUERY = `*[
+  _type == "post"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`;
+
+const options = { next: { revalidate: 30 } };
+
+export default async function IndexPage() {
+  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+
+  return (
+    <main className="container mx-auto min-h-screen max-w-3xl p-8">
+      <h1 className="text-4xl font-bold mb-8">Posts</h1>
+      <ul className="flex flex-col gap-y-4">
+        {posts.map((post) => (
+          <li className="hover:underline" key={post._id}>
+            <Link href={`/${post.slug.current}`}>
+              <h2 className="text-xl font-semibold">{post.title}</h2>
+              <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+}
+```
+
+## Display individual posts
+
+**Create** a new route for individual post pages.
+
+The dynamic value of a slug when visiting `/[slug]` in the URL is used as a parameter in the GROQ query used by Sanity Client.
+
+Notice that we’re using [Tailwind CSS Typography](https://github.com/tailwindlabs/tailwindcss-typography)’s `prose` class name to style the post’s `body` block content. Install it in your project following their documentation.
+
+```tsx
+import { PortableText, type SanityDocument } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { client } from "@/sanity/client";
+import Link from "next/link";
+
+const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
+
+const { projectId, dataset } = client.config();
+const urlFor = (source: SanityImageSource) =>
+  projectId && dataset
+    ? imageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
+
+const options = { next: { revalidate: 30 } };
+
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const post = await client.fetch<SanityDocument>(POST_QUERY, await params, options);
+  const postImageUrl = post.image
+    ? urlFor(post.image)?.width(550).height(310).url()
+    : null;
+
+  return (
+    <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
+      <Link href="/" className="hover:underline">
+        ← Back to posts
+      </Link>
+      {postImageUrl && (
+        <img
+          src={postImageUrl}
+          alt={post.title}
+          className="aspect-video rounded-xl"
+          width="550"
+          height="310"
+        />
+      )}
+      <h1 className="text-4xl font-bold mb-8">{post.title}</h1>
+      <div className="prose">
+        <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p>
+        {Array.isArray(post.body) && <PortableText value={post.body} />}
+      </div>
+    </main>
+  );
+}
+```
+
+
+
+# [Manage] Deploying Studio and inviting editors
+
+Your Sanity Studio is still only running on your local computer. It's time to deploy and get it into the hands of other content editors.
+
+## Deploy your Studio with Sanity
+
+Back in your Studio directory (`studio-lina-openx`) run the following command to deploy your Sanity Studio.
+
+```sh
+npm run deploy
+```
+
+## Invite a collaborator
+
+Now that you’ve deployed your Studio, you can optionally invite a collaborator to your project: [Invite user](https://www.sanity.io/manage/project/3guhodbf/members)
+
+They will be able to access the deployed Studio, where you can collaborate together on creating content.
+
