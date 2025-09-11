@@ -10,7 +10,12 @@ export const PAGE_QUERY = `
       _type == "heroSection" => {
         title,
         subtitle,
-        backgroundImage,
+        backgroundImage{
+          asset->{
+            _ref,
+            url
+          }
+        },
         ctaText,
         ctaLink
       },
@@ -21,7 +26,12 @@ export const PAGE_QUERY = `
       },
       _type == "imageSection" => {
         title,
-        image,
+        image{
+          asset->{
+            _ref,
+            url
+          }
+        },
         alt,
         caption
       }

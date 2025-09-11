@@ -1,4 +1,5 @@
 import { TextSection as TextSectionType } from '@/lib/sanity/queries'
+import DOMPurify from 'dompurify'
 
 interface TextSectionProps {
   section: TextSectionType
@@ -11,6 +12,9 @@ export function TextSection({ section }: TextSectionProps) {
     right: 'text-right'
   }[section.textAlign || 'left']
 
+  // Sanitize HTML content to prevent XSS attacks
+  const sanitizedContent = DOMPurify.sanitize(section.content)
+
   return (
     <section className="py-48 md:py-64 lg:py-80 px-12 lg:px-16">
       <div className="max-w-4xl mx-auto">
@@ -22,7 +26,7 @@ export function TextSection({ section }: TextSectionProps) {
         
         <div 
           className={`prose prose-lg max-w-none ${textAlignClass}`}
-          dangerouslySetInnerHTML={{ __html: section.content }}
+          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
           data-testid="text-content"
         />
       </div>
