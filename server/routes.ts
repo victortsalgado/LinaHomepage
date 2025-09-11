@@ -108,6 +108,108 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // An endpoint for cataloging all local images in the project
+  app.get("/api/images/catalog", async (req, res) => {
+    try {
+      const objectStorageService = new ObjectStorageService();
+      const catalog = await objectStorageService.catalogLocalImages();
+      res.json(catalog);
+    } catch (error) {
+      console.error("Error cataloging local images:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  // An endpoint for executing the migration of local images to App Storage
+  app.post("/api/images/migrate", async (req, res) => {
+    try {
+      const objectStorageService = new ObjectStorageService();
+      
+      // CORRIGIDO: Verificar se o App Storage está configurado
+      try {
+        objectStorageService.getPrivateObjectDir();
+      } catch (error) {
+        return res.status(400).json({ 
+          error: "App Storage não configurado",
+          message: "Configure o bucket no painel Object Storage para habilitar a migração",
+          details: error instanceof Error ? error.message : "Erro desconhecido"
+        });
+      }
+      
+      // Get the catalog and migration plan
+      const catalog = await objectStorageService.catalogLocalImages();
+      
+      // Execute the migration
+      console.log(`Starting migration of ${catalog.totalImages} images...`);
+      const results = await objectStorageService.executeMigration(catalog.migrationPlan);
+      
+      res.json({
+        message: "Migration completed",
+        results,
+        catalog: {
+          totalImages: catalog.totalImages,
+          categoriesCount: Object.keys(catalog.byCategory).reduce((acc, key) => {
+            acc[key] = catalog.byCategory[key].length;
+            return acc;
+          }, {} as Record<string, number>)
+        }
+      });
+    } catch (error) {
+      console.error("Error executing migration:", error);
+      res.status(500).json({ error: "Migration failed: " + (error instanceof Error ? error.message : String(error)) });
+    }
+  });
+
+  // An endpoint for executing partial migration (specific categories)
+  app.post("/api/images/migrate/category", async (req, res) => {
+    try {
+      const { categories } = req.body;
+      
+      if (!categories || !Array.isArray(categories)) {
+        return res.status(400).json({ error: "Categories array is required" });
+      }
+
+      const objectStorageService = new ObjectStorageService();
+      
+      // CORRIGIDO: Verificar se o App Storage está configurado
+      try {
+        objectStorageService.getPrivateObjectDir();
+      } catch (error) {
+        return res.status(400).json({ 
+          error: "App Storage não configurado",
+          message: "Configure o bucket no painel Object Storage para habilitar a migração",
+          details: error instanceof Error ? error.message : "Erro desconhecido"
+        });
+      }
+      
+      const catalog = await objectStorageService.catalogLocalImages();
+      
+      // Filter migration plan to only include specified categories
+      const filteredPlan: Record<string, { files: string[], targetFolder: string }> = {};
+      for (const category of categories) {
+        if (catalog.migrationPlan[category]) {
+          filteredPlan[category] = catalog.migrationPlan[category];
+        }
+      }
+      
+      if (Object.keys(filteredPlan).length === 0) {
+        return res.status(400).json({ error: "No valid categories found" });
+      }
+
+      console.log(`Starting partial migration for categories: ${categories.join(', ')}`);
+      const results = await objectStorageService.executeMigration(filteredPlan);
+      
+      res.json({
+        message: `Partial migration completed for categories: ${categories.join(', ')}`,
+        results,
+        categories: categories
+      });
+    } catch (error) {
+      console.error("Error executing partial migration:", error);
+      res.status(500).json({ error: "Partial migration failed: " + (error instanceof Error ? error.message : String(error)) });
+    }
+  });
+
   // An example endpoint for updating the model state after an object entity is uploaded (banner image in this case).
   app.put("/api/banner-images", async (req, res) => {
     if (!req.body.bannerImageURL) {

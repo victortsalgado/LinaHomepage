@@ -355,7 +355,7 @@ export class ObjectStorageService {
   // Helper para verificar se é um arquivo de imagem
   private isImageFile(fileName: string): boolean {
     const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp'];
-    const ext = fileName.toLowerCase().substr(fileName.lastIndexOf('.'));
+    const ext = fileName.toLowerCase().substring(fileName.lastIndexOf('.'));
     return imageExtensions.includes(ext);
   }
 
@@ -502,6 +502,294 @@ export class ObjectStorageService {
     }
 
     return imagesByFolder;
+  }
+
+  // Cataloga todas as imagens existentes no projeto local
+  async catalogLocalImages(): Promise<{
+    totalImages: number;
+    byCategory: Record<string, string[]>;
+    byLocation: Record<string, string[]>;
+    migrationPlan: Record<string, { files: string[], targetFolder: string }>;
+  }> {
+    const fs = await import('fs/promises');
+    const path = await import('path');
+    
+    const imagesByCategory: Record<string, string[]> = {
+      logos: [],
+      icons: [],
+      backgrounds: [],
+      products: [],
+      clients: [],
+      figma_assets: [],
+      generated_images: [],
+      home_banners: [],
+      valores: [],
+      outros: []
+    };
+
+    const imagesByLocation: Record<string, string[]> = {
+      'client/public/assets': [],
+      'client/public/figmaAssets': [],
+      'client/src/assets': [],
+      'attached_assets': []
+    };
+
+    const allImages: string[] = [];
+
+    // Função para escanear diretório recursivamente
+    const scanDirectory = async (dirPath: string, basePath: string = '') => {
+      try {
+        const items = await fs.readdir(dirPath, { withFileTypes: true });
+        
+        for (const item of items) {
+          const fullPath = path.join(dirPath, item.name);
+          const relativePath = basePath ? `${basePath}/${item.name}` : item.name;
+          
+          if (item.isDirectory()) {
+            await scanDirectory(fullPath, relativePath);
+          } else if (this.isImageFile(item.name)) {
+            // CORRIGIDO: Usar path.relative corretamente para evitar duplicação de segmentos
+            const absolutePath = path.join(dirPath, item.name);
+            const fullRelativePath = path.relative(process.cwd(), absolutePath);
+            allImages.push(fullRelativePath);
+            
+            // Categorizar por localização
+            const locationKey = Object.keys(imagesByLocation).find(loc => 
+              fullRelativePath.startsWith(loc)
+            ) || 'outros';
+            imagesByLocation[locationKey].push(fullRelativePath);
+            
+            // Categorizar por tipo de imagem
+            const category = this.categorizeImageForMigration(item.name, fullRelativePath);
+            imagesByCategory[category].push(fullRelativePath);
+          }
+        }
+      } catch (error) {
+        console.log(`Diretório ${dirPath} não encontrado ou inacessível`);
+      }
+    };
+
+    // Escanear diretórios principais
+    const dirsToScan = [
+      path.join(process.cwd(), 'client/public/assets'),
+      path.join(process.cwd(), 'client/public/figmaAssets'),
+      path.join(process.cwd(), 'client/src/assets'),
+      path.join(process.cwd(), 'attached_assets')
+    ];
+
+    for (const dir of dirsToScan) {
+      await scanDirectory(dir);
+    }
+
+    // Criar plano de migração
+    const migrationPlan = this.createMigrationPlan(imagesByCategory);
+
+    return {
+      totalImages: allImages.length,
+      byCategory: imagesByCategory,
+      byLocation: imagesByLocation,
+      migrationPlan
+    };
+  }
+
+  // Categoriza imagem para migração baseado no nome e caminho
+  private categorizeImageForMigration(fileName: string, filePath: string): string {
+    const lowerName = fileName.toLowerCase();
+    const lowerPath = filePath.toLowerCase();
+
+    // Logos e branding
+    if (lowerName.includes('logo') || lowerName.includes('lina') || 
+        lowerPath.includes('mastercard') || lowerName.includes('bradesco') ||
+        lowerName.includes('caixa') || lowerName.includes('safra') ||
+        lowerName.includes('sicoob') || lowerName.includes('stone')) {
+      return 'logos';
+    }
+
+    // Ícones e produtos
+    if (lowerName.includes('icone') || lowerName.includes('icon') || 
+        lowerName.includes('datalink') || lowerName.includes('linapay') ||
+        lowerName.includes('linajsr')) {
+      return 'icons';
+    }
+
+    // Banners e backgrounds de home
+    if (lowerName.includes('banner') || lowerName.includes('bg') || 
+        lowerName.includes('home_bg') || lowerName.includes('ilustra_banner')) {
+      return 'home_banners';
+    }
+
+    // Assets do Figma
+    if (lowerPath.includes('figmaassets') || lowerPath.includes('figma')) {
+      return 'figma_assets';
+    }
+
+    // Imagens geradas
+    if (lowerPath.includes('generated_images') || lowerName.includes('3d_') || 
+        lowerName.includes('fintech_') || lowerName.includes('visualization')) {
+      return 'generated_images';
+    }
+
+    // Valores da empresa
+    if (lowerName.includes('valores_lina') || lowerName.includes('compromisso') ||
+        lowerName.includes('evolucao') || lowerName.includes('paixao')) {
+      return 'valores';
+    }
+
+    // Clientes e parceiros
+    if (lowerName.includes('client') || lowerName.includes('cloudwalk') ||
+        lowerName.includes('icatu') || lowerName.includes('hdi')) {
+      return 'clients';
+    }
+
+    // Produtos e mockups
+    if (lowerName.includes('mockup') || lowerName.includes('produto') ||
+        lowerName.includes('datalink_') || lowerName.includes('linapay_')) {
+      return 'products';
+    }
+
+    return 'outros';
+  }
+
+  // Cria plano de migração organizando categorias em pastas do App Storage
+  private createMigrationPlan(imagesByCategory: Record<string, string[]>): Record<string, { files: string[], targetFolder: string }> {
+    return {
+      logos: {
+        files: imagesByCategory.logos,
+        targetFolder: 'home/logos'
+      },
+      icons: {
+        files: imagesByCategory.icons,
+        targetFolder: 'home/icones'
+      },
+      home_banners: {
+        files: imagesByCategory.home_banners,
+        targetFolder: 'home/banners'
+      },
+      products: {
+        files: imagesByCategory.products,
+        targetFolder: 'home/produtos'
+      },
+      clients: {
+        files: imagesByCategory.clients,
+        targetFolder: 'home/clientes'
+      },
+      valores: {
+        files: imagesByCategory.valores,
+        targetFolder: 'home/valores'
+      },
+      figma_assets: {
+        files: imagesByCategory.figma_assets,
+        targetFolder: 'home/figma'
+      },
+      generated_images: {
+        files: imagesByCategory.generated_images,
+        targetFolder: 'home/generated'
+      },
+      outros: {
+        files: imagesByCategory.outros,
+        targetFolder: 'home/outros'
+      }
+    };
+  }
+
+  // Migra uma imagem local para o App Storage
+  async migrateImageToStorage(localPath: string, targetFolder: string, fileName?: string): Promise<string> {
+    const fs = await import('fs/promises');
+    const path = await import('path');
+
+    try {
+      // CORRIGIDO: Verificar se PRIVATE_OBJECT_DIR está configurado com validação melhorada
+      let privateObjectDir: string;
+      try {
+        privateObjectDir = this.getPrivateObjectDir();
+      } catch (error) {
+        throw new Error('App Storage não está configurado. Configure o bucket no painel Object Storage para habilitar a migração.');
+      }
+
+      // CORRIGIDO: Garantir que o caminho local é absoluto
+      const absoluteLocalPath = path.resolve(localPath);
+      
+      // Verificar se o arquivo existe antes de tentar lê-lo
+      try {
+        await fs.access(absoluteLocalPath);
+      } catch {
+        throw new Error(`Arquivo não encontrado: ${localPath}`);
+      }
+
+      // Define o nome do arquivo no destino
+      const finalFileName = fileName || path.basename(absoluteLocalPath);
+      const targetPath = `${targetFolder}/${finalFileName}`;
+      
+      // Constrói o caminho completo no object storage
+      const fullObjectPath = `${privateObjectDir}/${targetPath}`;
+      
+      const { bucketName, objectName } = parseObjectPath(fullObjectPath);
+      const bucket = objectStorageClient.bucket(bucketName);
+      const file = bucket.file(objectName);
+
+      // CORRIGIDO: Usar fs.promises.readFile em vez de readFileSync
+      const fileBuffer = await fs.readFile(absoluteLocalPath);
+      
+      // Faz upload do arquivo
+      await file.save(fileBuffer, {
+        metadata: {
+          contentType: this.getContentType(finalFileName)
+        }
+      });
+
+      console.log(`Imagem migrada: ${localPath} -> ${targetPath}`);
+      return targetPath;
+    } catch (error) {
+      console.error(`Erro ao migrar imagem ${localPath}:`, error);
+      throw error;
+    }
+  }
+
+  // Executa migração completa baseada no plano
+  async executeMigration(migrationPlan: Record<string, { files: string[], targetFolder: string }>): Promise<{
+    success: string[];
+    failed: { file: string, error: string }[];
+    total: number;
+  }> {
+    const results = {
+      success: [] as string[],
+      failed: [] as { file: string, error: string }[],
+      total: 0
+    };
+
+    for (const [category, plan] of Object.entries(migrationPlan)) {
+      console.log(`Migrando categoria: ${category} (${plan.files.length} arquivos)`);
+      
+      for (const filePath of plan.files) {
+        results.total++;
+        
+        try {
+          const targetPath = await this.migrateImageToStorage(filePath, plan.targetFolder);
+          results.success.push(`${filePath} -> ${targetPath}`);
+        } catch (error) {
+          results.failed.push({
+            file: filePath,
+            error: error instanceof Error ? error.message : String(error)
+          });
+        }
+      }
+    }
+
+    return results;
+  }
+
+  // Obtém o tipo MIME baseado na extensão do arquivo
+  private getContentType(fileName: string): string {
+    const ext = fileName.toLowerCase().split('.').pop();
+    const mimeTypes: Record<string, string> = {
+      'png': 'image/png',
+      'jpg': 'image/jpeg',
+      'jpeg': 'image/jpeg',
+      'gif': 'image/gif',
+      'svg': 'image/svg+xml',
+      'webp': 'image/webp'
+    };
+    return mimeTypes[ext || ''] || 'application/octet-stream';
   }
 }
 
