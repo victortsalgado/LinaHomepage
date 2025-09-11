@@ -99,15 +99,14 @@ export default function SegmentsSection() {
               
               
               return (
-                <motion.button
+                <motion.div
                   key={segment.id}
-                  onClick={() => setActiveTab(segment.id)}
+                  onMouseEnter={() => setActiveTab(segment.id)}
                   className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-500 group/card cursor-pointer ${cardColors[index]} ${
                     isActive 
                       ? 'border-white/30 shadow-xl shadow-black/20 scale-105' 
                       : 'border-white/10 hover:border-white/30'
                   } hover:scale-110 group-hover/cards:[&:not(:hover)]:blur-[10px] group-hover/cards:[&:not(:hover)]:scale-90`}
-                  whileTap={{ scale: 0.95 }}
                   data-testid={`tab-segment-${index + 1}`}
                 >
                   <div className="flex items-center gap-4 h-16">
@@ -133,11 +132,11 @@ export default function SegmentsSection() {
                         style={{ fontFamily: 'Inter, sans-serif' }}
                         data-testid={`subtitle-tab-${index + 1}`}
                       >
-                        Clique para saber mais
+                        Passe o mouse para saber mais
                       </p>
                     </div>
                   </div>
-                </motion.button>
+                </motion.div>
               );
             })}
           </div>
