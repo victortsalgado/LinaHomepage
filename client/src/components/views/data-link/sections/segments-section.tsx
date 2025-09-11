@@ -176,7 +176,6 @@ export default function SegmentsSection() {
                   </p>
 
                   {/* Decorative elements */}
-                  <div className="absolute top-8 right-8 w-16 h-16 bg-gradient-to-br from-[var(--lina-cyan)]/10 to-teal-100/50 rounded-full" />
                   <div className="absolute bottom-8 left-8 w-12 h-12 bg-gradient-to-tr from-teal-100/50 to-[var(--lina-cyan)]/10 rounded-full" />
                 </motion.div>
               )}
