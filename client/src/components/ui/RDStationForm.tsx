@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 interface RDStationFormProps {
-  formId: string;
+  formId?: string;
   className?: string;
 }
 
@@ -12,7 +12,10 @@ declare global {
   }
 }
 
-export default function RDStationForm({ formId, className = "" }: RDStationFormProps) {
+export default function RDStationForm({ 
+  formId = 'teste_lina-bw_lp_linapay-4d252035dc055a459f05', 
+  className = "" 
+}: RDStationFormProps) {
   useEffect(() => {
     // Load RD Station script if not already loaded
     if (!document.querySelector('script[src*="rdstation-forms"]')) {
@@ -32,6 +35,14 @@ export default function RDStationForm({ formId, className = "" }: RDStationFormP
         new window.RDStationForms(formId, 'UA-228918210-1').createForm();
       }
     }
+
+    // Cleanup function to clear form on unmount
+    return () => {
+      const element = document.getElementById(formId);
+      if (element) {
+        element.innerHTML = '';
+      }
+    };
   }, [formId]);
 
   return (
