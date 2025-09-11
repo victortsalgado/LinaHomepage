@@ -106,7 +106,7 @@ export default function SegmentsSection() {
                     isActive 
                       ? `border-white/30 shadow-xl shadow-black/20 scale-105 ${cardColors[index]}` 
                       : 'border-white/10 hover:border-white/30'
-                  } hover:scale-110 group-hover/cards:[&:not(:hover)]:blur-[10px] group-hover/cards:[&:not(:hover)]:scale-90`}
+                  } hover:scale-110 group-hover/cards:[&:not(:hover)]:blur-[3px] group-hover/cards:[&:not(:hover)]:scale-90`}
                   data-testid={`tab-segment-${index + 1}`}
                 >
                   <div className="flex items-center gap-4 h-16">
