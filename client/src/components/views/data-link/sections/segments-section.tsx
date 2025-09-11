@@ -119,21 +119,14 @@ export default function SegmentsSection() {
                     </div>
                     
                     {/* Content */}
-                    <div className="flex-1 text-center">
+                    <div className="flex-1 flex items-center justify-center">
                       <h3 
-                        className="text-base font-bold leading-tight text-white mb-1"
+                        className="text-lg font-bold leading-tight text-white text-center"
                         style={{ fontFamily: 'Lexend, sans-serif' }}
                         data-testid={`title-tab-${index + 1}`}
                       >
                         {segment.title}
                       </h3>
-                      <p 
-                        className="text-sm text-white/80 leading-tight"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid={`subtitle-tab-${index + 1}`}
-                      >
-                        Passe o mouse para saber mais
-                      </p>
                     </div>
                   </div>
                 </motion.div>
