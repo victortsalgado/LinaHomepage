@@ -109,7 +109,7 @@ export default function SegmentsSection() {
                   } hover:scale-110 group-hover/cards:[&:not(:hover)]:blur-[10px] group-hover/cards:[&:not(:hover)]:scale-90`}
                   data-testid={`tab-segment-${index + 1}`}
                 >
-                  <div className="flex items-center gap-4 h-14">
+                  <div className="flex items-center gap-4 h-16">
                     {/* Icon */}
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/20 backdrop-blur-sm flex-shrink-0">
                       <IconComponent 
