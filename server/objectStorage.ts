@@ -793,6 +793,289 @@ export class ObjectStorageService {
   }
 }
 
+// Nova classe para migração para Sanity
+export class SanityMigrationService {
+  private sanityClient: any;
+
+  constructor() {
+    this.initializeSanityClient();
+  }
+
+  private async initializeSanityClient() {
+    const { createClient } = await import('@sanity/client');
+    
+    this.sanityClient = createClient({
+      projectId: process.env.SANITY_PROJECT_ID || '3qubcdpf',
+      dataset: process.env.SANITY_DATASET || 'production',
+      apiVersion: '2023-10-01',
+      token: process.env.SANITY_API_TOKEN,
+      useCdn: false
+    });
+
+    if (!process.env.SANITY_API_TOKEN) {
+      throw new Error('SANITY_API_TOKEN is required for uploading assets');
+    }
+  }
+
+  // Categoriza imagem baseada no nome e caminho para tags do Sanity
+  private categorizeImageForSanity(fileName: string, filePath: string): {
+    tags: string[];
+    category: string;
+    description: string;
+  } {
+    const lowerName = fileName.toLowerCase();
+    const lowerPath = filePath.toLowerCase();
+
+    // Logos e branding
+    if (lowerName.includes('logo') || lowerName.includes('lina') || 
+        lowerPath.includes('mastercard') || lowerName.includes('bradesco') ||
+        lowerName.includes('caixa') || lowerName.includes('safra') ||
+        lowerName.includes('sicoob') || lowerName.includes('stone')) {
+      return {
+        category: 'logos',
+        tags: ['logo', 'branding', 'marca'],
+        description: 'Logo ou marca empresarial'
+      };
+    }
+
+    // Ícones e produtos
+    if (lowerName.includes('icone') || lowerName.includes('icon') || 
+        lowerName.includes('datalink') || lowerName.includes('linapay') ||
+        lowerName.includes('linajsr')) {
+      return {
+        category: 'icons',
+        tags: ['icon', 'produto', 'interface'],
+        description: 'Ícone de produto ou interface'
+      };
+    }
+
+    // Banners e backgrounds de home
+    if (lowerName.includes('banner') || lowerName.includes('bg') || 
+        lowerName.includes('home_bg') || lowerName.includes('ilustra_banner')) {
+      return {
+        category: 'banners',
+        tags: ['banner', 'home', 'destaque'],
+        description: 'Banner ou imagem de destaque da home'
+      };
+    }
+
+    // Assets do Figma
+    if (lowerPath.includes('figmaassets') || lowerPath.includes('figma')) {
+      return {
+        category: 'figma',
+        tags: ['figma', 'design', 'asset'],
+        description: 'Asset exportado do Figma'
+      };
+    }
+
+    // Imagens geradas
+    if (lowerPath.includes('generated_images') || lowerName.includes('3d_') || 
+        lowerName.includes('fintech_') || lowerName.includes('visualization')) {
+      return {
+        category: 'generated',
+        tags: ['3d', 'gerado', 'visualizacao'],
+        description: 'Imagem gerada ou 3D'
+      };
+    }
+
+    // Valores da empresa
+    if (lowerName.includes('valores_lina') || lowerName.includes('compromisso') ||
+        lowerName.includes('evolucao') || lowerName.includes('paixao')) {
+      return {
+        category: 'valores',
+        tags: ['valores', 'cultura', 'empresa'],
+        description: 'Valor ou cultura da empresa'
+      };
+    }
+
+    // Clientes e parceiros
+    if (lowerName.includes('client') || lowerName.includes('cloudwalk') ||
+        lowerName.includes('icatu') || lowerName.includes('hdi')) {
+      return {
+        category: 'clients',
+        tags: ['cliente', 'parceiro', 'logos'],
+        description: 'Logo de cliente ou parceiro'
+      };
+    }
+
+    // Produtos e mockups
+    if (lowerName.includes('mockup') || lowerName.includes('produto') ||
+        lowerName.includes('datalink_') || lowerName.includes('linapay_')) {
+      return {
+        category: 'products',
+        tags: ['produto', 'mockup', 'demo'],
+        description: 'Mockup ou demonstração de produto'
+      };
+    }
+
+    return {
+      category: 'outros',
+      tags: ['geral', 'asset'],
+      description: 'Asset geral'
+    };
+  }
+
+  // Faz upload de uma imagem para o Sanity
+  async uploadImageToSanity(localPath: string): Promise<{
+    assetId: string;
+    url: string;
+    originalFilename: string;
+    category: string;
+    tags: string[];
+  }> {
+    const fs = await import('fs/promises');
+    const path = await import('path');
+
+    try {
+      const fileName = path.basename(localPath);
+      const fileBuffer = await fs.readFile(path.resolve(localPath));
+      
+      const { category, tags, description } = this.categorizeImageForSanity(fileName, localPath);
+
+      // Upload para Sanity Assets
+      const asset = await this.sanityClient.assets.upload('image', fileBuffer, {
+        filename: fileName,
+        title: fileName.replace(/\.[^/.]+$/, ""), // Remove extensão
+        description: description,
+        // Adicionar custom metadata
+        source: {
+          name: 'replit-migration',
+          url: 'https://replit.com',
+          id: fileName
+        }
+      });
+
+      // Criar documento para organizar o asset com tags
+      const assetDoc = await this.sanityClient.create({
+        _type: 'sanity.imageAsset',
+        _id: asset._id,
+        title: fileName.replace(/\.[^/.]+$/, ""),
+        description: description,
+        altText: description,
+        tags: tags,
+        category: category,
+        originalPath: localPath,
+        migrationDate: new Date().toISOString()
+      });
+
+      console.log(`✅ Uploaded to Sanity: ${fileName} -> ${asset._id}`);
+
+      return {
+        assetId: asset._id,
+        url: asset.url,
+        originalFilename: fileName,
+        category: category,
+        tags: tags
+      };
+
+    } catch (error) {
+      console.error(`❌ Failed to upload ${localPath}:`, error);
+      throw error;
+    }
+  }
+
+  // Cataloga e migra todas as imagens locais para Sanity
+  async migrateAllImagesToSanity(): Promise<{
+    success: any[];
+    failed: { file: string, error: string }[];
+    total: number;
+    byCategory: Record<string, number>;
+  }> {
+    const objectStorageService = new ObjectStorageService();
+    const { totalImages, byLocation } = await objectStorageService.catalogLocalImages();
+
+    const results = {
+      success: [] as any[],
+      failed: [] as { file: string, error: string }[],
+      total: 0,
+      byCategory: {} as Record<string, number>
+    };
+
+    console.log(`🚀 Starting migration of ${totalImages} images to Sanity...`);
+
+    // Processar todas as imagens encontradas
+    const allImages: string[] = [];
+    Object.values(byLocation).forEach(files => {
+      allImages.push(...files);
+    });
+
+    for (const imagePath of allImages) {
+      results.total++;
+      
+      try {
+        const result = await this.uploadImageToSanity(imagePath);
+        results.success.push({
+          path: imagePath,
+          assetId: result.assetId,
+          category: result.category,
+          tags: result.tags
+        });
+
+        // Contar por categoria
+        if (!results.byCategory[result.category]) {
+          results.byCategory[result.category] = 0;
+        }
+        results.byCategory[result.category]++;
+
+      } catch (error) {
+        results.failed.push({
+          file: imagePath,
+          error: error instanceof Error ? error.message : String(error)
+        });
+      }
+
+      // Adicionar pequeno delay para não sobrecarregar a API
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
+    console.log(`✅ Migration completed: ${results.success.length}/${results.total} successful`);
+    return results;
+  }
+
+  // Lista assets do Sanity organizados por categoria
+  async listSanityAssets(): Promise<{
+    total: number;
+    byCategory: Record<string, any[]>;
+    assets: any[];
+  }> {
+    try {
+      const query = `*[_type == "sanity.imageAsset"] {
+        _id,
+        title,
+        description,
+        url,
+        metadata,
+        category,
+        tags,
+        originalPath,
+        migrationDate
+      }`;
+
+      const assets = await this.sanityClient.fetch(query);
+      
+      const byCategory: Record<string, any[]> = {};
+      
+      assets.forEach((asset: any) => {
+        const category = asset.category || 'outros';
+        if (!byCategory[category]) {
+          byCategory[category] = [];
+        }
+        byCategory[category].push(asset);
+      });
+
+      return {
+        total: assets.length,
+        byCategory,
+        assets
+      };
+
+    } catch (error) {
+      console.error('Erro ao listar assets do Sanity:', error);
+      throw error;
+    }
+  }
+}
+
 function parseObjectPath(path: string): {
   bucketName: string;
   objectName: string;

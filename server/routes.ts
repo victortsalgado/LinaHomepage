@@ -233,6 +233,50 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Endpoints para migração para Sanity
+  app.post("/api/sanity/migrate", async (req, res) => {
+    try {
+      const { SanityMigrationService } = await import("./objectStorage");
+      const sanityService = new SanityMigrationService();
+      
+      console.log("🚀 Starting migration to Sanity...");
+      const results = await sanityService.migrateAllImagesToSanity();
+      
+      res.json({
+        message: "Migration to Sanity completed",
+        results,
+        summary: {
+          total: results.total,
+          successful: results.success.length,
+          failed: results.failed.length,
+          categoriesCount: results.byCategory
+        }
+      });
+    } catch (error) {
+      console.error("Error migrating to Sanity:", error);
+      res.status(500).json({ 
+        error: "Sanity migration failed: " + (error instanceof Error ? error.message : String(error)) 
+      });
+    }
+  });
+
+  // Endpoint para listar assets do Sanity
+  app.get("/api/sanity/assets", async (req, res) => {
+    try {
+      const { SanityMigrationService } = await import("./objectStorage");
+      const sanityService = new SanityMigrationService();
+      
+      const assets = await sanityService.listSanityAssets();
+      
+      res.json(assets);
+    } catch (error) {
+      console.error("Error listing Sanity assets:", error);
+      res.status(500).json({ 
+        error: "Failed to list Sanity assets: " + (error instanceof Error ? error.message : String(error)) 
+      });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;

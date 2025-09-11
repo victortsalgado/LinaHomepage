@@ -15,6 +15,7 @@ import Blog from "@/pages/blog";
 import BlogPost from "@/pages/blog/[slug]";
 import Trial from "@/pages/trial";
 import Storage from "@/pages/storage";
+import Migration from "@/pages/migration";
 
 function Router() {
   return (
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/trial" component={Trial} />
       <Route path="/storage" component={Storage} />
+      <Route path="/migration" component={Migration} />
       <Route component={NotFound} />
     </Switch>
   );
