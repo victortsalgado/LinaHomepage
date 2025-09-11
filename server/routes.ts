@@ -30,21 +30,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // This endpoint is used to serve private objects that can be accessed publicly
-  // (i.e.: without authentication and ACL check).
-  app.get("/objects/:objectPath(*)", async (req, res) => {
-    const objectStorageService = new ObjectStorageService();
-    try {
-      const objectFile = await objectStorageService.getObjectEntityFile(
-        req.path,
-      );
-      objectStorageService.downloadObject(objectFile, res);
-    } catch (error) {
-      console.error("Error checking object access:", error);
-      if (error instanceof ObjectNotFoundError) {
-        return res.sendStatus(404);
+  // This endpoint is used to serve local assets as fallback
+  // when object storage is not fully configured
+  app.get("/local-assets/:filePath(*)", async (req, res) => {
+    const filePath = req.params.filePath;
+    const path = await import('path');
+    const fs = await import('fs');
+    
+    // Security: only allow serving from specific directories
+    const allowedPaths = [
+      'client/public/assets',
+      'client/public/figmaAssets', 
+      'client/src/assets'
+    ];
+    
+    let fullPath = null;
+    for (const basePath of allowedPaths) {
+      const testPath = path.join(process.cwd(), basePath, filePath);
+      if (fs.existsSync(testPath) && testPath.startsWith(path.join(process.cwd(), basePath))) {
+        fullPath = testPath;
+        break;
       }
-      return res.sendStatus(500);
+    }
+    
+    if (!fullPath) {
+      return res.status(404).json({ error: "File not found" });
+    }
+
+    try {
+      res.sendFile(fullPath);
+    } catch (error) {
+      console.error("Error serving local asset:", error);
+      res.status(500).json({ error: "Error serving file" });
     }
   });
 

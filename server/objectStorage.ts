@@ -248,11 +248,13 @@ export class ObjectStorageService {
       clients: [],
       generated: [],
       figma: [],
-      otros: []
+      outros: []
     };
 
     try {
-      for (const searchPath of this.getPublicObjectSearchPaths()) {
+      // Try object storage first
+      const publicPaths = this.getPublicObjectSearchPaths();
+      for (const searchPath of publicPaths) {
         const { bucketName, objectName: prefix } = parseObjectPath(searchPath);
         const bucket = objectStorageClient.bucket(bucketName);
         
@@ -262,14 +264,92 @@ export class ObjectStorageService {
           // Categoriza as imagens baseado no nome e caminho
           const fileName = file.name.toLowerCase();
           const category = this.categorizeImage(fileName);
-          categories[category].push(file.name);
+          if (categories[category]) {
+            categories[category].push(file.name);
+          }
         }
       }
     } catch (error) {
-      console.error("Error listing images by category:", error);
+      console.error("Object storage not configured, using fallback to local assets:", error instanceof Error ? error.message : String(error));
+      
+      // Fallback: scan local public assets
+      return this.listLocalImages();
     }
 
     return categories;
+  }
+
+  // Fallback para listar imagens locais quando object storage não está configurado
+  private async listLocalImages(): Promise<Record<string, string[]>> {
+    const categories: Record<string, string[]> = {
+      logos: [],
+      icons: [],
+      backgrounds: [],
+      products: [],
+      clients: [],
+      generated: [],
+      figma: [],
+      outros: []
+    };
+
+    const fs = await import('fs/promises');
+    const path = await import('path');
+
+    try {
+      // Scan client/public/assets
+      const publicAssetsPath = path.join(process.cwd(), 'client/public/assets');
+      try {
+        const publicFiles = await fs.readdir(publicAssetsPath, { recursive: true });
+        for (const file of publicFiles) {
+          if (typeof file === 'string' && this.isImageFile(file)) {
+            const category = this.categorizeImage(file.toLowerCase());
+            categories[category].push(`assets/${file}`);
+          }
+        }
+      } catch (e) {
+        // Directory might not exist, continue
+      }
+
+      // Scan client/public/figmaAssets
+      const figmaAssetsPath = path.join(process.cwd(), 'client/public/figmaAssets');
+      try {
+        const figmaFiles = await fs.readdir(figmaAssetsPath, { recursive: true });
+        for (const file of figmaFiles) {
+          if (typeof file === 'string' && this.isImageFile(file)) {
+            const category = this.categorizeImage(file.toLowerCase());
+            categories[category].push(`figmaAssets/${file}`);
+          }
+        }
+      } catch (e) {
+        // Directory might not exist, continue
+      }
+
+      // Scan client/src/assets
+      const srcAssetsPath = path.join(process.cwd(), 'client/src/assets');
+      try {
+        const srcFiles = await fs.readdir(srcAssetsPath, { recursive: true });
+        for (const file of srcFiles) {
+          if (typeof file === 'string' && this.isImageFile(file)) {
+            const category = this.categorizeImage(file.toLowerCase());
+            categories[category].push(`src/assets/${file}`);
+          }
+        }
+      } catch (e) {
+        // Directory might not exist, continue
+      }
+
+    } catch (error) {
+      console.error("Error listing local images:", error);
+    }
+
+    return categories;
+  }
+
+  // Helper para verificar se é um arquivo de imagem
+  private isImageFile(fileName: string): boolean {
+    const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp'];
+    const ext = fileName.toLowerCase().substr(fileName.lastIndexOf('.'));
+    return imageExtensions.includes(ext);
   }
 
   // Categoriza uma imagem baseado no nome do arquivo
