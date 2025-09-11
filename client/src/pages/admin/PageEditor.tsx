@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { DndContext, DragEndEvent, DragOverlay, closestCenter } from '@dnd-kit/core'
+import { DndContext, DragEndEvent, DragOverlay, closestCenter, useDroppable } from '@dnd-kit/core'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -56,8 +56,8 @@ export default function PageEditor({ page, onBack }: PageEditorProps) {
 
     if (!over) return
 
-    // Handle dropping from palette
-    if (active.id.toString().startsWith('palette-')) {
+    // Handle dropping from palette to canvas
+    if (active.id.toString().startsWith('palette-') && over.id === 'editor-canvas') {
       const componentType = active.id.toString().replace('palette-', '') as Component['type']
       const newComponent: Component = {
         id: `component-${Date.now()}`,
@@ -70,21 +70,23 @@ export default function PageEditor({ page, onBack }: PageEditorProps) {
     }
 
     // Handle reordering existing components
-    const activeIndex = components.findIndex(c => c.id === active.id)
-    const overIndex = components.findIndex(c => c.id === over.id)
+    if (!active.id.toString().startsWith('palette-')) {
+      const activeIndex = components.findIndex(c => c.id === active.id)
+      const overIndex = components.findIndex(c => c.id === over.id)
 
-    if (activeIndex !== overIndex) {
-      const newComponents = [...components]
-      const [removed] = newComponents.splice(activeIndex, 1)
-      newComponents.splice(overIndex, 0, removed)
-      
-      // Update order
-      const updatedComponents = newComponents.map((comp, index) => ({
-        ...comp,
-        order: index
-      }))
-      
-      setComponents(updatedComponents)
+      if (activeIndex !== -1 && overIndex !== -1 && activeIndex !== overIndex) {
+        const newComponents = [...components]
+        const [removed] = newComponents.splice(activeIndex, 1)
+        newComponents.splice(overIndex, 0, removed)
+        
+        // Update order
+        const updatedComponents = newComponents.map((comp, index) => ({
+          ...comp,
+          order: index
+        }))
+        
+        setComponents(updatedComponents)
+      }
     }
   }, [components])
 
@@ -205,38 +207,63 @@ export default function PageEditor({ page, onBack }: PageEditorProps) {
           </div>
 
           {/* Editor Canvas */}
-          <div className="flex-1 overflow-y-auto p-6">
-            <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-sm border min-h-96">
-              <SortableContext items={components.map(c => c.id)} strategy={verticalListSortingStrategy}>
-                <div className="p-6 space-y-4">
-                  {components.length === 0 ? (
-                    <div className="text-center py-12 text-gray-500">
-                      <p className="text-lg mb-2">Página vazia</p>
-                      <p className="text-sm">Arraste componentes da barra lateral para começar</p>
-                    </div>
-                  ) : (
-                    components.map((component) => (
-                      <DraggableComponent
-                        key={component.id}
-                        component={component}
-                        isSelected={selectedComponent?.id === component.id}
-                        onSelect={() => setSelectedComponent(component)}
-                        onDelete={() => handleDeleteComponent(component.id)}
-                      >
-                        {renderComponent(component, true)}
-                      </DraggableComponent>
-                    ))
-                  )}
-                </div>
-              </SortableContext>
-            </div>
-          </div>
+          <EditorCanvas 
+            components={components}
+            selectedComponent={selectedComponent}
+            setSelectedComponent={setSelectedComponent}
+            handleDeleteComponent={handleDeleteComponent}
+          />
         </div>
 
         <DragOverlay>
           {/* Render drag overlay if needed */}
         </DragOverlay>
       </DndContext>
+    </div>
+  )
+}
+
+function EditorCanvas({ components, selectedComponent, setSelectedComponent, handleDeleteComponent }: {
+  components: Component[]
+  selectedComponent: Component | null
+  setSelectedComponent: (component: Component) => void
+  handleDeleteComponent: (id: string) => void
+}) {
+  const { isOver, setNodeRef } = useDroppable({
+    id: 'editor-canvas',
+  })
+
+  return (
+    <div className="flex-1 overflow-y-auto p-6">
+      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-sm border min-h-96">
+        <div
+          ref={setNodeRef}
+          className={`p-6 space-y-4 min-h-96 transition-colors ${
+            isOver ? 'bg-blue-50 border-blue-200' : ''
+          }`}
+        >
+          <SortableContext items={components.map(c => c.id)} strategy={verticalListSortingStrategy}>
+            {components.length === 0 ? (
+              <div className="text-center py-12 text-gray-500">
+                <p className="text-lg mb-2">Página vazia</p>
+                <p className="text-sm">Arraste componentes da barra lateral para começar</p>
+              </div>
+            ) : (
+              components.map((component) => (
+                <DraggableComponent
+                  key={component.id}
+                  component={component}
+                  isSelected={selectedComponent?.id === component.id}
+                  onSelect={() => setSelectedComponent(component)}
+                  onDelete={() => handleDeleteComponent(component.id)}
+                >
+                  {renderComponent(component, true)}
+                </DraggableComponent>
+              ))
+            )}
+          </SortableContext>
+        </div>
+      </div>
     </div>
   )
 }
@@ -278,7 +305,7 @@ function getDefaultProps(type: Component['type']): Record<string, any> {
 }
 
 function renderComponent(component: Component, isEditor: boolean = false) {
-  const { type, props } = component
+  const { type, props }: { type: string; props: Record<string, any> } = component
 
   switch (type) {
     case 'banner':
