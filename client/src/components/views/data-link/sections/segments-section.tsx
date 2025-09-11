@@ -92,7 +92,7 @@ export default function SegmentsSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Left Column - Tab Navigation */}
-          <div className="space-y-4 group/cards">
+          <div className="space-y-3 group/cards">
             {segmentTabs.map((segment, index) => {
               const IconComponent = segment.icon;
               const isActive = activeTab === segment.id;
@@ -109,7 +109,7 @@ export default function SegmentsSection() {
                   } hover:scale-110 group-hover/cards:[&:not(:hover)]:blur-[10px] group-hover/cards:[&:not(:hover)]:scale-90`}
                   data-testid={`tab-segment-${index + 1}`}
                 >
-                  <div className="flex items-center gap-4 h-16">
+                  <div className="flex items-center gap-4 h-28">
                     {/* Icon */}
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/20 backdrop-blur-sm flex-shrink-0">
                       <IconComponent 
