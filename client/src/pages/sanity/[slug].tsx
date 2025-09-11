@@ -4,7 +4,7 @@ import { getPageBySlug, SanityPage } from '@/lib/sanity/queries'
 import { PageRenderer } from '@/components/sanity/PageRenderer'
 import NotFound from '@/pages/not-found'
 
-export default function SanityPage() {
+export default function SanityPageComponent() {
   const { slug } = useParams<{ slug: string }>()
   const [page, setPage] = useState<SanityPage | null | undefined>(undefined)
   const [loading, setLoading] = useState(true)

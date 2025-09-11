@@ -16,7 +16,7 @@ import BlogPost from "@/pages/blog/[slug]";
 import Trial from "@/pages/trial";
 import Storage from "@/pages/storage";
 import Migration from "@/pages/migration";
-import SanityPage from "@/pages/sanity/[slug]";
+import SanityPageComponent from "@/pages/sanity/[slug]";
 
 function Router() {
   return (
@@ -32,7 +32,7 @@ function Router() {
       <Route path="/trial" component={Trial} />
       <Route path="/storage" component={Storage} />
       <Route path="/migration" component={Migration} />
-      <Route path="/sanity/:slug" component={SanityPage} />
+      <Route path="/sanity/:slug" component={SanityPageComponent} />
       <Route component={NotFound} />
     </Switch>
   );
