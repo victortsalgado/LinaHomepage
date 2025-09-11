@@ -805,7 +805,7 @@ export class SanityMigrationService {
     const { createClient } = await import('@sanity/client');
     
     this.sanityClient = createClient({
-      projectId: process.env.SANITY_PROJECT_ID || '3qubcdpf',
+      projectId: process.env.SANITY_PROJECT_ID || '3guhodbf',
       dataset: process.env.SANITY_DATASET || 'production',
       apiVersion: '2023-10-01',
       token: process.env.SANITY_API_TOKEN,
@@ -1051,19 +1051,27 @@ export class SanityMigrationService {
     try {
       await this.ensureClientInitialized();
       
-      const query = `*[_type == "sanity.imageAsset"] {
+      // Primeiro vamos tentar encontrar QUALQUER documento
+      console.log('🔍 Consultando todos os tipos de documentos...');
+      const allQuery = `*[defined(_type)] { _type, _id }`;
+      const allDocs = await this.sanityClient.fetch(allQuery);
+      console.log('📋 Todos os documentos encontrados:', allDocs.length);
+      console.log('📋 Tipos encontrados:', Array.from(new Set(allDocs.map((doc: any) => doc._type))));
+
+      // Query para assets nativos do Sanity  
+      const assetQuery = `*[_type == "sanity.imageAsset"] {
         _id,
+        _type,
         title,
+        altText,
         description,
         url,
         metadata,
-        category,
-        tags,
-        originalPath,
-        migrationDate
+        originalFilename
       }`;
 
-      const assets = await this.sanityClient.fetch(query);
+      const assets = await this.sanityClient.fetch(assetQuery);
+      console.log('🖼️ Assets do Sanity encontrados:', assets.length);
       
       const byCategory: Record<string, any[]> = {};
       

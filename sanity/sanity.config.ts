@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'Lina Blog',
 
-  projectId: 'your-project-id', // Replace with your actual project ID
+  projectId: '3guhodbf', // Project ID from Sanity dashboard
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
