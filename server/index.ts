@@ -60,8 +60,12 @@ app.use((req, res, next) => {
 
     const server = await registerRoutes(app);
 
-    // Seed initial data (disabled temporarily)
-    // await seedInitialData();
+    // Seed initial data (disabled for now due to DB connection issues)
+    // try {
+    //   await seedInitialData();
+    // } catch (error) {
+    //   console.error('Seed data failed, continuing without it:', error);
+    // }
 
     // Add health check endpoint for deployment monitoring
     app.get('/health', (_req: Request, res: Response) => {
