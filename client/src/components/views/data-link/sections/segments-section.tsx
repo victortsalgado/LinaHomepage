@@ -102,10 +102,10 @@ export default function SegmentsSection() {
                 <motion.div
                   key={segment.id}
                   onMouseEnter={() => setActiveTab(segment.id)}
-                  className={`w-full text-left p-3 rounded-2xl border-2 transition-all duration-500 group/card cursor-pointer hover:${cardColors[index]} ${
+                  className={`w-full text-left p-3 rounded-2xl border-4 transition-all duration-500 group/card cursor-pointer hover:${cardColors[index]} ${
                     isActive 
                       ? `border-white/30 shadow-xl shadow-black/20 scale-105 ${cardColors[index]}` 
-                      : 'border-white/10 hover:border-white/30'
+                      : 'border-white/20 hover:border-white/30'
                   } hover:scale-110 group-hover/cards:[&:not(:hover)]:blur-[10px] group-hover/cards:[&:not(:hover)]:scale-90`}
                   data-testid={`tab-segment-${index + 1}`}
                 >
