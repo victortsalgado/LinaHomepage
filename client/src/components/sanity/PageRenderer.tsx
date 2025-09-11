@@ -1,8 +1,8 @@
-import { SanityPage, SanitySection } from '@/lib/sanity/queries'
+import { SanityPage, SanitySection, HeroSection as HeroSectionType, TextSection as TextSectionType, ImageSection as ImageSectionType } from '@/lib/sanity/queries'
 import { HeroSection } from './HeroSection'
 import { TextSection } from './TextSection'
 import { ImageSection } from './ImageSection'
-import { Header } from '@/components/layout/header'
+import Header from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 
 interface PageRendererProps {
@@ -13,11 +13,11 @@ export function PageRenderer({ page }: PageRendererProps) {
   const renderSection = (section: SanitySection, index: number) => {
     switch (section._type) {
       case 'heroSection':
-        return <HeroSection key={index} section={section} />
+        return <HeroSection key={index} section={section as HeroSectionType} />
       case 'textSection':
-        return <TextSection key={index} section={section} />
+        return <TextSection key={index} section={section as TextSectionType} />
       case 'imageSection':
-        return <ImageSection key={index} section={section} />
+        return <ImageSection key={index} section={section as ImageSectionType} />
       default:
         console.warn(`Unknown section type: ${(section as any)._type}`)
         return null
