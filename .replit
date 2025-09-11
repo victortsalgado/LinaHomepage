@@ -43,4 +43,4 @@ waitForPort = 5000
 integrations = ["javascript_object_storage:1.0.0"]
 
 [objectStorage]
-defaultBucketID = "replit-objstore-4b8e7136-cf52-4ff3-9ffb-965bd6372df2"
+defaultBucketID = "replit-objstore-f695ceeb-a2d7-4be6-896e-6836dc8b5e6a"
