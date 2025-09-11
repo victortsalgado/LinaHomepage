@@ -817,6 +817,12 @@ export class SanityMigrationService {
     }
   }
 
+  private async ensureClientInitialized() {
+    if (!this.sanityClient) {
+      await this.initializeSanityClient();
+    }
+  }
+
   // Categoriza imagem baseada no nome e caminho para tags do Sanity
   private categorizeImageForSanity(fileName: string, filePath: string): {
     tags: string[];
@@ -923,6 +929,8 @@ export class SanityMigrationService {
     category: string;
     tags: string[];
   }> {
+    await this.ensureClientInitialized();
+    
     const fs = await import('fs/promises');
     const path = await import('path');
 
@@ -981,6 +989,8 @@ export class SanityMigrationService {
     total: number;
     byCategory: Record<string, number>;
   }> {
+    await this.ensureClientInitialized();
+    
     const objectStorageService = new ObjectStorageService();
     const { totalImages, byLocation } = await objectStorageService.catalogLocalImages();
 
@@ -1039,6 +1049,8 @@ export class SanityMigrationService {
     assets: any[];
   }> {
     try {
+      await this.ensureClientInitialized();
+      
       const query = `*[_type == "sanity.imageAsset"] {
         _id,
         title,
