@@ -188,19 +188,11 @@ export default function SocialProofSection() {
                           />
                         </div>
                         
-                        {/* Active indicator */}
-                        {currentTestimonial.id === testimonial.id && (
-                          <div className="absolute top-2 right-2 w-3 h-3 bg-[var(--lina-cyan)] rounded-full animate-pulse">
-                            <div className="absolute inset-0 w-3 h-3 bg-[var(--lina-cyan)] rounded-full animate-ping opacity-75"></div>
-                          </div>
-                        )}
                         
                         {/* Hover shine effect */}
                         <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-all duration-700 pointer-events-none" />
                       </div>
                       
-                      {/* Enhanced outer glow effect */}
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[var(--lina-cyan)]/20 to-teal-400/20 opacity-0 group-hover:opacity-30 blur-lg transition-all duration-500 pointer-events-none" />
                     </motion.div>
                   ))}
                 </div>
