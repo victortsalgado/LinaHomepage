@@ -17,23 +17,11 @@ export default function RDStationForm({
   className = "" 
 }: RDStationFormProps) {
   useEffect(() => {
-    // Load RD Station script if not already loaded
-    if (!document.querySelector('script[src*="rdstation-forms"]')) {
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = 'https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js';
-      script.onload = () => {
-        // Initialize the form after script loads
-        if (window.RDStationForms) {
-          new window.RDStationForms(formId, 'UA-228918210-1').createForm();
-        }
-      };
-      document.head.appendChild(script);
+    // Initialize the form using the globally loaded RD Station script
+    if (window.RDStationForms) {
+      new window.RDStationForms(formId, 'UA-228918210-1').createForm();
     } else {
-      // Script already loaded, just create the form
-      if (window.RDStationForms) {
-        new window.RDStationForms(formId, 'UA-228918210-1').createForm();
-      }
+      console.error('RD Station Forms script not loaded. Ensure the script is included in index.html');
     }
 
     // Cleanup function to clear form on unmount
