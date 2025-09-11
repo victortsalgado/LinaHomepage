@@ -92,7 +92,7 @@ export default function SegmentsSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Left Column - Tab Navigation */}
-          <div className="space-y-2 group/cards">
+          <div className="space-y-2 group/cards mt-[78px] mb-[78px]">
             {segmentTabs.map((segment, index) => {
               const IconComponent = segment.icon;
               const isActive = activeTab === segment.id;
