@@ -36,11 +36,7 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
     setError('')
 
     try {
-      const response = await apiRequest('/api/admin/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
+      const response = await apiRequest('POST', '/api/admin/auth/login', data)
 
       if (response.ok) {
         const userData = await response.json()
