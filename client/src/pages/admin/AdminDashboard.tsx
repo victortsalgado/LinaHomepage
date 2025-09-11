@@ -34,17 +34,40 @@ export default function AdminDashboard({ user, onLogout }: AdminDashboardProps) 
   const [selectedPage, setSelectedPage] = useState<EditablePage | null>(null)
   const queryClient = useQueryClient()
 
-  // Fetch pages
-  const { data: pages = [], isLoading } = useQuery({
-    queryKey: ['/api/admin/pages'],
-    queryFn: async () => {
-      const response = await apiRequest('GET', '/api/admin/pages')
-      if (response.ok) {
-        return await response.json()
-      }
-      throw new Error('Failed to fetch pages')
+  // Mock pages data for demo
+  const pages: EditablePage[] = [
+    {
+      id: '1',
+      slug: 'homepage',
+      title: 'Homepage',
+      components: [
+        {
+          id: 'banner-1',
+          type: 'banner',
+          props: {
+            title: 'Bem-vindo à Lina',
+            subtitle: 'Sistema de gerenciamento de conteúdo visual',
+            backgroundColor: '#00EFCF',
+            textColor: '#000000'
+          },
+          order: 0
+        }
+      ],
+      isPublished: false,
+      createdAt: '2025-01-07T21:00:00Z',
+      updatedAt: '2025-01-07T21:00:00Z'
+    },
+    {
+      id: '2', 
+      slug: 'about',
+      title: 'Sobre Nós',
+      components: [],
+      isPublished: false,
+      createdAt: '2025-01-07T21:00:00Z',
+      updatedAt: '2025-01-07T21:00:00Z'
     }
-  })
+  ]
+  const isLoading = false
 
   // Logout mutation
   const logoutMutation = useMutation({
