@@ -45,10 +45,10 @@ export default function SegmentsSection() {
   
   // Define colors for each card based on LINA brand
   const cardColors = [
-    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 1
-    'bg-gradient-to-br from-blue-500 to-blue-600',           // Card 2  
-    'bg-gradient-to-br from-emerald-500 to-emerald-600',     // Card 3
-    'bg-gradient-to-br from-purple-500 to-purple-600'        // Card 4
+    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 1 - Lina Primary
+    'bg-gradient-to-br from-[#0ab5aa] to-[#07a59f]',        // Card 2 - Lina Secondary
+    'bg-gradient-to-br from-teal-500 to-teal-600',          // Card 3 - Lina Teal
+    'bg-gradient-to-br from-cyan-500 to-cyan-600'           // Card 4 - Lina Cyan
   ];
   
   // Get the color for the active card
