@@ -102,14 +102,14 @@ export default function SegmentsSection() {
                 <motion.div
                   key={segment.id}
                   onMouseEnter={() => setActiveTab(segment.id)}
-                  className={`w-full text-left p-2 rounded-2xl border-2 transition-all duration-500 group/card cursor-pointer ${cardColors[index]} ${
+                  className={`w-full text-left p-3 rounded-2xl border-2 transition-all duration-500 group/card cursor-pointer ${cardColors[index]} ${
                     isActive 
                       ? 'border-white/30 shadow-xl shadow-black/20 scale-105' 
                       : 'border-white/10 hover:border-white/30'
                   } hover:scale-110 group-hover/cards:[&:not(:hover)]:blur-[10px] group-hover/cards:[&:not(:hover)]:scale-90`}
                   data-testid={`tab-segment-${index + 1}`}
                 >
-                  <div className="flex items-center gap-4 h-10">
+                  <div className="flex items-center gap-4 h-14">
                     {/* Icon */}
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/20 backdrop-blur-sm flex-shrink-0">
                       <IconComponent 
