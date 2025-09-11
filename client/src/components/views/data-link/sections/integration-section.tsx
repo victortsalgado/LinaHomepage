@@ -160,16 +160,12 @@ export default function IntegrationSection() {
                       Bank-Grade Security
                     </span>
                   </div>
-                </div>
-
-                {/* Integration Speed Indicator */}
-                <div className="mt-8 p-4 bg-white/70 rounded-xl">
-                  <p className="text-2xl font-bold text-[var(--lina-cyan)] mb-1" style={{ fontFamily: 'Lexend, sans-serif' }}>
-                    48h
-                  </p>
-                  <p className="text-sm text-gray-600" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    Tempo médio de integração
-                  </p>
+                  <div className="flex items-center justify-center space-x-2 text-gray-700">
+                    <Check className="w-5 h-5 text-green-500" />
+                    <span className="font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      Integração em até 48h
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
