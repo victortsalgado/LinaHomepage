@@ -43,12 +43,12 @@ export default function SegmentsSection() {
 
   const activeSegment = segmentTabs.find(segment => segment.id === activeTab);
   
-  // Define colors for each card - gradient progression from dark to light
+  // Define colors for each card based on LINA brand - all using the same gradient
   const cardColors = [
-    'bg-gradient-to-br from-teal-700 to-teal-600',           // Card 1 - Mais escuro
-    'bg-gradient-to-br from-teal-600 to-teal-500',           // Card 2 - Médio escuro
-    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 3 - Médio claro
-    'bg-gradient-to-br from-cyan-400 to-teal-400'            // Card 4 - Mais claro
+    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 1 - Lina Primary
+    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 2 - Same gradient
+    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 3 - Same gradient
+    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500'  // Card 4 - Same gradient
   ];
   
   // Get the color for the active card
