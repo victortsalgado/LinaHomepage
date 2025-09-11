@@ -119,9 +119,9 @@ export default function SegmentsSection() {
                     </div>
                     
                     {/* Content */}
-                    <div className="flex-1 flex items-center justify-center">
+                    <div className="flex-1 flex items-center">
                       <h3 
-                        className="text-lg font-bold leading-tight text-white text-center"
+                        className="text-xl md:text-2xl font-bold leading-tight text-white text-left"
                         style={{ fontFamily: 'Lexend, sans-serif' }}
                         data-testid={`title-tab-${index + 1}`}
                       >
