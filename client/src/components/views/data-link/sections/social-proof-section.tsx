@@ -159,13 +159,12 @@ export default function SocialProofSection() {
                     <motion.div
                       key={testimonial.id}
                       variants={logoVariants}
-                      className="group relative cursor-pointer w-full"
+                      className="relative w-full isolate"
                       data-testid={`logo-${testimonial.id}`}
                       onClick={() => setCurrentTestimonial(testimonial)}
-                      whileHover={{ scale: 1.08, y: -4 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <div className={`relative p-6 rounded-xl transition-all duration-500 transform hover:-translate-y-1 ${
+                      <div className={`group relative p-6 rounded-xl cursor-pointer transition-all duration-500 transform hover:-translate-y-1 hover:z-10 overflow-hidden ${
                         currentTestimonial.id === testimonial.id 
                           ? 'bg-gradient-to-br from-white to-[var(--lina-cyan)]/5 border-2 border-[var(--lina-cyan)]/40 shadow-xl shadow-[var(--lina-cyan)]/20' 
                           : 'bg-white border-2 border-gray-100 hover:border-[var(--lina-cyan)]/30 hover:shadow-lg hover:shadow-xl'
@@ -173,7 +172,7 @@ export default function SocialProofSection() {
                         
                         {/* Background glow for selected state */}
                         {currentTestimonial.id === testimonial.id && (
-                          <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[var(--lina-cyan)]/10 to-teal-100/30 opacity-50" />
+                          <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[var(--lina-cyan)]/10 to-teal-100/30 opacity-50 pointer-events-none" />
                         )}
                         
                         {/* Logo container */}
@@ -197,11 +196,11 @@ export default function SocialProofSection() {
                         )}
                         
                         {/* Hover shine effect */}
-                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-all duration-700" />
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-all duration-700 pointer-events-none" />
                       </div>
                       
                       {/* Enhanced outer glow effect */}
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[var(--lina-cyan)]/20 to-teal-400/20 opacity-0 group-hover:opacity-30 blur-lg transition-all duration-500 transform group-hover:scale-110" />
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[var(--lina-cyan)]/20 to-teal-400/20 opacity-0 group-hover:opacity-30 blur-lg transition-all duration-500 pointer-events-none" />
                     </motion.div>
                   ))}
                 </div>
