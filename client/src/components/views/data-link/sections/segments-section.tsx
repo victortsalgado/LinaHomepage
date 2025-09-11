@@ -144,7 +144,7 @@ export default function SegmentsSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="w-full bg-white rounded-3xl p-12 shadow-2xl border border-gray-300/20"
+                  className="w-full h-[400px] bg-white rounded-3xl p-12 shadow-2xl border border-gray-300/20"
                   data-testid={`content-segment-${activeSegment.id}`}
                 >
                   {/* Content Icon */}
