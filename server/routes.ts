@@ -84,6 +84,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // An endpoint for getting the folder structure from App Storage
+  app.get("/api/folders", async (req, res) => {
+    try {
+      const objectStorageService = new ObjectStorageService();
+      const folderStructure = await objectStorageService.listFoldersAndFiles();
+      res.json(folderStructure);
+    } catch (error) {
+      console.error("Error listing folders and files:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  // An endpoint for getting images organized by their actual folders
+  app.get("/api/images/folders", async (req, res) => {
+    try {
+      const objectStorageService = new ObjectStorageService();
+      const imagesByFolders = await objectStorageService.listImagesByFolders();
+      res.json(imagesByFolders);
+    } catch (error) {
+      console.error("Error listing images by folders:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
   // An example endpoint for updating the model state after an object entity is uploaded (banner image in this case).
   app.put("/api/banner-images", async (req, res) => {
     if (!req.body.bannerImageURL) {

@@ -261,11 +261,18 @@ export class ObjectStorageService {
         const [files] = await bucket.getFiles({ prefix });
         
         for (const file of files) {
+          const fileName = file.name;
+          
+          // Filtrar diretórios marcadores (terminam com "/")
+          if (fileName.endsWith('/')) {
+            continue;
+          }
+          
           // Categoriza as imagens baseado no nome e caminho
-          const fileName = file.name.toLowerCase();
-          const category = this.categorizeImage(fileName);
+          const fileNameLower = fileName.toLowerCase();
+          const category = this.categorizeImage(fileNameLower);
           if (categories[category]) {
-            categories[category].push(file.name);
+            categories[category].push(fileName);
           }
         }
       }
@@ -362,6 +369,139 @@ export class ObjectStorageService {
     if (fileName.includes('generated_images') || fileName.includes('3d_') || fileName.includes('fintech_')) return 'generated';
     if (fileName.includes('figma')) return 'figma';
     return 'outros';
+  }
+
+  // Lista todas as pastas e arquivos no App Storage de forma organizada
+  async listFoldersAndFiles(): Promise<{
+    folders: string[];
+    filesByFolder: Record<string, string[]>;
+    allFiles: string[];
+  }> {
+    const folders = new Set<string>();
+    const filesByFolder: Record<string, string[]> = {};
+    const allFiles: string[] = [];
+
+    try {
+      const publicPaths = this.getPublicObjectSearchPaths();
+      
+      for (const searchPath of publicPaths) {
+        const { bucketName, objectName: prefix } = parseObjectPath(searchPath);
+        const bucket = objectStorageClient.bucket(bucketName);
+        
+        // Lista todos os arquivos com o prefixo especificado
+        const [files] = await bucket.getFiles({ prefix });
+        
+        for (const file of files) {
+          const fileName = file.name;
+          
+          // 1. FILTRAR DIRETÓRIOS VAZIOS: Pular marcadores de diretório que terminam com "/"
+          if (fileName.endsWith('/')) {
+            continue;
+          }
+          
+          // 2. CORRIGIR NORMALIZAÇÃO: Normalizar prefixo removendo barras extras
+          let normalizedPrefix = prefix || '';
+          // Remove barra inicial se existir
+          if (normalizedPrefix.startsWith('/')) {
+            normalizedPrefix = normalizedPrefix.substring(1);
+          }
+          // Adiciona barra final se necessário e se não for vazio
+          if (normalizedPrefix && !normalizedPrefix.endsWith('/')) {
+            normalizedPrefix += '/';
+          }
+          
+          // Remove o prefixo corretamente para obter caminho relativo
+          let relativePath = fileName;
+          if (normalizedPrefix && fileName.startsWith(normalizedPrefix)) {
+            relativePath = fileName.substring(normalizedPrefix.length);
+          }
+          
+          // 3. FILTRAR DIRETÓRIOS VAZIOS: Verificar se o basename está vazio ou contém apenas barras
+          relativePath = relativePath.trim();
+          if (!relativePath || relativePath === '/' || relativePath.endsWith('/')) {
+            continue; // Pular se caminho relativo está vazio ou é apenas separadores
+          }
+          
+          const pathParts = relativePath.split('/').filter(part => part.trim() !== '');
+          
+          if (pathParts.length === 0) {
+            continue; // Pular se não há partes válidas no caminho
+          }
+          
+          // Só adicionar à lista se passou por todos os filtros
+          allFiles.push(fileName);
+          
+          // 4. MELHORAR A LÓGICA: Detectar pastas corretamente a partir dos caminhos dos arquivos
+          if (pathParts.length > 1) {
+            // Arquivo está em uma pasta - construir hierarquia de pastas
+            let currentPath = '';
+            
+            // Criar todas as pastas da hierarquia (exceto a última parte que é o arquivo)
+            for (let i = 0; i < pathParts.length - 1; i++) {
+              currentPath += (i > 0 ? '/' : '') + pathParts[i];
+              folders.add(currentPath);
+              
+              // Inicializar array se não existir
+              if (!filesByFolder[currentPath]) {
+                filesByFolder[currentPath] = [];
+              }
+            }
+            
+            // Adicionar arquivo apenas à pasta mais específica (parent direto)
+            const parentFolder = pathParts.slice(0, -1).join('/');
+            if (!filesByFolder[parentFolder]) {
+              filesByFolder[parentFolder] = [];
+            }
+            filesByFolder[parentFolder].push(relativePath);
+            
+          } else {
+            // Arquivo na raiz
+            const rootKey = 'root';
+            if (!filesByFolder[rootKey]) {
+              filesByFolder[rootKey] = [];
+            }
+            filesByFolder[rootKey].push(relativePath);
+            folders.add(rootKey);
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Erro ao listar pastas e arquivos do App Storage:", error);
+      throw new Error("Não foi possível acessar o App Storage. Verifique se está configurado corretamente.");
+    }
+
+    return {
+      folders: Array.from(folders).sort(),
+      filesByFolder,
+      allFiles: allFiles.sort()
+    };
+  }
+
+  // Lista apenas as imagens organizadas por pastas reais do App Storage
+  async listImagesByFolders(): Promise<Record<string, string[]>> {
+    const imagesByFolder: Record<string, string[]> = {};
+
+    try {
+      const { filesByFolder } = await this.listFoldersAndFiles();
+      
+      // Filtra apenas arquivos de imagem para cada pasta
+      for (const [folderPath, files] of Object.entries(filesByFolder)) {
+        const imageFiles = files.filter(fileName => {
+          const pathParts = fileName.split('/');
+          const actualFileName = pathParts[pathParts.length - 1];
+          return this.isImageFile(actualFileName);
+        });
+        
+        if (imageFiles.length > 0) {
+          imagesByFolder[folderPath] = imageFiles;
+        }
+      }
+    } catch (error) {
+      console.error("Erro ao listar imagens por pastas:", error);
+      throw error;
+    }
+
+    return imagesByFolder;
   }
 }
 
