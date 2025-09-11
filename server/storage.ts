@@ -84,13 +84,53 @@ function saveToFile(data: any): void {
   }
 }
 
-// Initialize from persistent storage
+// Initialize from persistent storage and create seed data
 const fileData = loadFromFile()
 if (fileData.pages) {
   Object.entries(fileData.pages).forEach(([id, page]) => {
     memoryStorage.pages.set(id, page as EditablePage)
   })
+} else {
+  // Seed initial pages if none exist
+  const homePage: EditablePage = {
+    id: '1',
+    title: 'Home',
+    slug: 'home',
+    components: JSON.stringify([
+      {
+        id: 'banner-1',
+        type: 'banner',
+        props: {
+          title: 'Bem-vindo ao LINA',
+          subtitle: 'Soluções financeiras inovadoras',
+          backgroundColor: '#00EFCF',
+          textColor: '#000000'
+        },
+        order: 0
+      }
+    ]),
+    isPublished: true,
+    lastEditedBy: '1',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+  
+  const aboutPage: EditablePage = {
+    id: '2', 
+    title: 'Sobre Nós',
+    slug: 'sobre',
+    components: JSON.stringify([]),
+    isPublished: false,
+    lastEditedBy: '1',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+  
+  memoryStorage.pages.set('1', homePage)
+  memoryStorage.pages.set('2', aboutPage)
+  console.log('Created seed pages: Home and Sobre')
 }
+
 if (fileData.adminUsers) {
   Object.entries(fileData.adminUsers).forEach(([id, user]) => {
     memoryStorage.adminUsers.set(id, user as AdminUser)

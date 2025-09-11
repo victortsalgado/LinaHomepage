@@ -98,7 +98,7 @@ router.post('/pages', requireAuth, async (req, res) => {
     const pageData = insertEditablePageSchema.parse(req.body)
     const page = await storage.createEditablePage({
       ...pageData,
-      lastEditedBy: req.session.user.id,
+      lastEditedBy: req.session.user?.id || '1',
     })
     res.json(page)
   } catch (error) {
@@ -112,7 +112,7 @@ router.put('/pages/:id', requireAuth, async (req, res) => {
     const updateData = insertEditablePageSchema.partial().parse(req.body)
     const page = await storage.updateEditablePage(req.params.id, {
       ...updateData,
-      lastEditedBy: req.session.user.id,
+      lastEditedBy: req.session.user?.id || '1',
     })
     res.json(page)
   } catch (error) {
