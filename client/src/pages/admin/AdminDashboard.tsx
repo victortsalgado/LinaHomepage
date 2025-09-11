@@ -38,7 +38,7 @@ export default function AdminDashboard({ user, onLogout }: AdminDashboardProps) 
   const { data: pages = [], isLoading } = useQuery({
     queryKey: ['/api/admin/pages'],
     queryFn: async () => {
-      const response = await apiRequest('/api/admin/pages')
+      const response = await apiRequest('GET', '/api/admin/pages')
       if (response.ok) {
         return await response.json()
       }
@@ -49,9 +49,7 @@ export default function AdminDashboard({ user, onLogout }: AdminDashboardProps) 
   // Logout mutation
   const logoutMutation = useMutation({
     mutationFn: async () => {
-      const response = await apiRequest('/api/admin/auth/logout', {
-        method: 'POST'
-      })
+      const response = await apiRequest('POST', '/api/admin/auth/logout')
       if (!response.ok) throw new Error('Logout failed')
     },
     onSuccess: () => {

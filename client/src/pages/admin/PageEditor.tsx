@@ -39,13 +39,9 @@ export default function PageEditor({ page, onBack }: PageEditorProps) {
   // Save page mutation
   const saveMutation = useMutation({
     mutationFn: async (isPublish: boolean = false) => {
-      const response = await apiRequest(`/api/admin/pages/${page.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          components,
-          isPublished: isPublish,
-        })
+      const response = await apiRequest('PUT', `/api/admin/pages/${page.id}`, {
+        components,
+        isPublished: isPublish,
       })
       if (!response.ok) throw new Error('Failed to save page')
       return await response.json()
