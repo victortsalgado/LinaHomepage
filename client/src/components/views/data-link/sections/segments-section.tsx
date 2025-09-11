@@ -92,7 +92,7 @@ export default function SegmentsSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Left Column - Tab Navigation */}
-          <div className="space-y-3 group/cards">
+          <div className="space-y-2 group/cards">
             {segmentTabs.map((segment, index) => {
               const IconComponent = segment.icon;
               const isActive = activeTab === segment.id;
@@ -102,14 +102,14 @@ export default function SegmentsSection() {
                 <motion.div
                   key={segment.id}
                   onMouseEnter={() => setActiveTab(segment.id)}
-                  className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-500 group/card cursor-pointer ${cardColors[index]} ${
+                  className={`w-full text-left p-4 rounded-2xl border-2 transition-all duration-500 group/card cursor-pointer ${cardColors[index]} ${
                     isActive 
                       ? 'border-white/30 shadow-xl shadow-black/20 scale-105' 
                       : 'border-white/10 hover:border-white/30'
                   } hover:scale-110 group-hover/cards:[&:not(:hover)]:blur-[10px] group-hover/cards:[&:not(:hover)]:scale-90`}
                   data-testid={`tab-segment-${index + 1}`}
                 >
-                  <div className="flex items-center gap-4 h-28">
+                  <div className="flex items-center gap-4 h-20">
                     {/* Icon */}
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/20 backdrop-blur-sm flex-shrink-0">
                       <IconComponent 
