@@ -8,14 +8,8 @@ import {
   type InsertComponentTemplate, type MediaAsset, type InsertMediaAsset 
 } from "@shared/schema";
 
-// Database configuration
-let db: any;
-try {
-  const sql = neon(process.env.DATABASE_URL!);
-  db = drizzle(sql);
-} catch (error) {
-  console.error('Database connection error:', error);
-}
+const sql = neon(process.env.DATABASE_URL!);
+const db = drizzle(sql);
 
 export interface IStorage {
   // User methods
