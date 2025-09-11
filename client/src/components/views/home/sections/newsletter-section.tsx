@@ -1,26 +1,6 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Mail } from "lucide-react";
+import RDStationForm from "@/components/ui/RDStationForm";
 
 export default function NewsletterSection() {
-  const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setIsLoading(true);
-    
-    // Simulate newsletter subscription
-    setTimeout(() => {
-      setIsLoading(false);
-      setEmail("");
-      // Here you would integrate with your newsletter service
-      console.log("Newsletter subscription:", email);
-    }, 1000);
-  };
 
   return (
     <section 
@@ -48,38 +28,10 @@ export default function NewsletterSection() {
             Inscreva-se e receba a nossa Newsletter
           </p>
 
-          {/* Email Subscription Form */}
-          <form 
-            onSubmit={handleSubmit}
-            className="max-w-4xl mx-auto"
-            data-testid="form-newsletter-signup"
-          >
-            <div className="flex flex-row gap-4 items-center">
-              {/* Email Input - Large rounded field */}
-              <div className="flex-1">
-                <Input
-                  type="email"
-                  placeholder="Digite seu e-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full h-14 px-6 bg-white border-0 focus:border-0 focus:ring-2 focus:ring-[var(--lina-cyan)] rounded-full text-gray-900 text-lg shadow-lg"
-                  required
-                  data-testid="input-newsletter-email"
-                />
-              </div>
-              
-              {/* Subscribe Button - Separate element */}
-              <Button
-                type="submit"
-                disabled={isLoading || !email}
-                variant="dark-bg"
-                className="px-6 py-2 disabled:opacity-50 disabled:cursor-not-allowed pt-[26px] pb-[26px] pl-[41px] pr-[41px] rounded-full text-[17px]"
-                data-testid="button-newsletter-subscribe"
-              >
-                {isLoading ? "Inscrevendo..." : "Inscrever"}
-              </Button>
-            </div>
-          </form>
+          {/* RD Station Form */}
+          <div className="max-w-4xl mx-auto">
+            <RDStationForm className="w-full" />
+          </div>
         </div>
       </div>
     </section>
