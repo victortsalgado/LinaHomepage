@@ -57,8 +57,8 @@ const mockPosts: { [key: string]: Post } = {
 //   return await client.fetch(query, { slug })
 // }
 
-export default async function BlogPost({ params }: { params: Promise<Params> }) {
-  const { slug } = await params
+export default async function BlogPost({ params }: { params: Params }) {
+  const { slug } = params
   // const post = await getPost(slug)
   const post = mockPosts[slug] // Using mock data for demonstration
   

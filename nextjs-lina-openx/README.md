@@ -77,6 +77,11 @@ A aplicação usa **dados mockados** para demonstrar:
 - ✅ Design responsivo com Tailwind
 - ✅ TypeScript com tipagem completa
 
+### ⚠️ Status da Integração
+
+**Implementação Atual:** Tutorial estrutural completo com mock data
+**Para Produção:** Requer instalação de dependências e ativação das queries GROQ
+
 ## 🔗 Exemplo de Integração Real
 
 Para ativar conexão com Sanity CMS:
