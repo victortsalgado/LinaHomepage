@@ -117,15 +117,7 @@ export default function SocialProofSection() {
         >
           {/* Enhanced Section Title */}
           <motion.div variants={itemVariants} className="mb-20">
-            <div className="inline-flex items-center justify-center w-full mb-6">
-              <div className="w-12 h-1 bg-gradient-to-r from-transparent via-[var(--lina-cyan)] to-transparent rounded-full"></div>
-              <div className="mx-4 px-6 py-2 bg-gradient-to-r from-[var(--lina-cyan)]/10 to-teal-100/50 rounded-full border border-[var(--lina-cyan)]/20">
-                <span className="text-sm font-semibold text-[var(--lina-cyan)] uppercase tracking-wider">
-                  Casos de Sucesso
-                </span>
-              </div>
-              <div className="w-12 h-1 bg-gradient-to-r from-transparent via-[var(--lina-cyan)] to-transparent rounded-full"></div>
-            </div>
+            
             <h2
               className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-[var(--lina-cyan)] bg-clip-text text-transparent mb-4"
               style={{ fontFamily: 'Lexend, sans-serif' }}
