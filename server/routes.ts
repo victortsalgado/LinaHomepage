@@ -5,8 +5,12 @@ import {
   ObjectStorageService,
   ObjectNotFoundError,
 } from "./objectStorage";
+import adminRoutes from "./adminRoutes";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Admin CMS routes
+  app.use("/api/admin", adminRoutes);
+
   // put application routes here
   // prefix all routes with /api
 

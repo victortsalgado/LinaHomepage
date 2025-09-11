@@ -1,10 +1,24 @@
 import express, { type Request, Response, NextFunction } from "express";
+import session from "express-session";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { seedInitialData } from "./seedData";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Session middleware for admin authentication
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'lina-cms-dev-secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+  },
+}));
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -45,6 +59,9 @@ app.use((req, res, next) => {
     }
 
     const server = await registerRoutes(app);
+
+    // Seed initial data (disabled temporarily)
+    // await seedInitialData();
 
     // Add health check endpoint for deployment monitoring
     app.get('/health', (_req: Request, res: Response) => {
