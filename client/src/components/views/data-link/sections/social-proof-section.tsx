@@ -164,9 +164,9 @@ export default function SocialProofSection() {
                       onClick={() => setCurrentTestimonial(testimonial)}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <div className={`group relative p-6 rounded-xl cursor-pointer transition-all duration-500 transform hover:-translate-y-1 hover:z-10 overflow-hidden hover:animate-pulse ${
+                      <div className={`group relative p-6 rounded-xl cursor-pointer transition-all duration-500 transform hover:-translate-y-1 hover:z-10 overflow-hidden ${
                         currentTestimonial.id === testimonial.id 
-                          ? 'bg-gradient-to-br from-white to-[var(--lina-cyan)]/5 border-2 border-[var(--lina-cyan)]/40 shadow-xl shadow-[var(--lina-cyan)]/20 animate-pulse' 
+                          ? 'bg-gradient-to-br from-white to-[var(--lina-cyan)]/5 border-2 border-[var(--lina-cyan)]/40 shadow-xl shadow-[var(--lina-cyan)]/20' 
                           : 'bg-white border-2 border-gray-100 hover:border-[var(--lina-cyan)]/30 hover:shadow-lg hover:shadow-xl'
                       }`}>
                         
@@ -188,6 +188,12 @@ export default function SocialProofSection() {
                           />
                         </div>
                         
+                        {/* Active indicator */}
+                        {currentTestimonial.id === testimonial.id && (
+                          <div className="absolute top-2 right-2 w-3 h-3 bg-[var(--lina-cyan)] rounded-full animate-pulse">
+                            <div className="absolute inset-0 w-3 h-3 bg-[var(--lina-cyan)] rounded-full animate-ping opacity-75"></div>
+                          </div>
+                        )}
                         
                         {/* Hover shine effect */}
                         <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-all duration-700 pointer-events-none" />
