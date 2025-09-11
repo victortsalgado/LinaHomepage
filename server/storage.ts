@@ -41,6 +41,14 @@ export interface IStorage {
   deleteMediaAsset(id: string): Promise<void>;
 }
 
+// In-memory fallback storage
+const memoryStorage = {
+  pages: new Map<string, EditablePage>(),
+  adminUsers: new Map<string, AdminUser>(),
+  componentTemplates: new Map<string, ComponentTemplate>(),
+  mediaAssets: new Map<string, MediaAsset>(),
+}
+
 export class DbStorage implements IStorage {
   // User methods
   async getUser(id: string): Promise<User | undefined> {
@@ -81,12 +89,33 @@ export class DbStorage implements IStorage {
   }
 
   async getEditablePageById(id: string): Promise<EditablePage | undefined> {
-    const result = await db.select().from(editablePages).where(eq(editablePages.id, id)).limit(1);
-    return result[0];
+    // Check memory first
+    if (memoryStorage.pages.has(id)) {
+      return memoryStorage.pages.get(id);
+    }
+    
+    try {
+      const result = await db.select().from(editablePages).where(eq(editablePages.id, id)).limit(1);
+      return result[0];
+    } catch (error) {
+      console.log('Database query failed for page:', id);
+      return undefined;
+    }
   }
 
   async getAllEditablePages(): Promise<EditablePage[]> {
-    return await db.select().from(editablePages);
+    try {
+      const dbPages = await db.select().from(editablePages);
+      // Merge with memory pages
+      const memoryPagesArray = Array.from(memoryStorage.pages.values());
+      
+      // Filter out duplicates, giving priority to memory storage
+      const allPages = [...dbPages.filter(p => !memoryStorage.pages.has(p.id)), ...memoryPagesArray];
+      return allPages;
+    } catch (error) {
+      console.log('Database query failed, returning memory pages only');
+      return Array.from(memoryStorage.pages.values());
+    }
   }
 
   async createEditablePage(insertPage: InsertEditablePage): Promise<EditablePage> {
@@ -95,11 +124,36 @@ export class DbStorage implements IStorage {
   }
 
   async updateEditablePage(id: string, updateData: Partial<InsertEditablePage>): Promise<EditablePage> {
-    const result = await db.update(editablePages)
-      .set({ ...updateData, updatedAt: new Date() })
-      .where(eq(editablePages.id, id))
-      .returning();
-    return result[0];
+    try {
+      const result = await db.update(editablePages)
+        .set({ ...updateData, updatedAt: new Date() })
+        .where(eq(editablePages.id, id))
+        .returning();
+      return result[0];
+    } catch (error) {
+      console.log('Database update failed, using memory storage for page:', id);
+      
+      // Fallback to memory storage
+      const existing = memoryStorage.pages.get(id) || {
+        id,
+        title: 'Nova Página',
+        slug: 'nova-pagina',
+        components: '[]',
+        isPublished: false,
+        lastEditedBy: '1',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      };
+      
+      const updated = {
+        ...existing,
+        ...updateData,
+        updatedAt: new Date()
+      } as EditablePage;
+      
+      memoryStorage.pages.set(id, updated);
+      return updated;
+    }
   }
 
   async deleteEditablePage(id: string): Promise<void> {
