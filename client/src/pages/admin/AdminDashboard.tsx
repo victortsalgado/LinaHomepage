@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -32,41 +32,44 @@ interface AdminDashboardProps {
 export default function AdminDashboard({ user, onLogout }: AdminDashboardProps) {
   const [currentView, setCurrentView] = useState<'dashboard' | 'edit-page'>('dashboard')
   const [selectedPage, setSelectedPage] = useState<EditablePage | null>(null)
+  const [pages, setPages] = useState<EditablePage[]>([])
   const queryClient = useQueryClient()
 
-  // Mock pages data for demo
-  const pages: EditablePage[] = [
-    {
-      id: '1',
-      slug: 'homepage',
-      title: 'Homepage',
-      components: [
-        {
-          id: 'banner-1',
-          type: 'banner',
-          props: {
-            title: 'Bem-vindo à Lina',
-            subtitle: 'Sistema de gerenciamento de conteúdo visual',
-            backgroundColor: '#00EFCF',
-            textColor: '#000000'
-          },
-          order: 0
-        }
-      ],
-      isPublished: false,
-      createdAt: '2025-01-07T21:00:00Z',
-      updatedAt: '2025-01-07T21:00:00Z'
-    },
-    {
-      id: '2', 
-      slug: 'about',
-      title: 'Sobre Nós',
-      components: [],
-      isPublished: false,
-      createdAt: '2025-01-07T21:00:00Z',
-      updatedAt: '2025-01-07T21:00:00Z'
-    }
-  ]
+  // Initialize pages data for demo
+  useEffect(() => {
+    setPages([
+      {
+        id: '1',
+        slug: 'homepage',
+        title: 'Homepage',
+        components: [
+          {
+            id: 'banner-1',
+            type: 'banner',
+            props: {
+              title: 'Bem-vindo à Lina',
+              subtitle: 'Sistema de gerenciamento de conteúdo visual',
+              backgroundColor: '#00EFCF',
+              textColor: '#000000'
+            },
+            order: 0
+          }
+        ],
+        isPublished: false,
+        createdAt: '2025-01-07T21:00:00Z',
+        updatedAt: '2025-01-07T21:00:00Z'
+      },
+      {
+        id: '2', 
+        slug: 'about',
+        title: 'Sobre Nós',
+        components: [],
+        isPublished: false,
+        createdAt: '2025-01-07T21:00:00Z',
+        updatedAt: '2025-01-07T21:00:00Z'
+      }
+    ])
+  }, [])
   const isLoading = false
 
   // Logout mutation
@@ -90,6 +93,23 @@ export default function AdminDashboard({ user, onLogout }: AdminDashboardProps) 
     setCurrentView('dashboard')
     setSelectedPage(null)
     queryClient.invalidateQueries({ queryKey: ['/api/admin/pages'] })
+  }
+
+  const handleCreateNewPage = () => {
+    const newId = String(pages.length + 1)
+    const newPage: EditablePage = {
+      id: newId,
+      slug: `page-${newId}`,
+      title: `Nova Página ${newId}`,
+      components: [],
+      isPublished: false,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    }
+    
+    setPages([...pages, newPage])
+    setSelectedPage(newPage)
+    setCurrentView('edit-page')
   }
 
   if (currentView === 'edit-page' && selectedPage) {
@@ -190,7 +210,7 @@ export default function AdminDashboard({ user, onLogout }: AdminDashboardProps) 
           <CardHeader>
             <CardTitle className="flex items-center justify-between">
               <span>Páginas Editáveis</span>
-              <Button size="sm" data-testid="button-new-page">
+              <Button size="sm" data-testid="button-new-page" onClick={handleCreateNewPage}>
                 + Nova Página
               </Button>
             </CardTitle>
@@ -203,7 +223,7 @@ export default function AdminDashboard({ user, onLogout }: AdminDashboardProps) 
             ) : pages.length === 0 ? (
               <div className="text-center py-8">
                 <p className="text-gray-500">Nenhuma página criada ainda</p>
-                <Button className="mt-4" data-testid="button-create-first-page">
+                <Button className="mt-4" data-testid="button-create-first-page" onClick={handleCreateNewPage}>
                   Criar Primeira Página
                 </Button>
               </div>
