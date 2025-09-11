@@ -30,6 +30,51 @@ interface PageEditorProps {
   onBack: () => void
 }
 
+function EditorCanvas({ components, selectedComponent, setSelectedComponent, handleDeleteComponent }: {
+  components: Component[]
+  selectedComponent: Component | null
+  setSelectedComponent: (component: Component) => void
+  handleDeleteComponent: (id: string) => void
+}) {
+  const { isOver, setNodeRef } = useDroppable({
+    id: 'editor-canvas',
+  })
+
+  return (
+    <div className="flex-1 overflow-y-auto p-6">
+      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-sm border min-h-96">
+        <div
+          ref={setNodeRef}
+          className={`p-6 space-y-4 min-h-96 transition-colors ${
+            isOver ? 'bg-blue-50 border-blue-200' : ''
+          }`}
+        >
+          <SortableContext items={components.map(c => c.id)} strategy={verticalListSortingStrategy}>
+            {components.length === 0 ? (
+              <div className="text-center py-12 text-gray-500">
+                <p className="text-lg mb-2">Página vazia</p>
+                <p className="text-sm">Arraste componentes da barra lateral para começar</p>
+              </div>
+            ) : (
+              components.map((component) => (
+                <DraggableComponent
+                  key={component.id}
+                  component={component}
+                  isSelected={selectedComponent?.id === component.id}
+                  onSelect={() => setSelectedComponent(component)}
+                  onDelete={() => handleDeleteComponent(component.id)}
+                >
+                  {renderComponent(component, true)}
+                </DraggableComponent>
+              ))
+            )}
+          </SortableContext>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function PageEditor({ page, onBack }: PageEditorProps) {
   const [components, setComponents] = useState<Component[]>(page.components || [])
   const [selectedComponent, setSelectedComponent] = useState<Component | null>(null)
@@ -219,51 +264,6 @@ export default function PageEditor({ page, onBack }: PageEditorProps) {
           {/* Render drag overlay if needed */}
         </DragOverlay>
       </DndContext>
-    </div>
-  )
-}
-
-function EditorCanvas({ components, selectedComponent, setSelectedComponent, handleDeleteComponent }: {
-  components: Component[]
-  selectedComponent: Component | null
-  setSelectedComponent: (component: Component) => void
-  handleDeleteComponent: (id: string) => void
-}) {
-  const { isOver, setNodeRef } = useDroppable({
-    id: 'editor-canvas',
-  })
-
-  return (
-    <div className="flex-1 overflow-y-auto p-6">
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-sm border min-h-96">
-        <div
-          ref={setNodeRef}
-          className={`p-6 space-y-4 min-h-96 transition-colors ${
-            isOver ? 'bg-blue-50 border-blue-200' : ''
-          }`}
-        >
-          <SortableContext items={components.map(c => c.id)} strategy={verticalListSortingStrategy}>
-            {components.length === 0 ? (
-              <div className="text-center py-12 text-gray-500">
-                <p className="text-lg mb-2">Página vazia</p>
-                <p className="text-sm">Arraste componentes da barra lateral para começar</p>
-              </div>
-            ) : (
-              components.map((component) => (
-                <DraggableComponent
-                  key={component.id}
-                  component={component}
-                  isSelected={selectedComponent?.id === component.id}
-                  onSelect={() => setSelectedComponent(component)}
-                  onDelete={() => handleDeleteComponent(component.id)}
-                >
-                  {renderComponent(component, true)}
-                </DraggableComponent>
-              ))
-            )}
-          </SortableContext>
-        </div>
-      </div>
     </div>
   )
 }
