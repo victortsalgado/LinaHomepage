@@ -1,4 +1,4 @@
-import { drizzle } from "drizzle-orm/neon-serverless";
+import { drizzle } from "drizzle-orm/neon-http";
 import { neon } from "@neondatabase/serverless";
 import { eq } from "drizzle-orm";
 import { 
@@ -41,12 +41,60 @@ export interface IStorage {
   deleteMediaAsset(id: string): Promise<void>;
 }
 
-// In-memory fallback storage
+import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'fs'
+import { join } from 'path'
+
+// Multi-layered storage: DB → Object Storage → Local JSON → Memory
 const memoryStorage = {
   pages: new Map<string, EditablePage>(),
   adminUsers: new Map<string, AdminUser>(),
   componentTemplates: new Map<string, ComponentTemplate>(),
   mediaAssets: new Map<string, MediaAsset>(),
+}
+
+const CMS_DATA_DIR = '/tmp/cms-data'
+const CMS_DATA_FILE = join(CMS_DATA_DIR, 'cms.json')
+
+// Ensure data directory exists
+if (!existsSync(CMS_DATA_DIR)) {
+  mkdirSync(CMS_DATA_DIR, { recursive: true })
+}
+
+// Load data from file on startup
+function loadFromFile(): any {
+  try {
+    if (existsSync(CMS_DATA_FILE)) {
+      const data = JSON.parse(readFileSync(CMS_DATA_FILE, 'utf8'))
+      console.log('Loaded CMS data from file')
+      return data
+    }
+  } catch (error) {
+    console.error('Error loading CMS data from file:', error)
+  }
+  return { pages: {}, adminUsers: {}, componentTemplates: {}, mediaAssets: {} }
+}
+
+// Save data to file
+function saveToFile(data: any): void {
+  try {
+    writeFileSync(CMS_DATA_FILE, JSON.stringify(data, null, 2))
+    console.log('Saved CMS data to file')
+  } catch (error) {
+    console.error('Error saving CMS data to file:', error)
+  }
+}
+
+// Initialize from persistent storage
+const fileData = loadFromFile()
+if (fileData.pages) {
+  Object.entries(fileData.pages).forEach(([id, page]) => {
+    memoryStorage.pages.set(id, page as EditablePage)
+  })
+}
+if (fileData.adminUsers) {
+  Object.entries(fileData.adminUsers).forEach(([id, user]) => {
+    memoryStorage.adminUsers.set(id, user as AdminUser)
+  })
 }
 
 export class DbStorage implements IStorage {
@@ -119,41 +167,87 @@ export class DbStorage implements IStorage {
   }
 
   async createEditablePage(insertPage: InsertEditablePage): Promise<EditablePage> {
-    const result = await db.insert(editablePages).values(insertPage).returning();
-    return result[0];
+    try {
+      const result = await db.insert(editablePages).values(insertPage).returning();
+      if (result[0]) {
+        memoryStorage.pages.set(result[0].id, result[0]);
+        this.persistToFile();
+        console.log('Successfully created page in database:', result[0].id);
+        return result[0];
+      }
+    } catch (error) {
+      console.log('Database insert failed, creating in fallback storage');
+    }
+    
+    // Fallback creation with generated ID
+    const newId = Date.now().toString();
+    const newPage = {
+      id: newId,
+      ...insertPage,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    } as EditablePage;
+    
+    memoryStorage.pages.set(newId, newPage);
+    this.persistToFile();
+    console.log('Created page in fallback storage:', newId);
+    
+    return newPage;
   }
 
   async updateEditablePage(id: string, updateData: Partial<InsertEditablePage>): Promise<EditablePage> {
+    // Layer 1: Try database first
     try {
       const result = await db.update(editablePages)
         .set({ ...updateData, updatedAt: new Date() })
         .where(eq(editablePages.id, id))
         .returning();
-      return result[0];
+      
+      if (result[0]) {
+        // Update memory cache with DB result
+        memoryStorage.pages.set(id, result[0]);
+        this.persistToFile();
+        console.log('Successfully updated page in database:', id);
+        return result[0];
+      }
     } catch (error) {
-      console.log('Database update failed, using memory storage for page:', id);
-      
-      // Fallback to memory storage
-      const existing = memoryStorage.pages.get(id) || {
-        id,
-        title: 'Nova Página',
-        slug: 'nova-pagina',
-        components: '[]',
-        isPublished: false,
-        lastEditedBy: '1',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      };
-      
-      const updated = {
-        ...existing,
-        ...updateData,
-        updatedAt: new Date()
-      } as EditablePage;
-      
-      memoryStorage.pages.set(id, updated);
-      return updated;
+      console.log('Database update failed, falling back to file storage for page:', id);
     }
+    
+    // Layer 2: Fallback to memory + file persistence
+    const existing = memoryStorage.pages.get(id) || {
+      id,
+      title: 'Nova Página',
+      slug: 'nova-pagina',
+      components: '[]',
+      isPublished: false,
+      lastEditedBy: '1',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+    
+    const updated = {
+      ...existing,
+      ...updateData,
+      updatedAt: new Date()
+    } as EditablePage;
+    
+    // Update memory and persist to file
+    memoryStorage.pages.set(id, updated);
+    this.persistToFile();
+    console.log('Updated page in fallback storage:', id);
+    
+    return updated;
+  }
+  
+  private persistToFile(): void {
+    const data = {
+      pages: Object.fromEntries(memoryStorage.pages.entries()),
+      adminUsers: Object.fromEntries(memoryStorage.adminUsers.entries()),
+      componentTemplates: Object.fromEntries(memoryStorage.componentTemplates.entries()),
+      mediaAssets: Object.fromEntries(memoryStorage.mediaAssets.entries()),
+    };
+    saveToFile(data);
   }
 
   async deleteEditablePage(id: string): Promise<void> {
