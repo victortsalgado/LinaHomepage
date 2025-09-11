@@ -135,7 +135,7 @@ export default function SegmentsSection() {
           </div>
 
           {/* Right Column - Dynamic Content */}
-          <div className="relative min-h-[500px] flex items-center">
+          <div className="relative min-h-[500px] flex items-start">
             <AnimatePresence mode="wait">
               {activeSegment && (
                 <motion.div
