@@ -130,7 +130,7 @@ export default function LinaPaySection() {
               {/* Right Side - Phone and Text */}
               <div 
                 ref={phoneRef}
-                className={`flex flex-col order-2 lg:order-none ${phoneVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'} items-center justify-center space-y-6`}
+                className={`flex flex-col order-2 lg:order-none ${phoneVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'} items-center justify-start space-y-6`}
               >
                 {/* LinaPay GIF/Animation */}
                 <div className="flex justify-center">
@@ -144,7 +144,7 @@ export default function LinaPaySection() {
                 
                 {/* Description Text - Below phone */}
                 <div className="text-center px-4 max-w-md">
-                  <p className="text-white text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  <p className="text-white text-base leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
                     A solução que transforma a experiência do cliente e traz inúmeras vantagens para e-commerces, marketplaces, plataformas de pagamento e provedores de serviços.
                   </p>
                 </div>
