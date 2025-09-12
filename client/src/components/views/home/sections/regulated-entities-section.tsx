@@ -55,7 +55,7 @@ export default function RegulatedEntitiesSection() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 rounded-full blur-3xl opacity-3" style={{ background: 'var(--lina-cyan)' }}></div>
       </div>
       
-      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem] relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem] relative z-10 mt-[-52px] mb-[-52px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-[0px] mb-[0px] pt-[-85px] pb-[-85px]">
           {/* Content Column (Left) - Title, Description & Graph */}
           <div 
