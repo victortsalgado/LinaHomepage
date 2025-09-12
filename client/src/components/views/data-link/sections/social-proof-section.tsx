@@ -26,9 +26,17 @@ export default function SocialProofSection() {
     text: "Temos uma parceria de sucesso com a Lina. É um parceiro importante para o Banco Semear e nos apoia com compartilhamento de dados e também com geração de ITP, que é um diferencial para nossos produtos de meio de pagamento. O Semear acredita na Open Finance e a Lina é o nosso parceiro de confiança, sempre disponível a entender nossas necessidades e customizar soluções, sabem do fato e significado da palavra parceria.",
     author: "Ricardo Mendes",
     role: "Diretor de Tecnologia, Banco Semear",
-    avatar: "/api/placeholder/48/48", // This would be the actual avatar image
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
     initials: "RM"
   };
+
+  // Team avatars for circles above button
+  const teamAvatars = [
+    { id: 1, src: "https://images.unsplash.com/photo-1624797432677-6f803a98acb3?w=100&h=100&fit=crop&crop=face", alt: "Team member 1" },
+    { id: 2, src: "https://images.unsplash.com/photo-1541535881962-3bb380b08458?w=100&h=100&fit=crop&crop=face", alt: "Team member 2" },
+    { id: 3, src: "https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?w=100&h=100&fit=crop&crop=face", alt: "Team member 3" },
+    { id: 4, src: "https://images.unsplash.com/photo-1652471943570-f3590a4e52ed?w=100&h=100&fit=crop&crop=face", alt: "Team member 4" }
+  ];
 
   // Animation variants
   const containerVariants = {
@@ -94,6 +102,23 @@ export default function SocialProofSection() {
                   Descubra como empresas líderes estão transformando seus negócios com nossa solução de Open Finance, otimizando processos e tomando decisões mais inteligentes.
                 </p>
 
+                {/* Team Avatars in circles above button */}
+                <div className="flex items-center space-x-3 mb-6">
+                  {teamAvatars.map((avatar) => (
+                    <div
+                      key={avatar.id}
+                      className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md"
+                      data-testid={`avatar-team-${avatar.id}`}
+                    >
+                      <img
+                        src={avatar.src}
+                        alt={avatar.alt}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+
                 <Button 
                   variant="light-bg"
                   className="px-6 py-3 mb-8"
@@ -103,19 +128,6 @@ export default function SocialProofSection() {
                   <ArrowRight className="w-4 h-4" />
                 </Button>
 
-                {/* Team Image Placeholder */}
-                <div className="flex justify-center lg:justify-start">
-                  <div className="relative">
-                    <div className="w-32 h-32 bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl flex items-center justify-center">
-                      <div className="text-gray-500 text-center">
-                        <svg className="w-12 h-12 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
-                        <span className="text-xs">Team</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </motion.div>
 
               {/* Right Column - Testimonial */}
@@ -123,10 +135,12 @@ export default function SocialProofSection() {
                 variants={itemVariants}
                 className="p-16 lg:p-24"
               >
-                <div className="bg-gradient-to-br from-[#2d5a57] to-[#1a3d3a] rounded-2xl p-8 text-white relative overflow-hidden">
-                  {/* Large Quote Icon */}
-                  <div className="absolute top-4 right-6 opacity-20">
-                    <Quote className="w-20 h-20" />
+                <div className="bg-gradient-to-br from-[#2d5a57] to-[#1a3d3a] rounded-2xl p-8 text-white relative">
+                  {/* Quote Icon - Positioned overlapping the box - half inside/half outside */}
+                  <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 z-20">
+                    <div className="bg-[#2ec9bc] p-4 rounded-full shadow-lg border-4 border-white">
+                      <Quote className="w-8 h-8 text-white" />
+                    </div>
                   </div>
                   
                   <div className="relative z-10">
@@ -138,10 +152,13 @@ export default function SocialProofSection() {
                     </blockquote>
                     
                     <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                        <div className="w-full h-full rounded-full bg-[var(--lina-cyan)] text-white text-sm font-bold flex items-center justify-center">
-                          {testimonial.initials}
-                        </div>
+                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20">
+                        <img
+                          src={testimonial.avatar}
+                          alt={testimonial.author}
+                          className="w-full h-full object-cover"
+                          data-testid="img-testimonial-avatar"
+                        />
                       </div>
                       <div>
                         <p 
