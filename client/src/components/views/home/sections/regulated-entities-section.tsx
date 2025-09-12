@@ -92,7 +92,7 @@ export default function RegulatedEntitiesSection() {
           </div>
           
           {/* Features Column (Right) - Features List */}
-          <div className={`space-y-4 self-end ${contentVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'} pl-[58px] pr-[58px] ml-[0px] mr-[0px]`}>
+          <div className={`space-y-4 self-end ${contentVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'} pl-[58px] pr-[58px] ml-[0px] mr-[0px] mt-[182px] mb-[182px]`}>
             {features.map((feature, index) => (
               <motion.div 
                 key={feature.title}
