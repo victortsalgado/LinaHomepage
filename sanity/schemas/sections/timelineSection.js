@@ -105,7 +105,7 @@ export default defineType({
               return {
                 title: `${year} - ${title}`,
                 subtitle: highlight ? '⭐ Evento Destacado' : 'Evento Timeline',
-                description: description?.substring(0, 80) + '...',
+                description: description ? `${description.substring(0, 80)}...` : undefined,
                 media: selection.media
               }
             }

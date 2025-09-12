@@ -81,7 +81,7 @@ export default defineType({
               return {
                 title: title,
                 subtitle: `Ícone: ${subtitle}`,
-                description: description?.substring(0, 80) + '...'
+                description: description ? `${description.substring(0, 80)}...` : undefined
               }
             }
           }

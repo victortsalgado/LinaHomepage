@@ -16,7 +16,7 @@ export default defineType({
       name: 'slug',
       title: 'Slug/URL',
       type: 'slug',
-      description: 'URL única da página (ex: /quem-somos)',
+      description: 'URL única da página (ex: quem-somos)',
       options: {
         source: 'title',
         maxLength: 90,
@@ -161,7 +161,7 @@ export default defineType({
       title: 'Data de Publicação',
       type: 'datetime',
       description: 'Data e hora de publicação da página',
-      initialValue: () => new Date().toISOString(),
+      initialValue: new Date().toISOString(),
     }),
     defineField({
       name: 'status',
