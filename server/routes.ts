@@ -5,8 +5,86 @@ import {
   ObjectStorageService,
   ObjectNotFoundError,
 } from "./objectStorage";
+import { createClient } from '@sanity/client';
+
+// Sanity client para proxy
+const sanityClient = createClient({
+  projectId: 'dw34kfrg',
+  dataset: 'production',
+  apiVersion: '2024-01-01',
+  useCdn: true,
+});
 
 export async function registerRoutes(app: Express): Promise<Server> {
+
+  // Sanity proxy routes
+  app.get('/api/sanity/page/:slug', async (req, res) => {
+    try {
+      const { slug } = req.params;
+      const query = `
+        *[_type == "page" && slug.current == $slug][0]{
+          _id,
+          title,
+          slug,
+          sections[]{
+            _type,
+            _type == "heroSection" => {
+              title,
+              subtitle,
+              backgroundImage{
+                asset->{
+                  _ref,
+                  url
+                }
+              },
+              ctaText,
+              ctaLink
+            },
+            _type == "textSection" => {
+              title,
+              content,
+              textAlign
+            },
+            _type == "imageSection" => {
+              title,
+              image{
+                asset->{
+                  _ref,
+                  url
+                }
+              },
+              alt,
+              caption
+            }
+          }
+        }
+      `;
+      
+      const page = await sanityClient.fetch(query, { slug });
+      res.json(page);
+    } catch (error) {
+      console.error('Error fetching page from Sanity:', error);
+      res.status(500).json({ error: 'Failed to fetch page' });
+    }
+  });
+
+  app.get('/api/sanity/pages', async (req, res) => {
+    try {
+      const query = `
+        *[_type == "page"]{
+          _id,
+          title,
+          slug
+        }
+      `;
+      
+      const pages = await sanityClient.fetch(query);
+      res.json(pages);
+    } catch (error) {
+      console.error('Error fetching pages from Sanity:', error);
+      res.status(500).json({ error: 'Failed to fetch pages' });
+    }
+  });
 
   // put application routes here
   // prefix all routes with /api

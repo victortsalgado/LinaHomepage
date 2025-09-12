@@ -84,7 +84,12 @@ export interface ImageSection extends SanitySection {
 
 export async function getPageBySlug(slug: string): Promise<SanityPage | null> {
   try {
-    const page = await client.fetch(PAGE_QUERY, { slug })
+    // Usar endpoint de proxy do backend ao invés da API direta
+    const response = await fetch(`/api/sanity/page/${slug}`)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    const page = await response.json()
     return page
   } catch (error) {
     console.error('Error fetching page by slug:', error)
@@ -94,7 +99,12 @@ export async function getPageBySlug(slug: string): Promise<SanityPage | null> {
 
 export async function getAllPages(): Promise<Pick<SanityPage, '_id' | 'title' | 'slug'>[]> {
   try {
-    const pages = await client.fetch(ALL_PAGES_QUERY)
+    // Usar endpoint de proxy do backend ao invés da API direta
+    const response = await fetch('/api/sanity/pages')
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    const pages = await response.json()
     return pages
   } catch (error) {
     console.error('Error fetching all pages:', error)

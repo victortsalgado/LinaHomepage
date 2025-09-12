@@ -3,7 +3,7 @@ import imageUrlBuilder from '@sanity/image-url'
 
 // Configuração do cliente Sanity
 export const client = createClient({
-  projectId: process.env.SANITY_PROJECT_ID || 'your-project-id', // Substitua pelo seu Project ID
+  projectId: 'dw34kfrg', // Project ID from Sanity dashboard
   dataset: process.env.SANITY_DATASET || 'production',
   useCdn: true, // `false` se você quiser garantir dados frescos
   apiVersion: '2024-01-01', // Use a versão atual da API
