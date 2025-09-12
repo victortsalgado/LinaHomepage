@@ -48,11 +48,19 @@ export default function LinaPaySection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-24 md:py-32 lg:py-40 min-h-screen flex items-center"
-      style={{ backgroundColor: '#D0F5F2' }}
+      className="py-24 md:py-32 lg:py-40 min-h-screen flex items-center relative overflow-hidden"
+      style={{
+        background: `linear-gradient(135deg, var(--lina-dark) 0%, #1a4f4d 50%, var(--lina-dark) 100%)`
+      }}
       data-testid="section-lina-pay"
     >
-      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-[var(--lina-cyan)] rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-teal-400 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-[var(--lina-cyan)] rounded-full blur-2xl"></div>
+      </div>
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem] relative z-10">
         {/* Lina Pay Block */}
         <div 
           className="relative rounded-3xl shadow-2xl overflow-hidden min-h-[500px]"
