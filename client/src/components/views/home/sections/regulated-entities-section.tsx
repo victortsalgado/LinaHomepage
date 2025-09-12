@@ -73,7 +73,7 @@ export default function RegulatedEntitiesSection() {
             
             {/* Description */}
             <div 
-              className="text-xl text-gray-700 leading-relaxed space-y-4"
+              className="text-xl text-gray-700 leading-relaxed space-y-4 mt-[73px] mb-[73px]"
               data-testid="text-regulated-entities-description"
             >
               <p>
