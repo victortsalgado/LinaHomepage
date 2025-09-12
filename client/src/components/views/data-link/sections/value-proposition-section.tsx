@@ -117,7 +117,10 @@ export default function ValuePropositionSection() {
             return (
               <motion.div
                 key={card.id}
-                className="group relative bg-white rounded-2xl p-8 border border-gray-300/20 hover:border-[var(--lina-cyan)]/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[var(--lina-cyan)]/20"
+                className="group relative rounded-2xl p-8 border border-gray-300/20 hover:border-[var(--lina-cyan)]/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[var(--lina-cyan)]/20"
+                style={{
+                  background: `linear-gradient(135deg, var(--lina-dark) 0%, #1a4f4d 50%, var(--lina-dark) 100%)`
+                }}
                 variants={cardVariants}
                 whileHover={{ 
                   y: -8,
@@ -142,7 +145,7 @@ export default function ValuePropositionSection() {
 
                   {/* Title */}
                   <h3 
-                    className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-gray-800 transition-colors duration-300"
+                    className="text-xl font-bold text-white mb-4 leading-tight group-hover:text-gray-200 transition-colors duration-300"
                     style={{ fontFamily: 'Lexend, sans-serif' }}
                     data-testid={`title-value-${index + 1}`}
                   >
@@ -151,7 +154,7 @@ export default function ValuePropositionSection() {
 
                   {/* Description */}
                   <p 
-                    className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300"
+                    className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                     data-testid={`description-value-${index + 1}`}
                   >
