@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Heading } from "@/components/ui/Heading";
 import { 
   Fingerprint, 
   Wallet, 
@@ -10,7 +11,7 @@ import {
   ShieldCheck 
 } from "lucide-react";
 
-// Differentiators cards data
+// Differentiators cards data for LinaPay
 const differentiatorCards = [
   {
     id: 1,
@@ -81,7 +82,7 @@ export default function DifferentiatorsSection() {
   };
 
   return (
-    <section className="py-48 md:py-64 lg:py-80" style={{ backgroundColor: 'var(--lina-dark)' }} data-testid="section-differentiators">
+    <section className="pt-32 pb-48 md:pt-40 md:pb-64 lg:pt-48 lg:pb-80" style={{ backgroundColor: 'var(--lina-dark)' }} data-testid="section-differentiators">
       <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         {/* Section Title */}
         <motion.div 
@@ -91,13 +92,15 @@ export default function DifferentiatorsSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 
-            className="text-3xl lg:text-4xl font-bold text-white max-w-4xl mx-auto leading-tight"
-            style={{ fontFamily: 'Lexend, sans-serif' }}
+          <Heading
+            level="h2"
+            size="lg"
+            className="text-white max-w-4xl mx-auto"
+            gradientWords={['Lina Pay']}
             data-testid="heading-differentiators-title"
           >
-            O que torna o Lina Pay diferente
-          </h2>
+            O que torna o Lina Pay diferente?
+          </Heading>
         </motion.div>
 
         {/* Differentiators Cards Grid */}
@@ -114,7 +117,10 @@ export default function DifferentiatorsSection() {
             return (
               <motion.div
                 key={card.id}
-                className="group relative bg-white rounded-2xl p-8 border border-gray-300/20 hover:border-[var(--lina-cyan)]/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[var(--lina-cyan)]/20"
+                className="group relative rounded-2xl p-8 border border-gray-300/20 hover:border-[var(--lina-cyan)]/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[var(--lina-cyan)]/20"
+                style={{
+                  background: `linear-gradient(135deg, var(--lina-dark) 0%, #1a4f4d 50%, var(--lina-dark) 100%)`
+                }}
                 variants={cardVariants}
                 whileHover={{ 
                   y: -8,
@@ -139,7 +145,7 @@ export default function DifferentiatorsSection() {
 
                   {/* Title */}
                   <h3 
-                    className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-gray-800 transition-colors duration-300"
+                    className="text-xl font-bold text-white mb-4 leading-tight group-hover:text-gray-200 transition-colors duration-300"
                     style={{ fontFamily: 'Lexend, sans-serif' }}
                     data-testid={`title-differentiator-${index + 1}`}
                   >
@@ -148,7 +154,7 @@ export default function DifferentiatorsSection() {
 
                   {/* Description */}
                   <p 
-                    className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300"
+                    className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                     data-testid={`description-differentiator-${index + 1}`}
                   >
