@@ -56,7 +56,7 @@ export default function IntegrationSection() {
           {/* Main Box with same style as social proof section */}
           <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-visible backdrop-blur-sm min-h-[500px] relative">
 
-            <div className="p-16 lg:p-24 relative z-10">
+            <div className="p-16 lg:p-24 relative z-20">
               
               {/* Title with specific line breaks and 30% larger font - left aligned */}
               <motion.div
