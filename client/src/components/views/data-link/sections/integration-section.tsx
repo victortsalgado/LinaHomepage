@@ -83,12 +83,12 @@ export default function IntegrationSection() {
                 </h2>
               </motion.div>
 
-              {/* Integration Points List - more compressed at bottom, 30% larger font */}
+              {/* Integration Points List - positioned like in reference image */}
               <motion.div
                 variants={itemVariants}
-                className="flex justify-center"
+                className="mt-8"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 max-w-4xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 w-full">
                   {integrationPoints.map((point, index) => (
                     <motion.div
                       key={index}
