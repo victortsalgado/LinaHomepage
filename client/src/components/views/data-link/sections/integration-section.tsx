@@ -119,11 +119,11 @@ export default function IntegrationSection() {
           </div>
           
           {/* Dashboard Chart Image - positioned outside the box to be fully visible and in front */}
-          <div className="absolute -top-8 -right-8 lg:-right-16 z-30">
+          <div className="absolute -top-8 right-0 lg:right-8 z-30">
             <img
               src={dashboardChart}
               alt="Dashboard de integração com gráficos e dados"
-              className="w-[36rem] lg:w-[42rem] h-auto rounded-2xl shadow-2xl"
+              className="w-[28rem] lg:w-[32rem] h-auto rounded-2xl shadow-2xl"
               data-testid="img-dashboard-chart"
             />
           </div>
