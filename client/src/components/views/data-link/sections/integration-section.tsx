@@ -60,7 +60,7 @@ export default function IntegrationSection() {
               <img
                 src={dashboardChart}
                 alt="Dashboard de integração com gráficos e dados"
-                className="w-[36rem] lg:w-[42rem] h-auto rounded-2xl shadow-2xl border-4 border-white"
+                className="w-[36rem] lg:w-[42rem] h-auto rounded-2xl shadow-2xl"
                 data-testid="img-dashboard-chart"
               />
             </div>
