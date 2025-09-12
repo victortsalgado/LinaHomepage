@@ -23,12 +23,11 @@ export default function LinaPay(): JSX.Element {
           <div className="relative">
             <LinaPayHeroSection />
 
+            {/* Differentiators Section */}
+            <DifferentiatorsSection />
 
             {/* Social Proof Section */}
             <SocialProofSection />
-
-            {/* Differentiators Section */}
-            <DifferentiatorsSection />
 
             {/* Features Section */}
             <FeaturesSection />
