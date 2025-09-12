@@ -3,7 +3,7 @@ import { Heading } from "@/components/ui/Heading";
 import { ArrowRight, Repeat, Fingerprint, CreditCard, Zap, Shield } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { motion } from "framer-motion";
-import linaPay from '@assets/linapay mockup_1757211256291.gif';
+import linaPay from '@assets/telas-lp (1)_1757670274191.gif';
 
 export default function LinaPaySection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
