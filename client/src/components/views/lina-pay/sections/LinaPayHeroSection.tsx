@@ -48,7 +48,7 @@ export default function LinaPayHeroSection() {
                   >
                     <Heading
                       level="h1"
-                      size="lg"
+                      size="md"
                       className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-gray-900"
                       gradientWords={['reduza custos']}
                       data-testid="heading-linapay-hero-title"

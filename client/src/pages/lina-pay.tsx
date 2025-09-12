@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import LinaPayHeroSection from "@/components/views/lina-pay/sections/LinaPayHeroSection";
-import AboutLinaPaySection from "@/components/views/lina-pay/sections/AboutLinaPaySection";
 import SocialProofSection from "@/components/views/lina-pay/sections/SocialProofSection";
 import DifferentiatorsSection from "@/components/views/lina-pay/sections/DifferentiatorsSection";
 import FeaturesSection from "@/components/views/lina-pay/sections/FeaturesSection";
@@ -24,8 +23,6 @@ export default function LinaPay(): JSX.Element {
           <div className="relative">
             <LinaPayHeroSection />
 
-            {/* What is Lina Pay Section */}
-            <AboutLinaPaySection />
 
             {/* Social Proof Section */}
             <SocialProofSection />
