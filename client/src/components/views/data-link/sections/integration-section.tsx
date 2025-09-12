@@ -54,9 +54,9 @@ export default function IntegrationSection() {
           className="relative"
         >
           {/* Main Box with same style as social proof section */}
-          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-visible backdrop-blur-sm min-h-[500px] relative">
+          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-visible backdrop-blur-sm min-h-[600px] relative">
 
-            <div className="p-16 lg:p-24 relative z-20">
+            <div className="p-16 lg:p-24 relative z-20 md:pr-72 lg:pr-[34rem]">
               
               {/* Title with specific line breaks and 30% larger font - left aligned */}
               <motion.div
@@ -118,8 +118,8 @@ export default function IntegrationSection() {
             </div>
           </div>
           
-          {/* Dashboard Chart Image - positioned outside the box to be fully visible and in front */}
-          <div className="absolute -top-8 right-0 lg:right-8 z-30">
+          {/* Dashboard Chart Image - positioned at bottom-right to avoid overlapping content */}
+          <div className="absolute bottom-0 right-0 lg:right-8 z-30 hidden md:block">
             <img
               src={dashboardChart}
               alt="Dashboard de integração com gráficos e dados"
