@@ -41,20 +41,30 @@ export default function IntegrationSection() {
 
   return (
     <section 
-      className="py-24 md:py-32 lg:py-40 bg-gray-50 min-h-screen flex items-center relative"
+      className="py-24 md:py-32 lg:py-40 bg-gray-50 min-h-screen flex items-center"
       data-testid="section-integration"
     >
       {/* Same container structure as social proof section */}
-      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem] relative">
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
-          className="relative"
         >
           {/* Main Box with same style as social proof section */}
-          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl backdrop-blur-sm min-h-[500px] relative">
+          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px] relative">
+            
+            {/* Dashboard Chart Image - large size extending outside the box in top-right corner */}
+            <div className="absolute -top-8 -right-8 lg:-right-16 z-20">
+              <img
+                src={dashboardChart}
+                alt="Dashboard de integração com gráficos e dados"
+                className="w-[36rem] lg:w-[42rem] h-auto rounded-2xl shadow-2xl"
+                data-testid="img-dashboard-chart"
+              />
+            </div>
+
             <div className="p-16 lg:p-24 relative z-10">
               
               {/* Title with specific line breaks and 30% larger font - left aligned */}
@@ -116,23 +126,6 @@ export default function IntegrationSection() {
 
             </div>
           </div>
-
-          {/* Dashboard Chart Image - positioned outside the box to be fully visible and in front */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="absolute -top-8 -right-8 lg:-right-16 z-30"
-          >
-            <img
-              src={dashboardChart}
-              alt="Dashboard de integração com gráficos e dados"
-              className="w-[36rem] lg:w-[42rem] h-auto rounded-2xl shadow-2xl"
-              data-testid="img-dashboard-chart"
-            />
-          </motion.div>
-
         </motion.div>
       </div>
     </section>
