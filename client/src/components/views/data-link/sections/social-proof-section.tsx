@@ -103,11 +103,11 @@ export default function SocialProofSection() {
                 </p>
 
                 {/* Team Avatars in circles above button */}
-                <div className="flex items-center space-x-3 mb-6">
-                  {teamAvatars.map((avatar) => (
+                <div className="flex items-center mb-6">
+                  {teamAvatars.map((avatar, index) => (
                     <div
                       key={avatar.id}
-                      className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md"
+                      className={`w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md ${index > 0 ? '-ml-3' : ''}`}
                       data-testid={`avatar-team-${avatar.id}`}
                     >
                       <img
