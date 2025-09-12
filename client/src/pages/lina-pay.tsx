@@ -16,35 +16,24 @@ import CtaFormSection from "@/components/views/lina-pay/sections/CtaFormSection"
 
 export default function LinaPay(): JSX.Element {
   return (
-    <>
-      <Header />
-      <div className="bg-white grid justify-items-center w-screen">
-        <div className="bg-white w-full max-w-[1440px]">
-          <div className="relative">
-            <LinaPayHeroSection />
-
-            {/* Differentiators Section */}
-            <DifferentiatorsSection />
-
-            {/* Social Proof Section */}
-            <SocialProofSection />
-
-            {/* Features Section */}
-            <FeaturesSection />
-
-            {/* Integration Section */}
-            <IntegrationSection />
-
-            {/* Segments Cloud Section */}
-            <SegmentsCloudSection />
-
-            {/* CTA Form Section */}
-            <CtaFormSection />
-
-          </div>
-        </div>
+    <div className="min-h-screen bg-white relative">
+      {/* Animated Blur Background */}
+      <div className="floating-blur"></div>
+      
+      {/* Content Layer */}
+      <div className="content-layer">
+        <Header />
+        <main>
+          <LinaPayHeroSection />
+          <DifferentiatorsSection />
+          <SocialProofSection />
+          <FeaturesSection />
+          <IntegrationSection />
+          <SegmentsCloudSection />
+          <CtaFormSection />
+        </main>
+        <Footer />
       </div>
-      <Footer />
-    </>
+    </div>
   );
 }
