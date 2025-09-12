@@ -60,7 +60,7 @@ export default function RegulatedEntitiesSection() {
           {/* Content Column (Left) - Title, Description & Graph */}
           <div 
             ref={contentRef}
-            className={`space-y-8 ${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
+            className={`${contentVisible ? 'scroll-reveal-slide-right' : 'scroll-reveal-hidden'}`}
           >
             {/* Main Title */}
             <h2 
@@ -92,7 +92,7 @@ export default function RegulatedEntitiesSection() {
           </div>
           
           {/* Features Column (Right) - Features List */}
-          <div className={`space-y-4 self-start ${contentVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'} pl-[58px] pr-[58px] ml-[0px] mr-[0px] mt-60`}>
+          <div className={`space-y-4 self-start ${contentVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'} pl-[58px] pr-[58px] ml-[0px] mr-[0px] mt-[99px]`}>
             {features.map((feature, index) => (
               <motion.div 
                 key={feature.title}
