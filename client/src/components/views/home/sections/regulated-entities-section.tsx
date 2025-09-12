@@ -131,7 +131,7 @@ export default function RegulatedEntitiesSection() {
         </div>
         
         {/* Centered Text Section - Full Width */}
-        <div className="flex justify-center pt-4">
+        <div className="flex justify-center pt-0 mt-[-320px]">
           <div className="space-y-4 max-w-2xl text-center">
             <p className="text-xl text-gray-700 leading-relaxed">
               <span className="font-bold">Tecnologia, performance, segurança</span> e o nível de<br />
@@ -142,7 +142,7 @@ export default function RegulatedEntitiesSection() {
         </div>
         
         {/* CTA Button - Full Width */}
-        <div className="text-center pt-2">
+        <div className="text-center pt-4">
           <Button 
             variant="light-bg"
             className="px-8 font-semibold"
