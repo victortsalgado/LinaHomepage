@@ -42,15 +42,15 @@ export default function SegmentsSection() {
   const [activeTab, setActiveTab] = useState(1);
 
   const activeSegment = segmentTabs.find(segment => segment.id === activeTab);
-  
-  // Define colors for each card based on LINA brand - all using the same gradient
+
+  // Define colors for each card based on LINA brand - all using the updated color
   const cardColors = [
-    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 1 - Lina Primary
-    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 2 - Same gradient
-    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500', // Card 3 - Same gradient
-    'bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500'  // Card 4 - Same gradient
+    'bg-gradient-to-br from-[#00b6ac] to-teal-500', // Card 1 - Updated color
+    'bg-gradient-to-br from-[#00b6ac] to-teal-500', // Card 2 - Same gradient
+    'bg-gradient-to-br from-[#00b6ac] to-teal-500', // Card 3 - Same gradient
+    'bg-gradient-to-br from-[#00b6ac] to-teal-500'  // Card 4 - Same gradient
   ];
-  
+
   // Get the color for the active card
   const activeCardColor = cardColors[activeTab - 1];
 
@@ -85,7 +85,7 @@ export default function SegmentsSection() {
 
         {/* Interactive Tabs Layout */}
         <motion.div
-          className="grid lg:grid-cols-2 gap-12 items-start"
+          className="grid lg:grid-cols-2 gap-20 items-start"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -96,16 +96,16 @@ export default function SegmentsSection() {
             {segmentTabs.map((segment, index) => {
               const IconComponent = segment.icon;
               const isActive = activeTab === segment.id;
-              
-              
+
+
               return (
                 <motion.div
                   key={segment.id}
                   onMouseEnter={() => setActiveTab(segment.id)}
-                  className={`w-full text-left p-3 rounded-2xl border-2 transition-all duration-500 group/card cursor-pointer hover:${cardColors[index]} ${
+                  className={`w-full text-left p-3 rounded-2xl border-2 transition-all duration-500 group/card cursor-pointer hover:bg-gradient-to-br hover:from-[#00b6ac] hover:to-teal-500 ${
                     isActive 
-                      ? `border-white/30 shadow-xl shadow-black/20 scale-105 ${cardColors[index]}` 
-                      : 'border-white/10 hover:border-white/30'
+                      ? `border-[#00b6ac]/50 shadow-xl shadow-black/20 scale-105 bg-gradient-to-br from-[#00b6ac] to-teal-500` 
+                      : 'border-white/10 hover:border-[#00b6ac]/50'
                   } hover:scale-110 group-hover/cards:[&:not(:hover)]:blur-[2px] group-hover/cards:[&:not(:hover)]:scale-90`}
                   data-testid={`tab-segment-${index + 1}`}
                 >
@@ -117,7 +117,7 @@ export default function SegmentsSection() {
                         data-testid={`icon-tab-${index + 1}`}
                       />
                     </div>
-                    
+
                     {/* Content */}
                     <div className="flex-1 flex items-center">
                       <h3 
@@ -144,12 +144,12 @@ export default function SegmentsSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="w-full h-[400px] bg-white rounded-3xl p-12 shadow-2xl border border-gray-300/20"
+                  className="w-full h-[400px] bg-transparent rounded-3xl p-12 shadow-none border-2 border-[#00b6ac]"
                   data-testid={`content-segment-${activeSegment.id}`}
                 >
                   {/* Content Icon */}
                   <div className="mb-8">
-                    <div className={`w-20 h-20 ${activeCardColor} rounded-3xl flex items-center justify-center shadow-lg`}>
+                    <div className={`w-20 h-20 bg-gradient-to-br from-[#00b6ac] to-teal-500 rounded-3xl flex items-center justify-center shadow-lg`}>
                       <activeSegment.icon 
                         className="w-10 h-10 text-white" 
                         data-testid={`icon-content-${activeSegment.id}`}
@@ -159,7 +159,7 @@ export default function SegmentsSection() {
 
                   {/* Content Title */}
                   <h3 
-                    className="text-3xl font-bold text-gray-900 mb-8 leading-tight"
+                    className="text-3xl font-bold text-[#00b6ac] mb-8 leading-tight"
                     style={{ fontFamily: 'Lexend, sans-serif' }}
                     data-testid={`title-content-${activeSegment.id}`}
                   >
@@ -168,15 +168,13 @@ export default function SegmentsSection() {
 
                   {/* Content Description */}
                   <p 
-                    className="text-xl text-gray-600 leading-relaxed"
+                    className="text-xl text-white leading-relaxed"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                     data-testid={`description-content-${activeSegment.id}`}
                   >
                     {activeSegment.description}
                   </p>
 
-                  {/* Decorative elements */}
-                  <div className="absolute bottom-8 left-8 w-12 h-12 bg-gradient-to-tr from-teal-100/50 to-[var(--lina-cyan)]/10 rounded-full" />
                 </motion.div>
               )}
             </AnimatePresence>

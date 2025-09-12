@@ -41,32 +41,34 @@ export default function IntegrationSection() {
 
   return (
     <section 
-      className="py-24 md:py-32 lg:py-40 bg-gray-50 min-h-screen flex items-center"
+      className="py-24 md:py-32 lg:py-40 bg-gray-50 min-h-screen flex items-center overflow-visible"
       data-testid="section-integration"
     >
-      {/* Same container structure as social proof section */}
-      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
+      {/* Container with overflow visible to allow image to extend */}
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem] overflow-visible">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
+          className="overflow-visible"
         >
-          {/* Main Box with same style as social proof section */}
-          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px] relative">
-            
+          {/* Main Box with same style as social proof section - overflow visible */}
+          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-visible backdrop-blur-sm min-h-[500px] relative">
+
             {/* Dashboard Chart Image - large size extending outside the box in top-right corner */}
-            <div className="absolute -top-8 -right-8 lg:-right-16 z-20">
+            <div className="absolute -top-8 -right-8 lg:-right-16 z-20 overflow-visible">
               <img
                 src={dashboardChart}
                 alt="Dashboard de integração com gráficos e dados"
                 className="w-[36rem] lg:w-[42rem] h-auto rounded-2xl shadow-2xl"
                 data-testid="img-dashboard-chart"
+                style={{ maxWidth: 'none' }}
               />
             </div>
 
             <div className="p-16 lg:p-24 relative z-10">
-              
+
               {/* Title with specific line breaks and 30% larger font - left aligned */}
               <motion.div
                 variants={itemVariants}
