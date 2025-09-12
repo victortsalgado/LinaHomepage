@@ -6,17 +6,23 @@ import {schemaTypes} from './schemas'
 export default defineConfig({
   name: 'default',
   title: 'Lina Blog',
-
-  projectId: 'dw34kfrg', // Project ID from Sanity dashboard
+  projectId: 'dw34kfrg',
   dataset: 'production',
-
-  plugins: [structureTool(), visionTool()],
-
-  server: {
-    host: '0.0.0.0',
-    port: 3000
+  
+  vite: {
+    server: {
+      host: '0.0.0.0',
+      port: 3000,
+      allowedHosts: [
+        '9835bf82-bc7e-4a32-88ae-0b2c471e48cd-00-3271k7ew19wun.kirk.replit.dev',
+        '.replit.dev',
+        'localhost',
+        'all'
+      ]
+    }
   },
-
+  
+  plugins: [structureTool(), visionTool()],
   schema: {
     types: schemaTypes,
   },
