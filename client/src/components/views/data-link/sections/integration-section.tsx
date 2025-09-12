@@ -55,22 +55,22 @@ export default function IntegrationSection() {
           {/* Main Box with same style as social proof section */}
           <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px] relative">
             
-            {/* Dashboard Chart Image - positioned to exit the box like the quotes */}
-            <div className="absolute top-0 right-0 transform translate-x-1/3 -translate-y-1/4 z-20">
+            {/* Dashboard Chart Image - positioned with bottom at title's middle height, left aligned to right column */}
+            <div className="absolute top-32 right-8 lg:right-12 z-20">
               <img
                 src={dashboardChart}
                 alt="Dashboard de integração com gráficos e dados"
-                className="w-80 h-auto rounded-2xl shadow-2xl border-4 border-white"
+                className="w-[28rem] h-auto rounded-2xl shadow-2xl border-4 border-white"
                 data-testid="img-dashboard-chart"
               />
             </div>
 
             <div className="p-16 lg:p-24 relative z-10">
               
-              {/* Title with specific line breaks and 30% larger font */}
+              {/* Title with specific line breaks and 30% larger font - left aligned */}
               <motion.div
                 variants={itemVariants}
-                className="text-center mb-16"
+                className="text-left mb-20"
               >
                 <h2 
                   className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight"
@@ -83,12 +83,12 @@ export default function IntegrationSection() {
                 </h2>
               </motion.div>
 
-              {/* Integration Points List - centralized at bottom, 30% larger font */}
+              {/* Integration Points List - more compressed at bottom, 30% larger font */}
               <motion.div
                 variants={itemVariants}
                 className="flex justify-center"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 max-w-4xl">
                   {integrationPoints.map((point, index) => (
                     <motion.div
                       key={index}
