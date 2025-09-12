@@ -15,105 +15,118 @@ export default function IntegrationSection() {
     "Implementação rápida com SDKs para principais linguagens"
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section 
-      className="py-48 md:py-64 lg:py-80 bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 relative overflow-hidden"
+      className="py-24 md:py-32 lg:py-40 bg-gray-50 min-h-screen flex items-center"
       data-testid="section-integration"
     >
-      {/* Background decoration */}
-      <div 
-        aria-hidden="true"
-        className="absolute inset-0 opacity-30"
-      >
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 rounded-full blur-3xl opacity-10" />
-        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-gradient-to-l from-[var(--lina-light)] to-cyan-200 rounded-full blur-3xl opacity-10" />
-      </div>
-
-      {/* Main Container - Similar to segments section */}
-      <div className="bg-white rounded-3xl shadow-xl mx-6 lg:mx-8 relative overflow-visible">
-        <div className="container mx-auto px-16 lg:px-24 py-16 lg:py-24 max-w-[92rem] relative">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      {/* Same container structure as social proof section */}
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          {/* Main Box with same style as social proof section */}
+          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px] relative">
             
-            {/* Left Column - Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative z-10"
-            >
-              {/* Title with specific line breaks */}
-              <h2 
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-12 leading-tight"
-                style={{ fontFamily: 'Lexend, sans-serif' }}
-                data-testid="heading-integration-title"
+            {/* Dashboard Chart Image - positioned to exit the box like the quotes */}
+            <div className="absolute top-0 right-0 transform translate-x-1/3 -translate-y-1/4 z-20">
+              <img
+                src={dashboardChart}
+                alt="Dashboard de integração com gráficos e dados"
+                className="w-80 h-auto rounded-2xl shadow-2xl border-4 border-white"
+                data-testid="img-dashboard-chart"
+              />
+            </div>
+
+            <div className="p-16 lg:p-24 relative z-10">
+              
+              {/* Title with specific line breaks and 30% larger font */}
+              <motion.div
+                variants={itemVariants}
+                className="text-center mb-16"
               >
-                Integração<br />
-                com <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">segurança<br />
-                e agilidade</span>
-              </h2>
+                <h2 
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight"
+                  style={{ fontFamily: 'Lexend, sans-serif' }}
+                  data-testid="heading-integration-title"
+                >
+                  Integração<br />
+                  com <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">segurança<br />
+                  e agilidade</span>
+                </h2>
+              </motion.div>
 
-              {/* Integration Points List - 2 columns of 3 items each */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                {integrationPoints.map((point, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ 
-                      duration: 0.6, 
-                      delay: 0.1 + (index * 0.1),
-                      ease: "easeOut" 
-                    }}
-                    className="flex items-start space-x-3"
-                    data-testid={`integration-point-${index + 1}`}
-                  >
-                    {/* Check Icon with button color */}
-                    <div className="flex-shrink-0 mt-1">
-                      <Check 
-                        className="w-6 h-6 text-[#2ec9bc]" 
-                        data-testid={`icon-check-${index + 1}`}
-                      />
-                    </div>
-
-                    {/* Content */}
-                    <p 
-                      className="text-gray-700 leading-relaxed"
-                      style={{ fontFamily: 'Inter, sans-serif' }}
-                      data-testid={`text-integration-${index + 1}`}
+              {/* Integration Points List - centralized at bottom, 30% larger font */}
+              <motion.div
+                variants={itemVariants}
+                className="flex justify-center"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl">
+                  {integrationPoints.map((point, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ 
+                        duration: 0.6, 
+                        delay: 0.1 + (index * 0.1),
+                        ease: "easeOut" 
+                      }}
+                      className="flex items-start space-x-4"
+                      data-testid={`integration-point-${index + 1}`}
                     >
-                      {point}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+                      {/* Check Icon with button color */}
+                      <div className="flex-shrink-0 mt-1">
+                        <Check 
+                          className="w-8 h-8 text-[#2ec9bc]" 
+                          data-testid={`icon-check-${index + 1}`}
+                        />
+                      </div>
 
-            {/* Right Column - Dashboard Chart extending outside container */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-              className="relative"
-            >
-              {/* Dashboard Chart Image - positioned to extend beyond container */}
-              <div className="relative lg:ml-8 lg:mr-[-8rem]">
-                <img
-                  src={dashboardChart}
-                  alt="Dashboard de integração com gráficos e dados"
-                  className="w-full h-auto rounded-2xl shadow-2xl border border-gray-200"
-                  data-testid="img-dashboard-chart"
-                />
-                
-                {/* Optional overlay effect */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-[var(--lina-cyan)]/5 rounded-2xl" />
-              </div>
-            </motion.div>
+                      {/* Content with 30% larger font */}
+                      <p 
+                        className="text-xl text-gray-700 leading-relaxed"
+                        style={{ fontFamily: 'Inter, sans-serif' }}
+                        data-testid={`text-integration-${index + 1}`}
+                      >
+                        {point}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
 
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
