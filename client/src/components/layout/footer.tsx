@@ -1,24 +1,24 @@
 import { Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
+import { Link } from "wouter";
 import logoPath from "@assets/Nova_logo_lina_1756708154690.png";
 
 export function Footer() {
-  const regulatoryLinks = [
-    "Gestão de Consentimentos",
-    "Identidade e Acesso (IAM)",
-    "API Gateway",
-    "Sandbox",
-    "Open Desk",
-    "Jornada Sem Redirecionamento - JSR"
+  const productLinks = [
+    { name: "Data Link", path: "/data-link" },
+    { name: "Lina Pay", path: "/lina-pay" },
+    { name: "JSR", path: "/jsr" }
   ];
 
-  const serviceLinks = [
-    "Agregação de Contas",
-    "Iniciação de Pagamentos",
-    "Onboarding e KYC",
-    "Investimentos",
-    "Risco e Crédito",
-    "Iniciação de Pagamentos - Lina Pay",
-    "Compartilhamento de Dados - Data Link"
+  const resourceLinks = [
+    { name: "Blog", path: "#" },
+    { name: "Documentação", path: "#" },
+    { name: "Suporte", path: "#" }
+  ];
+
+  const otherLinks = [
+    { name: "Integrações", path: "#" },
+    { name: "Trial", path: "#" },
+    { name: "Quem somos", path: "/quem-somos" }
   ];
 
   const legalLinks = [
@@ -94,47 +94,83 @@ export function Footer() {
               </div>
             </div>
             
-            {/* Coluna 2 - Regulatório */}
+            {/* Coluna 2 - Produtos e Recursos */}
             <div>
-              <h3 
-                className="font-semibold text-white text-base mb-6 uppercase tracking-wide"
-                data-testid="heading-footer-regulatory"
-              >
-                REGULATORIO FINANCE E INSURANCE
-              </h3>
-              <ul className="space-y-3">
-                {regulatoryLinks.map((link, index) => (
-                  <li key={link}>
-                    <a 
-                      href="#" 
-                      className="text-gray-200 hover:text-white transition-colors text-sm leading-relaxed"
-                      data-testid={`link-regulatory-${index}`}
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              {/* Produtos */}
+              <div className="mb-8">
+                <h3 
+                  className="font-semibold text-white text-base mb-6 uppercase tracking-wide"
+                  data-testid="heading-footer-products"
+                >
+                  PRODUTOS
+                </h3>
+                <ul className="space-y-3">
+                  {productLinks.map((link, index) => (
+                    <li key={link.name}>
+                      <Link 
+                        href={link.path}
+                        className="text-gray-200 hover:text-white transition-colors text-sm leading-relaxed"
+                        data-testid={`link-product-${index}`}
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              {/* Recursos */}
+              <div>
+                <h3 
+                  className="font-semibold text-white text-base mb-6 uppercase tracking-wide"
+                  data-testid="heading-footer-resources"
+                >
+                  RECURSOS
+                </h3>
+                <ul className="space-y-3">
+                  {resourceLinks.map((link, index) => (
+                    <li key={link.name}>
+                      <a 
+                        href={link.path}
+                        className="text-gray-200 hover:text-white transition-colors text-sm leading-relaxed"
+                        data-testid={`link-resource-${index}`}
+                      >
+                        {link.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
             
-            {/* Coluna 3 - Serviços */}
+            {/* Coluna 3 - Outros Links */}
             <div>
               <h3 
                 className="font-semibold text-white text-base mb-6 uppercase tracking-wide"
-                data-testid="heading-footer-services"
+                data-testid="heading-footer-other"
               >
-                OPEN FINANCE AS A SERVICE
+                LINKS
               </h3>
               <ul className="space-y-3">
-                {serviceLinks.map((link, index) => (
-                  <li key={link}>
-                    <a 
-                      href="#" 
-                      className="text-gray-200 hover:text-white transition-colors text-sm leading-relaxed"
-                      data-testid={`link-service-${index}`}
-                    >
-                      {link}
-                    </a>
+                {otherLinks.map((link, index) => (
+                  <li key={link.name}>
+                    {link.path.startsWith('/') ? (
+                      <Link 
+                        href={link.path}
+                        className="text-gray-200 hover:text-white transition-colors text-sm leading-relaxed"
+                        data-testid={`link-other-${index}`}
+                      >
+                        {link.name}
+                      </Link>
+                    ) : (
+                      <a 
+                        href={link.path}
+                        className="text-gray-200 hover:text-white transition-colors text-sm leading-relaxed"
+                        data-testid={`link-other-${index}`}
+                      >
+                        {link.name}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
