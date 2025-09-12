@@ -64,7 +64,7 @@ export default function RegulatedEntitiesSection() {
           >
             {/* Main Title */}
             <h2 
-              className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight font-lexend text-lina-dark"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-lexend text-lina-dark"
               data-testid="heading-regulated-entities-title"
             >
               <span className="whitespace-nowrap bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Infraestrutura & Conectividade</span><br />
