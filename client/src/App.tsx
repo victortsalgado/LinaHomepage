@@ -18,10 +18,16 @@ import Storage from "@/pages/storage";
 import Migration from "@/pages/migration";
 import SanityPageComponent from "@/pages/sanity/[slug]";
 
+// Wrapper para rota /home do Sanity
+function SanityHomePage() {
+  return <SanityPageComponent forceSlug="home" />;
+}
+
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/home" component={SanityHomePage} />
       <Route path="/data-link" component={DataLink} />
       <Route path="/lina-pay" component={LinaPay} />
       <Route path="/jsr" component={JSR} />
