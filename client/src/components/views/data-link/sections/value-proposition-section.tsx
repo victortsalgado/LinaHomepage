@@ -82,7 +82,7 @@ export default function ValuePropositionSection() {
   };
 
   return (
-    <section className="py-48 md:py-64 lg:py-80" style={{ backgroundColor: 'var(--lina-dark)' }} data-testid="section-value-proposition">
+    <section className="pt-16 pb-48 md:pt-20 md:pb-64 lg:pt-24 lg:pb-80" style={{ backgroundColor: 'var(--lina-dark)' }} data-testid="section-value-proposition">
       <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         {/* Section Title */}
         <motion.div 
