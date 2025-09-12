@@ -1,6 +1,17 @@
-import RDStationForm from "@/components/ui/RDStationForm";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function NewsletterSection() {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle newsletter subscription logic here
+    console.log("Newsletter subscription:", email);
+    // Reset form
+    setEmail("");
+  };
 
   return (
     <section 
@@ -28,9 +39,27 @@ export default function NewsletterSection() {
             Inscreva-se e receba a nossa Newsletter
           </p>
 
-          {/* RD Station Form */}
-          <div className="max-w-4xl mx-auto">
-            <RDStationForm className="w-full" />
+          {/* Email Input and Button */}
+          <div className="max-w-2xl mx-auto">
+            <div className="flex flex-col md:flex-row gap-4 items-center">
+              <Input
+                type="email"
+                placeholder="Seu melhor e-mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-14 text-lg px-6 bg-white border-0 rounded-lg text-gray-900 placeholder:text-gray-500 flex-1"
+                data-testid="input-newsletter-email"
+              />
+              <Button
+                onClick={handleSubmit}
+                variant="light-bg"
+                size="lg"
+                className="h-14 px-8 text-lg font-semibold whitespace-nowrap min-w-fit"
+                data-testid="button-newsletter-subscribe"
+              >
+                Inscrever-se
+              </Button>
+            </div>
           </div>
         </div>
       </div>
