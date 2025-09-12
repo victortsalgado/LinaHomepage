@@ -7,9 +7,6 @@ import { useEffect, useState } from "react";
 export default function RegulatedEntitiesSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
   const { ref: contentRef, isVisible: contentVisible } = useScrollReveal<HTMLDivElement>();
-  const { ref: visualRef, isVisible: visualVisible } = useScrollReveal<HTMLDivElement>();
-  
-  const [animateBars, setAnimateBars] = useState(false);
 
   // Features list with corresponding icons
   const features = [
@@ -45,28 +42,6 @@ export default function RegulatedEntitiesSection() {
     }
   ];
 
-  // Generate bars with varying heights for visual representation
-  const dataVisualizationBars = [
-    { height: 30, delay: 0.1 },
-    { height: 45, delay: 0.2 },
-    { height: 60, delay: 0.3 },
-    { height: 85, delay: 0.4 },
-    { height: 75, delay: 0.5 },
-    { height: 95, delay: 0.6 },
-    { height: 120, delay: 0.7 },
-    { height: 110, delay: 0.8 },
-    { height: 140, delay: 0.9 },
-    { height: 160, delay: 1.0 },
-    { height: 150, delay: 1.1 },
-    { height: 170, delay: 1.2 }
-  ];
-
-  // Start bar animation when visual becomes visible
-  useEffect(() => {
-    if (visualVisible && !animateBars) {
-      setAnimateBars(true);
-    }
-  }, [visualVisible, animateBars]);
 
   return (
     <section 
@@ -115,97 +90,6 @@ export default function RegulatedEntitiesSection() {
               </ul>
             </div>
 
-            {/* Animated Data Visualization - Now on Left */}
-            <div 
-              ref={visualRef}
-              className={`relative ${visualVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
-              data-testid="visualization-data-growth"
-            >
-              <div className="relative h-80 flex items-end justify-center space-x-2 p-6">
-                {/* Background grid for tech feel */}
-                <div className="absolute inset-0 opacity-15">
-                  <div className="h-full w-full" style={{
-                    backgroundImage: `
-                      linear-gradient(rgba(0, 102, 102, 0.3) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(0, 102, 102, 0.3) 1px, transparent 1px)
-                    `,
-                    backgroundSize: '20px 20px'
-                  }}></div>
-                </div>
-                
-                {/* Animated bars representing growth from sandbox to scale */}
-                {dataVisualizationBars.map((bar, index) => (
-                  <motion.div
-                    key={index}
-                    className="relative flex-1 max-w-4 rounded-t-lg border border-gray-300"
-                    style={{ 
-                      background: index % 3 === 0 ? '#006666' : 
-                                 index % 3 === 1 ? '#008080' : 
-                                 '#0a5d5d',
-                      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
-                    }}
-                    initial={{ height: 0, opacity: 0.7 }}
-                    animate={animateBars ? { 
-                      height: bar.height, 
-                      opacity: 1 
-                    } : {}}
-                    transition={{ 
-                      delay: bar.delay, 
-                      duration: 0.8, 
-                      ease: [0.4, 0, 0.2, 1] 
-                    }}
-                    data-testid={`bar-growth-${index}`}
-                  >
-                    {/* Subtle shadow effect for highlighted bars */}
-                    {index % 3 === 0 && (
-                      <motion.div
-                        className="absolute inset-0 rounded-t-lg"
-                        style={{ 
-                          background: '#004d4d',
-                          boxShadow: '0 4px 12px rgba(0, 102, 102, 0.3)'
-                        }}
-                        initial={{ opacity: 0 }}
-                        animate={animateBars ? { opacity: 0.8 } : {}}
-                        transition={{ delay: bar.delay + 0.5, duration: 0.5 }}
-                      />
-                    )}
-                  </motion.div>
-                ))}
-                
-                {/* Growth arrow overlay */}
-                <motion.div
-                  className="absolute top-4 right-4 flex items-center space-x-2"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={animateBars ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 1.5, duration: 0.6 }}
-                >
-                  <div className="text-sm font-medium text-teal-700">
-                    Do Sandbox à Escala
-                  </div>
-                  <motion.div
-                    animate={animateBars ? { 
-                      y: [0, -5, 0],
-                      opacity: [0.7, 1, 0.7]
-                    } : {}}
-                    transition={{ 
-                      repeat: Infinity, 
-                      duration: 2,
-                      delay: 2
-                    }}
-                    className="text-teal-700"
-                  >
-                    ↗
-                  </motion.div>
-                </motion.div>
-              </div>
-              
-              {/* Tech labels for context */}
-              <div className="absolute -bottom-3 left-0 right-0 flex text-xs text-gray-600">
-                <span className="ml-44">Sandbox</span>
-                <span className="flex-1 text-center">Produção</span>
-                <span className="mr-44">Escala</span>
-              </div>
-            </div>
           </div>
           
           {/* Features Column (Right) - Features List */}
