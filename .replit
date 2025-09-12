@@ -12,6 +12,15 @@ build = ["npm", "run", "build"]
 run = ["sh", "-c", "npm run start"]
 
 [[ports]]
+localPort = 3333
+externalPort = 5000
+exposeLocalhost = true
+
+[[ports]]
+localPort = 3334
+externalPort = 3000
+
+[[ports]]
 localPort = 5000
 externalPort = 80
 

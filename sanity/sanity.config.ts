@@ -12,6 +12,11 @@ export default defineConfig({
 
   plugins: [structureTool(), visionTool()],
 
+  server: {
+    host: '0.0.0.0',
+    port: 3334
+  },
+
   schema: {
     types: schemaTypes,
   },
