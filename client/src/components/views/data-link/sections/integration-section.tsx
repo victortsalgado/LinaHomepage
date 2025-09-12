@@ -55,12 +55,12 @@ export default function IntegrationSection() {
           {/* Main Box with same style as social proof section */}
           <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px] relative">
             
-            {/* Dashboard Chart Image - positioned with bottom at title's middle height, left aligned to right column */}
-            <div className="absolute top-32 right-8 lg:right-12 z-20">
+            {/* Dashboard Chart Image - large size extending outside the box in top-right corner */}
+            <div className="absolute -top-8 -right-8 lg:-right-16 z-20">
               <img
                 src={dashboardChart}
                 alt="Dashboard de integração com gráficos e dados"
-                className="w-[28rem] h-auto rounded-2xl shadow-2xl border-4 border-white"
+                className="w-[36rem] lg:w-[42rem] h-auto rounded-2xl shadow-2xl border-4 border-white"
                 data-testid="img-dashboard-chart"
               />
             </div>
