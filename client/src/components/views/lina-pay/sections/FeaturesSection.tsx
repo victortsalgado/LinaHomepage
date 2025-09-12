@@ -52,9 +52,9 @@ export default function FeaturesSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left - Title */}
-            <div>
+          <div>
+            {/* Title */}
+            <div className="bg-gradient-to-br from-[#00b6ac]/20 to-teal-500/20 rounded-3xl p-8 backdrop-blur-sm border border-[#00b6ac]/20 max-w-3xl">
               <h2
                 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
                 style={{ fontFamily: "Lexend, sans-serif" }}
@@ -95,19 +95,6 @@ export default function FeaturesSection() {
                 </div>
               </div>
             </div>
-
-            {/* Right - Image */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-[#00b6ac]/20 to-teal-500/20 rounded-3xl p-8 backdrop-blur-sm border border-[#00b6ac]/20">
-                <div className="aspect-[4/3] bg-gradient-to-br from-[#00b6ac]/10 to-transparent rounded-2xl flex items-center justify-center overflow-hidden">
-                  <img
-                    src={FeatureImagePath}
-                    alt="Profissional sorrindo segurando tablet"
-                    className="w-full h-full object-cover rounded-2xl"
-                  />
-                </div>
-              </div>
-            </div>
           </div>
         </motion.div>
 
@@ -119,54 +106,67 @@ export default function FeaturesSection() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          <div className="grid md:grid-cols-2 gap-8">
-            {featuresData.map((feature, index) => {
-              const IconComponent = feature.icon;
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left - Features */}
+            <div className="grid md:grid-cols-1 gap-8">
+              {featuresData.map((feature, index) => {
+                const IconComponent = feature.icon;
 
-              return (
-                <motion.div
-                  key={feature.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.1 + index * 0.1,
-                    ease: "easeOut",
-                  }}
-                  className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-[#00b6ac]/30 transition-all duration-300"
-                  data-testid={`feature-card-${index + 1}`}
-                >
-                  {/* Icon */}
-                  <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#00b6ac] to-teal-500 rounded-2xl flex items-center justify-center shadow-lg">
-                      <IconComponent
-                        className="w-8 h-8 text-white"
-                        data-testid={`icon-feature-${index + 1}`}
-                      />
+                return (
+                  <motion.div
+                    key={feature.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.1 + index * 0.1,
+                      ease: "easeOut",
+                    }}
+                    className="flex items-start gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-[#00b6ac]/30 transition-all duration-300"
+                    data-testid={`feature-card-${index + 1}`}
+                  >
+                    {/* Icon */}
+                    <div className="flex-shrink-0">
+                      <div className="w-16 h-16 bg-gradient-to-br from-[#00b6ac] to-teal-500 rounded-2xl flex items-center justify-center shadow-lg">
+                        <IconComponent
+                          className="w-8 h-8 text-white"
+                          data-testid={`icon-feature-${index + 1}`}
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="flex-1">
-                    <h3
-                      className="text-xl font-bold text-white mb-3 leading-tight"
-                      style={{ fontFamily: "Lexend, sans-serif" }}
-                      data-testid={`title-feature-${index + 1}`}
-                    >
-                      {feature.title}
-                    </h3>
-                    <p
-                      className="text-gray-300 leading-relaxed"
-                      style={{ fontFamily: "Inter, sans-serif" }}
-                      data-testid={`description-feature-${index + 1}`}
-                    >
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+                    {/* Content */}
+                    <div className="flex-1">
+                      <h3
+                        className="text-xl font-bold text-white mb-3 leading-tight"
+                        style={{ fontFamily: "Lexend, sans-serif" }}
+                        data-testid={`title-feature-${index + 1}`}
+                      >
+                        {feature.title}
+                      </h3>
+                      <p
+                        className="text-gray-300 leading-relaxed"
+                        style={{ fontFamily: "Inter, sans-serif" }}
+                        data-testid={`description-feature-${index + 1}`}
+                      >
+                        {feature.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Right - Image */}
+            <div className="flex justify-end">
+              <img
+                src={FeatureImagePath}
+                alt="Profissional sorrindo segurando tablet"
+                className="w-full max-w-[420px] ml-auto rounded-2xl object-cover"
+                data-testid="img-features-photo"
+              />
+            </div>
           </div>
         </motion.div>
       </div>
