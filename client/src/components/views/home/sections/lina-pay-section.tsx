@@ -119,7 +119,7 @@ export default function LinaPaySection() {
                 <div className="pt-4">
                   <Button 
                     variant="light-bg"
-                    className="px-6 py-2 font-normal hover:bg-white/20 hover:scale-105 hover:shadow-lg transition-all duration-300"
+                    className="px-6 py-2 font-normal hover:text-white"
                     data-testid="button-saiba-mais"
                   >
                     Saiba mais
