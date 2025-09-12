@@ -229,164 +229,18 @@ export default function ContactSection() {
 
                   {/* Form */}
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Full Name */}
-                    <div className="space-y-2">
-                      <Label 
-                        htmlFor="fullName" 
-                        className="text-white font-medium"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid="label-full-name"
-                      >
-                        Nome completo*
-                      </Label>
-                      <Input
-                        id="fullName"
-                        type="text"
-                        required
-                        placeholder="Digite seu nome completo"
-                        value={formData.fullName}
-                        onChange={(e) => handleInputChange('fullName', e.target.value)}
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
-                        data-testid="input-full-name"
-                      />
-                    </div>
-
                     {/* Email */}
                     <div className="space-y-2">
-                      <Label 
-                        htmlFor="email" 
-                        className="text-white font-medium"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid="label-email"
-                      >
-                        E-mail corporativo*
-                      </Label>
                       <Input
                         id="email"
                         type="email"
                         required
-                        placeholder="exemplo@empresa.com"
+                        placeholder="Seu e-mail corporativo"
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
                         className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
                         data-testid="input-email"
                       />
-                    </div>
-
-                    {/* Phone */}
-                    <div className="space-y-2">
-                      <Label 
-                        htmlFor="phone" 
-                        className="text-white font-medium"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid="label-phone"
-                      >
-                        Telefone*
-                      </Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        required
-                        placeholder="(11) 99999-9999"
-                        value={formData.phone}
-                        onChange={(e) => handleInputChange('phone', e.target.value)}
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
-                        data-testid="input-phone"
-                      />
-                    </div>
-
-                    {/* Company */}
-                    <div className="space-y-2">
-                      <Label 
-                        htmlFor="company" 
-                        className="text-white font-medium"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid="label-company"
-                      >
-                        Empresa*
-                      </Label>
-                      <Input
-                        id="company"
-                        type="text"
-                        required
-                        placeholder="Nome da empresa"
-                        value={formData.company}
-                        onChange={(e) => handleInputChange('company', e.target.value)}
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
-                        data-testid="input-company"
-                      />
-                    </div>
-
-                    {/* Revenue Dropdown */}
-                    <div className="space-y-2">
-                      <Label 
-                        className="text-white font-medium"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid="label-revenue"
-                      >
-                        Qual o Faturamento Anual da Empresa?
-                      </Label>
-                      <Select 
-                        value={formData.revenue} 
-                        onValueChange={(value) => handleInputChange('revenue', value)}
-                      >
-                        <SelectTrigger 
-                          className="bg-white/10 border-white/20 text-white focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
-                          data-testid="select-revenue"
-                        >
-                          <SelectValue 
-                            placeholder="Selecione o faturamento anual"
-                            className="text-white/60"
-                          />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {revenueOptions.map((option, index) => (
-                            <SelectItem 
-                              key={index} 
-                              value={option}
-                              data-testid={`option-revenue-${index + 1}`}
-                            >
-                              {option}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    {/* Segment Dropdown */}
-                    <div className="space-y-2">
-                      <Label 
-                        className="text-white font-medium"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid="label-segment"
-                      >
-                        Qual o segmento da sua empresa?
-                      </Label>
-                      <Select 
-                        value={formData.segment} 
-                        onValueChange={(value) => handleInputChange('segment', value)}
-                      >
-                        <SelectTrigger 
-                          className="bg-white/10 border-white/20 text-white focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
-                          data-testid="select-segment"
-                        >
-                          <SelectValue 
-                            placeholder="Selecione o segmento"
-                            className="text-white/60"
-                          />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {segmentOptions.map((option, index) => (
-                            <SelectItem 
-                              key={index} 
-                              value={option}
-                              data-testid={`option-segment-${index + 1}`}
-                            >
-                              {option}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
                     </div>
 
                     {/* Submit Button */}
@@ -398,7 +252,7 @@ export default function ContactSection() {
                       style={{ fontFamily: 'Lexend, sans-serif' }}
                       data-testid="button-submit-form"
                     >
-                      Enviar mensagem
+                      Cadastrar
                     </Button>
                   </form>
                 </div>
