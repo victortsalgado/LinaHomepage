@@ -336,7 +336,9 @@ export default function HeroSection() {
                   <img
                     src={slides[0].imageSrc}
                     alt={slides[0].imageAlt}
-                    className="w-full h-auto max-w-2xl mx-auto object-contain filter drop-shadow-2xl"
+                    className={`h-auto mx-auto object-contain filter drop-shadow-2xl ${
+                      slides[0].id !== 2 ? 'w-[70%] max-w-[calc(2xl*0.7)]' : 'w-full max-w-2xl'
+                    }`}
                     loading="eager"
                     fetchPriority="high"
                     data-testid="hero-image-mobile-static"
@@ -363,7 +365,9 @@ export default function HeroSection() {
                       <img
                         src={currentSlideData.imageSrc}
                         alt={currentSlideData.imageAlt}
-                        className="w-full h-auto max-w-2xl object-contain filter drop-shadow-2xl"
+                        className={`h-auto object-contain filter drop-shadow-2xl ${
+                          currentSlideData.id !== 2 ? 'w-[70%] max-w-[calc(2xl*0.7)]' : 'w-full max-w-2xl'
+                        }`}
                         loading={currentSlideData.priority ? "eager" : "lazy"}
                         {...(currentSlideData.priority && { fetchPriority: "high" })}
                         data-testid={`hero-image-${currentSlideData.id}`}
