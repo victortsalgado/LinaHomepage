@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/Heading";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import dataLinkImage from "@assets/telas-lp (1)_1757669554153.gif";
+import dataLinkImage from "../../../../assets/data-link-image.png";
 import datalinkAnimation from "../../../../assets/datalink-animation.gif";
 
 export default function DataLinkSection() {
