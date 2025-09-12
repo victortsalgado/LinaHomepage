@@ -73,7 +73,7 @@ export default function RegulatedEntitiesSection() {
             
             {/* Description */}
             <div 
-              className="text-xl text-gray-700 leading-relaxed space-y-4 mt-8"
+              className="text-xl text-gray-700 leading-relaxed space-y-4 mt-16"
               data-testid="text-regulated-entities-description"
             >
               <p>
@@ -92,7 +92,7 @@ export default function RegulatedEntitiesSection() {
           </div>
           
           {/* Features Column (Right) - Features List */}
-          <div className={`space-y-4 self-start ${contentVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'} pl-[58px] pr-[58px] ml-[0px] mr-[0px]`}>
+          <div className={`space-y-4 self-start ${contentVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'} pl-[58px] pr-[58px] ml-[0px] mr-[0px] mt-16`}>
             {features.map((feature, index) => (
               <motion.div 
                 key={feature.title}
