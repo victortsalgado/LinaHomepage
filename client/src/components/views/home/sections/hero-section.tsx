@@ -338,6 +338,7 @@ export default function HeroSection() {
                     alt={slides[0].imageAlt}
                     className="w-full h-auto max-w-2xl mx-auto object-contain filter drop-shadow-2xl"
                     loading="eager"
+                    fetchPriority="high"
                     data-testid="hero-image-mobile-static"
                   />
                 </div>
@@ -364,6 +365,7 @@ export default function HeroSection() {
                         alt={currentSlideData.imageAlt}
                         className="w-full h-auto max-w-2xl object-contain filter drop-shadow-2xl"
                         loading={currentSlideData.priority ? "eager" : "lazy"}
+                        {...(currentSlideData.priority && { fetchPriority: "high" })}
                         data-testid={`hero-image-${currentSlideData.id}`}
                       />
                     </motion.div>

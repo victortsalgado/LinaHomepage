@@ -14,20 +14,11 @@ import Contato from "@/pages/contato";
 import Blog from "@/pages/blog";
 import BlogPost from "@/pages/blog/[slug]";
 import Trial from "@/pages/trial";
-import Storage from "@/pages/storage";
-import Migration from "@/pages/migration";
-import SanityPageComponent from "@/pages/sanity/[slug]";
-
-// Wrapper para rota /home do Sanity
-function SanityHomePage() {
-  return <SanityPageComponent forceSlug="home" />;
-}
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/home" component={SanityHomePage} />
       <Route path="/data-link" component={DataLink} />
       <Route path="/lina-pay" component={LinaPay} />
       <Route path="/jsr" component={JSR} />
@@ -36,11 +27,6 @@ function Router() {
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/trial" component={Trial} />
-      <Route path="/storage" component={Storage} />
-      <Route path="/migration" component={Migration} />
-      <Route path="/sanity/:slug">
-        {(params) => <SanityPageComponent />}
-      </Route>
       <Route component={NotFound} />
     </Switch>
   );

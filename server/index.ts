@@ -6,7 +6,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -47,13 +46,6 @@ app.use((req, res, next) => {
 
     const server = await registerRoutes(app);
 
-    // Seed initial data (disabled for now due to DB connection issues)
-    // try {
-    //   await seedInitialData();
-    // } catch (error) {
-    //   console.error('Seed data failed, continuing without it:', error);
-    // }
-
     // Add health check endpoint for deployment monitoring
     app.get('/health', (_req: Request, res: Response) => {
       res.status(200).json({ 
@@ -68,11 +60,8 @@ app.use((req, res, next) => {
       const status = err.status || err.statusCode || 500;
       const message = err.message || "Internal Server Error";
 
-      // Log the error for debugging
-      log(`Error ${status}: ${message}`);
-      console.error(err);
-
       res.status(status).json({ message });
+      throw err;
     });
 
     // importantly only setup vite in development and after

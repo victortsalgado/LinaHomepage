@@ -14,5 +14,5 @@ export const insertUserSchema = createInsertSchema(users).pick({
   password: true,
 });
 
-export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
+export type User = typeof users.$inferSelect;
