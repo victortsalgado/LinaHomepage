@@ -127,35 +127,27 @@ export default function LinaPaySection() {
                 </div>
               </div>
               
-              {/* Right Side - Phone and Box */}
+              {/* Right Side - Phone and Text */}
               <div 
                 ref={phoneRef}
-                className={`flex flex-col order-2 lg:order-none ${phoneVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'}`}
+                className={`flex flex-col order-2 lg:order-none ${phoneVisible ? 'scroll-reveal-slide-left' : 'scroll-reveal-hidden'} items-center justify-center space-y-6`}
               >
-                
-                {/* Phone Container with Background */}
-                <div 
-                  className="relative rounded-3xl py-16 px-8 shadow-xl w-full max-w-lg mx-auto flex-1 flex flex-col justify-center min-h-[600px] mt-[-69px] mb-[-69px] ml-[55.0156px] mr-[55.0156px] pt-[103px] pb-[103px]"
-                  style={{ backgroundColor: '#009391' }}
-                >
-                  {/* LinaPay GIF/Animation */}
-                  <div className="flex justify-center mb-6">
-                    <img 
-                      src={linaPay}
-                      alt="LinaPay PIX por Biometria mockup"
-                      className="w-64 h-[500px] rounded-[2.5rem] shadow-2xl object-cover"
-                      data-testid="img-linapay-mockup"
-                    />
-                  </div>
-                  
-                  {/* Description Text - Inside the box, below phone */}
-                  <div className="text-center px-4">
-                    <p className="text-white text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      A solução que transforma a experiência do cliente e traz inúmeras vantagens para e-commerces, marketplaces, plataformas de pagamento e provedores de serviços.
-                    </p>
-                  </div>
+                {/* LinaPay GIF/Animation */}
+                <div className="flex justify-center">
+                  <img 
+                    src={linaPay}
+                    alt="LinaPay PIX por Biometria mockup"
+                    className="w-64 h-[500px] rounded-[2.5rem] shadow-2xl object-cover"
+                    data-testid="img-linapay-mockup"
+                  />
                 </div>
                 
+                {/* Description Text - Below phone */}
+                <div className="text-center px-4 max-w-md">
+                  <p className="text-white text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    A solução que transforma a experiência do cliente e traz inúmeras vantagens para e-commerces, marketplaces, plataformas de pagamento e provedores de serviços.
+                  </p>
+                </div>
               </div>
               
             </div>
