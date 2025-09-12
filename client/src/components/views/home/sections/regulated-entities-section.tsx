@@ -142,7 +142,7 @@ export default function RegulatedEntitiesSection() {
         </div>
         
         {/* CTA Button - Full Width */}
-        <div className="text-center pt-4">
+        <div className="text-center mt-[126px] mb-[126px] pt-[7px] pb-[7px]">
           <Button 
             variant="light-bg"
             className="px-8 font-semibold"
