@@ -137,9 +137,7 @@ export default function RegulatedEntitiesSection() {
               <span className="font-bold">Tecnologia, performance, segurança</span> e o nível de<br />
               suporte técnico eoperacional que o ecossistema exige!
             </p>
-            <p className="text-xl text-gray-700 leading-relaxed whitespace-nowrap">
-              <span className="font-bold">Infraestrutura robusta.</span> Soluções que integram. <span className="font-bold">Resultados que escalam.</span>
-            </p>
+            
           </div>
         </div>
         
