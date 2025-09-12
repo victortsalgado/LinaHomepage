@@ -38,7 +38,9 @@ function Router() {
       <Route path="/trial" component={Trial} />
       <Route path="/storage" component={Storage} />
       <Route path="/migration" component={Migration} />
-      <Route path="/sanity/:slug" component={SanityPageComponent} />
+      <Route path="/sanity/:slug">
+        {(params) => <SanityPageComponent />}
+      </Route>
       <Route component={NotFound} />
     </Switch>
   );
