@@ -182,26 +182,7 @@ export default function DataLinkHeroSection() {
                     </Button>
                   </motion.div>
 
-                  {/* Data points highlight */}
-                  <motion.div
-                    className="mt-12 flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-gray-500"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-[var(--lina-cyan)] rounded-full" />
-                      <span>+2.200 pontos de dados</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-[var(--lina-cyan)] rounded-full" />
-                      <span>+50 instituições</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-[var(--lina-cyan)] rounded-full" />
-                      <span>API homologada</span>
-                    </div>
-                  </motion.div>
+                  
                 </div>
                 
                 {/* Right Column - Animated Visual */}
