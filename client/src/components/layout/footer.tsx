@@ -29,135 +29,137 @@ export function Footer() {
 
   return (
     <footer 
-      className="bg-[#1a4d4d] text-black rounded-t-[40px] mt-0"
+      className="bg-teal-700 text-white"
       data-testid="footer-main"
     >
-      <div className="px-8 py-12 lg:px-16 lg:py-16 mt-[-40px] mb-[-40px]">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16">
-            {/* Coluna 1 - Contato */}
-            <div>
+      <div className="px-6 py-16 lg:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+
+            {/* Coluna 1 - Logo e Contato */}
+            <div className="lg:col-span-1">
               <div className="mb-8">
                 <img 
                   src={logoPath} 
                   alt="LINA Logo" 
-                  className="h-16 w-auto"
+                  className="h-12 w-auto mb-8"
                   data-testid="img-footer-logo"
                 />
               </div>
-              
+
               <div className="space-y-4 mb-8">
-                <div className="text-gray-200">
-                  <span className="font-medium text-sm" data-testid="text-footer-phone">
+                <div>
+                  <span className="font-medium text-white text-sm block" data-testid="text-footer-phone">
                     +55 11 3181 6170
                   </span>
                 </div>
-                <div className="text-gray-200">
-                  <span className="text-sm leading-relaxed" data-testid="text-footer-address">
+                <div>
+                  <span className="text-gray-200 text-sm leading-relaxed block" data-testid="text-footer-address">
                     Rua Correia Dias, 93, SL 0102,<br />
                     Paraíso, 04104 - 000
                   </span>
                 </div>
-                <div className="text-gray-200">
-                  <span className="text-sm" data-testid="text-footer-email">
+                <div>
+                  <span className="text-gray-200 text-sm block" data-testid="text-footer-email">
                     openx@linainfratech.com.br
                   </span>
                 </div>
               </div>
-              
+
               {/* Social Media Icons */}
               <div className="flex space-x-3">
-                <div 
-                  className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
+                <a 
+                  href="#"
+                  className="w-10 h-10 bg-teal-400 rounded-lg flex items-center justify-center hover:bg-teal-300 transition-colors"
                   data-testid="link-social-linkedin"
                 >
-                  <Linkedin size={16} className="text-black" />
-                </div>
-                <div 
-                  className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
+                  <Linkedin size={18} className="text-teal-800" />
+                </a>
+                <a 
+                  href="#"
+                  className="w-10 h-10 bg-teal-400 rounded-lg flex items-center justify-center hover:bg-teal-300 transition-colors"
                   data-testid="link-social-twitter"
                 >
-                  <Twitter size={16} className="text-black" />
-                </div>
-                <div 
-                  className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
+                  <Twitter size={18} className="text-teal-800" />
+                </a>
+                <a 
+                  href="#"
+                  className="w-10 h-10 bg-teal-400 rounded-lg flex items-center justify-center hover:bg-teal-300 transition-colors"
                   data-testid="link-social-youtube"
                 >
-                  <Youtube size={16} className="text-black" />
-                </div>
-                <div 
-                  className="w-8 h-8 bg-[#2ec9bc] rounded flex items-center justify-center hover:bg-[#2ec9bc]/80 transition-colors"
+                  <Youtube size={18} className="text-teal-800" />
+                </a>
+                <a 
+                  href="#"
+                  className="w-10 h-10 bg-teal-400 rounded-lg flex items-center justify-center hover:bg-teal-300 transition-colors"
                   data-testid="link-social-instagram"
                 >
-                  <Instagram size={16} className="text-black" />
-                </div>
+                  <Instagram size={18} className="text-teal-800" />
+                </a>
               </div>
             </div>
-            
-            {/* Coluna 2 - Produtos e Recursos */}
-            <div>
-              {/* Produtos */}
-              <div className="mb-8">
-                <h3 
-                  className="font-semibold text-white text-base mb-6 uppercase tracking-wide"
-                  data-testid="heading-footer-products"
-                >
-                  PRODUTOS
-                </h3>
-                <ul className="space-y-3">
-                  {productLinks.map((link, index) => (
-                    <li key={link.name}>
-                      <Link 
-                        href={link.path}
-                        className="text-gray-200 hover:text-white transition-colors text-sm leading-relaxed"
-                        data-testid={`link-product-${index}`}
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              {/* Recursos */}
-              <div>
-                <h3 
-                  className="font-semibold text-white text-base mb-6 uppercase tracking-wide"
-                  data-testid="heading-footer-resources"
-                >
-                  RECURSOS
-                </h3>
-                <ul className="space-y-3">
-                  {resourceLinks.map((link, index) => (
-                    <li key={link.name}>
-                      <a 
-                        href={link.path}
-                        className="text-gray-200 hover:text-white transition-colors text-sm leading-relaxed"
-                        data-testid={`link-resource-${index}`}
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            
-            {/* Coluna 3 - Outros Links */}
+
+            {/* Coluna 2 - Produtos */}
             <div>
               <h3 
-                className="font-semibold text-white text-base mb-6 uppercase tracking-wide"
+                className="font-semibold text-white text-lg mb-6 uppercase tracking-wider"
+                data-testid="heading-footer-products"
+              >
+                PRODUTOS
+              </h3>
+              <ul className="space-y-4">
+                {productLinks.map((link, index) => (
+                  <li key={link.name}>
+                    <Link 
+                      href={link.path}
+                      className="text-gray-200 hover:text-white transition-colors text-lg font-medium"
+                      data-testid={`link-product-${index}`}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Coluna 3 - Recursos */}
+            <div>
+              <h3 
+                className="font-semibold text-white text-lg mb-6 uppercase tracking-wider"
+                data-testid="heading-footer-resources"
+              >
+                RECURSOS
+              </h3>
+              <ul className="space-y-4">
+                {resourceLinks.map((link, index) => (
+                  <li key={link.name}>
+                    <a 
+                      href={link.path}
+                      className="text-gray-200 hover:text-white transition-colors text-lg font-medium"
+                      data-testid={`link-resource-${index}`}
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Coluna 4 - Links */}
+            <div>
+              <h3 
+                className="font-semibold text-white text-lg mb-6 uppercase tracking-wider"
                 data-testid="heading-footer-other"
               >
                 LINKS
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {otherLinks.map((link, index) => (
                   <li key={link.name}>
                     {link.path.startsWith('/') ? (
                       <Link 
                         href={link.path}
-                        className="text-gray-200 hover:text-white transition-colors text-sm leading-relaxed"
+                        className="text-gray-200 hover:text-white transition-colors text-lg font-medium"
                         data-testid={`link-other-${index}`}
                       >
                         {link.name}
@@ -165,7 +167,7 @@ export function Footer() {
                     ) : (
                       <a 
                         href={link.path}
-                        className="text-gray-200 hover:text-white transition-colors text-sm leading-relaxed"
+                        className="text-gray-200 hover:text-white transition-colors text-lg font-medium"
                         data-testid={`link-other-${index}`}
                       >
                         {link.name}
@@ -176,30 +178,28 @@ export function Footer() {
               </ul>
             </div>
           </div>
-          
+
           {/* Copyright Bar */}
-          <div className="mt-12 relative">
-            {/* Gradient line */}
-            <div className="h-px bg-gradient-to-r from-transparent via-[#2ec9bc] to-transparent"></div>
-            <div className="pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p 
-              className="text-gray-400 text-sm mb-4 md:mb-0"
-              data-testid="text-footer-copyright"
-            >
-              © 2025 LINA. Todos os direitos reservados. CNPJ: 37.663.090/0001-00
-            </p>
-            <div className="flex space-x-6">
-              {legalLinks.map((link, index) => (
-                <a 
-                  key={link}
-                  href="#" 
-                  className="text-gray-400 hover:text-white text-sm transition-colors"
-                  data-testid={`link-legal-${index}`}
-                >
-                  {link}
-                </a>
-              ))}
-            </div>
+          <div className="mt-16 pt-8 border-t border-teal-600">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+              <p 
+                className="text-gray-300 text-sm"
+                data-testid="text-footer-copyright"
+              >
+                © 2025 LINA. Todos os direitos reservados. CNPJ: 37.663.090/0001-00
+              </p>
+              <div className="flex flex-wrap gap-6">
+                {legalLinks.map((link, index) => (
+                  <a 
+                    key={link}
+                    href="#" 
+                    className="text-gray-300 hover:text-white text-sm transition-colors whitespace-nowrap"
+                    data-testid={`link-legal-${index}`}
+                  >
+                    {link}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
