@@ -73,7 +73,7 @@ export default function SocialProofSection() {
               >
                 <div className="mb-6">
                   <span 
-                    className="text-sm font-medium text-[var(--lina-cyan)] mb-2 block"
+                    className="text-sm font-medium text-[#2ec9bc] mb-2 block"
                     data-testid="text-section-label"
                   >
                     Quem usa, recomenda
@@ -83,7 +83,7 @@ export default function SocialProofSection() {
                     style={{ fontFamily: 'Lexend, sans-serif' }}
                     data-testid="heading-social-proof-title"
                   >
-                    Veja o impacto do <span className="bg-gradient-to-r from-[var(--lina-cyan)] to-teal-400 bg-clip-text text-transparent">Data Link</span> na prática
+                    Veja o impacto do <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Data Link</span> na prática
                   </h2>
                 </div>
 
@@ -95,8 +95,8 @@ export default function SocialProofSection() {
                 </p>
 
                 <Button 
-                  variant="default"
-                  className="bg-[var(--lina-cyan)] hover:bg-[var(--lina-cyan)]/90 text-white px-6 py-3 rounded-full flex items-center space-x-2 mb-8"
+                  variant="light-bg"
+                  className="px-6 py-3 mb-8"
                   data-testid="button-discover-datalink"
                 >
                   <span>Descubra como funciona</span>
