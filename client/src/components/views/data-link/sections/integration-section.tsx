@@ -51,12 +51,21 @@ export default function IntegrationSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
-          className="relative"
         >
           {/* Main Box with same style as social proof section */}
-          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-visible backdrop-blur-sm min-h-[600px] relative">
+          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px] relative">
+            
+            {/* Dashboard Chart Image - large size extending outside the box in top-right corner */}
+            <div className="absolute -top-8 -right-8 lg:-right-16 z-20">
+              <img
+                src={dashboardChart}
+                alt="Dashboard de integração com gráficos e dados"
+                className="w-[36rem] lg:w-[42rem] h-auto rounded-2xl shadow-2xl"
+                data-testid="img-dashboard-chart"
+              />
+            </div>
 
-            <div className="p-16 lg:p-24 relative z-20 md:pr-72 lg:pr-[34rem]">
+            <div className="p-16 lg:p-24 relative z-10">
               
               {/* Title with specific line breaks and 30% larger font - left aligned */}
               <motion.div
@@ -116,16 +125,6 @@ export default function IntegrationSection() {
               </motion.div>
 
             </div>
-          </div>
-          
-          {/* Dashboard Chart Image - positioned at bottom-right to avoid overlapping content */}
-          <div className="absolute bottom-0 right-0 lg:right-8 z-30 hidden md:block">
-            <img
-              src={dashboardChart}
-              alt="Dashboard de integração com gráficos e dados"
-              className="w-[28rem] lg:w-[32rem] h-auto rounded-2xl shadow-2xl"
-              data-testid="img-dashboard-chart"
-            />
           </div>
         </motion.div>
       </div>
