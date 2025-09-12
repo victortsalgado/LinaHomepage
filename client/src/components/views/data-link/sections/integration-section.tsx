@@ -1,37 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Shield, Zap, FileText } from "lucide-react";
-import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { Check } from "lucide-react";
+import dashboardChart from "@/assets/grafico-dashboard.png";
 
 export default function IntegrationSection() {
-  const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
-  const { ref: contentRef, isVisible: contentVisible } = useScrollReveal<HTMLDivElement>();
-  const { ref: imageRef, isVisible: imageVisible } = useScrollReveal<HTMLDivElement>();
-
-  // Integration benefits data
+  // Integration benefits data - 6 items to be displayed in 2 columns of 3 each
   const integrationPoints = [
-    {
-      icon: FileText,
-      title: "API REST com documentação e módulos completos",
-      description: "Implementação rápida com SDKs e documentação técnica detalhada para todas as linguagens"
-    },
-    {
-      icon: Shield,
-      title: "Segurança de ponta a ponta com certificações bancárias",
-      description: "Conformidade total com LGPD, Open Finance e padrões de segurança do setor financeiro"
-    },
-    {
-      icon: Zap,
-      title: "Suporte técnico especializado e onboarding acelerado",
-      description: "Time dedicado para integração em até 48h com monitoramento contínuo de performance"
-    }
+    "APIs REST bem documentadas e modulares",
+    "Homologado no Open Finance e 100% LGPD compliant",
+    "Suporte técnico direto com time da Lina",
+    "Pronto para rodar em apps móveis, plataformas web, sistemas de BI e ERPs",
+    "Redução no time-to-market com pacotes personalizáveis por necessidade",
+    "Implementação rápida com SDKs para principais linguagens"
   ];
 
   return (
     <section 
-      ref={sectionRef}
-      className="py-48 md:py-64 lg:py-80 bg-white relative overflow-hidden"
+      className="py-48 md:py-64 lg:py-80 bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 relative overflow-hidden"
       data-testid="section-integration"
     >
       {/* Background decoration */}
@@ -43,133 +29,90 @@ export default function IntegrationSection() {
         <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-gradient-to-l from-[var(--lina-light)] to-cyan-200 rounded-full blur-3xl opacity-10" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 lg:px-8 max-w-[92rem]">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content Column - Left */}
-          <motion.div
-            ref={contentRef}
-            initial={{ opacity: 0, x: -50 }}
-            animate={contentVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* Title */}
-            <h2 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight"
-              style={{ fontFamily: 'Lexend, sans-serif' }}
-              data-testid="heading-integration-title"
+      {/* Main Container - Similar to segments section */}
+      <div className="bg-white rounded-3xl shadow-xl mx-6 lg:mx-8 relative overflow-visible">
+        <div className="container mx-auto px-16 lg:px-24 py-16 lg:py-24 max-w-[92rem] relative">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            
+            {/* Left Column - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative z-10"
             >
-              <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">
-                Integração com segurança
-              </span>
-              <br />
-              <span className="text-gray-800">
-                e agilidade
-              </span>
-            </h2>
+              {/* Title with specific line breaks */}
+              <h2 
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-12 leading-tight"
+                style={{ fontFamily: 'Lexend, sans-serif' }}
+                data-testid="heading-integration-title"
+              >
+                Integração<br />
+                com <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">segurança<br />
+                e agilidade</span>
+              </h2>
 
-            {/* Integration Points List */}
-            <div className="space-y-6">
-              {integrationPoints.map((point, index) => {
-                const IconComponent = point.icon;
-                
-                return (
+              {/* Integration Points List - 2 columns of 3 items each */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                {integrationPoints.map((point, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 30 }}
-                    animate={contentVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
                     transition={{ 
                       duration: 0.6, 
-                      delay: 0.2 + (index * 0.15),
+                      delay: 0.1 + (index * 0.1),
                       ease: "easeOut" 
                     }}
-                    className="flex items-start space-x-4 group"
+                    className="flex items-start space-x-3"
                     data-testid={`integration-point-${index + 1}`}
                   >
-                    {/* Check Icon Background */}
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-[var(--lina-cyan)]/40 transition-all duration-300">
-                        <IconComponent 
-                          className="w-6 h-6 text-white" 
-                          data-testid={`icon-integration-${index + 1}`}
-                        />
-                      </div>
+                    {/* Check Icon with button color */}
+                    <div className="flex-shrink-0 mt-1">
+                      <Check 
+                        className="w-6 h-6 text-[#2ec9bc]" 
+                        data-testid={`icon-check-${index + 1}`}
+                      />
                     </div>
 
                     {/* Content */}
-                    <div className="flex-1">
-                      <h3 
-                        className="text-xl font-bold text-gray-900 mb-2 leading-tight group-hover:text-gray-800 transition-colors duration-300"
-                        style={{ fontFamily: 'Lexend, sans-serif' }}
-                        data-testid={`title-integration-${index + 1}`}
-                      >
-                        {point.title}
-                      </h3>
-                      <p 
-                        className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                        data-testid={`description-integration-${index + 1}`}
-                      >
-                        {point.description}
-                      </p>
-                    </div>
+                    <p 
+                      className="text-gray-700 leading-relaxed"
+                      style={{ fontFamily: 'Inter, sans-serif' }}
+                      data-testid={`text-integration-${index + 1}`}
+                    >
+                      {point}
+                    </p>
                   </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
-
-          {/* Visual Column - Right */}
-          <motion.div
-            ref={imageRef}
-            initial={{ opacity: 0, x: 50 }}
-            animate={imageVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="lg:pl-8"
-          >
-            {/* Integration Visual Mockup */}
-            <div className="relative bg-gradient-to-br from-white via-[var(--lina-light)] to-cyan-50 rounded-2xl p-8 shadow-2xl border border-gray-100 overflow-hidden">
-              {/* Background pattern */}
-              <div 
-                aria-hidden="true"
-                className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[var(--lina-cyan)] to-transparent opacity-10 rounded-bl-full"
-              />
-              
-              {/* Security Shield Icon */}
-              <div className="relative z-10 text-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-[var(--lina-cyan)] to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                  <Shield className="w-12 h-12 text-white" />
-                </div>
-                
-                {/* Security Features */}
-                <div className="space-y-4">
-                  <div className="flex items-center justify-center space-x-2 text-gray-700">
-                    <Check className="w-5 h-5 text-green-500" />
-                    <span className="font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      LGPD Compliant
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-center space-x-2 text-gray-700">
-                    <Check className="w-5 h-5 text-green-500" />
-                    <span className="font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      Open Finance Certified
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-center space-x-2 text-gray-700">
-                    <Check className="w-5 h-5 text-green-500" />
-                    <span className="font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      Bank-Grade Security
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-center space-x-2 text-gray-700">
-                    <Check className="w-5 h-5 text-green-500" />
-                    <span className="font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>
-                      Integração em até 48h
-                    </span>
-                  </div>
-                </div>
+                ))}
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+
+            {/* Right Column - Dashboard Chart extending outside container */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="relative"
+            >
+              {/* Dashboard Chart Image - positioned to extend beyond container */}
+              <div className="relative lg:ml-8 lg:mr-[-8rem]">
+                <img
+                  src={dashboardChart}
+                  alt="Dashboard de integração com gráficos e dados"
+                  className="w-full h-auto rounded-2xl shadow-2xl border border-gray-200"
+                  data-testid="img-dashboard-chart"
+                />
+                
+                {/* Optional overlay effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-[var(--lina-cyan)]/5 rounded-2xl" />
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </div>
     </section>
