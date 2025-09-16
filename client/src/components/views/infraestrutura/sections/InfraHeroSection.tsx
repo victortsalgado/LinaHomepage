@@ -80,32 +80,53 @@ export default function InfraHeroSection() {
             </motion.div>
           </div>
 
-          {/* Right Column - Pure Laser Effect */}
+          {/* Right Column - Subtle Laser Background */}
           <motion.div
             className="relative h-[600px] lg:h-[700px] w-full"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
           >
-            {/* Main Laser Container */}
-            <div className="absolute inset-0 rounded-3xl overflow-hidden">
+            {/* Subtle Background Laser */}
+            <div className="absolute inset-0 rounded-3xl overflow-hidden opacity-30">
               <LaserFlow
                 color="#00b6ac"
                 horizontalBeamOffset={0.0}
-                verticalBeamOffset={0.0}
-                fogIntensity={0.6}
-                flowSpeed={0.4}
-                wispIntensity={4.0}
-                verticalSizing={2.5}
-                horizontalSizing={1.2}
-                wispDensity={1.5}
-                decay={1.3}
-                falloffStart={1.5}
+                verticalBeamOffset={-0.3}
+                fogIntensity={0.2}
+                flowSpeed={0.2}
+                wispIntensity={1.5}
+                verticalSizing={0.8}
+                horizontalSizing={3.0}
+                wispDensity={0.8}
+                decay={0.6}
+                falloffStart={0.8}
               />
             </div>
 
-            {/* Optional: Subtle border glow */}
-            <div className="absolute inset-0 rounded-3xl border border-[#00b6ac]/20 shadow-2xl shadow-[#00b6ac]/10" />
+            {/* Horizontal Accent Laser */}
+            <div className="absolute top-1/2 left-0 w-full h-32 -translate-y-1/2 opacity-60">
+              <LaserFlow
+                color="#2EC9BC"
+                horizontalBeamOffset={0.0}
+                verticalBeamOffset={0.0}
+                fogIntensity={0.4}
+                flowSpeed={0.3}
+                wispIntensity={2.0}
+                verticalSizing={0.3}
+                horizontalSizing={4.0}
+                wispDensity={1.0}
+                decay={0.8}
+                falloffStart={1.0}
+              />
+            </div>
+
+            {/* Glass Effect Border */}
+            <div className="absolute inset-0 rounded-3xl border border-[#00b6ac]/20 bg-gradient-to-br from-white/5 via-white/2 to-transparent backdrop-blur-sm" />
+            
+            {/* Corner Accents */}
+            <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-[#00b6ac]/40 rounded-tr-lg"></div>
+            <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-[#2EC9BC]/40 rounded-bl-lg"></div>
           </motion.div>
         </div>
       </div>
