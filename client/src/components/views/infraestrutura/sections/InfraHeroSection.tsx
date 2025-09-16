@@ -229,33 +229,6 @@ export default function InfraHeroSection() {
                     </div>
 
                     {/* Floating data labels with technical terms */}
-                    <motion.div
-                      className="absolute top-1/4 left-1/6 bg-black/80 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg border border-[var(--lina-cyan)]/30 cursor-pointer hover:bg-[var(--lina-cyan)]/10 transition-colors"
-                      initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                      animate={{ 
-                        opacity: 1, 
-                        y: [0, -8, 0], 
-                        scale: [0.8, 1, 1],
-                        boxShadow: [
-                          '0 4px 6px rgba(0, 0, 0, 0.3)',
-                          '0 8px 15px rgba(0, 239, 207, 0.4)',
-                          '0 4px 6px rgba(0, 0, 0, 0.3)'
-                        ]
-                      }}
-                      transition={{ 
-                        delay: 1.5, 
-                        duration: 0.5,
-                        y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 },
-                        boxShadow: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
-                      }}
-                      whileHover={{ 
-                        scale: 1.05,
-                        y: -12,
-                        transition: { duration: 0.2 }
-                      }}
-                    >
-                      <span className="text-xs font-medium text-[var(--lina-cyan)] select-none">API Gateway</span>
-                    </motion.div>
 
                     <motion.div
                       className="absolute top-1/3 right-1/6 bg-black/80 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg border border-[var(--lina-cyan)]/30 cursor-pointer hover:bg-[var(--lina-cyan)]/10 transition-colors"
