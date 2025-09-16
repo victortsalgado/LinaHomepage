@@ -1,8 +1,14 @@
-"use client";
+Preciso implementar um hero section com efeito laser futurístico. O layout deve ter: texto à esquerda, laser-flow limpo à direita (sem diagrama de rede), ocupando altura total da tela. Execute as seguintes tarefas:
+1. INSTALAR DEPENDÊNCIAS
+bashnpm install three framer-motion lucide-react
+2. CRIAR ARQUIVO: src/components/LaserFlow.jsx
+[Cole o código LaserFlow completo que forneci anteriormente - o componente com shaders WebGL]
+3. SUBSTITUIR COMPLETAMENTE: src/components/InfraHeroSection.jsx
+javascript"use client";
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import LaserFlow from "@/components/LaserFlow";
+import { LaserFlow } from "./LaserFlow";
 
 export default function InfraHeroSection() {
   return (
@@ -131,3 +137,15 @@ export default function InfraHeroSection() {
     </section>
   );
 }
+4. CONFIGURAÇÕES IMPORTANTES:
+
+Use min-h-screen para ocupar altura total
+O laser deve ficar limpo à direita, sem outros elementos sobrepostos
+Mantenha as cores da LINA: #00b6ac e #2EC9BC
+Configure o LaserFlow com os parâmetros otimizados fornecidos
+
+5. ESTRUTURA FINAL:
+src/
+  components/
+    LaserFlow.jsx       (novo arquivo)
+    InfraHeroSection.jsx (substituir completamente)
