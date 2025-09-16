@@ -3,6 +3,7 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import InfraHeroSection from "@/components/views/infraestrutura/sections/InfraHeroSection.tsx";
 import InfraSocialProofSection from "@/components/views/infraestrutura/sections/InfraSocialProofSection.tsx";
+import InfraHighlightsSection from "@/components/views/infraestrutura/sections/InfraHighlightsSection.tsx";
 
 export default function InfraestruturaEConectividade(): JSX.Element {
   return (
@@ -16,6 +17,7 @@ export default function InfraestruturaEConectividade(): JSX.Element {
         <main>
           <InfraHeroSection />
           <InfraSocialProofSection />
+          <InfraHighlightsSection />
         </main>
         <Footer />
       </div>

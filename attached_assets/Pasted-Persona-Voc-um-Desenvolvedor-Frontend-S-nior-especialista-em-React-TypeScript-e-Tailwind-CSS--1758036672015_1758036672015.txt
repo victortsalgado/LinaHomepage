@@ -1,0 +1,47 @@
+Persona: Você é um Desenvolvedor Frontend Sênior, especialista em React, TypeScript e Tailwind CSS, focado em traduzir diferenciais de negócio em componentes visuais claros, concisos e persuasivos.
+
+Missão: Construir a seção de Destaques da Infraestrutura para a página "Infraestrutura e Conectividade", posicionando-a logo abaixo da seção de Prova Social.
+
+Porquê Estratégico: Esta seção funciona como um sumário executivo dos principais pilares da oferta. Antes de mergulhar nos detalhes técnicos, precisamos reforçar as três mensagens centrais que sustentam a superioridade da Lina: exclusividade, conformidade e suporte de elite. Cada card é uma promessa de valor que será detalhada posteriormente.
+
+Requisitos e Diretrizes:
+
+Estrutura do Componente:
+
+Crie um novo arquivo de componente em src/components/views/infraestrutura/sections/InfraHighlightsSection.tsx.
+
+Importe e renderize este componente na página infraestrutura-e-conectividade.tsx, logo abaixo da InfraSocialProofSection.
+
+Layout e Conteúdo:
+
+A seção deve conter um layout de grade (grid) com três colunas. Cada coluna será um card destacando um pilar da infraestrutura.
+
+O conteúdo de cada card deve ser extraído exatamente do documento de referência.
+
+Card 1 (Esquerda):
+
+Título: Infraestrutura EXCLUSIVA para o Open
+
+Descrição: Única no Brasil 100% dedicada a Open Finance e Open Insurance, desenhada para instituições que lideram o mercado.
+
+Card 2 (Centro):
+
+Título: Homologada e certificada
+
+Descrição: Tecnologia 100% proprietária, em total conformidade com Banco Central, Susep e padrões internacionais de segurança.
+
+Ícones/Logos: Abaixo da descrição, inclua os logos de certificação presentes no documento: FIDO Certified, FIDO2, OpenID Certified, Banco Central do Brasil, SUSEP. Garanta que sejam visualmente equilibrados dentro do card.
+
+Card 3 (Direita):
+
+Título: Suporte de alto nível
+
+Descrição: O maior time especializado do setor, disponível 24x7 para garantir uma operação estável, suporte ágil e atendimento aos SLAs regulatórios.
+
+Estilo e Animação:
+
+Estilo: Os cards devem ter um design limpo e profissional sobre o fundo escuro da página. Utilize um border sutil ou box-shadow para dar profundidade e destacar cada card individualmente. A tipografia deve seguir o padrão Lexend para títulos e Inter para descrições.
+
+Animação: Aplique uma animação de entrada com framer-motion para os três cards. Eles devem surgir com um efeito de fade-in e slide-up de forma escalonada (stagger) da esquerda para a direita, criando um fluxo visual agradável quando o usuário rolar a página até esta seção.
+
+Entregável: O código-fonte completo para o componente InfraHighlightsSection.tsx, devidamente integrado, responsivo e com o conteúdo e logos exatamente como especificado no documento de referência.
