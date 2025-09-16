@@ -6,6 +6,7 @@ import InfraSocialProofSection from "@/components/views/infraestrutura/sections/
 import InfraHighlightsSection from "@/components/views/infraestrutura/sections/InfraHighlightsSection.tsx";
 import InfraCoreComponentsSection from "@/components/views/infraestrutura/sections/InfraCoreComponentsSection.tsx";
 import InfraMarketLeadersSection from "@/components/views/infraestrutura/sections/InfraMarketLeadersSection.tsx";
+import InfraFinalCTASection from "@/components/views/infraestrutura/sections/InfraFinalCTASection.tsx";
 
 export default function InfraestruturaEConectividade(): JSX.Element {
   return (
@@ -22,6 +23,7 @@ export default function InfraestruturaEConectividade(): JSX.Element {
           <InfraHighlightsSection />
           <InfraCoreComponentsSection />
           <InfraMarketLeadersSection />
+          <InfraFinalCTASection />
         </main>
         <Footer />
       </div>
