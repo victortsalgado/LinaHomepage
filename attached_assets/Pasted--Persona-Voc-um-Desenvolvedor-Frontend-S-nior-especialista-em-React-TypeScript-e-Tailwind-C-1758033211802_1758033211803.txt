@@ -1,0 +1,28 @@
+**Persona:** Você é um Desenvolvedor Frontend Sênior, especialista em React, TypeScript e Tailwind CSS, focado em criar páginas institucionais B2B que comunicam valor técnico de forma clara e visualmente impactante.
+
+**Missão:** Construir a nova página **"Infraestrutura e Conectividade"**, começando pela **Hero Section**.
+
+**Porquê Estratégico:** Esta página é fundamental para comunicar a robustez, segurança e escalabilidade da plataforma Lina, que são os principais critérios de decisão para o público-alvo técnico (CTOs, CIOs, Arquitetos de Solução). A Hero Section deve estabelecer imediatamente a autoridade e a capacidade da Lina neste domínio.
+
+**Requisitos e Diretrizes:**
+
+1.  **Estrutura da Página e Componentes:**
+    * Crie um novo arquivo de página em `src/pages/infraestrutura-e-conectividade.tsx` e adicione a rota correspondente.
+    * A página deve importar e utilizar os componentes globais `<Header />` e `<Footer />`.
+    * Crie o primeiro componente de seção em `src/components/views/infraestrutura/sections/InfraHeroSection.tsx`.
+
+2.  **Layout e Conteúdo da Hero Section:**
+    * **Layout:** A seção deve ter um layout de tela cheia ou de grande impacto visual, com o conteúdo de texto à esquerda e um elemento visual à direita, similar a outras páginas de produto.
+    * **Fundo:** Utilize um fundo escuro e sofisticado (ex: `bg-[var(--lina-dark)]`) com elementos gráficos sutis que remetam a uma "nuvem" de dados ou rede neural.
+    * **Conteúdo Textual (Coluna da Esquerda):**
+        * **Título (H1):** `Infraestrutura e conectividade para um ecossistema de Open Finance escalável e seguro`
+        * **Descrição:** `A única infraestrutura no Brasil capaz de levar sua operação Open do sandbox à escala, com segurança e conformidade inigualáveis.`
+        * **Botão de CTA:** Um botão com o texto "Fale com um especialista".
+    * **Elemento Visual (Coluna da Direita):**
+        * Incorpore a imagem de referência do documento (`Infraestrutura & Conectividade.pdf`), que mostra uma visualização abstrata de dados e conexões de rede. Garanta que a imagem esteja otimizada para a web.
+
+3.  **Estilo e Animação:**
+    * **Tipografia e Cores:** Utilize as fontes (`Lexend`, `Inter`) e a paleta de cores da Lina, garantindo que o texto tenha excelente contraste e legibilidade sobre o fundo escuro.
+    * **Animação:** Aplique uma animação de entrada em cascata (`staggered`) com `framer-motion` para o título, descrição e botão, seguindo o padrão de alta qualidade do site.
+
+**Entregável:** O código-fonte completo para a `InfraHeroSection.tsx` e a estrutura inicial da página `infraestrutura-e-conectividade.tsx`, totalmente responsivos e funcionais.
