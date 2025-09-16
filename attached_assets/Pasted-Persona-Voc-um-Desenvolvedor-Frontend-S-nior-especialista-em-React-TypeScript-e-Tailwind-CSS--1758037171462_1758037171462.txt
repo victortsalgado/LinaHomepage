@@ -1,0 +1,59 @@
+Persona: Você é um Desenvolvedor Frontend Sênior, especialista em React, TypeScript e Tailwind CSS, com habilidade para estruturar informações técnicas complexas em layouts claros, organizados e fáceis de assimilar.
+
+Missão: Construir a seção "Nossa infraestrutura de Open Finance & Insurance", que detalha os componentes da plataforma. A seção deve ser posicionada logo abaixo da seção de Destaques.
+
+Porquê Estratégico: Esta é a seção mais técnica da página. Ela precisa comunicar de forma inequívoca a completude e a robustez da solução. Para o público-alvo (CTOs, Arquitetos), a clareza e a organização desta informação são cruciais para a avaliação técnica e a geração de confiança na capacidade da plataforma.
+
+Requisitos e Diretrizes:
+
+Estrutura do Componente:
+
+Crie um novo arquivo de componente em src/components/views/infraestrutura/sections/InfraCoreComponentsSection.tsx.
+
+Importe e renderize este novo componente na página infraestrutura-e-conectividade.tsx, logo abaixo da InfraHighlightsSection.
+
+Layout e Conteúdo:
+
+Título da Seção (H2): Utilize o título exato do documento: Nossa infraestrutura de Open Finance & Insurance.
+
+Layout de Grade: Implemente um layout de grade (grid) com duas colunas para apresentar os componentes. Cada item na grade será um "card de feature" contendo um título e uma descrição.
+
+Conteúdo dos Cards: O conteúdo deve ser extraído verbatim do documento de referência.
+
+Item 1:
+
+Título: Plataforma de Consentimento (CDR)
+
+Descrição: Orquestração do consentimento fim a fim, com fluxos otimizados para maximizar a conversão de clientes e atender aos requisitos regulatórios.
+
+Item 2:
+
+Título: Gateway de Conectividade
+
+Descrição: Conexão com os principais players do mercado, com tradução de APIs e enriquecimento de dados para otimizar o processo de integração.
+
+Item 3:
+
+Título: Plataforma de Suporte e Monitoramento
+
+Descrição: Acompanhamento em tempo real das conexões e transações, com dashboards e relatórios para uma visão completa da operação.
+
+Item 4:
+
+Título: Service Desk 24x7
+
+Descrição: Equipe de especialistas à disposição para suportar necessidades de apoio técnico e operacional, da homologação à produção, incluindo testes FVP.
+
+Item 5:
+
+Título: Servidores de Autorização FAPI OP/RP e FIDO
+
+Descrição: Autenticação robusta com certificação e padrões internacionais para proteger dados e acessos sensíveis.
+
+Estilo e Animação:
+
+Estilo dos Cards: Cada card de feature deve ter um design limpo, com uma clara distinção visual entre o título (fonte Lexend, maior peso) e a descrição (fonte Inter). Utilize um ícone apropriado e sutil para cada item, se disponível no seu set de ícones, para reforçar visualmente o conceito.
+
+Animação: Aplique uma animação de entrada com framer-motion. Os cards devem aparecer com um fade-in e um leve slide-up à medida que o usuário rola a página, com um pequeno atraso (stagger) entre os itens para criar um efeito de carregamento fluido.
+
+Entregável: O código-fonte completo para o componente InfraCoreComponentsSection.tsx, perfeitamente integrado à página, responsivo e com o conteúdo exatamente conforme o especificado.
