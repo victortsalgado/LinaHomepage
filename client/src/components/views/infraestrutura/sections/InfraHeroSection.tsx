@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Building2, Shield, Smartphone, Users, BarChart3, Code } from "lucide-react";
+import LaserFlow from "@/components/LaserFlow";
 
 export default function InfraHeroSection() {
   return (
@@ -91,10 +92,59 @@ export default function InfraHeroSection() {
             transition={{ duration: 1, delay: 0.4 }}
           >
             {/* Main Container */}
-            <div className="relative bg-gradient-to-br from-white/5 via-white/2 to-transparent rounded-3xl p-8 backdrop-blur-sm border border-white/10">
+            <div className="relative bg-gradient-to-br from-white/5 via-white/2 to-transparent rounded-3xl p-8 backdrop-blur-sm border border-white/10 overflow-hidden">
+              
+              {/* Laser Flow Background Effect */}
+              <div className="absolute inset-0 z-0">
+                <LaserFlow
+                  color="#00b6ac"
+                  horizontalBeamOffset={0.0}
+                  verticalBeamOffset={0.1}
+                  fogIntensity={0.3}
+                  flowSpeed={0.5}
+                  wispIntensity={3.0}
+                  verticalSizing={1.5}
+                  horizontalSizing={0.8}
+                />
+              </div>
 
-              {/* Network Diagram */}
-              <div className="relative h-96 w-full">
+              {/* Multiple Laser Lines for Network Connections */}
+              {[
+                { x: -0.3, y: -0.2, rotation: 45, color: "#00b6ac" },
+                { x: 0.3, y: -0.2, rotation: 135, color: "#2EC9BC" },
+                { x: -0.3, y: 0.2, rotation: -45, color: "#00b6ac" },
+                { x: 0.3, y: 0.2, rotation: -135, color: "#2EC9BC" },
+                { x: 0, y: -0.35, rotation: 90, color: "#00b6ac" },
+                { x: 0, y: 0.35, rotation: -90, color: "#2EC9BC" }
+              ].map((laser, index) => (
+                <div 
+                  key={index}
+                  className="absolute z-1"
+                  style={{
+                    top: `${50 + laser.y * 100}%`,
+                    left: `${50 + laser.x * 100}%`,
+                    width: '200px',
+                    height: '100px',
+                    transform: `translate(-50%, -50%) rotate(${laser.rotation}deg)`,
+                    opacity: 0.6
+                  }}
+                >
+                  <LaserFlow
+                    color={laser.color}
+                    horizontalBeamOffset={0.0}
+                    verticalBeamOffset={0.0}
+                    fogIntensity={0.2}
+                    flowSpeed={0.3 + index * 0.1}
+                    wispIntensity={2.0}
+                    verticalSizing={0.8}
+                    horizontalSizing={2.0}
+                    decay={0.8}
+                  />
+                </div>
+              ))}
+
+              {/* Network Diagram com z-10 para ficar acima dos lasers */}
+              <div className="relative h-96 w-full z-10">
                 {/* Central Node - LINA */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
                   <div className="w-20 h-20 bg-gradient-to-br from-[#00b6ac] to-[#2EC9BC] rounded-full flex items-center justify-center shadow-2xl shadow-[#00b6ac]/50 border-4 border-white/20">
