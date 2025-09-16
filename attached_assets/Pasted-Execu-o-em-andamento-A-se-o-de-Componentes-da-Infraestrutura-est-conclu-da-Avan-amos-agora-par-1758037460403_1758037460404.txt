@@ -1,0 +1,56 @@
+Execução em andamento. A seção de Componentes da Infraestrutura está concluída.
+
+Avançamos agora para a validação final. Após detalhar o "como", vamos reforçar o "porquê" através da chancela de players incontestáveis do mercado. Esta seção é o ápice da prova social, demonstrando que a infraestrutura da Lina não é apenas robusta, mas também a escolha preferida dos líderes do setor.
+
+Aqui está o prompt para a seção de "Líderes de Mercado".
+
+Prompt para Agente de IA (Replit)
+Persona: Você é um Desenvolvedor Frontend Sênior, especialista em React, TypeScript e Tailwind CSS, mestre em criar seções de validação de mercado que transmitem autoridade e confiança inquestionáveis.
+
+Missão: Construir a seção "A solução de Infraestrutura & Conectividade recomendada por quem tem experiência de mercado!", posicionando-a abaixo da seção de componentes.
+
+Porquê Estratégico: Esta seção é o fechamento da argumentação da página. Ao apresentar logos e depoimentos de gigantes como RTM e Mastercard, eliminamos qualquer dúvida residual sobre a capacidade e a confiabilidade da Lina para operar em missões críticas. A mensagem é clara: os maiores e mais exigentes do mercado escolheram a Lina.
+
+Requisitos e Diretrizes:
+
+Estrutura do Componente:
+
+Crie um novo arquivo de componente em src/components/views/infraestrutura/sections/InfraMarketLeadersSection.tsx.
+
+Importe e renderize este componente na página infraestrutura-e-conectividade.tsx, logo abaixo da InfraCoreComponentsSection.
+
+Layout e Conteúdo:
+
+Título Principal (H2): A solução de Infraestrutura & Conectividade recomendada por quem tem experiência de mercado!
+
+Subtítulo/Descrição: Quando o assunto é infraestrutura regulatória, robustez, segurança e confiabilidade são premissas fundamentais e inegociáveis. Por isso, nossa solução foi escolhida pelas principais infraestruturas do mercado financeiro brasileiro.
+
+Grade de Logos: Abaixo do texto, crie uma grade (grid) com quatro colunas para exibir os logos dos parceiros estratégicos. Os logos devem ser bem visíveis e centralizados.
+
+Inclua os logos: RTM, Mastercard, B3, TecBan.
+
+Seção de Depoimentos: Abaixo da grade de logos, crie uma área para os depoimentos detalhados, preferencialmente em um layout de duas colunas para os textos mais longos, garantindo boa legibilidade.
+
+Depoimento 1:
+
+Texto: "A RTM atua há mais de 20 anos como o Hub integrador do mercado financeiro brasileiro, conectando mais de 700 instituições financeiras ao SPB e ao PIX. No Open Finance, escolhemos a LINA como parceiro estratégico, pois confiamos nas soluções tecnológicas e na expertise e capacidade do time da LINA para suportar um serviço de tamanha complexidade, atendendo o nível de exigência do mercado brasilero".
+
+Autor: Marcio Castro
+
+Cargo: CEO da RTM
+
+Depoimento 2:
+
+Texto: "O open finance no Brasil vem crescendo muito e o mercado aqui tem suas particularidades. Trazer soluções de fora exigiria uma 'tropicalização' grande, então achamos mais adequado firmar uma parceria estratégica com a LINA."
+
+Autor: Marcelo Tangioni
+
+Cargo: Presidente da Mastercard Brasil
+
+Estilo e Animação:
+
+Estilo: Mantenha a consistência visual da página. A grade de logos deve ter um destaque especial. Os cards de depoimento devem ser elegantes, talvez com uma borda sutil ou um fundo ligeiramente diferente para separá-los do background principal. Assegure que o nome e cargo do autor tenham um destaque claro.
+
+Animação: Utilize framer-motion. Os logos devem aparecer com um fade-in e scale-up. Os cards de depoimento devem surgir com um fade-in e slide-up suave quando entrarem no campo de visão do usuário.
+
+Entregável: O código-fonte completo do componente InfraMarketLeadersSection.tsx, com todo o conteúdo e logos replicados fielmente do documento, totalmente integrado, funcional e responsivo.
