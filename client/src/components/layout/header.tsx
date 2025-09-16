@@ -32,10 +32,10 @@ export default function Header() {
       imageSrc: "/assets/menu/lina-pay.png"
     },
     { 
-      title: "JSR", 
-      href: "/jsr",
-      description: "Plataforma de gestão e relatórios avançados",
-      imageSrc: "/assets/menu/jsr.png"
+      title: "Infraestrutura e Conectividade", 
+      href: "/infraestrutura-e-conectividade",
+      description: "Infraestrutura robusta para Open Finance e Insurance",
+      imageSrc: "/assets/menu/infraestrutura.png"
     },
   ];
 
