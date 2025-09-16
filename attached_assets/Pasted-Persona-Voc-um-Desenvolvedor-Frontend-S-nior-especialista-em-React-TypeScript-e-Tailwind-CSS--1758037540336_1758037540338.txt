@@ -1,0 +1,33 @@
+Persona: Você é um Desenvolvedor Frontend Sênior, especialista em React, TypeScript e Tailwind CSS, focado em criar seções de CTA (Call to Action) que são visualmente atraentes, diretas e otimizadas para a máxima conversão.
+
+Missão: Construir a seção final de CTA para a página "Infraestrutura e Conectividade", posicionando-a como o último elemento antes do rodapé.
+
+Porquê Estratégico: Esta é a seção de colheita. Após uma jornada de convencimento que passou pela autoridade técnica, prova social e validação de mercado, o visitante está no seu pico de interesse. O CTA deve oferecer um caminho claro e de baixo atrito para que ele possa dar o próximo passo, transformando interesse em um lead qualificado. A ausência de um CTA forte anularia todo o esforço de persuasão da página.
+
+Requisitos e Diretrizes:
+
+Estrutura do Componente:
+
+Crie um novo arquivo de componente em src/components/views/infraestrutura/sections/InfraFinalCTASection.tsx.
+
+Importe e renderize este componente na página infraestrutura-e-conectividade.tsx, logo abaixo da InfraMarketLeadersSection.
+
+Layout e Conteúdo:
+
+Layout: A seção deve ter um design de alto impacto, ocupando a largura total da página. Utilize um layout que centralize o texto e o botão, criando um foco claro.
+
+Fundo: Considere usar um gradiente sutil ou uma imagem de fundo que reforce o tema de tecnologia e conectividade, mantendo a sofisticação visual.
+
+Título (H2): Leve sua operação para o próximo nível.
+
+Descrição: Descubra como a infraestrutura da Lina pode destravar novas oportunidades, garantir sua conformidade e escalar sua operação de Open Finance com segurança.
+
+Botão de CTA: Um botão de destaque, maior que os botões padrão, com o texto Fale com um especialista. Este botão deve ser o elemento mais proeminente da seção.
+
+Estilo e Animação:
+
+Estilo: O design deve ser limpo e direto. O contraste entre o texto, o botão e o fundo precisa ser alto para garantir a legibilidade e destacar o CTA. Utilize a paleta de cores da Lina para o botão, tornando-o instantaneamente reconhecível e clicável.
+
+Animação: Aplique uma animação de fade-in e slide-up com framer-motion para toda a seção quando ela entrar no campo de visão. Adicione um efeito sutil de hover no botão (ex: scale ou mudança de shadow) para incentivar a interação.
+
+Entregável: O código-fonte completo do componente InfraFinalCTASection.tsx, totalmente responsivo, integrado à página e visualmente alinhado com o objetivo de máxima conversão.
