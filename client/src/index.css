@@ -817,6 +817,20 @@
   animation: spotlight 0.8s ease-out forwards;
 }
 
+/* Infinite marquee animation for social proof logos */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
 /* Auto-sliding carousel animation */
 .features-slider {
   width: 100%;

@@ -1,0 +1,55 @@
+Persona: Você é um Desenvolvedor Frontend Sênior, especialista em React, TypeScript e Tailwind CSS, com um olhar apurado para criar seções de prova social que são visualmente limpas, organizadas e transmitem confiança máxima.
+
+Missão: Construir a seção de Prova Social para a página "Infraestrutura e Conectividade", posicionando-a logo abaixo da Hero Section.
+
+Porquê Estratégico: Após capturar a atenção com a promessa de uma infraestrutura robusta, precisamos responder à pergunta implícita do visitante: "Quem mais confia nesta solução?". Esta seção serve para validar nossa alegação com provas concretas do mercado, utilizando logotipos de clientes e depoimentos diretos para mitigar riscos e acelerar a decisão de contato.
+
+Requisitos e Diretrizes:
+
+Estrutura do Componente:
+
+Crie um novo arquivo de componente em src/components/views/infraestrutura/sections/InfraSocialProofSection.tsx.
+
+Importe e renderize este novo componente na página infraestrutura-e-conectividade.tsx, logo abaixo da InfraHeroSection.
+
+Layout e Conteúdo:
+
+Título da Seção (H2): Utilize o texto exato do documento: 50+ instituições financeiras e seguradoras confiam na LINA.
+
+Componente de Logos de Clientes:
+
+Imediatamente abaixo do título, crie um componente de marquee (banner de rolagem infinita) para exibir os logotipos dos clientes.
+
+Inclua os seguintes logos: Stone, Icatu, HDI, BrasilPrev, Banco Semear, B3.
+
+Os logos devem ser exibidos em escala de cinza e, ao passar o mouse (hover), devem revelar suas cores originais. Isso cria uma aparência limpa e profissional.
+
+Componente de Depoimentos:
+
+Abaixo do marquee de logos, crie uma grade (grid) com duas colunas para exibir os depoimentos.
+
+Cada card de depoimento deve conter: o texto do depoimento, o nome do autor, e seu cargo/empresa.
+
+Card 1 (Esquerda):
+
+Depoimento: "Temos uma parceria de sucesso com a Lina. É um parceiro importante para o Banco Semear, que nos apoia com compartilhamento de dados e também com a solução de ITP, que é um diferencial para nossos produtos de meio de pagamento. O Semear acredita no Open Finance e a Lina é o nosso parceiro de confiança, sempre disponível a entender nossas necessidades e customizar soluções, sabem de fato o significado da palavra parceria."
+
+Autor: Ricardo Mendes
+
+Cargo: Diretor de Tecnologia, Semeartech
+
+Card 2 (Direita):
+
+Depoimento: "A Lina é um parceiro importante da B3 em nossa estratégia de Open Finance, além da parceria em si, a Lina tem um time com profundo conhecimento técnico e de negócio o que faz toda a diferença para o sucesso e evolução da agenda."
+
+Autor: Gustavo Peres De Carvalho
+
+Cargo: Head de Produtos, Banco B3
+
+Estilo e Animação:
+
+Estilo: Mantenha a consistência visual com o restante da página (fundo escuro, tipografia Lexend/Inter). Os cards de depoimento devem ter um destaque sutil para se diferenciarem do fundo.
+
+Animação: Utilize framer-motion para animar a entrada dos cards de depoimento com um leve fade-in e slide-up quando eles entrarem no campo de visão do usuário (viewport).
+
+Entregável: O código-fonte completo para o componente InfraSocialProofSection.tsx, devidamente integrado e funcional na página principal, totalmente responsivo.
