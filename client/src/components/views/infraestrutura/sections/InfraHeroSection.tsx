@@ -7,85 +7,22 @@ import LaserFlow from "@/components/LaserFlow";
 export default function InfraHeroSection() {
   return (
     <section 
-      className="relative min-h-screen flex flex-col overflow-visible"
+      className="relative min-h-screen flex flex-col overflow-hidden"
       style={{ backgroundColor: 'var(--lina-dark)' }}
     >
-      {/* Background Dashboard Image */}
-      <div 
-        className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 768"><rect fill="%23f8f9fa" width="1024" height="768"/><rect fill="%23e9ecef" x="0" y="0" width="200" height="768"/><rect fill="%23ffffff" x="220" y="80" width="784" height="120"/><rect fill="%23ffffff" x="220" y="220" width="380" height="300"/><rect fill="%23ffffff" x="620" y="220" width="384" height="300"/><rect fill="%2300b6ac" x="240" y="240" width="60" height="80"/><rect fill="%2300b6ac" x="320" y="260" width="60" height="60"/><rect fill="%2300b6ac" x="400" y="280" width="60" height="40"/></svg>')`
-        }}
-      />
-
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/30 via-transparent to-gray-900/50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 via-transparent to-gray-900/30" />
         <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-teal-500/20 to-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-teal-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
-      {/* Vertical Laser Effect - Positioned Right, Full Hero Height */}
-      <div 
-        className="absolute inset-y-0 right-8 lg:right-16 z-20"
-        style={{
-          width: '96px',
-        }}
-      >
-        <div className="relative w-full h-full">
-          {/* Main Vertical Laser */}
-          <motion.div
-            className="absolute inset-0"
-            initial={{ opacity: 0, scaleY: 0 }}
-            animate={{ opacity: 1, scaleY: 1 }}
-            transition={{ duration: 1.5, delay: 0.8, ease: "easeOut" }}
-          >
-            <LaserFlow
-              color="#00b6ac"
-              horizontalBeamOffset={0.0}
-              verticalBeamOffset={0.0}
-              fogIntensity={0.8}
-              flowSpeed={0.4}
-              wispIntensity={6.0}
-              verticalSizing={4.0}
-              horizontalSizing={0.25}
-              wispDensity={1.8}
-              decay={1.5}
-              falloffStart={2.0}
-              mouseTiltStrength={0.02}
-            />
-          </motion.div>
-
-          {/* Fog Enhancement on Hover */}
-          <motion.div
-            className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500"
-            whileHover={{ opacity: 1 }}
-          >
-            <LaserFlow
-              color="#2EC9BC"
-              horizontalBeamOffset={0.0}
-              verticalBeamOffset={0.0}
-              fogIntensity={0.4}
-              flowSpeed={0.6}
-              wispIntensity={3.0}
-              verticalSizing={3.0}
-              horizontalSizing={0.3}
-              wispDensity={1.2}
-              decay={1.0}
-              falloffStart={1.5}
-              mouseTiltStrength={0.03}
-            />
-          </motion.div>
-        </div>
-      </div>
-
       {/* Main Content */}
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10 flex-1 flex items-center">
-        <div className="w-full lg:w-2/3 min-h-[80vh] flex items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center w-full min-h-[80vh]">
 
-          {/* Content Area - Left Side */}
-          <div className="text-center lg:text-left space-y-8 w-full">
-            {/* Main Title */}
+          {/* Left Column - Content */}
+          <div className="text-center lg:text-left space-y-8">
             <motion.h1
               className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
               style={{ fontFamily: 'Lexend, sans-serif' }}
@@ -99,7 +36,6 @@ export default function InfraHeroSection() {
               </span>
             </motion.h1>
 
-            {/* Subtitle */}
             <motion.p
               className="text-xl lg:text-2xl text-gray-300 leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif' }}
@@ -110,7 +46,6 @@ export default function InfraHeroSection() {
               Habilite sua instituição no Open Finance & Insurance com tecnologia, performance, segurança e o suporte do melhor time de especialistas do mercado!
             </motion.p>
 
-            {/* Highlighted Message Box */}
             <motion.div
               className="bg-gradient-to-r from-[#00b6ac]/10 to-[#2EC9BC]/5 border border-[#00b6ac]/30 rounded-2xl p-6 backdrop-blur-sm"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -125,7 +60,6 @@ export default function InfraHeroSection() {
               </p>
             </motion.div>
 
-            {/* CTA Button */}
             <motion.div
               className="flex justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
@@ -141,6 +75,42 @@ export default function InfraHeroSection() {
               </button>
             </motion.div>
           </div>
+
+          {/* Right Column - LaserFlow Horizontal Container */}
+          <motion.div
+            className="relative h-[600px] lg:h-[700px] w-full"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
+            {/* Main LaserFlow Container - Horizontal Effect */}
+            <div className="absolute inset-0 rounded-3xl overflow-hidden bg-black/20 border border-[#00b6ac]/20">
+              <LaserFlow
+                color="#00b6ac"
+                horizontalBeamOffset={0.0}
+                verticalBeamOffset={0.0}
+                fogIntensity={0.9}
+                flowSpeed={0.5}
+                wispIntensity={5.0}
+                verticalSizing={1.0}
+                horizontalSizing={1.0}
+                wispDensity={2.0}
+                decay={1.2}
+                falloffStart={1.8}
+                mouseTiltStrength={0.02}
+                fogScale={0.4}
+                wispSpeed={12.0}
+                flowStrength={0.3}
+              />
+            </div>
+
+            {/* Subtle Border Effect */}
+            <div className="absolute inset-0 rounded-3xl border-2 border-[#00b6ac]/30 shadow-2xl shadow-[#00b6ac]/20" />
+
+            {/* Corner Accents */}
+            <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-[#00b6ac]/60 rounded-tr-lg"></div>
+            <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-[#2EC9BC]/60 rounded-bl-lg"></div>
+          </motion.div>
         </div>
       </div>
 
