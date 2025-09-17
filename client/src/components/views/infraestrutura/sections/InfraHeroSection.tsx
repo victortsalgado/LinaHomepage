@@ -103,59 +103,149 @@ export default function InfraHeroSection() {
                   <div className="absolute inset-0 bg-[#00b6ac] rounded-full animate-ping opacity-30" />
                 </div>
 
-                {/* Satellite Nodes */}
-                {[
-                  { top: '15%', left: '15%', label: 'Banks', icon: Building2, delay: '0s' },
-                  { top: '15%', right: '15%', label: 'Insurance', icon: Shield, delay: '0.5s' },
-                  { bottom: '15%', left: '15%', label: 'Fintechs', icon: Smartphone, delay: '1s' },
-                  { bottom: '15%', right: '15%', label: 'Partners', icon: Users, delay: '1.5s' },
-                  { top: '5%', left: '50%', label: 'Regulators', icon: BarChart3, delay: '2s' },
-                  { bottom: '5%', left: '50%', label: 'APIs', icon: Code, delay: '2.5s' }
-                ].map((node, index) => {
-                  const IconComponent = node.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="absolute transform -translate-x-1/2 -translate-y-1/2 z-10"
-                      style={{ 
-                        top: node.top,
-                        left: node.left,
-                        right: node.right,
-                        bottom: node.bottom
-                      }}
-                    >
-                      <motion.div 
-                        className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
-                        animate={{
-                          scale: [1, 1.1, 1],
-                          borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                          delay: parseFloat(node.delay)
-                        }}
-                      >
-                        <IconComponent className="w-5 h-5 text-[#00b6ac]" />
-                      </motion.div>
-                      <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
-                        {node.label}
-                      </div>
-                    </div>
-                  );
-                })}
+                {/* Satellite Nodes com coordenadas precisas */}
+                {/* Banks - Superior Esquerdo */}
+                <div className="absolute z-10" style={{ top: '60px', left: '60px' }}>
+                  <motion.div 
+                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0
+                    }}
+                  >
+                    <Building2 className="w-5 h-5 text-[#00b6ac]" />
+                  </motion.div>
+                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                    Banks
+                  </div>
+                </div>
+
+                {/* Insurance - Superior Direito */}
+                <div className="absolute z-10" style={{ top: '60px', right: '60px' }}>
+                  <motion.div 
+                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.5
+                    }}
+                  >
+                    <Shield className="w-5 h-5 text-[#00b6ac]" />
+                  </motion.div>
+                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                    Insurance
+                  </div>
+                </div>
+
+                {/* Fintechs - Inferior Esquerdo */}
+                <div className="absolute z-10" style={{ bottom: '60px', left: '60px' }}>
+                  <motion.div 
+                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 1
+                    }}
+                  >
+                    <Smartphone className="w-5 h-5 text-[#00b6ac]" />
+                  </motion.div>
+                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                    Fintechs
+                  </div>
+                </div>
+
+                {/* Partners - Inferior Direito */}
+                <div className="absolute z-10" style={{ bottom: '60px', right: '60px' }}>
+                  <motion.div 
+                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 1.5
+                    }}
+                  >
+                    <Users className="w-5 h-5 text-[#00b6ac]" />
+                  </motion.div>
+                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                    Partners
+                  </div>
+                </div>
+
+                {/* Regulators - Superior Centro */}
+                <div className="absolute z-10" style={{ top: '20px', left: '50%', transform: 'translateX(-50%)' }}>
+                  <motion.div 
+                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 2
+                    }}
+                  >
+                    <BarChart3 className="w-5 h-5 text-[#00b6ac]" />
+                  </motion.div>
+                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                    Regulators
+                  </div>
+                </div>
+
+                {/* APIs - Inferior Centro */}
+                <div className="absolute z-10" style={{ bottom: '20px', left: '50%', transform: 'translateX(-50%)' }}>
+                  <motion.div 
+                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 2.5
+                    }}
+                  >
+                    <Code className="w-5 h-5 text-[#00b6ac]" />
+                  </motion.div>
+                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                    APIs
+                  </div>
+                </div>
 
                 {/* Connection Lines with Laser Flow Effect */}
-                <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
+                <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} viewBox="0 0 100 100" preserveAspectRatio="none">
                   {[
-                    // Coordenadas precisas baseadas no layout visual
-                    { x1: '50%', y1: '50%', x2: '20%', y2: '25%', delay: 0 }, // Banks (superior esquerdo)
-                    { x1: '50%', y1: '50%', x2: '80%', y2: '25%', delay: 0.3 }, // Insurance (superior direito)
-                    { x1: '50%', y1: '50%', x2: '20%', y2: '75%', delay: 0.6 }, // Fintechs (inferior esquerdo)
-                    { x1: '50%', y1: '50%', x2: '80%', y2: '75%', delay: 0.9 }, // Partners (inferior direito)
-                    { x1: '50%', y1: '50%', x2: '50%', y2: '10%', delay: 1.2 }, // Regulators (superior centro)
-                    { x1: '50%', y1: '50%', x2: '50%', y2: '90%', delay: 1.5 } // APIs (inferior centro)
+                    // Coordenadas baseadas em uma grade 100x100 para precisão máxima
+                    { x1: 50, y1: 50, x2: 18.75, y2: 18.75, delay: 0, label: 'Banks' },      // 60px + 6px (metade do círculo) = 66px de 352px total ≈ 18.75%
+                    { x1: 50, y1: 50, x2: 81.25, y2: 18.75, delay: 0.3, label: 'Insurance' }, // lado direito
+                    { x1: 50, y1: 50, x2: 18.75, y2: 81.25, delay: 0.6, label: 'Fintechs' },  // inferior esquerdo
+                    { x1: 50, y1: 50, x2: 81.25, y2: 81.25, delay: 0.9, label: 'Partners' },  // inferior direito
+                    { x1: 50, y1: 50, x2: 50, y2: 9.375, delay: 1.2, label: 'Regulators' },   // 20px + 6px = 26px de 384px ≈ 6.77%
+                    { x1: 50, y1: 50, x2: 50, y2: 90.625, delay: 1.5, label: 'APIs' }         // inferior centro
                   ].map((line, index) => (
                     <g key={index}>
                       {/* Base line */}
@@ -165,7 +255,8 @@ export default function InfraHeroSection() {
                         x2={line.x2}
                         y2={line.y2}
                         stroke="rgba(0, 182, 172, 0.2)"
-                        strokeWidth="1"
+                        strokeWidth="0.3"
+                        vectorEffect="non-scaling-stroke"
                       />
 
                       {/* Animated laser flow */}
@@ -175,8 +266,9 @@ export default function InfraHeroSection() {
                         x2={line.x2}
                         y2={line.y2}
                         stroke="url(#laserGradient)"
-                        strokeWidth="3"
+                        strokeWidth="0.8"
                         strokeLinecap="round"
+                        vectorEffect="non-scaling-stroke"
                         initial={{ 
                           pathLength: 0,
                           opacity: 0
@@ -201,9 +293,10 @@ export default function InfraHeroSection() {
                         x2={line.x2}
                         y2={line.y2}
                         stroke="rgba(0, 182, 172, 0.6)"
-                        strokeWidth="6"
+                        strokeWidth="1.5"
                         strokeLinecap="round"
-                        filter="blur(3px)"
+                        filter="blur(0.8px)"
+                        vectorEffect="non-scaling-stroke"
                         initial={{ 
                           pathLength: 0,
                           opacity: 0
@@ -225,12 +318,12 @@ export default function InfraHeroSection() {
 
                   {/* Enhanced data flow particles */}
                   {[
-                    { path: "M 50 50 L 20 25", delay: 3, color: "#00b6ac" },
-                    { path: "M 50 50 L 80 25", delay: 3.3, color: "#2EC9BC" },
-                    { path: "M 50 50 L 20 75", delay: 3.6, color: "#00b6ac" },
-                    { path: "M 50 50 L 80 75", delay: 3.9, color: "#2EC9BC" },
-                    { path: "M 50 50 L 50 10", delay: 4.2, color: "#00b6ac" },
-                    { path: "M 50 50 L 50 90", delay: 4.5, color: "#2EC9BC" }
+                    { path: `M 50,50 L 18.75,18.75`, delay: 3, color: "#00b6ac", label: "Banks" },
+                    { path: `M 50,50 L 81.25,18.75`, delay: 3.3, color: "#2EC9BC", label: "Insurance" },
+                    { path: `M 50,50 L 18.75,81.25`, delay: 3.6, color: "#00b6ac", label: "Fintechs" },
+                    { path: `M 50,50 L 81.25,81.25`, delay: 3.9, color: "#2EC9BC", label: "Partners" },
+                    { path: `M 50,50 L 50,9.375`, delay: 4.2, color: "#00b6ac", label: "Regulators" },
+                    { path: `M 50,50 L 50,90.625`, delay: 4.5, color: "#2EC9BC", label: "APIs" }
                   ].map((particle, index) => (
                     <g key={`particle-group-${index}`}>
                       {/* Main particle */}
