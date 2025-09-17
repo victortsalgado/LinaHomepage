@@ -1,325 +1,346 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import infraImage from "@assets/generated_images/Fintech_innovation_infrastructure_visualization_95bfa7ab.png";
-
-// Animated neural network visualization component
-const AnimatedNeuralNetwork = () => {
-  const nodes = [
-    { id: 1, x: 15, y: 25, delay: 0 },
-    { id: 2, x: 35, y: 15, delay: 0.3 },
-    { id: 3, x: 55, y: 30, delay: 0.6 },
-    { id: 4, x: 75, y: 20, delay: 0.9 },
-    { id: 5, x: 85, y: 45, delay: 1.2 },
-    { id: 6, x: 65, y: 60, delay: 1.5 },
-    { id: 7, x: 45, y: 70, delay: 1.8 },
-    { id: 8, x: 25, y: 55, delay: 2.1 },
-    { id: 9, x: 50, y: 45, delay: 2.4 },
-  ];
-
-  const connections = [
-    { from: 1, to: 2, delay: 3 },
-    { from: 2, to: 3, delay: 3.2 },
-    { from: 3, to: 4, delay: 3.4 },
-    { from: 4, to: 5, delay: 3.6 },
-    { from: 5, to: 6, delay: 3.8 },
-    { from: 6, to: 7, delay: 4 },
-    { from: 7, to: 8, delay: 4.2 },
-    { from: 8, to: 1, delay: 4.4 },
-    { from: 3, to: 9, delay: 4.6 },
-    { from: 9, to: 6, delay: 4.8 },
-    { from: 2, to: 9, delay: 5 },
-    { from: 9, to: 5, delay: 5.2 },
-  ];
-
-  return (
-    <div className="relative w-full h-full">
-      {/* Connection Lines */}
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        {connections.map((connection, index) => {
-          const fromNode = nodes.find(n => n.id === connection.from);
-          const toNode = nodes.find(n => n.id === connection.to);
-          
-          if (!fromNode || !toNode) return null;
-
-          return (
-            <motion.line
-              key={index}
-              x1={fromNode.x}
-              y1={fromNode.y}
-              x2={toNode.x}
-              y2={toNode.y}
-              stroke="var(--lina-cyan)"
-              strokeWidth="0.8"
-              strokeOpacity="0.7"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.7 }}
-              transition={{
-                duration: 2,
-                delay: connection.delay,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatType: "loop",
-                repeatDelay: 4,
-              }}
-            />
-          );
-        })}
-      </svg>
-
-      {/* Neural Network Nodes */}
-      {nodes.map((node) => (
-        <motion.div
-          key={node.id}
-          className="absolute w-4 h-4 bg-[var(--lina-cyan)] rounded-full shadow-lg border-2 border-white"
-          style={{
-            left: `${node.x}%`,
-            top: `${node.y}%`,
-            transform: 'translate(-50%, -50%)',
-          }}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ 
-            scale: [0, 1.3, 1], 
-            opacity: [0, 1, 0.9],
-          }}
-          transition={{
-            duration: 1.2,
-            delay: node.delay,
-            ease: "easeOut",
-            repeat: Infinity,
-            repeatType: "loop",
-            repeatDelay: 8,
-          }}
-        >
-          {/* Node glow effect */}
-          <div className="absolute inset-0 bg-[var(--lina-cyan)] rounded-full animate-ping opacity-40" />
-        </motion.div>
-      ))}
-
-      {/* Data flow particles */}
-      <motion.div
-        className="absolute w-2 h-2 bg-[var(--lina-cyan)] rounded-full opacity-70"
-        animate={{
-          x: [15, 35, 55, 75, 85, 65, 45, 25, 50],
-          y: [25, 15, 30, 20, 45, 60, 70, 55, 45],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-    </div>
-  );
-};
+import { ArrowRight, Building2, Shield, Smartphone, Users, BarChart3, Code } from "lucide-react";
 
 export default function InfraHeroSection() {
   return (
-    <>
+    <section 
+      className="relative py-20 md:py-32 lg:py-40 overflow-hidden"
+      style={{ backgroundColor: 'var(--lina-dark)' }}
+    >
       {/* Background Elements */}
-      <div 
-        aria-hidden
-        className="fixed inset-0 pointer-events-none isolate overflow-hidden"
-      >
-        <div className="floating-ball" />
-        <div className="floating-ball-2" />
-        <div className="floating-ball-3" />
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 via-transparent to-gray-900/30" />
+
+        {/* Floating orbs - following Lina's pattern */}
+        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-teal-500/20 to-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-teal-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-teal-400/10 to-transparent rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
       </div>
 
-      <main className="overflow-hidden bg-[var(--lina-dark)] circuit-texture">
-        <section>
-          <div className="relative pt-24 md:pt-36">
-            {/* Background Gradient with dark theme */}
-            <div 
-              aria-hidden 
-              className="absolute inset-0 -z-10 size-full bg-gradient-to-br from-[var(--lina-dark)] via-[var(--lina-medium)] to-[var(--lina-dark)]" 
-            />
-            
-            <div className="mx-auto max-w-7xl px-6">
-              <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[700px]">
-                {/* Left Column - Content */}
-                <div className="text-center lg:text-left">
-                  {/* Title */}
-                  <motion.h1
-                    className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight title-glow"
-                    style={{ fontFamily: 'Lexend, sans-serif' }}
-                    data-testid="heading-infraestrutura-hero-title"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                  >
-                    Infraestrutura e conectividade para um ecossistema de{" "}
-                    <span className="bg-gradient-to-r from-[var(--lina-cyan)] to-teal-300 bg-clip-text text-transparent">
-                      Open Finance escalável e seguro
-                    </span>
-                  </motion.h1>
-                  
-                  {/* Description */}
-                  <motion.p
-                    className="mx-auto lg:mx-0 mt-6 max-w-2xl text-balance text-lg text-gray-300 leading-relaxed"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                    data-testid="text-infraestrutura-hero-description"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2, duration: 0.8 }}
-                  >
-                    A única infraestrutura no Brasil capaz de levar sua operação Open do sandbox à escala, com segurança e conformidade inigualáveis.
-                  </motion.p>
+      <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[600px]">
 
-                  {/* CTA Button */}
-                  <motion.div
-                    className="mt-8 flex justify-center lg:justify-start"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.8 }}
-                  >
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="group h-14 px-10 text-lg border-2 border-[var(--lina-cyan)] text-[var(--lina-cyan)] bg-transparent hover:bg-[var(--lina-cyan)] hover:text-[var(--lina-dark)] transition-all duration-300"
-                      data-testid="button-infraestrutura-cta"
-                    >
-                      <span className="mr-2">Fale com um especialista</span>
-                      <div className="overflow-hidden w-5">
-                        <div className="flex w-10 -translate-x-1/2 duration-300 ease-in-out group-hover:translate-x-0">
-                          <ArrowRight className="w-5 h-5" />
-                          <ArrowRight className="w-5 h-5" />
-                        </div>
-                      </div>
-                    </Button>
-                  </motion.div>
-                </div>
-                
-                {/* Right Column - Visual with Infrastructure Image */}
-                <div className="hidden lg:block relative h-[700px] w-full">
-                  <motion.div
-                    className="w-full h-full flex items-center justify-center relative"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
-                  >
-                    {/* Main Infrastructure Image */}
-                    <motion.div
-                      className="absolute z-10 w-4/5 h-auto rounded-2xl overflow-hidden shadow-2xl"
-                      style={{
-                        left: '50%',
-                        top: '50%',
-                        transform: 'translate(-50%, -50%)',
-                      }}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 1, duration: 0.8 }}
-                    >
-                      <img 
-                        src={infraImage} 
-                        alt="Infraestrutura de conectividade - visualização abstrata de dados e conexões de rede"
-                        className="w-full h-auto object-cover filter brightness-110 contrast-110"
-                        data-testid="img-infraestrutura-hero"
-                        fetchPriority="high"
-                      />
-                      {/* Overlay gradient for better integration */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[var(--lina-dark)]/30 via-transparent to-transparent" />
-                    </motion.div>
+          {/* Left Column - Content */}
+          <div className="text-center lg:text-left">
+            {/* Main Title */}
+            <motion.h1
+              className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8"
+              style={{ fontFamily: 'Lexend, sans-serif' }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              Infraestrutura &{" "}
+              <span className="bg-gradient-to-r from-[#00b6ac] to-[#2EC9BC] bg-clip-text text-transparent">
+                Conectividade
+              </span>
+            </motion.h1>
 
-                    {/* Animated neural network overlay */}
-                    <div className="absolute inset-0 z-20">
-                      <AnimatedNeuralNetwork />
-                    </div>
+            {/* Subtitle */}
+            <motion.p
+              className="text-xl lg:text-2xl text-gray-300 leading-relaxed mb-10"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Habilite sua instituição no Open Finance & Insurance com tecnologia, performance, segurança e o suporte do melhor time de especialistas do mercado!
+            </motion.p>
 
-                    {/* Floating data labels with technical terms */}
+            {/* Highlighted Message Box */}
+            <motion.div
+              className="bg-gradient-to-r from-[#00b6ac]/10 to-[#2EC9BC]/5 border border-[#00b6ac]/30 rounded-2xl p-6 mb-10 backdrop-blur-sm"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <p 
+                className="text-lg text-[#00b6ac] font-medium leading-relaxed text-center lg:text-left" 
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                Infraestrutura homologada, suporte especializado e performance comprovada: o padrão de quem lidera o ecossistema Open.
+              </p>
+            </motion.div>
 
-                    <motion.div
-                      className="absolute top-1/3 right-1/6 bg-black/80 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg border border-[var(--lina-cyan)]/30 cursor-pointer hover:bg-[var(--lina-cyan)]/10 transition-colors"
-                      initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                      animate={{ 
-                        opacity: 1, 
-                        y: [0, -10, 0], 
-                        scale: [0.8, 1, 1],
-                        boxShadow: [
-                          '0 4px 6px rgba(0, 0, 0, 0.3)',
-                          '0 8px 15px rgba(0, 239, 207, 0.4)',
-                          '0 4px 6px rgba(0, 0, 0, 0.3)'
-                        ]
-                      }}
-                      transition={{ 
-                        delay: 2, 
-                        duration: 0.5,
-                        y: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 2 },
-                        boxShadow: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 2 }
-                      }}
-                      whileHover={{ 
-                        scale: 1.05,
-                        y: -12,
-                        transition: { duration: 0.2 }
-                      }}
-                    >
-                      <span className="text-xs font-medium text-[var(--lina-cyan)] select-none">Microservices</span>
-                    </motion.div>
-
-                    <motion.div
-                      className="absolute bottom-1/3 left-1/4 bg-black/80 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg border border-[var(--lina-cyan)]/30 cursor-pointer hover:bg-[var(--lina-cyan)]/10 transition-colors"
-                      initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                      animate={{ 
-                        opacity: 1, 
-                        y: [0, -6, 0], 
-                        scale: [0.8, 1, 1],
-                        boxShadow: [
-                          '0 4px 6px rgba(0, 0, 0, 0.3)',
-                          '0 8px 15px rgba(0, 239, 207, 0.4)',
-                          '0 4px 6px rgba(0, 0, 0, 0.3)'
-                        ]
-                      }}
-                      transition={{ 
-                        delay: 2.5, 
-                        duration: 0.5,
-                        y: { duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 2.5 },
-                        boxShadow: { duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 2.5 }
-                      }}
-                      whileHover={{ 
-                        scale: 1.05,
-                        y: -12,
-                        transition: { duration: 0.2 }
-                      }}
-                    >
-                      <span className="text-xs font-medium text-[var(--lina-cyan)] select-none">Cloud Native</span>
-                    </motion.div>
-
-                    <motion.div
-                      className="absolute bottom-1/4 right-1/4 bg-black/80 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg border border-[var(--lina-cyan)]/30 cursor-pointer hover:bg-[var(--lina-cyan)]/10 transition-colors"
-                      initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                      animate={{ 
-                        opacity: 1, 
-                        y: [0, -12, 0], 
-                        scale: [0.8, 1, 1],
-                        boxShadow: [
-                          '0 4px 6px rgba(0, 0, 0, 0.3)',
-                          '0 8px 15px rgba(0, 239, 207, 0.4)',
-                          '0 4px 6px rgba(0, 0, 0, 0.3)'
-                        ]
-                      }}
-                      transition={{ 
-                        delay: 3, 
-                        duration: 0.5,
-                        y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 3 },
-                        boxShadow: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 3 }
-                      }}
-                      whileHover={{ 
-                        scale: 1.05,
-                        y: -12,
-                        transition: { duration: 0.2 }
-                      }}
-                    >
-                      <span className="text-xs font-medium text-[var(--lina-cyan)] select-none">Security Layer</span>
-                    </motion.div>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
+            {/* CTA Button */}
+            <motion.div
+              className="flex justify-center lg:justify-start"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <button className="group bg-gradient-to-r from-[#00b6ac] to-[#2EC9BC] hover:from-[#00b6ac]/90 hover:to-[#2EC9BC]/90 text-white font-bold text-lg px-10 py-5 rounded-full shadow-2xl shadow-[#00b6ac]/25 hover:shadow-[#00b6ac]/40 transition-all duration-300 transform hover:scale-105 active:scale-95 relative overflow-hidden">
+                {/* Button shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                <span className="relative flex items-center gap-3" style={{ fontFamily: 'Lexend, sans-serif' }}>
+                  Fale com um especialista
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+              </button>
+            </motion.div>
           </div>
-        </section>
-      </main>
-    </>
+
+          {/* Right Column - Visual Element */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
+            {/* Main Container */}
+            <div className="relative bg-gradient-to-br from-white/5 via-white/2 to-transparent rounded-3xl p-8 backdrop-blur-sm border border-white/10">
+
+              {/* Network Diagram */}
+              <div className="relative h-96 w-full">
+                {/* Central Node - LINA */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#00b6ac] to-[#2EC9BC] rounded-full flex items-center justify-center shadow-2xl shadow-[#00b6ac]/50 border-4 border-white/20">
+                    <span className="text-white font-bold text-sm" style={{ fontFamily: 'Lexend, sans-serif' }}>LINA</span>
+                  </div>
+                  <div className="absolute inset-0 bg-[#00b6ac] rounded-full animate-ping opacity-30" />
+                </div>
+
+                {/* Satellite Nodes */}
+                {[
+                  { top: '15%', left: '15%', label: 'Banks', icon: Building2, delay: '0s' },
+                  { top: '15%', right: '15%', label: 'Insurance', icon: Shield, delay: '0.5s' },
+                  { bottom: '15%', left: '15%', label: 'Fintechs', icon: Smartphone, delay: '1s' },
+                  { bottom: '15%', right: '15%', label: 'Partners', icon: Users, delay: '1.5s' },
+                  { top: '5%', left: '50%', label: 'Regulators', icon: BarChart3, delay: '2s' },
+                  { bottom: '5%', left: '50%', label: 'APIs', icon: Code, delay: '2.5s' }
+                ].map((node, index) => {
+                  const IconComponent = node.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="absolute transform -translate-x-1/2 -translate-y-1/2 z-10"
+                      style={{ 
+                        top: node.top,
+                        left: node.left,
+                        right: node.right,
+                        bottom: node.bottom
+                      }}
+                    >
+                      <motion.div 
+                        className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                        animate={{
+                          scale: [1, 1.1, 1],
+                          borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: parseFloat(node.delay)
+                        }}
+                      >
+                        <IconComponent className="w-5 h-5 text-[#00b6ac]" />
+                      </motion.div>
+                      <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                        {node.label}
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {/* Connection Lines with Laser Flow Effect */}
+                <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
+                  {[
+                    // Coordenadas precisas baseadas no layout visual
+                    { x1: '50%', y1: '50%', x2: '20%', y2: '25%', delay: 0 }, // Banks (superior esquerdo)
+                    { x1: '50%', y1: '50%', x2: '80%', y2: '25%', delay: 0.3 }, // Insurance (superior direito)
+                    { x1: '50%', y1: '50%', x2: '20%', y2: '75%', delay: 0.6 }, // Fintechs (inferior esquerdo)
+                    { x1: '50%', y1: '50%', x2: '80%', y2: '75%', delay: 0.9 }, // Partners (inferior direito)
+                    { x1: '50%', y1: '50%', x2: '50%', y2: '10%', delay: 1.2 }, // Regulators (superior centro)
+                    { x1: '50%', y1: '50%', x2: '50%', y2: '90%', delay: 1.5 } // APIs (inferior centro)
+                  ].map((line, index) => (
+                    <g key={index}>
+                      {/* Base line */}
+                      <line
+                        x1={line.x1}
+                        y1={line.y1}
+                        x2={line.x2}
+                        y2={line.y2}
+                        stroke="rgba(0, 182, 172, 0.2)"
+                        strokeWidth="1"
+                      />
+
+                      {/* Animated laser flow */}
+                      <motion.line
+                        x1={line.x1}
+                        y1={line.y1}
+                        x2={line.x2}
+                        y2={line.y2}
+                        stroke="url(#laserGradient)"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        initial={{ 
+                          pathLength: 0,
+                          opacity: 0
+                        }}
+                        animate={{ 
+                          pathLength: [0, 0.8, 0],
+                          opacity: [0, 1, 0]
+                        }}
+                        transition={{ 
+                          duration: 2,
+                          delay: 2 + line.delay,
+                          repeat: Infinity,
+                          repeatDelay: 4,
+                          ease: "easeInOut"
+                        }}
+                      />
+
+                      {/* Pulsing glow effect */}
+                      <motion.line
+                        x1={line.x1}
+                        y1={line.y1}
+                        x2={line.x2}
+                        y2={line.y2}
+                        stroke="rgba(0, 182, 172, 0.6)"
+                        strokeWidth="6"
+                        strokeLinecap="round"
+                        filter="blur(3px)"
+                        initial={{ 
+                          pathLength: 0,
+                          opacity: 0
+                        }}
+                        animate={{ 
+                          pathLength: [0, 0.6, 0],
+                          opacity: [0, 0.8, 0]
+                        }}
+                        transition={{ 
+                          duration: 2,
+                          delay: 2.1 + line.delay,
+                          repeat: Infinity,
+                          repeatDelay: 4,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    </g>
+                  ))}
+
+                  {/* Enhanced data flow particles */}
+                  {[
+                    { path: "M 50 50 L 20 25", delay: 3, color: "#00b6ac" },
+                    { path: "M 50 50 L 80 25", delay: 3.3, color: "#2EC9BC" },
+                    { path: "M 50 50 L 20 75", delay: 3.6, color: "#00b6ac" },
+                    { path: "M 50 50 L 80 75", delay: 3.9, color: "#2EC9BC" },
+                    { path: "M 50 50 L 50 10", delay: 4.2, color: "#00b6ac" },
+                    { path: "M 50 50 L 50 90", delay: 4.5, color: "#2EC9BC" }
+                  ].map((particle, index) => (
+                    <g key={`particle-group-${index}`}>
+                      {/* Main particle */}
+                      <motion.circle
+                        r="3"
+                        fill={particle.color}
+                        filter="url(#glow)"
+                        initial={{ offsetDistance: "0%", opacity: 0 }}
+                        animate={{ 
+                          offsetDistance: ["0%", "100%"],
+                          opacity: [0, 1, 0]
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          delay: particle.delay,
+                          repeat: Infinity,
+                          repeatDelay: 4,
+                          ease: "easeOut"
+                        }}
+                        style={{
+                          offsetPath: `path('${particle.path}')`
+                        }}
+                      />
+
+                      {/* Particle trail */}
+                      <motion.circle
+                        r="1.5"
+                        fill={particle.color}
+                        fillOpacity="0.6"
+                        initial={{ offsetDistance: "0%", opacity: 0 }}
+                        animate={{ 
+                          offsetDistance: ["0%", "100%"],
+                          opacity: [0, 0.8, 0]
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          delay: particle.delay + 0.1,
+                          repeat: Infinity,
+                          repeatDelay: 4,
+                          ease: "easeOut"
+                        }}
+                        style={{
+                          offsetPath: `path('${particle.path}')`
+                        }}
+                      />
+                    </g>
+                  ))}
+
+                  <defs>
+                    {/* Laser gradient */}
+                    <linearGradient id="laserGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#00b6ac" stopOpacity="0" />
+                      <stop offset="30%" stopColor="#00b6ac" stopOpacity="1" />
+                      <stop offset="70%" stopColor="#2EC9BC" stopOpacity="1" />
+                      <stop offset="100%" stopColor="#2EC9BC" stopOpacity="0" />
+                    </linearGradient>
+
+                    {/* Glow filter */}
+                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                      <feMerge> 
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+
+                    {/* Connection gradient */}
+                    <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#00b6ac" />
+                      <stop offset="50%" stopColor="#2EC9BC" />
+                      <stop offset="100%" stopColor="#00b6ac" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+
+              {/* Floating Info Cards */}
+              <motion.div
+                className="absolute -top-4 -right-4 bg-[#00b6ac]/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ 
+                  opacity: 1, 
+                  y: [-20, -10, -20],
+                }}
+                transition={{ 
+                  opacity: { delay: 2, duration: 0.5 },
+                  y: { delay: 2.5, duration: 3, repeat: Infinity, ease: "easeInOut" }
+                }}
+              >
+                <span className="text-white text-xs font-medium">50+ Instituições</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute -bottom-4 -left-4 bg-[#2EC9BC]/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ 
+                  opacity: 1, 
+                  y: [20, 10, 20],
+                }}
+                transition={{ 
+                  opacity: { delay: 2.5, duration: 0.5 },
+                  y: { delay: 3, duration: 3.5, repeat: Infinity, ease: "easeInOut" }
+                }}
+              >
+                <span className="text-white text-xs font-medium">Suporte 24x7</span>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
   );
 }
