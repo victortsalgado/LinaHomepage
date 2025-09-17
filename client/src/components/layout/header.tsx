@@ -143,8 +143,8 @@ export default function Header() {
                     <NavigationMenuItem>
                       <NavigationMenuTrigger className={cn(
                         "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
-                        "hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit focus:bg-transparent",
-                        shouldUseWhiteText ? "text-white" : "text-gray-600"
+                        "hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:scale-100 data-[state=open]:before:w-0 focus:bg-transparent",
+                        shouldUseWhiteText ? "text-white data-[state=open]:text-white" : "text-gray-600 data-[state=open]:text-gray-600"
                       )}>
                         Produtos
                       </NavigationMenuTrigger>
@@ -201,8 +201,8 @@ export default function Header() {
                     <NavigationMenuItem>
                       <NavigationMenuTrigger className={cn(
                         "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
-                        "hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-inherit focus:bg-transparent",
-                        shouldUseWhiteText ? "text-white" : "text-gray-600"
+                        "hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:scale-100 data-[state=open]:before:w-0 focus:bg-transparent",
+                        shouldUseWhiteText ? "text-white data-[state=open]:text-white" : "text-gray-600 data-[state=open]:text-gray-600"
                       )}>
                         Recursos
                       </NavigationMenuTrigger>
