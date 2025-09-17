@@ -25,13 +25,11 @@ export default function InfraHeroSection() {
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-teal-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
-      {/* Vertical Laser Effect - Positioned Right, Extending Beyond Section */}
+      {/* Vertical Laser Effect - Positioned Right, Full Hero Height */}
       <div 
-        className="fixed right-8 lg:right-16 z-20 pointer-events-none"
+        className="absolute inset-y-0 right-8 lg:right-16 z-20"
         style={{
-          top: '80px', // Start from header height
-          bottom: '0px', // Extend to bottom
-          width: '200px',
+          width: '96px',
         }}
       >
         <div className="relative w-full h-full">
@@ -50,7 +48,7 @@ export default function InfraHeroSection() {
               flowSpeed={0.4}
               wispIntensity={6.0}
               verticalSizing={4.0}
-              horizontalSizing={0.6}
+              horizontalSizing={0.25}
               wispDensity={1.8}
               decay={1.5}
               falloffStart={2.0}
@@ -71,7 +69,7 @@ export default function InfraHeroSection() {
               flowSpeed={0.6}
               wispIntensity={3.0}
               verticalSizing={3.0}
-              horizontalSizing={0.8}
+              horizontalSizing={0.3}
               wispDensity={1.2}
               decay={1.0}
               falloffStart={1.5}
