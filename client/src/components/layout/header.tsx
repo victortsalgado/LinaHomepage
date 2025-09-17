@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileMenu from "@/components/ui/mobile-menu";
 import logoLina from "@assets/7906d125-8a87-4c30-ba79-7e52df4e1545_1756708646805.png";
@@ -13,6 +13,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  NavigationMenuTriggerUnstyled,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
@@ -141,13 +142,15 @@ export default function Header() {
                 }}>
                   <NavigationMenuList>
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger className={cn(
-                        "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
-                        "!hover:bg-transparent !data-[state=open]:bg-transparent !data-[state=open]:scale-100 !data-[state=open]:before:w-0 !focus:bg-transparent !data-[state=open]:hover:bg-transparent",
-                        shouldUseWhiteText ? "text-white !data-[state=open]:text-white" : "text-gray-600 !data-[state=open]:text-gray-600"
-                      )}>
-                        Produtos
-                      </NavigationMenuTrigger>
+                      <NavigationMenuTriggerUnstyled asChild>
+                        <button className={cn(
+                          "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:scale-100 data-[state=open]:before:w-0",
+                          shouldUseWhiteText ? "text-white data-[state=open]:text-white" : "text-gray-600 data-[state=open]:text-gray-600"
+                        )}>
+                          Produtos
+                          <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                        </button>
+                      </NavigationMenuTriggerUnstyled>
                       <NavigationMenuContent>
                         <div className="grid gap-3 p-6 md:w-[600px] lg:w-[800px] lg:grid-cols-[1fr_.75fr]">
                           {/* Left Column - Product List */}
@@ -199,13 +202,15 @@ export default function Header() {
                     </NavigationMenuItem>
 
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger className={cn(
-                        "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
-                        "!hover:bg-transparent !data-[state=open]:bg-transparent !data-[state=open]:scale-100 !data-[state=open]:before:w-0 !focus:bg-transparent !data-[state=open]:hover:bg-transparent",
-                        shouldUseWhiteText ? "text-white !data-[state=open]:text-white" : "text-gray-600 !data-[state=open]:text-gray-600"
-                      )}>
-                        Recursos
-                      </NavigationMenuTrigger>
+                      <NavigationMenuTriggerUnstyled asChild>
+                        <button className={cn(
+                          "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:scale-100 data-[state=open]:before:w-0",
+                          shouldUseWhiteText ? "text-white data-[state=open]:text-white" : "text-gray-600 data-[state=open]:text-gray-600"
+                        )}>
+                          Recursos
+                          <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                        </button>
+                      </NavigationMenuTriggerUnstyled>
                       <NavigationMenuContent>
                         <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                           {recursosDropdownItems.map((item) => (

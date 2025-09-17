@@ -252,8 +252,8 @@ export default function InfraHeroSection() {
                   </div>
                 </div>
 
-                {/* Regulators - Superior Centro */}
-                <div className="absolute z-10" style={{ top: '20px', left: '50%', transform: 'translateX(-50%)' }}>
+                {/* Regulators - Superior Centro - POSIÇÃO AJUSTADA */}
+                <div className="absolute z-10" style={{ top: '-20px', left: '50%', transform: 'translateX(-50%)' }}>
                   <motion.div 
                     className="w-14 h-14 bg-gradient-to-br from-gray-700/80 to-gray-800/90 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-xl backdrop-blur-sm"
                     animate={{
@@ -274,8 +274,8 @@ export default function InfraHeroSection() {
                   </div>
                 </div>
 
-                {/* APIs - Inferior Centro */}
-                <div className="absolute z-10" style={{ bottom: '20px', left: '50%', transform: 'translateX(-50%)' }}>
+                {/* APIs - Inferior Centro - POSIÇÃO AJUSTADA */}
+                <div className="absolute z-10" style={{ bottom: '10px', left: '50%', transform: 'translateX(-50%)' }}>
                   <motion.div 
                     className="w-14 h-14 bg-gradient-to-br from-gray-700/80 to-gray-800/90 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-xl backdrop-blur-sm"
                     animate={{
@@ -296,15 +296,15 @@ export default function InfraHeroSection() {
                   </div>
                 </div>
 
-                {/* Enhanced Connection Lines with Elegant Flow */}
+                {/* Enhanced Connection Lines with Elegant Flow - COORDENADAS AJUSTADAS */}
                 <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} viewBox="0 0 100 100" preserveAspectRatio="none">
                   {[
                     { x1: 50, y1: 50, x2: 18.75, y2: 18.75, delay: 0 },
                     { x1: 50, y1: 50, x2: 81.25, y2: 18.75, delay: 0.3 },
                     { x1: 50, y1: 50, x2: 18.75, y2: 81.25, delay: 0.6 },
                     { x1: 50, y1: 50, x2: 81.25, y2: 81.25, delay: 0.9 },
-                    { x1: 50, y1: 50, x2: 50, y2: 9.375, delay: 1.2 },
-                    { x1: 50, y1: 50, x2: 50, y2: 90.625, delay: 1.5 }
+                    { x1: 50, y1: 50, x2: 50, y2: -2.5, delay: 1.2 }, // Regulators - linha mais longa
+                    { x1: 50, y1: 50, x2: 50, y2: 93.75, delay: 1.5 } // APIs - linha mais longa
                   ].map((line, index) => (
                     <g key={index}>
                       {/* Base connection line */}
