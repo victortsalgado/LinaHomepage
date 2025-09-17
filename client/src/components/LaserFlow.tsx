@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 const VERT = `
@@ -271,22 +271,39 @@ export const LaserFlow = ({
 }: LaserFlowProps) => {
   const mountRef = useRef<HTMLDivElement>(null);
   const hasFadedRef = useRef(false);
+  const [hasWebGLError, setHasWebGLError] = useState(false);
 
   useEffect(() => {
     const mount = mountRef.current;
     if (!mount) return;
     
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-      powerPreference: 'high-performance',
-      premultipliedAlpha: false
-    });
-    renderer.setClearColor(0x000000, 0);
-    renderer.domElement.style.width = '100%';
-    renderer.domElement.style.height = '100%';
-    renderer.domElement.style.display = 'block';
-    mount.appendChild(renderer.domElement);
+    let renderer: THREE.WebGLRenderer;
+    
+    try {
+      // Test WebGL support first
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (!gl) {
+        throw new Error('WebGL not supported');
+      }
+      
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+        powerPreference: 'high-performance',
+        premultipliedAlpha: false
+      });
+      
+      renderer.setClearColor(0x000000, 0);
+      renderer.domElement.style.width = '100%';
+      renderer.domElement.style.height = '100%';
+      renderer.domElement.style.display = 'block';
+      mount.appendChild(renderer.domElement);
+    } catch (error) {
+      console.warn('WebGL initialization failed, falling back to CSS animation:', error);
+      setHasWebGLError(true);
+      return;
+    }
 
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
@@ -466,6 +483,47 @@ export const LaserFlow = ({
     fogFallSpeed,
     color
   ]);
+
+  // Fallback visual when WebGL fails
+  if (hasWebGLError) {
+    return (
+      <div 
+        className={`laser-flow-container ${className}`}
+        style={{
+          width: '100%',
+          height: '100%',
+          position: 'relative',
+          pointerEvents: 'none',
+          background: `linear-gradient(to bottom, ${color}80, ${color}20, transparent)`,
+          ...style
+        }}
+      >
+        {/* Vertical laser beam fallback */}
+        <div
+          style={{
+            position: 'absolute',
+            left: '50%',
+            top: '0',
+            bottom: '0',
+            width: '2px',
+            background: `linear-gradient(to bottom, ${color}, ${color}80, transparent)`,
+            transform: 'translateX(-50%)',
+            boxShadow: `0 0 20px ${color}80, 0 0 40px ${color}40`,
+            animation: 'laser-pulse 2s ease-in-out infinite alternate'
+          }}
+        />
+        {/* Add CSS animation */}
+        <style>
+          {`
+            @keyframes laser-pulse {
+              0% { opacity: 0.6; }
+              100% { opacity: 1; }
+            }
+          `}
+        </style>
+      </div>
+    );
+  }
 
   return (
     <div 
