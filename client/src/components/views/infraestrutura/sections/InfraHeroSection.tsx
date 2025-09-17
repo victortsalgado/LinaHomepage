@@ -95,33 +95,93 @@ export default function InfraHeroSection() {
 
               {/* Network Diagram */}
               <div className="relative h-96 w-full">
-                {/* Central Node - LINA */}
+                {/* Central Node - LINA with Logo */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-                  <div className="w-20 h-20 bg-gradient-to-br from-[#00b6ac] to-[#2EC9BC] rounded-full flex items-center justify-center shadow-2xl shadow-[#00b6ac]/50 border-4 border-white/20">
-                    <span className="text-white font-bold text-sm" style={{ fontFamily: 'Lexend, sans-serif' }}>LINA</span>
-                  </div>
-                  <div className="absolute inset-0 bg-[#00b6ac] rounded-full animate-ping opacity-30" />
-                </div>
-
-                {/* Satellite Nodes com coordenadas precisas */}
-                {/* Banks - Superior Esquerdo */}
-                <div className="absolute z-10" style={{ top: '60px', left: '60px' }}>
+                  {/* Main circle with pulsing animation */}
                   <motion.div 
-                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    className="relative w-24 h-24 bg-gradient-to-br from-[#00b6ac] to-[#2EC9BC] rounded-full flex items-center justify-center shadow-2xl shadow-[#00b6ac]/50 border-4 border-white/20"
                     animate={{
-                      scale: [1, 1.1, 1],
-                      borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
+                      boxShadow: [
+                        "0 0 20px rgba(0, 182, 172, 0.5)",
+                        "0 0 40px rgba(0, 182, 172, 0.8)",
+                        "0 0 20px rgba(0, 182, 172, 0.5)"
+                      ]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    {/* Logo container - you can replace this with your logo */}
+                    <div className="w-12 h-12 flex items-center justify-center">
+                      {/* Placeholder for logo - replace with your logo */}
+                      <img 
+                        src="/logo-lina.png" 
+                        alt="LINA Logo" 
+                        className="w-10 h-10 object-contain"
+                        onError={(e) => {
+                          // Fallback to text if logo doesn't load
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'block';
+                        }}
+                      />
+                      <span 
+                        className="text-white font-bold text-sm hidden" 
+                        style={{ fontFamily: 'Lexend, sans-serif' }}
+                      >
+                        LINA
+                      </span>
+                    </div>
+                  </motion.div>
+
+                  {/* Animated rings around the center */}
+                  <motion.div 
+                    className="absolute inset-0 border-2 border-[#00b6ac]/30 rounded-full"
+                    animate={{
+                      scale: [1, 1.3, 1],
+                      opacity: [0.5, 0, 0.5]
                     }}
                     transition={{
                       duration: 2,
+                      repeat: Infinity,
+                      ease: "easeOut"
+                    }}
+                  />
+                  <motion.div 
+                    className="absolute inset-0 border-2 border-[#2EC9BC]/20 rounded-full"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.3, 0, 0.3]
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: "easeOut",
+                      delay: 0.5
+                    }}
+                  />
+                </div>
+
+                {/* Satellite Nodes with improved positioning */}
+                {/* Banks - Superior Esquerdo */}
+                <div className="absolute z-10" style={{ top: '60px', left: '60px' }}>
+                  <motion.div 
+                    className="w-14 h-14 bg-gradient-to-br from-gray-700/80 to-gray-800/90 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-xl backdrop-blur-sm"
+                    animate={{
+                      scale: [1, 1.05, 1],
+                      borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
+                    }}
+                    transition={{
+                      duration: 2.5,
                       repeat: Infinity,
                       ease: "easeInOut",
                       delay: 0
                     }}
                   >
-                    <Building2 className="w-5 h-5 text-[#00b6ac]" />
+                    <Building2 className="w-6 h-6 text-[#00b6ac]" />
                   </motion.div>
-                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                  <div className="absolute -bottom-7 left-1/2 transform -translate-x-1/2 text-xs text-gray-300 font-medium whitespace-nowrap">
                     Banks
                   </div>
                 </div>
@@ -129,21 +189,21 @@ export default function InfraHeroSection() {
                 {/* Insurance - Superior Direito */}
                 <div className="absolute z-10" style={{ top: '60px', right: '60px' }}>
                   <motion.div 
-                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    className="w-14 h-14 bg-gradient-to-br from-gray-700/80 to-gray-800/90 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-xl backdrop-blur-sm"
                     animate={{
-                      scale: [1, 1.1, 1],
+                      scale: [1, 1.05, 1],
                       borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 2.5,
                       repeat: Infinity,
                       ease: "easeInOut",
-                      delay: 0.5
+                      delay: 0.4
                     }}
                   >
-                    <Shield className="w-5 h-5 text-[#00b6ac]" />
+                    <Shield className="w-6 h-6 text-[#00b6ac]" />
                   </motion.div>
-                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                  <div className="absolute -bottom-7 left-1/2 transform -translate-x-1/2 text-xs text-gray-300 font-medium whitespace-nowrap">
                     Insurance
                   </div>
                 </div>
@@ -151,21 +211,21 @@ export default function InfraHeroSection() {
                 {/* Fintechs - Inferior Esquerdo */}
                 <div className="absolute z-10" style={{ bottom: '60px', left: '60px' }}>
                   <motion.div 
-                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    className="w-14 h-14 bg-gradient-to-br from-gray-700/80 to-gray-800/90 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-xl backdrop-blur-sm"
                     animate={{
-                      scale: [1, 1.1, 1],
+                      scale: [1, 1.05, 1],
                       borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 2.5,
                       repeat: Infinity,
                       ease: "easeInOut",
-                      delay: 1
+                      delay: 0.8
                     }}
                   >
-                    <Smartphone className="w-5 h-5 text-[#00b6ac]" />
+                    <Smartphone className="w-6 h-6 text-[#00b6ac]" />
                   </motion.div>
-                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                  <div className="absolute -bottom-7 left-1/2 transform -translate-x-1/2 text-xs text-gray-300 font-medium whitespace-nowrap">
                     Fintechs
                   </div>
                 </div>
@@ -173,21 +233,21 @@ export default function InfraHeroSection() {
                 {/* Partners - Inferior Direito */}
                 <div className="absolute z-10" style={{ bottom: '60px', right: '60px' }}>
                   <motion.div 
-                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    className="w-14 h-14 bg-gradient-to-br from-gray-700/80 to-gray-800/90 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-xl backdrop-blur-sm"
                     animate={{
-                      scale: [1, 1.1, 1],
+                      scale: [1, 1.05, 1],
                       borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 2.5,
                       repeat: Infinity,
                       ease: "easeInOut",
-                      delay: 1.5
+                      delay: 1.2
                     }}
                   >
-                    <Users className="w-5 h-5 text-[#00b6ac]" />
+                    <Users className="w-6 h-6 text-[#00b6ac]" />
                   </motion.div>
-                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                  <div className="absolute -bottom-7 left-1/2 transform -translate-x-1/2 text-xs text-gray-300 font-medium whitespace-nowrap">
                     Partners
                   </div>
                 </div>
@@ -195,21 +255,21 @@ export default function InfraHeroSection() {
                 {/* Regulators - Superior Centro */}
                 <div className="absolute z-10" style={{ top: '20px', left: '50%', transform: 'translateX(-50%)' }}>
                   <motion.div 
-                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    className="w-14 h-14 bg-gradient-to-br from-gray-700/80 to-gray-800/90 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-xl backdrop-blur-sm"
                     animate={{
-                      scale: [1, 1.1, 1],
+                      scale: [1, 1.05, 1],
                       borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 2.5,
                       repeat: Infinity,
                       ease: "easeInOut",
-                      delay: 2
+                      delay: 1.6
                     }}
                   >
-                    <BarChart3 className="w-5 h-5 text-[#00b6ac]" />
+                    <BarChart3 className="w-6 h-6 text-[#00b6ac]" />
                   </motion.div>
-                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                  <div className="absolute -bottom-7 left-1/2 transform -translate-x-1/2 text-xs text-gray-300 font-medium whitespace-nowrap">
                     Regulators
                   </div>
                 </div>
@@ -217,56 +277,55 @@ export default function InfraHeroSection() {
                 {/* APIs - Inferior Centro */}
                 <div className="absolute z-10" style={{ bottom: '20px', left: '50%', transform: 'translateX(-50%)' }}>
                   <motion.div 
-                    className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-lg"
+                    className="w-14 h-14 bg-gradient-to-br from-gray-700/80 to-gray-800/90 rounded-full border-2 border-[#00b6ac]/40 flex items-center justify-center shadow-xl backdrop-blur-sm"
                     animate={{
-                      scale: [1, 1.1, 1],
+                      scale: [1, 1.05, 1],
                       borderColor: ['rgba(0, 182, 172, 0.4)', 'rgba(0, 182, 172, 0.8)', 'rgba(0, 182, 172, 0.4)']
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 2.5,
                       repeat: Infinity,
                       ease: "easeInOut",
-                      delay: 2.5
+                      delay: 2
                     }}
                   >
-                    <Code className="w-5 h-5 text-[#00b6ac]" />
+                    <Code className="w-6 h-6 text-[#00b6ac]" />
                   </motion.div>
-                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-400 font-medium whitespace-nowrap">
+                  <div className="absolute -bottom-7 left-1/2 transform -translate-x-1/2 text-xs text-gray-300 font-medium whitespace-nowrap">
                     APIs
                   </div>
                 </div>
 
-                {/* Connection Lines with Laser Flow Effect */}
+                {/* Enhanced Connection Lines with Elegant Flow */}
                 <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} viewBox="0 0 100 100" preserveAspectRatio="none">
                   {[
-                    // Coordenadas baseadas em uma grade 100x100 para precisão máxima
-                    { x1: 50, y1: 50, x2: 18.75, y2: 18.75, delay: 0, label: 'Banks' },      // 60px + 6px (metade do círculo) = 66px de 352px total ≈ 18.75%
-                    { x1: 50, y1: 50, x2: 81.25, y2: 18.75, delay: 0.3, label: 'Insurance' }, // lado direito
-                    { x1: 50, y1: 50, x2: 18.75, y2: 81.25, delay: 0.6, label: 'Fintechs' },  // inferior esquerdo
-                    { x1: 50, y1: 50, x2: 81.25, y2: 81.25, delay: 0.9, label: 'Partners' },  // inferior direito
-                    { x1: 50, y1: 50, x2: 50, y2: 9.375, delay: 1.2, label: 'Regulators' },   // 20px + 6px = 26px de 384px ≈ 6.77%
-                    { x1: 50, y1: 50, x2: 50, y2: 90.625, delay: 1.5, label: 'APIs' }         // inferior centro
+                    { x1: 50, y1: 50, x2: 18.75, y2: 18.75, delay: 0 },
+                    { x1: 50, y1: 50, x2: 81.25, y2: 18.75, delay: 0.3 },
+                    { x1: 50, y1: 50, x2: 18.75, y2: 81.25, delay: 0.6 },
+                    { x1: 50, y1: 50, x2: 81.25, y2: 81.25, delay: 0.9 },
+                    { x1: 50, y1: 50, x2: 50, y2: 9.375, delay: 1.2 },
+                    { x1: 50, y1: 50, x2: 50, y2: 90.625, delay: 1.5 }
                   ].map((line, index) => (
                     <g key={index}>
-                      {/* Base line */}
+                      {/* Base connection line */}
                       <line
                         x1={line.x1}
                         y1={line.y1}
                         x2={line.x2}
                         y2={line.y2}
-                        stroke="rgba(0, 182, 172, 0.2)"
-                        strokeWidth="0.3"
+                        stroke="rgba(0, 182, 172, 0.15)"
+                        strokeWidth="0.4"
                         vectorEffect="non-scaling-stroke"
                       />
 
-                      {/* Animated laser flow */}
+                      {/* Elegant pulsing connection */}
                       <motion.line
                         x1={line.x1}
                         y1={line.y1}
                         x2={line.x2}
                         y2={line.y2}
-                        stroke="url(#laserGradient)"
-                        strokeWidth="0.8"
+                        stroke="url(#pulseGradient)"
+                        strokeWidth="1"
                         strokeLinecap="round"
                         vectorEffect="non-scaling-stroke"
                         initial={{ 
@@ -274,162 +333,70 @@ export default function InfraHeroSection() {
                           opacity: 0
                         }}
                         animate={{ 
-                          pathLength: [0, 0.8, 0],
-                          opacity: [0, 1, 0]
+                          pathLength: [0, 1, 0.8, 0],
+                          opacity: [0, 0.8, 1, 0]
                         }}
                         transition={{ 
+                          duration: 3,
+                          delay: 1 + line.delay,
+                          repeat: Infinity,
+                          repeatDelay: 2,
+                          ease: "easeInOut"
+                        }}
+                      />
+
+                      {/* Smooth data flow particles */}
+                      <motion.circle
+                        r="2"
+                        fill="url(#particleGradient)"
+                        filter="url(#softGlow)"
+                        initial={{ 
+                          x: line.x1,
+                          y: line.y1,
+                          opacity: 0
+                        }}
+                        animate={{ 
+                          x: [line.x1, line.x2],
+                          y: [line.y1, line.y2],
+                          opacity: [0, 1, 1, 0]
+                        }}
+                        transition={{
                           duration: 2,
                           delay: 2 + line.delay,
                           repeat: Infinity,
-                          repeatDelay: 4,
-                          ease: "easeInOut"
-                        }}
-                      />
-
-                      {/* Pulsing glow effect */}
-                      <motion.line
-                        x1={line.x1}
-                        y1={line.y1}
-                        x2={line.x2}
-                        y2={line.y2}
-                        stroke="rgba(0, 182, 172, 0.6)"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        filter="blur(0.8px)"
-                        vectorEffect="non-scaling-stroke"
-                        initial={{ 
-                          pathLength: 0,
-                          opacity: 0
-                        }}
-                        animate={{ 
-                          pathLength: [0, 0.6, 0],
-                          opacity: [0, 0.8, 0]
-                        }}
-                        transition={{ 
-                          duration: 2,
-                          delay: 2.1 + line.delay,
-                          repeat: Infinity,
-                          repeatDelay: 4,
-                          ease: "easeInOut"
-                        }}
-                      />
-                    </g>
-                  ))}
-
-                  {/* Enhanced data flow particles */}
-                  {[
-                    { path: `M 50,50 L 18.75,18.75`, delay: 3, color: "#00b6ac", label: "Banks" },
-                    { path: `M 50,50 L 81.25,18.75`, delay: 3.3, color: "#2EC9BC", label: "Insurance" },
-                    { path: `M 50,50 L 18.75,81.25`, delay: 3.6, color: "#00b6ac", label: "Fintechs" },
-                    { path: `M 50,50 L 81.25,81.25`, delay: 3.9, color: "#2EC9BC", label: "Partners" },
-                    { path: `M 50,50 L 50,9.375`, delay: 4.2, color: "#00b6ac", label: "Regulators" },
-                    { path: `M 50,50 L 50,90.625`, delay: 4.5, color: "#2EC9BC", label: "APIs" }
-                  ].map((particle, index) => (
-                    <g key={`particle-group-${index}`}>
-                      {/* Main particle */}
-                      <motion.circle
-                        r="3"
-                        fill={particle.color}
-                        filter="url(#glow)"
-                        initial={{ offsetDistance: "0%", opacity: 0 }}
-                        animate={{ 
-                          offsetDistance: ["0%", "100%"],
-                          opacity: [0, 1, 0]
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          delay: particle.delay,
-                          repeat: Infinity,
-                          repeatDelay: 4,
+                          repeatDelay: 3,
                           ease: "easeOut"
-                        }}
-                        style={{
-                          offsetPath: `path('${particle.path}')`
-                        }}
-                      />
-
-                      {/* Particle trail */}
-                      <motion.circle
-                        r="1.5"
-                        fill={particle.color}
-                        fillOpacity="0.6"
-                        initial={{ offsetDistance: "0%", opacity: 0 }}
-                        animate={{ 
-                          offsetDistance: ["0%", "100%"],
-                          opacity: [0, 0.8, 0]
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          delay: particle.delay + 0.1,
-                          repeat: Infinity,
-                          repeatDelay: 4,
-                          ease: "easeOut"
-                        }}
-                        style={{
-                          offsetPath: `path('${particle.path}')`
                         }}
                       />
                     </g>
                   ))}
 
                   <defs>
-                    {/* Laser gradient */}
-                    <linearGradient id="laserGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#00b6ac" stopOpacity="0" />
-                      <stop offset="30%" stopColor="#00b6ac" stopOpacity="1" />
-                      <stop offset="70%" stopColor="#2EC9BC" stopOpacity="1" />
-                      <stop offset="100%" stopColor="#2EC9BC" stopOpacity="0" />
+                    {/* Pulse gradient for elegant connection lines */}
+                    <linearGradient id="pulseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#00b6ac" stopOpacity="0.3" />
+                      <stop offset="50%" stopColor="#2EC9BC" stopOpacity="0.8" />
+                      <stop offset="100%" stopColor="#00b6ac" stopOpacity="0.3" />
                     </linearGradient>
 
-                    {/* Glow filter */}
-                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    {/* Particle gradient */}
+                    <radialGradient id="particleGradient" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="#2EC9BC" stopOpacity="1" />
+                      <stop offset="70%" stopColor="#00b6ac" stopOpacity="0.8" />
+                      <stop offset="100%" stopColor="#00b6ac" stopOpacity="0" />
+                    </radialGradient>
+
+                    {/* Soft glow filter */}
+                    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+                      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
                       <feMerge> 
                         <feMergeNode in="coloredBlur"/>
                         <feMergeNode in="SourceGraphic"/>
                       </feMerge>
                     </filter>
-
-                    {/* Connection gradient */}
-                    <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#00b6ac" />
-                      <stop offset="50%" stopColor="#2EC9BC" />
-                      <stop offset="100%" stopColor="#00b6ac" />
-                    </linearGradient>
                   </defs>
                 </svg>
               </div>
-
-              {/* Floating Info Cards */}
-              <motion.div
-                className="absolute -top-4 -right-4 bg-[#00b6ac]/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ 
-                  opacity: 1, 
-                  y: [-20, -10, -20],
-                }}
-                transition={{ 
-                  opacity: { delay: 2, duration: 0.5 },
-                  y: { delay: 2.5, duration: 3, repeat: Infinity, ease: "easeInOut" }
-                }}
-              >
-                <span className="text-white text-xs font-medium">50+ Instituições</span>
-              </motion.div>
-
-              <motion.div
-                className="absolute -bottom-4 -left-4 bg-[#2EC9BC]/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ 
-                  opacity: 1, 
-                  y: [20, 10, 20],
-                }}
-                transition={{ 
-                  opacity: { delay: 2.5, duration: 0.5 },
-                  y: { delay: 3, duration: 3.5, repeat: Infinity, ease: "easeInOut" }
-                }}
-              >
-                <span className="text-white text-xs font-medium">Suporte 24x7</span>
-              </motion.div>
             </div>
           </motion.div>
         </div>
