@@ -144,7 +144,7 @@ export default function SocialProofSection() {
                 variants={itemVariants}
                 className="p-16 lg:p-24"
               >
-                <div className="bg-gradient-to-br from-[#2d5a57] to-[#1a3d3a] rounded-3xl p-10 text-white relative">
+                <div className="bg-gradient-to-br from-[#2d5a57] to-[#1a3d3a] rounded-3xl p-10 text-white relative pl-[40px] pr-[40px] ml-[-74px] mr-[-74px] pt-[69px] pb-[69px]"></div>
                   {/* Quote Icon - Top Right Corner */}
                   <div className="absolute top-6 right-6 z-10">
                     <img 
