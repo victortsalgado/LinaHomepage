@@ -17,6 +17,12 @@ import quoteIcon from "@assets/Depoimentos-Site-Lina_Aspas_1758631100702.png";
 // Import testimonial avatar
 import leonardoAvatar from "@assets/Depoimentos-Site-Lina_Leonardo Rainho_1758631704116.png";
 
+// Import team avatars
+import gustavoAvatar from "@assets/Depoimentos-Site-Lina_Gustavo Peres_1758631830437.png";
+import marceloTangioniAvatar from "@assets/Depoimentos-Site-Lina_Marcelo Tangioni_1758631830439.png";
+import marcioCastroAvatar from "@assets/Depoimentos-Site-Lina_Marcio Castro_1758631830439.png";
+import ricardoMendesAvatar from "@assets/Depoimentos-Site-Lina_Ricardo Mendes _1758631830440.png";
+
 export default function SocialProofSection() {
   // Company logos for the bottom section
   const companyLogos = [
@@ -37,12 +43,12 @@ export default function SocialProofSection() {
     initials: "LR"
   };
 
-  // Team avatars for circles above button
+  // Team avatars above button
   const teamAvatars = [
-    { id: 1, src: "/attached_assets/Ricardo-Mendes_1758631366862.png", alt: "Ricardo Mendes" },
-    { id: 2, src: "/attached_assets/Marcelo-Esteves_1758631393070.png", alt: "Marcelo Esteves" },
-    { id: 3, src: "/attached_assets/Paulo-Prado_1758631419638.png", alt: "Paulo Prado" },
-    { id: 4, src: "/attached_assets/Leonardo-Rainhos_1758631298334.png", alt: "Leonardo Rainhos" }
+    { id: 1, src: ricardoMendesAvatar, alt: "Ricardo Mendes" },
+    { id: 2, src: marceloTangioniAvatar, alt: "Marcelo Tangioni" },
+    { id: 3, src: marcioCastroAvatar, alt: "Marcio Castro" },
+    { id: 4, src: gustavoAvatar, alt: "Gustavo Peres" }
   ];
 
   // Animation variants
