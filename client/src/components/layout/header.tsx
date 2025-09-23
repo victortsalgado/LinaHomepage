@@ -5,6 +5,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileMenu from "@/components/ui/mobile-menu";
 import logoLina from "@assets/7906d125-8a87-4c30-ba79-7e52df4e1545_1756708646805.png";
+import dataLinkLogo from "@assets/Logo_Produto_DataLink_1758621910210.png";
 import { Link, useLocation } from "wouter";
 import {
   NavigationMenu,
@@ -24,7 +25,7 @@ export default function Header() {
       title: "Data Link", 
       href: "/data-link",
       description: "Solução completa para integração de dados empresariais",
-      imageSrc: "/assets/menu/data-link.png"
+      imageSrc: dataLinkLogo
     },
     { 
       title: "Lina Pay", 
@@ -183,9 +184,11 @@ export default function Header() {
                               >
                                 <div className="mb-4">
                                   <div className="w-full h-32 bg-gradient-to-r from-lina-cyan/20 to-blue-100 rounded-md mb-4 flex items-center justify-center">
-                                    <span className="text-gray-600 text-sm font-medium">
-                                      {activeProduct.title}
-                                    </span>
+                                    <img 
+                                      src={activeProduct.imageSrc} 
+                                      alt={activeProduct.title}
+                                      className="max-h-24 max-w-full object-contain"
+                                    />
                                   </div>
                                 </div>
                                 <div className="mb-2 mt-4 text-lg font-medium">
