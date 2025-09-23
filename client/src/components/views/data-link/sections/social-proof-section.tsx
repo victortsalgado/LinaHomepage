@@ -14,6 +14,9 @@ import cloudwalkLogo from "@/assets/cloudwalk.png";
 // Import quote image
 import quoteIcon from "@assets/Depoimentos-Site-Lina_Aspas_1758631100702.png";
 
+// Import testimonial avatar
+import leonardoAvatar from "@assets/Depoimentos-Site-Lina_Leonardo Rainho_1758631704116.png";
+
 export default function SocialProofSection() {
   // Company logos for the bottom section
   const companyLogos = [
@@ -161,9 +164,9 @@ export default function SocialProofSection() {
                       <div className="flex items-center space-x-4">
                         <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-[#2ec9bc]">
                           <img
-                            src="/attached_assets/image_1758631534815.png"
+                            src={leonardoAvatar}
                             alt={testimonial.author}
-                            className="w-full h-full object-cover grayscale"
+                            className="w-full h-full object-cover"
                             data-testid="img-testimonial-avatar"
                           />
                         </div>
