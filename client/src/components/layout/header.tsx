@@ -184,14 +184,12 @@ export default function Header() {
                                 transition={{ duration: 0.3 }}
                                 className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/40 p-6 no-underline outline-none"
                               >
-                                <div className="mb-4">
-                                  <div className="w-full h-32 bg-gradient-to-r from-lina-cyan/20 to-blue-100 rounded-md mb-4 flex items-center justify-center">
-                                    <img 
-                                      src={activeProduct.imageSrc} 
-                                      alt={activeProduct.title}
-                                      className="max-h-24 max-w-full object-contain"
-                                    />
-                                  </div>
+                                <div className="mb-4 flex items-center justify-center h-32">
+                                  <img 
+                                    src={activeProduct.imageSrc} 
+                                    alt={activeProduct.title}
+                                    className="max-h-24 max-w-full object-contain"
+                                  />
                                 </div>
                                 <div className="mb-2 mt-4 text-lg font-medium">
                                   {activeProduct.title}
