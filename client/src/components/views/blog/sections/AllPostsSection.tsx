@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import BlogPostCard from "@/components/ui/BlogPostCard";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useBlogSearch } from "@/contexts/BlogSearchContext";
 import { useMemo } from "react";
 import { allBlogPosts } from "@/data/blogPosts";
@@ -10,7 +11,7 @@ import { allBlogPosts } from "@/data/blogPosts";
 
 export default function AllPostsSection() {
   const { ref, isVisible } = useScrollReveal();
-  const { searchTerm, category, tag } = useBlogSearch();
+  const { searchTerm, category, setCategory, tag, setTag } = useBlogSearch();
 
   // Filter posts based on search term and filters
   const filteredPosts = useMemo(() => {
@@ -79,6 +80,44 @@ export default function AllPostsSection() {
           animate={isVisible ? "visible" : "hidden"}
           className="space-y-16"
         >
+          {/* Filter Dropdowns - Centered above title */}
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-center space-x-4"
+          >
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger 
+                className="w-48"
+                data-testid="select-category-filter"
+              >
+                <SelectValue placeholder="Categorias" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="todas">Todas as Categorias</SelectItem>
+                <SelectItem value="datalink">DataLink</SelectItem>
+                <SelectItem value="linapay">LinaPay</SelectItem>
+                <SelectItem value="jsr">JSR</SelectItem>
+                <SelectItem value="institucional">Institucional</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Select value={tag} onValueChange={setTag}>
+              <SelectTrigger 
+                className="w-48"
+                data-testid="select-tag-filter"
+              >
+                <SelectValue placeholder="Tags" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="todas">Todas as Tags</SelectItem>
+                <SelectItem value="inovacao">Inovação</SelectItem>
+                <SelectItem value="pagamentos">Pagamentos</SelectItem>
+                <SelectItem value="tecnologia">Tecnologia</SelectItem>
+                <SelectItem value="mercado">Mercado</SelectItem>
+              </SelectContent>
+            </Select>
+          </motion.div>
+
           {/* Section Title */}
           <motion.div
             variants={itemVariants}
@@ -89,7 +128,7 @@ export default function AllPostsSection() {
               style={{ fontFamily: 'Lexend, sans-serif' }}
               data-testid="heading-all-posts"
             >
-              All Blog Posts
+              Todas as Publicações
             </h2>
           </motion.div>
 

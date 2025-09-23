@@ -158,7 +158,7 @@ export default function RecentBlogsSection() {
           {/* Section Header */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-6 lg:space-y-0"
+            className="text-center"
           >
             <h2
               className="text-4xl lg:text-5xl font-bold text-gray-900"
@@ -167,41 +167,6 @@ export default function RecentBlogsSection() {
             >
               Artigos Recentes
             </h2>
-
-            {/* Filter Dropdowns */}
-            <div className="flex space-x-4">
-              <Select value={category} onValueChange={setCategory}>
-                <SelectTrigger 
-                  className="w-48"
-                  data-testid="select-category-filter"
-                >
-                  <SelectValue placeholder="Categorias" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="todas">Todas as Categorias</SelectItem>
-                  <SelectItem value="datalink">DataLink</SelectItem>
-                  <SelectItem value="linapay">LinaPay</SelectItem>
-                  <SelectItem value="jsr">JSR</SelectItem>
-                  <SelectItem value="institucional">Institucional</SelectItem>
-                </SelectContent>
-              </Select>
-
-              <Select value={tag} onValueChange={setTag}>
-                <SelectTrigger 
-                  className="w-48"
-                  data-testid="select-tag-filter"
-                >
-                  <SelectValue placeholder="Tags" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="todas">Todas as Tags</SelectItem>
-                  <SelectItem value="inovacao">Inovação</SelectItem>
-                  <SelectItem value="pagamentos">Pagamentos</SelectItem>
-                  <SelectItem value="tecnologia">Tecnologia</SelectItem>
-                  <SelectItem value="mercado">Mercado</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
           </motion.div>
 
           {/* Carousel Container */}
