@@ -136,11 +136,13 @@ export default function SocialProofSection() {
                 className="p-16 lg:p-24"
               >
                 <div className="bg-gradient-to-br from-[#2d5a57] to-[#1a3d3a] rounded-2xl p-8 text-white relative">
-                  {/* Quote Icon - Positioned overlapping the box - half inside/half outside */}
+                  {/* Quote Icon - Custom image positioned overlapping the box - half inside/half outside */}
                   <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 z-20">
-                    <div className="bg-[#2ec9bc] p-4 rounded-lg shadow-lg border-4 border-white">
-                      <Quote className="w-8 h-8 text-white" />
-                    </div>
+                    <img 
+                      src="/attached_assets/Depoimentos-Site-Lina_Aspas_1758631100702.png" 
+                      alt="Quote icon"
+                      className="w-16 h-16 object-contain"
+                    />
                   </div>
                   
                   <div className="relative z-10">
