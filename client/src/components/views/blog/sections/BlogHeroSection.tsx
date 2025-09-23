@@ -11,7 +11,7 @@ export default function BlogHeroSection() {
   const { searchTerm, setSearchTerm, setSelectedPostId } = useBlogSearch();
   const [typewriterText, setTypewriterText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
-  
+
   const fullText = "Universo Open";
 
   const handlePostSelect = (postId: number) => {
@@ -90,7 +90,7 @@ export default function BlogHeroSection() {
   return (
     <section 
       ref={ref}
-      className="relative py-20 lg:py-32 overflow-visible"
+      className="relative py-32 lg:py-48 xl:py-56 overflow-visible min-h-[600px] lg:min-h-[700px] xl:min-h-[800px] flex items-center"
       style={{ 
         backgroundColor: 'var(--lina-dark)',
         background: `
@@ -112,7 +112,7 @@ export default function BlogHeroSection() {
         }}
       />
 
-      <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative">
+      <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative w-full">
         <motion.div
           variants={containerVariants}
           initial="hidden"

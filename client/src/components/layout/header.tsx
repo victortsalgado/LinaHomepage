@@ -27,18 +27,21 @@ export default function Header() {
       title: "Data Link", 
       href: "/data-link",
       description: "Solução completa para integração de dados empresariais",
+      badges: ["API First", "Real-time", "Seguro"],
       imageSrc: dataLinkLogo
     },
     { 
       title: "Lina Pay", 
       href: "/lina-pay",
       description: "Sistema de pagamentos digitais integrado",
+      badges: ["PIX", "Boleto", "Cartão"],
       imageSrc: linaPayLogo
     },
     { 
-      title: "Infraestrutura e Conectividade", 
+      title: "JSR", 
       href: "/infraestrutura-e-conectividade",
-      description: "Infraestrutura robusta para Open Finance e Insurance",
+      description: "Plataforma de gestão e relatórios avançados",
+      badges: ["Analytics", "Dashboard", "Reports"],
       imageSrc: linaJSRLogo
     },
   ];
@@ -49,7 +52,7 @@ export default function Header() {
   const [activeProduct, setActiveProduct] = useState(produtosDropdownItems[0]);
   const [location] = useLocation();
   const isMobile = useIsMobile();
-  
+
   // Detectar se estamos em páginas com fundo escuro
   const isDarkPage = location === '/infraestrutura-e-conectividade';
   const shouldUseWhiteText = isDarkPage && !isScrolled;
@@ -147,7 +150,7 @@ export default function Header() {
                     <NavigationMenuItem>
                       <NavigationMenuTriggerUnstyled asChild>
                         <button className={cn(
-                          "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:text-lina-cyan data-[state=open]:scale-105 data-[state=open]:before:w-full data-[state=open]:before:left-0 flex items-center",
+                          "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:text-[#00b6ac] data-[state=open]:scale-105 data-[state=open]:before:w-full data-[state=open]:before:left-0 flex items-center",
                           shouldUseWhiteText ? "text-white" : "text-gray-600"
                         )}>
                           Produtos
@@ -155,48 +158,93 @@ export default function Header() {
                         </button>
                       </NavigationMenuTriggerUnstyled>
                       <NavigationMenuContent>
-                        <div className="grid gap-3 p-6 md:w-[600px] lg:w-[800px] lg:grid-cols-[1fr_.75fr]">
+                        <div className="grid gap-0 md:w-[600px] lg:w-[750px] lg:grid-cols-[1.3fr_1fr]">
                           {/* Left Column - Product List */}
-                          <div className="grid grid-cols-1 gap-3">
+                          <div className="grid grid-cols-1 gap-0.5 p-2 bg-white dark:bg-gray-900">
                             {produtosDropdownItems.map((item) => (
                               <div
                                 key={item.title}
                                 onMouseEnter={() => setActiveProduct(item)}
                               >
-                                <ListItem
-                                  title={item.title}
-                                  href={item.href}
+                                <Link
+                                  to={item.href}
+                                  className={cn(
+                                    "group relative block select-none rounded-lg p-3.5 leading-none no-underline outline-none transition-all duration-200",
+                                    "hover:bg-gray-50 dark:hover:bg-gray-800",
+                                    activeProduct.title === item.title && "bg-gray-50 dark:bg-gray-800"
+                                  )}
                                 >
-                                  {item.description}
-                                </ListItem>
+                                  <div className="flex items-start gap-3">
+                                    {/* Product Info */}
+                                    <div className="flex-1 space-y-1">
+                                      <div className="flex items-center gap-2">
+                                        <h4 className="text-sm font-semibold leading-none text-gray-900 dark:text-white">
+                                          {item.title}
+                                        </h4>
+                                        <svg 
+                                          className={cn(
+                                            "h-3.5 w-3.5 transition-all duration-200 opacity-0 -translate-x-1",
+                                            "group-hover:opacity-100 group-hover:translate-x-0 text-teal-500"
+                                          )} 
+                                          fill="none" 
+                                          viewBox="0 0 24 24" 
+                                          stroke="currentColor"
+                                        >
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                      </div>
+                                      <p className="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+                                        {item.description}
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  {/* Hover indicator line */}
+                                  <div className={cn(
+                                    "absolute left-0 top-0 h-full w-0.5 rounded-r-full transition-all duration-200",
+                                    "bg-gradient-to-b from-teal-500 to-cyan-500",
+                                    "opacity-0 group-hover:opacity-100",
+                                    activeProduct.title === item.title && "opacity-100"
+                                  )} />
+                                </Link>
                               </div>
                             ))}
                           </div>
 
-                          {/* Right Column - Dynamic Content */}
-                          <div className="row-span-3">
+                          {/* Right Column - Visual Preview with Badges Only */}
+                          <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 flex items-center justify-center p-8">
                             <AnimatePresence mode="wait">
                               <motion.div
                                 key={activeProduct.title}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/40 p-6 no-underline outline-none"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
+                                className="flex flex-col items-center text-center"
                               >
-                                <div className="mb-4 flex items-center justify-center h-32">
-                                  <img 
-                                    src={activeProduct.imageSrc} 
-                                    alt={activeProduct.title}
-                                    className="max-h-24 max-w-full object-contain"
-                                  />
+                                {/* Logo destacada */}
+                                <div className="relative mb-5">
+                                  <div className="absolute inset-0 bg-teal-500/10 dark:bg-teal-500/5 rounded-2xl blur-2xl" />
+                                  <div className="relative">
+                                    <img 
+                                      src={activeProduct.imageSrc} 
+                                      alt={activeProduct.title}
+                                      className="h-24 w-auto object-contain"
+                                    />
+                                  </div>
                                 </div>
-                                <div className="mb-2 mt-4 text-lg font-medium">
-                                  {activeProduct.title}
+
+                                {/* Badges */}
+                                <div className="flex flex-wrap gap-2 justify-center">
+                                  {activeProduct.badges && activeProduct.badges.map((badge: string, index: number) => (
+                                    <div 
+                                      key={index}
+                                      className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300 border border-teal-200/50 dark:border-teal-700/50"
+                                    >
+                                      {badge}
+                                    </div>
+                                  ))}
                                 </div>
-                                <p className="text-sm leading-tight text-muted-foreground">
-                                  {activeProduct.description}
-                                </p>
                               </motion.div>
                             </AnimatePresence>
                           </div>
@@ -207,7 +255,7 @@ export default function Header() {
                     <NavigationMenuItem>
                       <NavigationMenuTriggerUnstyled asChild>
                         <button className={cn(
-                          "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:text-lina-cyan data-[state=open]:scale-105 data-[state=open]:before:w-full data-[state=open]:before:left-0 flex items-center",
+                          "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:text-[#00b6ac] data-[state=open]:scale-105 data-[state=open]:before:w-full data-[state=open]:before:left-0 flex items-center",
                           shouldUseWhiteText ? "text-white" : "text-gray-600"
                         )}>
                           Recursos
@@ -215,15 +263,48 @@ export default function Header() {
                         </button>
                       </NavigationMenuTriggerUnstyled>
                       <NavigationMenuContent>
-                        <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                        <div className="grid w-[400px] gap-0.5 p-2 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white dark:bg-gray-900">
                           {recursosDropdownItems.map((item) => (
-                            <ListItem
+                            <Link
                               key={item.title}
-                              title={item.title}
-                              href={item.href}
+                              to={item.href}
+                              className={cn(
+                                "group relative block select-none rounded-lg p-3.5 leading-none no-underline outline-none transition-all duration-200",
+                                "hover:bg-gray-50 dark:hover:bg-gray-800"
+                              )}
                             >
-                              {item.description}
-                            </ListItem>
+                              <div className="flex items-start gap-3">
+                                {/* Resource Info */}
+                                <div className="flex-1 space-y-1">
+                                  <div className="flex items-center gap-2">
+                                    <h4 className="text-sm font-semibold leading-none text-gray-900 dark:text-white">
+                                      {item.title}
+                                    </h4>
+                                    <svg 
+                                      className={cn(
+                                        "h-3.5 w-3.5 transition-all duration-200 opacity-0 -translate-x-1",
+                                        "group-hover:opacity-100 group-hover:translate-x-0 text-teal-500"
+                                      )} 
+                                      fill="none" 
+                                      viewBox="0 0 24 24" 
+                                      stroke="currentColor"
+                                    >
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                  </div>
+                                  <p className="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+                                    {item.description}
+                                  </p>
+                                </div>
+                              </div>
+
+                              {/* Hover indicator line */}
+                              <div className={cn(
+                                "absolute left-0 top-0 h-full w-0.5 rounded-r-full transition-all duration-200",
+                                "bg-gradient-to-b from-teal-500 to-cyan-500",
+                                "opacity-0 group-hover:opacity-100"
+                              )} />
+                            </Link>
                           ))}
                         </div>
                       </NavigationMenuContent>
@@ -233,7 +314,7 @@ export default function Header() {
                       <NavigationMenuLink 
                         href="#integracoes" 
                         className={cn(
-                          "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
+                          "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
                           shouldUseWhiteText ? "text-white" : "text-gray-600"
                         )}
                         data-testid="link-integrations"
@@ -247,7 +328,7 @@ export default function Header() {
                         <Link 
                           to="/trial" 
                           className={cn(
-                            "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
+                            "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
                             shouldUseWhiteText ? "text-white" : "text-gray-600"
                           )}
                           data-testid="link-trial"
@@ -262,7 +343,7 @@ export default function Header() {
                         <Link 
                           to="/quem-somos" 
                           className={cn(
-                            "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-lina-cyan hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-lina-cyan before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
+                            "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
                             shouldUseWhiteText ? "text-white" : "text-gray-600"
                           )}
                           data-testid="link-about"
