@@ -6,6 +6,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import MobileMenu from "@/components/ui/mobile-menu";
 import logoLina from "@assets/7906d125-8a87-4c30-ba79-7e52df4e1545_1756708646805.png";
 import dataLinkLogo from "@assets/Logo_Produto_DataLink_1758621910210.png";
+import linaPayLogo from "@assets/Logo_Produto_LinaPay_1758622359589.png";
 import { Link, useLocation } from "wouter";
 import {
   NavigationMenu,
@@ -31,7 +32,7 @@ export default function Header() {
       title: "Lina Pay", 
       href: "/lina-pay",
       description: "Sistema de pagamentos digitais integrado",
-      imageSrc: "/assets/menu/lina-pay.png"
+      imageSrc: linaPayLogo
     },
     { 
       title: "Infraestrutura e Conectividade", 
