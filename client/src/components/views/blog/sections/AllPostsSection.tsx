@@ -98,11 +98,11 @@ export default function AllPostsSection() {
                 <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="todas">Todas as Categorias</SelectItem>
-                <SelectItem value="datalink">DataLink</SelectItem>
-                <SelectItem value="linapay">LinaPay</SelectItem>
-                <SelectItem value="jsr">JSR</SelectItem>
-                <SelectItem value="institucional">Institucional</SelectItem>
+                <SelectItem value="todas" className="hover:bg-[#00b6ac]/10 focus:bg-[#00b6ac]/10 data-[highlighted]:bg-[#00b6ac]/10 hover:text-[#00b6ac] data-[highlighted]:text-[#00b6ac]">Todas as Categorias</SelectItem>
+                <SelectItem value="datalink" className="hover:bg-[#00b6ac]/10 focus:bg-[#00b6ac]/10 data-[highlighted]:bg-[#00b6ac]/10 hover:text-[#00b6ac] data-[highlighted]:text-[#00b6ac]">DataLink</SelectItem>
+                <SelectItem value="linapay" className="hover:bg-[#00b6ac]/10 focus:bg-[#00b6ac]/10 data-[highlighted]:bg-[#00b6ac]/10 hover:text-[#00b6ac] data-[highlighted]:text-[#00b6ac]">LinaPay</SelectItem>
+                <SelectItem value="jsr" className="hover:bg-[#00b6ac]/10 focus:bg-[#00b6ac]/10 data-[highlighted]:bg-[#00b6ac]/10 hover:text-[#00b6ac] data-[highlighted]:text-[#00b6ac]">JSR</SelectItem>
+                <SelectItem value="institucional" className="hover:bg-[#00b6ac]/10 focus:bg-[#00b6ac]/10 data-[highlighted]:bg-[#00b6ac]/10 hover:text-[#00b6ac] data-[highlighted]:text-[#00b6ac]">Institucional</SelectItem>
               </SelectContent>
             </Select>
 
@@ -118,11 +118,11 @@ export default function AllPostsSection() {
                 <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="todas">Todas as Tags</SelectItem>
-                <SelectItem value="inovacao">Inovação</SelectItem>
-                <SelectItem value="pagamentos">Pagamentos</SelectItem>
-                <SelectItem value="tecnologia">Tecnologia</SelectItem>
-                <SelectItem value="mercado">Mercado</SelectItem>
+                <SelectItem value="todas" className="hover:bg-[#00b6ac]/10 focus:bg-[#00b6ac]/10 data-[highlighted]:bg-[#00b6ac]/10 hover:text-[#00b6ac] data-[highlighted]:text-[#00b6ac]">Todas as Tags</SelectItem>
+                <SelectItem value="inovacao" className="hover:bg-[#00b6ac]/10 focus:bg-[#00b6ac]/10 data-[highlighted]:bg-[#00b6ac]/10 hover:text-[#00b6ac] data-[highlighted]:text-[#00b6ac]">Inovação</SelectItem>
+                <SelectItem value="pagamentos" className="hover:bg-[#00b6ac]/10 focus:bg-[#00b6ac]/10 data-[highlighted]:bg-[#00b6ac]/10 hover:text-[#00b6ac] data-[highlighted]:text-[#00b6ac]">Pagamentos</SelectItem>
+                <SelectItem value="tecnologia" className="hover:bg-[#00b6ac]/10 focus:bg-[#00b6ac]/10 data-[highlighted]:bg-[#00b6ac]/10 hover:text-[#00b6ac] data-[highlighted]:text-[#00b6ac]">Tecnologia</SelectItem>
+                <SelectItem value="mercado" className="hover:bg-[#00b6ac]/10 focus:bg-[#00b6ac]/10 data-[highlighted]:bg-[#00b6ac]/10 hover:text-[#00b6ac] data-[highlighted]:text-[#00b6ac]">Mercado</SelectItem>
               </SelectContent>
             </Select>
           </motion.div>
