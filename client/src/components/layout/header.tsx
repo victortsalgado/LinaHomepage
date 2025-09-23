@@ -7,6 +7,7 @@ import MobileMenu from "@/components/ui/mobile-menu";
 import logoLina from "@assets/7906d125-8a87-4c30-ba79-7e52df4e1545_1756708646805.png";
 import dataLinkLogo from "@assets/Logo_Produto_DataLink_1758621910210.png";
 import linaPayLogo from "@assets/Logo_Produto_LinaPay_1758622359589.png";
+import linaJSRLogo from "@assets/Logo_Produto_LinaJSR_1758622910938.png";
 import { Link, useLocation } from "wouter";
 import {
   NavigationMenu,
@@ -38,7 +39,7 @@ export default function Header() {
       title: "Infraestrutura e Conectividade", 
       href: "/infraestrutura-e-conectividade",
       description: "Infraestrutura robusta para Open Finance e Insurance",
-      imageSrc: "/assets/menu/infraestrutura.png"
+      imageSrc: linaJSRLogo
     },
   ];
 
