@@ -38,8 +38,9 @@ export default function SocialProofSection() {
     text: "A solução de Pix via Open Finance da Lina foi fundamental para o sucesso da jornada de investimento em previdência via WhatsApp da Brasilprev. Com ela, os clientes podem investir a partir de qualquer banco, de forma simples e segura. A Lina contribuiu diretamente para solucionar o desafio de levar a previdência para cada vez mais brasileiros.",
     author: "Leonardo Rainhos",
     role: "Gerente de Produtos da Brasilprev",
-    avatar: leonardoAvatar,
+    avatar: "/attached_assets/Leonardo-Rainhos_1758631298334.png",
     companyLogo: brasilprevLogo,
+    initials: "LR"
   };
 
   // Team avatars above button
@@ -83,8 +84,8 @@ export default function SocialProofSection() {
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
         >
-          {/* Main Box with DataLink Home Style - Mais largo */}
-          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px] max-w-7xl mx-auto">
+          {/* Main Box with DataLink Home Style */}
+          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px]">
             <div className="grid lg:grid-cols-2 gap-0 items-center">
               {/* Left Column - Content */}
               <motion.div 
@@ -114,7 +115,7 @@ export default function SocialProofSection() {
                   Descubra como empresas líderes estão transformando seus negócios com nossa solução de Open Finance, otimizando processos e tomando decisões mais inteligentes.
                 </p>
 
-                {/* Team Avatars above button - usando as imagens que já vêm com bordas circulares teal */}
+                {/* Team Avatars above button */}
                 <div className="flex items-center mb-6">
                   {teamAvatars.map((avatar, index) => (
                     <img
@@ -143,42 +144,41 @@ export default function SocialProofSection() {
                 variants={itemVariants}
                 className="p-16 lg:p-24"
               >
-                <div className="bg-gradient-to-br from-[#2d5a57] to-[#1a3d3a] rounded-3xl p-8 lg:p-12 text-white relative">
+                <div className="bg-gradient-to-br from-[#2d5a57] to-[#1a3d3a] rounded-3xl p-10 text-white relative">
                   {/* Quote Icon - Top Right Corner */}
-                  <div className="absolute top-8 right-8 z-10">
+                  <div className="absolute top-6 right-6 z-10">
                     <img 
                       src={quoteIcon}
                       alt="Quote icon"
-                      className="w-20 h-20 object-contain"
+                      className="w-16 h-16 object-contain opacity-80"
                     />
                   </div>
 
                   <div className="relative z-10">
                     <blockquote 
-                      className="text-xl leading-relaxed mb-10 pr-16"
+                      className="text-xl leading-relaxed mb-12 pr-12"
                       data-testid="text-testimonial-quote"
                     >
                       "{testimonial.text}"
                     </blockquote>
 
-                    <div className="flex items-end justify-between">
+                    <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
-                        {/* Avatar com borda circular teal - usando imagem que já vem com a borda */}
                         <img
-                          src={testimonial.avatar}
+                          src={leonardoAvatar}
                           alt={testimonial.author}
-                          className="w-20 h-20 object-cover"
+                          className="w-16 h-16 object-cover"
                           data-testid="img-testimonial-avatar"
                         />
                         <div>
                           <p 
-                            className="font-bold text-white text-lg mb-1"
+                            className="font-bold text-white text-lg"
                             data-testid="text-author-name"
                           >
                             {testimonial.author}
                           </p>
                           <p 
-                            className="text-white/90 text-sm"
+                            className="text-white/80 text-sm"
                             data-testid="text-author-role"
                           >
                             {testimonial.role}
@@ -186,12 +186,12 @@ export default function SocialProofSection() {
                         </div>
                       </div>
 
-                      {/* Company Logo - Badge amarelo Brasilprev */}
+                      {/* Company Logo */}
                       <div className="px-4 py-2 rounded-lg flex items-center justify-center h-12 bg-[#ffed00]">
                         <img
                           src={testimonial.companyLogo}
-                          alt="Brasilprev logo"
-                          className="h-10 w-auto object-contain"
+                          alt="Company logo"
+                          className="h-full w-auto object-contain"
                         />
                       </div>
                     </div>
