@@ -158,7 +158,7 @@ export default function SocialProofSection() {
                       <div className="flex items-center space-x-4">
                         <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-[#2ec9bc]">
                           <img
-                            src="/attached_assets/download_1758631456948.png"
+                            src="/attached_assets/image_1758631534815.png"
                             alt={testimonial.author}
                             className="w-full h-full object-cover grayscale"
                             data-testid="img-testimonial-avatar"
