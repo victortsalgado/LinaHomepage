@@ -90,7 +90,7 @@ export default function AllPostsSection() {
             <Select value={category} onValueChange={setCategory}>
               <SelectTrigger 
                 className={cn(
-                  "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:text-[#00b6ac] data-[state=open]:scale-105 data-[state=open]:before:w-full data-[state=open]:before:left-0 flex items-center text-gray-600 min-w-[200px] justify-between"
+                  "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:text-[#00b6ac] data-[state=open]:scale-105 data-[state=open]:before:w-full data-[state=open]:before:left-0 flex items-center text-gray-600 w-auto justify-between"
                 )}
                 data-testid="select-category-filter"
               >
@@ -110,7 +110,7 @@ export default function AllPostsSection() {
             <Select value={tag} onValueChange={setTag}>
               <SelectTrigger 
                 className={cn(
-                  "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:text-[#00b6ac] data-[state=open]:scale-105 data-[state=open]:before:w-full data-[state=open]:before:left-0 flex items-center text-gray-600 min-w-[160px] justify-between"
+                  "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:text-[#00b6ac] data-[state=open]:scale-105 data-[state=open]:before:w-full data-[state=open]:before:left-0 flex items-center text-gray-600 w-auto justify-between"
                 )}
                 data-testid="select-tag-filter"
               >
