@@ -187,7 +187,7 @@ export default function SocialProofSection() {
                       </div>
 
                       {/* Company Logo */}
-                      <div className="bg-yellow-400 px-4 py-2 rounded-lg flex items-center justify-center h-12">
+                      <div className="px-4 py-2 rounded-lg flex items-center justify-center h-12 bg-[#ffed00]">
                         <img
                           src={testimonial.companyLogo}
                           alt="Company logo"
