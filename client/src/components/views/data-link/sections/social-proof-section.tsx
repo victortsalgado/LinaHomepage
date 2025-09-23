@@ -1,52 +1,43 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { useState, useEffect } from "react";
-import { useBlogSearch } from "@/contexts/BlogSearchContext";
-import SearchDropdown from "@/components/ui/SearchDropdown";
+import { motion } from "framer-motion";
+import { Quote, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-export default function BlogHeroSection() {
-  const { ref, isVisible } = useScrollReveal();
-  const { searchTerm, setSearchTerm, setSelectedPostId } = useBlogSearch();
-  const [typewriterText, setTypewriterText] = useState("");
-  const [showSearchBar, setShowSearchBar] = useState(false);
+// Import company logos
+import brasilprevLogo from "@/assets/brasilprev.png";
+import safraLogo from "@/assets/safra.png";
+import sicoobLogo from "@/assets/sicoob.png";
+import stoneLogo from "@/assets/stone.png";
+import cloudwalkLogo from "@/assets/cloudwalk.png";
 
-  const fullText = "Universo Open";
+export default function SocialProofSection() {
+  // Company logos for the bottom section
+  const companyLogos = [
+    { name: "BrasilPrev", src: brasilprevLogo },
+    { name: "Safra", src: safraLogo },
+    { name: "Sicoob", src: sicoobLogo },
+    { name: "Stone", src: stoneLogo },
+    { name: "Cloudwalk", src: cloudwalkLogo }
+  ];
 
-  const handlePostSelect = (postId: number) => {
-    setSelectedPostId(postId);
-    // For now, we'll just scroll to the post in the grid
-    // In a real app, this would navigate to a detailed post page
-    const element = document.querySelector(`[data-post-id="${postId}"]`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+  // Featured testimonial
+  const testimonial = {
+    text: "A solução de Pix via Open Finance da Lina foi fundamental para o sucesso da jornada de investimento em previdência via WhatsApp da Brasilprev. Com ela, os clientes podem investir a partir de qualquer banco, de forma simples e segura. A Lina contribuiu diretamente para solucionar o desafio de levar a previdência para cada vez mais brasileiros.",
+    author: "Leonardo Rainhos",
+    role: "Gerente de Produtos da Brasilprev",
+    avatar: "/attached_assets/Leonardo-Rainhos_1758631298334.png",
+    companyLogo: brasilprevLogo,
+    initials: "LR"
   };
 
-  // Typewriter effect
-  useEffect(() => {
-    if (!isVisible) return;
-
-    let timeoutId: NodeJS.Timeout;
-    let currentIndex = 0;
-
-    const typeWriter = () => {
-      if (currentIndex <= fullText.length) {
-        setTypewriterText(fullText.slice(0, currentIndex));
-        currentIndex++;
-        timeoutId = setTimeout(typeWriter, 150); // 150ms delay between letters
-      } else {
-        // Show search bar after typewriter completes
-        setTimeout(() => setShowSearchBar(true), 500);
-      }
-    };
-
-    // Start typewriter after a short delay
-    timeoutId = setTimeout(typeWriter, 800);
-
-    return () => clearTimeout(timeoutId);
-  }, [isVisible]);
+  // Team avatars for circles above button
+  const teamAvatars = [
+    { id: 1, src: "/attached_assets/Ricardo-Mendes_1758631366862.png", alt: "Ricardo Mendes" },
+    { id: 2, src: "/attached_assets/Marcelo-Esteves_1758631393070.png", alt: "Marcelo Esteves" },
+    { id: 3, src: "/attached_assets/Paulo-Prado_1758631419638.png", alt: "Paulo Prado" },
+    { id: 4, src: "/attached_assets/Leonardo-Rainhos_1758631298334.png", alt: "Leonardo Rainhos" }
+  ];
 
   // Animation variants
   const containerVariants = {
@@ -54,117 +45,177 @@ export default function BlogHeroSection() {
     visible: {
       opacity: 1,
       transition: {
-        duration: 1,
-        ease: "easeOut",
+        duration: 0.8,
         staggerChildren: 0.3,
-        delayChildren: 0.2,
       },
     },
   };
 
-  const welcomeVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const searchBarVariants = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
+        duration: 0.8,
         ease: "easeOut",
       },
     },
   };
 
   return (
-    <section 
-      ref={ref}
-      className="relative py-32 lg:py-48 xl:py-56 overflow-visible min-h-[600px] lg:min-h-[700px] xl:min-h-[800px] flex items-center"
-      style={{ 
-        backgroundColor: 'var(--lina-dark)',
-        background: `
-          radial-gradient(circle at 50% 50%, rgba(0, 175, 170, 0.1) 0%, transparent 50%),
-          var(--lina-dark)
-        `
-      }}
-      data-testid="section-blog-hero"
-    >
-      {/* Grid Pattern Background */}
-      <div 
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px'
-        }}
-      />
-
-      <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative w-full">
+    <section className="py-24 md:py-32 lg:py-40 bg-gray-50 min-h-screen flex items-center">
+      <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         <motion.div
-          variants={containerVariants}
           initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-          className="text-center space-y-8"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
         >
-          {/* Welcome Text */}
-          <motion.p
-            variants={welcomeVariants}
-            className="text-lg lg:text-xl text-gray-300 font-medium tracking-wider uppercase"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-            data-testid="text-hero-welcome"
-          >
-            BEM VINDO AO
-          </motion.p>
-
-          {/* Main Title with Typewriter Effect */}
-          <div className="min-h-[120px] lg:min-h-[160px] flex items-center justify-center">
-            <h1
-              className="text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight"
-              style={{ fontFamily: 'Lexend, sans-serif' }}
-              data-testid="heading-hero-title"
-            >
-              {typewriterText}
-              <motion.span
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-                className="text-[var(--lina-cyan)]"
+          {/* Main Box with DataLink Home Style */}
+          <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm min-h-[500px]">
+            <div className="grid lg:grid-cols-2 gap-0 items-center">
+              {/* Left Column - Content */}
+              <motion.div 
+                variants={itemVariants}
+                className="p-16 lg:p-24"
               >
-                |
-              </motion.span>
-            </h1>
+                <div className="mb-6">
+                  <span 
+                    className="text-sm font-medium text-[#2ec9bc] mb-2 block"
+                    data-testid="text-section-label"
+                  >
+                    Quem usa, recomenda
+                  </span>
+                  <h2
+                    className="text-4xl md:text-5xl font-bold text-gray-800 leading-[1.1] mb-4"
+                    style={{ fontFamily: 'Lexend, sans-serif' }}
+                    data-testid="heading-social-proof-title"
+                  >
+                    Veja o impacto do <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Data Link</span> na prática
+                  </h2>
+                </div>
+
+                <p 
+                  className="text-lg text-gray-700 mb-8 leading-relaxed"
+                  data-testid="text-social-proof-description"
+                >
+                  Descubra como empresas líderes estão transformando seus negócios com nossa solução de Open Finance, otimizando processos e tomando decisões mais inteligentes.
+                </p>
+
+                {/* Team Avatars above button */}
+                <div className="flex items-center mb-6">
+                  {teamAvatars.map((avatar, index) => (
+                    <div
+                      key={avatar.id}
+                      className={`w-14 h-14 rounded-full overflow-hidden border-4 border-[#2ec9bc] shadow-md ${index > 0 ? '-ml-3' : ''}`}
+                      data-testid={`avatar-team-${avatar.id}`}
+                    >
+                      <img
+                        src={avatar.src}
+                        alt={avatar.alt}
+                        className="w-full h-full object-cover grayscale"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <Button 
+                  variant="light-bg"
+                  className="px-6 py-3 mb-8"
+                  data-testid="button-discover-datalink"
+                >
+                  <span>Descubra como funciona</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+
+              </motion.div>
+
+              {/* Right Column - Testimonial */}
+              <motion.div 
+                variants={itemVariants}
+                className="p-16 lg:p-24"
+              >
+                <div className="bg-gradient-to-br from-[#2d5a57] to-[#1a3d3a] rounded-3xl p-10 text-white relative">
+                  {/* Quote Icon - Top Right Corner */}
+                  <div className="absolute top-6 right-6 z-10">
+                    <img 
+                      src="/attached_assets/Depoimentos-Site-Lina_Aspas_1758631100702.png" 
+                      alt="Quote icon"
+                      className="w-16 h-16 object-contain opacity-80"
+                    />
+                  </div>
+
+                  <div className="relative z-10">
+                    <blockquote 
+                      className="text-xl leading-relaxed mb-12 pr-12"
+                      data-testid="text-testimonial-quote"
+                    >
+                      "{testimonial.text}"
+                    </blockquote>
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-[#2ec9bc]">
+                          <img
+                            src="/attached_assets/download_1758631456948.png"
+                            alt={testimonial.author}
+                            className="w-full h-full object-cover grayscale"
+                            data-testid="img-testimonial-avatar"
+                          />
+                        </div>
+                        <div>
+                          <p 
+                            className="font-bold text-white text-lg"
+                            data-testid="text-author-name"
+                          >
+                            {testimonial.author}
+                          </p>
+                          <p 
+                            className="text-white/80 text-sm"
+                            data-testid="text-author-role"
+                          >
+                            {testimonial.role}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Company Logo */}
+                      <div className="bg-yellow-400 px-4 py-2 rounded-lg flex items-center justify-center h-12">
+                        <img
+                          src={testimonial.companyLogo}
+                          alt="Company logo"
+                          className="h-full w-auto object-contain"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
 
-          {/* Search Bar */}
-          <AnimatePresence>
-            {showSearchBar && (
-              <motion.div
-                variants={searchBarVariants}
-                initial="hidden"
-                animate="visible"
-                className="max-w-2xl mx-auto relative z-[9999]"
-                style={{ zIndex: 9999 }}
-              >
-                <SearchDropdown
-                  searchTerm={searchTerm}
-                  onSearchChange={setSearchTerm}
-                  onPostSelect={handlePostSelect}
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {/* Company Logos Section */}
+          <motion.div 
+            variants={itemVariants}
+            className="mt-16 text-center"
+          >
+            <div className="grid grid-cols-3 md:grid-cols-5 gap-8 items-center justify-items-center opacity-60">
+              {companyLogos.map((company) => (
+                <div
+                  key={company.name}
+                  className="h-12 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
+                  data-testid={`logo-${company.name.toLowerCase()}`}
+                >
+                  <img
+                    src={company.src}
+                    alt={`${company.name} logo`}
+                    className="h-full w-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
