@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import BlogPostCard from "@/components/ui/BlogPostCard";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 import { useBlogSearch } from "@/contexts/BlogSearchContext";
 import { useMemo } from "react";
 import { allBlogPosts } from "@/data/blogPosts";
@@ -87,7 +89,10 @@ export default function AllPostsSection() {
           >
             <Select value={category} onValueChange={setCategory}>
               <SelectTrigger 
-                className="w-48"
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  "w-48 justify-between data-[state=open]:bg-accent/50"
+                )}
                 data-testid="select-category-filter"
               >
                 <SelectValue placeholder="Categorias" />
@@ -103,7 +108,10 @@ export default function AllPostsSection() {
 
             <Select value={tag} onValueChange={setTag}>
               <SelectTrigger 
-                className="w-48"
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  "w-48 justify-between data-[state=open]:bg-accent/50"
+                )}
                 data-testid="select-tag-filter"
               >
                 <SelectValue placeholder="Tags" />
