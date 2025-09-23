@@ -11,6 +11,9 @@ import sicoobLogo from "@/assets/sicoob.png";
 import stoneLogo from "@/assets/stone.png";
 import cloudwalkLogo from "@/assets/cloudwalk.png";
 
+// Import quote image
+import quoteIcon from "@assets/Depoimentos-Site-Lina_Aspas_1758631100702.png";
+
 export default function SocialProofSection() {
   // Company logos for the bottom section
   const companyLogos = [
@@ -140,7 +143,7 @@ export default function SocialProofSection() {
                   {/* Quote Icon - Top Right Corner */}
                   <div className="absolute top-6 right-6 z-10">
                     <img 
-                      src="/attached_assets/Depoimentos-Site-Lina_Aspas_1758631100702.png" 
+                      src={quoteIcon}
                       alt="Quote icon"
                       className="w-16 h-16 object-contain opacity-80"
                     />
