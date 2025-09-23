@@ -7,12 +7,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useBlogSearch } from "@/contexts/BlogSearchContext";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { allBlogPosts } from "@/data/blogPosts";
 
 export default function AllPostsSection() {
   const { ref, isVisible } = useScrollReveal();
   const { searchTerm, category, setCategory, tag, setTag } = useBlogSearch();
+  const [categoryOpen, setCategoryOpen] = useState(false);
+  const [tagOpen, setTagOpen] = useState(false);
 
   // Filter posts based on search term and filters
   const filteredPosts = useMemo(() => {
@@ -81,25 +83,31 @@ export default function AllPostsSection() {
           animate={isVisible ? "visible" : "hidden"}
           className="space-y-16"
         >
-          {/* Filter Dropdowns - Centered */}
+          {/* Filter Dropdowns - Header Style */}
           <motion.div
             variants={itemVariants}
-            className="flex justify-center items-center gap-4"
+            className="flex justify-center items-center gap-8"
           >
-            <div className="group relative">
-              <Select value={category} onValueChange={setCategory}>
+            {/* Category Filter */}
+            <div 
+              className="group relative"
+              onMouseEnter={() => setCategoryOpen(true)}
+              onMouseLeave={() => setCategoryOpen(false)}
+            >
+              <Select 
+                value={category} 
+                onValueChange={setCategory}
+                open={categoryOpen}
+                onOpenChange={setCategoryOpen}
+              >
                 <SelectTrigger 
                   className={cn(
-                    "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-accent-foreground data-[state=open]:bg-accent/50 data-[state=open]:hover:bg-accent data-[state=open]:focus:bg-accent",
-                    "min-w-[200px] justify-between"
+                    "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:text-[#00b6ac] data-[state=open]:scale-105 data-[state=open]:before:w-full data-[state=open]:before:left-0 flex items-center text-gray-600 min-w-[200px] justify-between"
                   )}
                   data-testid="select-category-filter"
-                  onMouseEnter={(e) => {
-                    e.currentTarget.click();
-                  }}
                 >
                   <SelectValue placeholder="Todas as Categorias" />
-                  <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+                  <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="todas">Todas as Categorias</SelectItem>
@@ -111,20 +119,26 @@ export default function AllPostsSection() {
               </Select>
             </div>
 
-            <div className="group relative">
-              <Select value={tag} onValueChange={setTag}>
+            {/* Tag Filter */}
+            <div 
+              className="group relative"
+              onMouseEnter={() => setTagOpen(true)}
+              onMouseLeave={() => setTagOpen(false)}
+            >
+              <Select 
+                value={tag} 
+                onValueChange={setTag}
+                open={tagOpen}
+                onOpenChange={setTagOpen}
+              >
                 <SelectTrigger 
                   className={cn(
-                    "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-accent-foreground data-[state=open]:bg-accent/50 data-[state=open]:hover:bg-accent data-[state=open]:focus:bg-accent",
-                    "min-w-[160px] justify-between"
+                    "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:text-[#00b6ac] data-[state=open]:scale-105 data-[state=open]:before:w-full data-[state=open]:before:left-0 flex items-center text-gray-600 min-w-[160px] justify-between"
                   )}
                   data-testid="select-tag-filter"
-                  onMouseEnter={(e) => {
-                    e.currentTarget.click();
-                  }}
                 >
                   <SelectValue placeholder="Todas as Tags" />
-                  <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+                  <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="todas">Todas as Tags</SelectItem>
