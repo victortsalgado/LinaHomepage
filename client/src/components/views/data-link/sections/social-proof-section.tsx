@@ -112,17 +112,13 @@ export default function SocialProofSection() {
                 {/* Team Avatars above button */}
                 <div className="flex items-center mb-6">
                   {teamAvatars.map((avatar, index) => (
-                    <div
+                    <img
                       key={avatar.id}
-                      className={`w-14 h-14 rounded-full overflow-hidden border-4 border-[#2ec9bc] shadow-md ${index > 0 ? '-ml-3' : ''}`}
+                      src={avatar.src}
+                      alt={avatar.alt}
+                      className={`w-14 h-14 object-cover ${index > 0 ? '-ml-3' : ''}`}
                       data-testid={`avatar-team-${avatar.id}`}
-                    >
-                      <img
-                        src={avatar.src}
-                        alt={avatar.alt}
-                        className="w-full h-full object-cover grayscale"
-                      />
-                    </div>
+                    />
                   ))}
                 </div>
 
@@ -162,14 +158,12 @@ export default function SocialProofSection() {
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
-                        <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-[#2ec9bc]">
-                          <img
-                            src={leonardoAvatar}
-                            alt={testimonial.author}
-                            className="w-full h-full object-cover"
-                            data-testid="img-testimonial-avatar"
-                          />
-                        </div>
+                        <img
+                          src={leonardoAvatar}
+                          alt={testimonial.author}
+                          className="w-16 h-16 object-cover"
+                          data-testid="img-testimonial-avatar"
+                        />
                         <div>
                           <p 
                             className="font-bold text-white text-lg"
