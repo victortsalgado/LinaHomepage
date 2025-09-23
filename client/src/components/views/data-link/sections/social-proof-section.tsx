@@ -102,12 +102,12 @@ export default function SocialProofSection() {
                   Descubra como empresas líderes estão transformando seus negócios com nossa solução de Open Finance, otimizando processos e tomando decisões mais inteligentes.
                 </p>
 
-                {/* Team Avatars in circles above button */}
+                {/* Team Avatars above button */}
                 <div className="flex items-center mb-6">
                   {teamAvatars.map((avatar, index) => (
                     <div
                       key={avatar.id}
-                      className={`w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md ${index > 0 ? '-ml-3' : ''}`}
+                      className={`w-12 h-12 rounded-lg overflow-hidden border-2 border-white shadow-md ${index > 0 ? '-ml-3' : ''}`}
                       data-testid={`avatar-team-${avatar.id}`}
                     >
                       <img
@@ -138,7 +138,7 @@ export default function SocialProofSection() {
                 <div className="bg-gradient-to-br from-[#2d5a57] to-[#1a3d3a] rounded-2xl p-8 text-white relative">
                   {/* Quote Icon - Positioned overlapping the box - half inside/half outside */}
                   <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 z-20">
-                    <div className="bg-[#2ec9bc] p-4 rounded-full shadow-lg border-4 border-white">
+                    <div className="bg-[#2ec9bc] p-4 rounded-lg shadow-lg border-4 border-white">
                       <Quote className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -152,7 +152,7 @@ export default function SocialProofSection() {
                     </blockquote>
                     
                     <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20">
+                      <div className="w-12 h-12 rounded-lg overflow-hidden border-2 border-white/20">
                         <img
                           src={testimonial.avatar}
                           alt={testimonial.author}
