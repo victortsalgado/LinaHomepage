@@ -161,13 +161,11 @@ export default function RecentBlogsSection() {
             className="text-center"
           >
             <h2
-              className="text-4xl lg:text-5xl font-bold"
+              className="text-4xl lg:text-5xl font-bold text-gray-900"
               style={{ fontFamily: 'Lexend, sans-serif' }}
               data-testid="heading-recent-blogs"
             >
-              <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">
-                Artigos Recentes
-              </span>
+              Artigos Recentes
             </h2>
           </motion.div>
 
@@ -176,9 +174,9 @@ export default function RecentBlogsSection() {
             variants={itemVariants}
             className="relative"
           >
-            {/* Carousel Content - Following header design pattern */}
-            <div className="bg-gradient-to-br from-white/80 via-teal-50/60 to-cyan-100/50 rounded-3xl shadow-xl overflow-hidden backdrop-blur-sm">
-              <div className="grid lg:grid-cols-2 gap-12 items-center p-8 lg:p-12">
+            {/* Carousel Content */}
+            <div className="bg-gray-50 rounded-3xl p-8 lg:p-12 overflow-hidden">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Left Side - Image */}
                 <div className="relative overflow-hidden rounded-2xl">
                   <img 
@@ -198,13 +196,11 @@ export default function RecentBlogsSection() {
                 {/* Right Side - Content */}
                 <div className="space-y-6">
                   <h3
-                    className="text-3xl lg:text-4xl font-bold leading-tight"
+                    className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight"
                     style={{ fontFamily: 'Lexend, sans-serif' }}
                     data-testid="heading-carousel-title"
                   >
-                    <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">
-                      {currentPost.title}
-                    </span>
+                    {currentPost.title}
                   </h3>
 
                   <p
