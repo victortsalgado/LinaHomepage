@@ -4,12 +4,11 @@ import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import BlogPostCard from "@/components/ui/BlogPostCard";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useBlogSearch } from "@/contexts/BlogSearchContext";
 import { useMemo } from "react";
 import { allBlogPosts } from "@/data/blogPosts";
-
 
 export default function AllPostsSection() {
   const { ref, isVisible } = useScrollReveal();
@@ -22,10 +21,10 @@ export default function AllPostsSection() {
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.category.toLowerCase().includes(searchTerm.toLowerCase());
-      
+
       const matchesCategory = category === "todas" || 
         post.category.toLowerCase() === category.toLowerCase();
-      
+
       return matchesSearch && matchesCategory;
     });
   }, [searchTerm, category, tag]);
@@ -82,48 +81,60 @@ export default function AllPostsSection() {
           animate={isVisible ? "visible" : "hidden"}
           className="space-y-16"
         >
-          {/* Filter Dropdowns - Centered above title */}
+          {/* Filter Dropdowns - Centered */}
           <motion.div
             variants={itemVariants}
-            className="flex justify-center space-x-4"
+            className="flex justify-center items-center gap-4"
           >
-            <Select value={category} onValueChange={setCategory}>
-              <SelectTrigger 
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  "w-48 justify-between data-[state=open]:bg-accent/50"
-                )}
-                data-testid="select-category-filter"
-              >
-                <SelectValue placeholder="Categorias" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="todas">Todas as Categorias</SelectItem>
-                <SelectItem value="datalink">DataLink</SelectItem>
-                <SelectItem value="linapay">LinaPay</SelectItem>
-                <SelectItem value="jsr">JSR</SelectItem>
-                <SelectItem value="institucional">Institucional</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="group relative">
+              <Select value={category} onValueChange={setCategory}>
+                <SelectTrigger 
+                  className={cn(
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-accent-foreground data-[state=open]:bg-accent/50 data-[state=open]:hover:bg-accent data-[state=open]:focus:bg-accent",
+                    "min-w-[200px] justify-between"
+                  )}
+                  data-testid="select-category-filter"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.click();
+                  }}
+                >
+                  <SelectValue placeholder="Todas as Categorias" />
+                  <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="todas">Todas as Categorias</SelectItem>
+                  <SelectItem value="datalink">DataLink</SelectItem>
+                  <SelectItem value="linapay">LinaPay</SelectItem>
+                  <SelectItem value="jsr">JSR</SelectItem>
+                  <SelectItem value="institucional">Institucional</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
 
-            <Select value={tag} onValueChange={setTag}>
-              <SelectTrigger 
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  "w-48 justify-between data-[state=open]:bg-accent/50"
-                )}
-                data-testid="select-tag-filter"
-              >
-                <SelectValue placeholder="Tags" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="todas">Todas as Tags</SelectItem>
-                <SelectItem value="inovacao">Inovação</SelectItem>
-                <SelectItem value="pagamentos">Pagamentos</SelectItem>
-                <SelectItem value="tecnologia">Tecnologia</SelectItem>
-                <SelectItem value="mercado">Mercado</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="group relative">
+              <Select value={tag} onValueChange={setTag}>
+                <SelectTrigger 
+                  className={cn(
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-accent-foreground data-[state=open]:bg-accent/50 data-[state=open]:hover:bg-accent data-[state=open]:focus:bg-accent",
+                    "min-w-[160px] justify-between"
+                  )}
+                  data-testid="select-tag-filter"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.click();
+                  }}
+                >
+                  <SelectValue placeholder="Todas as Tags" />
+                  <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="todas">Todas as Tags</SelectItem>
+                  <SelectItem value="inovacao">Inovação</SelectItem>
+                  <SelectItem value="pagamentos">Pagamentos</SelectItem>
+                  <SelectItem value="tecnologia">Tecnologia</SelectItem>
+                  <SelectItem value="mercado">Mercado</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </motion.div>
 
           {/* Section Title */}
