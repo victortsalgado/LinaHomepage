@@ -16,36 +16,44 @@ export default function ClientsSection() {
   // Client logos data with real brand logos
   const clients = [
     {
-      name: "BrasilPrev",
-      logo: brasilprevLogo
+      src: brasilprevLogo,
+      alt: "BrasilPrev",
+      title: "BrasilPrev"
     },
     {
-      name: "Bradesco Seguros", 
-      logo: bradescoSegurosLogo
+      src: bradescoSegurosLogo,
+      alt: "Bradesco Seguros",
+      title: "Bradesco Seguros"
     },
     {
-      name: "Safra",
-      logo: safraLogo
+      src: safraLogo,
+      alt: "Safra",
+      title: "Safra"
     },
     {
-      name: "Sicoob",
-      logo: sicoobLogo
+      src: sicoobLogo,
+      alt: "Sicoob",
+      title: "Sicoob"
     },
     {
-      name: "Caixa",
-      logo: caixaLogo
+      src: caixaLogo,
+      alt: "Caixa",
+      title: "Caixa"
     },
     {
-      name: "Stone",
-      logo: stoneLogo
+      src: stoneLogo,
+      alt: "Stone",
+      title: "Stone"
     },
     {
-      name: "Icatu Seguros",
-      logo: icatuSegurosLogo
+      src: icatuSegurosLogo,
+      alt: "Icatu Seguros",
+      title: "Icatu Seguros"
     },
     {
-      name: "HDI Seguros",
-      logo: hdiSegurosLogo
+      src: hdiSegurosLogo,
+      alt: "HDI Seguros",
+      title: "HDI Seguros"
     }
   ];
 
@@ -67,35 +75,32 @@ export default function ClientsSection() {
             </span>
           </h2>
         </div>
-        
-        {/* Infinite Carousel */}
-        <div className="relative overflow-hidden">
+
+        {/* Logo Loop Animation */}
+        <div className="py-12" data-testid="logo-loop-clients">
           <InfiniteSlider
-            duration={20}
-            gap={100}
-            className="py-12"
+            gap={80}
+            duration={25}
+            durationOnHover={30}
+            direction="horizontal"
+            reverse={false}
+            className="select-none"
           >
             {clients.map((client, index) => (
-              <div 
-                key={`${client.name}-${index}`} 
-                className="flex items-center justify-center min-w-[220px]"
-                data-testid={`logo-client-${index}`}
+              <div
+                key={index}
+                className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110"
               >
                 <img
-                  src={client.logo}
-                  alt={`Logo ${client.name}`}
-                  className="h-16 w-auto grayscale hover:grayscale-0 transition-all duration-300 ease-in-out opacity-80 hover:opacity-100 cursor-pointer"
+                  src={client.src}
+                  alt={client.alt}
+                  title={client.title}
+                  className="h-16 w-auto object-contain"
                   loading="lazy"
-                  data-testid={`img-logo-${client.name.toLowerCase().replace(/\s+/g, '-')}`}
                 />
               </div>
             ))}
           </InfiniteSlider>
-          
-          
-          {/* Gradient overlays for fade in/out effect */}
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-50 to-transparent pointer-events-none z-10" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none z-10" />
         </div>
       </div>
     </section>
