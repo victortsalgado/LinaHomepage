@@ -51,20 +51,22 @@ export default function ClientsSection() {
         </div>
         
         {/* LogoLoop Carousel with all 23 client logos */}
-        <div style={{ height: '120px', position: 'relative', overflow: 'hidden' }}>
+        <div 
+          style={{ height: '120px', position: 'relative', overflow: 'hidden' }}
+          className="group"
+        >
           <LogoLoop 
             logos={clientLogos}
             speed={120}
             direction="left"
-            logoHeight={64}
-            gap={100}
+            logoHeight={60}
+            gap={80}
             pauseOnHover={true}
             scaleOnHover={true}
             fadeOut={true}
-            fadeOutColor="rgb(249 250 251 / 0.6)"
+            fadeOutColor="rgb(249 250 251)"
             ariaLabel="Nossos clientes"
-            style={{ filter: 'grayscale(1)', transition: 'filter 0.3s ease' }}
-            className="hover:filter-none"
+            className="logo-carousel"
           />
         </div>
       </div>
