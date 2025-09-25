@@ -117,10 +117,7 @@ export default function ValuePropositionSection() {
             return (
               <motion.div
                 key={card.id}
-                className="group relative rounded-2xl p-8 border border-gray-300/20 hover:border-[var(--lina-cyan)]/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[var(--lina-cyan)]/20"
-                style={{
-                  background: `linear-gradient(135deg, var(--lina-dark) 0%, #1a4f4d 50%, var(--lina-dark) 100%)`
-                }}
+                className="group relative rounded-2xl p-8 border border-gray-300/20 hover:border-[var(--lina-cyan)]/50 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[var(--lina-cyan)]/20 bg-gradient-to-br from-[#00b6ac]/20 to-teal-500/20 backdrop-blur-sm"
                 variants={cardVariants}
                 whileHover={{ 
                   y: -8,
