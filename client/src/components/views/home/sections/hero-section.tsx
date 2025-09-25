@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // Optimized WebP images for better performance
 const fintechInnovationImage = "/Ilustra_Destaque_01_Home.png";
 const businessGrowthImage = "/mastercard-logo.webp";
-const securityComplianceImage = "/web-security-shield.png";
+const linaMastercardImage = "/lina-mastercard-banner.png";
 
 interface Slide {
   id: number;
@@ -48,12 +48,12 @@ export default function HeroSection() {
     },
     {
       id: 2,
-      badge: "Exclusivo: Arquitetura de Segurança",
-      title: "Segurança e Compliance de Nível Bancário para sua operação.",
-      description: "Proteja seus dados e transações com nossa infraestrutura certificada. Conformidade total com LGPD e regulamentações do Banco Central.",
-      buttonText: "Saiba mais sobre segurança",
-      imageSrc: securityComplianceImage,
-      imageAlt: "Segurança e compliance de nível bancário",
+      badge: "Parceria Estratégica",
+      title: "Lina + Mastercard: juntas para impulsionar\no Open Finance no Brasil",
+      description: "Tecnologia de ponta e expertise global se unem para oferecer soluções de pagamento mais seguras, rápidas e eficientes para o mercado brasileiro.",
+      buttonText: "Saiba mais",
+      imageSrc: linaMastercardImage,
+      imageAlt: "Parceria Lina e Mastercard para impulsionar o Open Finance no Brasil",
       priority: false, // Lazy loading para otimização
     }
   ];
@@ -148,7 +148,7 @@ export default function HeroSection() {
           level="h1"
           size="lg"
           className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
-          gradientWords={currentSlide === 1 ? ['receita', 'oportunidades'] : ['Bancário']}
+          gradientWords={currentSlide === 1 ? ['receita', 'oportunidades'] : currentSlide === 2 ? ['Lina + Mastercard:'] : ['Bancário']}
           data-testid="heading-hero-title"
         >
           {currentSlideData.title}
@@ -232,6 +232,22 @@ export default function HeroSection() {
               <span className="font-bold bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Open Finance</span>
               <br />
               <span className="font-normal">na prática!</span>
+            </span>
+          </motion.h1>
+        ) : currentSlideData.id === 2 ? (
+          <motion.h1
+            className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
+            style={{ fontFamily: 'Lexend, sans-serif' }}
+            data-testid="heading-hero-title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            <span>
+              <span className="font-bold bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Lina + Mastercard:</span>
+              <span className="font-normal"> juntas para impulsionar</span>
+              <br />
+              <span className="font-normal">o Open Finance no Brasil</span>
             </span>
           </motion.h1>
         ) : (
@@ -340,7 +356,6 @@ export default function HeroSection() {
                       slides[0].id !== 2 ? 'w-[70%] max-w-[calc(2xl*0.7)]' : 'w-full max-w-2xl'
                     }`}
                     loading="eager"
-                    fetchPriority="high"
                     data-testid="hero-image-mobile-static"
                   />
                 </div>
@@ -369,7 +384,6 @@ export default function HeroSection() {
                           currentSlideData.id !== 2 ? 'w-[70%] max-w-[calc(2xl*0.7)]' : 'w-full max-w-2xl'
                         }`}
                         loading={currentSlideData.priority ? "eager" : "lazy"}
-                        {...(currentSlideData.priority && { fetchPriority: "high" })}
                         data-testid={`hero-image-${currentSlideData.id}`}
                       />
                     </motion.div>
