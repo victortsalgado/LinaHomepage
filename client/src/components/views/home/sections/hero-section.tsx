@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // Optimized WebP images for better performance
 const fintechInnovationImage = "/Ilustra_Destaque_01_Home.png";
 const businessGrowthImage = "/lina-mastercard-partnership-new.png";
-const securityComplianceImage = "/web-security-shield.png";
+const pixAutomaticoImage = "/pix-automatico-banner.png";
 
 interface Slide {
   id: number;
@@ -48,12 +48,12 @@ export default function HeroSection() {
     },
     {
       id: 2,
-      badge: "Exclusivo: Arquitetura de Segurança",
+      badge: "Novidade: PIX Automático",
       title: "Pix Automático: uma nova experiência em pagamentos digitais",
       description: "Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, trazendo benefícios diretos para empresas e consumidores.",
       buttonText: "Saiba mais",
-      imageSrc: securityComplianceImage,
-      imageAlt: "Segurança e compliance de nível bancário",
+      imageSrc: pixAutomaticoImage,
+      imageAlt: "PIX Automático - nova experiência em pagamentos digitais",
       priority: false, // Lazy loading para otimização
     }
   ];
@@ -67,7 +67,7 @@ export default function HeroSection() {
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 333000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, [slides.length]);
