@@ -59,7 +59,7 @@ export default function ClientsSection() {
             logos={clientLogos}
             speed={120}
             direction="left"
-            logoHeight={60}
+            logoHeight={78}
             gap={80}
             pauseOnHover={true}
             scaleOnHover={true}
