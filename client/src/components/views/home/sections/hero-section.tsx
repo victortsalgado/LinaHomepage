@@ -49,9 +49,9 @@ export default function HeroSection() {
     {
       id: 2,
       badge: "Exclusivo: Arquitetura de Segurança",
-      title: "Segurança e Compliance de Nível Bancário para sua operação.",
-      description: "Proteja seus dados e transações com nossa infraestrutura certificada. Conformidade total com LGPD e regulamentações do Banco Central.",
-      buttonText: "Saiba mais sobre segurança",
+      title: "Pix Automático: uma nova experiência em pagamentos digitais",
+      description: "Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, trazendo benefícios diretos para empresas e consumidores.",
+      buttonText: "Saiba mais",
       imageSrc: securityComplianceImage,
       imageAlt: "Segurança e compliance de nível bancário",
       priority: false, // Lazy loading para otimização
@@ -67,7 +67,7 @@ export default function HeroSection() {
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 8000);
+    }, 333000);
 
     return () => clearInterval(interval);
   }, [slides.length]);
@@ -157,6 +157,14 @@ export default function HeroSection() {
               <br />
               <span>o Open Finance no Brasil</span>
             </span>
+          ) : currentSlide === 2 ? (
+            <span>
+              <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Pix Automático:</span>
+              <br />
+              <span>uma nova experiência</span>
+              <br />
+              <span>em pagamentos digitais</span>
+            </span>
           ) : (
             currentSlideData.title
           )}
@@ -171,6 +179,14 @@ export default function HeroSection() {
           data-testid="text-hero-description"
         >
           Explore soluções para <span className="font-bold">pagamentos, integração de dados financeiros e experiência digital</span>, em uma infraestrutura robusta para <span className="font-bold">escalar resultados!</span>
+        </p>
+      ) : currentSlide === 2 ? (
+        <p
+          className="mx-auto lg:mx-0 mt-6 max-w-2xl text-balance text-lg text-muted-foreground leading-relaxed"
+          style={{ fontFamily: 'Inter, sans-serif' }}
+          data-testid="text-hero-description"
+        >
+          Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, <span className="font-bold">trazendo benefícios diretos para empresas e consumidores.</span>
         </p>
       ) : (
         <p
@@ -252,12 +268,20 @@ export default function HeroSection() {
             transition={{ delay: 0.3, duration: 0.6 }}
           >
             {currentSlideData.id === 1 ? (
-              <span className="ml-[-20px] mr-[-20px] text-[66px] pl-[16px] pr-[16px]">
+              <span className="ml-[-20px] mr-[-20px] text-[52px] pl-[16px] pr-[16px]">
                 <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Lina + Mastercard:</span>
                 <br />
                 <span>juntas para impulsionar</span>
                 <br />
                 <span>o Open Finance no Brasil</span>
+              </span>
+            ) : currentSlideData.id === 2 ? (
+              <span>
+                <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Pix Automático:</span>
+                <br />
+                <span>uma nova experiência</span>
+                <br />
+                <span>em pagamentos digitais</span>
               </span>
             ) : (
               currentSlideData.title
@@ -276,6 +300,17 @@ export default function HeroSection() {
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             Explore soluções para <span className="font-bold">pagamentos, integração de dados financeiros e experiência digital</span>, em uma infraestrutura robusta para <span className="font-bold">escalar resultados!</span>
+          </motion.p>
+        ) : currentSlideData.id === 2 ? (
+          <motion.p
+            className="mx-auto lg:mx-0 mt-6 max-w-2xl text-balance text-lg text-muted-foreground leading-relaxed"
+            style={{ fontFamily: 'Inter, sans-serif' }}
+            data-testid="text-hero-description"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            Conheça a nova funcionalidade automatiza pagamentos recorrentes, incluindo valores variáveis, <span className="font-bold">trazendo benefícios diretos para empresas e consumidores.</span>
           </motion.p>
         ) : (
           <motion.p
