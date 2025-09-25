@@ -14,7 +14,7 @@ export default function ClientsSection() {
     { src: "/brasilprev.png", alt: "BrasilPrev", title: "BrasilPrev" },
     { src: "/chubb.png", alt: "CHUBB", title: "CHUBB" },
     { src: "/hdi.png", alt: "HDI Seguros", title: "HDI Seguros" },
-    { src: "/luiza_seg.jpg", alt: "Luiza Seguros", title: "Luiza Seguros" },
+    { src: "/luiza_seg.png", alt: "Luiza Seguros", title: "Luiza Seguros" },
     { src: "/prudential.png", alt: "Prudential", title: "Prudential" },
     { src: "/santander_auto.png", alt: "Santander Auto", title: "Santander Auto" },
     { src: "/swiss_re.png", alt: "Swiss Re", title: "Swiss Re" },
