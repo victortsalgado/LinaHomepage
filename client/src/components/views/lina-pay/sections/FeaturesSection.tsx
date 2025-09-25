@@ -34,6 +34,20 @@ const featuresData = [
     description:
       "Concilie e categorize transações automaticamente com dados bancários atualizados e padronizados.",
   },
+  {
+    id: 5,
+    icon: Users,
+    title: "Bancos e instituições financeiras",
+    description:
+      "Acelere a transformação digital oferecendo serviços financeiros modernos e integrados aos seus clientes.",
+  },
+  {
+    id: 6,
+    icon: TrendingUp,
+    title: "Fintechs e startups",
+    description:
+      "Lance produtos financeiros inovadores rapidamente com nossa infraestrutura robusta e escalável.",
+  },
 ];
 
 export default function FeaturesSection() {
@@ -110,7 +124,7 @@ export default function FeaturesSection() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {featuresData.map((feature, index) => {
               const IconComponent = feature.icon;
 
