@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // Optimized WebP images for better performance
 const fintechInnovationImage = "/Ilustra_Destaque_01_Home.png";
-const businessGrowthImage = "/mastercard-logo.webp";
+const businessGrowthImage = "/lina-mastercard-partnership-new.png";
 const securityComplianceImage = "/web-security-shield.png";
 
 interface Slide {
@@ -39,9 +39,9 @@ export default function HeroSection() {
     {
       id: 1,
       badge: "Parceria Estratégica",
-      title: "Lina + Mastercard: Inovação em pagamentos digitais",
+      title: "Lina + Mastercard: juntas para impulsionar\no Open Finance no Brasil",
       description: "Tecnologia de ponta e expertise global se unem para oferecer soluções de pagamento mais seguras, rápidas e eficientes para o seu negócio.",
-      buttonText: "Conheça a parceria",
+      buttonText: "Saiba mais",
       imageSrc: businessGrowthImage,
       imageAlt: "Parceria Lina e Mastercard para inovação em pagamentos",
       priority: false, // Lazy loading para otimização
@@ -144,15 +144,23 @@ export default function HeroSection() {
           </span>
         </h1>
       ) : (
-        <Heading
-          level="h1"
-          size="lg"
-          className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
-          gradientWords={currentSlide === 1 ? ['receita', 'oportunidades'] : ['Bancário']}
+        <h1
+          className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground min-h-[120px] md:min-h-[160px] lg:min-h-[200px] flex items-center"
+          style={{ fontFamily: 'Lexend, sans-serif' }}
           data-testid="heading-hero-title"
         >
-          {currentSlideData.title}
-        </Heading>
+          {currentSlide === 1 ? (
+            <span>
+              <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Lina + Mastercard:</span>
+              <br />
+              <span>juntas para impulsionar</span>
+              <br />
+              <span>o Open Finance no Brasil</span>
+            </span>
+          ) : (
+            currentSlideData.title
+          )}
+        </h1>
       )}
       
       {/* Description */}
@@ -243,7 +251,17 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            {currentSlideData.title}
+            {currentSlideData.id === 1 ? (
+              <span>
+                <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Lina + Mastercard:</span>
+                <br />
+                <span>juntas para impulsionar</span>
+                <br />
+                <span>o Open Finance no Brasil</span>
+              </span>
+            ) : (
+              currentSlideData.title
+            )}
           </motion.h1>
         )}
         
