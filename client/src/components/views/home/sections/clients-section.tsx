@@ -1,4 +1,4 @@
-import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import LogoLoop, { LogoItem } from "@/components/ui/logo-loop";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import brasilprevLogo from "@/assets/brasilprev.png";
 import bradescoSegurosLogo from "@/assets/bradesco-seguros.png";
@@ -14,7 +14,7 @@ export default function ClientsSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
 
   // Client logos data with real brand logos
-  const clients = [
+  const clients: LogoItem[] = [
     {
       src: brasilprevLogo,
       alt: "BrasilPrev",
@@ -78,29 +78,19 @@ export default function ClientsSection() {
 
         {/* Logo Loop Animation */}
         <div className="py-12" data-testid="logo-loop-clients">
-          <InfiniteSlider
+          <LogoLoop
+            logos={clients}
+            speed={100}
+            direction="left"
+            logoHeight={64}
             gap={80}
-            duration={25}
-            durationOnHover={30}
-            direction="horizontal"
-            reverse={false}
-            className="select-none"
-          >
-            {clients.map((client, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-110"
-              >
-                <img
-                  src={client.src}
-                  alt={client.alt}
-                  title={client.title}
-                  className="h-16 w-auto object-contain"
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </InfiniteSlider>
+            pauseOnHover={true}
+            fadeOut={true}
+            fadeOutColor="rgb(249 250 251)"
+            scaleOnHover={true}
+            ariaLabel="Logos dos nossos clientes"
+            className=""
+          />
         </div>
       </div>
     </section>
