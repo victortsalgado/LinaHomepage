@@ -111,7 +111,6 @@ export default function IntegrationSection() {
                   initial={{ opacity: 0, x: 50 }}
                   animate={contentVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                   transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                  className="-ml-[20%]"
                 >
                   <div className="bg-black rounded-xl shadow-2xl overflow-hidden" data-testid="code-editor-mockup">
                     {/* Editor Header */}
