@@ -159,7 +159,7 @@ export default function HeroSection() {
             </span>
           ) : currentSlide === 2 ? (
             <span className="text-[53px]">
-              <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Pix Automático:</span>
+              <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent text-[67px]">Pix Automático:</span>
               <br />
               <span>uma nova experiência</span>
               <br />
@@ -277,7 +277,7 @@ export default function HeroSection() {
               </span>
             ) : currentSlideData.id === 2 ? (
               <span className="text-[53px]">
-                <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Pix Automático:</span>
+                <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent text-[67px]">Pix Automático:</span>
                 <br />
                 <span>uma nova experiência</span>
                 <br />
