@@ -73,6 +73,14 @@ app.use((req, res, next) => {
     // setting up all the other routes so the catch-all route
     // doesn't interfere with the other routes
     if (app.get("env") === "development") {
+      // Serve static files (like logos) BEFORE Vite middleware to prevent catch-all from intercepting them
+      const path = await import("path");
+      const fs = await import("fs");
+      const publicPath = path.resolve(import.meta.dirname, "..", "public");
+      if (fs.existsSync(publicPath)) {
+        app.use(express.static(publicPath));
+      }
+      
       await setupVite(app, server);
     } else {
       serveStatic(app);
