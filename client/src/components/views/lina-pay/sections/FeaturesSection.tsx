@@ -60,15 +60,10 @@ export default function FeaturesSection() {
                 style={{ fontFamily: "Lexend, sans-serif" }}
                 data-testid="heading-features-title"
               >
-                Feito para{" "}
+                Pensado para diferentes{" "}
                 <span className="bg-gradient-to-r from-[#00b6ac] to-[#2EC9BC] bg-clip-text text-transparent">
-                  resolver
-                  <br />
-                  dores reais
-                </span>{" "}
-                de
-                <br />
-                diferentes segmentos
+                  tipos de negócio
+                </span>
               </h2>
               <div className="flex items-center gap-3 text-gray-300">
                 <p
