@@ -8,45 +8,45 @@ import FeatureImagePath from "@assets/Imagens_site_novo_lina-15_1757691073660.pn
 const featuresData = [
   {
     id: 1,
-    icon: Users,
-    title: "Empresas de assessoria financeira e patrimonial",
+    icon: ShoppingCart,
+    title: "E-commerces e marketplaces",
     description:
-      "Tenha uma visão unificada das finanças dos clientes com dados integrados de contas, cartões, crédito e investimentos.",
+      "Melhore o checkout e reduza o abandono de carrinho com Pix por Biometria.",
   },
   {
     id: 2,
-    icon: TrendingUp,
-    title: "Plataformas de investimento",
+    icon: Wallet,
+    title: "Carteiras digitais",
     description:
-      "Ofereça carteiras consolidadas e recomendações personalizadas conectando contas de investimento e bancárias em mais de 50 instituições.",
+      "Ofereça Pix por aproximação e uma experiência de pagamento superior.",
   },
   {
     id: 3,
     icon: Landmark,
-    title: "Plataformas e marketplaces de crédito",
+    title: "Fintechs reguladas",
     description:
-      "Automatize a análise de crédito e comprovação de renda com acesso direto a extratos bancários via API.",
+      "Acesse o Open Finance sem lidar com as complexidades de homologações regulatórias.",
   },
   {
     id: 4,
-    icon: Library,
-    title: "Plataformas de contabilidade online",
+    icon: Users,
+    title: "Cooperativas de crédito",
     description:
-      "Concilie e categorize transações automaticamente com dados bancários atualizados e padronizados.",
+      "Adicione funcionalidades que reduzem custos e aumentam a satisfação dos cooperados.",
   },
   {
     id: 5,
-    icon: ShoppingCart,
-    title: "E-commerces e marketplaces",
+    icon: TrendingUp,
+    title: "Plataformas de pagamento e BaaS",
     description:
-      "Melhore a experiência de checkout e reduza o abandono de carrinho com pagamentos instantâneos.",
+      "Adicione funcionalidades que reduzem custos e aumentam o atendimento às necessidades dos clientes.",
   },
   {
     id: 6,
-    icon: Wallet,
-    title: "Carteiras digitais",
+    icon: Library,
+    title: "Plataformas SaaS",
     description:
-      "Ofereça pagamentos por aproximação e uma experiência de pagamento superior aos seus usuários.",
+      "Ofereça aos seus clientes uma nova forma de pagamento com a agilidade e integração do Open Finance.",
   },
 ];
 
