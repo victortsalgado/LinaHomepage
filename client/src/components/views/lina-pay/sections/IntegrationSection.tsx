@@ -61,9 +61,9 @@ export default function IntegrationSection() {
         >
           <Card className="bg-white rounded-3xl border-0 shadow-xl overflow-hidden backdrop-blur-sm">
             <CardContent className="p-16 lg:p-24">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                {/* Left Column - Content */}
-                <div>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    {/* Left Column - Content */}
+                    <div className="lg:pr-8">
                   <h2 
                     className="[font-family:'Lexend',Helvetica] font-medium text-4xl md:text-5xl leading-[1.1] mb-8"
                     data-testid="heading-integration-title"
