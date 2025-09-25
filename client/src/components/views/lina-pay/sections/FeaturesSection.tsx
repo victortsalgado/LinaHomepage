@@ -124,7 +124,7 @@ export default function FeaturesSection() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {featuresData.map((feature, index) => {
               const IconComponent = feature.icon;
 
