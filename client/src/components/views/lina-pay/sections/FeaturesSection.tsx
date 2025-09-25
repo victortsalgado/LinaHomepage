@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, TrendingUp, Landmark, Library } from "lucide-react";
+import { Users, TrendingUp, Landmark, Library, ShoppingCart, Wallet } from "lucide-react";
 import FeatureImagePath from "@assets/Imagens_site_novo_lina-15_1757691073660.png";
 
 // Features data matching the segments
@@ -33,6 +33,20 @@ const featuresData = [
     title: "Plataformas de contabilidade online",
     description:
       "Concilie e categorize transações automaticamente com dados bancários atualizados e padronizados.",
+  },
+  {
+    id: 5,
+    icon: ShoppingCart,
+    title: "E-commerces e marketplaces",
+    description:
+      "Melhore a experiência de checkout e reduza o abandono de carrinho com pagamentos instantâneos.",
+  },
+  {
+    id: 6,
+    icon: Wallet,
+    title: "Carteiras digitais",
+    description:
+      "Ofereça pagamentos por aproximação e uma experiência de pagamento superior aos seus usuários.",
   },
 ];
 
@@ -110,7 +124,7 @@ export default function FeaturesSection() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuresData.map((feature, index) => {
               const IconComponent = feature.icon;
 
