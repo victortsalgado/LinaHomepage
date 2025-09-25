@@ -1,23 +1,23 @@
 import LogoLoop from "@/components/ui/logo-loop";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import b3Logo from "@/assets/b3-client.png";
-import brasilprevLogo from "@/assets/brasilprev-client.png";
-import hdiLogo from "@/assets/hdi-client.png";
-import bradescoSegurosLogo from "@/assets/bradesco-seguros-client.png";
-import caixaLogo from "@/assets/caixa-client.png";
-import icatuLogo from "@/assets/icatu-client.png";
 
 export default function ClientsSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
 
-  // Client logos data formatted for LogoLoop
+  // Client logos data using real logos from App Storage
   const clientLogos = [
-    { src: b3Logo, alt: "B3", title: "B3" },
-    { src: brasilprevLogo, alt: "BrasilPrev", title: "BrasilPrev" },
-    { src: hdiLogo, alt: "HDI Seguros", title: "HDI Seguros" },
-    { src: bradescoSegurosLogo, alt: "Bradesco Seguros", title: "Bradesco Seguros" },
-    { src: caixaLogo, alt: "Caixa", title: "Caixa" },
-    { src: icatuLogo, alt: "Icatu Seguros", title: "Icatu Seguros" }
+    { src: "/B3.png", alt: "B3", title: "B3" },
+    { src: "/Brasilprev.png", alt: "BrasilPrev", title: "BrasilPrev" },
+    { src: "/HDI.png", alt: "HDI Seguros", title: "HDI Seguros" },
+    { src: "/BRB.png", alt: "BRB", title: "BRB" },
+    { src: "/Prudential.png", alt: "Prudential", title: "Prudential" },
+    { src: "/brasilcard.png", alt: "Brasilcard", title: "Brasilcard" },
+    { src: "/ideal.png", alt: "Ideal", title: "Ideal" },
+    { src: "/sulamerica.png", alt: "SulAmérica", title: "SulAmérica" },
+    { src: "/CHUBB.png", alt: "CHUBB", title: "CHUBB" },
+    { src: "/Swiss_re.png", alt: "Swiss Re", title: "Swiss Re" },
+    { src: "/iugu.png", alt: "Iugu", title: "Iugu" },
+    { src: "/cresol.png", alt: "Cresol", title: "Cresol" }
   ];
 
   return (
