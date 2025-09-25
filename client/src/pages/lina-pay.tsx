@@ -6,7 +6,6 @@ import LinaPayHeroSection from "@/components/views/lina-pay/sections/LinaPayHero
 import SocialProofSection from "@/components/views/lina-pay/sections/SocialProofSection";
 import DifferentiatorsSection from "@/components/views/lina-pay/sections/DifferentiatorsSection";
 import FeaturesSection from "@/components/views/lina-pay/sections/FeaturesSection";
-import SegmentsCloudSection from "@/components/views/lina-pay/sections/SegmentsCloudSection";
 import CtaFormSection from "@/components/views/lina-pay/sections/CtaFormSection";
 
 
@@ -27,7 +26,6 @@ export default function LinaPay(): JSX.Element {
           <DifferentiatorsSection />
           <SocialProofSection />
           <FeaturesSection />
-          <SegmentsCloudSection />
           <CtaFormSection />
         </main>
         <Footer />
