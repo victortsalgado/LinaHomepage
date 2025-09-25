@@ -5,11 +5,11 @@ import { Quote, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Import company logos
-import brasilprevLogo from "@/assets/brasilprev.png";
-import safraLogo from "@/assets/safra.png";
-import sicoobLogo from "@/assets/sicoob.png";
-import stoneLogo from "@/assets/stone.png";
-import cloudwalkLogo from "@/assets/cloudwalk.png";
+import mastercardLogo from "@assets/mc_vrt_opt_pos_73_3x_1758800079771.png";
+import rtmLogo from "@assets/RTM LOGO_Color_1758800079772.png";
+import b3Logo from "@assets/B3 LOGO_Completo Color_1758800079773.png";
+import bancoSemearLogo from "@assets/BANCO SEMEAR LOGO_Horizontal Color_1758800079773.png";
+import brasilprevLogo from "@assets/Logo_Brasilprev Color_1758800079779.png";
 
 // Import quote image
 import quoteIcon from "@assets/Depoimentos-Site-Lina_Aspas_1758631100702.png";
@@ -26,11 +26,11 @@ import ricardoMendesAvatar from "@assets/Depoimentos-Site-Lina_Ricardo Mendes _1
 export default function SocialProofSection() {
   // Company logos for the bottom section
   const companyLogos = [
-    { name: "BrasilPrev", src: brasilprevLogo },
-    { name: "Safra", src: safraLogo },
-    { name: "Sicoob", src: sicoobLogo },
-    { name: "Stone", src: stoneLogo },
-    { name: "Cloudwalk", src: cloudwalkLogo }
+    { name: "Mastercard", src: mastercardLogo },
+    { name: "RTM", src: rtmLogo },
+    { name: "B3", src: b3Logo },
+    { name: "Banco Semear", src: bancoSemearLogo },
+    { name: "BrasilPrev", src: brasilprevLogo }
   ];
 
   // Featured testimonial
