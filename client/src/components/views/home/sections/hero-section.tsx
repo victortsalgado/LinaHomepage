@@ -158,7 +158,7 @@ export default function HeroSection() {
               <span>o Open Finance no Brasil</span>
             </span>
           ) : currentSlide === 2 ? (
-            <span>
+            <span className="text-[53px]">
               <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Pix Automático:</span>
               <br />
               <span>uma nova experiência</span>
