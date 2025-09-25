@@ -1,10 +1,11 @@
 import LogoLoop from "@/components/ui/logo-loop";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import b3Logo from "@/assets/b3-logo.png";
-import bancoSemearLogo from "@/assets/banco-semear-logo.png";
-import brasilprevLogo from "@/assets/brasilprev-logo.png";
-import rtmLogo from "@/assets/rtm-logo.png";
-import mastercardLogo from "@/assets/mastercard-logo.png";
+import b3Logo from "@/assets/b3-client.png";
+import brasilprevLogo from "@/assets/brasilprev-client.png";
+import hdiLogo from "@/assets/hdi-client.png";
+import bradescoSegurosLogo from "@/assets/bradesco-seguros-client.png";
+import caixaLogo from "@/assets/caixa-client.png";
+import icatuLogo from "@/assets/icatu-client.png";
 
 export default function ClientsSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
@@ -12,10 +13,11 @@ export default function ClientsSection() {
   // Client logos data formatted for LogoLoop
   const clientLogos = [
     { src: b3Logo, alt: "B3", title: "B3" },
-    { src: bancoSemearLogo, alt: "Banco Semear", title: "Banco Semear" },
     { src: brasilprevLogo, alt: "BrasilPrev", title: "BrasilPrev" },
-    { src: rtmLogo, alt: "RTM", title: "RTM" },
-    { src: mastercardLogo, alt: "Mastercard", title: "Mastercard" }
+    { src: hdiLogo, alt: "HDI Seguros", title: "HDI Seguros" },
+    { src: bradescoSegurosLogo, alt: "Bradesco Seguros", title: "Bradesco Seguros" },
+    { src: caixaLogo, alt: "Caixa", title: "Caixa" },
+    { src: icatuLogo, alt: "Icatu Seguros", title: "Icatu Seguros" }
   ];
 
   return (
