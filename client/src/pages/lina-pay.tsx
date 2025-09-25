@@ -23,9 +23,9 @@ export default function LinaPay(): JSX.Element {
         <Header />
         <main>
           <LinaPayHeroSection />
+          <DifferentiatorsSection />
           <SocialProofSection />
           <FeaturesSection />
-          <DifferentiatorsSection />
           <CtaFormSection />
         </main>
         <Footer />
