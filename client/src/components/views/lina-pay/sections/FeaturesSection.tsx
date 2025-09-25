@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, TrendingUp, Landmark, Library, ShoppingCart, Wallet } from "lucide-react";
+import { Users, CreditCard, Landmark, Cloud, ShoppingCart, Wallet } from "lucide-react";
 import FeatureImagePath from "@assets/Imagens_site_novo_lina-15_1757691073660.png";
 
 // Features data matching the segments
@@ -36,14 +36,14 @@ const featuresData = [
   },
   {
     id: 5,
-    icon: TrendingUp,
+    icon: CreditCard,
     title: "Plataformas de pagamento e BaaS",
     description:
       "Adicione funcionalidades que reduzem custos e aumentam o atendimento às necessidades dos clientes.",
   },
   {
     id: 6,
-    icon: Library,
+    icon: Cloud,
     title: "Plataformas SaaS",
     description:
       "Ofereça aos seus clientes uma nova forma de pagamento com a agilidade e integração do Open Finance.",
