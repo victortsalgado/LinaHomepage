@@ -269,7 +269,7 @@ export default function HeroSection() {
           >
             {currentSlideData.id === 1 ? (
               <span className="ml-[-20px] mr-[-20px] text-[52px] pl-[16px] pr-[16px]">
-                <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Lina + Mastercard:</span>
+                <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent text-[66px] mt-[0px] mb-[0px] pt-[0px] pb-[0px]">Lina + Mastercard:</span>
                 <br />
                 <span>juntas para impulsionar</span>
                 <br />
