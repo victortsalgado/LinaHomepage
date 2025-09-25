@@ -6,7 +6,6 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const integrationFeatures = [
   "APIs completas e documentadas",
-  "Compatível com VTEX, Shopify, frameworks e mais",
   "Suporte técnico direto com o time de desenvolvedores e time de produto",
   "Homologado no Open Finance e 100% LGPD compliance",
   "Integração e período de testes para desenvolvedores em dias",
@@ -37,7 +36,8 @@ export default function IntegrationSection() {
                   data-testid="heading-integration-title"
                 >
                   <span className="text-[#003a38]">
-                    Integre rápido, escale
+                    Integre rápido,<br />
+                    escale
                   </span>
                   <span className="text-[#0ab5aa]"> sem limites</span>
                 </h2>
