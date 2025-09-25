@@ -54,7 +54,7 @@ export default function FeaturesSection() {
         >
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Box - Title */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 ml-[-1px] mr-[-1px]">
               <h2
                 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
                 style={{ fontFamily: "Lexend, sans-serif" }}
