@@ -1,29 +1,21 @@
 import LogoLoop from "@/components/ui/logo-loop";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import brasilprevLogo from "@/assets/brasilprev.png";
-import bradescoSegurosLogo from "@/assets/bradesco-seguros.png";
-import safraLogo from "@/assets/safra.png";
-import sicoobLogo from "@/assets/sicoob.png";
-import caixaLogo from "@/assets/caixa.png";
-import stoneLogo from "@/assets/stone.png";
-import icatuSegurosLogo from "@/assets/icatu-seguros.png";
-import hdiSegurosLogo from "@/assets/hdi-seguros.png";
-import cloudwalkLogo from "@/assets/cloudwalk.png";
+import b3Logo from "@/assets/b3-logo.png";
+import bancoSemearLogo from "@/assets/banco-semear-logo.png";
+import brasilprevLogo from "@/assets/brasilprev-logo.png";
+import rtmLogo from "@/assets/rtm-logo.png";
+import mastercardLogo from "@/assets/mastercard-logo.png";
 
 export default function ClientsSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
 
   // Client logos data formatted for LogoLoop
   const clientLogos = [
+    { src: b3Logo, alt: "B3", title: "B3" },
+    { src: bancoSemearLogo, alt: "Banco Semear", title: "Banco Semear" },
     { src: brasilprevLogo, alt: "BrasilPrev", title: "BrasilPrev" },
-    { src: bradescoSegurosLogo, alt: "Bradesco Seguros", title: "Bradesco Seguros" },
-    { src: safraLogo, alt: "Safra", title: "Safra" },
-    { src: sicoobLogo, alt: "Sicoob", title: "Sicoob" },
-    { src: caixaLogo, alt: "Caixa", title: "Caixa" },
-    { src: stoneLogo, alt: "Stone", title: "Stone" },
-    { src: icatuSegurosLogo, alt: "Icatu Seguros", title: "Icatu Seguros" },
-    { src: hdiSegurosLogo, alt: "HDI Seguros", title: "HDI Seguros" },
-    { src: cloudwalkLogo, alt: "CloudWalk", title: "CloudWalk" }
+    { src: rtmLogo, alt: "RTM", title: "RTM" },
+    { src: mastercardLogo, alt: "Mastercard", title: "Mastercard" }
   ];
 
   return (
