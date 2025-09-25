@@ -50,24 +50,22 @@ export default function ClientsSection() {
           </h2>
         </div>
         
-        {/* Simple test - display first few logos directly */}
-        <div className="flex flex-wrap gap-8 justify-center items-center py-8">
-          {clientLogos.slice(0, 6).map((logo, index) => (
-            <div key={index} className="h-16 w-auto">
-              <img 
-                src={logo.src} 
-                alt={logo.alt} 
-                title={logo.title}
-                className="h-full w-auto object-contain filter grayscale hover:filter-none transition-all duration-300"
-                data-testid={`client-logo-${index}`}
-                onError={(e) => {
-                  console.error(`Failed to load logo: ${logo.src}`);
-                  e.currentTarget.style.border = '2px solid red';
-                }}
-                onLoad={() => console.log(`Loaded logo: ${logo.src}`)}
-              />
-            </div>
-          ))}
+        {/* LogoLoop Carousel with all 23 client logos */}
+        <div style={{ height: '120px', position: 'relative', overflow: 'hidden' }}>
+          <LogoLoop 
+            logos={clientLogos}
+            speed={120}
+            direction="left"
+            logoHeight={64}
+            gap={100}
+            pauseOnHover={true}
+            scaleOnHover={true}
+            fadeOut={true}
+            fadeOutColor="rgb(249 250 251 / 0.6)"
+            ariaLabel="Nossos clientes"
+            style={{ filter: 'grayscale(1)', transition: 'filter 0.3s ease' }}
+            className="hover:filter-none"
+          />
         </div>
       </div>
     </section>
