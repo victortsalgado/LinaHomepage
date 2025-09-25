@@ -69,10 +69,10 @@ export default function SegmentsSection() {
             level="h2"
             size="lg"
             className="text-white max-w-4xl mx-auto mb-4"
-            gradientWords={['diferentes segmentos']}
+            gradientWords={['tipos de negócio']}
             data-testid="heading-segments-title"
           >
-            Feito para resolver dores reais de diferentes segmentos
+            Pensado para diferentes tipos de negócio
           </Heading>
           <p 
             className="text-xl text-gray-300 max-w-2xl mx-auto"
