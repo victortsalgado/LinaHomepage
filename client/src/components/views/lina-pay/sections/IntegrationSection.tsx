@@ -43,35 +43,7 @@ export default function IntegrationSection() {
                 <span className="text-[#0ab5aa]"> sem limites</span>
               </h2>
 
-              <div className="space-y-6">
-                {integrationFeatures.map((feature, index) => (
-                  <motion.div 
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={contentVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ 
-                      duration: 0.6, 
-                      delay: 0.2 + (index * 0.1),
-                      ease: "easeOut" 
-                    }}
-                    className="flex items-start gap-4"
-                    data-testid={`integration-feature-${index + 1}`}
-                  >
-                    <img
-                      className="w-4 h-4 mt-1 flex-shrink-0"
-                      alt="Check"
-                      src="/figmaAssets/check.svg"
-                      data-testid={`icon-check-${index + 1}`}
-                    />
-                    <p 
-                      className="[font-family:'Lexend',Helvetica] font-light text-[#606060] text-base leading-6"
-                      data-testid={`text-feature-${index + 1}`}
-                    >
-                      {feature}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
+              
             </CardContent>
           </Card>
         </motion.div>
