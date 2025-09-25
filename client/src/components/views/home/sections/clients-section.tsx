@@ -1,4 +1,4 @@
-import LogoLoop, { LogoItem } from "@/components/ui/logo-loop";
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import brasilprevLogo from "@/assets/brasilprev.png";
 import bradescoSegurosLogo from "@/assets/bradesco-seguros.png";
@@ -14,46 +14,38 @@ export default function ClientsSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
 
   // Client logos data with real brand logos
-  const clients: LogoItem[] = [
+  const clients = [
     {
-      src: brasilprevLogo,
-      alt: "BrasilPrev",
-      title: "BrasilPrev"
+      name: "BrasilPrev",
+      logo: brasilprevLogo
     },
     {
-      src: bradescoSegurosLogo,
-      alt: "Bradesco Seguros",
-      title: "Bradesco Seguros"
+      name: "Bradesco Seguros", 
+      logo: bradescoSegurosLogo
     },
     {
-      src: safraLogo,
-      alt: "Safra",
-      title: "Safra"
+      name: "Safra",
+      logo: safraLogo
     },
     {
-      src: sicoobLogo,
-      alt: "Sicoob",
-      title: "Sicoob"
+      name: "Sicoob",
+      logo: sicoobLogo
     },
     {
-      src: caixaLogo,
-      alt: "Caixa",
-      title: "Caixa"
+      name: "Caixa",
+      logo: caixaLogo
     },
     {
-      src: stoneLogo,
-      alt: "Stone",
-      title: "Stone"
+      name: "Stone",
+      logo: stoneLogo
     },
     {
-      src: icatuSegurosLogo,
-      alt: "Icatu Seguros",
-      title: "Icatu Seguros"
+      name: "Icatu Seguros",
+      logo: icatuSegurosLogo
     },
     {
-      src: hdiSegurosLogo,
-      alt: "HDI Seguros",
-      title: "HDI Seguros"
+      name: "HDI Seguros",
+      logo: hdiSegurosLogo
     }
   ];
 
@@ -75,22 +67,35 @@ export default function ClientsSection() {
             </span>
           </h2>
         </div>
-
-        {/* Logo Loop Animation */}
-        <div className="py-12" data-testid="logo-loop-clients">
-          <LogoLoop
-            logos={clients}
-            speed={100}
-            direction="left"
-            logoHeight={64}
-            gap={80}
-            pauseOnHover={true}
-            fadeOut={true}
-            fadeOutColor="rgb(249 250 251)"
-            scaleOnHover={true}
-            ariaLabel="Logos dos nossos clientes"
-            className=""
-          />
+        
+        {/* Infinite Carousel */}
+        <div className="relative overflow-hidden">
+          <InfiniteSlider
+            duration={20}
+            gap={100}
+            className="py-12"
+          >
+            {clients.map((client, index) => (
+              <div 
+                key={`${client.name}-${index}`} 
+                className="flex items-center justify-center min-w-[220px]"
+                data-testid={`logo-client-${index}`}
+              >
+                <img
+                  src={client.logo}
+                  alt={`Logo ${client.name}`}
+                  className="h-16 w-auto grayscale hover:grayscale-0 transition-all duration-300 ease-in-out opacity-80 hover:opacity-100 cursor-pointer"
+                  loading="lazy"
+                  data-testid={`img-logo-${client.name.toLowerCase().replace(/\s+/g, '-')}`}
+                />
+              </div>
+            ))}
+          </InfiniteSlider>
+          
+          
+          {/* Gradient overlays for fade in/out effect */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-50 to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none z-10" />
         </div>
       </div>
     </section>
