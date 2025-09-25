@@ -210,7 +210,7 @@ export default function SocialProofSection() {
               {companyLogos.map((company) => (
                 <div
                   key={company.name}
-                  className="h-12 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
+                  className="h-14 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
                   data-testid={`logo-${company.name.toLowerCase()}`}
                 >
                   <img
