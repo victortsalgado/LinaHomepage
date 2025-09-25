@@ -67,7 +67,7 @@ export default function HeroSection() {
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 8000);
+    }, 333000);
 
     return () => clearInterval(interval);
   }, [slides.length]);
@@ -276,7 +276,7 @@ export default function HeroSection() {
                 <span>o Open Finance no Brasil</span>
               </span>
             ) : currentSlideData.id === 2 ? (
-              <span>
+              <span className="text-[53px]">
                 <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">Pix Automático:</span>
                 <br />
                 <span>uma nova experiência</span>
