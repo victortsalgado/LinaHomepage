@@ -239,14 +239,24 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
   };
 
   const handleStepChange = (step: number) => {
+    console.log(`[STEP CHANGE] Attempting to change from step ${currentStep} to step ${step}`);
+    
     // Validate current step before allowing progression
     if (step > currentStep && !validateCurrentStep(currentStep)) {
-      // Don't allow progression if current step is invalid
+      console.log(`[STEP CHANGE] Validation failed for step ${currentStep}, preventing progression`);
       return;
     }
     
+    console.log(`[STEP CHANGE] Validation passed, updating step to ${step}`);
+    
+    // Store current scroll position before step change
+    const currentScrollY = window.scrollY;
+    console.log(`[STEP CHANGE] Current scroll position: ${currentScrollY}`);
+    
     setCurrentStep(step);
-    syncWithRDStation();
+    
+    // Simple solution: Just don't sync on step change to prevent scroll issues
+    console.log('[STEP CHANGE] Skipping RD Station sync during step change to prevent scroll');
   };
 
   const handleFormComplete = () => {
