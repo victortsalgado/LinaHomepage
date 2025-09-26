@@ -31,7 +31,7 @@ export default function CtaFormSection() {
             data-testid="heading-cta-title"
           >
             <span className="font-normal">Vamos juntos transformar </span>
-            <span className="font-bold text-[var(--lina-cyan)]">complexidade em agilidade?</span>
+            <span className="font-bold bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">complexidade em agilidade?</span>
           </h2>
           
           {/* Subtitle */}
