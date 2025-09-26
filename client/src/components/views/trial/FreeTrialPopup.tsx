@@ -28,7 +28,7 @@ const FreeTrialPopup = ({ isOpen, onClose }: FreeTrialPopupProps) => {
 
         {/* RD Station Form */}
         <div className="space-y-4">
-          <RDStationForm className="w-full" />
+          <RDStationForm className="w-full utm-hidden" />
         </div>
       </div>
     </div>
