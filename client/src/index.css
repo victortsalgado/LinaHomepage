@@ -904,7 +904,28 @@
 .utm-hidden input[id*="url_página"],
 .utm-hidden label[for*="url_página"],
 .utm-hidden *[data-name*="url_página"],
-.utm-hidden *[class*="url_página"] {
+.utm-hidden *[class*="url_página"],
+.utm-hidden [name*="url_pagina"],
+.utm-hidden [id*="url_pagina"],
+.utm-hidden input[name*="url_pagina"],
+.utm-hidden input[id*="url_pagina"],
+.utm-hidden label[for*="url_pagina"],
+.utm-hidden *[data-name*="url_pagina"],
+.utm-hidden *[class*="url_pagina"],
+.utm-hidden [name*="url-pagina"],
+.utm-hidden [id*="url-pagina"],
+.utm-hidden input[name*="url-pagina"],
+.utm-hidden input[id*="url-pagina"],
+.utm-hidden label[for*="url-pagina"],
+.utm-hidden *[data-name*="url-pagina"],
+.utm-hidden *[class*="url-pagina"],
+.utm-hidden [name*="urlpagina"],
+.utm-hidden [id*="urlpagina"],
+.utm-hidden input[name*="urlpagina"],
+.utm-hidden input[id*="urlpagina"],
+.utm-hidden label[for*="urlpagina"],
+.utm-hidden *[data-name*="urlpagina"],
+.utm-hidden *[class*="urlpagina"] {
   display: none !important;
 }
 
