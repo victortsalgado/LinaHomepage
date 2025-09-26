@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Stepper, { Step } from './Stepper';
 import RDStationForm from './RDStationForm';
 
@@ -27,6 +27,12 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [syncTimeout, setSyncTimeout] = useState<NodeJS.Timeout | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
+
+  // Refs for controlled focus management
+  const nomeInputRef = useRef<HTMLInputElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
+  const telefoneInputRef = useRef<HTMLInputElement>(null);
+  const empresaInputRef = useRef<HTMLInputElement>(null);
 
   // Validation functions
   const validateName = (value: string) => value.trim().length >= 2;
@@ -113,6 +119,41 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
   useEffect(() => {
     setCurrentFieldValid(validateCurrentStep(currentStep));
   }, [formData, currentStep]);
+
+  // Controlled focus management - focus on step change without scrolling
+  useEffect(() => {
+    const focusCurrentStepInput = () => {
+      let inputRef: React.RefObject<HTMLInputElement> | null = null;
+      
+      switch (currentStep) {
+        case 1:
+          inputRef = nomeInputRef;
+          break;
+        case 2:
+          inputRef = emailInputRef;
+          break;
+        case 3:
+          inputRef = telefoneInputRef;
+          break;
+        case 4:
+          inputRef = empresaInputRef;
+          break;
+        default:
+          return;
+      }
+      
+      if (inputRef?.current) {
+        console.log(`[FOCUS] Focusing input for step ${currentStep} with preventScroll`);
+        // Focus with preventScroll to avoid automatic scrolling
+        inputRef.current.focus({ preventScroll: true });
+      }
+    };
+
+    // Small delay to ensure the input is rendered after step animation
+    const timeoutId = setTimeout(focusCurrentStepInput, 100);
+    
+    return () => clearTimeout(timeoutId);
+  }, [currentStep]);
 
   // Sync with RD Station form when step changes or data updates
   const syncWithRDStation = () => {
@@ -370,7 +411,7 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
                 onChange={(e) => handleInputChange('nome', e.target.value)}
                 className="stepper-form-input"
                 data-testid="input-animated-nome"
-                autoFocus
+                ref={nomeInputRef}
               />
             </div>
             {formData.nome && !validateName(formData.nome) && (
@@ -396,7 +437,7 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
                 onChange={(e) => handleInputChange('email', e.target.value)}
                 className="stepper-form-input"
                 data-testid="input-animated-email"
-                autoFocus
+                ref={emailInputRef}
               />
             </div>
             {formData.email && !validateEmail(formData.email) && (
@@ -424,7 +465,7 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
                 onChange={(e) => handleInputChange('telefone', e.target.value)}
                 className="stepper-form-input"
                 data-testid="input-animated-telefone"
-                autoFocus
+                ref={telefoneInputRef}
               />
             </div>
             {formData.telefone && !validatePhone(formData.telefone) && (
@@ -450,7 +491,7 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
                 onChange={(e) => handleInputChange('empresa', e.target.value)}
                 className="stepper-form-input"
                 data-testid="input-animated-empresa"
-                autoFocus
+                ref={empresaInputRef}
               />
             </div>
             {formData.empresa && !validateCompany(formData.empresa) && (
