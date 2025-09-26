@@ -890,14 +890,21 @@
   transition: all 1.2s ease-in-out !important;
 }
 
-/* Hide UTM fields in forms */
+/* Hide UTM fields and url_página field in forms */
 .utm-hidden [name*="utm_"],
 .utm-hidden [id*="utm_"],
 .utm-hidden input[name*="utm_"],
 .utm-hidden input[id*="utm_"],
 .utm-hidden label[for*="utm_"],
 .utm-hidden *[data-name*="utm_"],
-.utm-hidden *[class*="utm_"] {
+.utm-hidden *[class*="utm_"],
+.utm-hidden [name*="url_página"],
+.utm-hidden [id*="url_página"],
+.utm-hidden input[name*="url_página"],
+.utm-hidden input[id*="url_página"],
+.utm-hidden label[for*="url_página"],
+.utm-hidden *[data-name*="url_página"],
+.utm-hidden *[class*="url_página"] {
   display: none !important;
 }
 
