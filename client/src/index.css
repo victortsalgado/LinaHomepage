@@ -936,3 +936,23 @@
 .utm-hidden div:has([name*="utm_"]):not(:has([name]:not([name*="utm_"]))) {
   display: none !important;
 }
+
+/* Hide parent container that has url_pagina fields */
+.utm-hidden .form-field:has([name*="url_pagina"]),
+.utm-hidden .form-group:has([name*="url_pagina"]),
+.utm-hidden .field:has([name*="url_pagina"]),
+.utm-hidden div:has([name*="url_pagina"]),
+.utm-hidden .form-field:has([name*="url_página"]),
+.utm-hidden .form-group:has([name*="url_página"]),
+.utm-hidden .field:has([name*="url_página"]),
+.utm-hidden div:has([name*="url_página"]),
+.utm-hidden .form-field:has([name*="url-pagina"]),
+.utm-hidden .form-group:has([name*="url-pagina"]),
+.utm-hidden .field:has([name*="url-pagina"]),
+.utm-hidden div:has([name*="url-pagina"]),
+.utm-hidden .form-field:has([name*="urlpagina"]),
+.utm-hidden .form-group:has([name*="urlpagina"]),
+.utm-hidden .field:has([name*="urlpagina"]),
+.utm-hidden div:has([name*="urlpagina"]) {
+  display: none !important;
+}
