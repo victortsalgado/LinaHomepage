@@ -3,6 +3,7 @@ import { Heading } from "@/components/ui/Heading";
 import { ArrowRight, Repeat, Fingerprint, CreditCard, Zap, Shield } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import linaPay from '@assets/telas-lp (1)_1757670274191.gif';
 
 export default function LinaPaySection() {
@@ -117,13 +118,15 @@ export default function LinaPaySection() {
                 
                 {/* Saiba Mais Button */}
                 <div className="pt-4">
-                  <Button 
-                    variant="light-bg"
-                    className="px-6 py-2 font-normal !bg-transparent !text-[#2ec9bc] border border-[#2ec9bc] hover:!bg-[#2ec9bc] hover:!text-white transition-all duration-200"
-                    data-testid="button-saiba-mais"
-                  >
-                    Saiba mais
-                  </Button>
+                  <Link to="/lina-pay">
+                    <Button 
+                      variant="light-bg"
+                      className="px-6 py-2 font-normal !bg-transparent !text-[#2ec9bc] border border-[#2ec9bc] hover:!bg-[#2ec9bc] hover:!text-white transition-all duration-200"
+                      data-testid="button-saiba-mais"
+                    >
+                      Saiba mais
+                    </Button>
+                  </Link>
                 </div>
               </div>
               
