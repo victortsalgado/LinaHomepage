@@ -31,7 +31,7 @@ const AnimatedConnections = () => {
         {connections.map((connection, index) => {
           const fromNode = nodes.find(n => n.id === connection.from);
           const toNode = nodes.find(n => n.id === connection.to);
-          
+
           if (!fromNode || !toNode) return null;
 
           return (
@@ -126,27 +126,27 @@ export default function DataLinkHeroSection() {
               aria-hidden 
               className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,rgb(255,255,255)_75%)]" 
             />
-            
+
             <div className="mx-auto max-w-7xl px-6">
               <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
                 {/* Left Column - Content */}
                 <div className="text-center lg:text-left">
                   {/* Title */}
                   <motion.h1
-                    className="mt-8 max-w-4xl mx-auto lg:mx-0 text-balance text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
+                    className="mt-0 max-w-3xl mx-auto lg:mx-0 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight"
                     style={{ fontFamily: 'Lexend, sans-serif' }}
                     data-testid="heading-datalink-hero-title"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                   >
-                    Conecte dados bancários em{" "}
-                    <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">
-                      um clique
-                    </span>
-                    {" "}— direto do Open Finance.
+                    <div className="block">Conecte dados bancários</div>
+                    <div className="block text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent my-2">
+                      em um clique
+                    </div>
+                    <div className="block">direto do Open Finance.</div>
                   </motion.h1>
-                  
+
                   {/* Description */}
                   <motion.p
                     className="mx-auto lg:mx-0 mt-6 max-w-2xl text-balance text-lg text-gray-600 leading-relaxed"
@@ -182,9 +182,9 @@ export default function DataLinkHeroSection() {
                     </Button>
                   </motion.div>
 
-                  
+
                 </div>
-                
+
                 {/* Right Column - Animated Visual */}
                 <div className="hidden lg:block relative h-[600px] w-full">
                   <motion.div

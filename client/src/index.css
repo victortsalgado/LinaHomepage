@@ -889,3 +889,22 @@
   opacity: 1 !important;
   transition: all 1.2s ease-in-out !important;
 }
+
+/* Hide UTM fields in forms */
+.utm-hidden [name*="utm_"],
+.utm-hidden [id*="utm_"],
+.utm-hidden input[name*="utm_"],
+.utm-hidden input[id*="utm_"],
+.utm-hidden label[for*="utm_"],
+.utm-hidden *[data-name*="utm_"],
+.utm-hidden *[class*="utm_"] {
+  display: none !important;
+}
+
+/* Hide any parent container that only contains UTM fields */
+.utm-hidden .form-field:has([name*="utm_"]):not(:has([name]:not([name*="utm_"]))),
+.utm-hidden .form-group:has([name*="utm_"]):not(:has([name]:not([name*="utm_"]))),
+.utm-hidden .field:has([name*="utm_"]):not(:has([name]:not([name*="utm_"]))),
+.utm-hidden div:has([name*="utm_"]):not(:has([name]:not([name*="utm_"]))) {
+  display: none !important;
+}
