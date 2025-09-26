@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/Heading";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "wouter";
 // Optimized WebP images for better performance
 const fintechInnovationImage = "/Ilustra_Destaque_01_Home.png";
 const businessGrowthImage = "/lina-mastercard-partnership-new.png";
@@ -78,6 +79,28 @@ export default function HeroSection() {
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
+  };
+
+  // Function to scroll to next section (for slide 0)
+  const scrollToNextSection = () => {
+    const nextSection = document.querySelector('section:nth-of-type(2)');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Function to get button action based on current slide
+  const getButtonAction = (slideId: number): { type: 'scroll'; action: () => void } | { type: 'link'; href: string } => {
+    switch (slideId) {
+      case 0:
+        return { type: 'scroll', action: scrollToNextSection };
+      case 1:
+        return { type: 'link', href: '/blog' };
+      case 2:
+        return { type: 'link', href: '/lina-pay' };
+      default:
+        return { type: 'scroll', action: scrollToNextSection };
+    }
   };
 
   // Variantes de animação para Framer Motion - apenas para desktop
@@ -200,14 +223,31 @@ export default function HeroSection() {
 
       {/* CTA Button */}
       <div className="mt-8 flex justify-center lg:justify-start">
-        <Button
-          variant="light-bg"
-          size="lg"
-          className=" rounded-lg px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
-          data-testid="button-cta"
-        >
-          <span>{currentSlideData.buttonText}</span>
-        </Button>
+        {(() => {
+          const buttonAction = getButtonAction(currentSlideData.id);
+          return buttonAction.type === 'link' ? (
+            <Link href={buttonAction.href}>
+              <Button
+                variant="light-bg"
+                size="lg"
+                className=" rounded-lg px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
+                data-testid="button-cta"
+              >
+                <span>{currentSlideData.buttonText}</span>
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              variant="light-bg"
+              size="lg"
+              className=" rounded-lg px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
+              onClick={buttonAction.action}
+              data-testid="button-cta"
+            >
+              <span>{currentSlideData.buttonText}</span>
+            </Button>
+          );
+        })()}
       </div>
     </div>
   );
@@ -332,14 +372,31 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-          <Button
-            variant="light-bg"
-            size="lg"
-            className=" rounded-lg px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
-            data-testid="button-cta"
-          >
-            <span>{currentSlideData.buttonText}</span>
-          </Button>
+          {(() => {
+            const buttonAction = getButtonAction(currentSlideData.id);
+            return buttonAction.type === 'link' ? (
+              <Link href={buttonAction.href}>
+                <Button
+                  variant="light-bg"
+                  size="lg"
+                  className=" rounded-lg px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
+                  data-testid="button-cta"
+                >
+                  <span>{currentSlideData.buttonText}</span>
+                </Button>
+              </Link>
+            ) : (
+              <Button
+                variant="light-bg"
+                size="lg"
+                className=" rounded-lg px-8 font-semibold shadow-lg shadow-[var(--lina-cyan)]/25 hover:shadow-xl hover:shadow-[var(--lina-cyan)]/30"
+                onClick={buttonAction.action}
+                data-testid="button-cta"
+              >
+                <span>{currentSlideData.buttonText}</span>
+              </Button>
+            );
+          })()}
         </motion.div>
       </motion.div>
     </AnimatePresence>
