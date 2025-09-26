@@ -1,4 +1,4 @@
-import { Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
+import { Linkedin, Youtube, Instagram } from "lucide-react";
 import { Link } from "wouter";
 import logoPath from "@assets/Nova_logo_lina_1756708154690.png";
 
@@ -84,7 +84,9 @@ export function Footer() {
                   className="w-10 h-10 bg-teal-400 rounded-lg flex items-center justify-center hover:bg-teal-300 transition-colors"
                   data-testid="link-social-twitter"
                 >
-                  <Twitter size={18} className="text-teal-800" />
+                  <svg width={18} height={18} viewBox="0 0 24 24" fill="currentColor" className="text-teal-800">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
                 </a>
                 <a 
                   href="https://www.youtube.com/@linaopenx"
