@@ -185,10 +185,10 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
         };
 
         // Fill the fields
-        fillField(nameInput, formData.nome, 'name');
-        fillField(emailInput, formData.email, 'email');
-        fillField(phoneInput, formData.telefone, 'phone');
-        fillField(companyInput, formData.empresa, 'company');
+        if (nameInput) fillField(nameInput, formData.nome, 'name');
+        if (emailInput) fillField(emailInput, formData.email, 'email');
+        if (phoneInput) fillField(phoneInput, formData.telefone, 'phone');
+        if (companyInput) fillField(companyInput, formData.empresa, 'company');
       } else {
         console.error('[RD SYNC] RD Station form not found');
         // Try to find any form element for debugging
@@ -218,7 +218,23 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
         console.log('[RD SUBMIT] RD Form found, looking for submit button...');
         
         // Try multiple selectors for submit button
-        const submitButton = rdForm.querySelector('button[type="submit"], input[type="submit"], button:contains("Enviar"), button:contains("Submit"), .bricks-button, .rd-button') as HTMLButtonElement;
+        let submitButton: HTMLButtonElement | null = null;
+        
+        // First try standard submit selectors
+        submitButton = rdForm.querySelector('button[type="submit"], input[type="submit"], .bricks-button, .rd-button') as HTMLButtonElement;
+        
+        // If not found, search for buttons by text content
+        if (!submitButton) {
+          const allButtons = rdForm.querySelectorAll('button, input[type="button"]');
+          for (const button of Array.from(allButtons)) {
+            const text = button.textContent?.trim().toLowerCase() || '';
+            const value = (button as HTMLInputElement).value?.trim().toLowerCase() || '';
+            if (text.includes('enviar') || text.includes('submit') || value.includes('enviar') || value.includes('submit')) {
+              submitButton = button as HTMLButtonElement;
+              break;
+            }
+          }
+        }
         
         console.log('[RD SUBMIT] Submit button found:', !!submitButton);
         
