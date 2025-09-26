@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/Heading";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { Link } from "wouter";
 import dataLinkImage from "../../../../assets/data-link-image.png";
 import datalinkAnimation from "../../../../assets/datalink-animation.gif";
 
@@ -116,14 +117,16 @@ export default function DataLinkSection() {
                 ))}
               </div>
 
-              <Button 
-                variant="light-bg"
-                className="px-6 py-2 flex items-center space-x-2"
-                data-testid="button-learn-data-link"
-              >
-                <span>Conheça o Data Link</span>
-                <ArrowRight className="w-4 h-4" />
-              </Button>
+              <Link to="/data-link">
+                <Button 
+                  variant="light-bg"
+                  className="px-6 py-2 flex items-center space-x-2"
+                  data-testid="button-learn-data-link"
+                >
+                  <span>Conheça o Data Link</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
             </div>
 
             {/* Image */}
