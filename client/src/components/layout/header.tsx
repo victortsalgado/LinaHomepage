@@ -26,23 +26,16 @@ export default function Header() {
     { 
       title: "Data Link", 
       href: "/data-link",
-      description: "Solução completa para integração de dados empresariais",
+      description: "Integre dados bancários do Open Finance",
       badges: ["API First", "Analytics", "Insights"],
       imageSrc: dataLinkLogo
     },
     { 
       title: "Lina Pay", 
       href: "/lina-pay",
-      description: "Sistema de pagamentos digitais integrado",
+      description: "Gateway completo de PIX com a flexibilidade do Open Finance",
       badges: ["PIX", "Cobrança", "Recorrência"],
       imageSrc: linaPayLogo
-    },
-    { 
-      title: "Infraestrutura & Conectividade", 
-      href: "/infraestrutura-e-conectividade",
-      description: "Plataforma de gestão e relatórios avançados",
-      badges: ["Consentimento", "Certificações", "Homologação"],
-      imageSrc: linaJSRLogo
     },
   ];
 
@@ -70,12 +63,7 @@ export default function Header() {
   const handleMenuOpen = () => setIsMenuOpen(true);
   const handleMenuClose = () => setIsMenuOpen(false);
 
-  const recursosDropdownItems = [
-    {
-      title: "Blog",
-      href: "/blog",
-      description: "Artigos e insights sobre tecnologia e negócios"
-    },
+  const integracoesDropdownItems = [
     {
       title: "Documentação",
       href: "/docs",
@@ -252,19 +240,20 @@ export default function Header() {
                       </NavigationMenuContent>
                     </NavigationMenuItem>
 
+
                     <NavigationMenuItem>
                       <NavigationMenuTriggerUnstyled asChild>
                         <button className={cn(
                           "group relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0 data-[state=open]:text-[#00b6ac] data-[state=open]:scale-105 data-[state=open]:before:w-full data-[state=open]:before:left-0 flex items-center",
                           shouldUseWhiteText ? "text-white" : "text-gray-600"
                         )}>
-                          Recursos
+                          Integrações
                           <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                         </button>
                       </NavigationMenuTriggerUnstyled>
                       <NavigationMenuContent>
                         <div className="grid w-[400px] gap-0.5 p-2 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white dark:bg-gray-900">
-                          {recursosDropdownItems.map((item) => (
+                          {integracoesDropdownItems.map((item) => (
                             <Link
                               key={item.title}
                               to={item.href}
@@ -274,7 +263,7 @@ export default function Header() {
                               )}
                             >
                               <div className="flex items-start gap-3">
-                                {/* Resource Info */}
+                                {/* Integration Info */}
                                 <div className="flex-1 space-y-1">
                                   <div className="flex items-center gap-2">
                                     <h4 className="text-sm font-semibold leading-none text-gray-900 dark:text-white">
@@ -311,19 +300,6 @@ export default function Header() {
                     </NavigationMenuItem>
 
                     <NavigationMenuItem>
-                      <NavigationMenuLink 
-                        href="#integracoes" 
-                        className={cn(
-                          "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
-                          shouldUseWhiteText ? "text-white" : "text-gray-600"
-                        )}
-                        data-testid="link-integrations"
-                      >
-                        Integrações
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-
-                    <NavigationMenuItem>
                       <NavigationMenuLink asChild>
                         <Link 
                           to="/trial" 
@@ -334,6 +310,21 @@ export default function Header() {
                           data-testid="link-trial"
                         >
                           Trial
+                        </Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+
+                    <NavigationMenuItem>
+                      <NavigationMenuLink asChild>
+                        <Link 
+                          to="/blog" 
+                          className={cn(
+                            "relative font-normal text-[16px] h-9 bg-transparent border-none shadow-none px-4 py-2 transition-all duration-300 hover:text-[#00b6ac] hover:scale-105 before:content-[''] before:absolute before:w-0 before:h-0.5 before:bottom-0 before:left-1/2 before:bg-gradient-to-r before:from-teal-500 before:to-cyan-500 before:transition-all before:duration-300 hover:before:w-full hover:before:left-0",
+                            shouldUseWhiteText ? "text-white" : "text-gray-600"
+                          )}
+                          data-testid="link-blog"
+                        >
+                          Blog
                         </Link>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
@@ -386,9 +377,9 @@ export default function Header() {
         onClose={() => setIsMobileMenuOpen(false)}
         navigationItems={[
           { label: "Produtos", href: "#produtos" },
-          { label: "Recursos", href: "#recursos" },
           { label: "Integrações", href: "#integracoes" },
           { label: "Trial", href: "/trial" },
+          { label: "Blog", href: "/blog" },
           { label: "Quem Somos", href: "/quem-somos" },
         ]}
       />
