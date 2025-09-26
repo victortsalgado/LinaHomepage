@@ -24,6 +24,7 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
   });
 
   const [currentFieldValid, setCurrentFieldValid] = useState(false);
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   // Validation functions
   const validateName = (value: string) => value.trim().length >= 2;
@@ -101,6 +102,8 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
         }
       }
     }, 200);
+    // Mark form as submitted to show confirmation message
+    setIsFormSubmitted(true);
   };
 
   return (
@@ -251,32 +254,35 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
           </div>
         </Step>
 
-        {/* Step 6: Mensagem de Confirmação */}
-        <Step>
-          <div className="text-center py-8">
-            <div className="mb-6">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h2 className="stepper-step-title text-green-700">Obrigado!</h2>
-              <p className="stepper-step-description text-lg">
-                Seus dados foram enviados com sucesso.
-              </p>
-            </div>
-            
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-green-800 mb-2" style={{ fontFamily: 'Lexend, sans-serif' }}>
-                Entraremos em contato em breve!
-              </h3>
-              <p className="text-green-700" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Nossa equipe de especialistas analisará suas informações e retornará o contato dentro de 24 horas para apresentar a melhor solução para o seu negócio.
-              </p>
-            </div>
-          </div>
-        </Step>
       </Stepper>
+
+      {/* Success Message - Shows below stepper after form submission */}
+      {isFormSubmitted && (
+        <div className="mt-12 text-center">
+          <div className="mb-6">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-bold text-green-700 mb-2" style={{ fontFamily: 'Lexend, sans-serif' }}>
+              Obrigado!
+            </h3>
+            <p className="text-lg text-gray-600 mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Seus dados foram enviados com sucesso.
+            </p>
+          </div>
+          
+          <div className="bg-green-50 border border-green-200 rounded-lg p-6 max-w-2xl mx-auto">
+            <h4 className="text-lg font-semibold text-green-800 mb-2" style={{ fontFamily: 'Lexend, sans-serif' }}>
+              Entraremos em contato em breve!
+            </h4>
+            <p className="text-green-700" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Nossa equipe de especialistas analisará suas informações e retornará o contato dentro de 24 horas para apresentar a melhor solução para o seu negócio.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
