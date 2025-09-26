@@ -21,7 +21,7 @@ export default function JsrCtaFormSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={sectionVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="space-y-16"
+          className="space-y-20"
         >
           {/* Section Header */}
           <div className="text-center space-y-6 max-w-4xl mx-auto">

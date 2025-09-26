@@ -19,7 +19,7 @@ export default function CtaFormSection() {
       <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         {/* Section Title and Subtitle */}
         <motion.div 
-          className="text-center max-w-4xl mx-auto mb-12"
+          className="text-center max-w-4xl mx-auto mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
