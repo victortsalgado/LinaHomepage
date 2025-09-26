@@ -936,3 +936,29 @@
 .utm-hidden div:has([name*="utm_"]):not(:has([name]:not([name*="utm_"]))) {
   display: none !important;
 }
+
+/* Global rule to hide url_pagina field anywhere on the page */
+[name*="url_pagina"],
+[id*="url_pagina"],
+input[name*="url_pagina"],
+input[id*="url_pagina"],
+label[for*="url_pagina"],
+*[data-name*="url_pagina"],
+*[class*="url_pagina"],
+[name="url_pagina"],
+[id="url_pagina"],
+input[name="url_pagina"],
+input[id="url_pagina"],
+label[for="url_pagina"],
+*[data-name="url_pagina"],
+*[class="url_pagina"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+}
