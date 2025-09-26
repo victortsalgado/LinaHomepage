@@ -55,7 +55,7 @@ export default function SegmentsSection() {
   const activeCardColor = cardColors[activeTab - 1];
 
   return (
-    <section className="py-48 md:py-64 lg:py-80" style={{ backgroundColor: 'var(--lina-dark)' }} data-testid="section-segments">
+    <section className="py-24 md:py-32 lg:py-40" style={{ backgroundColor: 'var(--lina-dark)' }} data-testid="section-segments">
       <div className="container mx-auto px-6 lg:px-8 max-w-[92rem]">
         {/* Section Title */}
         <motion.div 
