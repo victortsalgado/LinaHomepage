@@ -141,10 +141,10 @@ export default function DataLinkHeroSection() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                   >
                     <div className="block">Conecte dados bancários</div>
-                    <div className="block text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent my-2">
-                      em um clique
+                    <div className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent my-1 lg:my-2">
+                      em um clique direto
                     </div>
-                    <div className="block">direto do Open Finance.</div>
+                    <div className="block">do Open Finance.</div>
                   </motion.h1>
 
                   {/* Description */}
