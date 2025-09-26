@@ -28,7 +28,23 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
 
   // Validation functions
   const validateName = (value: string) => value.trim().length >= 2;
-  const validateEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  const validateEmail = (value: string) => {
+    // Basic email format validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      return false;
+    }
+    
+    // List of common personal email providers to exclude
+    const personalEmailDomains = [
+      'gmail.com', 'hotmail.com', 'yahoo.com', 'outlook.com', 'live.com',
+      'icloud.com', 'me.com', 'msn.com', 'yahoo.com.br', 'hotmail.com.br',
+      'bol.com.br', 'uol.com.br', 'terra.com.br', 'ig.com.br', 'globo.com',
+      'r7.com', 'oi.com.br', 'zipmail.com.br', 'pop.com.br'
+    ];
+    
+    const emailDomain = value.toLowerCase().split('@')[1];
+    return !personalEmailDomains.includes(emailDomain);
+  };
   const validatePhone = (value: string) => value.replace(/\D/g, '').length >= 10;
   const validateCompany = (value: string) => value.trim().length >= 2;
 
@@ -168,7 +184,9 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
             </div>
             {formData.email && !validateEmail(formData.email) && (
               <p className="text-red-500 text-sm mt-2">
-                Por favor, insira um email válido
+                {!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) 
+                  ? "Por favor, insira um email válido" 
+                  : "Por favor, use um email corporativo (não Gmail, Hotmail, Yahoo, etc.)"}
               </p>
             )}
           </div>
