@@ -81,11 +81,11 @@ export default function HeroSection() {
     setCurrentSlide(index);
   };
 
-  // Function to scroll to next section (for slide 0)
-  const scrollToNextSection = () => {
-    const nextSection = document.querySelector('section:nth-of-type(2)');
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
+  // Function to scroll to DataLink section (for slide 0)
+  const scrollToDataLinkSection = () => {
+    const dataLinkSection = document.querySelector('[data-testid="section-data-link"]');
+    if (dataLinkSection) {
+      dataLinkSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -93,13 +93,13 @@ export default function HeroSection() {
   const getButtonAction = (slideId: number): { type: 'scroll'; action: () => void } | { type: 'link'; href: string } => {
     switch (slideId) {
       case 0:
-        return { type: 'scroll', action: scrollToNextSection };
+        return { type: 'scroll', action: scrollToDataLinkSection };
       case 1:
         return { type: 'link', href: '/blog' };
       case 2:
         return { type: 'link', href: '/lina-pay' };
       default:
-        return { type: 'scroll', action: scrollToNextSection };
+        return { type: 'scroll', action: scrollToDataLinkSection };
     }
   };
 
