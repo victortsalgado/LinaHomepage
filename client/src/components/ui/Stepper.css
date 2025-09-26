@@ -48,7 +48,8 @@
 .step-default {
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
+  min-height: 200px;
 }
 
 .footer-container {
@@ -218,6 +219,7 @@
   color: #6b7280;
   margin-bottom: 2rem;
   font-family: 'Inter', sans-serif;
+  line-height: 1.5;
 }
 
 .check-icon {
