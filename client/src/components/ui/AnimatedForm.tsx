@@ -26,6 +26,7 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
   const [currentFieldValid, setCurrentFieldValid] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [syncTimeout, setSyncTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [currentStep, setCurrentStep] = useState(1);
 
   // Validation functions
   const validateName = (value: string) => value.trim().length >= 2;
@@ -89,11 +90,29 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
     };
   }, [syncTimeout]);
 
-  // Validate current field
+  // Validate current step
+  const validateCurrentStep = (step: number): boolean => {
+    switch (step) {
+      case 1:
+        return validateName(formData.nome);
+      case 2:
+        return validateEmail(formData.email);
+      case 3:
+        return validatePhone(formData.telefone);
+      case 4:
+        return validateCompany(formData.empresa);
+      case 5:
+        return validateName(formData.nome) && validateEmail(formData.email) && 
+               validatePhone(formData.telefone) && validateCompany(formData.empresa);
+      default:
+        return false;
+    }
+  };
+
+  // Update field validation based on current step
   useEffect(() => {
-    // This will be updated based on current step validation
-    setCurrentFieldValid(true);
-  }, [formData]);
+    setCurrentFieldValid(validateCurrentStep(currentStep));
+  }, [formData, currentStep]);
 
   // Sync with RD Station form when step changes or data updates
   const syncWithRDStation = () => {
@@ -220,11 +239,32 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
   };
 
   const handleStepChange = (step: number) => {
+    // Validate current step before allowing progression
+    if (step > currentStep && !validateCurrentStep(currentStep)) {
+      // Don't allow progression if current step is invalid
+      return;
+    }
+    
+    setCurrentStep(step);
     syncWithRDStation();
   };
 
   const handleFormComplete = () => {
     console.log('[RD SUBMIT] Starting form completion process...');
+    
+    // Validate all fields before submitting
+    const isFormValid = validateName(formData.nome) && 
+                       validateEmail(formData.email) && 
+                       validatePhone(formData.telefone) && 
+                       validateCompany(formData.empresa);
+    
+    if (!isFormValid) {
+      console.warn('[RD SUBMIT] Form validation failed. Cannot submit incomplete form.');
+      alert('Por favor, preencha todos os campos obrigatórios antes de enviar.');
+      return;
+    }
+    
+    console.log('[RD SUBMIT] Form is valid, proceeding with submission...');
     syncWithRDStation();
     
     // Submit RD Station form after ensuring data is synced
@@ -302,6 +342,7 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
         onFinalStepCompleted={handleFormComplete}
         backButtonText="Anterior"
         nextButtonText="Continuar"
+        canProceed={currentFieldValid}
         data-testid="animated-form-stepper"
       >
         {/* Step 1: Nome */}

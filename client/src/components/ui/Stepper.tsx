@@ -18,6 +18,7 @@ interface StepperProps {
   nextButtonText?: string;
   disableStepIndicators?: boolean;
   renderStepIndicator?: (props: any) => React.ReactNode;
+  canProceed?: boolean;
   [key: string]: any;
 }
 
@@ -36,6 +37,7 @@ export default function Stepper({
   nextButtonText = 'Continuar',
   disableStepIndicators = false,
   renderStepIndicator,
+  canProceed = true,
   ...rest
 }: StepperProps) {
   const [currentStep, setCurrentStep] = useState(initialStep);
@@ -133,7 +135,8 @@ export default function Stepper({
               )}
               <button 
                 onClick={isLastStep ? handleComplete : handleNext} 
-                className="next-button" 
+                className={`next-button ${!canProceed ? 'disabled' : ''}`}
+                disabled={!canProceed}
                 {...nextButtonProps}
                 data-testid="stepper-next-button"
               >
