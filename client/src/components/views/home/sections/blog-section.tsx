@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "wouter";
 import pixBlogImage from "@assets/generated_images/PIX_2.0_blog_thumbnail_3b7ec595.png";
 import openFinanceBlogImage from "@assets/generated_images/Open_Finance_blog_thumbnail_48730c91.png";
 import openInsuranceBlogImage from "@assets/generated_images/Open_Insurance_blog_thumbnail_11c02fc5.png";
@@ -106,14 +107,16 @@ export default function BlogSection() {
 
         {/* CTA Button */}
         <div className="flex justify-center">
-          <Button 
-            variant="light-bg"
-            className="px-6 py-2 flex items-center space-x-2"
-            data-testid="button-view-all-articles"
-          >
-            <span>Ver todos os artigos</span>
-            <ArrowRight className="w-4 h-4" />
-          </Button>
+          <Link to="/blog">
+            <Button 
+              variant="light-bg"
+              className="px-6 py-2 flex items-center space-x-2"
+              data-testid="button-view-all-articles"
+            >
+              <span>Ver todos os artigos</span>
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
