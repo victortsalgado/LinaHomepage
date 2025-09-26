@@ -25,6 +25,7 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
 
   const [currentFieldValid, setCurrentFieldValid] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [syncTimeout, setSyncTimeout] = useState<NodeJS.Timeout | null>(null);
 
   // Validation functions
   const validateName = (value: string) => value.trim().length >= 2;
@@ -62,11 +63,31 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
     const processedValue = field === 'telefone' ? formatPhone(value) : value;
     setFormData(prev => {
       const newData = { ...prev, [field]: processedValue };
-      // Sync immediately when data changes
-      setTimeout(() => syncWithRDStation(), 200);
+      
+      // Clear existing timeout
+      if (syncTimeout) {
+        clearTimeout(syncTimeout);
+      }
+      
+      // Set new timeout for debounced sync
+      const newTimeout = setTimeout(() => {
+        syncWithRDStation();
+      }, 1000); // Increased delay and debounced
+      
+      setSyncTimeout(newTimeout);
+      
       return newData;
     });
   };
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (syncTimeout) {
+        clearTimeout(syncTimeout);
+      }
+    };
+  }, [syncTimeout]);
 
   // Validate current field
   useEffect(() => {
@@ -152,9 +173,6 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
         const fillField = (input: HTMLInputElement, value: string, fieldName: string) => {
           if (input && value) {
             console.log(`[RD SYNC] Filling ${fieldName} with value:`, value);
-            
-            // Set focus first
-            input.focus();
             
             // Clear existing value
             input.value = '';
