@@ -45,31 +45,15 @@ export default function CtaFormSection() {
 
         {/* Form */}
         <motion.div
-          className="max-w-4xl mx-auto"
+          className="max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 40 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          {/* Form Title and Subtitle */}
-          <div className="text-center mb-8">
-            <h3 
-              className="text-2xl md:text-3xl font-bold text-[var(--lina-dark)] mb-4"
-              style={{ fontFamily: 'Lexend, sans-serif' }}
-              data-testid="heading-form-title"
-            >
-              Fale com um especialista hoje mesmo.
-            </h3>
-            <p 
-              className="text-lg text-gray-600"
-              style={{ fontFamily: 'Inter, sans-serif' }}
-              data-testid="text-form-subtitle"
-            >
-              Não se preocupe, seus dados estarão sempre seguros conosco.
-            </p>
+          {/* Elegant Form Container */}
+          <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100 backdrop-blur-sm">
+            <RDStationForm className="w-full utm-hidden" />
           </div>
-
-          {/* RD Station Form */}
-          <RDStationForm className="w-full utm-hidden" />
         </motion.div>
       </div>
     </section>

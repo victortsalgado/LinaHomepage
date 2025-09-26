@@ -94,25 +94,14 @@ export default function JsrCtaFormSection() {
 
           {/* Form Section */}
           <div className="flex justify-center">
-            <Card className="w-full max-w-2xl">
-              <CardContent 
-                className="p-8 lg:p-12"
-                style={{ backgroundColor: 'var(--lina-dark)' }}
-              >
+            <div className="w-full max-w-2xl">
+              <div className="bg-white rounded-2xl shadow-2xl p-8 lg:p-12 border border-gray-100 backdrop-blur-sm">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={sectionVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                  className="space-y-8"
+                  className="space-y-6"
                 >
-                  {/* Form Title */}
-                  <h3
-                    className="text-2xl lg:text-3xl font-bold text-white text-center"
-                    style={{ fontFamily: 'Lexend, sans-serif' }}
-                    data-testid="heading-form-title"
-                  >
-                    Fale com um especialista hoje mesmo.
-                  </h3>
 
                   {/* Form */}
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -120,7 +109,7 @@ export default function JsrCtaFormSection() {
                     <div className="space-y-2">
                       <Label 
                         htmlFor="fullName" 
-                        className="text-white font-medium"
+                        className="text-gray-700 font-medium"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                         data-testid="label-full-name"
                       >
@@ -133,7 +122,7 @@ export default function JsrCtaFormSection() {
                         placeholder="Digite seu nome completo"
                         value={formData.fullName}
                         onChange={(e) => handleInputChange('fullName', e.target.value)}
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
+                        className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
                         data-testid="input-full-name"
                       />
                     </div>
@@ -142,7 +131,7 @@ export default function JsrCtaFormSection() {
                     <div className="space-y-2">
                       <Label 
                         htmlFor="email" 
-                        className="text-white font-medium"
+                        className="text-gray-700 font-medium"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                         data-testid="label-email"
                       >
@@ -155,7 +144,7 @@ export default function JsrCtaFormSection() {
                         placeholder="exemplo@empresa.com"
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
+                        className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
                         data-testid="input-email"
                       />
                     </div>
@@ -164,7 +153,7 @@ export default function JsrCtaFormSection() {
                     <div className="space-y-2">
                       <Label 
                         htmlFor="phone" 
-                        className="text-white font-medium"
+                        className="text-gray-700 font-medium"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                         data-testid="label-phone"
                       >
@@ -177,7 +166,7 @@ export default function JsrCtaFormSection() {
                         placeholder="(11) 99999-9999"
                         value={formData.phone}
                         onChange={(e) => handleInputChange('phone', e.target.value)}
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
+                        className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
                         data-testid="input-phone"
                       />
                     </div>
@@ -186,7 +175,7 @@ export default function JsrCtaFormSection() {
                     <div className="space-y-2">
                       <Label 
                         htmlFor="company" 
-                        className="text-white font-medium"
+                        className="text-gray-700 font-medium"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                         data-testid="label-company"
                       >
@@ -199,7 +188,7 @@ export default function JsrCtaFormSection() {
                         placeholder="Nome da empresa"
                         value={formData.company}
                         onChange={(e) => handleInputChange('company', e.target.value)}
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
+                        className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
                         data-testid="input-company"
                       />
                     </div>
@@ -207,7 +196,7 @@ export default function JsrCtaFormSection() {
                     {/* Revenue Dropdown */}
                     <div className="space-y-2">
                       <Label 
-                        className="text-white font-medium"
+                        className="text-gray-700 font-medium"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                         data-testid="label-revenue"
                       >
@@ -218,12 +207,12 @@ export default function JsrCtaFormSection() {
                         onValueChange={(value) => handleInputChange('revenue', value)}
                       >
                         <SelectTrigger 
-                          className="bg-white/10 border-white/20 text-white focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
+                          className="bg-gray-50 border-gray-200 text-gray-900 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
                           data-testid="select-revenue"
                         >
                           <SelectValue 
                             placeholder="Selecione o faturamento anual"
-                            className="text-white/60"
+                            className="text-gray-500"
                           />
                         </SelectTrigger>
                         <SelectContent>
@@ -243,7 +232,7 @@ export default function JsrCtaFormSection() {
                     {/* Segment Dropdown */}
                     <div className="space-y-2">
                       <Label 
-                        className="text-white font-medium"
+                        className="text-gray-700 font-medium"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                         data-testid="label-segment"
                       >
@@ -254,12 +243,12 @@ export default function JsrCtaFormSection() {
                         onValueChange={(value) => handleInputChange('segment', value)}
                       >
                         <SelectTrigger 
-                          className="bg-white/10 border-white/20 text-white focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
+                          className="bg-gray-50 border-gray-200 text-gray-900 focus:border-[var(--lina-cyan)] focus:ring-[var(--lina-cyan)]"
                           data-testid="select-segment"
                         >
                           <SelectValue 
                             placeholder="Selecione o segmento"
-                            className="text-white/60"
+                            className="text-gray-500"
                           />
                         </SelectTrigger>
                         <SelectContent>
@@ -288,8 +277,8 @@ export default function JsrCtaFormSection() {
                     </Button>
                   </form>
                 </motion.div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
