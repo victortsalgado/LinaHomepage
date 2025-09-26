@@ -83,6 +83,26 @@ app.use((req, res, next) => {
       
       await setupVite(app, server);
     } else {
+      // Production mode: ensure static files are available for serveStatic
+      const path = await import("path");
+      const fs = await import("fs");
+      
+      const distPublicPath = path.resolve(import.meta.dirname, "..", "dist", "public");
+      const serverPublicPath = path.resolve(import.meta.dirname, "public");
+      
+      // Check if dist/public exists and copy to server/public if needed
+      if (fs.existsSync(distPublicPath) && !fs.existsSync(serverPublicPath)) {
+        try {
+          // Create server directory if it doesn't exist
+          await fs.promises.mkdir(path.dirname(serverPublicPath), { recursive: true });
+          // Copy files from dist/public to server/public
+          await fs.promises.cp(distPublicPath, serverPublicPath, { recursive: true });
+          log("Copied static files from dist/public to server/public for production");
+        } catch (error) {
+          log(`Warning: Failed to copy static files: ${error instanceof Error ? error.message : String(error)}`);
+        }
+      }
+      
       serveStatic(app);
     }
 
