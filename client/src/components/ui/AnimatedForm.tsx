@@ -27,12 +27,16 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [syncTimeout, setSyncTimeout] = useState<NodeJS.Timeout | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Refs for controlled focus management
   const nomeInputRef = useRef<HTMLInputElement>(null);
   const emailInputRef = useRef<HTMLInputElement>(null);
   const telefoneInputRef = useRef<HTMLInputElement>(null);
   const empresaInputRef = useRef<HTMLInputElement>(null);
+  
+  // Store original scroll position to prevent unwanted scrolling
+  const originalScrollRef = useRef<number>(0);
 
   // Validation functions
   const validateName = (value: string) => value.trim().length >= 2;
@@ -71,17 +75,20 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
     setFormData(prev => {
       const newData = { ...prev, [field]: processedValue };
       
-      // Clear existing timeout
-      if (syncTimeout) {
-        clearTimeout(syncTimeout);
+      // Only sync with RD Station if not transitioning between steps
+      if (!isTransitioning) {
+        // Clear existing timeout
+        if (syncTimeout) {
+          clearTimeout(syncTimeout);
+        }
+        
+        // Set new timeout for debounced sync
+        const newTimeout = setTimeout(() => {
+          syncWithRDStation();
+        }, 1000);
+        
+        setSyncTimeout(newTimeout);
       }
-      
-      // Set new timeout for debounced sync
-      const newTimeout = setTimeout(() => {
-        syncWithRDStation();
-      }, 1000); // Increased delay and debounced
-      
-      setSyncTimeout(newTimeout);
       
       return newData;
     });
@@ -120,40 +127,37 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
     setCurrentFieldValid(validateCurrentStep(currentStep));
   }, [formData, currentStep]);
 
-  // Controlled focus management - focus on step change without scrolling
+  // Global scroll prevention during transitions
   useEffect(() => {
-    const focusCurrentStepInput = () => {
-      let inputRef: React.RefObject<HTMLInputElement> | null = null;
+    if (isTransitioning) {
+      // Store current scroll position
+      originalScrollRef.current = window.scrollY;
       
-      switch (currentStep) {
-        case 1:
-          inputRef = nomeInputRef;
-          break;
-        case 2:
-          inputRef = emailInputRef;
-          break;
-        case 3:
-          inputRef = telefoneInputRef;
-          break;
-        case 4:
-          inputRef = empresaInputRef;
-          break;
-        default:
-          return;
-      }
+      // Create scroll prevention handler
+      const preventScroll = (e: Event) => {
+        e.preventDefault();
+        window.scrollTo(0, originalScrollRef.current);
+      };
       
-      if (inputRef?.current) {
-        console.log(`[FOCUS] Focusing input for step ${currentStep} with preventScroll`);
-        // Focus with preventScroll to avoid automatic scrolling
-        inputRef.current.focus({ preventScroll: true });
-      }
-    };
-
-    // Small delay to ensure the input is rendered after step animation
-    const timeoutId = setTimeout(focusCurrentStepInput, 100);
-    
-    return () => clearTimeout(timeoutId);
-  }, [currentStep]);
+      // Add scroll prevention listeners
+      window.addEventListener('scroll', preventScroll, { passive: false });
+      document.addEventListener('touchmove', preventScroll, { passive: false });
+      
+      console.log(`[SCROLL PREVENTION] Activated at position ${originalScrollRef.current}`);
+      
+      // Auto-disable after animation completes
+      const timeoutId = setTimeout(() => {
+        setIsTransitioning(false);
+      }, 800); // Slightly longer than typical animation duration
+      
+      return () => {
+        window.removeEventListener('scroll', preventScroll);
+        document.removeEventListener('touchmove', preventScroll);
+        clearTimeout(timeoutId);
+        console.log('[SCROLL PREVENTION] Deactivated');
+      };
+    }
+  }, [isTransitioning]);
 
   // Sync with RD Station form when step changes or data updates
   const syncWithRDStation = () => {
@@ -290,14 +294,15 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
     
     console.log(`[STEP CHANGE] Validation passed, updating step to ${step}`);
     
-    // Store current scroll position before step change
-    const currentScrollY = window.scrollY;
-    console.log(`[STEP CHANGE] Current scroll position: ${currentScrollY}`);
+    // Activate scroll prevention immediately
+    setIsTransitioning(true);
+    originalScrollRef.current = window.scrollY;
+    console.log(`[STEP CHANGE] Scroll prevention activated at position ${originalScrollRef.current}`);
     
+    // Change step without any additional operations that might cause scroll
     setCurrentStep(step);
     
-    // Simple solution: Just don't sync on step change to prevent scroll issues
-    console.log('[STEP CHANGE] Skipping RD Station sync during step change to prevent scroll');
+    console.log('[STEP CHANGE] Step changed, all sync and focus operations blocked during transition');
   };
 
   const handleFormComplete = () => {
