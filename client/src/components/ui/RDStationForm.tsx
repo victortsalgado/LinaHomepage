@@ -13,7 +13,7 @@ declare global {
 }
 
 export default function RDStationForm({ 
-  formId = 'teste_lina-bw_lp_linapay-4d252035dc055a459f05', 
+  formId = 'bw_lp_linapay-b7eb1ff97c2b35f91e32', 
   className = "" 
 }: RDStationFormProps) {
   useEffect(() => {
