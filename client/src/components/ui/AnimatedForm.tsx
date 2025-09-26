@@ -60,7 +60,12 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     const processedValue = field === 'telefone' ? formatPhone(value) : value;
-    setFormData(prev => ({ ...prev, [field]: processedValue }));
+    setFormData(prev => {
+      const newData = { ...prev, [field]: processedValue };
+      // Sync immediately when data changes
+      setTimeout(() => syncWithRDStation(), 200);
+      return newData;
+    });
   };
 
   // Validate current field
@@ -72,34 +77,128 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
   // Sync with RD Station form when step changes or data updates
   const syncWithRDStation = () => {
     setTimeout(() => {
+      console.log('[RD SYNC] Attempting to sync with RD Station form...');
+      console.log('[RD SYNC] Current form data:', formData);
+      
       // Find RD Station form fields and populate them
-      const rdForm = document.querySelector('[role="main"][id*="teste_lina"]');
+      const rdForm = document.querySelector('[role="main"][id*="teste_lina"]') || document.getElementById('teste_lina-bw_lp_linapay-4d252035dc055a459f05');
+      console.log('[RD SYNC] RD Form found:', !!rdForm);
+      
       if (rdForm) {
-        // Look for input fields by common patterns
-        const nameInput = rdForm.querySelector('input[name*="name"], input[name*="nome"], input[placeholder*="nome"], input[placeholder*="name"]') as HTMLInputElement;
-        const emailInput = rdForm.querySelector('input[type="email"], input[name*="email"]') as HTMLInputElement;
-        const phoneInput = rdForm.querySelector('input[type="tel"], input[name*="phone"], input[name*="telefone"]') as HTMLInputElement;
-        const companyInput = rdForm.querySelector('input[name*="company"], input[name*="empresa"]') as HTMLInputElement;
+        console.log('[RD SYNC] RD Form element:', rdForm);
+        
+        // Look for all input fields in the form
+        const allInputs = rdForm.querySelectorAll('input, select, textarea');
+        console.log('[RD SYNC] All form controls found:', allInputs.length);
+        
+        // Log all available inputs for debugging
+        allInputs.forEach((input, index) => {
+          const element = input as HTMLInputElement;
+          console.log(`[RD SYNC] Input ${index}:`, {
+            type: element.type,
+            name: element.name,
+            placeholder: element.placeholder,
+            id: element.id,
+            className: element.className
+          });
+        });
+        
+        // Try multiple selectors for each field type with more variations
+        const nameSelectors = [
+          'input[name*="name"]', 'input[name*="nome"]', 'input[placeholder*="nome"]', 
+          'input[placeholder*="name"]', 'input[placeholder*="Nome"]', 'input[data-name*="name"]',
+          'input[id*="name"]', 'input[id*="nome"]', 'input[class*="name"]'
+        ];
+        
+        const emailSelectors = [
+          'input[type="email"]', 'input[name*="email"]', 'input[placeholder*="email"]', 
+          'input[placeholder*="Email"]', 'input[id*="email"]', 'input[class*="email"]'
+        ];
+        
+        const phoneSelectors = [
+          'input[type="tel"]', 'input[name*="phone"]', 'input[name*="telefone"]', 
+          'input[placeholder*="telefone"]', 'input[placeholder*="Telefone"]', 
+          'input[placeholder*="phone"]', 'input[id*="phone"]', 'input[id*="telefone"]'
+        ];
+        
+        const companySelectors = [
+          'input[name*="company"]', 'input[name*="empresa"]', 'input[placeholder*="empresa"]', 
+          'input[placeholder*="Empresa"]', 'input[placeholder*="company"]', 
+          'input[id*="company"]', 'input[id*="empresa"]'
+        ];
+
+        // Find fields using comprehensive selectors
+        const findField = (selectors: string[]) => {
+          for (const selector of selectors) {
+            const field = rdForm.querySelector(selector) as HTMLInputElement;
+            if (field) return field;
+          }
+          return null;
+        };
+
+        const nameInput = findField(nameSelectors);
+        const emailInput = findField(emailSelectors);
+        const phoneInput = findField(phoneSelectors);
+        const companyInput = findField(companySelectors);
+
+        console.log('[RD SYNC] Fields found:', {
+          nameInput: !!nameInput,
+          emailInput: !!emailInput, 
+          phoneInput: !!phoneInput,
+          companyInput: !!companyInput
+        });
+
+        // Helper function to fill field with multiple event types
+        const fillField = (input: HTMLInputElement, value: string, fieldName: string) => {
+          if (input && value) {
+            console.log(`[RD SYNC] Filling ${fieldName} with value:`, value);
+            
+            // Set focus first
+            input.focus();
+            
+            // Clear existing value
+            input.value = '';
+            
+            // Set new value using multiple methods
+            input.value = value;
+            input.setAttribute('value', value);
+            
+            // Dispatch multiple event types to ensure compatibility
+            const events = ['focus', 'input', 'change', 'blur', 'keyup', 'keydown'];
+            events.forEach(eventType => {
+              const event = new Event(eventType, { bubbles: true, cancelable: true });
+              input.dispatchEvent(event);
+            });
+            
+            // Also try native value setter
+            const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set;
+            if (nativeInputValueSetter) {
+              nativeInputValueSetter.call(input, value);
+              input.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+            
+            // Verify the value was set
+            console.log(`[RD SYNC] ${fieldName} field value after setting:`, input.value);
+          } else if (!input) {
+            console.warn(`[RD SYNC] ${fieldName} input not found`);
+          }
+        };
 
         // Fill the fields
-        if (nameInput && formData.nome) {
-          nameInput.value = formData.nome;
-          nameInput.dispatchEvent(new Event('input', { bubbles: true }));
-        }
-        if (emailInput && formData.email) {
-          emailInput.value = formData.email;
-          emailInput.dispatchEvent(new Event('input', { bubbles: true }));
-        }
-        if (phoneInput && formData.telefone) {
-          phoneInput.value = formData.telefone;
-          phoneInput.dispatchEvent(new Event('input', { bubbles: true }));
-        }
-        if (companyInput && formData.empresa) {
-          companyInput.value = formData.empresa;
-          companyInput.dispatchEvent(new Event('input', { bubbles: true }));
-        }
+        fillField(nameInput, formData.nome, 'name');
+        fillField(emailInput, formData.email, 'email');
+        fillField(phoneInput, formData.telefone, 'phone');
+        fillField(companyInput, formData.empresa, 'company');
+      } else {
+        console.error('[RD SYNC] RD Station form not found');
+        // Try to find any form element for debugging
+        const allForms = document.querySelectorAll('form');
+        console.log('[RD SYNC] All forms on page:', allForms.length);
+        allForms.forEach((form, index) => {
+          console.log(`[RD SYNC] Form ${index}:`, form.id, form.className);
+        });
       }
-    }, 100);
+    }, 1000); // Further increased timeout
   };
 
   const handleStepChange = (step: number) => {
@@ -107,26 +206,59 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
   };
 
   const handleFormComplete = () => {
+    console.log('[RD SUBMIT] Starting form completion process...');
     syncWithRDStation();
-    // Submit RD Station form
+    
+    // Submit RD Station form after ensuring data is synced
     setTimeout(() => {
+      console.log('[RD SUBMIT] Attempting to submit RD Station form...');
       const rdForm = document.querySelector('[role="main"][id*="teste_lina"]');
+      
       if (rdForm) {
-        const submitButton = rdForm.querySelector('button[type="submit"], input[type="submit"]') as HTMLButtonElement;
+        console.log('[RD SUBMIT] RD Form found, looking for submit button...');
+        
+        // Try multiple selectors for submit button
+        const submitButton = rdForm.querySelector('button[type="submit"], input[type="submit"], button:contains("Enviar"), button:contains("Submit"), .bricks-button, .rd-button') as HTMLButtonElement;
+        
+        console.log('[RD SUBMIT] Submit button found:', !!submitButton);
+        
         if (submitButton) {
+          console.log('[RD SUBMIT] Clicking submit button...');
           submitButton.click();
+          
+          // Also trigger form submit event as backup
+          const form = rdForm.querySelector('form') as HTMLFormElement;
+          if (form) {
+            console.log('[RD SUBMIT] Found form element, triggering submit...');
+            form.submit();
+          }
+        } else {
+          console.warn('[RD SUBMIT] No submit button found. Available buttons:', rdForm.querySelectorAll('button, input[type="submit"]'));
         }
+      } else {
+        console.error('[RD SUBMIT] RD Station form not found');
       }
-    }, 200);
+    }, 1000); // Increased timeout to ensure sync is complete
+    
     // Mark form as submitted to show confirmation message
-    setIsFormSubmitted(true);
+    setTimeout(() => {
+      setIsFormSubmitted(true);
+    }, 1500);
   };
 
   return (
     <div className={className}>
-      {/* Hidden RD Station Form */}
-      <div style={{ display: 'none', visibility: 'hidden', height: 0, overflow: 'hidden' }}>
-        <RDStationForm className="hidden" />
+      {/* Hidden RD Station Form - positioned off-screen but visible for functionality */}
+      <div style={{ 
+        position: 'absolute', 
+        left: '-9999px', 
+        top: '-9999px', 
+        width: '1px', 
+        height: '1px', 
+        opacity: 0.01,
+        pointerEvents: 'none'
+      }}>
+        <RDStationForm className="" />
       </div>
 
       {/* Animated Stepper Form */}
