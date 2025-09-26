@@ -159,23 +159,21 @@ interface StepContentWrapperProps {
 }
 
 function StepContentWrapper({ isCompleted, currentStep, direction, children, className }: StepContentWrapperProps) {
-  const [parentHeight, setParentHeight] = useState(0);
+  const [parentHeight, setParentHeight] = useState('auto');
 
   return (
-    <motion.div
+    <div
       className={className}
-      style={{ position: 'relative', overflow: 'hidden' }}
-      animate={{ height: isCompleted ? 0 : parentHeight }}
-      transition={{ type: 'spring', duration: 0.4 }}
+      style={{ position: 'relative', overflow: 'hidden', minHeight: '400px' }}
     >
-      <AnimatePresence initial={false} mode="sync" custom={direction}>
+      <AnimatePresence initial={false} mode="wait" custom={direction}>
         {!isCompleted && (
-          <SlideTransition key={currentStep} direction={direction} onHeightReady={(h: number) => setParentHeight(h)}>
+          <SlideTransition key={currentStep} direction={direction} onHeightReady={() => {}}>
             {children}
           </SlideTransition>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
 
@@ -188,25 +186,36 @@ interface SlideTransitionProps {
 function SlideTransition({ children, direction, onHeightReady }: SlideTransitionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    if (containerRef.current) onHeightReady(containerRef.current.offsetHeight);
-  }, [children, onHeightReady]);
-
   return (
     <motion.div
       ref={containerRef}
       custom={direction}
-      variants={stepVariants}
+      variants={stepVariantsNoScroll}
       initial="enter"
       animate="center"
       exit="exit"
-      transition={{ duration: 0.4 }}
-      style={{ position: 'absolute', left: 0, right: 0, top: 0 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      style={{ position: 'absolute', left: 0, right: 0, top: 0, width: '100%' }}
     >
       {children}
     </motion.div>
   );
 }
+
+const stepVariantsNoScroll = {
+  enter: {
+    opacity: 0,
+    scale: 0.95
+  },
+  center: {
+    opacity: 1,
+    scale: 1
+  },
+  exit: {
+    opacity: 0,
+    scale: 1.05
+  }
+};
 
 const stepVariants = {
   enter: (dir: number) => ({

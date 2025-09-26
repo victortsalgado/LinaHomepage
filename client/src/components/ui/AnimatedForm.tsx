@@ -75,20 +75,8 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
     setFormData(prev => {
       const newData = { ...prev, [field]: processedValue };
       
-      // Only sync with RD Station if not transitioning between steps
-      if (!isTransitioning) {
-        // Clear existing timeout
-        if (syncTimeout) {
-          clearTimeout(syncTimeout);
-        }
-        
-        // Set new timeout for debounced sync
-        const newTimeout = setTimeout(() => {
-          syncWithRDStation();
-        }, 1000);
-        
-        setSyncTimeout(newTimeout);
-      }
+      // COMPLETELY DISABLE RD Station sync during form interaction to prevent scroll
+      console.log('[INPUT CHANGE] RD Station sync disabled to prevent scroll issues');
       
       return newData;
     });
