@@ -5,8 +5,7 @@ import logoPath from "@assets/Nova_logo_lina_1756708154690.png";
 export function Footer() {
   const productLinks = [
     { name: "Data Link", path: "/data-link" },
-    { name: "Lina Pay", path: "/lina-pay" },
-    { name: "JSR", path: "/jsr" }
+    { name: "Lina Pay", path: "/lina-pay" }
   ];
 
   const resourceLinks = [
