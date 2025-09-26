@@ -133,7 +133,7 @@ export default function DataLinkHeroSection() {
                 <div className="text-center lg:text-left">
                   {/* Title */}
                   <motion.h1
-                    className="mt-0 max-w-3xl mx-auto lg:mx-0 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight"
+                    className="mt-0 max-w-3xl mx-auto lg:mx-0 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight pl-[0px] pr-[0px] ml-[-5px] mr-[-5px]"
                     style={{ fontFamily: 'Lexend, sans-serif' }}
                     data-testid="heading-datalink-hero-title"
                     initial={{ opacity: 0, y: 30 }}
