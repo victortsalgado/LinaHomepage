@@ -252,7 +252,7 @@ export default function Header() {
                         </button>
                       </NavigationMenuTriggerUnstyled>
                       <NavigationMenuContent>
-                        <div className="grid w-[400px] gap-0.5 p-2 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white dark:bg-gray-900">
+                        <div className="grid w-[400px] gap-0.5 p-2 md:w-[400px] lg:w-[450px] bg-white dark:bg-gray-900">
                           {integracoesDropdownItems.map((item) => (
                             <Link
                               key={item.title}
