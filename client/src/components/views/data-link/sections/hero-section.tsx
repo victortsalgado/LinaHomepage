@@ -133,18 +133,18 @@ export default function DataLinkHeroSection() {
                 <div className="text-center lg:text-left">
                   {/* Title */}
                   <motion.h1
-                    className="mt-0 max-w-3xl mx-auto lg:mx-0 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight pl-[0px] pr-[0px] ml-[-5px] mr-[-5px]"
+                    className="mt-0 mx-auto lg:mx-0 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight pl-[0px] pr-[0px] ml-[-5px] mr-[-5px]"
                     style={{ fontFamily: 'Lexend, sans-serif' }}
                     data-testid="heading-datalink-hero-title"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                   >
-                    <div className="block">Conecte dados bancários</div>
-                    <div className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl my-1 lg:my-2">
+                    <div className="whitespace-nowrap">Conecte dados bancários</div>
+                    <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl my-1 lg:my-2 whitespace-nowrap">
                       <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">em um clique</span> direto
                     </div>
-                    <div className="block">do Open Finance.</div>
+                    <div className="whitespace-nowrap">do Open Finance.</div>
                   </motion.h1>
 
                   {/* Description */}
