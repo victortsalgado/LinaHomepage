@@ -8,16 +8,15 @@ export function Footer() {
     { name: "Lina Pay", path: "/lina-pay" }
   ];
 
-  const resourceLinks = [
-    { name: "Blog", path: "#" },
-    { name: "Documentação", path: "#" },
-    { name: "Suporte", path: "#" }
+  const integracoesLinks = [
+    { name: "Documentação", path: "/docs" },
+    { name: "Suporte", path: "/suporte" }
   ];
 
   const otherLinks = [
-    { name: "Integrações", path: "#" },
-    { name: "Trial", path: "#" },
-    { name: "Quem somos", path: "/quem-somos" }
+    { name: "Trial", path: "/trial" },
+    { name: "Blog", path: "/blog" },
+    { name: "Quem Somos", path: "/quem-somos" }
   ];
 
   const legalLinks = [
@@ -131,24 +130,24 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Coluna 3 - Recursos */}
+            {/* Coluna 3 - Integrações */}
             <div>
               <h3 
                 className="font-semibold text-white text-lg mb-6 uppercase tracking-wider"
-                data-testid="heading-footer-resources"
+                data-testid="heading-footer-integracoes"
               >
-                RECURSOS
+                INTEGRAÇÕES
               </h3>
               <ul className="space-y-4">
-                {resourceLinks.map((link, index) => (
+                {integracoesLinks.map((link, index) => (
                   <li key={link.name}>
-                    <a 
+                    <Link 
                       href={link.path}
                       className="text-gray-200 hover:text-white transition-colors text-lg font-medium"
-                      data-testid={`link-resource-${index}`}
+                      data-testid={`link-integracoes-${index}`}
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
