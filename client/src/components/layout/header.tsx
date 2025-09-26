@@ -27,21 +27,21 @@ export default function Header() {
       title: "Data Link", 
       href: "/data-link",
       description: "Solução completa para integração de dados empresariais",
-      badges: ["API First", "Real-time", "Seguro"],
+      badges: ["API First", "Analytics", "Insights"],
       imageSrc: dataLinkLogo
     },
     { 
       title: "Lina Pay", 
       href: "/lina-pay",
       description: "Sistema de pagamentos digitais integrado",
-      badges: ["PIX", "Boleto", "Cartão"],
+      badges: ["PIX", "Cobrança", "Recorrência"],
       imageSrc: linaPayLogo
     },
     { 
-      title: "JSR", 
+      title: "Infraestrutura & Conectividade", 
       href: "/infraestrutura-e-conectividade",
       description: "Plataforma de gestão e relatórios avançados",
-      badges: ["Analytics", "Dashboard", "Reports"],
+      badges: ["Consentimento", "Certificações", "Homologação"],
       imageSrc: linaJSRLogo
     },
   ];
