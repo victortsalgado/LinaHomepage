@@ -257,6 +257,8 @@ function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators, 
           <SendIcon className="check-icon" />
         ) : status === 'active' ? (
           <div className="active-dot" />
+        ) : isLastStep ? (
+          <TargetIcon className="check-icon" />
         ) : (
           <span className="step-number">{step}</span>
         )}
@@ -313,6 +315,37 @@ function SendIcon(props: React.SVGProps<SVGSVGElement>) {
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+      />
+    </svg>
+  );
+}
+
+function TargetIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...props} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <motion.circle
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ delay: 0.1, type: 'tween', ease: 'easeOut', duration: 0.3 }}
+        cx="12"
+        cy="12"
+        r="10"
+      />
+      <motion.circle
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ delay: 0.2, type: 'tween', ease: 'easeOut', duration: 0.3 }}
+        cx="12"
+        cy="12"
+        r="6"
+      />
+      <motion.circle
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ delay: 0.3, type: 'tween', ease: 'easeOut', duration: 0.3 }}
+        cx="12"
+        cy="12"
+        r="2"
       />
     </svg>
   );
