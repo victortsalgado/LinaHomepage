@@ -141,7 +141,7 @@ export default function DataLinkHeroSection() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                   >
                     <div className="whitespace-nowrap">Conecte dados bancários</div>
-                    <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl my-1 lg:my-2 whitespace-nowrap">
+                    <div className="my-1 lg:my-2 whitespace-nowrap">
                       <span className="bg-gradient-to-r from-[#00857F] to-[#2EC9BC] bg-clip-text text-transparent">em um clique</span> direto
                     </div>
                     <div className="whitespace-nowrap">do Open Finance.</div>
