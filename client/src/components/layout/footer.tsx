@@ -78,21 +78,27 @@ export function Footer() {
                   <Linkedin size={18} className="text-teal-800" />
                 </a>
                 <a 
-                  href="#"
+                  href="https://x.com/Lina_OpenX"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-teal-400 rounded-lg flex items-center justify-center hover:bg-teal-300 transition-colors"
                   data-testid="link-social-twitter"
                 >
                   <Twitter size={18} className="text-teal-800" />
                 </a>
                 <a 
-                  href="#"
+                  href="https://www.youtube.com/@linaopenx"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-teal-400 rounded-lg flex items-center justify-center hover:bg-teal-300 transition-colors"
                   data-testid="link-social-youtube"
                 >
                   <Youtube size={18} className="text-teal-800" />
                 </a>
                 <a 
-                  href="#"
+                  href="https://www.instagram.com/lina.openx/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-teal-400 rounded-lg flex items-center justify-center hover:bg-teal-300 transition-colors"
                   data-testid="link-social-instagram"
                 >
