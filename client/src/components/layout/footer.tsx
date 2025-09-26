@@ -69,7 +69,9 @@ export function Footer() {
               {/* Social Media Icons */}
               <div className="flex space-x-3">
                 <a 
-                  href="#"
+                  href="https://www.linkedin.com/company/lina-openx"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-teal-400 rounded-lg flex items-center justify-center hover:bg-teal-300 transition-colors"
                   data-testid="link-social-linkedin"
                 >
