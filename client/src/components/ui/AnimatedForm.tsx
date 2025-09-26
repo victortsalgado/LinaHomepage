@@ -225,12 +225,12 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
 
         {/* Step 5: Confirmação */}
         <Step>
-          <div className="text-center pb-4">
+          <div className="text-center">
             <h2 className="stepper-step-title">Confirme seus dados</h2>
-            <p className="stepper-step-description mb-6">
+            <p className="stepper-step-description">
               Revise as informações antes de enviar
             </p>
-            <div className="space-y-4 text-left bg-gray-50 p-6 rounded-lg mt-4">
+            <div className="space-y-4 text-left bg-gray-50 p-6 rounded-lg">
               <div>
                 <label className="stepper-form-label">Nome:</label>
                 <p className="text-gray-900 font-medium">{formData.nome}</p>
@@ -253,20 +253,20 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
 
         {/* Step 6: Mensagem de Confirmação */}
         <Step>
-          <div className="text-center py-6 pb-8">
-            <div className="mb-8">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="text-center py-8">
+            <div className="mb-6">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h2 className="stepper-step-title text-green-700 mb-3">Obrigado!</h2>
-              <p className="stepper-step-description text-lg mb-0">
+              <h2 className="stepper-step-title text-green-700">Obrigado!</h2>
+              <p className="stepper-step-description text-lg">
                 Seus dados foram enviados com sucesso.
               </p>
             </div>
             
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6 mt-6">
+            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-green-800 mb-2" style={{ fontFamily: 'Lexend, sans-serif' }}>
                 Entraremos em contato em breve!
               </h3>
