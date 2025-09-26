@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import RDStationForm from "@/components/ui/RDStationForm";
+import AnimatedForm from "@/components/ui/AnimatedForm";
 
 export default function CtaFormSection() {
   const { ref, isVisible } = useScrollReveal<HTMLElement>({
@@ -43,17 +43,14 @@ export default function CtaFormSection() {
           </p>
         </motion.div>
 
-        {/* Form */}
+        {/* Animated Form */}
         <motion.div
-          className="max-w-2xl mx-auto"
+          className="max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 40 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          {/* Elegant Form Container */}
-          <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100 backdrop-blur-sm">
-            <RDStationForm className="w-full utm-hidden" />
-          </div>
+          <AnimatedForm className="w-full" />
         </motion.div>
       </div>
     </section>
