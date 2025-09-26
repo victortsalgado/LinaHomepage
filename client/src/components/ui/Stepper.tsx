@@ -96,6 +96,7 @@ export default function Stepper({
                     step={stepNumber}
                     disableStepIndicators={disableStepIndicators}
                     currentStep={currentStep}
+                    totalSteps={totalSteps}
                     onClickStep={(clicked: number) => {
                       setDirection(clicked > currentStep ? 1 : -1);
                       updateStep(clicked);
@@ -228,10 +229,12 @@ interface StepIndicatorProps {
   currentStep: number;
   onClickStep: (step: number) => void;
   disableStepIndicators: boolean;
+  totalSteps?: number;
 }
 
-function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }: StepIndicatorProps) {
+function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators, totalSteps = 5 }: StepIndicatorProps) {
   const status = currentStep === step ? 'active' : currentStep < step ? 'inactive' : 'complete';
+  const isLastStep = step === totalSteps;
 
   const handleClick = () => {
     if (step !== currentStep && !disableStepIndicators) onClickStep(step);
@@ -250,6 +253,8 @@ function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }
       >
         {status === 'complete' ? (
           <CheckIcon className="check-icon" />
+        ) : status === 'active' && isLastStep ? (
+          <SendIcon className="check-icon" />
         ) : status === 'active' ? (
           <div className="active-dot" />
         ) : (
@@ -293,6 +298,21 @@ function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M5 13l4 4L19 7"
+      />
+    </svg>
+  );
+}
+
+function SendIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...props} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <motion.path
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ delay: 0.1, type: 'tween', ease: 'easeOut', duration: 0.3 }}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
       />
     </svg>
   );
