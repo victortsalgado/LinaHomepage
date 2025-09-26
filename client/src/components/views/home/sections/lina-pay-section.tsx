@@ -137,7 +137,7 @@ export default function LinaPaySection() {
                   <img 
                     src={linaPay}
                     alt="LinaPay PIX por Biometria mockup"
-                    className="w-96 h-[700px] rounded-[2.5rem] object-cover transform translate-y-[-100px]"
+                    className="w-80 h-[650px] rounded-[2.5rem] object-cover transform translate-y-[-75px]"
                     data-testid="img-linapay-mockup"
                   />
                 </div>
