@@ -962,3 +962,21 @@ label[for="url_pagina"],
   border: none !important;
   overflow: hidden !important;
 }
+
+/* Additional rules for RD Station specific elements */
+.bricks-form [name*="url"],
+.bricks-form [id*="url"],
+.bricks-form input[name*="url"],
+.bricks-form input[id*="url"],
+.bricks-form div[class*="url"],
+.bricks-form span[class*="url"],
+.bricks-form label[for*="url"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
