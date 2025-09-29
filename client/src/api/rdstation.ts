@@ -37,7 +37,7 @@ export async function submitToRDStation(formData: FormData): Promise<any> {
   
   const payload: RDStationPayload = {
     // Configuração do RD Station
-    conversion_identifier: 'teste_lina-bw_lp_linapay',
+    conversion_identifier: 'site_lina',
     token_rdstation: '79eeb6bb9c3bc26daa788a85edb61cf7',
     
     // Dados do formulário
