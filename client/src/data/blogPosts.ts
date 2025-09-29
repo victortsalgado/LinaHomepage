@@ -9,7 +9,7 @@ export const mockPosts: BlogPost[] = [
     description: "Veja como o Pix e o Open Finance estão criando oportunidades para empresas e consumidores, tornando os serviços financeiros mais rápidos, acessíveis e eficientes.",
     date: "26 Mar 2025",
     readTime: "15 min",
-    image: "/api/placeholder/600/400?text=PIX+Open+Finance+Mercado",
+    image: "@assets/BlogPost_LinaPay_Marco_2025_Final-scaled (1)_1759166841770.webp",
     alt: "PIX e Open Finance remodelando o mercado financeiro brasileiro",
     author: {
       name: "Time Lina",
