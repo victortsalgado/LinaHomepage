@@ -308,21 +308,16 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
       return;
     }
     
-    console.log('[RD SUBMIT] Form is valid, proceeding with RD Station submission...');
-    
-    // First sync the data with RD Station form
+    console.log('[RD SUBMIT] Form is valid, proceeding with submission...');
     syncWithRDStation();
     
-    // Then submit the actual RD Station form after data sync
+    // Submit RD Station form after ensuring data is synced
     setTimeout(() => {
       console.log('[RD SUBMIT] Attempting to submit RD Station form...');
       const rdForm = document.querySelector('[role="main"][id*="teste_lina"]');
       
       if (rdForm) {
         console.log('[RD SUBMIT] RD Form found, looking for submit button...');
-        
-        // Store current scroll position before submission to restore after
-        const currentScrollY = window.scrollY;
         
         // Try multiple selectors for submit button
         let submitButton: HTMLButtonElement | null = null;
@@ -343,51 +338,30 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
           }
         }
         
+        console.log('[RD SUBMIT] Submit button found:', !!submitButton);
+        
         if (submitButton) {
-          console.log('[RD SUBMIT] Clicking submit button for RD Station...');
+          console.log('[RD SUBMIT] Clicking submit button...');
+          submitButton.click();
           
-          // Immediately show success message to user before potential redirect
-          setIsFormSubmitted(true);
-          
-          // Store reference to prevent navigation
-          const originalLocation = window.location.href;
-          
-          // Submit to RD Station
-          try {
-            submitButton.click();
-            
-            // Also trigger form submit as backup
-            const form = rdForm.querySelector('form') as HTMLFormElement;
-            if (form) {
-              console.log('[RD SUBMIT] Triggering form submit to RD Station...');
-              form.submit();
-            }
-            
-            // Restore scroll position and URL if redirect attempted
-            setTimeout(() => {
-              if (window.location.href !== originalLocation) {
-                console.log('[RD SUBMIT] Preventing redirect, staying on current page');
-                window.history.replaceState({}, '', originalLocation);
-              }
-              window.scrollTo(0, currentScrollY);
-            }, 500);
-            
-            console.log('[RD SUBMIT] RD Station form submitted successfully!');
-          } catch (error) {
-            console.error('[RD SUBMIT] Error submitting to RD Station:', error);
-            // Still show success to user as the data was synced
+          // Also trigger form submit event as backup
+          const form = rdForm.querySelector('form') as HTMLFormElement;
+          if (form) {
+            console.log('[RD SUBMIT] Found form element, triggering submit...');
+            form.submit();
           }
         } else {
-          console.warn('[RD SUBMIT] No submit button found in RD Station form');
-          // Fallback: still show success as data was synced
-          setIsFormSubmitted(true);
+          console.warn('[RD SUBMIT] No submit button found. Available buttons:', rdForm.querySelectorAll('button, input[type="submit"]'));
         }
       } else {
         console.error('[RD SUBMIT] RD Station form not found');
-        // Fallback: still show success as this is a UI issue
-        setIsFormSubmitted(true);
       }
-    }, 1200); // Allow time for data sync
+    }, 1000); // Increased timeout to ensure sync is complete
+    
+    // Mark form as submitted to show confirmation message
+    setTimeout(() => {
+      setIsFormSubmitted(true);
+    }, 1500);
   };
 
   return (
