@@ -69,10 +69,11 @@ export async function submitToRDStation(formData: FormData): Promise<any> {
     created_at: new Date().toISOString(),
   };
 
-  console.log('Enviando dados para RD Station:', payload);
+  console.log('Enviando dados para RD Station via proxy backend:', payload);
 
   try {
-    const response = await fetch('https://api.rd.services/platform/conversions', {
+    // Send to our backend proxy instead of directly to RD Station API
+    const response = await fetch('/api/rdstation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -81,8 +82,8 @@ export async function submitToRDStation(formData: FormData): Promise<any> {
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`Erro ${response.status}: ${response.statusText} - ${errorText}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(`Erro ${response.status}: ${response.statusText} - ${errorData.details || 'Erro desconhecido'}`);
     }
 
     const result = await response.json();
