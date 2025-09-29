@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Stepper, { Step } from './Stepper';
 import { submitToRDStation } from '../../api/rdstation';
+import { X } from 'lucide-react';
 
 interface FormData {
   nome: string;
@@ -13,9 +14,10 @@ interface FormData {
 
 interface AnimatedFormProps {
   className?: string;
+  onClose?: () => void;
 }
 
-export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
+export default function AnimatedForm({ className = "", onClose }: AnimatedFormProps) {
   const [formData, setFormData] = useState<FormData>({
     nome: '',
     email: '',
@@ -226,7 +228,19 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
   };
 
   return (
-    <div className={className}>
+    <div className={`${className} relative`}>
+      {/* Close Button - positioned to move with the animation */}
+      {onClose && (
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 text-gray-400 hover:text-gray-600 transition-all duration-200 bg-white rounded-full p-2.5 shadow-lg hover:shadow-xl hover:scale-110 border border-gray-200"
+          aria-label="Fechar"
+          data-testid="button-close-popup"
+        >
+          <X size={20} />
+        </button>
+      )}
+      
       {/* Animated Stepper Form */}
       <Stepper
         initialStep={1}
