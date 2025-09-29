@@ -29,7 +29,7 @@ function Router() {
       <Route path="/quem-somos" component={QuemSomos} />
       <Route path="/contato" component={Contato} />
       <Route path="/blog" component={Blog} />
-      <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/blog/*" component={BlogPost} />
       <Route path="/trial" component={Trial} />
       <Route path="/infraestrutura-e-conectividade" component={InfraestruturaEConectividade} />
       <Route component={NotFound} />

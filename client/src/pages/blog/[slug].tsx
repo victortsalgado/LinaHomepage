@@ -16,33 +16,49 @@ import { useMemo, useEffect } from "react";
 import NotFound from "@/pages/not-found";
 
 export default function BlogPost() {
-  const [, params] = useRoute("/blog/:slug");
-  const slug = params?.slug;
+  const [, params] = useRoute("/blog/*");
+  const fullSlug = params ? params["*"] : null;
 
   const post = useMemo(() => {
-    if (!slug) return null;
+    if (!fullSlug) return null;
     
-    // Handle specific slugs for featured articles
-    if (slug === "pix-e-open-finance-remodelando-mercado-financeiro") {
+    // Create mapping of original URLs to post IDs for the 5 test posts from CSV
+    const urlToPostMapping: { [key: string]: number } = {
+      // URLs from the CSV (removing the domain part)
+      "2025/03/inovacao-em-movimento-como-o-pix-e-o-open-finance-estao-remodelando-o-mercado-financeiro": 100,
+      "2024/11/open-insurance-o-futuro-do-mercado-brasileiro-de-seguros-digitalizado-e-personalizado": 101,
+      "2024/02/o-impacto-das-ultimas-atualizacoes-do-open-finance": 102,
+      "2023/11/nivelando-o-jogo-e-destravando-o-mercado-de-credito-com-open-finance": 103,
+      "2023/11/o-momento-atual-do-open-finance-no-brasil": 104,
+    };
+    
+    // Check if it's one of our migrated URLs
+    const migratedPostId = urlToPostMapping[fullSlug];
+    if (migratedPostId) {
+      return allBlogPosts.find(p => p.id === migratedPostId) || null;
+    }
+    
+    // Handle legacy specific slugs for featured articles
+    if (fullSlug === "pix-e-open-finance-remodelando-mercado-financeiro") {
       return allBlogPosts.find(p => p.id === 0) || null;
     }
-    if (slug === "open-insurance-futuro-mercado-seguros") {
+    if (fullSlug === "open-insurance-futuro-mercado-seguros") {
       return allBlogPosts.find(p => p.id === 13) || null;
     }
-    if (slug === "impacto-ultimas-atualizacoes-open-finance") {
+    if (fullSlug === "impacto-ultimas-atualizacoes-open-finance") {
       return allBlogPosts.find(p => p.id === 14) || null;
     }
-    if (slug === "open-finance-mercado-de-credito") {
+    if (fullSlug === "open-finance-mercado-de-credito") {
       return allBlogPosts.find(p => p.id === 15) || null;
     }
-    if (slug === "cenario-open-finance-brasil") {
+    if (fullSlug === "cenario-open-finance-brasil") {
       return allBlogPosts.find(p => p.id === 16) || null;
     }
     
     // Convert slug back to ID (simple implementation)
-    const id = parseInt(slug.replace(/.*-(\d+)$/, '$1'));
+    const id = parseInt(fullSlug.replace(/.*-(\d+)$/, '$1'));
     return allBlogPosts.find(p => p.id === id) || null;
-  }, [slug]);
+  }, [fullSlug]);
 
   const relatedPosts = useMemo(() => {
     if (!post) return [];
