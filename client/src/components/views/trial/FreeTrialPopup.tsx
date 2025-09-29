@@ -11,18 +11,13 @@ const FreeTrialPopup = ({ isOpen, onClose }: FreeTrialPopupProps) => {
 
   return (
     <>
-      {/* Background overlay with blur effect - positioned behind popup */}
+      {/* Background overlay - positioned behind popup */}
       <div 
-        className="fixed inset-0 z-40"
-        style={{
-          backdropFilter: 'blur(6px)',
-          WebkitBackdropFilter: 'blur(6px)',
-          backgroundColor: 'rgba(0, 0, 0, 0.6)'
-        }}
+        className="fixed inset-0 z-40 bg-black/60"
         onClick={onClose}
       />
       
-      {/* Popup container - positioned above blurred background */}
+      {/* Popup container - positioned above background */}
       <div className="fixed inset-0 flex items-center justify-center z-50 p-4 pointer-events-none">
         <div className="bg-white rounded-2xl w-full max-w-2xl relative max-h-[95vh] overflow-y-auto shadow-2xl pointer-events-auto">
           {/* Close button */}
@@ -34,7 +29,7 @@ const FreeTrialPopup = ({ isOpen, onClose }: FreeTrialPopupProps) => {
             <X size={20} />
           </button>
 
-          {/* Formulário AnimatedForm - sem blur */}
+          {/* Formulário AnimatedForm */}
           <div className="p-8 pt-16">
             <AnimatedForm className="w-full" />
           </div>

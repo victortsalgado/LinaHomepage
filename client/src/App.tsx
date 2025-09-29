@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ScrollToTop } from "@/hooks/use-scroll-to-top";
 import { ScrollToTopButton } from "@/components/ui/scroll-to-top-button";
+import { PopupProvider, usePopup } from "@/contexts/PopupContext";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import DataLink from "@/pages/data-link";
@@ -35,14 +36,26 @@ function Router() {
   );
 }
 
+function AppContent() {
+  const { isPopupOpen } = usePopup();
+  
+  return (
+    <div className={`transition-all duration-300 ${isPopupOpen ? 'blur-sm' : ''}`}>
+      <ScrollToTop />
+      <Toaster />
+      <ScrollToTopButton />
+      <Router />
+    </div>
+  );
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <ScrollToTop />
-        <Toaster />
-        <ScrollToTopButton />
-        <Router />
+        <PopupProvider>
+          <AppContent />
+        </PopupProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );
