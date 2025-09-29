@@ -23,18 +23,6 @@ export default function BlogPostCard({ post, index, className = "" }: BlogPostCa
     slug = "2023/11/nivelando-o-jogo-e-destravando-o-mercado-de-credito-com-open-finance";
   } else if (post.id === 104) {
     slug = "2023/11/o-momento-atual-do-open-finance-no-brasil";
-  }
-  // Legacy featured articles 
-  else if (post.id === 0) {
-    slug = "pix-e-open-finance-remodelando-mercado-financeiro";
-  } else if (post.id === 13) {
-    slug = "open-insurance-futuro-mercado-seguros";
-  } else if (post.id === 14) {
-    slug = "impacto-ultimas-atualizacoes-open-finance";
-  } else if (post.id === 15) {
-    slug = "open-finance-mercado-de-credito";
-  } else if (post.id === 16) {
-    slug = "cenario-open-finance-brasil";
   } else {
     slug = `${post.title
       .toLowerCase()

@@ -38,22 +38,6 @@ export default function BlogPost() {
       return allBlogPosts.find(p => p.id === migratedPostId) || null;
     }
     
-    // Handle legacy specific slugs for featured articles
-    if (fullSlug === "pix-e-open-finance-remodelando-mercado-financeiro") {
-      return allBlogPosts.find(p => p.id === 0) || null;
-    }
-    if (fullSlug === "open-insurance-futuro-mercado-seguros") {
-      return allBlogPosts.find(p => p.id === 13) || null;
-    }
-    if (fullSlug === "impacto-ultimas-atualizacoes-open-finance") {
-      return allBlogPosts.find(p => p.id === 14) || null;
-    }
-    if (fullSlug === "open-finance-mercado-de-credito") {
-      return allBlogPosts.find(p => p.id === 15) || null;
-    }
-    if (fullSlug === "cenario-open-finance-brasil") {
-      return allBlogPosts.find(p => p.id === 16) || null;
-    }
     
     // Convert slug back to ID (simple implementation)
     const id = parseInt(fullSlug.replace(/.*-(\d+)$/, '$1'));
@@ -73,17 +57,6 @@ export default function BlogPost() {
 
     // Set document title
     let title = `${post.title} | Lina`;
-    if (post.id === 0) {
-      title = "PIX e Open Finance: A Revolução no Mercado Financeiro | Lina";
-    } else if (post.id === 13) {
-      title = "Open Insurance no Brasil: O Futuro do Mercado de Seguros | Lina";
-    } else if (post.id === 14) {
-      title = "Últimas Atualizações do Open Finance: Impacto e Oportunidades | Lina";
-    } else if (post.id === 15) {
-      title = "Como o Open Finance está Destravando o Mercado de Crédito | Lina";
-    } else if (post.id === 16) {
-      title = "O Cenário do Open Finance no Brasil: Situação Atual e Tendências";
-    }
     document.title = title;
 
     // Set meta description
@@ -97,8 +70,8 @@ export default function BlogPost() {
       document.head.appendChild(meta);
     }
 
-    // Add JSON-LD structured data for featured articles
-    if (post.id === 0 || post.id === 13 || post.id === 14 || post.id === 15 || post.id === 16) {
+    // Add JSON-LD structured data for migrated articles
+    if (post.id >= 100 && post.id <= 104) {
       const existingSchema = document.querySelector('#blog-schema');
       if (existingSchema) {
         existingSchema.remove();
@@ -108,155 +81,35 @@ export default function BlogPost() {
       script.id = 'blog-schema';
       script.type = 'application/ld+json';
       
-      let schemaData;
-      if (post.id === 0) {
-        schemaData = {
-          "@context": "https://schema.org",
-          "@type": "TechArticle",
-          "headline": "PIX e Open Finance: A Revolução no Mercado Financeiro | Lina",
-          "description": "Entenda como a sinergia entre PIX e Open Finance está criando novas soluções de pagamento, reduzindo custos e transformando a experiência do cliente. Saiba mais.",
-          "author": {
-            "@type": "Organization",
-            "name": "Lina"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Lina",
-            "logo": {
-              "@type": "ImageObject",
-              "url": `${window.location.origin}/assets/new-lina-logo.png`
-            }
-          },
-          "about": [
-            { "@type": "Thing", "name": "PIX" },
-            { "@type": "Thing", "name": "Open Finance" }
-          ],
-          "datePublished": "2025-01-20",
-          "dateModified": "2025-01-20",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": window.location.href
-          },
-          "image": post.image
-        };
-      } else if (post.id === 13) {
-        schemaData = {
-          "@context": "https://schema.org",
-          "@type": "TechArticle",
-          "headline": "Open Insurance no Brasil: O Futuro do Mercado de Seguros | Lina",
-          "description": "Explore como o Open Insurance está personalizando produtos e digitalizando o mercado de seguros no Brasil. Prepare sua empresa para o futuro.",
-          "author": {
-            "@type": "Organization",
-            "name": "Lina"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Lina",
-            "logo": {
-              "@type": "ImageObject",
-              "url": `${window.location.origin}/assets/new-lina-logo.png`
-            }
-          },
-          "about": [
-            { "@type": "Thing", "name": "Open Insurance" }
-          ],
-          "datePublished": "2025-01-22",
-          "dateModified": "2025-01-22",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": window.location.href
-          },
-          "image": post.image
-        };
-      } else if (post.id === 14) {
-        schemaData = {
-          "@context": "https://schema.org",
-          "@type": "NewsArticle",
-          "headline": "Últimas Atualizações do Open Finance: Impacto e Oportunidades | Lina",
-          "description": "Análise completa sobre as últimas atualizações do Open Finance no Brasil e o que elas significam para bancos, fintechs e instituições de pagamento.",
-          "author": {
-            "@type": "Organization",
-            "name": "Lina"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Lina",
-            "logo": {
-              "@type": "ImageObject",
-              "url": `${window.location.origin}/assets/new-lina-logo.png`
-            }
-          },
-          "about": [
-            { "@type": "Thing", "name": "Open Finance" }
-          ],
-          "datePublished": "2025-01-25",
-          "dateModified": "2025-01-25",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": window.location.href
-          },
-          "image": post.image
-        };
-      } else if (post.id === 15) {
-        schemaData = {
-          "@context": "https://schema.org",
-          "@type": "TechArticle",
-          "headline": "Como o Open Finance está Destravando o Mercado de Crédito | Lina",
-          "description": "Descubra como a análise de dados via Open Finance está nivelando o jogo, reduzindo riscos e criando novas oportunidades no mercado de crédito.",
-          "author": {
-            "@type": "Organization",
-            "name": "Lina"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Lina",
-            "logo": {
-              "@type": "ImageObject",
-              "url": `${window.location.origin}/assets/new-lina-logo.png`
-            }
-          },
-          "about": [
-            { "@type": "Thing", "name": "Análise de Crédito" },
-            { "@type": "Thing", "name": "Open Finance" }
-          ],
-          "datePublished": "2025-01-28",
-          "dateModified": "2025-01-28",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": window.location.href
-          },
-          "image": post.image
-        };
-      } else if (post.id === 16) {
-        schemaData = {
-          "@context": "https://schema.org",
-          "@type": "Article",
-          "headline": "O Cenário do Open Finance no Brasil: Situação Atual e Tendências",
-          "description": "Um panorama completo sobre o momento atual do Open Finance no Brasil. Entenda a adesão, o impacto nos bancos e as tendências para o futuro.",
-          "author": {
-            "@type": "Organization",
-            "name": "Lina"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Lina",
-            "logo": {
-              "@type": "ImageObject",
-              "url": `${window.location.origin}/assets/new-lina-logo.png`
-            }
-          },
-          "about": [
-            { "@type": "Thing", "name": "Open Finance Brasil" }
-          ],
-          "datePublished": "2025-01-30",
-          "dateModified": "2025-01-30",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": window.location.href
-          },
-          "image": post.image
-        };
-      }
+      const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": `${post.title} | Lina`,
+        "description": post.description,
+        "author": {
+          "@type": post.author.name === "Time Lina" ? "Organization" : "Person",
+          "name": post.author.name
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Lina",
+          "logo": {
+            "@type": "ImageObject",
+            "url": `${window.location.origin}/assets/new-lina-logo.png`
+          }
+        },
+        "about": [
+          { "@type": "Thing", "name": "Open Finance" },
+          { "@type": "Thing", "name": "Open Insurance" }
+        ],
+        "datePublished": post.date,
+        "dateModified": post.date,
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": window.location.href
+        },
+        "image": post.image
+      };
       
       script.textContent = JSON.stringify(schemaData);
       document.head.appendChild(script);
@@ -300,19 +153,7 @@ export default function BlogPost() {
           />
         </motion.div>
 
-        {post.id === 0 ? (
-          <PostBodyPIXOpenFinance post={post} />
-        ) : post.id === 13 ? (
-          <PostBodyOpenInsurance post={post} />
-        ) : post.id === 14 ? (
-          <PostBodyOpenFinanceUpdates post={post} />
-        ) : post.id === 15 ? (
-          <PostBodyOpenFinanceCredit post={post} />
-        ) : post.id === 16 ? (
-          <PostBodyOpenFinanceScenario post={post} />
-        ) : (
-          <PostBody post={post} />
-        )}
+        <PostBody post={post} />
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
