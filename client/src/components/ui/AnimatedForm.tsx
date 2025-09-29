@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Stepper, { Step } from './Stepper';
-import RDStationForm from './RDStationForm';
+import { submitToRDStation } from '../../api/rdstation';
 
 interface FormData {
   nome: string;
@@ -293,75 +293,52 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
     console.log('[STEP CHANGE] Step changed, all sync and focus operations blocked during transition');
   };
 
-  const handleFormComplete = () => {
-    console.log('[RD SUBMIT] Starting form completion process...');
+  const handleFormComplete = async () => {
+    console.log('Iniciando envio do formulário...', formData);
+    setIsFormSubmitted(true);
     
-    // Validate all fields before submitting
-    const isFormValid = validateName(formData.nome) && 
-                       validateEmail(formData.email) && 
-                       validatePhone(formData.telefone) && 
-                       validateCompany(formData.empresa);
-    
-    if (!isFormValid) {
-      console.warn('[RD SUBMIT] Form validation failed. Cannot submit incomplete form.');
-      alert('Por favor, preencha todos os campos obrigatórios antes de enviar.');
-      return;
-    }
-    
-    console.log('[RD SUBMIT] Form is valid, proceeding with submission...');
-    syncWithRDStation();
-    
-    // Submit RD Station form after ensuring data is synced
-    setTimeout(() => {
-      console.log('[RD SUBMIT] Attempting to submit RD Station form...');
-      const rdForm = document.querySelector('[role="main"][id*="teste_lina"]');
+    try {
+      // Preparar dados para o RD Station
+      const rdData = {
+        nome: formData.nome,
+        email: formData.email,
+        telefone: formData.telefone,
+        empresa: formData.empresa,
+      };
+
+      console.log('Dados preparados para envio:', rdData);
+
+      // Enviar para RD Station via API direta
+      await submitToRDStation(rdData);
       
-      if (rdForm) {
-        console.log('[RD SUBMIT] RD Form found, looking for submit button...');
-        
-        // Try multiple selectors for submit button
-        let submitButton: HTMLButtonElement | null = null;
-        
-        // First try standard submit selectors
-        submitButton = rdForm.querySelector('button[type="submit"], input[type="submit"], .bricks-button, .rd-button') as HTMLButtonElement;
-        
-        // If not found, search for buttons by text content
-        if (!submitButton) {
-          const allButtons = rdForm.querySelectorAll('button, input[type="button"]');
-          for (const button of Array.from(allButtons)) {
-            const text = button.textContent?.trim().toLowerCase() || '';
-            const value = (button as HTMLInputElement).value?.trim().toLowerCase() || '';
-            if (text.includes('enviar') || text.includes('submit') || value.includes('enviar') || value.includes('submit')) {
-              submitButton = button as HTMLButtonElement;
-              break;
-            }
-          }
-        }
-        
-        console.log('[RD SUBMIT] Submit button found:', !!submitButton);
-        
-        if (submitButton) {
-          console.log('[RD SUBMIT] Clicking submit button...');
-          submitButton.click();
-          
-          // Also trigger form submit event as backup
-          const form = rdForm.querySelector('form') as HTMLFormElement;
-          if (form) {
-            console.log('[RD SUBMIT] Found form element, triggering submit...');
-            form.submit();
-          }
-        } else {
-          console.warn('[RD SUBMIT] No submit button found. Available buttons:', rdForm.querySelectorAll('button, input[type="submit"]'));
-        }
-      } else {
-        console.error('[RD SUBMIT] RD Station form not found');
+      console.log('✅ Lead enviado com sucesso!');
+      
+      // Disparar evento de analytics (se GA estiver disponível)
+      if (typeof (window as any).gtag !== 'undefined') {
+        (window as any).gtag('event', 'form_submit', {
+          event_category: 'engagement',
+          event_label: 'rd_station_form_success'
+        });
       }
-    }, 1000); // Increased timeout to ensure sync is complete
-    
-    // Mark form as submitted to show confirmation message
-    setTimeout(() => {
-      setIsFormSubmitted(true);
-    }, 1500);
+      
+      // Opcional: redirecionar para página de obrigado ou mostrar mensagem
+      // window.location.href = '/obrigado';
+      
+    } catch (error) {
+      console.error('❌ Erro no envio do formulário:', error);
+      setIsFormSubmitted(false);
+      
+      // Disparar evento de erro no analytics
+      if (typeof (window as any).gtag !== 'undefined') {
+        (window as any).gtag('event', 'form_error', {
+          event_category: 'engagement',
+          event_label: 'rd_station_form_error'
+        });
+      }
+      
+      // Aqui você pode mostrar uma mensagem de erro para o usuário
+      alert('Erro ao enviar formulário. Tente novamente.');
+    }
   };
 
   return (
