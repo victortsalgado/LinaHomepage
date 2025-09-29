@@ -1,5 +1,5 @@
 import { X } from 'lucide-react';
-import RDStationForm from '@/components/ui/RDStationForm';
+import AnimatedForm from '@/components/ui/AnimatedForm';
 
 interface FreeTrialPopupProps {
   isOpen: boolean;
@@ -28,7 +28,7 @@ const FreeTrialPopup = ({ isOpen, onClose }: FreeTrialPopupProps) => {
 
         {/* RD Station Form */}
         <div className="space-y-4">
-          <RDStationForm className="w-full utm-hidden" />
+          <AnimatedForm className="w-full" />
         </div>
       </div>
     </div>
