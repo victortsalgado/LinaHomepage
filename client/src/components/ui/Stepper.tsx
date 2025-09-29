@@ -159,21 +159,23 @@ interface StepContentWrapperProps {
 }
 
 function StepContentWrapper({ isCompleted, currentStep, direction, children, className }: StepContentWrapperProps) {
-  const [parentHeight, setParentHeight] = useState('auto');
+  const [parentHeight, setParentHeight] = useState(0);
 
   return (
-    <div
+    <motion.div
       className={className}
-      style={{ position: 'relative', overflow: 'hidden', minHeight: '400px' }}
+      style={{ position: 'relative', overflow: 'hidden' }}
+      animate={{ height: isCompleted ? 0 : parentHeight }}
+      transition={{ type: 'spring', duration: 0.4 }}
     >
-      <AnimatePresence initial={false} mode="wait" custom={direction}>
+      <AnimatePresence initial={false} mode="sync" custom={direction}>
         {!isCompleted && (
-          <SlideTransition key={currentStep} direction={direction} onHeightReady={() => {}}>
+          <SlideTransition key={currentStep} direction={direction} onHeightReady={(h: number) => setParentHeight(h)}>
             {children}
           </SlideTransition>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 
@@ -186,6 +188,10 @@ interface SlideTransitionProps {
 function SlideTransition({ children, direction, onHeightReady }: SlideTransitionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  useLayoutEffect(() => {
+    if (containerRef.current) onHeightReady(containerRef.current.offsetHeight);
+  }, [children, onHeightReady]);
+
   return (
     <motion.div
       ref={containerRef}
@@ -195,7 +201,7 @@ function SlideTransition({ children, direction, onHeightReady }: SlideTransition
       animate="center"
       exit="exit"
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      style={{ position: 'absolute', left: 0, right: 0, top: 0, width: '100%' }}
+      style={{ position: 'absolute', left: 0, right: 0, top: 0 }}
     >
       {children}
     </motion.div>
