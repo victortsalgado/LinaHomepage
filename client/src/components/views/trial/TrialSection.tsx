@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import FreeTrialPopup from "./FreeTrialPopup";
 import { usePopup } from "@/contexts/PopupContext";
 
 export default function TrialSection() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>();
-  const { openPopup, closePopup, isPopupOpen } = usePopup();
+  const { openPopup } = usePopup();
 
   return (
     <section 
@@ -133,12 +132,6 @@ export default function TrialSection() {
           </div>
         </div>
       </div>
-      
-      {/* Free Trial Popup */}
-      <FreeTrialPopup 
-        isOpen={isPopupOpen}
-        onClose={closePopup}
-      />
     </section>
   );
 }

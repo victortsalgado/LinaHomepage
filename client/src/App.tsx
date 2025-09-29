@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ScrollToTop } from "@/hooks/use-scroll-to-top";
 import { ScrollToTopButton } from "@/components/ui/scroll-to-top-button";
 import { PopupProvider, usePopup } from "@/contexts/PopupContext";
+import FreeTrialPopup from "@/components/views/trial/FreeTrialPopup";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import DataLink from "@/pages/data-link";
@@ -49,12 +50,24 @@ function AppContent() {
   );
 }
 
+function GlobalPopup() {
+  const { isPopupOpen, closePopup } = usePopup();
+  
+  return (
+    <FreeTrialPopup 
+      isOpen={isPopupOpen}
+      onClose={closePopup}
+    />
+  );
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <PopupProvider>
           <AppContent />
+          <GlobalPopup />
         </PopupProvider>
       </TooltipProvider>
     </QueryClientProvider>
