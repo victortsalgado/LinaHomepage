@@ -75,8 +75,8 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
     setFormData(prev => {
       const newData = { ...prev, [field]: processedValue };
       
-      // COMPLETELY DISABLE RD Station sync during form interaction to prevent scroll
-      console.log('[INPUT CHANGE] RD Station sync disabled to prevent scroll issues');
+      // Form data updated successfully
+      console.log('[INPUT CHANGE] Form data updated:', field, '=', processedValue);
       
       return newData;
     });
@@ -147,129 +147,6 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
     }
   }, [isTransitioning]);
 
-  // Sync with RD Station form when step changes or data updates
-  const syncWithRDStation = () => {
-    setTimeout(() => {
-      console.log('[RD SYNC] Attempting to sync with RD Station form...');
-      console.log('[RD SYNC] Current form data:', formData);
-      
-      // Find RD Station form fields and populate them
-      const rdForm = document.querySelector('[role="main"][id*="teste_lina"]') || document.getElementById('teste_lina-bw_lp_linapay-4d252035dc055a459f05');
-      console.log('[RD SYNC] RD Form found:', !!rdForm);
-      
-      if (rdForm) {
-        console.log('[RD SYNC] RD Form element:', rdForm);
-        
-        // Look for all input fields in the form
-        const allInputs = rdForm.querySelectorAll('input, select, textarea');
-        console.log('[RD SYNC] All form controls found:', allInputs.length);
-        
-        // Log all available inputs for debugging
-        allInputs.forEach((input, index) => {
-          const element = input as HTMLInputElement;
-          console.log(`[RD SYNC] Input ${index}:`, {
-            type: element.type,
-            name: element.name,
-            placeholder: element.placeholder,
-            id: element.id,
-            className: element.className
-          });
-        });
-        
-        // Try multiple selectors for each field type with more variations
-        const nameSelectors = [
-          'input[name*="name"]', 'input[name*="nome"]', 'input[placeholder*="nome"]', 
-          'input[placeholder*="name"]', 'input[placeholder*="Nome"]', 'input[data-name*="name"]',
-          'input[id*="name"]', 'input[id*="nome"]', 'input[class*="name"]'
-        ];
-        
-        const emailSelectors = [
-          'input[type="email"]', 'input[name*="email"]', 'input[placeholder*="email"]', 
-          'input[placeholder*="Email"]', 'input[id*="email"]', 'input[class*="email"]'
-        ];
-        
-        const phoneSelectors = [
-          'input[type="tel"]', 'input[name*="phone"]', 'input[name*="telefone"]', 
-          'input[placeholder*="telefone"]', 'input[placeholder*="Telefone"]', 
-          'input[placeholder*="phone"]', 'input[id*="phone"]', 'input[id*="telefone"]'
-        ];
-        
-        const companySelectors = [
-          'input[name*="company"]', 'input[name*="empresa"]', 'input[placeholder*="empresa"]', 
-          'input[placeholder*="Empresa"]', 'input[placeholder*="company"]', 
-          'input[id*="company"]', 'input[id*="empresa"]'
-        ];
-
-        // Find fields using comprehensive selectors
-        const findField = (selectors: string[]) => {
-          for (const selector of selectors) {
-            const field = rdForm.querySelector(selector) as HTMLInputElement;
-            if (field) return field;
-          }
-          return null;
-        };
-
-        const nameInput = findField(nameSelectors);
-        const emailInput = findField(emailSelectors);
-        const phoneInput = findField(phoneSelectors);
-        const companyInput = findField(companySelectors);
-
-        console.log('[RD SYNC] Fields found:', {
-          nameInput: !!nameInput,
-          emailInput: !!emailInput, 
-          phoneInput: !!phoneInput,
-          companyInput: !!companyInput
-        });
-
-        // Helper function to fill field with multiple event types
-        const fillField = (input: HTMLInputElement, value: string, fieldName: string) => {
-          if (input && value) {
-            console.log(`[RD SYNC] Filling ${fieldName} with value:`, value);
-            
-            // Clear existing value
-            input.value = '';
-            
-            // Set new value using multiple methods
-            input.value = value;
-            input.setAttribute('value', value);
-            
-            // Dispatch multiple event types to ensure compatibility
-            const events = ['focus', 'input', 'change', 'blur', 'keyup', 'keydown'];
-            events.forEach(eventType => {
-              const event = new Event(eventType, { bubbles: true, cancelable: true });
-              input.dispatchEvent(event);
-            });
-            
-            // Also try native value setter
-            const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set;
-            if (nativeInputValueSetter) {
-              nativeInputValueSetter.call(input, value);
-              input.dispatchEvent(new Event('input', { bubbles: true }));
-            }
-            
-            // Verify the value was set
-            console.log(`[RD SYNC] ${fieldName} field value after setting:`, input.value);
-          } else if (!input) {
-            console.warn(`[RD SYNC] ${fieldName} input not found`);
-          }
-        };
-
-        // Fill the fields
-        if (nameInput) fillField(nameInput, formData.nome, 'name');
-        if (emailInput) fillField(emailInput, formData.email, 'email');
-        if (phoneInput) fillField(phoneInput, formData.telefone, 'phone');
-        if (companyInput) fillField(companyInput, formData.empresa, 'company');
-      } else {
-        console.error('[RD SYNC] RD Station form not found');
-        // Try to find any form element for debugging
-        const allForms = document.querySelectorAll('form');
-        console.log('[RD SYNC] All forms on page:', allForms.length);
-        allForms.forEach((form, index) => {
-          console.log(`[RD SYNC] Form ${index}:`, form.id, form.className);
-        });
-      }
-    }, 1000); // Further increased timeout
-  };
 
   const handleStepChange = (step: number) => {
     console.log(`[STEP CHANGE] Attempting to change from step ${currentStep} to step ${step}`);
@@ -343,19 +220,6 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
 
   return (
     <div className={className}>
-      {/* Hidden RD Station Form - positioned off-screen but visible for functionality */}
-      <div style={{ 
-        position: 'absolute', 
-        left: '-9999px', 
-        top: '-9999px', 
-        width: '1px', 
-        height: '1px', 
-        opacity: 0.01,
-        pointerEvents: 'none'
-      }}>
-        <RDStationForm className="" />
-      </div>
-
       {/* Animated Stepper Form */}
       <Stepper
         initialStep={1}
