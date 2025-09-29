@@ -19,6 +19,7 @@ interface StepperProps {
   disableStepIndicators?: boolean;
   renderStepIndicator?: (props: any) => React.ReactNode;
   canProceed?: boolean;
+  topRightOverlay?: React.ReactNode;
   [key: string]: any;
 }
 
@@ -38,6 +39,7 @@ export default function Stepper({
   disableStepIndicators = false,
   renderStepIndicator,
   canProceed = true,
+  topRightOverlay,
   ...rest
 }: StepperProps) {
   const [currentStep, setCurrentStep] = useState(initialStep);
@@ -116,6 +118,7 @@ export default function Stepper({
           currentStep={currentStep}
           direction={direction}
           className={`step-content-default ${contentClassName}`}
+          topRightOverlay={topRightOverlay}
         >
           {stepsArray[currentStep - 1]}
         </StepContentWrapper>
@@ -156,9 +159,10 @@ interface StepContentWrapperProps {
   direction: number;
   children: React.ReactNode;
   className: string;
+  topRightOverlay?: React.ReactNode;
 }
 
-function StepContentWrapper({ isCompleted, currentStep, direction, children, className }: StepContentWrapperProps) {
+function StepContentWrapper({ isCompleted, currentStep, direction, children, className, topRightOverlay }: StepContentWrapperProps) {
   const [parentHeight, setParentHeight] = useState(0);
 
   return (
@@ -170,7 +174,7 @@ function StepContentWrapper({ isCompleted, currentStep, direction, children, cla
     >
       <AnimatePresence initial={false} mode="sync" custom={direction}>
         {!isCompleted && (
-          <SlideTransition key={currentStep} direction={direction} onHeightReady={(h: number) => setParentHeight(h)}>
+          <SlideTransition key={currentStep} direction={direction} onHeightReady={(h: number) => setParentHeight(h)} topRightOverlay={topRightOverlay}>
             {children}
           </SlideTransition>
         )}
@@ -183,9 +187,10 @@ interface SlideTransitionProps {
   children: React.ReactNode;
   direction: number;
   onHeightReady: (height: number) => void;
+  topRightOverlay?: React.ReactNode;
 }
 
-function SlideTransition({ children, direction, onHeightReady }: SlideTransitionProps) {
+function SlideTransition({ children, direction, onHeightReady, topRightOverlay }: SlideTransitionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -202,7 +207,9 @@ function SlideTransition({ children, direction, onHeightReady }: SlideTransition
       exit="exit"
       transition={{ duration: 0.3, ease: "easeInOut" }}
       style={{ position: 'absolute', left: 0, right: 0, top: 0 }}
+      className="relative"
     >
+      {topRightOverlay}
       {children}
     </motion.div>
   );

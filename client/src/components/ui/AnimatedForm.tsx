@@ -36,7 +36,7 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
   const emailInputRef = useRef<HTMLInputElement>(null);
   const telefoneInputRef = useRef<HTMLInputElement>(null);
   const empresaInputRef = useRef<HTMLInputElement>(null);
-  
+
   // Store original scroll position to prevent unwanted scrolling
   const originalScrollRef = useRef<number>(0);
 
@@ -47,7 +47,7 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
       return false;
     }
-    
+
     // List of common personal email providers to exclude
     const personalEmailDomains = [
       'gmail.com', 'hotmail.com', 'yahoo.com', 'outlook.com', 'live.com',
@@ -55,7 +55,7 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
       'bol.com.br', 'uol.com.br', 'terra.com.br', 'ig.com.br', 'globo.com',
       'r7.com', 'oi.com.br', 'zipmail.com.br', 'pop.com.br'
     ];
-    
+
     const emailDomain = value.toLowerCase().split('@')[1];
     return !personalEmailDomains.includes(emailDomain);
   };
@@ -76,10 +76,10 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
     const processedValue = field === 'telefone' ? formatPhone(value) : value;
     setFormData(prev => {
       const newData = { ...prev, [field]: processedValue };
-      
+
       // Form data updated successfully
       console.log('[INPUT CHANGE] Form data updated:', field, '=', processedValue);
-      
+
       return newData;
     });
   };
@@ -122,24 +122,24 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
     if (isTransitioning) {
       // Store current scroll position
       originalScrollRef.current = window.scrollY;
-      
+
       // Create scroll prevention handler
       const preventScroll = (e: Event) => {
         e.preventDefault();
         window.scrollTo(0, originalScrollRef.current);
       };
-      
+
       // Add scroll prevention listeners
       window.addEventListener('scroll', preventScroll, { passive: false });
       document.addEventListener('touchmove', preventScroll, { passive: false });
-      
+
       console.log(`[SCROLL PREVENTION] Activated at position ${originalScrollRef.current}`);
-      
+
       // Auto-disable after animation completes
       const timeoutId = setTimeout(() => {
         setIsTransitioning(false);
       }, 800); // Slightly longer than typical animation duration
-      
+
       return () => {
         window.removeEventListener('scroll', preventScroll);
         document.removeEventListener('touchmove', preventScroll);
@@ -152,30 +152,30 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
 
   const handleStepChange = (step: number) => {
     console.log(`[STEP CHANGE] Attempting to change from step ${currentStep} to step ${step}`);
-    
+
     // Validate current step before allowing progression
     if (step > currentStep && !validateCurrentStep(currentStep)) {
       console.log(`[STEP CHANGE] Validation failed for step ${currentStep}, preventing progression`);
       return;
     }
-    
+
     console.log(`[STEP CHANGE] Validation passed, updating step to ${step}`);
-    
+
     // Activate scroll prevention immediately
     setIsTransitioning(true);
     originalScrollRef.current = window.scrollY;
     console.log(`[STEP CHANGE] Scroll prevention activated at position ${originalScrollRef.current}`);
-    
+
     // Change step without any additional operations that might cause scroll
     setCurrentStep(step);
-    
+
     console.log('[STEP CHANGE] Step changed, all sync and focus operations blocked during transition');
   };
 
   const handleFormComplete = async () => {
     console.log('Iniciando envio do formulário...', formData);
     setIsFormSubmitted(true);
-    
+
     try {
       // Preparar dados para o RD Station
       const rdData = {
@@ -189,9 +189,9 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
 
       // Enviar para RD Station via API direta
       await submitToRDStation(rdData);
-      
+
       console.log('✅ Lead enviado com sucesso!');
-      
+
       // Disparar evento de analytics (se GA estiver disponível)
       if (typeof (window as any).gtag !== 'undefined') {
         (window as any).gtag('event', 'form_submit', {
@@ -199,14 +199,14 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
           event_label: 'rd_station_form_success'
         });
       }
-      
+
       // Opcional: redirecionar para página de obrigado ou mostrar mensagem
       // window.location.href = '/obrigado';
-      
+
     } catch (error) {
       console.error('❌ Erro no envio do formulário:', error);
       setIsFormSubmitted(false);
-      
+
       // Disparar evento de erro no analytics
       if (typeof (window as any).gtag !== 'undefined') {
         (window as any).gtag('event', 'form_error', {
@@ -214,11 +214,11 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
           event_label: 'rd_station_form_error'
         });
       }
-      
+
       // Mostrar mensagem de erro mais específica
       const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
       console.log('🔍 Detalhes do erro:', errorMessage);
-      
+
       if (errorMessage.includes('500')) {
         alert('❌ Problema temporário do RD Station. Seus dados foram capturados! Nossa equipe entrará em contato em breve.');
       } else {
@@ -227,20 +227,19 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
     }
   };
 
+  const closeButton = onClose ? (
+    <button
+      onClick={onClose}
+      className="absolute top-4 right-4 z-10 text-gray-400 hover:text-gray-600 transition-all duration-200 bg-white rounded-full p-2.5 shadow-lg hover:shadow-xl hover:scale-110 border border-gray-200"
+      aria-label="Fechar"
+      data-testid="button-close-popup"
+    >
+      <X size={20} />
+    </button>
+  ) : null;
+
   return (
-    <div className={`${className} relative`}>
-      {/* Close Button - positioned to move with the animation */}
-      {onClose && (
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-10 text-gray-400 hover:text-gray-600 transition-all duration-200 bg-white rounded-full p-2.5 shadow-lg hover:shadow-xl hover:scale-110 border border-gray-200"
-          aria-label="Fechar"
-          data-testid="button-close-popup"
-        >
-          <X size={20} />
-        </button>
-      )}
-      
+    <div className={className}>
       {/* Animated Stepper Form */}
       <Stepper
         initialStep={1}
@@ -249,6 +248,7 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
         backButtonText="Anterior"
         nextButtonText="Continuar"
         canProceed={currentFieldValid}
+        topRightOverlay={closeButton}
         data-testid="animated-form-stepper"
       >
         {/* Step 1: Nome */}
@@ -403,7 +403,7 @@ export default function AnimatedForm({ className = "", onClose }: AnimatedFormPr
               Seus dados foram enviados com sucesso.
             </p>
           </div>
-          
+
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 max-w-2xl mx-auto">
             <h4 className="text-lg font-semibold text-green-800 mb-2" style={{ fontFamily: 'Lexend, sans-serif' }}>
               Entraremos em contato em breve!
