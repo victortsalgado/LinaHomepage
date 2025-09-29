@@ -9,9 +9,23 @@ interface BlogPostCardProps {
 }
 
 export default function BlogPostCard({ post, index, className = "" }: BlogPostCardProps) {
-  // Generate slug from title and id, with special handling for featured articles
+  // Generate slug from title and id, with special handling for migrated and featured articles
   let slug;
-  if (post.id === 0) {
+  
+  // Migrated posts with original URLs (maintaining SEO)
+  if (post.id === 100) {
+    slug = "2025/03/inovacao-em-movimento-como-o-pix-e-o-open-finance-estao-remodelando-o-mercado-financeiro";
+  } else if (post.id === 101) {
+    slug = "2024/11/open-insurance-o-futuro-do-mercado-brasileiro-de-seguros-digitalizado-e-personalizado";
+  } else if (post.id === 102) {
+    slug = "2024/02/o-impacto-das-ultimas-atualizacoes-do-open-finance";
+  } else if (post.id === 103) {
+    slug = "2023/11/nivelando-o-jogo-e-destravando-o-mercado-de-credito-com-open-finance";
+  } else if (post.id === 104) {
+    slug = "2023/11/o-momento-atual-do-open-finance-no-brasil";
+  }
+  // Legacy featured articles 
+  else if (post.id === 0) {
     slug = "pix-e-open-finance-remodelando-mercado-financeiro";
   } else if (post.id === 13) {
     slug = "open-insurance-futuro-mercado-seguros";
