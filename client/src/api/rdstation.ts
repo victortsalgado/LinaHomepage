@@ -9,6 +9,10 @@ export interface FormData {
   cargo?: string;
 }
 
+export interface SubmissionOptions {
+  tags?: string[];
+}
+
 export interface RDStationAPIPayload {
   event_type: string;
   event_family: string;
@@ -36,7 +40,7 @@ export interface RDStationAPIPayload {
   };
 }
 
-export async function submitToRDStation(formData: FormData): Promise<any> {
+export async function submitToRDStation(formData: FormData, options: SubmissionOptions = {}): Promise<any> {
   const trackingData = getTrackingData();
   
   const payload: RDStationAPIPayload = {
@@ -64,7 +68,7 @@ export async function submitToRDStation(formData: FormData): Promise<any> {
       
       // Configurações
       available_for_mailing: true,
-      tags: ["lina-website", "data-link-form"],
+      tags: options.tags || ["lina-website", "generic-form"],
       
       // Campos customizados (prefixo cf_ mantido)
       cf_faturamento_da_empresa: formData.faturamento || undefined,

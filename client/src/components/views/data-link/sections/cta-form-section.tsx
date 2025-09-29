@@ -52,7 +52,7 @@ export default function CtaFormSection() {
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          <AnimatedForm className="w-full" />
+          <AnimatedForm className="w-full" tags={["lina-website", "data-link-form"]} />
         </motion.div>
       </div>
     </section>

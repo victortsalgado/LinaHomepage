@@ -13,9 +13,10 @@ interface FormData {
 
 interface AnimatedFormProps {
   className?: string;
+  tags?: string[];
 }
 
-export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
+export default function AnimatedForm({ className = "", tags = ["lina-website", "generic-form"] }: AnimatedFormProps) {
   const [formData, setFormData] = useState<FormData>({
     nome: '',
     email: '',
@@ -186,7 +187,7 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
       console.log('Dados preparados para envio:', rdData);
 
       // Enviar para RD Station via API direta
-      await submitToRDStation(rdData);
+      await submitToRDStation(rdData, { tags });
 
       console.log('✅ Lead enviado com sucesso!');
 

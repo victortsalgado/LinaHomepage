@@ -74,7 +74,7 @@ export default function ContactSection() {
     setIsSubmitting(true);
     
     try {
-      await submitToRDStation(formData);
+      await submitToRDStation(formData, { tags: ["lina-website", "contact-form"] });
       setIsSubmitted(true);
       
       // Disparar evento de analytics (se GA estiver disponível)

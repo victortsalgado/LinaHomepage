@@ -20,7 +20,7 @@ const FreeTrialPopup = ({ isOpen, onClose }: FreeTrialPopupProps) => {
       <div className="fixed inset-0 flex items-center justify-center z-50 p-4 pointer-events-none">
         <div className="pointer-events-auto w-full max-w-2xl">
           {/* Formulário AnimatedForm */}
-          <AnimatedForm className="w-full" />
+          <AnimatedForm className="w-full" tags={["lina-website", "trial-form"]} />
         </div>
       </div>
     </>

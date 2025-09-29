@@ -58,7 +58,7 @@ export default function JsrCtaFormSection() {
                 animate={sectionVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
               >
-                <AnimatedForm className="w-full" />
+                <AnimatedForm className="w-full" tags={["lina-website", "jsr-form"]} />
               </motion.div>
             </div>
           </div>
