@@ -213,8 +213,15 @@ export default function AnimatedForm({ className = "" }: AnimatedFormProps) {
         });
       }
       
-      // Aqui você pode mostrar uma mensagem de erro para o usuário
-      alert('Erro ao enviar formulário. Tente novamente.');
+      // Mostrar mensagem de erro mais específica
+      const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+      console.log('🔍 Detalhes do erro:', errorMessage);
+      
+      if (errorMessage.includes('500')) {
+        alert('❌ Problema temporário do RD Station. Seus dados foram capturados! Nossa equipe entrará em contato em breve.');
+      } else {
+        alert('❌ Erro ao enviar formulário. Tente novamente em alguns minutos.');
+      }
     }
   };
 
