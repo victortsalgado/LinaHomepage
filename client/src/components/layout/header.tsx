@@ -353,15 +353,17 @@ export default function Header() {
               <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>
-                    <NavigationMenuLink 
-                      href="#contato" 
-                      className={cn(
-                        "font-medium transition-colors h-9 bg-transparent border-none shadow-none px-4 py-2 text-[16px] hover:text-lina-cyan/80",
-                        shouldUseWhiteText ? "text-white" : "text-[#009999]"
-                      )}
-                      data-testid="link-contact"
-                    >
-                      Entre em Contato
+                    <NavigationMenuLink asChild>
+                      <Link
+                        to="/contato"
+                        className={cn(
+                          "font-medium transition-colors h-9 bg-transparent border-none shadow-none px-4 py-2 text-[16px] hover:text-lina-cyan/80",
+                          shouldUseWhiteText ? "text-white" : "text-[#009999]"
+                        )}
+                        data-testid="link-contact"
+                      >
+                        Entre em Contato
+                      </Link>
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 </NavigationMenuList>
